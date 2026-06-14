@@ -38,25 +38,13 @@ async function main() {
   await page.locator("#v15 .passage-header").click();
 
   const phraseRows = await page.locator("#v15 .phrase-row:not(.full-passage-row)").count();
-  if (phraseRows !== 5) {
-    throw new Error(`Expected five phrase rows in verse 15, received ${phraseRows}`);
+  if (phraseRows !== 0) {
+    throw new Error(`Expected no pre-authored phrase rows in verse 15, received ${phraseRows}`);
   }
 
   const resizers = await page.locator("#v15 .column-resizer").count();
   if (resizers !== 4) {
     throw new Error(`Expected four adjustable witness boundaries, received ${resizers}`);
-  }
-
-  const firstPhrase = page.locator("#v15 [data-alignment-row='v15-unity']");
-  await firstPhrase.locator(".phrase-label").click();
-  if (!(await firstPhrase.evaluate((element) => element.classList.contains("collapsed")))) {
-    throw new Error("Expected phrase row to collapse");
-  }
-  await firstPhrase.locator(".phrase-label").click();
-
-  await firstPhrase.locator(".phrase-cell").first().click();
-  if (!(await firstPhrase.evaluate((element) => element.classList.contains("active")))) {
-    throw new Error("Expected selected phrase alignment to become active");
   }
 
   await page.locator("#v15").screenshot({
@@ -135,21 +123,12 @@ async function main() {
     path: "qa-alignment-frames.png",
   });
 
-  const unalignedSanskritToken = await page.evaluate(() => {
-    const passage = window.CORPUS_DATA.passages.find((item) => item.number === 15);
-    const saved = JSON.parse(localStorage.getItem("vimsika-editor-annotations-v1"));
-    const aligned = new Set(
-      [...window.CORPUS_DATA.alignments, ...saved.alignments].flatMap(
-        (alignment) => alignment.targetTokenIds?.san_levi_1925 || [],
-      ),
-    );
-    return passage.texts.san_levi_1925.tokens.find(
-      (token) => !aligned.has(token.id),
-    ).id;
-  });
+  await page.locator("#v15 [data-clear-live-frame]").click();
+  const unalignedSanskritToken = "v15-san_levi_1925-t00128";
   await page.locator(`#v15 [data-token-id='${unalignedSanskritToken}']`).click();
-  if ((await page.locator("#v15 .frame-unresolved").count()) !== 1) {
-    throw new Error("Expected an explicit unresolved-alignment message");
+  const machineLabels = await page.locator("#v15 .machine-label").count();
+  if (machineLabels < 1) {
+    throw new Error("Expected a clearly marked machine-projected candidate");
   }
 
   await page.setViewportSize({ width: 390, height: 844 });

@@ -575,6 +575,19 @@ button {
   font-size: 0.7rem;
 }
 
+.frame-alignment-labels .machine-label {
+  color: #654a19;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #f8edc9,
+      #f8edc9 7px,
+      #f2dfaa 7px,
+      #f2dfaa 14px
+    );
+  border: 1px dashed #c9a85c;
+}
+
 .frame-witness-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

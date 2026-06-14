@@ -34,7 +34,7 @@ function highlightedText(text, sourceId, verse) {
   }
 
   if (state.activeAlignment && state.activeAlignment.verse === verse) {
-    const term = state.activeAlignment.targets[sourceId];
+    const term = state.activeAlignment.targets?.[sourceId];
     if (term) terms.push(term);
   }
 
@@ -66,6 +66,10 @@ function sourceById(sourceId) {
 
 function allAlignments() {
   return [...state.corpus.alignments, ...state.editorData.alignments];
+}
+
+function candidateAlignments() {
+  return state.corpus.candidateAlignments || [];
 }
 
 function alignmentById(alignmentId) {
@@ -127,13 +131,29 @@ function tokenTextFromIds(passage, sourceId, tokenIds) {
 
 function alignmentsOverlappingSanskrit(passage, tokenIds) {
   const selected = new Set(tokenIds);
-  return allAlignments().filter(
+  const reviewed = allAlignments().filter(
     (alignment) =>
       alignment.verse === passage.number &&
       alignment.targetTokenIds?.san_levi_1925?.some((tokenId) =>
         selected.has(tokenId),
       ),
   );
+  const covered = new Set(
+    reviewed.flatMap(
+      (alignment) => alignment.targetTokenIds?.san_levi_1925 || [],
+    ),
+  );
+  const uncovered = new Set(
+    tokenIds.filter((tokenId) => !covered.has(tokenId)),
+  );
+  const candidates = candidateAlignments().filter(
+    (alignment) =>
+      alignment.verse === passage.number &&
+      alignment.targetTokenIds?.san_levi_1925?.some((tokenId) =>
+        uncovered.has(tokenId),
+      ),
+  );
+  return [...reviewed, ...candidates];
 }
 
 function alignedTokenIdsForSource(alignments, sourceId) {
@@ -273,6 +293,7 @@ function buildSidebar() {
 
 function renderSummary() {
   const alignments = allAlignments().length;
+  const candidates = candidateAlignments().length;
   const tokens = state.corpus.passages.reduce(
     (passageTotal, passage) =>
       passageTotal +
@@ -302,8 +323,8 @@ function renderSummary() {
       <span class="summary-label">visible witnesses</span>
     </div>
     <div class="summary-item">
-      <span class="summary-number">${alignments}</span>
-      <span class="summary-label">saved alignment groups</span>
+      <span class="summary-number">${alignments} + ${candidates.toLocaleString()}</span>
+      <span class="summary-label">reviewed/editorial + machine candidate links</span>
     </div>
     <div class="summary-item">
       <span class="summary-number">${knownRights}/${state.corpus.sources.length}</span>
@@ -422,6 +443,12 @@ function correspondenceFrame(frame, passage, sources, live = false) {
     passage,
     frame.sanskritTokenIds,
   );
+  const reviewedAlignments = alignments.filter(
+    (alignment) => alignment.status !== "machine-suggested",
+  );
+  const machineAlignments = alignments.filter(
+    (alignment) => alignment.status === "machine-suggested",
+  );
   const selectedText = tokenTextFromIds(
     passage,
     "san_levi_1925",
@@ -446,12 +473,17 @@ function correspondenceFrame(frame, passage, sources, live = false) {
         alignments.length
           ? `
             <div class="frame-alignment-labels">
-              ${alignments
+              ${reviewedAlignments
                 .map(
                   (alignment) =>
                     `<span>${escapeHtml(alignment.label)}${alignment.relation ? ` · ${escapeHtml(alignment.relation)}` : ""}</span>`,
                 )
                 .join("")}
+              ${
+                machineAlignments.length
+                  ? `<span class="machine-label">Machine-projected candidate · ${machineAlignments.length} Sanskrit token${machineAlignments.length === 1 ? "" : "s"} · low confidence</span>`
+                  : ""
+              }
             </div>
             <div class="frame-witness-grid">
               ${sources
@@ -477,7 +509,7 @@ function correspondenceFrame(frame, passage, sources, live = false) {
           : `
             <div class="frame-unresolved">
               <strong>No reviewed correspondence is recorded for this selection.</strong>
-              <span>Use Editor mode to select matching spans and create an alignment.</span>
+              <span>No machine candidate is available either; use Editor mode to create an alignment.</span>
             </div>
           `
       }
@@ -495,7 +527,7 @@ function comparisonFrames(passage, sources) {
     return `
       <section class="correspondence-frames empty">
         <strong>Dynamic comparison frames</strong>
-        <span>Click a Sanskrit token, or drag across several Sanskrit tokens, to reveal recorded correspondences.</span>
+        <span>Click a Sanskrit token, or Shift-click another token to extend the phrase, and reveal recorded correspondences.</span>
       </section>
     `;
   }
@@ -837,7 +869,10 @@ function collationView(passage, sources) {
 
 function passageCard(passage) {
   const sources = selectedSourceRecords();
-  const sourcePanels = sources.map((source) => sourcePanel(source, passage)).join("");
+  const sourcePanels =
+    state.view === "reading"
+      ? sources.map((source) => sourcePanel(source, passage)).join("")
+      : "";
   const open = state.openPassages.has(passage.id);
   const content =
     state.view === "reading"
@@ -961,6 +996,26 @@ function bindTokenInteractions(reader) {
         token.dataset.tokenSource === "san_levi_1925"
       ) {
         event.preventDefault();
+        const passageId = token.dataset.tokenPassage;
+        const sourceId = token.dataset.tokenSource;
+        const tokenIndex = Number(token.dataset.tokenIndex);
+        const key = selectionKey(passageId, sourceId);
+        const anchor =
+          event.shiftKey && Number.isInteger(state.selectionAnchors[key])
+            ? state.selectionAnchors[key]
+            : tokenIndex;
+        if (!event.shiftKey) state.selectionAnchors[key] = tokenIndex;
+        setTokenRange(passageId, sourceId, anchor, tokenIndex);
+        const overlaps = alignmentsOverlappingSanskrit(
+          passageById(passageId),
+          selectedTokenIds(
+            passageId,
+            sourceId,
+          ),
+        );
+        state.activeAlignment = overlaps.length === 1 ? overlaps[0] : null;
+        state.openPassages.add(passageId);
+        renderReader();
         return;
       }
       const alignment = allAlignments().find((item) =>
@@ -975,11 +1030,7 @@ function bindTokenInteractions(reader) {
     });
 
     token.addEventListener("pointerdown", (event) => {
-      const selectsInEditor = state.view === "editor";
-      const selectsSanskritInAlignment =
-        state.view === "alignment" &&
-        token.dataset.tokenSource === "san_levi_1925";
-      if (!selectsInEditor && !selectsSanskritInAlignment) return;
+      if (state.view !== "editor") return;
       event.preventDefault();
       const passageId = token.dataset.tokenPassage;
       const sourceId = token.dataset.tokenSource;
@@ -996,20 +1047,13 @@ function bindTokenInteractions(reader) {
       syncTokenSelectionClasses(reader);
 
       const finish = () => {
+        if (!state.draggingSelection) return;
         state.draggingSelection = null;
+        token.removeEventListener("pointerup", finish);
         window.removeEventListener("pointerup", finish);
-        if (state.view === "editor") {
-          updateEditorSelectionSummary(passageId);
-        } else {
-          const overlaps = alignmentsOverlappingSanskrit(
-            passageById(passageId),
-            selectedTokenIds(passageId, sourceId),
-          );
-          state.activeAlignment = overlaps.length === 1 ? overlaps[0] : null;
-          state.openPassages.add(passageId);
-          renderReader();
-        }
+        updateEditorSelectionSummary(passageId);
       };
+      token.addEventListener("pointerup", finish);
       window.addEventListener("pointerup", finish);
     });
 

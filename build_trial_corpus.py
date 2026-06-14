@@ -110,6 +110,96 @@ def alignment_token_ids(
         for token in tokens
         if int(token["start"]) < end and int(token["end"]) > start
     ]
+
+
+def is_alignable_token(
+    token: dict[str, object],
+    source_id: str,
+) -> bool:
+    text = str(token["text"])
+    if not any(
+        unicodedata.category(character)[0] in {"L", "M"}
+        for character in text
+    ):
+        return False
+    if text.casefold() == "vvs":
+        return False
+    if (
+        text.isascii()
+        and text.isupper()
+        and (len(text) == 1 or re.fullmatch(r"[IVXLCDM]+", text))
+    ):
+        return False
+    return True
+
+
+def projected_token_span(
+    target_tokens: list[dict[str, object]],
+    source_index: int,
+    source_count: int,
+) -> list[str]:
+    if not target_tokens or not source_count:
+        return []
+    target_count = len(target_tokens)
+    start = round(source_index * target_count / source_count)
+    end = round((source_index + 1) * target_count / source_count)
+    start = min(start, target_count - 1)
+    end = max(start + 1, min(end, target_count))
+    return [str(token["id"]) for token in target_tokens[start:end]]
+
+
+def candidate_alignments(
+    passages: list[dict[str, object]],
+    sources: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    candidates: list[dict[str, object]] = []
+    target_source_ids = [
+        str(source["id"])
+        for source in sources
+        if source["id"] != "san_levi_1925"
+    ]
+    for passage in passages:
+        sanskrit_witness = passage["texts"]["san_levi_1925"]
+        sanskrit_tokens = sanskrit_witness["tokens"]
+        lexical_tokens = [
+            token
+            for token in sanskrit_tokens
+            if is_alignable_token(token, "san_levi_1925")
+        ]
+        lexical_count = len(lexical_tokens)
+        for source_index, sanskrit_token in enumerate(lexical_tokens):
+            target_token_ids: dict[str, list[str]] = {
+                "san_levi_1925": [str(sanskrit_token["id"])]
+            }
+            for source_id in target_source_ids:
+                target_tokens = [
+                    token
+                    for token in passage["texts"][source_id]["tokens"]
+                    if is_alignable_token(token, source_id)
+                ]
+                if target_tokens:
+                    target_token_ids[source_id] = projected_token_span(
+                        target_tokens,
+                        source_index,
+                        lexical_count,
+                    )
+            candidates.append(
+                {
+                    "id": f"candidate-{sanskrit_token['id']}",
+                    "verse": passage["number"],
+                    "level": "token-span",
+                    "status": "machine-suggested",
+                    "confidence": "low",
+                    "method": "monotonic-proportional-projection-v1",
+                    "label": str(sanskrit_token["text"]),
+                    "note": (
+                        "Automatically projected by relative token position within the passage. "
+                        "This is a review candidate, not a philological assertion."
+                    ),
+                    "targetTokenIds": target_token_ids,
+                }
+            )
+    return candidates
 SANSKRIT_STARTS = {
     1: "vijñaptimātram evedam",
     2: "na deśakālaniyamaḥ",
@@ -547,103 +637,7 @@ def source_records() -> list[dict[str, object]]:
 
 
 def alignment_demo() -> list[dict[str, object]]:
-    return [
-        {
-            "id": "v15-unity",
-            "verse": 15,
-            "order": 1,
-            "level": "phrase",
-            "status": "provisional",
-            "label": "unity / one entity",
-            "note": "Provisional phrase-level equivalence; requires philological review.",
-            "targets": {
-                "san_levi_1925": "ekatve",
-                "tib_derge": "gcig na",
-                "zho_xuanzang": "一應無",
-                "zho_paramartha": "若一",
-                "zho_bodhiruci": "若一",
-                "eng_das": "If it were simple",
-                "fr_levi_1932": "l'unité",
-                "de_frauwallner": "Im Falle der Einheit",
-            },
-        },
-        {
-            "id": "v15-traversal",
-            "verse": 15,
-            "order": 2,
-            "level": "phrase",
-            "status": "provisional",
-            "label": "gradual traversal",
-            "note": "A compact concept alignment, not a claim of literal word identity.",
-            "targets": {
-                "san_levi_1925": "krameṇetir",
-                "tib_derge": "rim gyis ’gro ba",
-                "zho_xuanzang": "次行",
-                "zho_paramartha": "次行",
-                "zho_bodhiruci": "行不次",
-                "eng_das": "gradual traversal",
-                "fr_levi_1932": "marcher au pas",
-                "de_frauwallner": "schrittweise Bewegung",
-            },
-        },
-        {
-            "id": "v15-apprehension",
-            "verse": 15,
-            "order": 3,
-            "level": "phrase",
-            "status": "provisional",
-            "label": "apprehension / non-apprehension",
-            "note": "The translations distribute the contrast across different syntactic forms.",
-            "targets": {
-                "san_levi_1925": "grahāgrahau",
-                "tib_derge": "zin dang ma zin",
-                "zho_xuanzang": "至未至",
-                "zho_paramartha": "已未得",
-                "zho_bodhiruci": "取捨",
-                "eng_das": "perception and non-perception",
-                "fr_levi_1932": "prendre et ne pas prendre",
-                "de_frauwallner": "Erfassen und Nichterfassen",
-            },
-        },
-        {
-            "id": "v15-separate-objects",
-            "verse": 15,
-            "order": 4,
-            "level": "phrase",
-            "status": "provisional",
-            "label": "separate multiple objects",
-            "note": "A many-to-many phrase alignment covering distinct objects and their spatial separation.",
-            "targets": {
-                "san_levi_1925": "vicchinnānekavṛttiś ca",
-                "tib_derge": "ris chad du mar gnas pa",
-                "zho_xuanzang": "多有間事",
-                "zho_paramartha": "別類多事",
-                "zho_bodhiruci": "差別無量處",
-                "eng_das": "separate objects reside at different places",
-                "fr_levi_1932": "activité multiple de.figures diverses",
-                "de_frauwallner": "Vorhandensein mehrerer getrennter (Dinge)",
-            },
-        },
-        {
-            "id": "v15-subtle",
-            "verse": 15,
-            "order": 5,
-            "level": "phrase",
-            "status": "provisional",
-            "label": "the very small / subtle",
-            "note": "This alignment exposes a useful difference between nominal and verbal renderings.",
-            "targets": {
-                "san_levi_1925": "sūkṣmānīkṣā",
-                "tib_derge": "phra ba",
-                "zho_xuanzang": "難見細物",
-                "zho_paramartha": "細難見",
-                "zho_bodhiruci": "微細亦應見",
-                "eng_das": "very small objects be imperceptible",
-                "fr_levi_1932": "voir l'infiniment petit",
-                "de_frauwallner": "Nichtwahrnehmung",
-            },
-        },
-    ]
+    return []
 
 
 def main() -> None:
@@ -708,8 +702,10 @@ def main() -> None:
                 target,
             )
 
+    sources = source_records()
+    candidates = candidate_alignments(passages, sources)
     corpus = {
-        "schemaVersion": "0.3.0-trial",
+        "schemaVersion": "0.4.0-trial",
         "work": {
             "id": "vasubandhu-vimsika",
             "title": "Viṃśikā",
@@ -718,11 +714,14 @@ def main() -> None:
         },
         "notice": (
             "Scholarly prototype. Segmentation and phrase alignments are provisional. "
+            "Corpus-wide token correspondences marked as machine-projected are low-confidence "
+            "positional candidates requiring human review. "
             "The project owner has confirmed the supplied witnesses are cleared for public scholarly publication."
         ),
-        "sources": source_records(),
+        "sources": sources,
         "passages": passages,
         "alignments": alignments,
+        "candidateAlignments": candidates,
     }
 
     args.output_path.parent.mkdir(parents=True, exist_ok=True)

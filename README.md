@@ -10,7 +10,6 @@ This workspace contains a local trial reader generated from the supplied Viṃś
 - Resizable witness columns with saved user preferences.
 - Collapsible navigation panel with a remembered full-width reading mode.
 - Synchronized phrase rows with sticky subsection labels.
-- A five-part phrase-alignment pilot for verse 15.
 - Stable IDs for 39,965 atomic tokens across all supplied witnesses.
 - An embedded Editor mode for hierarchical units and multilingual token-span links.
 - Source provenance and provisional copyright labels.
@@ -40,9 +39,7 @@ The `data`, `scripts`, and `reference-source` folders are not required by the
 published reader.
 
 In Comparison or Alignment view, drag the boundary at the right edge of a
-witness heading to change its width. Widths are saved in the browser. Verse 15
-contains the first nested phrase-level pilot; click a phrase label to fold it,
-or click a phrase in any witness to activate the cross-witness alignment.
+witness heading to change its width. Widths are saved in the browser.
 
 ## Embedded editor
 
@@ -57,7 +54,15 @@ scholarly annotation task: the interface stores reviewed many-to-many links,
 omissions, additions, paraphrases, and uncertain correspondences without
 pretending that automatically suggested equivalences are final.
 
-In `Alignment` view, click a Sanskrit token or drag across a Sanskrit phrase.
+The build also generates a preliminary candidate mapping for every alignable
+Sanskrit token. These candidates use monotonic proportional projection within
+each passage. They are useful for rapidly locating a probable region in each
+witness, but they are explicitly marked `machine-suggested`, `low` confidence,
+and must not be cited as reviewed philological equivalences. Existing reviewed
+and editorial links always take priority over projected candidates.
+
+In `Alignment` view, click a Sanskrit token or Shift-click a later token to
+extend the selected Sanskrit phrase.
 The Shell creates a live comparison frame containing contextual excerpts for
 every recorded correspondence. Frames can be pinned so several Sanskrit
 phrases remain visible for comparison. Unaligned selections are identified
