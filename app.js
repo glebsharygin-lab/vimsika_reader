@@ -15,6 +15,7 @@ const state = {
   tokenSelections: {},
   selectionAnchors: {},
   draggingSelection: null,
+  dynamicFrames: [],
 };
 
 const escapeHtml = (value) =>
@@ -122,6 +123,49 @@ function tokenTextFromIds(passage, sourceId, tokenIds) {
   const selected = witness.tokens.filter((token) => tokenIds.includes(token.id));
   if (!selected.length) return "";
   return witness.text.slice(selected[0].start, selected[selected.length - 1].end);
+}
+
+function alignmentsOverlappingSanskrit(passage, tokenIds) {
+  const selected = new Set(tokenIds);
+  return allAlignments().filter(
+    (alignment) =>
+      alignment.verse === passage.number &&
+      alignment.targetTokenIds?.san_levi_1925?.some((tokenId) =>
+        selected.has(tokenId),
+      ),
+  );
+}
+
+function alignedTokenIdsForSource(alignments, sourceId) {
+  return [
+    ...new Set(
+      alignments.flatMap(
+        (alignment) => alignment.targetTokenIds?.[sourceId] || [],
+      ),
+    ),
+  ];
+}
+
+function contextSnippet(passage, sourceId, tokenIds) {
+  const witness = passage.texts[sourceId];
+  if (!witness || !tokenIds.length) return "";
+  const selected = witness.tokens.filter((token) => tokenIds.includes(token.id));
+  if (!selected.length) return "";
+
+  const selectionStart = selected[0].start;
+  const selectionEnd = selected[selected.length - 1].end;
+  let start = Math.max(0, selectionStart - 110);
+  let end = Math.min(witness.text.length, selectionEnd + 150);
+  const paragraphStart = witness.text.lastIndexOf("\n\n", selectionStart);
+  const paragraphEnd = witness.text.indexOf("\n\n", selectionEnd);
+  if (paragraphStart >= 0 && selectionStart - paragraphStart < 220) {
+    start = paragraphStart + 2;
+  }
+  if (paragraphEnd >= 0 && paragraphEnd - selectionEnd < 280) {
+    end = paragraphEnd;
+  }
+
+  return `${start ? "… " : ""}${escapeHtml(witness.text.slice(start, selectionStart))}<mark>${escapeHtml(witness.text.slice(selectionStart, selectionEnd))}</mark>${escapeHtml(witness.text.slice(selectionEnd, end))}${end < witness.text.length ? " …" : ""}`;
 }
 
 function loadColumnWidths() {
@@ -371,6 +415,111 @@ function alignmentTargetText(alignment, passage, sourceId) {
     sourceId,
     alignment.targetTokenIds?.[sourceId] || [],
   );
+}
+
+function correspondenceFrame(frame, passage, sources, live = false) {
+  const alignments = alignmentsOverlappingSanskrit(
+    passage,
+    frame.sanskritTokenIds,
+  );
+  const selectedText = tokenTextFromIds(
+    passage,
+    "san_levi_1925",
+    frame.sanskritTokenIds,
+  );
+  return `
+    <article class="correspondence-frame ${live ? "live" : "pinned"}" data-frame-id="${frame.id}">
+      <header class="correspondence-frame-heading">
+        <div>
+          <span class="frame-kicker">${live ? "Live Sanskrit selection" : "Pinned comparison frame"}</span>
+          <h4>${escapeHtml(selectedText || "Selected Sanskrit span")}</h4>
+        </div>
+        <div class="frame-actions">
+          ${
+            live
+              ? '<button data-pin-frame type="button">Pin frame</button><button data-clear-live-frame type="button">Clear</button>'
+              : `<button data-remove-frame="${frame.id}" type="button">Remove</button>`
+          }
+        </div>
+      </header>
+      ${
+        alignments.length
+          ? `
+            <div class="frame-alignment-labels">
+              ${alignments
+                .map(
+                  (alignment) =>
+                    `<span>${escapeHtml(alignment.label)}${alignment.relation ? ` · ${escapeHtml(alignment.relation)}` : ""}</span>`,
+                )
+                .join("")}
+            </div>
+            <div class="frame-witness-grid">
+              ${sources
+                .map((source) => {
+                  const tokenIds =
+                    source.id === "san_levi_1925"
+                      ? frame.sanskritTokenIds
+                      : alignedTokenIdsForSource(alignments, source.id);
+                  return `
+                    <section class="frame-witness" style="--source-color:${source.color}">
+                      <h5>${escapeHtml(source.label)}</h5>
+                      ${
+                        tokenIds.length
+                          ? `<p>${contextSnippet(passage, source.id, tokenIds)}</p>`
+                          : '<p class="frame-missing">No corresponding span recorded in this witness.</p>'
+                      }
+                    </section>
+                  `;
+                })
+                .join("")}
+            </div>
+          `
+          : `
+            <div class="frame-unresolved">
+              <strong>No reviewed correspondence is recorded for this selection.</strong>
+              <span>Use Editor mode to select matching spans and create an alignment.</span>
+            </div>
+          `
+      }
+    </article>
+  `;
+}
+
+function comparisonFrames(passage, sources) {
+  if (state.view !== "alignment") return "";
+  const liveTokenIds = selectedTokenIds(passage.id, "san_levi_1925");
+  const frames = state.dynamicFrames.filter(
+    (frame) => frame.passageId === passage.id,
+  );
+  if (!liveTokenIds.length && !frames.length) {
+    return `
+      <section class="correspondence-frames empty">
+        <strong>Dynamic comparison frames</strong>
+        <span>Click a Sanskrit token, or drag across several Sanskrit tokens, to reveal recorded correspondences.</span>
+      </section>
+    `;
+  }
+  return `
+    <section class="correspondence-frames">
+      ${
+        liveTokenIds.length
+          ? correspondenceFrame(
+              {
+                id: `live-${passage.id}`,
+                passageId: passage.id,
+                sanskritTokenIds: liveTokenIds,
+              },
+              passage,
+              sources,
+              true,
+            )
+          : ""
+      }
+      ${frames
+        .map((frame) => correspondenceFrame(frame, passage, sources))
+        .join("")}
+    </section>
+  `;
 }
 
 function editorUnitsForPassage(passageId) {
@@ -654,6 +803,7 @@ function collationView(passage, sources) {
   const template = collationTemplate(sources);
   return `
     ${state.view === "editor" ? editorWorkbench(passage) : ""}
+    ${comparisonFrames(passage, sources)}
     <div class="collation-intro">
       <strong>${alignments.length ? `${alignments.length} aligned phrase sections` : "Passage-level comparison"}</strong>
       <span>${
@@ -678,7 +828,7 @@ function collationView(passage, sources) {
           passage,
           sources,
           template,
-          state.view === "editor" ? false : Boolean(alignments.length),
+          state.view === "comparison" ? Boolean(alignments.length) : false,
         )}
       </div>
     </div>
@@ -806,6 +956,13 @@ function bindTokenInteractions(reader) {
         event.preventDefault();
         return;
       }
+      if (
+        state.view === "alignment" &&
+        token.dataset.tokenSource === "san_levi_1925"
+      ) {
+        event.preventDefault();
+        return;
+      }
       const alignment = allAlignments().find((item) =>
         item.targetTokenIds?.[token.dataset.tokenSource]?.includes(
           token.dataset.tokenId,
@@ -818,7 +975,11 @@ function bindTokenInteractions(reader) {
     });
 
     token.addEventListener("pointerdown", (event) => {
-      if (state.view !== "editor") return;
+      const selectsInEditor = state.view === "editor";
+      const selectsSanskritInAlignment =
+        state.view === "alignment" &&
+        token.dataset.tokenSource === "san_levi_1925";
+      if (!selectsInEditor && !selectsSanskritInAlignment) return;
       event.preventDefault();
       const passageId = token.dataset.tokenPassage;
       const sourceId = token.dataset.tokenSource;
@@ -837,7 +998,17 @@ function bindTokenInteractions(reader) {
       const finish = () => {
         state.draggingSelection = null;
         window.removeEventListener("pointerup", finish);
-        updateEditorSelectionSummary(passageId);
+        if (state.view === "editor") {
+          updateEditorSelectionSummary(passageId);
+        } else {
+          const overlaps = alignmentsOverlappingSanskrit(
+            passageById(passageId),
+            selectedTokenIds(passageId, sourceId),
+          );
+          state.activeAlignment = overlaps.length === 1 ? overlaps[0] : null;
+          state.openPassages.add(passageId);
+          renderReader();
+        }
       };
       window.addEventListener("pointerup", finish);
     });
@@ -1030,6 +1201,50 @@ function bindEditorControls(reader) {
   });
 }
 
+function bindFrameControls(reader) {
+  reader.querySelectorAll("[data-pin-frame]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const passageId = button.closest("[data-frame-id]").dataset.frameId.replace(
+        "live-",
+        "",
+      );
+      const sanskritTokenIds = [
+        ...selectedTokenIds(passageId, "san_levi_1925"),
+      ];
+      if (!sanskritTokenIds.length) return;
+      state.dynamicFrames.push({
+        id: nextAnnotationId("frame", passageId),
+        passageId,
+        sanskritTokenIds,
+      });
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-clear-live-frame]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const passageId = button.closest("[data-frame-id]").dataset.frameId.replace(
+        "live-",
+        "",
+      );
+      delete state.tokenSelections[
+        selectionKey(passageId, "san_levi_1925")
+      ];
+      state.activeAlignment = null;
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-remove-frame]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.dynamicFrames = state.dynamicFrames.filter(
+        (frame) => frame.id !== button.dataset.removeFrame,
+      );
+      renderReader();
+    });
+  });
+}
+
 function renderReader() {
   const reader = document.querySelector("#reader");
   reader.classList.toggle("collation-active", state.view !== "reading");
@@ -1107,6 +1322,7 @@ function renderReader() {
   bindColumnResizers(reader);
   bindTokenInteractions(reader);
   bindEditorControls(reader);
+  bindFrameControls(reader);
 }
 
 function renderSourceLedger() {

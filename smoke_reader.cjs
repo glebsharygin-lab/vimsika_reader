@@ -116,13 +116,40 @@ async function main() {
   const savedSanskritToken = savedEditorData.alignments[0].targetTokenIds.san_levi_1925[0];
   const savedTibetanToken = savedEditorData.alignments[0].targetTokenIds.tib_derge[0];
   await page.getByRole("button", { name: "Alignment" }).click();
-  await page.locator("#v15 .full-passage-row .phrase-label").click();
   await page.locator(`#v15 [data-token-id='${savedSanskritToken}']`).click();
+  const liveFrames = await page.locator("#v15 .correspondence-frame.live").count();
+  if (liveFrames !== 1) {
+    throw new Error("Expected a live correspondence frame after Sanskrit selection");
+  }
   const linkedHighlights = await page.locator(
     `#v15 [data-token-id='${savedSanskritToken}'].alignment-active, #v15 [data-token-id='${savedTibetanToken}'].alignment-active`,
   ).count();
   if (linkedHighlights !== 2) {
     throw new Error("Expected Sanskrit token click to reveal its saved correspondence");
+  }
+
+  await page.locator("#v15 [data-pin-frame]").click();
+  const pinnedFrames = await page.locator("#v15 .correspondence-frame.pinned").count();
+  if (pinnedFrames !== 1) throw new Error("Expected a pinned comparison frame");
+  await page.locator("#v15").screenshot({
+    path: "qa-alignment-frames.png",
+  });
+
+  const unalignedSanskritToken = await page.evaluate(() => {
+    const passage = window.CORPUS_DATA.passages.find((item) => item.number === 15);
+    const saved = JSON.parse(localStorage.getItem("vimsika-editor-annotations-v1"));
+    const aligned = new Set(
+      [...window.CORPUS_DATA.alignments, ...saved.alignments].flatMap(
+        (alignment) => alignment.targetTokenIds?.san_levi_1925 || [],
+      ),
+    );
+    return passage.texts.san_levi_1925.tokens.find(
+      (token) => !aligned.has(token.id),
+    ).id;
+  });
+  await page.locator(`#v15 [data-token-id='${unalignedSanskritToken}']`).click();
+  if ((await page.locator("#v15 .frame-unresolved").count()) !== 1) {
+    throw new Error("Expected an explicit unresolved-alignment message");
   }
 
   await page.setViewportSize({ width: 390, height: 844 });
@@ -136,7 +163,7 @@ async function main() {
     fullPage: true,
   });
 
-  console.log(`passages=${passages} sidebarCollapsed=${sidebarCollapsed} phraseRows=${phraseRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} linkedHighlights=${linkedHighlights} mobileOverflow=${overflow}`);
+  console.log(`passages=${passages} sidebarCollapsed=${sidebarCollapsed} phraseRows=${phraseRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} mobileOverflow=${overflow}`);
   await browser.close();
 }
 

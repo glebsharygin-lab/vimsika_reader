@@ -57,6 +57,12 @@ scholarly annotation task: the interface stores reviewed many-to-many links,
 omissions, additions, paraphrases, and uncertain correspondences without
 pretending that automatically suggested equivalences are final.
 
+In `Alignment` view, click a Sanskrit token or drag across a Sanskrit phrase.
+The Shell creates a live comparison frame containing contextual excerpts for
+every recorded correspondence. Frames can be pinned so several Sanskrit
+phrases remain visible for comparison. Unaligned selections are identified
+explicitly and can then be annotated in `Editor` mode.
+
 ## Run the reader
 
 ```powershell
