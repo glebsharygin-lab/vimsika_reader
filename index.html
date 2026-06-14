@@ -8,7 +8,19 @@
 </head>
 <body>
   <div class="app-shell">
-    <aside class="sidebar">
+    <aside id="sidebar" class="sidebar">
+      <button
+        id="sidebarToggle"
+        class="sidebar-toggle"
+        type="button"
+        aria-controls="sidebar"
+        aria-expanded="true"
+        title="Collapse navigation"
+      >
+        <span aria-hidden="true">‹</span>
+        <span class="visually-hidden">Collapse navigation</span>
+      </button>
+
       <div class="brand">
         <p class="eyebrow">Parallel Text Laboratory</p>
         <h1>Viṃśikā</h1>
@@ -36,6 +48,17 @@
       <button id="openSources" class="secondary-button" type="button">Sources & rights</button>
     </aside>
 
+    <button
+      id="sidebarOpen"
+      class="sidebar-open"
+      type="button"
+      aria-controls="sidebar"
+      title="Open navigation"
+    >
+      <span aria-hidden="true">›</span>
+      <span class="visually-hidden">Open navigation</span>
+    </button>
+
     <main class="workspace">
       <header class="topbar">
         <div>
@@ -46,6 +69,7 @@
           <button class="view-button active" data-view="reading" type="button">Reading</button>
           <button class="view-button" data-view="comparison" type="button">Comparison</button>
           <button class="view-button" data-view="alignment" type="button">Alignment</button>
+          <button class="view-button" data-view="editor" type="button">Editor</button>
         </div>
       </header>
 

@@ -8,8 +8,11 @@ This workspace contains a local trial reader generated from the supplied Viṃś
 - Sanskrit, Tibetan, three Chinese translations, English, French, and German.
 - Foldable reading mode and multi-column comparison mode.
 - Resizable witness columns with saved user preferences.
+- Collapsible navigation panel with a remembered full-width reading mode.
 - Synchronized phrase rows with sticky subsection labels.
 - A five-part phrase-alignment pilot for verse 15.
+- Stable IDs for 39,965 atomic tokens across all supplied witnesses.
+- An embedded Editor mode for hierarchical units and multilingual token-span links.
 - Source provenance and provisional copyright labels.
 - Reproducible extraction from DOCX, PDF, and UTF-8 text sources.
 
@@ -40,6 +43,19 @@ In Comparison or Alignment view, drag the boundary at the right edge of a
 witness heading to change its width. Widths are saved in the browser. Verse 15
 contains the first nested phrase-level pilot; click a phrase label to fold it,
 or click a phrase in any witness to activate the cross-witness alignment.
+
+## Embedded editor
+
+Open a verse and choose `Editor`. Drag across tokens, or Shift-click, to select
+spans in Sanskrit and corresponding witnesses. The editor can create sections,
+subsections, subsubsections, phrases, notes, and reviewed token-span
+alignments. Editorial annotations are saved in the browser and can be exported
+as `vimsika-editor-annotations.json`.
+
+Tokenization is exhaustive and mechanical. Semantic alignment remains a
+scholarly annotation task: the interface stores reviewed many-to-many links,
+omissions, additions, paraphrases, and uncertain correspondences without
+pretending that automatically suggested equivalences are final.
 
 ## Run the reader
 
