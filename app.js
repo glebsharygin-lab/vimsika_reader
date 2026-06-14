@@ -241,10 +241,17 @@ function renderSummary() {
   const knownRights = state.corpus.sources.filter(
     (source) => source.rights !== "unknown",
   ).length;
+  const tokenSummary = tokens
+    ? tokens.toLocaleString()
+    : "Update needed";
   document.querySelector("#summary").innerHTML = `
     <div class="summary-item">
-      <span class="summary-number">${tokens.toLocaleString()}</span>
-      <span class="summary-label">addressable tokens in ${state.corpus.passages.length} passages</span>
+      <span class="summary-number">${tokenSummary}</span>
+      <span class="summary-label">${
+        tokens
+          ? `addressable tokens in ${state.corpus.passages.length} passages`
+          : "corpus.js does not contain token data"
+      }</span>
     </div>
     <div class="summary-item">
       <span class="summary-number">${state.selectedSources.size}</span>
@@ -1186,7 +1193,12 @@ async function init() {
   loadEditorData();
   applySidebarState();
 
-  document.querySelector("#notice").textContent = state.corpus.notice;
+  const hasTokenData = state.corpus.passages.some((passage) =>
+    Object.values(passage.texts).some((witness) => witness.tokens?.length),
+  );
+  document.querySelector("#notice").textContent = hasTokenData
+    ? state.corpus.notice
+    : `${state.corpus.notice} Token data is unavailable because corpus.js is from an older build; upload the current corpus.js file.`;
   buildSidebar();
   renderSummary();
   renderSourceLedger();
