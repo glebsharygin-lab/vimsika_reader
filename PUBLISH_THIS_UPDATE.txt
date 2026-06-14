@@ -1,0 +1,22 @@
+Upload these four files to the root of the GitHub repository, replacing the
+existing copies:
+
+1. index.html
+2. app.js
+3. styles.css
+4. corpus.js
+
+The new index.html uses asset version 0.9.0 so GitHub Pages and visitors'
+browsers fetch the rebuilt corpus instead of a cached older corpus.js.
+
+After GitHub Pages finishes deploying, open:
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.9.0
+
+Expected result:
+- the summary reports 255 numbered sentences;
+- verse 1 contains foldable units 1.1 through 1.9;
+- every opened witness displays corresponding numbered units;
+- Sources & rights lists the DharmaNexus record as permission-required.
+
+DharmaNexus matches are not copied into the corpus. An authorized export can be
+imported with scripts/build_trial_corpus.py --authorized-alignments FILE.json.

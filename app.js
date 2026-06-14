@@ -2385,11 +2385,16 @@ async function init() {
     Object.values(passage.texts).some((witness) => witness.tokens?.length),
   );
   const hasCandidateData = Array.isArray(state.corpus.candidateAlignments);
+  const hasSentenceData = state.corpus.passages.some(
+    (passage) => passage.sentenceUnits?.length,
+  );
   document.querySelector("#notice").textContent = !hasTokenData
     ? `${state.corpus.notice} Token data is unavailable because corpus.js is from an older build; upload the current corpus.js file.`
     : !hasCandidateData
       ? `${state.corpus.notice} Alignment candidates are unavailable because corpus.js is from an older build; upload the current corpus.js file (schema 0.4.0-trial or later).`
-      : state.corpus.notice;
+      : !hasSentenceData
+        ? `${state.corpus.notice} Numbered foldable sentences are unavailable because GitHub Pages is loading an older corpus.js. Upload the current corpus.js together with index.html.`
+        : state.corpus.notice;
   buildSidebar();
   renderSummary();
   renderSourceLedger();
