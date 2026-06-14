@@ -320,7 +320,7 @@ async function init() {
 init().catch((error) => {
   document.querySelector("#reader").innerHTML = `
     <div class="empty-state">
-      The corpus could not be loaded. Serve this folder over HTTP rather than opening index.html directly.
+      The corpus could not be loaded. Make sure <code>corpus.js</code> was uploaded beside <code>index.html</code>.
       <br><br>${escapeHtml(error.message)}
     </div>
   `;
