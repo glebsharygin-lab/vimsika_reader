@@ -357,6 +357,12 @@ function normalizeEditorial(editorial) {
   const alignments = Array.isArray(editorial?.alignments)
     ? editorial.alignments
     : [];
+  const lexiconEntries = Array.isArray(editorial?.lexiconEntries)
+    ? editorial.lexiconEntries
+    : [];
+  const syntaxAnnotations = Array.isArray(editorial?.syntaxAnnotations)
+    ? editorial.syntaxAnnotations
+    : [];
   const textEdits = Array.isArray(editorial?.textEdits)
     ? Object.fromEntries(
         editorial.textEdits.map((edit) => [
@@ -365,7 +371,13 @@ function normalizeEditorial(editorial) {
         ]),
       )
     : editorial?.textEdits || {};
-  return { units, alignments, textEdits };
+  return {
+    units,
+    alignments,
+    textEdits,
+    lexiconEntries,
+    syntaxAnnotations,
+  };
 }
 
 function mergeById(existing, incoming) {
@@ -383,11 +395,19 @@ function mergeEditorial(existing, incoming, login) {
   const current = normalizeEditorial(existing);
   const changes = normalizeEditorial(incoming);
   return {
-    schemaVersion: "0.1.0-published-editorial",
+    schemaVersion: "0.2.0-published-editorial",
     updatedAt: new Date().toISOString(),
     updatedBy: login,
     units: mergeById(current.units, changes.units),
     alignments: mergeById(current.alignments, changes.alignments),
+    lexiconEntries: mergeById(
+      current.lexiconEntries,
+      changes.lexiconEntries,
+    ),
+    syntaxAnnotations: mergeById(
+      current.syntaxAnnotations,
+      changes.syntaxAnnotations,
+    ),
     textEdits: {
       ...current.textEdits,
       ...changes.textEdits,
@@ -400,7 +420,9 @@ function editorialChangeCount(editorial) {
   return (
     normalized.units.length +
     normalized.alignments.length +
-    Object.keys(normalized.textEdits).length
+    Object.keys(normalized.textEdits).length +
+    normalized.lexiconEntries.length +
+    normalized.syntaxAnnotations.length
   );
 }
 

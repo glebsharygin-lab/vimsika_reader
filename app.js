@@ -16,11 +16,15 @@ const state = {
     units: [],
     alignments: [],
     textEdits: {},
+    lexiconEntries: [],
+    syntaxAnnotations: [],
   },
   publishedEditorData: {
     units: [],
     alignments: [],
     textEdits: {},
+    lexiconEntries: [],
+    syntaxAnnotations: [],
   },
   auth: {
     configured: false,
@@ -34,6 +38,14 @@ const state = {
   draggingSelection: null,
   dynamicFrames: [],
   lexicalPopover: null,
+  analysisTab: "lexicon",
+  analysisSourceId: "san_levi_1925",
+  analysisQuery: "",
+  analysisSelectedTokenId: "",
+  analysisSelectedPassageId: "",
+  analysisPassageId: "v1",
+  analysisSentenceId: "",
+  analysisSyntaxDraft: null,
 };
 
 const escapeHtml = (value) =>
@@ -126,11 +138,16 @@ function tokenById(passage, sourceId, tokenId) {
 }
 
 function lexiconEntryFor(sourceId, tokenId, surface) {
-  return (state.corpus.lexiconEntries || []).find(
-    (entry) =>
-      entry.sourceId === sourceId &&
-      (entry.tokenId === tokenId ||
-        entry.surface?.toLocaleLowerCase() === surface.toLocaleLowerCase()),
+  const entries = [...allLexiconEntries()]
+    .reverse()
+    .filter((entry) => entry.sourceId === sourceId);
+  return (
+    entries.find((entry) => entry.tokenId === tokenId) ||
+    entries.find(
+      (entry) =>
+        normalizeAnalysisForm(entry.normalizedSurface || entry.surface) ===
+        normalizeAnalysisForm(surface),
+    )
   );
 }
 
@@ -157,10 +174,18 @@ function loadEditorData() {
         units: stored.units,
         alignments: stored.alignments,
         textEdits: stored.textEdits || {},
+        lexiconEntries: stored.lexiconEntries || [],
+        syntaxAnnotations: stored.syntaxAnnotations || [],
       };
     }
   } catch {
-    state.editorData = { units: [], alignments: [], textEdits: {} };
+    state.editorData = {
+      units: [],
+      alignments: [],
+      textEdits: {},
+      lexiconEntries: [],
+      syntaxAnnotations: [],
+    };
   }
 }
 
@@ -181,6 +206,8 @@ async function loadPublishedEditorData() {
       units: published.units || [],
       alignments: published.alignments || [],
       textEdits,
+      lexiconEntries: published.lexiconEntries || [],
+      syntaxAnnotations: published.syntaxAnnotations || [],
     };
   } catch {}
 }
@@ -1933,12 +1960,14 @@ function deleteUnitAndDescendants(unitId) {
 
 function exportEditorAnnotations() {
   const payload = {
-    schemaVersion: "0.3.0-editorial",
+    schemaVersion: "0.4.0-editorial",
     workId: state.corpus.work.id,
     exportedAt: new Date().toISOString(),
     units: state.editorData.units,
     alignments: state.editorData.alignments,
     textEdits: Object.values(state.editorData.textEdits),
+    lexiconEntries: state.editorData.lexiconEntries,
+    syntaxAnnotations: state.editorData.syntaxAnnotations,
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], {
     type: "application/json",
@@ -1955,6 +1984,8 @@ function localEditorialPayload() {
     units: state.editorData.units,
     alignments: state.editorData.alignments,
     textEdits: state.editorData.textEdits,
+    lexiconEntries: state.editorData.lexiconEntries,
+    syntaxAnnotations: state.editorData.syntaxAnnotations,
   };
 }
 
@@ -1962,7 +1993,9 @@ function localEditorialChangeCount() {
   return (
     state.editorData.units.length +
     state.editorData.alignments.length +
-    Object.keys(state.editorData.textEdits).length
+    Object.keys(state.editorData.textEdits).length +
+    state.editorData.lexiconEntries.length +
+    state.editorData.syntaxAnnotations.length
   );
 }
 
@@ -1987,7 +2020,29 @@ function mergePublishedEditorialData() {
     ...state.publishedEditorData.textEdits,
     ...state.editorData.textEdits,
   };
-  state.editorData = { units: [], alignments: [], textEdits: {} };
+  state.publishedEditorData.lexiconEntries = [
+    ...new Map(
+      [
+        ...state.publishedEditorData.lexiconEntries,
+        ...state.editorData.lexiconEntries,
+      ].map((entry) => [entry.id, entry]),
+    ).values(),
+  ];
+  state.publishedEditorData.syntaxAnnotations = [
+    ...new Map(
+      [
+        ...state.publishedEditorData.syntaxAnnotations,
+        ...state.editorData.syntaxAnnotations,
+      ].map((annotation) => [annotation.id, annotation]),
+    ).values(),
+  ];
+  state.editorData = {
+    units: [],
+    alignments: [],
+    textEdits: {},
+    lexiconEntries: [],
+    syntaxAnnotations: [],
+  };
   saveEditorData();
 }
 
@@ -2307,6 +2362,12 @@ function bindFrameControls(reader) {
 function renderReader() {
   const reader = document.querySelector("#reader");
   reader.classList.toggle("collation-active", state.view !== "reading");
+  reader.classList.toggle("analysis-active", state.view === "analysis");
+  if (state.view === "analysis") {
+    reader.innerHTML = renderAnalysisWorkspace();
+    bindAnalysisControls(reader);
+    return;
+  }
   reader.innerHTML = state.corpus.passages.map(passageCard).join("");
 
   reader.querySelectorAll(".passage-header").forEach((button) => {
@@ -2583,6 +2644,7 @@ function bindControls() {
         reading: "Parallel reading shell",
         comparison: "Multi-witness comparison",
         alignment: "Phrase alignment laboratory",
+        analysis: "Linguistic and statistical analysis",
         editor: "Embedded structure and alignment editor",
       }[state.view];
       updateInlineEditorToggle();

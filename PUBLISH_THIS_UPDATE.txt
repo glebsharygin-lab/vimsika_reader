@@ -1,18 +1,20 @@
-Upload these five files to the root of the GitHub repository, replacing the
+Upload these six files to the root of the GitHub repository, replacing the
 existing copies:
 
 1. index.html
 2. auth-config.js
 3. app.js
-4. styles.css
-5. corpus.js
+4. analysis.js
+5. styles.css
+6. corpus.js
 
-The new index.html uses asset version 0.11.0 for app.js and styles.css, plus
+The new index.html uses asset version 0.12.0 for app.js, analysis.js, and
+styles.css, plus
 version 0.9.1 for auth-config.js, so GitHub Pages and visitors' browsers fetch
 the current interface and Worker configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.11.0
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.12.0
 
 Expected result:
 - the summary reports 255 numbered sentences;
@@ -25,6 +27,17 @@ Expected result:
 - Focus mode removes preserved blank space and packs witnesses closely;
 - Comparison and Alignment contain clickable token-level surfaces;
 - token clicks open a dictionary-ready lexical inspector.
+- Analysis opens Lexicon, Concordance, Morphology, Syntax, and Statistics;
+- lexical records and CoNLL-U syntax drafts save in the local editorial layer.
+
+To publish lexical and syntax annotations for collaborators, also replace
+collaboration-worker/src/index.js with the packaged version and redeploy the
+Worker from the collaboration-worker folder:
+
+npm run deploy
+
+The Worker upgrade preserves existing editorial-overrides.json content and
+adds lexiconEntries and syntaxAnnotations during the next publication.
 
 DharmaNexus matches are not copied into the corpus. An authorized export can be
 imported with scripts/build_trial_corpus.py --authorized-alignments FILE.json.
