@@ -7,8 +7,10 @@ This workspace contains a local trial reader generated from the supplied Viṃś
 - Verses 1–22 with the supplied commentary.
 - Sanskrit, Tibetan, three Chinese translations, English, French, and German.
 - Foldable reading mode and multi-column comparison mode.
+- Resizable witness columns with saved user preferences.
+- Synchronized phrase rows with sticky subsection labels.
+- A five-part phrase-alignment pilot for verse 15.
 - Source provenance and provisional copyright labels.
-- A small phrase-alignment demonstration for verse 15.
 - Reproducible extraction from DOCX, PDF, and UTF-8 text sources.
 
 All passage boundaries and phrase alignments are provisional and require scholarly review.
@@ -24,7 +26,20 @@ The project owner has confirmed that all supplied witnesses are public domain or
   '.\data\corpus.json'
 ```
 
-The build also writes `data/corpus.js`, allowing `index.html` to work directly from a `file://` URL.
+The build also writes `data/corpus.js` and a root-level `corpus.js`. The root-level
+file keeps GitHub Pages deployment simple and allows `index.html` to work directly
+from a `file://` URL.
+
+## Publish with GitHub Pages
+
+Upload `index.html`, `styles.css`, `app.js`, and `corpus.js` to the repository root.
+The `data`, `scripts`, and `reference-source` folders are not required by the
+published reader.
+
+In Comparison or Alignment view, drag the boundary at the right edge of a
+witness heading to change its width. Widths are saved in the browser. Verse 15
+contains the first nested phrase-level pilot; click a phrase label to fold it,
+or click a phrase in any witness to activate the cross-witness alignment.
 
 ## Run the reader
 

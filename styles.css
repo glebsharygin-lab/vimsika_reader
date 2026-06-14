@@ -415,6 +415,237 @@ button {
   align-items: start;
 }
 
+.reader.collation-active {
+  max-width: none;
+}
+
+.collation-intro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: baseline;
+  margin: 14px 0 10px;
+  color: var(--muted);
+  font-size: 0.79rem;
+}
+
+.collation-intro strong {
+  color: var(--ink);
+}
+
+.collation-shell {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  background: #f7f3eb;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  scrollbar-color: #b7aa96 #eee7dc;
+}
+
+.collation-table {
+  width: max-content;
+  min-width: 100%;
+}
+
+.collation-grid {
+  display: grid;
+  width: max-content;
+  min-width: 100%;
+  align-items: stretch;
+}
+
+.collation-header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  color: #f8f6f0;
+  background: #284a5c;
+  border-bottom: 1px solid #173746;
+}
+
+.collation-corner,
+.collation-source-heading {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  min-height: 68px;
+  padding: 11px 14px;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.collation-corner {
+  position: sticky;
+  left: 0;
+  z-index: 6;
+  gap: 6px;
+  background: #203f50;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.collation-source-heading {
+  border-top: 4px solid var(--source-color);
+}
+
+.collation-source-heading .source-meta {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.column-reset {
+  align-self: flex-start;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.65);
+  background: transparent;
+  border: 0;
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.column-reset:hover {
+  color: white;
+}
+
+.column-resizer {
+  position: absolute;
+  inset: 0 -6px 0 auto;
+  z-index: 7;
+  width: 12px;
+  padding: 0;
+  touch-action: none;
+  background: transparent;
+  border: 0;
+  cursor: col-resize;
+}
+
+.column-resizer::after {
+  position: absolute;
+  inset: 13px 5px;
+  width: 2px;
+  content: "";
+  background: rgba(255, 255, 255, 0.34);
+  border-radius: 2px;
+}
+
+.column-resizer:hover::after,
+.column-resizer:focus-visible::after {
+  background: #f5d78d;
+}
+
+.resizing-columns,
+.resizing-columns * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+.phrase-row {
+  border-bottom: 1px solid var(--line);
+}
+
+.phrase-row:last-child {
+  border-bottom: 0;
+}
+
+.phrase-label,
+.phrase-cell {
+  min-width: 0;
+  padding: 14px;
+  color: var(--ink);
+  background: #fffdf8;
+  border: 0;
+  border-right: 1px solid var(--line);
+  text-align: left;
+}
+
+.phrase-label {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 8px;
+  align-content: start;
+  background: #eee7dc;
+}
+
+.phrase-index {
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.phrase-title {
+  grid-column: 1 / -1;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.92rem;
+  line-height: 1.25;
+}
+
+.phrase-toggle {
+  grid-column: 2;
+  grid-row: 1;
+  color: var(--muted);
+}
+
+.phrase-cell {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+button.phrase-cell:hover,
+.phrase-row.active .phrase-cell {
+  background: #fff7dc;
+}
+
+.phrase-row.active .phrase-label {
+  background: #eadba7;
+}
+
+.phrase-note {
+  grid-column: 2 / -1;
+  padding: 7px 14px 9px;
+  color: var(--muted);
+  background: #f7f3eb;
+  border-top: 1px dashed var(--line);
+  font-size: 0.73rem;
+}
+
+.phrase-row.collapsed .phrase-cell,
+.phrase-row.collapsed .phrase-note {
+  display: none;
+}
+
+.phrase-row.collapsed .phrase-label {
+  grid-column: 1 / -1;
+  position: static;
+  min-height: 48px;
+  align-content: center;
+}
+
+.alignment-gap {
+  color: var(--muted);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+.full-passage-row .phrase-label {
+  background: #e3ddd2;
+}
+
+.full-text-cell {
+  max-height: 430px;
+  overflow: auto;
+}
+
 .source-panel {
   border: 1px solid var(--line);
   border-left: 4px solid var(--source-color);

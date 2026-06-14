@@ -475,6 +475,9 @@ def alignment_demo() -> list[dict[str, object]]:
         {
             "id": "v15-unity",
             "verse": 15,
+            "order": 1,
+            "level": "phrase",
+            "status": "provisional",
             "label": "unity / one entity",
             "note": "Provisional phrase-level equivalence; requires philological review.",
             "targets": {
@@ -491,6 +494,9 @@ def alignment_demo() -> list[dict[str, object]]:
         {
             "id": "v15-traversal",
             "verse": 15,
+            "order": 2,
+            "level": "phrase",
+            "status": "provisional",
             "label": "gradual traversal",
             "note": "A compact concept alignment, not a claim of literal word identity.",
             "targets": {
@@ -507,6 +513,9 @@ def alignment_demo() -> list[dict[str, object]]:
         {
             "id": "v15-apprehension",
             "verse": 15,
+            "order": 3,
+            "level": "phrase",
+            "status": "provisional",
             "label": "apprehension / non-apprehension",
             "note": "The translations distribute the contrast across different syntactic forms.",
             "targets": {
@@ -521,8 +530,30 @@ def alignment_demo() -> list[dict[str, object]]:
             },
         },
         {
+            "id": "v15-separate-objects",
+            "verse": 15,
+            "order": 4,
+            "level": "phrase",
+            "status": "provisional",
+            "label": "separate multiple objects",
+            "note": "A many-to-many phrase alignment covering distinct objects and their spatial separation.",
+            "targets": {
+                "san_levi_1925": "vicchinnānekavṛttiś ca",
+                "tib_derge": "ris chad du mar gnas pa",
+                "zho_xuanzang": "多有間事",
+                "zho_paramartha": "別類多事",
+                "zho_bodhiruci": "差別無量處",
+                "eng_das": "separate objects reside at different places",
+                "fr_levi_1932": "activité multiple de figures diverses",
+                "de_frauwallner": "Vorhandensein mehrerer getrennter (Dinge)",
+            },
+        },
+        {
             "id": "v15-subtle",
             "verse": 15,
+            "order": 5,
+            "level": "phrase",
+            "status": "provisional",
             "label": "the very small / subtle",
             "note": "This alignment exposes a useful difference between nominal and verbal renderings.",
             "targets": {
@@ -604,13 +635,17 @@ def main() -> None:
         json.dumps(corpus, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
-    javascript_path = args.output_path.with_suffix(".js")
-    javascript_path.write_text(
+    javascript = (
         "window.CORPUS_DATA = "
         + json.dumps(corpus, ensure_ascii=False, indent=2)
-        + ";\n",
-        encoding="utf-8",
+        + ";\n"
     )
+    args.output_path.with_suffix(".js").write_text(javascript, encoding="utf-8")
+    if args.output_path.parent.name == "data":
+        (args.output_path.parent.parent / "corpus.js").write_text(
+            javascript,
+            encoding="utf-8",
+        )
 
 
 if __name__ == "__main__":
