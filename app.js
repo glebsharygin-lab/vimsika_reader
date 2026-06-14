@@ -8,6 +8,7 @@ const state = {
   collapsedUnits: new Set(),
   openPassages: new Set(["v1"]),
   sidebarCollapsed: false,
+  inlineEditing: false,
   editorData: {
     units: [],
     alignments: [],
@@ -100,6 +101,34 @@ function saveEditorData() {
       JSON.stringify(state.editorData),
     );
   } catch {}
+}
+
+function editingEnabled() {
+  return (
+    state.view === "editor" ||
+    (state.inlineEditing && ["reading", "comparison"].includes(state.view))
+  );
+}
+
+function loadInlineEditingState() {
+  try {
+    state.inlineEditing =
+      window.localStorage.getItem("vimsika-inline-editing") === "true";
+  } catch {
+    state.inlineEditing = false;
+  }
+}
+
+function updateInlineEditorToggle() {
+  const toggle = document.querySelector("#annotationToggle");
+  if (!toggle) return;
+  const available = ["reading", "comparison"].includes(state.view);
+  const active = available && state.inlineEditing;
+  toggle.hidden = !available;
+  toggle.classList.toggle("active", active);
+  toggle.setAttribute("aria-pressed", String(active));
+  const label = toggle.querySelector("[data-editor-toggle-label]");
+  if (label) label.textContent = active ? "Finish editing" : "Edit annotations";
 }
 
 function selectionKey(passageId, sourceId) {
@@ -263,8 +292,10 @@ function buildSidebar() {
   verseNav.addEventListener("click", (event) => {
     const button = event.target.closest("[data-verse]");
     if (!button) return;
-    const card = document.querySelector(`#v${button.dataset.verse}`);
-    state.openPassages.add(`v${button.dataset.verse}`);
+    const passageId = `v${button.dataset.verse}`;
+    state.openPassages.add(passageId);
+    if (state.view === "reading" && editingEnabled()) renderReader();
+    const card = document.querySelector(`#${passageId}`);
     card?.classList.add("open");
     card?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
@@ -413,7 +444,9 @@ function sourcePanel(source, passage) {
       <div class="source-text ${unavailable ? "unavailable-text" : ""}">${
         unavailable
           ? escapeHtml(witness.note)
-          : highlightedText(text, source.id, passage.number)
+          : editingEnabled()
+            ? tokenizedText(witness, source.id, passage)
+            : highlightedText(text, source.id, passage.number)
       }</div>
     </article>
   `;
@@ -424,7 +457,7 @@ function phraseAlignments(passage) {
     .filter(
       (alignment) =>
         alignment.verse === passage.number &&
-        (alignment.level || "phrase") === "phrase",
+        ["sentence", "phrase"].includes(alignment.level || "phrase"),
     )
     .sort((left, right) => (left.order || 0) - (right.order || 0));
 }
@@ -597,12 +630,13 @@ function editorWorkbench(passage) {
   const customAlignments = state.editorData.alignments.filter(
     (alignment) => alignment.verse === passage.number,
   );
+  const inline = state.view !== "editor";
   return `
-    <section class="editor-workbench" data-editor-passage="${passage.id}">
+    <section class="editor-workbench ${inline ? "inline-editor" : ""}" data-editor-passage="${passage.id}">
       <div class="editor-heading">
         <div>
-          <p class="eyebrow">Embedded scholarly editor</p>
-          <h3>Structure and alignment editor</h3>
+          <p class="eyebrow">${inline ? `Editing inside ${escapeHtml(state.view)}` : "Embedded scholarly editor"}</p>
+          <h3>${inline ? "Annotate this passage" : "Structure and alignment editor"}</h3>
         </div>
         <div class="editor-actions">
           <button data-clear-selection="${passage.id}" type="button">Clear token selection</button>
@@ -611,8 +645,8 @@ function editorWorkbench(passage) {
       </div>
 
       <p class="editor-guidance">
-        Drag across tokens, or Shift-click, to select spans in Sanskrit and corresponding witnesses.
-        Selected spans can anchor a structural unit or a reviewed alignment.
+        Drag across tokens, or Shift-click, in any visible witness. Use the selected spans
+        to create nested sections or a reviewed sentence-to-sentence correspondence.
       </p>
       <div class="editor-selection-summary">
         <strong>${selectionCount} selected tokens</strong>
@@ -660,12 +694,20 @@ function editorWorkbench(passage) {
         </form>
 
         <form class="editor-form" data-alignment-form="${passage.id}">
-          <h4>Create token-span alignment</h4>
+          <h4>Create correspondence</h4>
           <label>
-            Alignment label
-            <input data-field="alignment-label" type="text" placeholder="e.g. cognition only">
+            Label
+            <input data-field="alignment-label" type="text" placeholder="Optional; generated automatically">
           </label>
           <div class="editor-form-row">
+            <label>
+              Unit type
+              <select data-field="alignment-level">
+                <option value="sentence" selected>Sentence</option>
+                <option value="phrase">Phrase</option>
+                <option value="token-span">Word / token span</option>
+              </select>
+            </label>
             <label>
               Relation
               <select data-field="alignment-relation">
@@ -678,12 +720,26 @@ function editorWorkbench(passage) {
                 <option value="uncertain">Uncertain</option>
               </select>
             </label>
+          </div>
+          <div class="editor-form-row">
             <label>
               Confidence
               <select data-field="alignment-confidence">
                 <option value="reviewed">Reviewed</option>
                 <option value="provisional" selected>Provisional</option>
                 <option value="uncertain">Uncertain</option>
+              </select>
+            </label>
+            <label>
+              Within unit
+              <select data-field="alignment-parent">
+                <option value="">Verse ${passage.number}</option>
+                ${units
+                  .map(
+                    (unit) =>
+                      `<option value="${unit.id}">${escapeHtml(unit.level)} · ${escapeHtml(unit.label)}</option>`,
+                  )
+                  .join("")}
               </select>
             </label>
           </div>
@@ -712,7 +768,7 @@ function editorWorkbench(passage) {
                     (alignment) => `
                       <li>
                         <span>${escapeHtml(alignment.label)}</span>
-                        <small>${escapeHtml(alignment.relation)} · ${escapeHtml(alignment.confidence)}</small>
+                        <small>${escapeHtml(alignment.level || "phrase")} · ${escapeHtml(alignment.relation)} · ${escapeHtml(alignment.confidence)}</small>
                         <button data-delete-alignment="${alignment.id}" type="button" aria-label="Delete ${escapeHtml(alignment.label)}">×</button>
                       </li>
                     `,
@@ -815,7 +871,7 @@ function fullPassageRow(passage, sources, template, collapsedByDefault) {
               ${
                 unavailable
                   ? `<span class="alignment-gap">${escapeHtml(witness.note)}</span>`
-                  : state.view === "alignment" || state.view === "editor"
+                  : state.view === "alignment" || editingEnabled()
                     ? tokenizedText(witness, source.id, passage)
                     : highlightedText(witness.text || "", source.id, passage.number)
               }
@@ -834,12 +890,12 @@ function collationView(passage, sources) {
   const alignments = phraseAlignments(passage);
   const template = collationTemplate(sources);
   return `
-    ${state.view === "editor" ? editorWorkbench(passage) : ""}
+    ${editingEnabled() ? editorWorkbench(passage) : ""}
     ${comparisonFrames(passage, sources)}
     <div class="collation-intro">
       <strong>${alignments.length ? `${alignments.length} aligned phrase sections` : "Passage-level comparison"}</strong>
       <span>${
-        state.view === "editor"
+        editingEnabled()
           ? "Expand the full passage row and select tokens to create structure or alignment annotations."
           : "Drag the vertical boundaries to resize witnesses. Scroll horizontally for additional versions."
       }</span>
@@ -860,7 +916,9 @@ function collationView(passage, sources) {
           passage,
           sources,
           template,
-          state.view === "comparison" ? Boolean(alignments.length) : false,
+          state.view === "comparison" && !editingEnabled()
+            ? Boolean(alignments.length)
+            : false,
         )}
       </div>
     </div>
@@ -869,14 +927,16 @@ function collationView(passage, sources) {
 
 function passageCard(passage) {
   const sources = selectedSourceRecords();
+  const open = state.openPassages.has(passage.id);
   const sourcePanels =
-    state.view === "reading"
+    state.view === "reading" && (!editingEnabled() || open)
       ? sources.map((source) => sourcePanel(source, passage)).join("")
       : "";
-  const open = state.openPassages.has(passage.id);
   const content =
     state.view === "reading"
-      ? `<div class="text-stack">${sourcePanels || '<div class="empty-state">Select at least one witness in the sidebar.</div>'}</div>`
+      ? editingEnabled() && !open
+        ? ""
+        : `${editingEnabled() ? editorWorkbench(passage) : ""}<div class="text-stack">${sourcePanels || '<div class="empty-state">Select at least one witness in the sidebar.</div>'}</div>`
       : open
         ? collationView(passage, sources)
         : "";
@@ -987,7 +1047,7 @@ function updateEditorSelectionSummary(passageId) {
 function bindTokenInteractions(reader) {
   reader.querySelectorAll("[data-token-id]").forEach((token) => {
     token.addEventListener("click", (event) => {
-      if (state.view === "editor") {
+      if (editingEnabled()) {
         event.preventDefault();
         return;
       }
@@ -1030,7 +1090,7 @@ function bindTokenInteractions(reader) {
     });
 
     token.addEventListener("pointerdown", (event) => {
-      if (state.view !== "editor") return;
+      if (!editingEnabled()) return;
       event.preventDefault();
       const passageId = token.dataset.tokenPassage;
       const sourceId = token.dataset.tokenSource;
@@ -1108,7 +1168,7 @@ function deleteUnitAndDescendants(unitId) {
 
 function exportEditorAnnotations() {
   const payload = {
-    schemaVersion: "0.1.0-editorial",
+    schemaVersion: "0.2.0-editorial",
     workId: state.corpus.work.id,
     exportedAt: new Date().toISOString(),
     units: state.editorData.units,
@@ -1173,19 +1233,27 @@ function bindEditorControls(reader) {
       const label = form
         .querySelector("[data-field='alignment-label']")
         .value.trim();
-      if (!label) {
-        editorStatus(panel, "Please give the alignment a label.", true);
-        return;
-      }
+      const level = form.querySelector("[data-field='alignment-level']").value;
+      const levelLabel = {
+        sentence: "Sentence correspondence",
+        phrase: "Phrase correspondence",
+        "token-span": "Token correspondence",
+      }[level];
+      const generatedLabel = `${levelLabel} ${
+        state.editorData.alignments.filter(
+          (item) => item.verse === passage.number && item.level === level,
+        ).length + 1
+      }`;
       const alignment = {
         id: nextAnnotationId("alignment", passageId),
         verse: passage.number,
         order: allAlignments().filter(
           (item) => item.verse === passage.number,
         ).length + 1,
-        level: "token-span",
+        level,
+        parentId: form.querySelector("[data-field='alignment-parent']").value,
         status: "editorial",
-        label,
+        label: label || generatedLabel,
         relation: form.querySelector("[data-field='alignment-relation']").value,
         confidence: form.querySelector("[data-field='alignment-confidence']").value,
         note: form.querySelector("[data-field='alignment-note']").value.trim(),
@@ -1300,7 +1368,7 @@ function renderReader() {
       if (!card) return;
       if (card.classList.contains("open")) state.openPassages.delete(card.id);
       else state.openPassages.add(card.id);
-      if (state.view === "reading") {
+      if (state.view === "reading" && !editingEnabled()) {
         card.classList.toggle("open");
       } else {
         renderReader();
@@ -1394,6 +1462,17 @@ function bindControls() {
   document.querySelector("#sidebarOpen").addEventListener("click", () => {
     setSidebarCollapsed(false);
   });
+  document.querySelector("#annotationToggle").addEventListener("click", () => {
+    state.inlineEditing = !state.inlineEditing;
+    try {
+      window.localStorage.setItem(
+        "vimsika-inline-editing",
+        String(state.inlineEditing),
+      );
+    } catch {}
+    updateInlineEditorToggle();
+    renderReader();
+  });
 
   document.querySelectorAll(".view-button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -1408,6 +1487,7 @@ function bindControls() {
         alignment: "Phrase alignment laboratory",
         editor: "Embedded structure and alignment editor",
       }[state.view];
+      updateInlineEditorToggle();
       renderReader();
     });
   });
@@ -1451,14 +1531,19 @@ async function init() {
   loadColumnWidths();
   loadSidebarState();
   loadEditorData();
+  loadInlineEditingState();
   applySidebarState();
+  updateInlineEditorToggle();
 
   const hasTokenData = state.corpus.passages.some((passage) =>
     Object.values(passage.texts).some((witness) => witness.tokens?.length),
   );
-  document.querySelector("#notice").textContent = hasTokenData
-    ? state.corpus.notice
-    : `${state.corpus.notice} Token data is unavailable because corpus.js is from an older build; upload the current corpus.js file.`;
+  const hasCandidateData = Array.isArray(state.corpus.candidateAlignments);
+  document.querySelector("#notice").textContent = !hasTokenData
+    ? `${state.corpus.notice} Token data is unavailable because corpus.js is from an older build; upload the current corpus.js file.`
+    : !hasCandidateData
+      ? `${state.corpus.notice} Alignment candidates are unavailable because corpus.js is from an older build; upload the current corpus.js file (schema 0.4.0-trial or later).`
+      : state.corpus.notice;
   buildSidebar();
   renderSummary();
   renderSourceLedger();

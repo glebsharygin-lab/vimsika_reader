@@ -11,7 +11,7 @@ This workspace contains a local trial reader generated from the supplied Viṃś
 - Collapsible navigation panel with a remembered full-width reading mode.
 - Synchronized phrase rows with sticky subsection labels.
 - Stable IDs for 39,965 atomic tokens across all supplied witnesses.
-- An embedded Editor mode for hierarchical units and multilingual token-span links.
+- An embedded Editor mode plus inline editing in Reading and Comparison.
 - Source provenance and provisional copyright labels.
 - Reproducible extraction from DOCX, PDF, and UTF-8 text sources.
 
@@ -43,11 +43,13 @@ witness heading to change its width. Widths are saved in the browser.
 
 ## Embedded editor
 
-Open a verse and choose `Editor`. Drag across tokens, or Shift-click, to select
-spans in Sanskrit and corresponding witnesses. The editor can create sections,
-subsections, subsubsections, phrases, notes, and reviewed token-span
-alignments. Editorial annotations are saved in the browser and can be exported
-as `vimsika-editor-annotations.json`.
+In `Reading` or `Comparison`, press `Edit annotations`; alternatively open the
+dedicated `Editor` view. Drag across tokens, or Shift-click, to select spans in
+Sanskrit and corresponding witnesses. The shared editor creates sections,
+subsections, subsubsections, phrases, notes, and reviewed sentence, phrase, or
+token-span correspondences. Sentence and phrase correspondences automatically
+become synchronized rows in Comparison. Editorial annotations are saved in the
+browser and can be exported as `vimsika-editor-annotations.json`.
 
 Tokenization is exhaustive and mechanical. Semantic alignment remains a
 scholarly annotation task: the interface stores reviewed many-to-many links,

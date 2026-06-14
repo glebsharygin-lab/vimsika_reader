@@ -1,13 +1,17 @@
 const { chromium } = require("playwright");
 
+let browser;
+
 async function main() {
-  const browser = await chromium.launch({
+  browser = await chromium.launch({
     headless: true,
     executablePath: "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   });
   const page = await browser.newPage({ viewport: { width: 1440, height: 1050 } });
 
   await page.goto("http://127.0.0.1:8765", { waitUntil: "networkidle" });
+  await page.evaluate(() => localStorage.clear());
+  await page.reload({ waitUntil: "networkidle" });
   await page.waitForSelector(".passage-card");
 
   const passages = await page.locator(".passage-card").count();
@@ -34,6 +38,15 @@ async function main() {
   );
   if (!sidebarReopened) throw new Error("Expected navigation panel to reopen");
 
+  await page.getByRole("button", { name: "Edit annotations" }).click();
+  const readingEditor = page.locator("#v1 .editor-workbench.inline-editor");
+  if ((await readingEditor.count()) !== 1) {
+    throw new Error("Expected inline editor inside Reading");
+  }
+  const readingTokens = await page.locator("#v1 .source-text .text-token").count();
+  if (!readingTokens) throw new Error("Expected selectable tokens inside Reading");
+  await page.getByRole("button", { name: "Finish editing" }).click();
+
   await page.getByRole("button", { name: "Comparison" }).click();
   await page.locator("#v15 .passage-header").click();
 
@@ -51,9 +64,11 @@ async function main() {
     path: "qa-reader-desktop.png",
   });
 
-  await page.getByRole("button", { name: "Editor" }).click();
-  const editor = page.locator("#v15 .editor-workbench");
-  if ((await editor.count()) !== 1) throw new Error("Expected embedded verse editor");
+  await page.getByRole("button", { name: "Edit annotations" }).click();
+  const editor = page.locator("#v15 .editor-workbench.inline-editor");
+  if ((await editor.count()) !== 1) {
+    throw new Error("Expected inline editor inside Comparison");
+  }
 
   await editor.locator("[data-field='unit-label']").fill("Argument structure");
   await editor.locator("[data-create-unit='v15']").click();
@@ -82,12 +97,15 @@ async function main() {
     .click();
 
   const alignmentEditor = page.locator("#v15 .editor-workbench");
-  await alignmentEditor
-    .locator("[data-field='alignment-label']")
-    .fill("Pilot token link");
   await alignmentEditor.locator("[data-create-alignment='v15']").click();
-  if ((await page.getByText("Pilot token link", { exact: true }).count()) < 1) {
-    throw new Error("Expected saved editorial alignment");
+  if ((await page.getByText("Sentence correspondence 1", { exact: true }).count()) < 1) {
+    throw new Error("Expected saved sentence correspondence");
+  }
+  const synchronizedRows = await page.locator(
+    "#v15 .phrase-row:not(.full-passage-row)",
+  ).count();
+  if (synchronizedRows !== 1) {
+    throw new Error("Expected sentence correspondence to become a synchronized row");
   }
 
   const savedEditorData = await page.evaluate(() =>
@@ -100,6 +118,21 @@ async function main() {
   await page.locator("#v15").screenshot({
     path: "qa-editor-desktop.png",
   });
+
+  await page.getByRole("button", { name: "Finish editing" }).click();
+  if ((await page.locator("#v15 .editor-workbench").count()) !== 0) {
+    throw new Error("Expected inline editor to close without losing annotations");
+  }
+  if (
+    (await page.locator("#v15 .phrase-row:not(.full-passage-row)").count()) !== 1
+  ) {
+    throw new Error("Expected synchronized row to remain after closing editor");
+  }
+
+  await page.getByRole("button", { name: "Editor" }).click();
+  if ((await page.locator("#v15 .editor-workbench").count()) !== 1) {
+    throw new Error("Expected dedicated Editor view to remain available");
+  }
 
   const savedSanskritToken = savedEditorData.alignments[0].targetTokenIds.san_levi_1925[0];
   const savedTibetanToken = savedEditorData.alignments[0].targetTokenIds.tib_derge[0];
@@ -142,11 +175,13 @@ async function main() {
     fullPage: true,
   });
 
-  console.log(`passages=${passages} sidebarCollapsed=${sidebarCollapsed} phraseRows=${phraseRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} mobileOverflow=${overflow}`);
+  console.log(`passages=${passages} sidebarCollapsed=${sidebarCollapsed} readingTokens=${readingTokens} initialPhraseRows=${phraseRows} synchronizedRows=${synchronizedRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} mobileOverflow=${overflow}`);
   await browser.close();
+  browser = null;
 }
 
-main().catch((error) => {
+main().catch(async (error) => {
   console.error(error);
+  if (browser) await browser.close();
   process.exitCode = 1;
 });
