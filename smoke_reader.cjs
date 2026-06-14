@@ -76,6 +76,9 @@ async function main() {
   if ((await page.locator("#v1 .word-alignment-bar").count()) !== 1) {
     throw new Error("Expected word alignment status in Reading");
   }
+  if ((await page.locator("#v1 .lexical-popover").count()) !== 1) {
+    throw new Error("Expected a lexical inspector after clicking a token");
+  }
   await page.locator("#v1 [data-clear-word-alignment]").click();
 
   await page.locator("#sidebarToggle").click();
@@ -159,6 +162,24 @@ async function main() {
   if (firstComparisonNumber !== "15.1") {
     throw new Error(`Expected first comparison sentence 15.1, received ${firstComparisonNumber}`);
   }
+  const comparisonSanskritTokens = page.locator(
+    "#v15 .phrase-row:not(.full-passage-row) .phrase-cell[data-source='san_levi_1925'] .text-token",
+  );
+  const comparisonSanskritTokenCount = await comparisonSanskritTokens.count();
+  if (!comparisonSanskritTokenCount) {
+    throw new Error("Expected clickable Sanskrit tokens in Comparison");
+  }
+  await comparisonSanskritTokens.nth(0).click();
+  if ((await page.locator("#v15 .lexical-popover").count()) !== 1) {
+    throw new Error("Expected lexical inspector in Comparison");
+  }
+  if (
+    (await page.locator("#v15 .phrase-cell .text-token.alignment-active").count()) <
+    2
+  ) {
+    throw new Error("Expected word-level highlighting across Comparison cells");
+  }
+  await page.locator("#v15 [data-close-lexical-popover]").click();
 
   const resizers = await page.locator("#v15 .column-resizer").count();
   if (resizers !== 4) {

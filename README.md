@@ -13,6 +13,10 @@ This workspace contains a local trial reader generated from the supplied Viṃś
   across all witnesses, or one sentence can be isolated with `Focus`.
 - Clickable Sanskrit words in Reading. Reviewed token links take priority;
   otherwise the shell highlights the existing low-confidence projected spans.
+- Clickable token surfaces in Reading, Comparison, and Alignment, with a
+  floating lexical inspector showing the selected form and linked witness
+  spans. Full dictionary glosses, readings, and morphology can be added later
+  as reviewed `lexiconEntries`; the interface does not invent missing entries.
 - Subtle interface transitions with reduced-motion accessibility support.
 - Resizable witness columns with saved user preferences.
 - Collapsible navigation panel with a remembered full-width reading mode.

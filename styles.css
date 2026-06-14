@@ -993,7 +993,7 @@ button:disabled {
   white-space: pre-wrap;
 }
 
-button.phrase-cell:hover,
+.phrase-cell:hover,
 .phrase-row.active .phrase-cell {
   background: #fff7dc;
 }
@@ -1548,7 +1548,7 @@ button.phrase-cell:hover,
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1rem;
   line-height: 1.62;
-  white-space: pre-wrap;
+  white-space: normal;
 }
 
 .source-text.unavailable-text {
@@ -1562,6 +1562,170 @@ button.phrase-cell:hover,
 .comparison-grid .source-text {
   display: block;
   animation: reveal-panel 0.22s ease-out both;
+}
+
+.sentence-focus-active .reading-sentence-controls {
+  margin: 7px 0 5px;
+  padding: 6px 9px;
+}
+
+.sentence-focus-active .text-stack {
+  gap: 4px;
+  margin-top: 5px;
+}
+
+.sentence-focus-active .source-panel-header {
+  padding: 6px 9px;
+}
+
+.sentence-focus-active .source-meta {
+  font-size: 0.66rem;
+}
+
+.sentence-focus-active .source-text {
+  max-height: none;
+  padding: 3px 5px 5px;
+}
+
+.sentence-focus-active .reading-sentence-list {
+  gap: 0;
+}
+
+.sentence-focus-active .reading-sentence-unit {
+  border-radius: 4px;
+}
+
+.sentence-focus-active .reading-sentence-toggle {
+  padding: 4px 7px;
+}
+
+.sentence-focus-active .reading-sentence-focus {
+  display: none;
+}
+
+.sentence-focus-active .reading-sentence-body {
+  padding: 5px 8px 7px;
+  line-height: 1.42;
+}
+
+.sentence-focus-active .source-name {
+  font-size: 0.9rem;
+}
+
+.lexical-popover {
+  position: fixed;
+  z-index: 30;
+  right: 22px;
+  bottom: 22px;
+  width: min(410px, calc(100vw - 44px));
+  max-height: min(620px, calc(100vh - 44px));
+  overflow: auto;
+  padding: 14px;
+  color: var(--ink);
+  background: rgba(255, 253, 248, 0.98);
+  border: 1px solid #b8a77e;
+  border-radius: 10px;
+  box-shadow: 0 18px 48px rgba(24, 38, 45, 0.24);
+  backdrop-filter: blur(10px);
+  animation: lexical-popover-in 0.2s ease-out both;
+}
+
+.lexical-popover-heading {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: start;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.lexical-popover-heading > div {
+  display: grid;
+  gap: 3px;
+}
+
+.lexical-popover-heading strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.3rem;
+}
+
+.lexical-popover-heading button {
+  width: 29px;
+  height: 29px;
+  padding: 0;
+  color: var(--muted);
+  background: #f2ece2;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+
+.lexical-kicker,
+.lexical-correspondences > span {
+  color: var(--accent);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lexical-details {
+  display: grid;
+  gap: 7px;
+  margin: 12px 0;
+}
+
+.lexical-details > div {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 8px;
+}
+
+.lexical-details dt {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 750;
+}
+
+.lexical-details dd {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.88rem;
+}
+
+.lexical-correspondences ul {
+  display: grid;
+  gap: 5px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lexical-correspondences li {
+  display: grid;
+  grid-template-columns: minmax(80px, 0.35fr) 1fr;
+  gap: 8px;
+  padding: 6px 7px;
+  background: #f5f0e7;
+  border-radius: 5px;
+}
+
+.lexical-correspondences li strong {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.lexical-correspondences li span {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.82rem;
+}
+
+.lexical-note {
+  margin: 11px 0 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.4;
 }
 
 .comparison-grid .source-panel-header {
@@ -1601,6 +1765,17 @@ mark {
   from {
     background: #f7d56c;
     box-shadow: 0 0 0 5px rgba(212, 180, 93, 0.24);
+  }
+}
+
+@keyframes lexical-popover-in {
+  from {
+    opacity: 0;
+    transform: translateY(9px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -1829,6 +2004,13 @@ mark {
   .reading-sentence-actions button,
   .word-alignment-bar button {
     width: 100%;
+  }
+
+  .lexical-popover {
+    right: 10px;
+    bottom: 10px;
+    width: calc(100vw - 20px);
+    max-height: 62vh;
   }
 
   .account-controls {

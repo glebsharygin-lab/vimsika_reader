@@ -33,6 +33,7 @@ const state = {
   selectionAnchors: {},
   draggingSelection: null,
   dynamicFrames: [],
+  lexicalPopover: null,
 };
 
 const escapeHtml = (value) =>
@@ -115,6 +116,21 @@ function tokenAlignmentFor(passage, sourceId, tokenId) {
     (alignment) =>
       alignment.verse === passage.number &&
       alignment.targetTokenIds?.[sourceId]?.includes(tokenId),
+  );
+}
+
+function tokenById(passage, sourceId, tokenId) {
+  return effectiveWitness(passage, sourceId).tokens?.find(
+    (token) => token.id === tokenId,
+  );
+}
+
+function lexiconEntryFor(sourceId, tokenId, surface) {
+  return (state.corpus.lexiconEntries || []).find(
+    (entry) =>
+      entry.sourceId === sourceId &&
+      (entry.tokenId === tokenId ||
+        entry.surface?.toLocaleLowerCase() === surface.toLocaleLowerCase()),
   );
 }
 
@@ -1042,6 +1058,91 @@ function wordAlignmentBar(passage) {
   `;
 }
 
+function lexicalPopover(passage) {
+  const popover = state.lexicalPopover;
+  if (!popover || popover.passageId !== passage.id) return "";
+  const source = sourceById(popover.sourceId);
+  const token = tokenById(
+    passage,
+    popover.sourceId,
+    popover.tokenId,
+  );
+  if (!source || !token) return "";
+
+  const entry = lexiconEntryFor(
+    popover.sourceId,
+    popover.tokenId,
+    token.text,
+  );
+  const alignment =
+    tokenAlignmentFor(
+      passage,
+      popover.sourceId,
+      popover.tokenId,
+    ) || state.activeAlignment;
+  const linkedTerms = state.corpus.sources
+    .map((linkedSource) => {
+      const tokenIds =
+        alignment?.targetTokenIds?.[linkedSource.id] || [];
+      const text = tokenTextFromIds(
+        passage,
+        linkedSource.id,
+        tokenIds,
+      );
+      return text
+        ? {
+            label: linkedSource.shortLabel || linkedSource.label,
+            text,
+          }
+        : null;
+    })
+    .filter(Boolean);
+  const machine = alignment?.status === "machine-suggested";
+
+  return `
+    <aside class="lexical-popover" aria-live="polite">
+      <div class="lexical-popover-heading">
+        <div>
+          <span class="lexical-kicker">${escapeHtml(source.language)} lexical inspector</span>
+          <strong>${escapeHtml(entry?.lemma || token.text)}</strong>
+        </div>
+        <button data-close-lexical-popover type="button" aria-label="Close lexical inspector">×</button>
+      </div>
+      <dl class="lexical-details">
+        <div>
+          <dt>Surface</dt>
+          <dd>${escapeHtml(token.text)}</dd>
+        </div>
+        <div>
+          <dt>Analysis</dt>
+          <dd>${escapeHtml(entry?.morphology || entry?.reading || "Not yet annotated")}</dd>
+        </div>
+        <div>
+          <dt>Gloss</dt>
+          <dd>${escapeHtml(entry?.gloss || "No dictionary gloss has been entered yet.")}</dd>
+        </div>
+      </dl>
+      <div class="lexical-correspondences">
+        <span>${machine ? "Projected correspondences" : "Recorded correspondences"}</span>
+        ${
+          linkedTerms.length
+            ? `<ul>${linkedTerms
+                .map(
+                  (item) =>
+                    `<li><strong>${escapeHtml(item.label)}</strong><span>${escapeHtml(item.text)}</span></li>`,
+                )
+                .join("")}</ul>`
+            : '<p>No token-level correspondence is recorded yet.</p>'
+        }
+      </div>
+      <p class="lexical-note">
+        This panel is dictionary-ready: reviewed lemma, morphology, reading,
+        and gloss records can be attached without changing token IDs.
+      </p>
+    </aside>
+  `;
+}
+
 function alignmentTargetText(alignment, passage, sourceId) {
   if (
     alignment.status === "machine-segmented" &&
@@ -1452,17 +1553,29 @@ function phraseRow(alignment, passage, sources, template, index) {
       ${sources
         .map((source) => {
           const target = alignmentTargetText(alignment, passage, source.id);
+          const tokenIds = alignment.targetTokenIds?.[source.id] || [];
+          const witness = effectiveWitness(passage, source.id);
           return `
-            <button
+            <div
               class="phrase-cell"
               data-alignment="${alignment.id}"
               data-source="${source.id}"
-              type="button"
             >${
               target
-                ? highlightedText(target, source.id, passage.number)
+                ? tokenIds.length
+                  ? tokenizedText(
+                      witness,
+                      source.id,
+                      passage,
+                      tokenIds,
+                    )
+                  : highlightedText(
+                      target,
+                      source.id,
+                      passage.number,
+                    )
                 : '<span class="alignment-gap">— no aligned phrase —</span>'
-            }</button>
+            }</div>
           `;
         })
         .join("")}
@@ -1496,10 +1609,17 @@ function fullPassageRow(passage, sources, template, collapsedByDefault) {
                 unavailable
                   ? `<span class="alignment-gap">${escapeHtml(witness.note)}</span>`
                   : editingEnabled()
-                    ? witnessTextEditor(passage, source, witness)
-                    : state.view === "alignment"
-                    ? tokenizedText(witness, source.id, passage)
-                    : highlightedText(witness.text || "", source.id, passage.number)
+                    ? `${witnessTextEditor(passage, source, witness)}${
+                        state.activeTextEditor ===
+                        textEditKey(passage.id, source.id)
+                          ? ""
+                          : `<div class="witness-text-display">${tokenizedText(
+                              witness,
+                              source.id,
+                              passage,
+                            )}</div>`
+                      }`
+                    : tokenizedText(witness, source.id, passage)
               }
             </div>
           `;
@@ -1571,7 +1691,7 @@ function passageCard(passage) {
         : "";
 
   return `
-    <article id="${passage.id}" class="passage-card ${open ? "open" : ""}">
+    <article id="${passage.id}" class="passage-card ${open ? "open" : ""} ${state.focusedSentenceByPassage[passage.id] ? "sentence-focus-active" : ""}">
       <button class="passage-header" type="button">
         <span class="passage-number">${passage.number}</span>
         <span>
@@ -1583,6 +1703,7 @@ function passageCard(passage) {
       <div class="passage-content">
         ${alignmentRibbon(passage)}
         ${wordAlignmentBar(passage)}
+        ${lexicalPopover(passage)}
         ${content}
       </div>
     </article>
@@ -1681,6 +1802,12 @@ function bindTokenInteractions(reader) {
         event.preventDefault();
         return;
       }
+      event.stopPropagation();
+      state.lexicalPopover = {
+        passageId: token.dataset.tokenPassage,
+        sourceId: token.dataset.tokenSource,
+        tokenId: token.dataset.tokenId,
+      };
       if (
         state.view === "alignment" &&
         token.dataset.tokenSource === "san_levi_1925"
@@ -2276,6 +2403,14 @@ function renderReader() {
   reader.querySelectorAll("[data-clear-word-alignment]").forEach((button) => {
     button.addEventListener("click", () => {
       state.activeAlignment = null;
+      state.lexicalPopover = null;
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-close-lexical-popover]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.lexicalPopover = null;
       renderReader();
     });
   });
