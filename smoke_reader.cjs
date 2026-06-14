@@ -13,6 +13,27 @@ async function main() {
   const passages = await page.locator(".passage-card").count();
   if (passages !== 22) throw new Error(`Expected 22 passages, received ${passages}`);
 
+  await page.locator("#sidebarToggle").click();
+  await page.waitForTimeout(300);
+  const sidebarCollapsed = await page.locator("body").evaluate(
+    (element) => element.classList.contains("sidebar-collapsed"),
+  );
+  if (!sidebarCollapsed) throw new Error("Expected navigation panel to collapse");
+
+  const collapsedMargin = await page.locator(".workspace").evaluate(
+    (element) => window.getComputedStyle(element).marginLeft,
+  );
+  if (collapsedMargin !== "0px") {
+    throw new Error(`Expected full-width workspace, received margin ${collapsedMargin}`);
+  }
+
+  await page.locator("#sidebarOpen").click();
+  await page.waitForTimeout(300);
+  const sidebarReopened = await page.locator("body").evaluate(
+    (element) => !element.classList.contains("sidebar-collapsed"),
+  );
+  if (!sidebarReopened) throw new Error("Expected navigation panel to reopen");
+
   await page.getByRole("button", { name: "Comparison" }).click();
   await page.locator("#v15 .passage-header").click();
 
@@ -42,6 +63,68 @@ async function main() {
     path: "qa-reader-desktop.png",
   });
 
+  await page.getByRole("button", { name: "Editor" }).click();
+  const editor = page.locator("#v15 .editor-workbench");
+  if ((await editor.count()) !== 1) throw new Error("Expected embedded verse editor");
+
+  await editor.locator("[data-field='unit-label']").fill("Argument structure");
+  await editor.locator("[data-create-unit='v15']").click();
+  if ((await page.getByText("Argument structure", { exact: true }).count()) < 1) {
+    throw new Error("Expected new structural section");
+  }
+
+  const refreshedEditor = page.locator("#v15 .editor-workbench");
+  await refreshedEditor.locator("[data-field='unit-label']").fill("First objection");
+  await refreshedEditor.locator("[data-field='unit-level']").selectOption("subsection");
+  await refreshedEditor
+    .locator("[data-field='unit-parent']")
+    .selectOption({ label: "section · Argument structure" });
+  await refreshedEditor.locator("[data-create-unit='v15']").click();
+  if ((await page.getByText("First objection", { exact: true }).count()) < 1) {
+    throw new Error("Expected nested subsection");
+  }
+
+  await page
+    .locator("#v15 .full-text-cell[data-source='san_levi_1925'] .text-token")
+    .nth(20)
+    .click();
+  await page
+    .locator("#v15 .full-text-cell[data-source='tib_derge'] .text-token")
+    .nth(20)
+    .click();
+
+  const alignmentEditor = page.locator("#v15 .editor-workbench");
+  await alignmentEditor
+    .locator("[data-field='alignment-label']")
+    .fill("Pilot token link");
+  await alignmentEditor.locator("[data-create-alignment='v15']").click();
+  if ((await page.getByText("Pilot token link", { exact: true }).count()) < 1) {
+    throw new Error("Expected saved editorial alignment");
+  }
+
+  const savedEditorData = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("vimsika-editor-annotations-v1")),
+  );
+  if (savedEditorData.units.length !== 2 || savedEditorData.alignments.length !== 1) {
+    throw new Error("Expected editor annotations to persist in browser storage");
+  }
+
+  await page.locator("#v15").screenshot({
+    path: "qa-editor-desktop.png",
+  });
+
+  const savedSanskritToken = savedEditorData.alignments[0].targetTokenIds.san_levi_1925[0];
+  const savedTibetanToken = savedEditorData.alignments[0].targetTokenIds.tib_derge[0];
+  await page.getByRole("button", { name: "Alignment" }).click();
+  await page.locator("#v15 .full-passage-row .phrase-label").click();
+  await page.locator(`#v15 [data-token-id='${savedSanskritToken}']`).click();
+  const linkedHighlights = await page.locator(
+    `#v15 [data-token-id='${savedSanskritToken}'].alignment-active, #v15 [data-token-id='${savedTibetanToken}'].alignment-active`,
+  ).count();
+  if (linkedHighlights !== 2) {
+    throw new Error("Expected Sanskrit token click to reveal its saved correspondence");
+  }
+
   await page.setViewportSize({ width: 390, height: 844 });
   const overflow = await page.locator("#v15 .collation-shell").evaluate(
     (element) => element.scrollWidth > element.clientWidth,
@@ -53,7 +136,7 @@ async function main() {
     fullPage: true,
   });
 
-  console.log(`passages=${passages} phraseRows=${phraseRows} resizers=${resizers} mobileOverflow=${overflow}`);
+  console.log(`passages=${passages} sidebarCollapsed=${sidebarCollapsed} phraseRows=${phraseRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} linkedHighlights=${linkedHighlights} mobileOverflow=${overflow}`);
   await browser.close();
 }
 

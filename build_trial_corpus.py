@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 from docx import Document
@@ -34,6 +35,81 @@ ROMAN = {
     21: "XXI",
     22: "XXII",
 }
+
+
+def is_cjk(character: str) -> bool:
+    codepoint = ord(character)
+    return (
+        0x3400 <= codepoint <= 0x4DBF
+        or 0x4E00 <= codepoint <= 0x9FFF
+        or 0xF900 <= codepoint <= 0xFAFF
+    )
+
+
+def is_word_character(character: str) -> bool:
+    return unicodedata.category(character)[0] in {"L", "M", "N"}
+
+
+def tokenize_text(
+    text: str,
+    passage_id: str,
+    source_id: str,
+) -> list[dict[str, object]]:
+    tokens: list[dict[str, object]] = []
+    index = 0
+    while index < len(text):
+        character = text[index]
+        if is_cjk(character):
+            end = index + 1
+            token_type = "character"
+        elif is_word_character(character):
+            end = index + 1
+            while end < len(text):
+                next_character = text[end]
+                if is_word_character(next_character):
+                    end += 1
+                    continue
+                if (
+                    next_character in {"'", "’", "-", "‐", "‑"}
+                    and end + 1 < len(text)
+                    and is_word_character(text[end + 1])
+                ):
+                    end += 1
+                    continue
+                break
+            token_type = "syllable" if source_id == "tib_derge" else "word"
+        else:
+            index += 1
+            continue
+
+        token_number = len(tokens) + 1
+        tokens.append(
+            {
+                "id": f"{passage_id}-{source_id}-t{token_number:05d}",
+                "text": text[index:end],
+                "start": index,
+                "end": end,
+                "type": token_type,
+            }
+        )
+        index = end
+    return tokens
+
+
+def alignment_token_ids(
+    text: str,
+    tokens: list[dict[str, object]],
+    target: str,
+) -> list[str]:
+    start = text.casefold().find(target.casefold())
+    if start < 0:
+        return []
+    end = start + len(target)
+    return [
+        str(token["id"])
+        for token in tokens
+        if int(token["start"]) < end and int(token["end"]) > start
+    ]
 SANSKRIT_STARTS = {
     1: "vijñaptimātram evedam",
     2: "na deśakālaniyamaḥ",
@@ -544,7 +620,7 @@ def alignment_demo() -> list[dict[str, object]]:
                 "zho_paramartha": "別類多事",
                 "zho_bodhiruci": "差別無量處",
                 "eng_das": "separate objects reside at different places",
-                "fr_levi_1932": "activité multiple de figures diverses",
+                "fr_levi_1932": "activité multiple de.figures diverses",
                 "de_frauwallner": "Vorhandensein mehrerer getrennter (Dinge)",
             },
         },
@@ -588,15 +664,21 @@ def main() -> None:
 
     passages = []
     for number in VERSE_NUMBERS:
+        passage_id = f"v{number}"
         passages.append(
             {
-                "id": f"v{number}",
+                "id": passage_id,
                 "number": number,
                 "label": f"Verse {number}",
                 "root": SANSKRIT_ROOTS[number],
                 "texts": {
                     source_id: {
                         "text": source_passages[number] or "",
+                        "tokens": tokenize_text(
+                            source_passages[number] or "",
+                            passage_id,
+                            source_id,
+                        ),
                         "status": (
                             "machine-segmented"
                             if source_passages[number]
@@ -613,8 +695,21 @@ def main() -> None:
             }
         )
 
+    alignments = alignment_demo()
+    passages_by_number = {passage["number"]: passage for passage in passages}
+    for alignment in alignments:
+        passage = passages_by_number[int(alignment["verse"])]
+        alignment["targetTokenIds"] = {}
+        for source_id, target in alignment["targets"].items():
+            witness = passage["texts"][source_id]
+            alignment["targetTokenIds"][source_id] = alignment_token_ids(
+                witness["text"],
+                witness["tokens"],
+                target,
+            )
+
     corpus = {
-        "schemaVersion": "0.2.0-trial",
+        "schemaVersion": "0.3.0-trial",
         "work": {
             "id": "vasubandhu-vimsika",
             "title": "Viṃśikā",
@@ -627,7 +722,7 @@ def main() -> None:
         ),
         "sources": source_records(),
         "passages": passages,
-        "alignments": alignment_demo(),
+        "alignments": alignments,
     }
 
     args.output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -637,7 +732,7 @@ def main() -> None:
     )
     javascript = (
         "window.CORPUS_DATA = "
-        + json.dumps(corpus, ensure_ascii=False, indent=2)
+        + json.dumps(corpus, ensure_ascii=False, separators=(",", ":"))
         + ";\n"
     )
     args.output_path.with_suffix(".js").write_text(javascript, encoding="utf-8")
