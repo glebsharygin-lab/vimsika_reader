@@ -1,4 +1,4 @@
 window.VIMSIKA_AUTH_CONFIG = {
-  apiBaseUrl: "",
+  apiBaseUrl: "https://vimsika-collaboration.vimsika-collaboration.workers.dev",
   administratorLogin: "glebsharygin-lab",
 };
