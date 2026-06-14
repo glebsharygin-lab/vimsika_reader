@@ -9,6 +9,11 @@ This workspace contains a local trial reader generated from the supplied Viṃś
 - Foldable reading mode and multi-column comparison mode.
 - Foldable sentence units numbered `1.1`, `1.2`, and so on, derived from
   Sanskrit dandas, vertical strokes, slashes, and source paragraph boundaries.
+- A synchronized Reading focus workspace: collapsed sentences can be hidden
+  across all witnesses, or one sentence can be isolated with `Focus`.
+- Clickable Sanskrit words in Reading. Reviewed token links take priority;
+  otherwise the shell highlights the existing low-confidence projected spans.
+- Subtle interface transitions with reduced-motion accessibility support.
 - Resizable witness columns with saved user preferences.
 - Collapsible navigation panel with a remembered full-width reading mode.
 - Synchronized phrase rows with sticky subsection labels.

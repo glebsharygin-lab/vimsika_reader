@@ -6,6 +6,8 @@ const state = {
   activeAlignment: null,
   columnWidths: {},
   collapsedUnits: new Set(),
+  hideCollapsedPassages: new Set(),
+  focusedSentenceByPassage: {},
   openPassages: new Set(["v1"]),
   openSourcePanels: new Set(),
   sidebarCollapsed: false,
@@ -92,6 +94,28 @@ function allAlignments() {
 
 function candidateAlignments() {
   return state.corpus.candidateAlignments || [];
+}
+
+function tokenAlignmentFor(passage, sourceId, tokenId) {
+  const reviewed = allAlignments()
+    .filter(
+      (alignment) =>
+        alignment.verse === passage.number &&
+        alignment.level === "token-span" &&
+        alignment.targetTokenIds?.[sourceId]?.includes(tokenId),
+    )
+    .sort(
+      (left, right) =>
+        (left.targetTokenIds?.[sourceId]?.length || 0) -
+        (right.targetTokenIds?.[sourceId]?.length || 0),
+    );
+  if (reviewed.length) return reviewed[0];
+
+  return candidateAlignments().find(
+    (alignment) =>
+      alignment.verse === passage.number &&
+      alignment.targetTokenIds?.[sourceId]?.includes(tokenId),
+  );
 }
 
 function alignmentById(alignmentId) {
@@ -836,6 +860,42 @@ function phraseAlignments(passage) {
   });
 }
 
+function readingSentenceControls(passage, units) {
+  const focusedId = state.focusedSentenceByPassage[passage.id];
+  const focusedUnit = units.find((unit) => unit.id === focusedId);
+  const collapsedCount = units.filter((unit) =>
+    state.collapsedUnits.has(unit.id),
+  ).length;
+  const hidingCollapsed = state.hideCollapsedPassages.has(passage.id);
+  return `
+    <div class="reading-sentence-controls">
+      <div>
+        <strong>${
+          focusedUnit
+            ? `Focused on ${escapeHtml(focusedUnit.number || focusedUnit.label)}`
+            : "Sentence workspace"
+        }</strong>
+        <span>${
+          focusedUnit
+            ? "Only this sentence is shown across every open witness."
+            : `${collapsedCount} collapsed sentence${collapsedCount === 1 ? "" : "s"}`
+        }</span>
+      </div>
+      <div class="reading-sentence-actions">
+        ${
+          focusedUnit
+            ? `<button data-clear-sentence-focus="${passage.id}" type="button">Show all sentences</button>`
+            : `<button
+                data-toggle-hide-collapsed="${passage.id}"
+                type="button"
+                ${collapsedCount ? "" : "disabled"}
+              >${hidingCollapsed ? `Show ${collapsedCount} hidden` : `Hide ${collapsedCount} collapsed`}</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
 function readingSentenceList(passage, source, witness) {
   const units = phraseAlignments(passage).filter(
     (alignment) => alignment.level === "sentence",
@@ -846,28 +906,41 @@ function readingSentenceList(passage, source, witness) {
       : highlightedText(witness.text || "", source.id, passage.number);
   }
 
+  const focusedId = state.focusedSentenceByPassage[passage.id];
+  const hidingCollapsed = state.hideCollapsedPassages.has(passage.id);
   return `
     <div class="reading-sentence-list">
       ${units
         .map((unit) => {
           const collapsed = state.collapsedUnits.has(unit.id);
+          if (focusedId && unit.id !== focusedId) return "";
+          if (!focusedId && hidingCollapsed && collapsed) return "";
           const tokenIds = unit.targetTokenIds?.[source.id] || [];
           const target = alignmentTargetText(unit, passage, source.id);
           const generated = unit.status === "machine-segmented";
           return `
             <section class="reading-sentence-unit ${collapsed ? "collapsed" : ""}">
-              <button
-                class="reading-sentence-header"
-                data-toggle-reading-unit="${unit.id}"
-                type="button"
-              >
-                <span class="reading-sentence-number">${escapeHtml(unit.number || unit.label)}</span>
-                <span class="reading-sentence-status">${generated ? "projected" : "reviewed"}</span>
-                <span aria-hidden="true">${collapsed ? "+" : "−"}</span>
-              </button>
+              <div class="reading-sentence-header">
+                <button
+                  class="reading-sentence-toggle"
+                  data-toggle-reading-unit="${unit.id}"
+                  type="button"
+                >
+                  <span class="reading-sentence-number">${escapeHtml(unit.number || unit.label)}</span>
+                  <span class="reading-sentence-status">${generated ? "projected" : "reviewed"}</span>
+                  <span aria-hidden="true">${collapsed ? "+" : "−"}</span>
+                </button>
+                <button
+                  class="reading-sentence-focus"
+                  data-focus-sentence="${unit.id}"
+                  data-passage-id="${passage.id}"
+                  type="button"
+                  title="Show this sentence only across every witness"
+                >Focus</button>
+              </div>
               <div class="reading-sentence-body">${
                 target
-                  ? editingEnabled() && tokenIds.length
+                  ? tokenIds.length
                     ? tokenizedText(
                         witness,
                         source.id,
@@ -936,6 +1009,36 @@ function sourcePanel(source, passage) {
             : readingSentenceList(passage, source, witness)
       }</div>
     </article>
+  `;
+}
+
+function wordAlignmentBar(passage) {
+  const alignment = state.activeAlignment;
+  if (
+    !alignment ||
+    alignment.verse !== passage.number ||
+    alignment.level !== "token-span"
+  ) {
+    return "";
+  }
+  const sanskrit = tokenTextFromIds(
+    passage,
+    "san_levi_1925",
+    alignment.targetTokenIds?.san_levi_1925 || [],
+  );
+  const witnessCount = Object.values(
+    alignment.targetTokenIds || {},
+  ).filter((tokenIds) => tokenIds.length).length;
+  const machine = alignment.status === "machine-suggested";
+  return `
+    <div class="word-alignment-bar ${machine ? "machine" : "reviewed"}">
+      <div>
+        <span class="word-alignment-kicker">${machine ? "Machine-projected word link" : "Reviewed word link"}</span>
+        <strong>${escapeHtml(sanskrit || alignment.label)}</strong>
+        <span>${witnessCount} witness span${witnessCount === 1 ? "" : "s"} highlighted</span>
+      </div>
+      <button data-clear-word-alignment type="button">Clear highlighting</button>
+    </div>
   `;
 }
 
@@ -1451,6 +1554,9 @@ function collationView(passage, sources) {
 function passageCard(passage) {
   const sources = selectedSourceRecords();
   const open = state.openPassages.has(passage.id);
+  const sentenceUnits = phraseAlignments(passage).filter(
+    (alignment) => alignment.level === "sentence",
+  );
   const sourcePanels =
     state.view === "reading" && (!editingEnabled() || open)
       ? sources.map((source) => sourcePanel(source, passage)).join("")
@@ -1459,7 +1565,7 @@ function passageCard(passage) {
     state.view === "reading"
       ? editingEnabled() && !open
         ? ""
-        : `${editingEnabled() ? editorWorkbench(passage) : ""}<div class="text-stack">${sourcePanels || '<div class="empty-state">Select at least one witness in the sidebar.</div>'}</div>`
+        : `${editingEnabled() ? editorWorkbench(passage) : ""}${readingSentenceControls(passage, sentenceUnits)}<div class="text-stack">${sourcePanels || '<div class="empty-state">Select at least one witness in the sidebar.</div>'}</div>`
       : open
         ? collationView(passage, sources)
         : "";
@@ -1476,6 +1582,7 @@ function passageCard(passage) {
       </button>
       <div class="passage-content">
         ${alignmentRibbon(passage)}
+        ${wordAlignmentBar(passage)}
         ${content}
       </div>
     </article>
@@ -1601,13 +1708,21 @@ function bindTokenInteractions(reader) {
         renderReader();
         return;
       }
-      const alignment = allAlignments().find((item) =>
-        item.targetTokenIds?.[token.dataset.tokenSource]?.includes(
+      const passage = passageById(token.dataset.tokenPassage);
+      const alignment =
+        tokenAlignmentFor(
+          passage,
+          token.dataset.tokenSource,
           token.dataset.tokenId,
-        ),
-      );
+        ) ||
+        allAlignments().find((item) =>
+          item.targetTokenIds?.[token.dataset.tokenSource]?.includes(
+            token.dataset.tokenId,
+          ),
+        );
       if (!alignment) return;
-      state.activeAlignment = alignment;
+      state.activeAlignment =
+        state.activeAlignment?.id === alignment.id ? null : alignment;
       state.openPassages.add(`v${alignment.verse}`);
       renderReader();
     });
@@ -2123,6 +2238,44 @@ function renderReader() {
       const unitId = button.dataset.toggleReadingUnit;
       if (state.collapsedUnits.has(unitId)) state.collapsedUnits.delete(unitId);
       else state.collapsedUnits.add(unitId);
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-toggle-hide-collapsed]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const passageId = button.dataset.toggleHideCollapsed;
+      if (state.hideCollapsedPassages.has(passageId)) {
+        state.hideCollapsedPassages.delete(passageId);
+      } else {
+        state.hideCollapsedPassages.add(passageId);
+      }
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-focus-sentence]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const passageId = button.dataset.passageId;
+      const unitId = button.dataset.focusSentence;
+      state.collapsedUnits.delete(unitId);
+      state.focusedSentenceByPassage[passageId] = unitId;
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-clear-sentence-focus]").forEach((button) => {
+    button.addEventListener("click", () => {
+      delete state.focusedSentenceByPassage[
+        button.dataset.clearSentenceFocus
+      ];
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-clear-word-alignment]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.activeAlignment = null;
       renderReader();
     });
   });

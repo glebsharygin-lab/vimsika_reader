@@ -7,12 +7,12 @@ existing copies:
 4. styles.css
 5. corpus.js
 
-The new index.html uses asset version 0.9.1 for auth-config.js so GitHub Pages
-and visitors'
-browsers fetch the rebuilt corpus instead of a cached older corpus.js.
+The new index.html uses asset version 0.10.0 for app.js and styles.css, plus
+version 0.9.1 for auth-config.js, so GitHub Pages and visitors' browsers fetch
+the current interface and Worker configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.9.1
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.10.0
 
 Expected result:
 - the summary reports 255 numbered sentences;
@@ -20,6 +20,8 @@ Expected result:
 - every opened witness displays corresponding numbered units;
 - Sources & rights lists the DharmaNexus record as permission-required.
 - the account button says "Sign in with GitHub".
+- collapsed sentences can be hidden, and any sentence can be focused;
+- clicking a Sanskrit word highlights its reviewed or projected counterparts.
 
 DharmaNexus matches are not copied into the corpus. An authorized export can be
 imported with scripts/build_trial_corpus.py --authorized-alignments FILE.json.

@@ -31,6 +31,52 @@ async function main() {
   if (firstSentenceNumber !== "1.1") {
     throw new Error(`Expected first sentence number 1.1, received ${firstSentenceNumber}`);
   }
+  const sanskritSentencePanel = page.locator(
+    "#v1 .source-panel[data-source='san_levi_1925']",
+  );
+  const sentenceToggles = sanskritSentencePanel.locator(
+    "[data-toggle-reading-unit]",
+  );
+  const sentenceToggleCount = await sentenceToggles.count();
+  if (sentenceToggleCount < 3) {
+    throw new Error("Expected at least three Sanskrit sentence toggles");
+  }
+  await sentenceToggles.nth(1).click();
+  await page
+    .locator("#v1 [data-toggle-hide-collapsed='v1']")
+    .click();
+  const hiddenSentenceCount = await sanskritSentencePanel
+    .locator(".reading-sentence-unit")
+    .count();
+  if (hiddenSentenceCount !== readingSentenceUnits - 1) {
+    throw new Error("Expected collapsed sentences to disappear in focus workspace");
+  }
+  await page
+    .locator("#v1 [data-toggle-hide-collapsed='v1']")
+    .click();
+  await sanskritSentencePanel
+    .locator("[data-focus-sentence='sentence-v1-003']")
+    .click();
+  if (
+    (await sanskritSentencePanel.locator(".reading-sentence-unit").count()) !== 1
+  ) {
+    throw new Error("Expected sentence focus to show one synchronized unit");
+  }
+  await page.locator("#v1 [data-clear-sentence-focus='v1']").click();
+
+  await page
+    .locator("#v1 [data-token-id='v1-san_levi_1925-t00003']")
+    .click();
+  const readingWordHighlights = await page.locator(
+    "#v1 .text-token.alignment-active",
+  ).count();
+  if (readingWordHighlights < 2) {
+    throw new Error("Expected a Sanskrit word click to highlight projected counterparts");
+  }
+  if ((await page.locator("#v1 .word-alignment-bar").count()) !== 1) {
+    throw new Error("Expected word alignment status in Reading");
+  }
+  await page.locator("#v1 [data-clear-word-alignment]").click();
 
   await page.locator("#sidebarToggle").click();
   await page.waitForTimeout(300);
@@ -61,9 +107,7 @@ async function main() {
   const readingTokens = await page.locator("#v1 .source-text .text-token").count();
   if (!readingTokens) throw new Error("Expected selectable tokens inside Reading");
 
-  const sanskritReadingPanel = page.locator(
-    "#v1 .source-panel[data-source='san_levi_1925']",
-  );
+  const sanskritReadingPanel = sanskritSentencePanel;
   await sanskritReadingPanel.getByRole("button", { name: "Edit text" }).click();
   const textEditor = page.locator(
     "#v1 [data-text-edit-form][data-source-id='san_levi_1925']",
@@ -240,7 +284,7 @@ async function main() {
     fullPage: true,
   });
 
-  console.log(`passages=${passages} readingSentenceUnits=${readingSentenceUnits} sidebarCollapsed=${sidebarCollapsed} readingTokens=${readingTokens} initialPhraseRows=${phraseRows} synchronizedRows=${synchronizedRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} mobileOverflow=${overflow}`);
+  console.log(`passages=${passages} readingSentenceUnits=${readingSentenceUnits} hiddenSentenceCount=${hiddenSentenceCount} readingWordHighlights=${readingWordHighlights} sidebarCollapsed=${sidebarCollapsed} readingTokens=${readingTokens} initialPhraseRows=${phraseRows} synchronizedRows=${synchronizedRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} mobileOverflow=${overflow}`);
   await browser.close();
   browser = null;
 }
