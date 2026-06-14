@@ -7,6 +7,7 @@ const state = {
   columnWidths: {},
   collapsedUnits: new Set(),
   openPassages: new Set(["v1"]),
+  openSourcePanels: new Set(),
   sidebarCollapsed: false,
   inlineEditing: false,
   editorData: {
@@ -94,7 +95,12 @@ function candidateAlignments() {
 }
 
 function alignmentById(alignmentId) {
-  return allAlignments().find((alignment) => alignment.id === alignmentId);
+  return (
+    allAlignments().find((alignment) => alignment.id === alignmentId) ||
+    state.corpus.passages
+      .flatMap((passage) => passage.sentenceUnits || [])
+      .find((alignment) => alignment.id === alignmentId)
+  );
 }
 
 function passageById(passageId) {
@@ -599,6 +605,10 @@ function buildSidebar() {
 function renderSummary() {
   const alignments = allAlignments().length;
   const candidates = candidateAlignments().length;
+  const sentenceUnits = state.corpus.passages.reduce(
+    (total, passage) => total + (passage.sentenceUnits?.length || 0),
+    0,
+  );
   const tokens = state.corpus.passages.reduce(
     (passageTotal, passage) =>
       passageTotal +
@@ -630,8 +640,8 @@ function renderSummary() {
       <span class="summary-label">visible witnesses</span>
     </div>
     <div class="summary-item">
-      <span class="summary-number">${alignments} + ${candidates.toLocaleString()}</span>
-      <span class="summary-label">reviewed/editorial + machine candidate links</span>
+      <span class="summary-number">${sentenceUnits.toLocaleString()} / ${alignments} + ${candidates.toLocaleString()}</span>
+      <span class="summary-label">numbered sentences / reviewed + machine token links</span>
     </div>
     <div class="summary-item">
       <span class="summary-number">${knownRights}/${state.corpus.sources.length}</span>
@@ -672,8 +682,12 @@ function alignmentRibbon(passage) {
   `;
 }
 
-function tokenizedText(witness, sourceId, passage) {
-  const tokens = witness.tokens || [];
+function tokenizedText(witness, sourceId, passage, tokenIds = null) {
+  const allowedIds = tokenIds ? new Set(tokenIds) : null;
+  const indexedTokens = (witness.tokens || [])
+    .map((token, index) => ({ token, index }))
+    .filter(({ token }) => !allowedIds || allowedIds.has(token.id));
+  const tokens = indexedTokens.map(({ token }) => token);
   if (!tokens.length) return highlightedText(witness.text || "", sourceId, passage.number);
 
   const activeIds = new Set(
@@ -682,9 +696,12 @@ function tokenizedText(witness, sourceId, passage) {
   const selectedIds = new Set(selectedTokenIds(passage.id, sourceId));
   const search = state.search.trim().toLocaleLowerCase();
   let output = "";
-  let cursor = 0;
+  let cursor = allowedIds ? tokens[0].start : 0;
+  const rangeEnd = allowedIds
+    ? tokens[tokens.length - 1].end
+    : witness.text.length;
 
-  tokens.forEach((token, index) => {
+  indexedTokens.forEach(({ token, index }) => {
     output += escapeHtml(witness.text.slice(cursor, token.start));
     const classes = ["text-token"];
     if (activeIds.has(token.id)) classes.push("alignment-active");
@@ -695,7 +712,7 @@ function tokenizedText(witness, sourceId, passage) {
     output += `<button class="${classes.join(" ")}" data-token-id="${token.id}" data-token-index="${index}" data-token-passage="${passage.id}" data-token-source="${sourceId}" type="button" title="${token.id}">${escapeHtml(token.text)}</button>`;
     cursor = token.end;
   });
-  output += escapeHtml(witness.text.slice(cursor));
+  output += escapeHtml(witness.text.slice(cursor, rangeEnd));
   return output;
 }
 
@@ -726,8 +743,13 @@ function witnessTextEditor(passage, source, witness) {
           >${escapeHtml(edit?.note || "")}</textarea>
         </label>
         <p>
-          Saving retokenizes this witness. Existing links remain, but any affected
-          alignments should be reviewed.
+          Saving retokenizes this witness and creates a local browser draft.
+          Existing links remain, but affected alignments should be reviewed.
+          ${
+            state.auth.configured
+              ? "Use the publication controls to update the shared corpus."
+              : "The shared corpus cannot change until the collaboration Worker is configured."
+          }
         </p>
         <div class="witness-text-actions">
           <button class="editor-primary" type="submit">Save revised text</button>
@@ -742,7 +764,7 @@ function witnessTextEditor(passage, source, witness) {
       <span class="${edit ? "locally-edited" : ""}">
         ${
           localEdit
-            ? `Unpublished draft${localEdit.updatedAt ? ` · ${new Date(localEdit.updatedAt).toLocaleString()}` : ""}`
+            ? `Unpublished draft${state.auth.configured ? "" : " · saved only in this browser"}${localEdit.updatedAt ? ` · ${new Date(localEdit.updatedAt).toLocaleString()}` : ""}`
             : publishedEdit
               ? `Published revision${publishedEdit.updatedAt ? ` · ${new Date(publishedEdit.updatedAt).toLocaleString()}` : ""}`
             : "Imported text"
@@ -767,15 +789,117 @@ function witnessTextEditor(passage, source, witness) {
         }
       </div>
     </div>
-    <div class="witness-text-display">${tokenizedText(witness, source.id, passage)}</div>
+  `;
+}
+
+function alignmentsOverlap(left, right, sourceId = "san_levi_1925") {
+  const leftIds = new Set(left.targetTokenIds?.[sourceId] || []);
+  return (right.targetTokenIds?.[sourceId] || []).some((tokenId) =>
+    leftIds.has(tokenId),
+  );
+}
+
+function alignmentPosition(alignment, passage) {
+  const ids = new Set(
+    alignment.targetTokenIds?.san_levi_1925 || [],
+  );
+  const tokens = effectiveWitness(
+    passage,
+    "san_levi_1925",
+  ).tokens || [];
+  const position = tokens.findIndex((token) => ids.has(token.id));
+  return position < 0 ? Number.MAX_SAFE_INTEGER : position;
+}
+
+function phraseAlignments(passage) {
+  const editorial = allAlignments().filter(
+    (alignment) =>
+      alignment.verse === passage.number &&
+      ["sentence", "phrase"].includes(alignment.level || "phrase"),
+  );
+  const reviewedSentences = editorial.filter(
+    (alignment) => alignment.level === "sentence",
+  );
+  const generated = (passage.sentenceUnits || []).filter(
+    (unit) =>
+      !reviewedSentences.some((alignment) =>
+        alignmentsOverlap(unit, alignment),
+      ),
+  );
+
+  return [...generated, ...editorial].sort((left, right) => {
+    const positionDifference =
+      alignmentPosition(left, passage) -
+      alignmentPosition(right, passage);
+    if (positionDifference) return positionDifference;
+    return (left.order || 0) - (right.order || 0);
+  });
+}
+
+function readingSentenceList(passage, source, witness) {
+  const units = phraseAlignments(passage).filter(
+    (alignment) => alignment.level === "sentence",
+  );
+  if (!units.length) {
+    return editingEnabled()
+      ? tokenizedText(witness, source.id, passage)
+      : highlightedText(witness.text || "", source.id, passage.number);
+  }
+
+  return `
+    <div class="reading-sentence-list">
+      ${units
+        .map((unit) => {
+          const collapsed = state.collapsedUnits.has(unit.id);
+          const tokenIds = unit.targetTokenIds?.[source.id] || [];
+          const target = alignmentTargetText(unit, passage, source.id);
+          const generated = unit.status === "machine-segmented";
+          return `
+            <section class="reading-sentence-unit ${collapsed ? "collapsed" : ""}">
+              <button
+                class="reading-sentence-header"
+                data-toggle-reading-unit="${unit.id}"
+                type="button"
+              >
+                <span class="reading-sentence-number">${escapeHtml(unit.number || unit.label)}</span>
+                <span class="reading-sentence-status">${generated ? "projected" : "reviewed"}</span>
+                <span aria-hidden="true">${collapsed ? "+" : "−"}</span>
+              </button>
+              <div class="reading-sentence-body">${
+                target
+                  ? editingEnabled() && tokenIds.length
+                    ? tokenizedText(
+                        witness,
+                        source.id,
+                        passage,
+                        tokenIds,
+                      )
+                    : highlightedText(
+                        target,
+                        source.id,
+                        passage.number,
+                      )
+                  : '<span class="alignment-gap">— no corresponding span assigned —</span>'
+              }</div>
+            </section>
+          `;
+        })
+        .join("")}
+    </div>
   `;
 }
 
 function sourcePanel(source, passage) {
   const witness = effectiveWitness(passage, source.id);
-  const text = witness.text || "";
   const unavailable = witness.status === "not-present-in-supplied-source";
-  const open = state.view !== "reading" || source.role === "edition";
+  const panelKey = `${passage.id}:${source.id}`;
+  const open =
+    state.view !== "reading" ||
+    source.role === "edition" ||
+    state.openSourcePanels.has(panelKey);
+  const textEditorActive =
+    state.activeTextEditor === textEditKey(passage.id, source.id);
+  const localDraft = localTextEditFor(passage.id, source.id);
   return `
     <article
       class="source-panel ${open ? "open" : ""}"
@@ -793,24 +917,36 @@ function sourcePanel(source, passage) {
         unavailable
           ? escapeHtml(witness.note)
           : editingEnabled()
-            ? witnessTextEditor(passage, source, witness)
-            : highlightedText(text, source.id, passage.number)
+            ? `${witnessTextEditor(passage, source, witness)}${
+                textEditorActive
+                  ? ""
+                  : `<div class="witness-text-display">${readingSentenceList(
+                      passage,
+                      source,
+                      witness,
+                    )}${
+                      localDraft
+                        ? `<details class="full-draft-text" open>
+                            <summary>Full revised witness draft</summary>
+                            <div>${tokenizedText(witness, source.id, passage)}</div>
+                          </details>`
+                        : ""
+                    }</div>`
+              }`
+            : readingSentenceList(passage, source, witness)
       }</div>
     </article>
   `;
 }
 
-function phraseAlignments(passage) {
-  return allAlignments()
-    .filter(
-      (alignment) =>
-        alignment.verse === passage.number &&
-        ["sentence", "phrase"].includes(alignment.level || "phrase"),
-    )
-    .sort((left, right) => (left.order || 0) - (right.order || 0));
-}
-
 function alignmentTargetText(alignment, passage, sourceId) {
+  if (
+    alignment.status === "machine-segmented" &&
+    alignment.targets?.[sourceId] &&
+    !textEditFor(passage.id, sourceId)
+  ) {
+    return alignment.targets[sourceId];
+  }
   const currentText = tokenTextFromIds(
     passage,
     sourceId,
@@ -1197,6 +1333,7 @@ function collationHeader(sources, template) {
 function phraseRow(alignment, passage, sources, template, index) {
   const collapsed = state.collapsedUnits.has(alignment.id);
   const active = state.activeAlignment?.id === alignment.id;
+  const generated = alignment.status === "machine-segmented";
   return `
     <section
       class="collation-grid phrase-row ${collapsed ? "collapsed" : ""} ${active ? "active" : ""}"
@@ -1204,7 +1341,8 @@ function phraseRow(alignment, passage, sources, template, index) {
       style="grid-template-columns:${template}"
     >
       <button class="phrase-label" data-toggle-unit="${alignment.id}" type="button">
-        <span class="phrase-index">${passage.number}.${index + 1}</span>
+        <span class="phrase-index">${escapeHtml(alignment.number || `${passage.number}.${index + 1}`)}</span>
+        <span class="phrase-status">${generated ? "projected" : "reviewed"}</span>
         <span class="phrase-title">${escapeHtml(alignment.label)}</span>
         <span class="phrase-toggle" aria-hidden="true">${collapsed ? "+" : "−"}</span>
       </button>
@@ -1225,7 +1363,7 @@ function phraseRow(alignment, passage, sources, template, index) {
           `;
         })
         .join("")}
-      <div class="phrase-note">${escapeHtml(alignment.note)}</div>
+      <div class="phrase-note">${escapeHtml(alignment.note || "")}</div>
     </section>
   `;
 }
@@ -1706,16 +1844,29 @@ function bindEditorControls(reader) {
           (item) => item.verse === passage.number && item.level === level,
         ).length + 1
       }`;
+      const generatedSentence =
+        level === "sentence"
+          ? (passage.sentenceUnits || []).find((unit) =>
+              alignmentsOverlap(unit, { targetTokenIds }),
+            )
+          : null;
       const alignment = {
         id: nextAnnotationId("alignment", passageId),
         verse: passage.number,
-        order: allAlignments().filter(
-          (item) => item.verse === passage.number,
-        ).length + 1,
+        order:
+          generatedSentence?.order ||
+          allAlignments().filter(
+            (item) => item.verse === passage.number,
+          ).length + 1,
+        number: generatedSentence?.number,
         level,
         parentId: form.querySelector("[data-field='alignment-parent']").value,
         status: "editorial",
-        label: label || generatedLabel,
+        label:
+          label ||
+          (generatedSentence
+            ? `Sentence ${generatedSentence.number}`
+            : generatedLabel),
         relation: form.querySelector("[data-field='alignment-relation']").value,
         confidence: form.querySelector("[data-field='alignment-confidence']").value,
         note: form.querySelector("[data-field='alignment-note']").value.trim(),
@@ -1934,7 +2085,14 @@ function renderReader() {
     button.addEventListener("click", () => {
       if (state.view !== "reading") return;
       const panel = button.closest(".source-panel");
+      const passageId = button.closest(".passage-card")?.id;
+      const panelKey = `${passageId}:${panel?.dataset.source}`;
       panel?.classList.toggle("open");
+      if (panel?.classList.contains("open")) {
+        state.openSourcePanels.add(panelKey);
+      } else {
+        state.openSourcePanels.delete(panelKey);
+      }
       const indicator = button.querySelector("[aria-hidden='true']");
       if (indicator) indicator.textContent = panel?.classList.contains("open") ? "−" : "+";
     });
@@ -1942,9 +2100,7 @@ function renderReader() {
 
   reader.querySelectorAll("[data-alignment]").forEach((button) => {
     button.addEventListener("click", () => {
-      const alignment = allAlignments().find(
-        (item) => item.id === button.dataset.alignment,
-      );
+      const alignment = alignmentById(button.dataset.alignment);
       if (!alignment) return;
       state.activeAlignment =
         state.activeAlignment?.id === alignment.id ? null : alignment;
@@ -1956,6 +2112,15 @@ function renderReader() {
   reader.querySelectorAll("[data-toggle-unit]").forEach((button) => {
     button.addEventListener("click", () => {
       const unitId = button.dataset.toggleUnit;
+      if (state.collapsedUnits.has(unitId)) state.collapsedUnits.delete(unitId);
+      else state.collapsedUnits.add(unitId);
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-toggle-reading-unit]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const unitId = button.dataset.toggleReadingUnit;
       if (state.collapsedUnits.has(unitId)) state.collapsedUnits.delete(unitId);
       else state.collapsedUnits.add(unitId);
       renderReader();
@@ -1993,7 +2158,7 @@ function renderReader() {
 }
 
 function renderSourceLedger() {
-  document.querySelector("#sourceLedger").innerHTML = state.corpus.sources
+  const witnesses = state.corpus.sources
     .map(
       (source) => `
         <article class="ledger-entry" style="--source-color:${source.color}">
@@ -2008,6 +2173,24 @@ function renderSourceLedger() {
       `,
     )
     .join("");
+  const alignmentSources = (state.corpus.externalAlignmentSources || [])
+    .map(
+      (source) => `
+        <article class="ledger-entry external-alignment-source">
+          <div class="ledger-topline">
+            <strong>${escapeHtml(source.label)}</strong>
+            <span class="rights-badge unknown">${escapeHtml(source.importStatus.replaceAll("-", " "))}</span>
+          </div>
+          <p>${escapeHtml(source.note)}</p>
+          <p><strong>Method:</strong> ${escapeHtml(source.type.replaceAll("-", " "))}</p>
+          <p><strong>Contact:</strong> ${escapeHtml(source.contact)}</p>
+          <p><a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">Open external record</a></p>
+        </article>
+      `,
+    )
+    .join("");
+  document.querySelector("#sourceLedger").innerHTML =
+    witnesses + alignmentSources;
 }
 
 function renderAccessList(users) {

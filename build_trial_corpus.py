@@ -200,6 +200,249 @@ def candidate_alignments(
                 }
             )
     return candidates
+
+
+SANSKRIT_SENTENCE_BOUNDARY = re.compile(
+    r"(?:\|+|[।॥]+|/+|\n[ \t]*\n+)"
+)
+SANSKRIT_APPARATUS_MARKER = re.compile(
+    r"\(\s*Vvs[_\s-]*\d+\s*\)",
+    re.IGNORECASE,
+)
+
+
+def sanskrit_sentence_spans(text: str) -> list[tuple[int, int]]:
+    spans: list[tuple[int, int]] = []
+    cursor = 0
+    for match in SANSKRIT_SENTENCE_BOUNDARY.finditer(text):
+        raw_start = cursor
+        raw_end = match.end()
+        cursor = raw_end
+        segment = text[raw_start:raw_end]
+        content = SANSKRIT_APPARATUS_MARKER.sub("", segment)
+        content = re.sub(r"[\s|/।॥\d()._-]+", "", content)
+        if not content:
+            if spans and re.search(r"\d", segment):
+                spans[-1] = (spans[-1][0], raw_end)
+            continue
+
+        leading_marker = SANSKRIT_APPARATUS_MARKER.match(
+            text,
+            raw_start,
+        )
+        if leading_marker:
+            raw_start = leading_marker.end()
+        while raw_start < raw_end and text[raw_start].isspace():
+            raw_start += 1
+        while raw_end > raw_start and text[raw_end - 1].isspace():
+            raw_end -= 1
+        if raw_start < raw_end:
+            spans.append((raw_start, raw_end))
+
+    if cursor < len(text):
+        raw_start = cursor
+        raw_end = len(text)
+        segment = text[raw_start:raw_end]
+        content = SANSKRIT_APPARATUS_MARKER.sub("", segment)
+        content = re.sub(r"[\s|/।॥\d()._-]+", "", content)
+        if content:
+            leading_marker = SANSKRIT_APPARATUS_MARKER.match(
+                text,
+                raw_start,
+            )
+            if leading_marker:
+                raw_start = leading_marker.end()
+            while raw_start < raw_end and text[raw_start].isspace():
+                raw_start += 1
+            while raw_end > raw_start and text[raw_end - 1].isspace():
+                raw_end -= 1
+            if raw_start < raw_end:
+                spans.append((raw_start, raw_end))
+    return spans
+
+
+def tokens_overlapping_span(
+    tokens: list[dict[str, object]],
+    start: int,
+    end: int,
+) -> list[dict[str, object]]:
+    return [
+        token
+        for token in tokens
+        if int(token["start"]) < end and int(token["end"]) > start
+    ]
+
+
+def projected_sentence_span(
+    source_tokens: list[dict[str, object]],
+    target_tokens: list[dict[str, object]],
+    sentence_tokens: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    source_lexical = [
+        token
+        for token in source_tokens
+        if is_alignable_token(token, "san_levi_1925")
+    ]
+    target_lexical = [
+        token
+        for token in target_tokens
+        if is_alignable_token(token, "")
+    ]
+    sentence_ids = {str(token["id"]) for token in sentence_tokens}
+    sentence_indexes = [
+        index
+        for index, token in enumerate(source_lexical)
+        if str(token["id"]) in sentence_ids
+    ]
+    if not source_lexical or not target_lexical or not sentence_indexes:
+        return []
+
+    source_count = len(source_lexical)
+    target_count = len(target_lexical)
+    source_start = min(sentence_indexes)
+    source_end = max(sentence_indexes) + 1
+    target_start = round(source_start * target_count / source_count)
+    target_end = round(source_end * target_count / source_count)
+    target_start = min(target_start, target_count - 1)
+    target_end = max(target_start + 1, min(target_end, target_count))
+    return target_lexical[target_start:target_end]
+
+
+def sentence_units_for_passage(
+    passage: dict[str, object],
+    sources: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    sanskrit_witness = passage["texts"]["san_levi_1925"]
+    sanskrit_text = str(sanskrit_witness["text"])
+    sanskrit_tokens = sanskrit_witness["tokens"]
+    units: list[dict[str, object]] = []
+
+    for order, (start, end) in enumerate(
+        sanskrit_sentence_spans(sanskrit_text),
+        start=1,
+    ):
+        sentence_tokens = tokens_overlapping_span(
+            sanskrit_tokens,
+            start,
+            end,
+        )
+        number = f"{passage['number']}.{order}"
+        target_token_ids: dict[str, list[str]] = {
+            "san_levi_1925": [
+                str(token["id"])
+                for token in sentence_tokens
+            ]
+        }
+        targets = {
+            "san_levi_1925": sanskrit_text[start:end],
+        }
+
+        for source in sources:
+            source_id = str(source["id"])
+            if source_id == "san_levi_1925":
+                continue
+            target_witness = passage["texts"][source_id]
+            projected = projected_sentence_span(
+                sanskrit_tokens,
+                target_witness["tokens"],
+                sentence_tokens,
+            )
+            if not projected:
+                continue
+            target_token_ids[source_id] = [
+                str(token["id"])
+                for token in projected
+            ]
+            target_text = str(target_witness["text"])
+            targets[source_id] = target_text[
+                int(projected[0]["start"]):int(projected[-1]["end"])
+            ]
+
+        units.append(
+            {
+                "id": f"sentence-v{passage['number']}-{order:03d}",
+                "verse": passage["number"],
+                "order": order,
+                "number": number,
+                "level": "sentence",
+                "status": "machine-segmented",
+                "confidence": "low",
+                "method": (
+                    "sanskrit-danda-and-paragraph-boundaries"
+                    "+monotonic-proportional-projection-v1"
+                ),
+                "label": f"Sentence {number}",
+                "note": (
+                    "The Sanskrit boundary follows a danda, vertical stroke, slash, "
+                    "or source paragraph break. Other witness spans are provisional "
+                    "positional projections and require scholarly review."
+                ),
+                "targets": targets,
+                "targetTokenIds": target_token_ids,
+                "sourceCharacterSpan": {
+                    "start": start,
+                    "end": end,
+                },
+            }
+        )
+    return units
+
+
+def load_authorized_alignments(
+    path: Path | None,
+    passages: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    if path is None:
+        return []
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    records = payload.get("alignments", [])
+    if not isinstance(records, list):
+        raise ValueError("Authorized alignment import must contain an alignments list.")
+
+    passages_by_number = {
+        int(passage["number"]): passage
+        for passage in passages
+    }
+    imported: list[dict[str, object]] = []
+    for index, record in enumerate(records, start=1):
+        if not isinstance(record, dict):
+            raise ValueError(f"Alignment {index} must be an object.")
+        verse = int(record["verse"])
+        passage = passages_by_number.get(verse)
+        if passage is None:
+            raise ValueError(f"Alignment {index} references unknown verse {verse}.")
+        alignment = {
+            **record,
+            "id": record.get("id", f"authorized-v{verse}-{index:04d}"),
+            "verse": verse,
+            "order": record.get("order", index),
+            "level": record.get("level", "sentence"),
+            "status": record.get("status", "externally-authorized"),
+            "confidence": record.get("confidence", "reviewed"),
+            "relation": record.get("relation", "parallel"),
+            "label": record.get("label", f"Authorized alignment {index}"),
+            "note": record.get(
+                "note",
+                "Imported from an explicitly authorized external export.",
+            ),
+        }
+        target_token_ids = alignment.get("targetTokenIds", {})
+        if not target_token_ids and alignment.get("targets"):
+            target_token_ids = {}
+            for source_id, target in alignment["targets"].items():
+                witness = passage["texts"].get(source_id)
+                if witness is None:
+                    raise ValueError(
+                        f"Alignment {alignment['id']} references unknown source {source_id}."
+                    )
+                target_token_ids[source_id] = alignment_token_ids(
+                    witness["text"],
+                    witness["tokens"],
+                    str(target),
+                )
+        alignment["targetTokenIds"] = target_token_ids
+        imported.append(alignment)
+    return imported
 SANSKRIT_STARTS = {
     1: "vijñaptimātram evedam",
     2: "na deśakālaniyamaḥ",
@@ -644,6 +887,14 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("source_dir", type=Path)
     parser.add_argument("output_path", type=Path)
+    parser.add_argument(
+        "--authorized-alignments",
+        type=Path,
+        help=(
+            "Optional shell-native JSON exported with explicit permission from "
+            "an external alignment provider."
+        ),
+    )
     args = parser.parse_args()
 
     chinese = extract_chinese_table(args.source_dir / "zho_xuangzan.docx")
@@ -689,7 +940,20 @@ def main() -> None:
             }
         )
 
-    alignments = alignment_demo()
+    sources = source_records()
+    for passage in passages:
+        passage["sentenceUnits"] = sentence_units_for_passage(
+            passage,
+            sources,
+        )
+
+    alignments = [
+        *alignment_demo(),
+        *load_authorized_alignments(
+            args.authorized_alignments,
+            passages,
+        ),
+    ]
     passages_by_number = {passage["number"]: passage for passage in passages}
     for alignment in alignments:
         passage = passages_by_number[int(alignment["verse"])]
@@ -702,10 +966,9 @@ def main() -> None:
                 target,
             )
 
-    sources = source_records()
     candidates = candidate_alignments(passages, sources)
     corpus = {
-        "schemaVersion": "0.4.0-trial",
+        "schemaVersion": "0.5.0-trial",
         "work": {
             "id": "vasubandhu-vimsika",
             "title": "Viṃśikā",
@@ -722,6 +985,27 @@ def main() -> None:
         "passages": passages,
         "alignments": alignments,
         "candidateAlignments": candidates,
+        "externalAlignmentSources": [
+            {
+                "id": "dharmanexus-SA_T06_vasvvmsu",
+                "label": "DharmaNexus · SA_T06_vasvvmsu",
+                "url": (
+                    "https://dharmamitra.org/nexus/db/sa/"
+                    "SA_T06_vasvvmsu/text"
+                ),
+                "type": "algorithmic-intertextual-matches",
+                "importStatus": "permission-required",
+                "termsUrl": (
+                    "https://dharmamitra.github.io/"
+                    "dharmamitra-guides/dharmanexus/"
+                ),
+                "contact": "dharmamitra.project@gmail.com",
+                "note": (
+                    "The shell is ready to import an explicitly authorized export. "
+                    "The public DharmaNexus API is not copied into this corpus."
+                ),
+            }
+        ],
     }
 
     args.output_path.parent.mkdir(parents=True, exist_ok=True)

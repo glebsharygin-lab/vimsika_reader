@@ -16,6 +16,21 @@ async function main() {
 
   const passages = await page.locator(".passage-card").count();
   if (passages !== 22) throw new Error(`Expected 22 passages, received ${passages}`);
+  const readingSentenceUnits = await page.locator(
+    "#v1 .source-panel[data-source='san_levi_1925'] .reading-sentence-unit",
+  ).count();
+  if (readingSentenceUnits < 2) {
+    throw new Error("Expected foldable numbered sentence units in Reading");
+  }
+  const firstSentenceNumber = await page
+    .locator(
+      "#v1 .source-panel[data-source='san_levi_1925'] .reading-sentence-number",
+    )
+    .first()
+    .innerText();
+  if (firstSentenceNumber !== "1.1") {
+    throw new Error(`Expected first sentence number 1.1, received ${firstSentenceNumber}`);
+  }
 
   await page.locator("#sidebarToggle").click();
   await page.waitForTimeout(300);
@@ -72,6 +87,14 @@ async function main() {
   if (!revisedWitnessDisplay.includes("SMOKE REVISION")) {
     throw new Error("Expected revised witness text inside Reading");
   }
+  const localDraftStatus = await page
+    .locator(
+      "#v1 .source-panel[data-source='san_levi_1925'] .witness-text-toolbar",
+    )
+    .innerText();
+  if (!localDraftStatus.includes("saved only in this browser")) {
+    throw new Error("Expected clear browser-local draft status");
+  }
   await page.screenshot({
     path: "qa-collaboration-desktop.png",
     fullPage: false,
@@ -82,8 +105,15 @@ async function main() {
   await page.locator("#v15 .passage-header").click();
 
   const phraseRows = await page.locator("#v15 .phrase-row:not(.full-passage-row)").count();
-  if (phraseRows !== 0) {
-    throw new Error(`Expected no pre-authored phrase rows in verse 15, received ${phraseRows}`);
+  if (phraseRows < 2) {
+    throw new Error(`Expected generated sentence rows in verse 15, received ${phraseRows}`);
+  }
+  const firstComparisonNumber = await page
+    .locator("#v15 .phrase-row:not(.full-passage-row) .phrase-index")
+    .first()
+    .innerText();
+  if (firstComparisonNumber !== "15.1") {
+    throw new Error(`Expected first comparison sentence 15.1, received ${firstComparisonNumber}`);
   }
 
   const resizers = await page.locator("#v15 .column-resizer").count();
@@ -129,14 +159,14 @@ async function main() {
 
   const alignmentEditor = page.locator("#v15 .editor-workbench");
   await alignmentEditor.locator("[data-create-alignment='v15']").click();
-  if ((await page.getByText("Sentence correspondence 1", { exact: true }).count()) < 1) {
+  if ((await page.locator("#v15 .editor-alignment-list li").count()) !== 1) {
     throw new Error("Expected saved sentence correspondence");
   }
   const synchronizedRows = await page.locator(
     "#v15 .phrase-row:not(.full-passage-row)",
   ).count();
-  if (synchronizedRows !== 1) {
-    throw new Error("Expected sentence correspondence to become a synchronized row");
+  if (synchronizedRows !== phraseRows) {
+    throw new Error("Expected reviewed sentence correspondence to replace its projected row");
   }
 
   const savedEditorData = await page.evaluate(() =>
@@ -159,7 +189,7 @@ async function main() {
     throw new Error("Expected inline editor to close without losing annotations");
   }
   if (
-    (await page.locator("#v15 .phrase-row:not(.full-passage-row)").count()) !== 1
+    (await page.locator("#v15 .phrase-row:not(.full-passage-row)").count()) !== phraseRows
   ) {
     throw new Error("Expected synchronized row to remain after closing editor");
   }
@@ -210,7 +240,7 @@ async function main() {
     fullPage: true,
   });
 
-  console.log(`passages=${passages} sidebarCollapsed=${sidebarCollapsed} readingTokens=${readingTokens} initialPhraseRows=${phraseRows} synchronizedRows=${synchronizedRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} mobileOverflow=${overflow}`);
+  console.log(`passages=${passages} readingSentenceUnits=${readingSentenceUnits} sidebarCollapsed=${sidebarCollapsed} readingTokens=${readingTokens} initialPhraseRows=${phraseRows} synchronizedRows=${synchronizedRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} mobileOverflow=${overflow}`);
   await browser.close();
   browser = null;
 }
