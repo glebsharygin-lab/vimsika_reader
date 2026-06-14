@@ -8,13 +8,13 @@ existing copies:
 5. styles.css
 6. corpus.js
 
-The new index.html uses asset version 0.12.0 for app.js, analysis.js, and
+The new index.html uses asset version 0.12.1 for app.js, analysis.js, and
 styles.css, plus
 version 0.9.1 for auth-config.js, so GitHub Pages and visitors' browsers fetch
 the current interface and Worker configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.12.0
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.12.1
 
 Expected result:
 - the summary reports 255 numbered sentences;
@@ -29,6 +29,8 @@ Expected result:
 - token clicks open a dictionary-ready lexical inspector.
 - Analysis opens Lexicon, Concordance, Morphology, Syntax, and Statistics;
 - lexical records and CoNLL-U syntax drafts save in the local editorial layer.
+- Sanskrit root verses are bold, including interleaved kārikā fragments;
+- corresponding sentence spans are bold in every aligned witness.
 
 To publish lexical and syntax annotations for collaborators, also replace
 collaboration-worker/src/index.js with the packaged version and redeploy the

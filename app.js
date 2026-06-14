@@ -717,6 +717,106 @@ function renderSummary() {
   `;
 }
 
+const rootVerseTokenCache = new Map();
+
+function normalizedRootToken(value) {
+  return String(value || "").normalize("NFKC").toLocaleLowerCase();
+}
+
+function sanskritRootVerseTokenIds(passage) {
+  const witness = effectiveWitness(passage, "san_levi_1925");
+  const edit = textEditFor(passage.id, "san_levi_1925");
+  const cacheKey = `${passage.id}:${witness.text?.length || 0}:${witness.tokens?.length || 0}:${edit?.updatedAt || "imported"}`;
+  if (rootVerseTokenCache.has(cacheKey)) {
+    return rootVerseTokenCache.get(cacheKey);
+  }
+
+  const witnessTokens = witness.tokens || [];
+  const rootTokens = tokenizeEditedText(
+    passage.root || "",
+    `${passage.id}-root`,
+    "san_levi_1925",
+  ).map((token) => normalizedRootToken(token.text));
+  const verseNumber = String(passage.number);
+  const markerIndex = witnessTokens.findIndex(
+    (token) =>
+      token.text === verseNumber &&
+      /^\s*\|\|/.test((witness.text || "").slice(token.end, token.end + 8)),
+  );
+  const searchableTokens =
+    markerIndex >= 0 ? witnessTokens.slice(0, markerIndex) : witnessTokens;
+  const searchableForms = searchableTokens.map((token) =>
+    normalizedRootToken(token.text),
+  );
+  const rootForms =
+    rootTokens.at(-1) === verseNumber ? rootTokens.slice(0, -1) : rootTokens;
+  const matrix = Array.from({ length: rootForms.length + 1 }, () =>
+    new Uint16Array(searchableForms.length + 1),
+  );
+
+  for (let rootIndex = 1; rootIndex <= rootForms.length; rootIndex += 1) {
+    for (
+      let witnessIndex = 1;
+      witnessIndex <= searchableForms.length;
+      witnessIndex += 1
+    ) {
+      matrix[rootIndex][witnessIndex] =
+        rootForms[rootIndex - 1] === searchableForms[witnessIndex - 1]
+          ? matrix[rootIndex - 1][witnessIndex - 1] + 1
+          : Math.max(
+              matrix[rootIndex - 1][witnessIndex],
+              matrix[rootIndex][witnessIndex - 1],
+            );
+    }
+  }
+
+  const tokenIds = [];
+  let rootIndex = rootForms.length;
+  let witnessIndex = searchableForms.length;
+  while (rootIndex && witnessIndex) {
+    if (rootForms[rootIndex - 1] === searchableForms[witnessIndex - 1]) {
+      tokenIds.push(searchableTokens[witnessIndex - 1].id);
+      rootIndex -= 1;
+      witnessIndex -= 1;
+    } else if (
+      matrix[rootIndex - 1][witnessIndex] >=
+      matrix[rootIndex][witnessIndex - 1]
+    ) {
+      rootIndex -= 1;
+    } else {
+      witnessIndex -= 1;
+    }
+  }
+  tokenIds.reverse();
+  if (markerIndex >= 0) tokenIds.push(witnessTokens[markerIndex].id);
+
+  const result = new Set(tokenIds);
+  rootVerseTokenCache.set(cacheKey, result);
+  return result;
+}
+
+function isRootVerseAlignment(alignment, passage) {
+  const rootTokenIds = sanskritRootVerseTokenIds(passage);
+  return (alignment.targetTokenIds?.san_levi_1925 || []).some((tokenId) =>
+    rootTokenIds.has(tokenId),
+  );
+}
+
+function rootVerseTokenIdsForSource(passage, sourceId) {
+  if (sourceId === "san_levi_1925") {
+    return sanskritRootVerseTokenIds(passage);
+  }
+  return new Set(
+    phraseAlignments(passage)
+      .filter(
+        (alignment) =>
+          alignment.level === "sentence" &&
+          isRootVerseAlignment(alignment, passage),
+      )
+      .flatMap((alignment) => alignment.targetTokenIds?.[sourceId] || []),
+  );
+}
+
 function alignmentRibbon(passage) {
   if (state.view !== "alignment") return "";
   const alignments = allAlignments().filter(
@@ -761,6 +861,7 @@ function tokenizedText(witness, sourceId, passage, tokenIds = null) {
     state.activeAlignment?.targetTokenIds?.[sourceId] || [],
   );
   const selectedIds = new Set(selectedTokenIds(passage.id, sourceId));
+  const rootVerseIds = rootVerseTokenIdsForSource(passage, sourceId);
   const search = state.search.trim().toLocaleLowerCase();
   let output = "";
   let cursor = allowedIds ? tokens[0].start : 0;
@@ -771,6 +872,7 @@ function tokenizedText(witness, sourceId, passage, tokenIds = null) {
   indexedTokens.forEach(({ token, index }) => {
     output += escapeHtml(witness.text.slice(cursor, token.start));
     const classes = ["text-token"];
+    if (rootVerseIds.has(token.id)) classes.push("root-verse-token");
     if (activeIds.has(token.id)) classes.push("alignment-active");
     if (selectedIds.has(token.id)) classes.push("editor-selected");
     if (search && token.text.toLocaleLowerCase().includes(search)) {
@@ -961,8 +1063,9 @@ function readingSentenceList(passage, source, witness) {
           const tokenIds = unit.targetTokenIds?.[source.id] || [];
           const target = alignmentTargetText(unit, passage, source.id);
           const generated = unit.status === "machine-segmented";
+          const rootVerse = isRootVerseAlignment(unit, passage);
           return `
-            <section class="reading-sentence-unit ${collapsed ? "collapsed" : ""}">
+            <section class="reading-sentence-unit ${collapsed ? "collapsed" : ""} ${rootVerse ? "root-verse-unit" : ""}">
               <div class="reading-sentence-header">
                 <button
                   class="reading-sentence-toggle"
@@ -970,7 +1073,7 @@ function readingSentenceList(passage, source, witness) {
                   type="button"
                 >
                   <span class="reading-sentence-number">${escapeHtml(unit.number || unit.label)}</span>
-                  <span class="reading-sentence-status">${generated ? "projected" : "reviewed"}</span>
+                  <span class="reading-sentence-status">${rootVerse ? "root verse" : generated ? "projected" : "reviewed"}</span>
                   <span aria-hidden="true">${collapsed ? "+" : "−"}</span>
                 </button>
                 <button
@@ -1565,15 +1668,16 @@ function phraseRow(alignment, passage, sources, template, index) {
   const collapsed = state.collapsedUnits.has(alignment.id);
   const active = state.activeAlignment?.id === alignment.id;
   const generated = alignment.status === "machine-segmented";
+  const rootVerse = isRootVerseAlignment(alignment, passage);
   return `
     <section
-      class="collation-grid phrase-row ${collapsed ? "collapsed" : ""} ${active ? "active" : ""}"
+      class="collation-grid phrase-row ${collapsed ? "collapsed" : ""} ${active ? "active" : ""} ${rootVerse ? "root-verse-row" : ""}"
       data-alignment-row="${alignment.id}"
       style="grid-template-columns:${template}"
     >
       <button class="phrase-label" data-toggle-unit="${alignment.id}" type="button">
         <span class="phrase-index">${escapeHtml(alignment.number || `${passage.number}.${index + 1}`)}</span>
-        <span class="phrase-status">${generated ? "projected" : "reviewed"}</span>
+        <span class="phrase-status">${rootVerse ? "root verse" : generated ? "projected" : "reviewed"}</span>
         <span class="phrase-title">${escapeHtml(alignment.label)}</span>
         <span class="phrase-toggle" aria-hidden="true">${collapsed ? "+" : "−"}</span>
       </button>

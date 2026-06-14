@@ -488,6 +488,7 @@ button:disabled {
   color: #504b43;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 0.92rem;
+  font-weight: 700;
   line-height: 1.45;
   white-space: pre-line;
   -webkit-box-orient: vertical;
@@ -1000,6 +1001,22 @@ button:disabled {
 
 .phrase-row.active .phrase-label {
   background: #eadba7;
+}
+
+.phrase-row.root-verse-row .phrase-label,
+.reading-sentence-unit.root-verse-unit .reading-sentence-header {
+  background: #e8e0cf;
+}
+
+.phrase-row.root-verse-row .phrase-status,
+.reading-sentence-unit.root-verse-unit .reading-sentence-status {
+  color: #fff;
+  background: #76572c;
+}
+
+.text-token.root-verse-token,
+.root-verse-text {
+  font-weight: 750;
 }
 
 .phrase-note {
