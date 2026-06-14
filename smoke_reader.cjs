@@ -38,13 +38,44 @@ async function main() {
   );
   if (!sidebarReopened) throw new Error("Expected navigation panel to reopen");
 
-  await page.getByRole("button", { name: "Edit annotations" }).click();
+  await page.getByRole("button", { name: "Edit text & annotations" }).click();
   const readingEditor = page.locator("#v1 .editor-workbench.inline-editor");
   if ((await readingEditor.count()) !== 1) {
     throw new Error("Expected inline editor inside Reading");
   }
   const readingTokens = await page.locator("#v1 .source-text .text-token").count();
   if (!readingTokens) throw new Error("Expected selectable tokens inside Reading");
+
+  const sanskritReadingPanel = page.locator(
+    "#v1 .source-panel[data-source='san_levi_1925']",
+  );
+  await sanskritReadingPanel.getByRole("button", { name: "Edit text" }).click();
+  const textEditor = page.locator(
+    "#v1 [data-text-edit-form][data-source-id='san_levi_1925']",
+  );
+  const revisedText =
+    (await textEditor.locator("[data-field='witness-text']").getAttribute("value")) ||
+    (await textEditor.locator("[data-field='witness-text']").textContent()) ||
+    "";
+  await textEditor
+    .locator("[data-field='witness-text']")
+    .fill(`${revisedText}\nSMOKE REVISION`);
+  await textEditor
+    .locator("[data-field='witness-edit-note']")
+    .fill("Browser smoke-test revision");
+  await textEditor.getByRole("button", { name: "Save revised text" }).click();
+  const revisedWitnessDisplay = await page
+    .locator(
+      "#v1 .source-panel[data-source='san_levi_1925'] .witness-text-display",
+    )
+    .innerText();
+  if (!revisedWitnessDisplay.includes("SMOKE REVISION")) {
+    throw new Error("Expected revised witness text inside Reading");
+  }
+  await page.screenshot({
+    path: "qa-collaboration-desktop.png",
+    fullPage: false,
+  });
   await page.getByRole("button", { name: "Finish editing" }).click();
 
   await page.getByRole("button", { name: "Comparison" }).click();
@@ -64,7 +95,7 @@ async function main() {
     path: "qa-reader-desktop.png",
   });
 
-  await page.getByRole("button", { name: "Edit annotations" }).click();
+  await page.getByRole("button", { name: "Edit text & annotations" }).click();
   const editor = page.locator("#v15 .editor-workbench.inline-editor");
   if ((await editor.count()) !== 1) {
     throw new Error("Expected inline editor inside Comparison");
@@ -111,7 +142,11 @@ async function main() {
   const savedEditorData = await page.evaluate(() =>
     JSON.parse(localStorage.getItem("vimsika-editor-annotations-v1")),
   );
-  if (savedEditorData.units.length !== 2 || savedEditorData.alignments.length !== 1) {
+  if (
+    savedEditorData.units.length !== 2 ||
+    savedEditorData.alignments.length !== 1 ||
+    Object.keys(savedEditorData.textEdits).length !== 1
+  ) {
     throw new Error("Expected editor annotations to persist in browser storage");
   }
 

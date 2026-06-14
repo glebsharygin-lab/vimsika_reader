@@ -1,80 +1,58 @@
-# Viṃśikā Parallel Text Laboratory
+# Viṃśikā collaboration service
 
-This workspace contains a local trial reader generated from the supplied Viṃśikā source bundle.
+This Cloudflare Worker provides the secure write layer that GitHub Pages cannot
+provide by itself.
 
-## Included in the pilot
+## Roles
 
-- Verses 1–22 with the supplied commentary.
-- Sanskrit, Tibetan, three Chinese translations, English, French, and German.
-- Foldable reading mode and multi-column comparison mode.
-- Resizable witness columns with saved user preferences.
-- Collapsible navigation panel with a remembered full-width reading mode.
-- Synchronized phrase rows with sticky subsection labels.
-- Stable IDs for 39,965 atomic tokens across all supplied witnesses.
-- An embedded Editor mode plus inline editing in Reading and Comparison.
-- Source provenance and provisional copyright labels.
-- Reproducible extraction from DOCX, PDF, and UTF-8 text sources.
+- `reader`: public/read-only access.
+- `contributor`: edit locally and submit a GitHub pull request.
+- `editor`: contributor permissions plus direct publication.
+- `admin`: editor permissions plus trusted-user management.
 
-All passage boundaries and phrase alignments are provisional and require scholarly review.
-The supplied English draft does not contain verses 5–10; the reader marks those passages explicitly rather than synthesizing missing text.
-The project owner has confirmed that all supplied witnesses are public domain or openly available for public scholarly publication.
+`ADMIN_GITHUB_LOGIN` is always the administrator and cannot be removed through
+the interface.
 
-## Build the corpus
+## GitHub setup
 
-```powershell
-& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
-  '.\scripts\build_trial_corpus.py' `
-  'C:\Users\glebs\OneDrive\Dokumente\Vimsika\Vimsika\texts' `
-  '.\data\corpus.json'
-```
-
-The build also writes `data/corpus.js` and a root-level `corpus.js`. The root-level
-file keeps GitHub Pages deployment simple and allows `index.html` to work directly
-from a `file://` URL.
-
-## Publish with GitHub Pages
-
-Upload `index.html`, `styles.css`, `app.js`, and `corpus.js` to the repository root.
-The `data`, `scripts`, and `reference-source` folders are not required by the
-published reader.
-
-In Comparison or Alignment view, drag the boundary at the right edge of a
-witness heading to change its width. Widths are saved in the browser.
-
-## Embedded editor
-
-In `Reading` or `Comparison`, press `Edit annotations`; alternatively open the
-dedicated `Editor` view. Drag across tokens, or Shift-click, to select spans in
-Sanskrit and corresponding witnesses. The shared editor creates sections,
-subsections, subsubsections, phrases, notes, and reviewed sentence, phrase, or
-token-span correspondences. Sentence and phrase correspondences automatically
-become synchronized rows in Comparison. Editorial annotations are saved in the
-browser and can be exported as `vimsika-editor-annotations.json`.
-
-Tokenization is exhaustive and mechanical. Semantic alignment remains a
-scholarly annotation task: the interface stores reviewed many-to-many links,
-omissions, additions, paraphrases, and uncertain correspondences without
-pretending that automatically suggested equivalences are final.
-
-The build also generates a preliminary candidate mapping for every alignable
-Sanskrit token. These candidates use monotonic proportional projection within
-each passage. They are useful for rapidly locating a probable region in each
-witness, but they are explicitly marked `machine-suggested`, `low` confidence,
-and must not be cited as reviewed philological equivalences. Existing reviewed
-and editorial links always take priority over projected candidates.
-
-In `Alignment` view, click a Sanskrit token or Shift-click a later token to
-extend the selected Sanskrit phrase.
-The Shell creates a live comparison frame containing contextual excerpts for
-every recorded correspondence. Frames can be pinned so several Sanskrit
-phrases remain visible for comparison. Unaligned selections are identified
-explicitly and can then be annotated in `Editor` mode.
-
-## Run the reader
+1. Create a GitHub OAuth App.
+   - Homepage: the published reader URL.
+   - Callback: `https://YOUR-WORKER.workers.dev/auth/callback`
+2. Create a GitHub App with repository permissions:
+   - Contents: read and write.
+   - Pull requests: read and write.
+3. Install the GitHub App on `glebsharygin-lab/vimsika_reader`.
+4. Download its private key and convert it to unencrypted PKCS#8 DER:
 
 ```powershell
-& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
-  -m http.server 8000
+openssl pkcs8 -topk8 -inform PEM -outform DER -in downloaded-key.pem -nocrypt -out github-app-key.der
+[Convert]::ToBase64String([IO.File]::ReadAllBytes("github-app-key.der"))
 ```
 
-Open `http://localhost:8000`.
+## Cloudflare setup
+
+```powershell
+cd collaboration-worker
+npm install
+npx wrangler kv namespace create AUTH
+```
+
+Put the returned namespace ID in `wrangler.toml`, then add secrets:
+
+```powershell
+npx wrangler secret put GITHUB_OAUTH_CLIENT_ID
+npx wrangler secret put GITHUB_OAUTH_CLIENT_SECRET
+npx wrangler secret put GITHUB_APP_ID
+npx wrangler secret put GITHUB_INSTALLATION_ID
+npx wrangler secret put GITHUB_PRIVATE_KEY_BASE64
+npm run deploy
+```
+
+Finally, put the deployed Worker URL in the root `auth-config.js`:
+
+```js
+window.VIMSIKA_AUTH_CONFIG = {
+  apiBaseUrl: "https://vimsika-collaboration.YOUR-SUBDOMAIN.workers.dev",
+  administratorLogin: "glebsharygin-lab",
+};
+```

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Viṃśikā · Parallel Text Laboratory</title>
-  <link rel="stylesheet" href="styles.css?v=0.7.0">
+  <link rel="stylesheet" href="styles.css?v=0.8.0">
 </head>
 <body>
   <div class="app-shell">
@@ -66,6 +66,14 @@
           <h2 id="pageTitle">Parallel reading shell</h2>
         </div>
         <div class="topbar-actions">
+          <div class="account-controls">
+            <button id="accessManagerButton" class="account-button" type="button" hidden>
+              Manage access
+            </button>
+            <button id="authButton" class="account-button" type="button">
+              Local draft mode
+            </button>
+          </div>
           <button
             id="annotationToggle"
             class="annotation-toggle"
@@ -73,7 +81,7 @@
             aria-pressed="false"
           >
             <span aria-hidden="true">✎</span>
-            <span data-editor-toggle-label>Edit annotations</span>
+            <span data-editor-toggle-label>Edit text & annotations</span>
           </button>
           <div class="view-switch" role="group" aria-label="View mode">
             <button class="view-button active" data-view="reading" type="button">Reading</button>
@@ -101,7 +109,41 @@
     <div id="sourceLedger" class="source-ledger"></div>
   </dialog>
 
-  <script src="./corpus.js?v=0.7.0"></script>
-  <script src="app.js?v=0.7.0"></script>
+  <dialog id="accessDialog" class="sources-dialog access-dialog">
+    <div class="dialog-heading">
+      <div>
+        <p class="eyebrow">Administrator controls</p>
+        <h2>Trusted collaborators</h2>
+      </div>
+      <button id="closeAccessDialog" class="icon-button" type="button" aria-label="Close">×</button>
+    </div>
+    <div class="access-manager">
+      <p>
+        Assign access by exact GitHub login. The configured administrator cannot
+        be removed.
+      </p>
+      <form id="accessForm" class="access-form">
+        <label>
+          GitHub login
+          <input id="accessLogin" type="text" required placeholder="scholar-login">
+        </label>
+        <label>
+          Role
+          <select id="accessRole">
+            <option value="contributor">Contributor · submit reviews</option>
+            <option value="editor">Editor · publish directly</option>
+            <option value="reader">Reader · view only</option>
+          </select>
+        </label>
+        <button class="editor-primary" type="submit">Save access</button>
+      </form>
+      <div id="accessStatus" class="editor-status" aria-live="polite"></div>
+      <div id="accessList" class="access-list"></div>
+    </div>
+  </dialog>
+
+  <script src="auth-config.js?v=0.8.0"></script>
+  <script src="./corpus.js?v=0.8.0"></script>
+  <script src="app.js?v=0.8.0"></script>
 </body>
 </html>

@@ -12,7 +12,20 @@ const state = {
   editorData: {
     units: [],
     alignments: [],
+    textEdits: {},
   },
+  publishedEditorData: {
+    units: [],
+    alignments: [],
+    textEdits: {},
+  },
+  auth: {
+    configured: false,
+    token: "",
+    user: null,
+    role: "reader",
+  },
+  activeTextEditor: null,
   tokenSelections: {},
   selectionAnchors: {},
   draggingSelection: null,
@@ -66,7 +79,14 @@ function sourceById(sourceId) {
 }
 
 function allAlignments() {
-  return [...state.corpus.alignments, ...state.editorData.alignments];
+  const alignments = [
+    ...state.corpus.alignments,
+    ...state.publishedEditorData.alignments,
+    ...state.editorData.alignments,
+  ];
+  return [
+    ...new Map(alignments.map((alignment) => [alignment.id, alignment])).values(),
+  ];
 }
 
 function candidateAlignments() {
@@ -87,11 +107,36 @@ function loadEditorData() {
       window.localStorage.getItem("vimsika-editor-annotations-v1") || "null",
     );
     if (stored?.units && stored?.alignments) {
-      state.editorData = stored;
+      state.editorData = {
+        units: stored.units,
+        alignments: stored.alignments,
+        textEdits: stored.textEdits || {},
+      };
     }
   } catch {
-    state.editorData = { units: [], alignments: [] };
+    state.editorData = { units: [], alignments: [], textEdits: {} };
   }
+}
+
+async function loadPublishedEditorData() {
+  try {
+    const response = await fetch(`editorial-overrides.json?ts=${Date.now()}`);
+    if (!response.ok) return;
+    const published = await response.json();
+    const textEdits = Array.isArray(published.textEdits)
+      ? Object.fromEntries(
+          published.textEdits.map((edit) => [
+            textEditKey(edit.passageId, edit.sourceId),
+            edit,
+          ]),
+        )
+      : published.textEdits || {};
+    state.publishedEditorData = {
+      units: published.units || [],
+      alignments: published.alignments || [],
+      textEdits,
+    };
+  } catch {}
 }
 
 function saveEditorData() {
@@ -103,10 +148,26 @@ function saveEditorData() {
   } catch {}
 }
 
+function collaborationConfig() {
+  return window.VIMSIKA_AUTH_CONFIG || {};
+}
+
+function canEdit() {
+  return (
+    !state.auth.configured ||
+    ["contributor", "editor", "admin"].includes(state.auth.role)
+  );
+}
+
+function canPublishDirectly() {
+  return state.auth.configured && ["editor", "admin"].includes(state.auth.role);
+}
+
 function editingEnabled() {
   return (
-    state.view === "editor" ||
-    (state.inlineEditing && ["reading", "comparison"].includes(state.view))
+    canEdit() &&
+    (state.view === "editor" ||
+      (state.inlineEditing && ["reading", "comparison"].includes(state.view)))
   );
 }
 
@@ -128,7 +189,220 @@ function updateInlineEditorToggle() {
   toggle.classList.toggle("active", active);
   toggle.setAttribute("aria-pressed", String(active));
   const label = toggle.querySelector("[data-editor-toggle-label]");
-  if (label) label.textContent = active ? "Finish editing" : "Edit annotations";
+  if (label) {
+    label.textContent = !canEdit()
+      ? "Sign in to edit"
+      : active
+        ? "Finish editing"
+        : "Edit text & annotations";
+  }
+}
+
+function apiUrl(path) {
+  return `${collaborationConfig().apiBaseUrl.replace(/\/$/, "")}${path}`;
+}
+
+async function apiRequest(path, options = {}) {
+  const headers = new Headers(options.headers || {});
+  headers.set("Accept", "application/json");
+  if (options.body) headers.set("Content-Type", "application/json");
+  if (state.auth.token) {
+    headers.set("Authorization", `Bearer ${state.auth.token}`);
+  }
+  const response = await fetch(apiUrl(path), { ...options, headers });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(payload.error || `Request failed: ${response.status}`);
+  }
+  return payload;
+}
+
+function startSignIn() {
+  if (!state.auth.configured) return;
+  const returnTo = `${window.location.origin}${window.location.pathname}`;
+  window.location.href = `${apiUrl("/auth/login")}?return_to=${encodeURIComponent(returnTo)}`;
+}
+
+function updateAuthControls() {
+  const authButton = document.querySelector("#authButton");
+  const accessButton = document.querySelector("#accessManagerButton");
+  if (!authButton || !accessButton) return;
+
+  if (!state.auth.configured) {
+    authButton.textContent = "Local draft mode";
+    authButton.title =
+      "Configure auth-config.js and deploy the collaboration service to enable trusted publishing.";
+    accessButton.hidden = true;
+  } else if (state.auth.user) {
+    authButton.textContent = `${state.auth.user.login} · ${state.auth.role}`;
+    authButton.title = "Sign out";
+    accessButton.hidden = state.auth.role !== "admin";
+  } else {
+    authButton.textContent = "Sign in with GitHub";
+    authButton.title = "Trusted collaborators can edit and publish";
+    accessButton.hidden = true;
+  }
+
+  document.querySelectorAll("[data-view='editor']").forEach((button) => {
+    button.classList.toggle("restricted", !canEdit());
+    button.title = canEdit() ? "" : "Sign in as a trusted collaborator";
+  });
+  updateInlineEditorToggle();
+}
+
+async function initializeAuth() {
+  const config = collaborationConfig();
+  state.auth.configured = Boolean(config.apiBaseUrl);
+  if (!state.auth.configured) {
+    updateAuthControls();
+    return;
+  }
+
+  const url = new URL(window.location.href);
+  const exchangeCode = url.searchParams.get("vimsika_exchange");
+  if (exchangeCode) {
+    try {
+      const session = await apiRequest("/auth/exchange", {
+        method: "POST",
+        body: JSON.stringify({ code: exchangeCode }),
+      });
+      state.auth.token = session.token;
+      window.localStorage.setItem("vimsika-auth-token", session.token);
+    } catch {
+      state.auth.token = "";
+      window.localStorage.removeItem("vimsika-auth-token");
+    } finally {
+      url.searchParams.delete("vimsika_exchange");
+      window.history.replaceState({}, "", url);
+    }
+  } else {
+    state.auth.token =
+      window.localStorage.getItem("vimsika-auth-token") || "";
+  }
+
+  if (state.auth.token) {
+    try {
+      const session = await apiRequest("/api/me");
+      state.auth.user = session.user;
+      state.auth.role = session.role;
+    } catch {
+      state.auth.token = "";
+      state.auth.user = null;
+      state.auth.role = "reader";
+      window.localStorage.removeItem("vimsika-auth-token");
+    }
+  }
+  updateAuthControls();
+}
+
+async function signOut() {
+  if (state.auth.token) {
+    apiRequest("/auth/logout", { method: "POST" }).catch(() => {});
+  }
+  state.auth.token = "";
+  state.auth.user = null;
+  state.auth.role = "reader";
+  state.inlineEditing = false;
+  state.activeTextEditor = null;
+  window.localStorage.removeItem("vimsika-auth-token");
+  updateAuthControls();
+  renderReader();
+}
+
+function textEditKey(passageId, sourceId) {
+  return `${passageId}:${sourceId}`;
+}
+
+function textEditFor(passageId, sourceId) {
+  const key = textEditKey(passageId, sourceId);
+  return (
+    state.editorData.textEdits[key] ||
+    state.publishedEditorData.textEdits[key] ||
+    null
+  );
+}
+
+function localTextEditFor(passageId, sourceId) {
+  return state.editorData.textEdits[textEditKey(passageId, sourceId)] || null;
+}
+
+function publishedTextEditFor(passageId, sourceId) {
+  return (
+    state.publishedEditorData.textEdits[textEditKey(passageId, sourceId)] || null
+  );
+}
+
+function isCjk(character) {
+  const codepoint = character.codePointAt(0);
+  return (
+    (codepoint >= 0x3400 && codepoint <= 0x4dbf) ||
+    (codepoint >= 0x4e00 && codepoint <= 0x9fff) ||
+    (codepoint >= 0xf900 && codepoint <= 0xfaff)
+  );
+}
+
+function isWordCharacter(character) {
+  return /[\p{L}\p{M}\p{N}]/u.test(character);
+}
+
+function tokenizeEditedText(text, passageId, sourceId) {
+  const tokens = [];
+  let index = 0;
+  while (index < text.length) {
+    const character = text[index];
+    let end;
+    let type;
+
+    if (isCjk(character)) {
+      end = index + 1;
+      type = "character";
+    } else if (isWordCharacter(character)) {
+      end = index + 1;
+      while (end < text.length) {
+        const nextCharacter = text[end];
+        if (isWordCharacter(nextCharacter)) {
+          end += 1;
+          continue;
+        }
+        if (
+          ["'", "’", "-", "‐", "‑"].includes(nextCharacter) &&
+          end + 1 < text.length &&
+          isWordCharacter(text[end + 1])
+        ) {
+          end += 1;
+          continue;
+        }
+        break;
+      }
+      type = sourceId === "tib_derge" ? "syllable" : "word";
+    } else {
+      index += 1;
+      continue;
+    }
+
+    const tokenNumber = String(tokens.length + 1).padStart(5, "0");
+    tokens.push({
+      id: `${passageId}-${sourceId}-t${tokenNumber}`,
+      text: text.slice(index, end),
+      start: index,
+      end,
+      type,
+    });
+    index = end;
+  }
+  return tokens;
+}
+
+function effectiveWitness(passage, sourceId) {
+  const witness = passage.texts[sourceId] || {};
+  const edit = textEditFor(passage.id, sourceId);
+  if (!edit) return witness;
+  return {
+    ...witness,
+    text: edit.text,
+    tokens: tokenizeEditedText(edit.text, passage.id, sourceId),
+    editoriallyEdited: true,
+  };
 }
 
 function selectionKey(passageId, sourceId) {
@@ -151,7 +425,7 @@ function selectionsForPassage(passageId) {
 }
 
 function tokenTextFromIds(passage, sourceId, tokenIds) {
-  const witness = passage.texts[sourceId];
+  const witness = effectiveWitness(passage, sourceId);
   if (!witness || !tokenIds?.length) return "";
   const selected = witness.tokens.filter((token) => tokenIds.includes(token.id));
   if (!selected.length) return "";
@@ -196,7 +470,7 @@ function alignedTokenIdsForSource(alignments, sourceId) {
 }
 
 function contextSnippet(passage, sourceId, tokenIds) {
-  const witness = passage.texts[sourceId];
+  const witness = effectiveWitness(passage, sourceId);
   if (!witness || !tokenIds.length) return "";
   const selected = witness.tokens.filter((token) => tokenIds.includes(token.id));
   if (!selected.length) return "";
@@ -328,8 +602,10 @@ function renderSummary() {
   const tokens = state.corpus.passages.reduce(
     (passageTotal, passage) =>
       passageTotal +
-      Object.values(passage.texts).reduce(
-        (witnessTotal, witness) => witnessTotal + (witness.tokens?.length || 0),
+      state.corpus.sources.reduce(
+        (witnessTotal, source) =>
+          witnessTotal +
+          (effectiveWitness(passage, source.id).tokens?.length || 0),
         0,
       ),
     0,
@@ -423,8 +699,80 @@ function tokenizedText(witness, sourceId, passage) {
   return output;
 }
 
+function witnessTextEditor(passage, source, witness) {
+  const edit = textEditFor(passage.id, source.id);
+  const localEdit = localTextEditFor(passage.id, source.id);
+  const publishedEdit = publishedTextEditFor(passage.id, source.id);
+  const key = textEditKey(passage.id, source.id);
+  const active = state.activeTextEditor === key;
+  if (active) {
+    return `
+      <form
+        class="witness-text-editor"
+        data-text-edit-form
+        data-passage-id="${passage.id}"
+        data-source-id="${source.id}"
+      >
+        <label>
+          Edit ${escapeHtml(source.label)}
+          <textarea data-field="witness-text" rows="14">${escapeHtml(witness.text || "")}</textarea>
+        </label>
+        <label>
+          Revision note (optional)
+          <textarea
+            data-field="witness-edit-note"
+            rows="2"
+            placeholder="e.g. corrected OCR against p. 12"
+          >${escapeHtml(edit?.note || "")}</textarea>
+        </label>
+        <p>
+          Saving retokenizes this witness. Existing links remain, but any affected
+          alignments should be reviewed.
+        </p>
+        <div class="witness-text-actions">
+          <button class="editor-primary" type="submit">Save revised text</button>
+          <button data-cancel-text-edit type="button">Cancel</button>
+        </div>
+      </form>
+    `;
+  }
+
+  return `
+    <div class="witness-text-toolbar">
+      <span class="${edit ? "locally-edited" : ""}">
+        ${
+          localEdit
+            ? `Unpublished draft${localEdit.updatedAt ? ` · ${new Date(localEdit.updatedAt).toLocaleString()}` : ""}`
+            : publishedEdit
+              ? `Published revision${publishedEdit.updatedAt ? ` · ${new Date(publishedEdit.updatedAt).toLocaleString()}` : ""}`
+            : "Imported text"
+        }
+      </span>
+      <div>
+        <button
+          data-start-text-edit
+          data-passage-id="${passage.id}"
+          data-source-id="${source.id}"
+          type="button"
+        >Edit text</button>
+        ${
+          localEdit
+            ? `<button
+                data-revert-text-edit
+                data-passage-id="${passage.id}"
+                data-source-id="${source.id}"
+                type="button"
+              >Discard draft</button>`
+            : ""
+        }
+      </div>
+    </div>
+    <div class="witness-text-display">${tokenizedText(witness, source.id, passage)}</div>
+  `;
+}
+
 function sourcePanel(source, passage) {
-  const witness = passage.texts[source.id] || {};
+  const witness = effectiveWitness(passage, source.id);
   const text = witness.text || "";
   const unavailable = witness.status === "not-present-in-supplied-source";
   const open = state.view !== "reading" || source.role === "edition";
@@ -445,7 +793,7 @@ function sourcePanel(source, passage) {
         unavailable
           ? escapeHtml(witness.note)
           : editingEnabled()
-            ? tokenizedText(witness, source.id, passage)
+            ? witnessTextEditor(passage, source, witness)
             : highlightedText(text, source.id, passage.number)
       }</div>
     </article>
@@ -463,12 +811,12 @@ function phraseAlignments(passage) {
 }
 
 function alignmentTargetText(alignment, passage, sourceId) {
-  if (alignment.targets?.[sourceId]) return alignment.targets[sourceId];
-  return tokenTextFromIds(
+  const currentText = tokenTextFromIds(
     passage,
     sourceId,
     alignment.targetTokenIds?.[sourceId] || [],
   );
+  return currentText || alignment.targets?.[sourceId] || "";
 }
 
 function correspondenceFrame(frame, passage, sources, live = false) {
@@ -588,9 +936,17 @@ function comparisonFrames(passage, sources) {
 }
 
 function editorUnitsForPassage(passageId) {
-  return state.editorData.units
+  const units = [
+    ...state.publishedEditorData.units,
+    ...state.editorData.units,
+  ];
+  return [
+    ...new Map(units.map((unit) => [unit.id, unit])).values(),
+  ]
     .filter((unit) => unit.passageId === passageId)
-    .sort((left, right) => left.createdAt.localeCompare(right.createdAt));
+    .sort((left, right) =>
+      (left.createdAt || "").localeCompare(right.createdAt || ""),
+    );
 }
 
 function renderUnitTree(passageId, parentId = "") {
@@ -608,7 +964,11 @@ function renderUnitTree(passageId, parentId = "") {
                 <span class="editor-level">${escapeHtml(unit.level)}</span>
                 <strong>${escapeHtml(unit.label)}</strong>
                 <span class="editor-anchor-count">${Object.values(unit.targetTokenIds || {}).flat().length} tokens</span>
-                <button data-delete-unit="${unit.id}" type="button" aria-label="Delete ${escapeHtml(unit.label)}">×</button>
+                ${
+                  state.editorData.units.some((item) => item.id === unit.id)
+                    ? `<button data-delete-unit="${unit.id}" type="button" aria-label="Delete ${escapeHtml(unit.label)}">×</button>`
+                    : '<span class="published-label">published</span>'
+                }
               </div>
               ${unit.note ? `<p>${escapeHtml(unit.note)}</p>` : ""}
               ${renderUnitTree(passageId, unit.id)}
@@ -617,6 +977,24 @@ function renderUnitTree(passageId, parentId = "") {
         )
         .join("")}
     </ol>
+  `;
+}
+
+function publicationButtons() {
+  if (!state.auth.configured) {
+    return '<span class="publishing-note">Local drafts only · publishing service not configured</span>';
+  }
+  if (!state.auth.user) {
+    return '<button data-sign-in type="button">Sign in to publish</button>';
+  }
+  if (!canEdit()) return "";
+  return `
+    <button data-publish-editorial="review" type="button">Submit all drafts for review</button>
+    ${
+      canPublishDirectly()
+        ? '<button data-publish-editorial="direct" type="button">Publish all drafts</button>'
+        : ""
+    }
   `;
 }
 
@@ -630,6 +1008,9 @@ function editorWorkbench(passage) {
   const customAlignments = state.editorData.alignments.filter(
     (alignment) => alignment.verse === passage.number,
   );
+  const textEditCount = Object.values(state.editorData.textEdits).filter(
+    (edit) => edit.passageId === passage.id,
+  ).length;
   const inline = state.view !== "editor";
   return `
     <section class="editor-workbench ${inline ? "inline-editor" : ""}" data-editor-passage="${passage.id}">
@@ -641,6 +1022,7 @@ function editorWorkbench(passage) {
         <div class="editor-actions">
           <button data-clear-selection="${passage.id}" type="button">Clear token selection</button>
           <button data-export-editor type="button">Export annotations</button>
+          ${publicationButtons()}
         </div>
       </div>
 
@@ -651,6 +1033,7 @@ function editorWorkbench(passage) {
       <div class="editor-selection-summary">
         <strong>${selectionCount} selected tokens</strong>
         <span>${Object.keys(selections).length} witnesses represented</span>
+        <span>${textEditCount} revised witness text${textEditCount === 1 ? "" : "s"}</span>
       </div>
 
       <div class="editor-forms">
@@ -864,14 +1247,16 @@ function fullPassageRow(passage, sources, template, collapsedByDefault) {
       </button>
       ${sources
         .map((source) => {
-          const witness = passage.texts[source.id] || {};
+          const witness = effectiveWitness(passage, source.id);
           const unavailable = witness.status === "not-present-in-supplied-source";
           return `
             <div class="phrase-cell full-text-cell" data-source="${source.id}">
               ${
                 unavailable
                   ? `<span class="alignment-gap">${escapeHtml(witness.note)}</span>`
-                  : state.view === "alignment" || editingEnabled()
+                  : editingEnabled()
+                    ? witnessTextEditor(passage, source, witness)
+                    : state.view === "alignment"
                     ? tokenizedText(witness, source.id, passage)
                     : highlightedText(witness.text || "", source.id, passage.number)
               }
@@ -1009,7 +1394,7 @@ function bindColumnResizers(reader) {
 
 function setTokenRange(passageId, sourceId, startIndex, endIndex) {
   const passage = passageById(passageId);
-  const tokens = passage?.texts[sourceId]?.tokens || [];
+  const tokens = passage ? effectiveWitness(passage, sourceId).tokens || [] : [];
   const lower = Math.min(startIndex, endIndex);
   const upper = Math.max(startIndex, endIndex);
   state.tokenSelections[selectionKey(passageId, sourceId)] = tokens
@@ -1168,11 +1553,12 @@ function deleteUnitAndDescendants(unitId) {
 
 function exportEditorAnnotations() {
   const payload = {
-    schemaVersion: "0.2.0-editorial",
+    schemaVersion: "0.3.0-editorial",
     workId: state.corpus.work.id,
     exportedAt: new Date().toISOString(),
     units: state.editorData.units,
     alignments: state.editorData.alignments,
+    textEdits: Object.values(state.editorData.textEdits),
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], {
     type: "application/json",
@@ -1182,6 +1568,82 @@ function exportEditorAnnotations() {
   link.download = "vimsika-editor-annotations.json";
   link.click();
   URL.revokeObjectURL(link.href);
+}
+
+function localEditorialPayload() {
+  return {
+    units: state.editorData.units,
+    alignments: state.editorData.alignments,
+    textEdits: state.editorData.textEdits,
+  };
+}
+
+function localEditorialChangeCount() {
+  return (
+    state.editorData.units.length +
+    state.editorData.alignments.length +
+    Object.keys(state.editorData.textEdits).length
+  );
+}
+
+function mergePublishedEditorialData() {
+  state.publishedEditorData.units = [
+    ...new Map(
+      [
+        ...state.publishedEditorData.units,
+        ...state.editorData.units,
+      ].map((unit) => [unit.id, unit]),
+    ).values(),
+  ];
+  state.publishedEditorData.alignments = [
+    ...new Map(
+      [
+        ...state.publishedEditorData.alignments,
+        ...state.editorData.alignments,
+      ].map((alignment) => [alignment.id, alignment]),
+    ).values(),
+  ];
+  state.publishedEditorData.textEdits = {
+    ...state.publishedEditorData.textEdits,
+    ...state.editorData.textEdits,
+  };
+  state.editorData = { units: [], alignments: [], textEdits: {} };
+  saveEditorData();
+}
+
+async function publishEditorialData(mode, panel) {
+  if (!localEditorialChangeCount()) {
+    editorStatus(panel, "There are no unpublished changes.", true);
+    return;
+  }
+  editorStatus(
+    panel,
+    mode === "direct" ? "Publishing changes…" : "Creating a review request…",
+  );
+  try {
+    const result = await apiRequest("/api/publish", {
+      method: "POST",
+      body: JSON.stringify({
+        mode,
+        message:
+          mode === "direct"
+            ? "Publish editorial changes from Viṃśikā shell"
+            : "Submit editorial changes from Viṃśikā shell",
+        editorial: localEditorialPayload(),
+      }),
+    });
+    if (mode === "direct") mergePublishedEditorialData();
+    editorStatus(
+      panel,
+      result.url
+        ? `${result.message} ${result.url}`
+        : result.message || "Editorial changes saved.",
+    );
+    renderSummary();
+    if (mode === "direct") renderReader();
+  } catch (error) {
+    editorStatus(panel, error.message, true);
+  }
 }
 
 function bindEditorControls(reader) {
@@ -1311,6 +1773,98 @@ function bindEditorControls(reader) {
   reader.querySelectorAll("[data-export-editor]").forEach((button) => {
     button.addEventListener("click", exportEditorAnnotations);
   });
+  reader.querySelectorAll("[data-sign-in]").forEach((button) => {
+    button.addEventListener("click", startSignIn);
+  });
+  reader.querySelectorAll("[data-publish-editorial]").forEach((button) => {
+    button.addEventListener("click", () => {
+      publishEditorialData(
+        button.dataset.publishEditorial,
+        button.closest(".editor-workbench"),
+      );
+    });
+  });
+}
+
+function clearSourceSelection(passageId, sourceId) {
+  delete state.tokenSelections[selectionKey(passageId, sourceId)];
+  delete state.selectionAnchors[selectionKey(passageId, sourceId)];
+}
+
+function bindTextEditingControls(reader) {
+  reader.querySelectorAll("[data-start-text-edit]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.activeTextEditor = textEditKey(
+        button.dataset.passageId,
+        button.dataset.sourceId,
+      );
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-cancel-text-edit]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.activeTextEditor = null;
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-text-edit-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const passageId = form.dataset.passageId;
+      const sourceId = form.dataset.sourceId;
+      const passage = passageById(passageId);
+      const source = sourceById(sourceId);
+      const text = form.querySelector("[data-field='witness-text']").value;
+      const note = form
+        .querySelector("[data-field='witness-edit-note']")
+        .value.trim();
+      const originalText = passage.texts[sourceId]?.text || "";
+      const publishedText =
+        publishedTextEditFor(passageId, sourceId)?.text || originalText;
+      const key = textEditKey(passageId, sourceId);
+
+      if (text === publishedText) {
+        delete state.editorData.textEdits[key];
+      } else {
+        state.editorData.textEdits[key] = {
+          id:
+            state.editorData.textEdits[key]?.id ||
+            nextAnnotationId("text-edit", passageId),
+          passageId,
+          verse: passage.number,
+          sourceId,
+          sourceLabel: source.label,
+          text,
+          originalText,
+          note,
+          updatedAt: new Date().toISOString(),
+        };
+      }
+
+      clearSourceSelection(passageId, sourceId);
+      state.activeAlignment = null;
+      state.activeTextEditor = null;
+      saveEditorData();
+      renderSummary();
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-revert-text-edit]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const passageId = button.dataset.passageId;
+      const sourceId = button.dataset.sourceId;
+      delete state.editorData.textEdits[textEditKey(passageId, sourceId)];
+      clearSourceSelection(passageId, sourceId);
+      state.activeAlignment = null;
+      state.activeTextEditor = null;
+      saveEditorData();
+      renderSummary();
+      renderReader();
+    });
+  });
 }
 
 function bindFrameControls(reader) {
@@ -1432,6 +1986,7 @@ function renderReader() {
   });
 
   bindColumnResizers(reader);
+  bindTextEditingControls(reader);
   bindTokenInteractions(reader);
   bindEditorControls(reader);
   bindFrameControls(reader);
@@ -1455,6 +2010,63 @@ function renderSourceLedger() {
     .join("");
 }
 
+function renderAccessList(users) {
+  const list = document.querySelector("#accessList");
+  if (!users.length) {
+    list.innerHTML = '<p class="editor-empty">No additional trusted users yet.</p>';
+    return;
+  }
+  list.innerHTML = `
+    <ol>
+      ${users
+        .map(
+          (user) => `
+            <li>
+              <strong>${escapeHtml(user.login)}</strong>
+              <span>${escapeHtml(user.role)}</span>
+              ${
+                user.fixed
+                  ? '<small>administrator</small>'
+                  : `<button data-remove-access="${escapeHtml(user.login)}" type="button">Remove</button>`
+              }
+            </li>
+          `,
+        )
+        .join("")}
+    </ol>
+  `;
+  list.querySelectorAll("[data-remove-access]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const status = document.querySelector("#accessStatus");
+      try {
+        await apiRequest(
+          `/api/users/${encodeURIComponent(button.dataset.removeAccess)}`,
+          { method: "DELETE" },
+        );
+        status.textContent = "Access removed.";
+        await loadAccessList();
+      } catch (error) {
+        status.textContent = error.message;
+        status.classList.add("error");
+      }
+    });
+  });
+}
+
+async function loadAccessList() {
+  const status = document.querySelector("#accessStatus");
+  status.textContent = "Loading collaborators…";
+  status.classList.remove("error");
+  try {
+    const payload = await apiRequest("/api/users");
+    renderAccessList(payload.users || []);
+    status.textContent = "";
+  } catch (error) {
+    status.textContent = error.message;
+    status.classList.add("error");
+  }
+}
+
 function bindControls() {
   document.querySelector("#sidebarToggle").addEventListener("click", () => {
     setSidebarCollapsed(true);
@@ -1462,8 +2074,18 @@ function bindControls() {
   document.querySelector("#sidebarOpen").addEventListener("click", () => {
     setSidebarCollapsed(false);
   });
+  document.querySelector("#authButton").addEventListener("click", () => {
+    if (!state.auth.configured) return;
+    if (state.auth.user) signOut();
+    else startSignIn();
+  });
   document.querySelector("#annotationToggle").addEventListener("click", () => {
+    if (!canEdit()) {
+      startSignIn();
+      return;
+    }
     state.inlineEditing = !state.inlineEditing;
+    if (!state.inlineEditing) state.activeTextEditor = null;
     try {
       window.localStorage.setItem(
         "vimsika-inline-editing",
@@ -1476,8 +2098,13 @@ function bindControls() {
 
   document.querySelectorAll(".view-button").forEach((button) => {
     button.addEventListener("click", () => {
+      if (button.dataset.view === "editor" && !canEdit()) {
+        startSignIn();
+        return;
+      }
       state.view = button.dataset.view;
       state.activeAlignment = null;
+      state.activeTextEditor = null;
       document.querySelectorAll(".view-button").forEach((item) => {
         item.classList.toggle("active", item === button);
       });
@@ -1512,6 +2139,40 @@ function bindControls() {
   dialog.addEventListener("click", (event) => {
     if (event.target === dialog) dialog.close();
   });
+
+  const accessDialog = document.querySelector("#accessDialog");
+  document
+    .querySelector("#accessManagerButton")
+    .addEventListener("click", async () => {
+      accessDialog.showModal();
+      await loadAccessList();
+    });
+  document
+    .querySelector("#closeAccessDialog")
+    .addEventListener("click", () => accessDialog.close());
+  accessDialog.addEventListener("click", (event) => {
+    if (event.target === accessDialog) accessDialog.close();
+  });
+  document.querySelector("#accessForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const status = document.querySelector("#accessStatus");
+    status.classList.remove("error");
+    try {
+      await apiRequest("/api/users", {
+        method: "POST",
+        body: JSON.stringify({
+          login: document.querySelector("#accessLogin").value.trim(),
+          role: document.querySelector("#accessRole").value,
+        }),
+      });
+      event.target.reset();
+      status.textContent = "Access saved.";
+      await loadAccessList();
+    } catch (error) {
+      status.textContent = error.message;
+      status.classList.add("error");
+    }
+  });
 }
 
 async function init() {
@@ -1532,8 +2193,10 @@ async function init() {
   loadSidebarState();
   loadEditorData();
   loadInlineEditingState();
+  await loadPublishedEditorData();
+  await initializeAuth();
   applySidebarState();
-  updateInlineEditorToggle();
+  updateAuthControls();
 
   const hasTokenData = state.corpus.passages.some((passage) =>
     Object.values(passage.texts).some((witness) => witness.tokens?.length),

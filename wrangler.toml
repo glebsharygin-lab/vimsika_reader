@@ -1,0 +1,15 @@
+name = "vimsika-collaboration"
+main = "src/index.js"
+compatibility_date = "2026-06-14"
+
+[vars]
+SITE_URL = "https://glebsharygin-lab.github.io/vimsika_reader"
+ADMIN_GITHUB_LOGIN = "glebsharygin-lab"
+GITHUB_OWNER = "glebsharygin-lab"
+GITHUB_REPO = "vimsika_reader"
+GITHUB_DEFAULT_BRANCH = "main"
+GITHUB_EDITORIAL_PATH = "editorial-overrides.json"
+
+[[kv_namespaces]]
+binding = "AUTH"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
