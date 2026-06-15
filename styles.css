@@ -2394,6 +2394,16 @@ mark {
   background: #dceee4;
 }
 
+.rights-badge.cc-by-sa {
+  color: #24536b;
+  background: #dcebf2;
+}
+
+.rights-badge.cleared-research {
+  color: #594177;
+  background: #e8e0f1;
+}
+
 .rights-badge.restricted {
   color: #7b342d;
   background: #f4dfdc;

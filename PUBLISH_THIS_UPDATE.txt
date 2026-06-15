@@ -8,15 +8,20 @@ existing copies:
 5. styles.css
 6. corpus.js
 
-The new index.html uses asset version 0.12.1 for app.js, analysis.js, and
-styles.css, plus
+The new index.html uses asset version 0.13.0 for app.js, analysis.js,
+styles.css, and corpus.js, plus
 version 0.9.1 for auth-config.js, so GitHub Pages and visitors' browsers fetch
 the current interface and Worker configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.12.1
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.13.0
 
 Expected result:
+- Sources & rights lists 11 witnesses, including Silk 2016, Anacker 2005,
+  and Tola–Dragonetti 2004;
+- Silk 2016 is the English witness visible by default;
+- all three new English witnesses contain verses 1–22 with commentary;
+- the summary reports 55,987 addressable tokens;
 - the summary reports 255 numbered sentences;
 - verse 1 contains foldable units 1.1 through 1.9;
 - every opened witness displays corresponding numbered units;
