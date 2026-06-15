@@ -1,3 +1,9 @@
+const APP_BUILD_VERSION = (() => {
+  const scriptUrl = document.currentScript?.src;
+  if (!scriptUrl) return "development";
+  return new URL(scriptUrl, window.location.href).searchParams.get("v") || "development";
+})();
+
 const state = {
   corpus: null,
   selectedSources: new Set(),
@@ -2834,6 +2840,9 @@ async function init() {
     if (!response.ok) throw new Error(`Corpus request failed: ${response.status}`);
     state.corpus = await response.json();
   }
+  document.querySelector("#buildVersion").textContent = APP_BUILD_VERSION;
+  document.querySelector("#corpusSchemaVersion").textContent =
+    state.corpus.schemaVersion || "unversioned";
   state.selectedSources = new Set([
     "san_levi_1925",
     "tib_derge",

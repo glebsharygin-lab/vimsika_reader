@@ -154,9 +154,28 @@ button:disabled {
   font-size: 2.45rem;
 }
 
-.brand p:last-child {
+.brand-description {
   margin: 8px 0 0;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.build-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 14px 0 0;
+  padding: 5px 9px;
+  color: rgba(255, 255, 255, 0.74);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  font-size: 0.67rem;
+  font-weight: 650;
+  letter-spacing: 0.035em;
+}
+
+.build-badge span:not([aria-hidden]) {
+  color: white;
 }
 
 .eyebrow,

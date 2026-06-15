@@ -8,15 +8,16 @@ existing copies:
 5. styles.css
 6. corpus.js
 
-The new index.html uses asset version 0.14.0 for app.js, analysis.js,
+The new index.html uses asset version 0.14.1 for app.js, analysis.js,
 styles.css, and corpus.js, plus
 version 0.9.1 for auth-config.js, so GitHub Pages and visitors' browsers fetch
 the current interface and Worker configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.14.0
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.14.1
 
 Expected result:
+- the sidebar displays `Build 0.14.1 · Corpus 0.6.0-trial`;
 - Sources & rights lists 17 witnesses;
 - the witness selector includes Sanskrit editions by Silk, Tola–Dragonetti,
   Ruzsa–Szegedi, and Balcerowicz–Nowakowska;
