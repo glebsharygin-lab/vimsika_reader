@@ -8,6 +8,12 @@ async function main() {
     executablePath: "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   });
   const page = await browser.newPage({ viewport: { width: 1440, height: 1050 } });
+  await page.route("**/auth-config.js*", (route) =>
+    route.fulfill({
+      contentType: "application/javascript",
+      body: "window.VIMSIKA_AUTH_CONFIG = {};",
+    }),
+  );
 
   await page.goto("http://127.0.0.1:8765", { waitUntil: "networkidle" });
   await page.evaluate(() => localStorage.clear());
@@ -16,6 +22,47 @@ async function main() {
 
   const passages = await page.locator(".passage-card").count();
   if (passages !== 22) throw new Error(`Expected 22 passages, received ${passages}`);
+  const additionalWitnesses = [
+    "san_silk_2016",
+    "san_tola_dragonetti_2004",
+    "san_ruzsa_szegedi_2015",
+    "san_balcerowicz_nowakowska_1999",
+    "pol_balcerowicz_nowakowska_1999",
+    "hun_szanyi_2015",
+  ];
+  for (const sourceId of additionalWitnesses) {
+    const sourceToggle = page.locator(`#sourceFilters input[value='${sourceId}']`);
+    if ((await sourceToggle.count()) !== 1) {
+      throw new Error(`Expected additional witness filter ${sourceId}`);
+    }
+  }
+  const ruzsaToggle = page.locator(
+    "#sourceFilters input[value='san_ruzsa_szegedi_2015']",
+  );
+  await ruzsaToggle.check();
+  if (
+    (await page.locator(
+      "#v1 .source-panel[data-source='san_ruzsa_szegedi_2015'] .text-token",
+    ).count()) < 1
+  ) {
+    throw new Error("Expected tokenized Ruzsa & Szegedi Sanskrit text");
+  }
+  await ruzsaToggle.uncheck();
+
+  const balcerowiczToggle = page.locator(
+    "#sourceFilters input[value='san_balcerowicz_nowakowska_1999']",
+  );
+  await balcerowiczToggle.check();
+  const conversionNotice = await page
+    .locator(
+      "#v1 .source-panel[data-source='san_balcerowicz_nowakowska_1999'] .unavailable-text",
+    )
+    .innerText();
+  if (!conversionNotice.includes("AMRITA")) {
+    throw new Error("Expected the legacy Sanskrit conversion notice");
+  }
+  await balcerowiczToggle.uncheck();
+
   const readingSentenceUnits = await page.locator(
     "#v1 .source-panel[data-source='san_levi_1925'] .reading-sentence-unit",
   ).count();
@@ -30,6 +77,25 @@ async function main() {
     .innerText();
   if (firstSentenceNumber !== "1.1") {
     throw new Error(`Expected first sentence number 1.1, received ${firstSentenceNumber}`);
+  }
+  const sanskritRootTokens = page.locator(
+    "#v1 .source-panel[data-source='san_levi_1925'] .root-verse-token",
+  );
+  if ((await sanskritRootTokens.count()) < 7) {
+    throw new Error("Expected the complete Sanskrit root verse to be bold");
+  }
+  const rootFontWeight = await sanskritRootTokens.first().evaluate(
+    (element) => window.getComputedStyle(element).fontWeight,
+  );
+  if (Number(rootFontWeight) < 700) {
+    throw new Error(`Expected bold root verse typography, received ${rootFontWeight}`);
+  }
+  if (
+    (await page.locator(
+      "#v1 .source-panel[data-source='tib_derge'] .root-verse-token",
+    ).count()) < 1
+  ) {
+    throw new Error("Expected aligned witness portions to inherit root-verse emphasis");
   }
   const sanskritSentencePanel = page.locator(
     "#v1 .source-panel[data-source='san_levi_1925']",
@@ -162,6 +228,9 @@ async function main() {
   if (firstComparisonNumber !== "15.1") {
     throw new Error(`Expected first comparison sentence 15.1, received ${firstComparisonNumber}`);
   }
+  if ((await page.locator("#v15 .root-verse-row").count()) < 1) {
+    throw new Error("Expected root-verse rows in Comparison");
+  }
   const comparisonSanskritTokens = page.locator(
     "#v15 .phrase-row:not(.full-passage-row) .phrase-cell[data-source='san_levi_1925'] .text-token",
   );
@@ -267,7 +336,11 @@ async function main() {
   const savedSanskritToken = savedEditorData.alignments[0].targetTokenIds.san_levi_1925[0];
   const savedTibetanToken = savedEditorData.alignments[0].targetTokenIds.tib_derge[0];
   await page.getByRole("button", { name: "Alignment" }).click();
-  await page.locator(`#v15 [data-token-id='${savedSanskritToken}']`).click();
+  await page
+    .locator(
+      `#v15 .full-text-cell[data-source='san_levi_1925'] [data-token-id='${savedSanskritToken}']`,
+    )
+    .click();
   const liveFrames = await page.locator("#v15 .correspondence-frame.live").count();
   if (liveFrames !== 1) {
     throw new Error("Expected a live correspondence frame after Sanskrit selection");
@@ -275,7 +348,7 @@ async function main() {
   const linkedHighlights = await page.locator(
     `#v15 [data-token-id='${savedSanskritToken}'].alignment-active, #v15 [data-token-id='${savedTibetanToken}'].alignment-active`,
   ).count();
-  if (linkedHighlights !== 2) {
+  if (linkedHighlights < 2) {
     throw new Error("Expected Sanskrit token click to reveal its saved correspondence");
   }
 
@@ -288,12 +361,75 @@ async function main() {
 
   await page.locator("#v15 [data-clear-live-frame]").click();
   const unalignedSanskritToken = "v15-san_levi_1925-t00128";
-  await page.locator(`#v15 [data-token-id='${unalignedSanskritToken}']`).click();
+  await page
+    .locator(
+      `#v15 .full-text-cell[data-source='san_levi_1925'] [data-token-id='${unalignedSanskritToken}']`,
+    )
+    .click();
   const machineLabels = await page.locator("#v15 .machine-label").count();
   if (machineLabels < 1) {
     throw new Error("Expected a clearly marked machine-projected candidate");
   }
 
+  await page.getByRole("button", { name: "Analysis" }).click();
+  if ((await page.locator(".analysis-tabs button").count()) !== 5) {
+    throw new Error("Expected five analysis workspaces");
+  }
+  if ((await page.locator(".analysis-form-row").count()) < 1) {
+    throw new Error("Expected a populated lexical form index");
+  }
+  await page.locator("[name='lemma']").fill("smoke-lemma");
+  await page.locator("[name='partOfSpeech']").selectOption("NOUN");
+  await page.locator("[name='gloss']").fill("smoke lexical gloss");
+  await page.getByRole("button", { name: "Save lexical record" }).click();
+  const lexicalDrafts = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("vimsika-editor-annotations-v1"))
+        .lexiconEntries.length,
+  );
+  if (lexicalDrafts !== 1) {
+    throw new Error("Expected a lexical annotation to persist locally");
+  }
+
+  await page.getByRole("button", { name: "Concordance" }).click();
+  await page.getByPlaceholder("lemma, form, or character").fill("māhāyāne");
+  await page.locator("form[data-analysis-search-form]").getByRole("button", { name: "Search" }).click();
+  if ((await page.locator(".analysis-concordance-row").count()) < 1) {
+    throw new Error("Expected searchable concordance occurrences");
+  }
+
+  await page.getByRole("button", { name: "Morphology" }).click();
+  if ((await page.locator(".analysis-table tbody tr").count()) < 1) {
+    throw new Error("Expected sentence morphology rows");
+  }
+
+  await page.getByRole("button", { name: "Syntax" }).click();
+  const conllu = await page.locator("[data-analysis-conllu]").inputValue();
+  if (!conllu.includes("TokenId=")) {
+    throw new Error("Expected permanent token IDs in the CoNLL-U scaffold");
+  }
+  await page.getByRole("button", { name: "Save syntax draft" }).click();
+  const syntaxDrafts = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("vimsika-editor-annotations-v1"))
+        .syntaxAnnotations.length,
+  );
+  if (syntaxDrafts !== 1) {
+    throw new Error("Expected a syntax annotation to persist locally");
+  }
+
+  await page.getByRole("button", { name: "Statistics" }).click();
+  if ((await page.locator(".analysis-metrics").count()) !== 1) {
+    throw new Error("Expected selected-witness corpus statistics");
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(350);
+  await page.screenshot({
+    path: "qa-analysis-desktop.png",
+    fullPage: false,
+  });
+
+  await page.getByRole("button", { name: "Alignment" }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   const overflow = await page.locator("#v15 .collation-shell").evaluate(
     (element) => element.scrollWidth > element.clientWidth,
@@ -305,7 +441,7 @@ async function main() {
     fullPage: true,
   });
 
-  console.log(`passages=${passages} readingSentenceUnits=${readingSentenceUnits} hiddenSentenceCount=${hiddenSentenceCount} readingWordHighlights=${readingWordHighlights} sidebarCollapsed=${sidebarCollapsed} readingTokens=${readingTokens} initialPhraseRows=${phraseRows} synchronizedRows=${synchronizedRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} mobileOverflow=${overflow}`);
+  console.log(`passages=${passages} readingSentenceUnits=${readingSentenceUnits} hiddenSentenceCount=${hiddenSentenceCount} readingWordHighlights=${readingWordHighlights} sidebarCollapsed=${sidebarCollapsed} readingTokens=${readingTokens} initialPhraseRows=${phraseRows} synchronizedRows=${synchronizedRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} lexicalDrafts=${lexicalDrafts} syntaxDrafts=${syntaxDrafts} mobileOverflow=${overflow}`);
   await browser.close();
   browser = null;
 }

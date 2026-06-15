@@ -1108,9 +1108,23 @@ function readingSentenceList(passage, source, witness) {
   `;
 }
 
+function witnessUnavailable(witness) {
+  return ["not-present-in-supplied-source", "legacy-encoding-pending"].includes(
+    witness.status
+  );
+}
+
+function witnessAvailabilityLabel(witness, source) {
+  if (witness.status === "legacy-encoding-pending") return "Unicode conversion pending";
+  if (witness.status === "not-present-in-supplied-source") {
+    return "not present in supplied source";
+  }
+  return source.rightsLabel;
+}
+
 function sourcePanel(source, passage) {
   const witness = effectiveWitness(passage, source.id);
-  const unavailable = witness.status === "not-present-in-supplied-source";
+  const unavailable = witnessUnavailable(witness);
   const panelKey = `${passage.id}:${source.id}`;
   const open =
     state.view !== "reading" ||
@@ -1128,7 +1142,7 @@ function sourcePanel(source, passage) {
       <button class="source-panel-header" type="button">
         <span>
           <span class="source-name">${source.label}</span><br>
-          <span class="source-meta">${source.role.replaceAll("-", " ")} · ${unavailable ? "not present in supplied source" : source.rightsLabel}</span>
+          <span class="source-meta">${source.role.replaceAll("-", " ")} · ${witnessAvailabilityLabel(witness, source)}</span>
         </span>
         <span aria-hidden="true">${open ? "−" : "+"}</span>
       </button>
@@ -1733,7 +1747,7 @@ function fullPassageRow(passage, sources, template, collapsedByDefault) {
       ${sources
         .map((source) => {
           const witness = effectiveWitness(passage, source.id);
-          const unavailable = witness.status === "not-present-in-supplied-source";
+          const unavailable = witnessUnavailable(witness);
           return `
             <div class="phrase-cell full-text-cell" data-source="${source.id}">
               ${

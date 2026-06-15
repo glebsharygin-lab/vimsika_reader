@@ -754,6 +754,43 @@ def extract_chinese_table(path: Path) -> dict[str, dict[int, str]]:
     return passages
 
 
+def load_segmented_witness_records(
+    path: Path,
+    require_text: bool = True,
+) -> dict[int, dict[str, str]]:
+    records = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(records, list):
+        raise ValueError(f"Segmented witness must be a list: {path}")
+    passages = {}
+    for record in records:
+        verse = int(record["verse"])
+        passages[verse] = {
+            "text": clean_text(str(record.get("text", ""))),
+            "status": str(record.get("status", "machine-segmented")),
+            "note": str(record.get("note", "")),
+            "method": str(record.get("method", "")),
+        }
+    missing = [
+        number
+        for number in VERSE_NUMBERS
+        if number not in passages
+        or (require_text and not passages[number]["text"])
+    ]
+    if missing:
+        raise ValueError(
+            f"Segmented witness {path} is missing verses: {missing}"
+        )
+    return passages
+
+
+def load_segmented_witness(path: Path) -> dict[int, str]:
+    records = load_segmented_witness_records(path)
+    return {
+        number: record["text"]
+        for number, record in records.items()
+    }
+
+
 def source_records() -> list[dict[str, object]]:
     return [
         {
@@ -770,6 +807,92 @@ def source_records() -> list[dict[str, object]]:
             "rights": "public-domain",
             "rightsLabel": "Public domain / open access",
             "extraction": "DOCX text layer; passage boundaries inferred from verse openings.",
+        },
+        {
+            "id": "san_silk_2016",
+            "label": "Sanskrit · Silk 2016",
+            "shortLabel": "Silk Sanskrit",
+            "language": "Sanskrit",
+            "languageCode": "san",
+            "script": "Latin transliteration",
+            "role": "edition",
+            "color": "#b85f3f",
+            "citation": (
+                "Jonathan A. Silk, Materials Toward the Study of "
+                "Vasubandhu’s Viṃśikā (I), Harvard Oriental Series 81, "
+                "2016; 2018 open-access edition."
+            ),
+            "file": "view.pdf, PDF pages 215–225",
+            "rights": "cc-by-sa",
+            "rightsLabel": "CC BY-SA",
+            "extraction": (
+                "Sanskrit reading text segmented from Roman-numbered sections. "
+                "Verse 1 is partial in the supplied published reading text."
+            ),
+        },
+        {
+            "id": "san_tola_dragonetti_2004",
+            "label": "Sanskrit · Tola & Dragonetti 2004",
+            "shortLabel": "Tola–Dragonetti Sanskrit",
+            "language": "Sanskrit",
+            "languageCode": "san",
+            "script": "Latin transliteration",
+            "role": "edition",
+            "color": "#8e6541",
+            "citation": (
+                "Fernando Tola and Carmen Dragonetti, Being as Consciousness: "
+                "Yogācāra Philosophy of Buddhism, Motilal Banarsidass, 2004."
+            ),
+            "file": "Being as Consciousness, PDF pages 165–175",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Legacy Latin text layer segmented from Sanskrit kārikā openings; "
+                "diacritics and printed note markers require proofing."
+            ),
+        },
+        {
+            "id": "san_ruzsa_szegedi_2015",
+            "label": "Sanskrit · Ruzsa & Szegedi 2015",
+            "shortLabel": "Ruzsa–Szegedi",
+            "language": "Sanskrit",
+            "languageCode": "san",
+            "script": "Latin transliteration",
+            "role": "critical-edition",
+            "color": "#9d4938",
+            "citation": (
+                "Ferenc Ruzsa and Mónika Szegedi, “Vasubandhu’s Viṁśikā: "
+                "A Critical Edition,” Távol-keleti Tanulmányok 2015/1, 127–158."
+            ),
+            "file": "Vasubandhu_Visikajanak_kritikai_kiadasa.pdf, PDF pages 8–31",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Critical reading text segmented from numbered kārikā headings. "
+                "The full extracted apparatus remains in source-witnesses."
+            ),
+        },
+        {
+            "id": "san_balcerowicz_nowakowska_1999",
+            "label": "Sanskrit · Balcerowicz & Nowakowska 1999",
+            "shortLabel": "Balcerowicz Sanskrit",
+            "language": "Sanskrit",
+            "languageCode": "san",
+            "script": "Devanagari (legacy AMRITA encoding)",
+            "role": "edition-pending-conversion",
+            "color": "#72564b",
+            "citation": (
+                "Piotr Balcerowicz and Monika Nowakowska, Studia "
+                "Indologiczne 6 (1999), 5–44."
+            ),
+            "file": "si06(1999).pdf, PDF pages 6–17",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Source registered for bibliography and future collation. "
+                "Unicode transcription is pending because the PDF uses the "
+                "custom AMRITA Devanagari font."
+            ),
         },
         {
             "id": "tib_derge",
@@ -847,6 +970,117 @@ def source_records() -> list[dict[str, object]]:
             "extraction": "Searchable PDF text layer; passages inferred from verse labels.",
         },
         {
+            "id": "eng_silk_2016",
+            "label": "English · Silk 2016",
+            "shortLabel": "Silk",
+            "language": "English",
+            "languageCode": "eng",
+            "script": "Latin",
+            "role": "modern-translation",
+            "color": "#355f91",
+            "citation": (
+                "Jonathan A. Silk, Materials Toward the Study of "
+                "Vasubandhu’s Viṃśikā (I), Harvard Oriental Series 81, "
+                "2016; 2018 open-access edition."
+            ),
+            "file": "view.pdf, PDF pages 229–250",
+            "rights": "cc-by-sa",
+            "rightsLabel": "CC BY-SA",
+            "extraction": (
+                "Searchable PDF text layer; passages segmented from the "
+                "translator’s Roman-numbered kārikā sections."
+            ),
+        },
+        {
+            "id": "eng_anacker_2005",
+            "label": "English · Anacker 2005",
+            "shortLabel": "Anacker",
+            "language": "English",
+            "languageCode": "eng",
+            "script": "Latin",
+            "role": "modern-translation",
+            "color": "#76518d",
+            "citation": (
+                "Stefan Anacker, Seven Works of Vasubandhu: The Buddhist "
+                "Psychological Doctor, revised edition, Motilal "
+                "Banarsidass, 2005."
+            ),
+            "file": "Seven Works of Vasubandhu, PDF pages 174–188",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Searchable PDF text layer; passages segmented from the "
+                "numbered kārikā translations. Printed notes are excluded."
+            ),
+        },
+        {
+            "id": "eng_tola_dragonetti_2004",
+            "label": "English · Tola & Dragonetti 2004",
+            "shortLabel": "Tola–Dragonetti",
+            "language": "English",
+            "languageCode": "eng",
+            "script": "Latin",
+            "role": "modern-translation",
+            "color": "#3f7182",
+            "citation": (
+                "Fernando Tola and Carmen Dragonetti, Being as "
+                "Consciousness: Yogācāra Philosophy of Buddhism, "
+                "Motilal Banarsidass, 2004."
+            ),
+            "file": "Being as Consciousness, PDF pages 176–195",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Searchable PDF text layer; passages segmented from the "
+                "numbered stanza translations."
+            ),
+        },
+        {
+            "id": "pol_balcerowicz_nowakowska_1999",
+            "label": "Polish · Balcerowicz & Nowakowska 1999",
+            "shortLabel": "Balcerowicz–Nowakowska",
+            "language": "Polish",
+            "languageCode": "pol",
+            "script": "Latin",
+            "role": "modern-translation",
+            "color": "#8a4968",
+            "citation": (
+                "Piotr Balcerowicz and Monika Nowakowska, “Wasubandhu: "
+                "‘Dowód na wyłączne istnienie treści świadomości w "
+                "dwudziestu strofach’,” Studia Indologiczne 6 (1999), 18–35."
+            ),
+            "file": "si06(1999).pdf, PDF pages 18–35",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "PolishTimes encoding recovered and segmented from numbered "
+                "kārikā translations; printed footnotes are excluded."
+            ),
+        },
+        {
+            "id": "hun_szanyi_2015",
+            "label": "Hungarian · Szanyi 2015",
+            "shortLabel": "Szanyi",
+            "language": "Hungarian",
+            "languageCode": "hun",
+            "script": "Latin",
+            "role": "modern-translation",
+            "color": "#3f786d",
+            "citation": (
+                "Szilvia Szanyi, “Buddhista idealizmus: Vasubandhu Viṃśatikā "
+                "című művének filozófiai elemzése,” Távol-keleti "
+                "Tanulmányok 2015/2, 107–136."
+            ),
+            "file": "Buddhista_idealizmus_Vasubandhu_Visatik.pdf, PDF pages 4–26",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "CID font recovered to Unicode; translated verse quotations "
+                "1–22 are included, while the surrounding analytical article "
+                "is excluded."
+            ),
+        },
+        {
             "id": "fr_levi_1932",
             "label": "French · Lévi 1932",
             "shortLabel": "Lévi",
@@ -895,9 +1129,51 @@ def main() -> None:
             "an external alignment provider."
         ),
     )
+    parser.add_argument(
+        "--witness-dir",
+        "--english-witness-dir",
+        dest="witness_dir",
+        type=Path,
+        default=Path(__file__).resolve().parent.parent / "source-witnesses",
+        help="Directory containing the segmented witness folders.",
+    )
     args = parser.parse_args()
 
     chinese = extract_chinese_table(args.source_dir / "zho_xuangzan.docx")
+    segmented_witnesses = {
+        "eng_silk_2016": load_segmented_witness_records(
+            args.witness_dir / "eng_silk_2016" / "passages.json"
+        ),
+        "eng_anacker_2005": load_segmented_witness_records(
+            args.witness_dir / "eng_anacker_2005" / "passages.json"
+        ),
+        "eng_tola_dragonetti_2004": load_segmented_witness_records(
+            args.witness_dir / "eng_tola_dragonetti_2004" / "passages.json"
+        ),
+        "san_silk_2016": load_segmented_witness_records(
+            args.witness_dir / "san_silk_2016" / "passages.json"
+        ),
+        "san_tola_dragonetti_2004": load_segmented_witness_records(
+            args.witness_dir / "san_tola_dragonetti_2004" / "passages.json"
+        ),
+        "san_ruzsa_szegedi_2015": load_segmented_witness_records(
+            args.witness_dir / "san_ruzsa_szegedi_2015" / "passages.json"
+        ),
+        "san_balcerowicz_nowakowska_1999": load_segmented_witness_records(
+            args.witness_dir
+            / "san_balcerowicz_nowakowska_1999"
+            / "passages.json",
+            require_text=False,
+        ),
+        "pol_balcerowicz_nowakowska_1999": load_segmented_witness_records(
+            args.witness_dir
+            / "pol_balcerowicz_nowakowska_1999"
+            / "passages.json"
+        ),
+        "hun_szanyi_2015": load_segmented_witness_records(
+            args.witness_dir / "hun_szanyi_2015" / "passages.json"
+        ),
+    }
     passages_by_source: dict[str, dict[int, str | None]] = {
         "san_levi_1925": extract_sanskrit(args.source_dir / "san_levi.docx"),
         "tib_derge": extract_tibetan(args.source_dir / "tib_derge.txt"),
@@ -905,40 +1181,57 @@ def main() -> None:
         "fr_levi_1932": extract_french(args.source_dir / "fr_levi.docx"),
         "de_frauwallner": extract_german(args.source_dir / "de_frauwallner.pdf"),
         **chinese,
+        **{
+            source_id: {
+                number: records[number]["text"]
+                for number in VERSE_NUMBERS
+            }
+            for source_id, records in segmented_witnesses.items()
+        },
     }
 
     passages = []
     for number in VERSE_NUMBERS:
         passage_id = f"v{number}"
-        passages.append(
-            {
-                "id": passage_id,
-                "number": number,
-                "label": f"Verse {number}",
-                "root": SANSKRIT_ROOTS[number],
-                "texts": {
-                    source_id: {
-                        "text": source_passages[number] or "",
-                        "tokens": tokenize_text(
-                            source_passages[number] or "",
-                            passage_id,
-                            source_id,
-                        ),
-                        "status": (
-                            "machine-segmented"
-                            if source_passages[number]
-                            else "not-present-in-supplied-source"
-                        ),
-                        "note": (
-                            ""
-                            if source_passages[number]
-                            else "This passage is not present in the supplied witness file."
-                        ),
-                    }
-                    for source_id, source_passages in passages_by_source.items()
-                },
+        passage = {
+            "id": passage_id,
+            "number": number,
+            "label": f"Verse {number}",
+            "root": SANSKRIT_ROOTS[number],
+            "texts": {},
+        }
+        passages.append(passage)
+        for source_id, source_passages in passages_by_source.items():
+            text = source_passages[number] or ""
+            segmented_record = segmented_witnesses.get(
+                source_id,
+                {},
+            ).get(number, {})
+            passage["texts"][source_id] = {
+                "text": text,
+                "tokens": tokenize_text(
+                    text,
+                    passage_id,
+                    source_id,
+                ),
+                "status": segmented_record.get(
+                    "status",
+                    (
+                        "machine-segmented"
+                        if text
+                        else "not-present-in-supplied-source"
+                    ),
+                ),
+                "note": segmented_record.get(
+                    "note",
+                    (
+                        ""
+                        if text
+                        else "This passage is not present in the supplied witness file."
+                    ),
+                ),
+                "segmentationMethod": segmented_record.get("method", ""),
             }
-        )
 
     sources = source_records()
     for passage in passages:
@@ -968,7 +1261,7 @@ def main() -> None:
 
     candidates = candidate_alignments(passages, sources)
     corpus = {
-        "schemaVersion": "0.5.0-trial",
+        "schemaVersion": "0.6.0-trial",
         "work": {
             "id": "vasubandhu-vimsika",
             "title": "Viṃśikā",
