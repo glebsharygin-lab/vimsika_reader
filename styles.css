@@ -1354,7 +1354,8 @@ button:disabled {
 
 .editor-actions button,
 .editor-unit-entry button,
-.editor-alignment-list button {
+.editor-alignment-list button,
+.editor-boundary-list button {
   padding: 6px 9px;
   color: var(--accent);
   background: #fff;
@@ -1392,7 +1393,7 @@ button:disabled {
 
 .editor-forms {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 14px;
 }
 
@@ -1411,6 +1412,13 @@ button:disabled {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1rem;
   font-weight: 500;
+}
+
+.editor-form-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.4;
 }
 
 .editor-form label {
@@ -1476,7 +1484,8 @@ button:disabled {
 }
 
 .editor-unit-tree,
-.editor-alignment-list {
+.editor-alignment-list,
+.editor-boundary-list {
   margin: 10px 0 0;
   padding-left: 19px;
 }
@@ -1486,12 +1495,14 @@ button:disabled {
 }
 
 .editor-unit-tree li,
-.editor-alignment-list li {
+.editor-alignment-list li,
+.editor-boundary-list li {
   margin: 6px 0;
 }
 
 .editor-unit-entry,
-.editor-alignment-list li {
+.editor-alignment-list li,
+.editor-boundary-list li {
   display: flex;
   gap: 7px;
   align-items: center;
@@ -1507,14 +1518,19 @@ button:disabled {
 }
 
 .editor-anchor-count,
-.editor-alignment-list small {
+.editor-alignment-list small,
+.editor-boundary-list small {
   margin-left: auto;
   color: var(--muted);
   font-size: 0.68rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .editor-unit-entry button,
-.editor-alignment-list button {
+.editor-alignment-list button,
+.editor-boundary-list button {
   padding: 1px 6px;
   color: #8b322b;
 }

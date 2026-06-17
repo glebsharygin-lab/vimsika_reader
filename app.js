@@ -21,6 +21,7 @@ const state = {
   editorData: {
     units: [],
     alignments: [],
+    sentenceEdits: [],
     textEdits: {},
     lexiconEntries: [],
     syntaxAnnotations: [],
@@ -28,6 +29,7 @@ const state = {
   publishedEditorData: {
     units: [],
     alignments: [],
+    sentenceEdits: [],
     textEdits: {},
     lexiconEntries: [],
     syntaxAnnotations: [],
@@ -111,6 +113,23 @@ function allAlignments() {
   ];
 }
 
+function allSentenceEdits() {
+  return [
+    ...new Map(
+      [
+        ...(state.publishedEditorData.sentenceEdits || []),
+        ...(state.editorData.sentenceEdits || []),
+      ].map((edit) => [edit.id, edit]),
+    ).values(),
+  ].sort((left, right) =>
+    (left.createdAt || "").localeCompare(right.createdAt || ""),
+  );
+}
+
+function sentenceEditsForPassage(passageId) {
+  return allSentenceEdits().filter((edit) => edit.passageId === passageId);
+}
+
 function candidateAlignments() {
   return state.corpus.candidateAlignments || [];
 }
@@ -161,7 +180,7 @@ function alignmentById(alignmentId) {
   return (
     allAlignments().find((alignment) => alignment.id === alignmentId) ||
     state.corpus.passages
-      .flatMap((passage) => passage.sentenceUnits || [])
+      .flatMap((passage) => effectiveSentenceUnits(passage))
       .find((alignment) => alignment.id === alignmentId)
   );
 }
@@ -179,6 +198,7 @@ function loadEditorData() {
       state.editorData = {
         units: stored.units,
         alignments: stored.alignments,
+        sentenceEdits: stored.sentenceEdits || [],
         textEdits: stored.textEdits || {},
         lexiconEntries: stored.lexiconEntries || [],
         syntaxAnnotations: stored.syntaxAnnotations || [],
@@ -188,6 +208,7 @@ function loadEditorData() {
     state.editorData = {
       units: [],
       alignments: [],
+      sentenceEdits: [],
       textEdits: {},
       lexiconEntries: [],
       syntaxAnnotations: [],
@@ -211,6 +232,7 @@ async function loadPublishedEditorData() {
     state.publishedEditorData = {
       units: published.units || [],
       alignments: published.alignments || [],
+      sentenceEdits: published.sentenceEdits || [],
       textEdits,
       lexiconEntries: published.lexiconEntries || [],
       syntaxAnnotations: published.syntaxAnnotations || [],
@@ -509,6 +531,73 @@ function tokenTextFromIds(passage, sourceId, tokenIds) {
   const selected = witness.tokens.filter((token) => tokenIds.includes(token.id));
   if (!selected.length) return "";
   return witness.text.slice(selected[0].start, selected[selected.length - 1].end);
+}
+
+function cloneSentenceUnit(unit) {
+  return {
+    ...unit,
+    targets: { ...(unit.targets || {}) },
+    targetTokenIds: Object.fromEntries(
+      Object.entries(unit.targetTokenIds || {}).map(([sourceId, tokenIds]) => [
+        sourceId,
+        [...tokenIds],
+      ]),
+    ),
+  };
+}
+
+function sortedTokenIdsForSource(passage, sourceId, tokenIds) {
+  const order = new Map(
+    (effectiveWitness(passage, sourceId).tokens || []).map((token, index) => [
+      token.id,
+      index,
+    ]),
+  );
+  return [...new Set(tokenIds)].sort(
+    (left, right) =>
+      (order.get(left) ?? Number.MAX_SAFE_INTEGER) -
+      (order.get(right) ?? Number.MAX_SAFE_INTEGER),
+  );
+}
+
+function effectiveSentenceUnits(passage) {
+  const units = (passage.sentenceUnits || []).map(cloneSentenceUnit);
+  const byId = new Map(units.map((unit) => [unit.id, unit]));
+
+  sentenceEditsForPassage(passage.id).forEach((edit) => {
+    const sourceId = edit.sourceId;
+    const tokenIds = edit.tokenIds || [];
+    const targetUnit = byId.get(edit.toUnitId);
+    if (!sourceId || !tokenIds.length || !targetUnit) return;
+
+    const movedIds = new Set(tokenIds);
+    units.forEach((unit) => {
+      const current = unit.targetTokenIds?.[sourceId] || [];
+      const filtered = current.filter((tokenId) => !movedIds.has(tokenId));
+      if (filtered.length !== current.length) {
+        unit.targetTokenIds = {
+          ...(unit.targetTokenIds || {}),
+          [sourceId]: filtered,
+        };
+        unit.status = "editorial-boundary";
+        unit.confidence = "reviewed";
+        unit.sentenceEdited = true;
+      }
+    });
+
+    targetUnit.targetTokenIds = {
+      ...(targetUnit.targetTokenIds || {}),
+      [sourceId]: sortedTokenIdsForSource(passage, sourceId, [
+        ...(targetUnit.targetTokenIds?.[sourceId] || []),
+        ...tokenIds,
+      ]),
+    };
+    targetUnit.status = "editorial-boundary";
+    targetUnit.confidence = "reviewed";
+    targetUnit.sentenceEdited = true;
+  });
+
+  return units;
 }
 
 function alignmentsOverlappingSanskrit(passage, tokenIds) {
@@ -995,7 +1084,7 @@ function phraseAlignments(passage) {
   const reviewedSentences = editorial.filter(
     (alignment) => alignment.level === "sentence",
   );
-  const generated = (passage.sentenceUnits || []).filter(
+  const generated = effectiveSentenceUnits(passage).filter(
     (unit) =>
       !reviewedSentences.some((alignment) =>
         alignmentsOverlap(unit, alignment),
@@ -1069,9 +1158,11 @@ function readingSentenceList(passage, source, witness) {
           const tokenIds = unit.targetTokenIds?.[source.id] || [];
           const target = alignmentTargetText(unit, passage, source.id);
           const generated = unit.status === "machine-segmented";
+          const adjusted =
+            unit.sentenceEdited || unit.status === "editorial-boundary";
           const rootVerse = isRootVerseAlignment(unit, passage);
           return `
-            <section class="reading-sentence-unit ${collapsed ? "collapsed" : ""} ${rootVerse ? "root-verse-unit" : ""}">
+            <section class="reading-sentence-unit ${collapsed ? "collapsed" : ""} ${rootVerse ? "root-verse-unit" : ""}" data-sentence-unit="${unit.id}">
               <div class="reading-sentence-header">
                 <button
                   class="reading-sentence-toggle"
@@ -1079,7 +1170,7 @@ function readingSentenceList(passage, source, witness) {
                   type="button"
                 >
                   <span class="reading-sentence-number">${escapeHtml(unit.number || unit.label)}</span>
-                  <span class="reading-sentence-status">${rootVerse ? "root verse" : generated ? "projected" : "reviewed"}</span>
+                  <span class="reading-sentence-status">${rootVerse ? "root verse" : adjusted ? "edited" : generated ? "projected" : "reviewed"}</span>
                   <span aria-hidden="true">${collapsed ? "+" : "−"}</span>
                 </button>
                 <button
@@ -1296,6 +1387,7 @@ function lexicalPopover(passage) {
 function alignmentTargetText(alignment, passage, sourceId) {
   if (
     alignment.status === "machine-segmented" &&
+    !alignment.sentenceEdited &&
     alignment.targets?.[sourceId] &&
     !textEditFor(passage.id, sourceId)
   ) {
@@ -1490,6 +1582,13 @@ function publicationButtons() {
 
 function editorWorkbench(passage) {
   const units = editorUnitsForPassage(passage.id);
+  const sentenceUnits = effectiveSentenceUnits(passage).filter(
+    (unit) => unit.level === "sentence",
+  );
+  const sentenceEdits = sentenceEditsForPassage(passage.id);
+  const localSentenceEditIds = new Set(
+    (state.editorData.sentenceEdits || []).map((edit) => edit.id),
+  );
   const selections = selectionsForPassage(passage.id);
   const selectionCount = Object.values(selections).reduce(
     (total, tokenIds) => total + tokenIds.length,
@@ -1499,6 +1598,9 @@ function editorWorkbench(passage) {
     (alignment) => alignment.verse === passage.number,
   );
   const textEditCount = Object.values(state.editorData.textEdits).filter(
+    (edit) => edit.passageId === passage.id,
+  ).length;
+  const sentenceEditCount = (state.editorData.sentenceEdits || []).filter(
     (edit) => edit.passageId === passage.id,
   ).length;
   const inline = state.view !== "editor";
@@ -1524,6 +1626,7 @@ function editorWorkbench(passage) {
         <strong>${selectionCount} selected tokens</strong>
         <span>${Object.keys(selections).length} witnesses represented</span>
         <span>${textEditCount} revised witness text${textEditCount === 1 ? "" : "s"}</span>
+        <span>${sentenceEditCount} sentence boundary draft${sentenceEditCount === 1 ? "" : "s"}</span>
       </div>
 
       <div class="editor-forms">
@@ -1624,6 +1727,36 @@ function editorWorkbench(passage) {
             Link selected spans
           </button>
         </form>
+
+        <form class="editor-form" data-sentence-edit-form="${passage.id}">
+          <h4>Adjust sentence boundary</h4>
+          <p class="editor-form-note">
+            Select words in one witness, then move that span into the sentence where it belongs.
+          </p>
+          <label>
+            Move selected text into
+            <select data-field="sentence-target">
+              <option value="">Choose target sentence</option>
+              ${sentenceUnits
+                .map(
+                  (unit) =>
+                    `<option value="${unit.id}">${escapeHtml(unit.number || unit.label)} Â· ${escapeHtml(unit.label)}</option>`,
+                )
+                .join("")}
+            </select>
+          </label>
+          <label>
+            Boundary note
+            <textarea
+              data-field="sentence-note"
+              rows="2"
+              placeholder="e.g. Sanskrit phrase belongs with 1.1"
+            ></textarea>
+          </label>
+          <button class="editor-primary" data-create-sentence-edit="${passage.id}" type="submit">
+            Move selection into sentence
+          </button>
+        </form>
       </div>
 
       <div class="editor-status" aria-live="polite"></div>
@@ -1648,6 +1781,30 @@ function editorWorkbench(passage) {
                   )
                   .join("")}</ol>`
               : '<p class="editor-empty">No editorial alignments yet.</p>'
+          }
+        </section>
+        <section>
+          <h4>Sentence boundaries</h4>
+          ${
+            sentenceEdits.length
+              ? `<ol class="editor-boundary-list">${sentenceEdits
+                  .map((edit) => {
+                    const source = sourceById(edit.sourceId);
+                    const local = localSentenceEditIds.has(edit.id);
+                    return `
+                      <li>
+                        <span>${escapeHtml(edit.fromNumber || "unassigned")} &rarr; ${escapeHtml(edit.toNumber || "sentence")}</span>
+                        <small>${escapeHtml(source?.label || edit.sourceId)} Â· ${escapeHtml(edit.selectedText || "")}</small>
+                        ${
+                          local
+                            ? `<button data-delete-sentence-edit="${edit.id}" type="button" aria-label="Delete boundary adjustment">Ã—</button>`
+                            : '<span class="published-label">published</span>'
+                        }
+                      </li>
+                    `;
+                  })
+                  .join("")}</ol>`
+              : '<p class="editor-empty">No sentence-boundary edits yet.</p>'
           }
         </section>
       </div>
@@ -1688,6 +1845,8 @@ function phraseRow(alignment, passage, sources, template, index) {
   const collapsed = state.collapsedUnits.has(alignment.id);
   const active = state.activeAlignment?.id === alignment.id;
   const generated = alignment.status === "machine-segmented";
+  const adjusted =
+    alignment.sentenceEdited || alignment.status === "editorial-boundary";
   const rootVerse = isRootVerseAlignment(alignment, passage);
   return `
     <section
@@ -1697,7 +1856,7 @@ function phraseRow(alignment, passage, sources, template, index) {
     >
       <button class="phrase-label" data-toggle-unit="${alignment.id}" type="button">
         <span class="phrase-index">${escapeHtml(alignment.number || `${passage.number}.${index + 1}`)}</span>
-        <span class="phrase-status">${rootVerse ? "root verse" : generated ? "projected" : "reviewed"}</span>
+        <span class="phrase-status">${rootVerse ? "root verse" : adjusted ? "edited" : generated ? "projected" : "reviewed"}</span>
         <span class="phrase-title">${escapeHtml(alignment.label)}</span>
         <span class="phrase-toggle" aria-hidden="true">${collapsed ? "+" : "−"}</span>
       </button>
@@ -1939,10 +2098,18 @@ function updateEditorSelectionSummary(passageId) {
     (total, tokenIds) => total + tokenIds.length,
     0,
   );
+  const textEditCount = Object.values(state.editorData.textEdits).filter(
+    (edit) => edit.passageId === passageId,
+  ).length;
+  const sentenceEditCount = (state.editorData.sentenceEdits || []).filter(
+    (edit) => edit.passageId === passageId,
+  ).length;
   const summary = panel.querySelector(".editor-selection-summary");
   summary.innerHTML = `
     <strong>${count} selected tokens</strong>
     <span>${Object.keys(selections).length} witnesses represented</span>
+    <span>${textEditCount} revised witness text${textEditCount === 1 ? "" : "s"}</span>
+    <span>${sentenceEditCount} sentence boundary draft${sentenceEditCount === 1 ? "" : "s"}</span>
   `;
 }
 
@@ -2089,6 +2256,7 @@ function exportEditorAnnotations() {
     exportedAt: new Date().toISOString(),
     units: state.editorData.units,
     alignments: state.editorData.alignments,
+    sentenceEdits: state.editorData.sentenceEdits,
     textEdits: Object.values(state.editorData.textEdits),
     lexiconEntries: state.editorData.lexiconEntries,
     syntaxAnnotations: state.editorData.syntaxAnnotations,
@@ -2107,6 +2275,7 @@ function localEditorialPayload() {
   return {
     units: state.editorData.units,
     alignments: state.editorData.alignments,
+    sentenceEdits: state.editorData.sentenceEdits,
     textEdits: state.editorData.textEdits,
     lexiconEntries: state.editorData.lexiconEntries,
     syntaxAnnotations: state.editorData.syntaxAnnotations,
@@ -2117,6 +2286,7 @@ function localEditorialChangeCount() {
   return (
     state.editorData.units.length +
     state.editorData.alignments.length +
+    state.editorData.sentenceEdits.length +
     Object.keys(state.editorData.textEdits).length +
     state.editorData.lexiconEntries.length +
     state.editorData.syntaxAnnotations.length
@@ -2138,6 +2308,14 @@ function mergePublishedEditorialData() {
         ...state.publishedEditorData.alignments,
         ...state.editorData.alignments,
       ].map((alignment) => [alignment.id, alignment]),
+    ).values(),
+  ];
+  state.publishedEditorData.sentenceEdits = [
+    ...new Map(
+      [
+        ...state.publishedEditorData.sentenceEdits,
+        ...state.editorData.sentenceEdits,
+      ].map((edit) => [edit.id, edit]),
     ).values(),
   ];
   state.publishedEditorData.textEdits = {
@@ -2163,6 +2341,7 @@ function mergePublishedEditorialData() {
   state.editorData = {
     units: [],
     alignments: [],
+    sentenceEdits: [],
     textEdits: {},
     lexiconEntries: [],
     syntaxAnnotations: [],
@@ -2267,7 +2446,7 @@ function bindEditorControls(reader) {
       }`;
       const generatedSentence =
         level === "sentence"
-          ? (passage.sentenceUnits || []).find((unit) =>
+          ? effectiveSentenceUnits(passage).find((unit) =>
               alignmentsOverlap(unit, { targetTokenIds }),
             )
           : null;
@@ -2310,6 +2489,75 @@ function bindEditorControls(reader) {
     });
   });
 
+  reader.querySelectorAll("[data-sentence-edit-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const passageId = form.dataset.sentenceEditForm;
+      const passage = passageById(passageId);
+      const panel = form.closest(".editor-workbench");
+      const targetTokenIds = selectionsForPassage(passageId);
+      const selectedSources = Object.keys(targetTokenIds);
+
+      if (selectedSources.length !== 1) {
+        editorStatus(
+          panel,
+          "Select a text span in exactly one witness before moving a boundary.",
+          true,
+        );
+        return;
+      }
+
+      const sourceId = selectedSources[0];
+      const tokenIds = targetTokenIds[sourceId];
+      const toUnitId = form.querySelector("[data-field='sentence-target']").value;
+      const sentenceUnits = effectiveSentenceUnits(passage);
+      const targetUnit = sentenceUnits.find((unit) => unit.id === toUnitId);
+      if (!targetUnit) {
+        editorStatus(panel, "Choose the sentence that should receive the selected text.", true);
+        return;
+      }
+
+      const originUnits = sentenceUnits.filter((unit) =>
+        (unit.targetTokenIds?.[sourceId] || []).some((tokenId) =>
+          tokenIds.includes(tokenId),
+        ),
+      );
+      if (
+        originUnits.length === 1 &&
+        originUnits[0].id === targetUnit.id
+      ) {
+        editorStatus(
+          panel,
+          "That selected text already belongs to the chosen sentence.",
+          true,
+        );
+        return;
+      }
+
+      state.editorData.sentenceEdits.push({
+        id: nextAnnotationId("sentence-edit", passageId),
+        passageId,
+        verse: passage.number,
+        sourceId,
+        sourceLabel: sourceById(sourceId)?.label || sourceId,
+        fromUnitIds: originUnits.map((unit) => unit.id),
+        fromNumber: originUnits.map((unit) => unit.number || unit.label).join(", "),
+        toUnitId,
+        toNumber: targetUnit.number || targetUnit.label,
+        tokenIds,
+        selectedText: tokenTextFromIds(passage, sourceId, tokenIds),
+        note: form.querySelector("[data-field='sentence-note']").value.trim(),
+        createdAt: new Date().toISOString(),
+      });
+
+      clearSourceSelection(passageId, sourceId);
+      saveEditorData();
+      renderSummary();
+      state.openPassages.add(passageId);
+      renderReader();
+    });
+  });
+
   reader.querySelectorAll("[data-clear-selection]").forEach((button) => {
     button.addEventListener("click", () => {
       const passageId = button.dataset.clearSelection;
@@ -2336,6 +2584,17 @@ function bindEditorControls(reader) {
       if (state.activeAlignment?.id === button.dataset.deleteAlignment) {
         state.activeAlignment = null;
       }
+      saveEditorData();
+      renderSummary();
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-delete-sentence-edit]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.editorData.sentenceEdits = state.editorData.sentenceEdits.filter(
+        (edit) => edit.id !== button.dataset.deleteSentenceEdit,
+      );
       saveEditorData();
       renderSummary();
       renderReader();

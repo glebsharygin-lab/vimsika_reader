@@ -1036,6 +1036,73 @@ def source_records() -> list[dict[str, object]]:
             ),
         },
         {
+            "id": "eng_kochumuttom_1982",
+            "label": "English · Kochumuttom 1982",
+            "shortLabel": "Kochumuttom",
+            "language": "English",
+            "languageCode": "eng",
+            "script": "Latin",
+            "role": "modern-translation",
+            "color": "#536e9c",
+            "citation": (
+                "Thomas A. Kochumuttom, A Buddhist Doctrine of Experience: "
+                "A New Translation and Interpretation of the Works of Vasubandhu "
+                "the Yogācārin, Motilal Banarsidass, 1982."
+            ),
+            "file": "A Buddhist Doctrine of Experience, PDF pages 25–32",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Full English translation and auto-commentary segmented from "
+                "numbered kārikā headings. OCR typography and Sanskrit forms "
+                "require proofing."
+            ),
+        },
+        {
+            "id": "eng_wood_1991",
+            "label": "English · Wood 1991",
+            "shortLabel": "Wood",
+            "language": "English",
+            "languageCode": "eng",
+            "script": "Latin",
+            "role": "modern-translation",
+            "color": "#597c65",
+            "citation": (
+                "Thomas E. Wood, Mind Only: A Philosophical and Doctrinal "
+                "Analysis of the Vijñānavāda, University of Hawai‘i Press, 1991."
+            ),
+            "file": "Mind Only, PDF pages 113–118",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Verse-only English translation segmented from numbered stanzas. "
+                "The printed Sanskrit and surrounding chapter analysis are excluded."
+            ),
+        },
+        {
+            "id": "eng_cook_1999",
+            "label": "English · Cook 1999",
+            "shortLabel": "Cook",
+            "language": "English",
+            "languageCode": "eng",
+            "script": "Latin",
+            "role": "modern-translation-from-chinese",
+            "color": "#8a5e35",
+            "citation": (
+                "Francis H. Cook, trans., “The Treatise in Twenty Verses on "
+                "Consciousness Only,” in Three Texts on Consciousness Only, "
+                "Numata Center for Buddhist Translation and Research, 1999."
+            ),
+            "file": "vasubandhu_-_vimshatika__with_vs_comment___cook_.pdf, pages 7–24",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "English translation from Xuanzang’s Chinese T1590. Xuanzang’s "
+                "twenty-one numbered verses are mapped by content to the shell’s "
+                "twenty-two Sanskrit passages."
+            ),
+        },
+        {
             "id": "pol_balcerowicz_nowakowska_1999",
             "label": "Polish · Balcerowicz & Nowakowska 1999",
             "shortLabel": "Balcerowicz–Nowakowska",
@@ -1081,6 +1148,51 @@ def source_records() -> list[dict[str, object]]:
             ),
         },
         {
+            "id": "rus_lyssenko_2008",
+            "label": "Russian · Lyssenko 2008",
+            "shortLabel": "Lyssenko",
+            "language": "Russian",
+            "languageCode": "rus",
+            "script": "Cyrillic",
+            "role": "modern-translation",
+            "color": "#7b4e68",
+            "citation": (
+                "В. Г. Лысенко, пер. и прим., «Вимшатика-карика-вритти. "
+                "Комментарий к двадцатистишию», Вопросы философии 1 "
+                "(2008), 113–131."
+            ),
+            "file": "50416301.pdf, PDF pages 1–16",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Custom Cyrillic font recovered to Unicode and segmented from "
+                "the numbered kārikās. Bracket glyphs and transliteration require "
+                "scholarly proofing."
+            ),
+        },
+        {
+            "id": "jpn_yuda_issue32",
+            "label": "Japanese · Yuda",
+            "shortLabel": "Yuda",
+            "language": "Japanese",
+            "languageCode": "jpn",
+            "script": "Japanese",
+            "role": "modern-translation",
+            "color": "#6c5a91",
+            "citation": (
+                "湯田豊, 「ヴァスバンドゥの『唯識二十論』—新しい翻訳"
+                "および解説」, 『法華文化研究』32."
+            ),
+            "file": "306_第32号_ヴァスバンドゥの「唯識二十論」 (2).pdf, pages 1–15",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Legacy Shift-JIS text layer recovered to Unicode and segmented "
+                "by semantic kārikā openings. Layout order, punctuation, and "
+                "Sanskrit forms require manual Japanese scholarly proofing."
+            ),
+        },
+        {
             "id": "fr_levi_1932",
             "label": "French · Lévi 1932",
             "shortLabel": "Lévi",
@@ -1094,6 +1206,27 @@ def source_records() -> list[dict[str, object]]:
             "rights": "public-domain",
             "rightsLabel": "Public domain / open access",
             "extraction": "DOCX OCR text; passages inferred from printed verse labels.",
+        },
+        {
+            "id": "fra_cornu_2008",
+            "label": "French · Cornu 2008",
+            "shortLabel": "Cornu",
+            "language": "French",
+            "languageCode": "fra",
+            "script": "Latin",
+            "role": "modern-translation",
+            "color": "#2f7b6e",
+            "citation": (
+                "Philippe Cornu, trans., Cinq traités sur l’esprit seulement, "
+                "Fayard, 2008."
+            ),
+            "file": "Cinq traités sur l’esprit seulement, EPUB chapter III",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Structured EPUB extraction pairing each French root-verse "
+                "translation with the corresponding translated auto-commentary."
+            ),
         },
         {
             "id": "de_frauwallner",
@@ -1150,6 +1283,15 @@ def main() -> None:
         "eng_tola_dragonetti_2004": load_segmented_witness_records(
             args.witness_dir / "eng_tola_dragonetti_2004" / "passages.json"
         ),
+        "eng_kochumuttom_1982": load_segmented_witness_records(
+            args.witness_dir / "eng_kochumuttom_1982" / "passages.json"
+        ),
+        "eng_wood_1991": load_segmented_witness_records(
+            args.witness_dir / "eng_wood_1991" / "passages.json"
+        ),
+        "eng_cook_1999": load_segmented_witness_records(
+            args.witness_dir / "eng_cook_1999" / "passages.json"
+        ),
         "san_silk_2016": load_segmented_witness_records(
             args.witness_dir / "san_silk_2016" / "passages.json"
         ),
@@ -1172,6 +1314,15 @@ def main() -> None:
         ),
         "hun_szanyi_2015": load_segmented_witness_records(
             args.witness_dir / "hun_szanyi_2015" / "passages.json"
+        ),
+        "rus_lyssenko_2008": load_segmented_witness_records(
+            args.witness_dir / "rus_lyssenko_2008" / "passages.json"
+        ),
+        "jpn_yuda_issue32": load_segmented_witness_records(
+            args.witness_dir / "jpn_yuda_issue32" / "passages.json"
+        ),
+        "fra_cornu_2008": load_segmented_witness_records(
+            args.witness_dir / "fra_cornu_2008" / "passages.json"
         ),
     }
     passages_by_source: dict[str, dict[int, str | None]] = {
@@ -1269,10 +1420,10 @@ def main() -> None:
             "subtitle": "Complete trial parallel corpus · verses 1–22 with commentary",
         },
         "notice": (
-            "Scholarly prototype. Segmentation and phrase alignments are provisional. "
+            "Research prototype. Segmentation and phrase alignments are provisional. "
             "Corpus-wide token correspondences marked as machine-projected are low-confidence "
             "positional candidates requiring human review. "
-            "The project owner has confirmed the supplied witnesses are cleared for public scholarly publication."
+            "Only for research purposes."
         ),
         "sources": sources,
         "passages": passages,

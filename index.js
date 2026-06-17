@@ -357,6 +357,9 @@ function normalizeEditorial(editorial) {
   const alignments = Array.isArray(editorial?.alignments)
     ? editorial.alignments
     : [];
+  const sentenceEdits = Array.isArray(editorial?.sentenceEdits)
+    ? editorial.sentenceEdits
+    : [];
   const lexiconEntries = Array.isArray(editorial?.lexiconEntries)
     ? editorial.lexiconEntries
     : [];
@@ -374,6 +377,7 @@ function normalizeEditorial(editorial) {
   return {
     units,
     alignments,
+    sentenceEdits,
     textEdits,
     lexiconEntries,
     syntaxAnnotations,
@@ -400,6 +404,10 @@ function mergeEditorial(existing, incoming, login) {
     updatedBy: login,
     units: mergeById(current.units, changes.units),
     alignments: mergeById(current.alignments, changes.alignments),
+    sentenceEdits: mergeById(
+      current.sentenceEdits,
+      changes.sentenceEdits,
+    ),
     lexiconEntries: mergeById(
       current.lexiconEntries,
       changes.lexiconEntries,
@@ -420,6 +428,7 @@ function editorialChangeCount(editorial) {
   return (
     normalized.units.length +
     normalized.alignments.length +
+    normalized.sentenceEdits.length +
     Object.keys(normalized.textEdits).length +
     normalized.lexiconEntries.length +
     normalized.syntaxAnnotations.length
@@ -527,6 +536,9 @@ async function getEditorialFile(branch, token, env) {
       data: {
         units: [],
         alignments: [],
+        sentenceEdits: [],
+        lexiconEntries: [],
+        syntaxAnnotations: [],
         textEdits: {},
       },
     };

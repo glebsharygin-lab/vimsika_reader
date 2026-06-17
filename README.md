@@ -1,51 +1,205 @@
-# Extracted English Viṃśikā Witnesses
+# Viṃśikā Parallel Text Laboratory
 
-These files are preliminary, machine-extracted witnesses prepared for corpus
-editing and alignment. They preserve the translations and commentary but still
-require scholarly proofreading against the supplied PDFs.
+This workspace contains a local trial reader generated from the supplied Viṃśikā source bundle.
 
-## Witnesses
+## Included in the pilot
 
-- `eng_silk_2016`: Jonathan A. Silk, *Materials Toward the Study of
-  Vasubandhu's Viṃśikā (I)*, PDF pages 229–250 (printed pages 203–224).
-- `eng_anacker_2005`: Stefan Anacker, *Seven Works of Vasubandhu*, revised
-  edition, PDF pages 174–188 (printed pages 161–175). The notes beginning on
-  PDF page 188 are excluded.
-- `eng_tola_dragonetti_2004`: Fernando Tola and Carmen Dragonetti, *Being as
-  Consciousness*, PDF pages 176–195 (printed pages 134–153).
+- Verses 1–22 with the supplied commentary.
+- Four readable Sanskrit editions plus the registered Balcerowicz Sanskrit
+  source awaiting Unicode conversion; Tibetan; three Chinese translations;
+  seven English translations; Polish; Hungarian; Russian; Japanese; two
+  French translations; and German.
+- Foldable reading mode and multi-column comparison mode.
+- Foldable sentence units numbered `1.1`, `1.2`, and so on, derived from
+  Sanskrit dandas, vertical strokes, slashes, and source paragraph boundaries.
+- Bold root-verse typography in Sanskrit and in the corresponding aligned
+  portions of every witness, including kārikās split by intervening commentary.
+- A synchronized Reading focus workspace: collapsed sentences can be hidden
+  across all witnesses, or one sentence can be isolated with `Focus`.
+- Clickable Sanskrit words in Reading. Reviewed token links take priority;
+  otherwise the shell highlights the existing low-confidence projected spans.
+- Clickable token surfaces in Reading, Comparison, and Alignment, with a
+  floating lexical inspector showing the selected form and linked witness
+  spans.
+- A five-part Analysis workspace: editable lexical records, searchable KWIC
+  concordance and frequency lists, sentence-level morphology tables, draft
+  UD/CoNLL-U syntax annotation, and cross-witness corpus statistics.
+- Lexical glosses, readings, lemmas, parts of speech, morphology, and syntax
+  drafts use the same permanent token IDs as the reading and alignment views.
+  The interface never invents missing scholarly analysis.
+- Subtle interface transitions with reduced-motion accessibility support.
+- Resizable witness columns with saved user preferences.
+- Collapsible navigation panel with a remembered full-width reading mode.
+- Synchronized phrase rows with sticky subsection labels.
+- Stable IDs for 89,652 atomic tokens across all supplied witnesses.
+- An embedded Editor mode plus inline text and annotation editing in Reading and Comparison.
+- Source provenance and provisional copyright labels.
+- Reproducible extraction from DOCX, PDF, and UTF-8 text sources.
 
-Each witness directory contains:
+All passage boundaries and phrase alignments are provisional and require scholarly review.
+Sanskrit sentence boundaries are mechanically derived from the supplied
+edition. Corresponding spans in the other witnesses initially use low-confidence
+monotonic projection and are intended to be replaced by reviewed alignments in
+the embedded editor.
+The supplied Nilanjan Das English draft does not contain verses 5–10; the
+reader marks those passages explicitly rather than synthesizing missing text.
+The Silk, Anacker, Tola–Dragonetti, Kochumuttom, Cornu, Lyssenko, Yuda, and
+Cook witnesses contain all 22 passages with commentary. Wood supplies a
+verse-only English translation. Cook translates Xuanzang’s Chinese and is
+mapped semantically from its twenty-one numbered verses to the shell’s
+twenty-two Sanskrit passages.
+The Japanese witness was recovered from a legacy Shift-JIS text layer and
+requires manual Japanese scholarly proofing of layout order, punctuation, and
+Sanskrit forms. The Russian custom-font recovery likewise retains some
+provisional bracket glyphs and transliteration.
+The project owner has confirmed that all supplied witnesses are public domain or openly available for public scholarly publication.
 
-- `translation.txt`: cleaned continuous text.
-- `pages.json`: page-by-page text with PDF page references.
-- `passages.json`: preliminary kārikā-level segmentation for verses 1–22.
-- `metadata.json`: citation, rights, extraction method, and counts.
+## Build the corpus
 
-Run `scripts/extract_english_witnesses.py` with the three source PDFs to
-regenerate the extracted files, then run
-`scripts/segment_english_witnesses.py` to regenerate the passage files.
+```powershell
+& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
+  '.\scripts\build_trial_corpus.py' `
+  'C:\Users\glebs\OneDrive\Dokumente\Vimsika\Vimsika\texts' `
+  '.\data\corpus.json'
+```
 
-## Additional Sanskrit, Polish, and Hungarian witnesses
+The build also writes `data/corpus.js` and a root-level `corpus.js`. The root-level
+file keeps GitHub Pages deployment simple and allows `index.html` to work directly
+from a `file://` URL.
 
-The following preliminary extractions are generated by
-`scripts/extract_additional_witnesses.py`:
+The main-page announcement is the corpus `notice` field. For a quick manual
+change, edit it in `data/corpus.json` and in the deployed root `corpus.js`.
+For a permanent rebuild-safe change, edit the `notice` string in
+`scripts/build_trial_corpus.py`.
 
-- `san_silk_2016`: Sanskrit reading text, PDF pages 215–225.
-- `san_tola_dragonetti_2004`: Sanskrit edition, PDF pages 165–175.
-- `san_ruzsa_szegedi_2015`: full critical edition and a separate main
-  `reading-text.txt`, PDF pages 8–31.
-- `san_balcerowicz_nowakowska_1999`: Sanskrit source text in its extracted
-  legacy AMRITA encoding, PDF pages 6–17. It must be converted and proofread
-  before corpus tokenization.
-- `pol_balcerowicz_nowakowska_1999`: Polish translation, PDF pages 18–35.
-- `hun_szanyi_2015`: Hungarian translated quotations and verses, PDF pages
-  4–26.
+Before rebuilding, regenerate the extracted passage segmentation:
 
-Every directory contains page-level provenance in `pages.json` and extraction
-details in `metadata.json`. These are source-preparation files, not yet final
-corpus witnesses.
+```powershell
+& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
+  '.\scripts\segment_english_witnesses.py' `
+  --source-witnesses '.\source-witnesses'
 
-Run `scripts/segment_additional_witnesses.py` to generate verse-level
-`passages.json` files for integration. Balcerowicz’s Sanskrit receives explicit
-pending records until its custom AMRITA Devanāgarī encoding has been converted
-to Unicode.
+& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
+  '.\scripts\segment_additional_witnesses.py' `
+  --source-witnesses '.\source-witnesses'
+
+& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
+  '.\scripts\segment_translation_witnesses_batch2.py' `
+  --source-witnesses '.\source-witnesses'
+```
+
+The corresponding reproducible source extraction is implemented in
+`scripts/extract_translation_witnesses_batch2.py`; run it with `--help` to see
+the six required PDF/EPUB path arguments.
+
+## Publish with GitHub Pages
+
+Upload `index.html`, `styles.css`, `app.js`, `analysis.js`, `auth-config.js`,
+`editorial-overrides.json`, and `corpus.js` to the repository root.
+The `data`, `scripts`, and `reference-source` folders are not required by the
+published reader.
+
+In Comparison or Alignment view, drag the boundary at the right edge of a
+witness heading to change its width. Widths are saved in the browser.
+
+## Embedded editor
+
+In `Reading` or `Comparison`, press `Edit text & annotations`; alternatively open the
+dedicated `Editor` view. Drag across tokens, or Shift-click, to select spans in
+Sanskrit and corresponding witnesses. The shared editor creates sections,
+subsections, subsubsections, phrases, notes, and reviewed sentence, phrase, or
+token-span correspondences. Sentence and phrase correspondences automatically
+become synchronized rows in Comparison. Editorial annotations are saved in the
+browser and can be exported as `vimsika-editor-annotations.json`.
+
+The editor also supports structural sentence-boundary corrections. Select a
+span inside one witness, choose the numbered sentence where that span belongs,
+and save the adjustment. The shell then redraws the Reading and Comparison
+sections with the selected text moved into that sentence, while keeping the
+underlying witness text untouched.
+
+Each visible witness also receives an `Edit text` control. Revised text is
+retokenized immediately, stored as a reversible local override, and included in
+the annotation export with its original imported text, revision note, and
+timestamp. `Revert` restores the imported witness without changing the raw
+corpus files.
+
+When `auth-config.js` has an empty `apiBaseUrl`, every edit remains only in that
+browser's `localStorage`. This is expected: a static GitHub Pages site cannot
+write back to its repository. After the collaboration Worker is deployed and
+its URL is configured, administrators and editors can publish those drafts to
+`editorial-overrides.json`.
+
+## External alignment imports
+
+The corpus build accepts an optional shell-native alignment export:
+
+```powershell
+& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
+  '.\scripts\build_trial_corpus.py' `
+  'C:\Users\glebs\OneDrive\Dokumente\Vimsika\Vimsika\texts' `
+  '.\data\corpus.json' `
+  --authorized-alignments '.\authorized-alignments.json'
+```
+
+An example schema is in
+`reference-source/dharmanexus-authorized-import.example.json`. DharmaNexus
+describes its links as algorithmic intertextual matches, and its published terms
+prohibit using its database API to populate a third-party presentation layer
+without authorization. The shell therefore records the DharmaNexus source and
+is ready for an explicitly authorized export, but does not copy the public API.
+Contact `dharmamitra.project@gmail.com` to request permission or a collaboration
+export.
+
+## Trusted collaboration and publication
+
+The root reader remains a static GitHub Pages site. Secure editing and
+publication are provided by the deployable Cloudflare Worker in
+`collaboration-worker`.
+
+- Public visitors remain readers.
+- Contributors can edit and submit reviewable GitHub pull requests.
+- Editors can publish directly.
+- The administrator can publish directly and manage trusted GitHub logins.
+
+The initial administrator is configured as `glebsharygin-lab`. If the personal
+GitHub account that should administer the project has a different login, change
+`ADMIN_GITHUB_LOGIN` in `collaboration-worker/wrangler.toml` and
+`administratorLogin` in `auth-config.js`.
+
+Published corrections are written to `editorial-overrides.json`, not directly
+into the generated `corpus.js`. This preserves the imported corpus, provides
+Git history and rollback, and allows the build pipeline to incorporate reviewed
+corrections later. The editorial schema includes structural units, alignments,
+sentence-boundary overrides, text corrections, lexical entries, and
+sentence-level syntax annotations.
+Deployment instructions are in
+`collaboration-worker/README.md`.
+
+Tokenization is exhaustive and mechanical. Semantic alignment remains a
+scholarly annotation task: the interface stores reviewed many-to-many links,
+omissions, additions, paraphrases, and uncertain correspondences without
+pretending that automatically suggested equivalences are final.
+
+The build also generates a preliminary candidate mapping for every alignable
+Sanskrit token. These candidates use monotonic proportional projection within
+each passage. They are useful for rapidly locating a probable region in each
+witness, but they are explicitly marked `machine-suggested`, `low` confidence,
+and must not be cited as reviewed philological equivalences. Existing reviewed
+and editorial links always take priority over projected candidates.
+
+In `Alignment` view, click a Sanskrit token or Shift-click a later token to
+extend the selected Sanskrit phrase.
+The Shell creates a live comparison frame containing contextual excerpts for
+every recorded correspondence. Frames can be pinned so several Sanskrit
+phrases remain visible for comparison. Unaligned selections are identified
+explicitly and can then be annotated in `Editor` mode.
+
+## Run the reader
+
+```powershell
+& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
+  -m http.server 8000
+```
+
+Open `http://localhost:8000`.

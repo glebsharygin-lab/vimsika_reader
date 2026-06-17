@@ -1,8 +1,11 @@
 {
-  "schemaVersion": "0.1.0-published-editorial",
+  "schemaVersion": "0.2.0-published-editorial",
   "updatedAt": null,
   "updatedBy": null,
   "units": [],
   "alignments": [],
+  "sentenceEdits": [],
+  "lexiconEntries": [],
+  "syntaxAnnotations": [],
   "textEdits": {}
 }

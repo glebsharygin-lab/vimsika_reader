@@ -1,4 +1,4 @@
-Upload these six files to the root of the GitHub repository, replacing the
+Upload these seven files to the root of the GitHub repository, replacing the
 existing copies:
 
 1. index.html
@@ -7,25 +7,27 @@ existing copies:
 4. analysis.js
 5. styles.css
 6. corpus.js
+7. editorial-overrides.json
 
-The new index.html uses asset version 0.15.0 for app.js, analysis.js,
-styles.css, and corpus.js, plus
-version 0.9.1 for auth-config.js, so GitHub Pages and visitors' browsers fetch
-the current interface and Worker configuration.
+The new index.html uses asset version 0.16.1 for app.js, analysis.js,
+styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
+Pages and visitors' browsers fetch the current interface and Worker
+configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.15.0
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.16.1
 
 Expected result:
-- the sidebar displays `Build 0.15.0 · Corpus 0.6.0-trial`;
+- the sidebar displays `Build 0.16.1 · Corpus 0.6.0-trial`;
+- the main notice begins `Research prototype` and ends `Only for research purposes.`;
 - Sources & rights lists 23 witnesses;
 - the witness selector includes Sanskrit editions by Silk, Tola–Dragonetti,
   Ruzsa–Szegedi, and Balcerowicz–Nowakowska;
 - the witness selector includes the Polish Balcerowicz–Nowakowska translation
   and the Hungarian Szanyi translation;
-- the witness selector includes Lyssenko’s Russian translation, Yuda’s
-  Japanese translation, Cornu’s French translation, and the English
-  translations by Kochumuttom, Wood, and Cook;
+- the witness selector includes Lyssenko's Russian translation, Yuda's Japanese
+  translation, Cornu's French translation, and the English translations by
+  Kochumuttom, Wood, and Cook;
 - the Balcerowicz–Nowakowska Sanskrit source is registered with a Unicode
   conversion-pending notice because the PDF uses the AMRITA font;
 - Silk 2016 is the English witness visible by default;
@@ -35,26 +37,29 @@ Expected result:
 - the summary reports 255 numbered sentences;
 - verse 1 contains foldable units 1.1 through 1.9;
 - every opened witness displays corresponding numbered units;
-- Sources & rights lists the DharmaNexus record as permission-required.
-- the account button says "Sign in with GitHub".
+- Sources & rights lists the DharmaNexus record as permission-required;
+- the account button says "Sign in with GitHub";
 - collapsed sentences can be hidden, and any sentence can be focused;
-- clicking a Sanskrit word highlights its reviewed or projected counterparts.
+- clicking a Sanskrit word highlights its reviewed or projected counterparts;
 - Focus mode removes preserved blank space and packs witnesses closely;
 - Comparison and Alignment contain clickable token-level surfaces;
-- token clicks open a dictionary-ready lexical inspector.
+- token clicks open a dictionary-ready lexical inspector;
 - Analysis opens Lexicon, Concordance, Morphology, Syntax, and Statistics;
-- lexical records and CoNLL-U syntax drafts save in the local editorial layer.
+- lexical records and CoNLL-U syntax drafts save in the local editorial layer;
+- the editor can move a selected witness span from one numbered sentence to
+  another without changing the underlying witness text;
 - Sanskrit root verses are bold, including interleaved kārikā fragments;
 - corresponding sentence spans are bold in every aligned witness.
 
-To publish lexical and syntax annotations for collaborators, also replace
-collaboration-worker/src/index.js with the packaged version and redeploy the
-Worker from the collaboration-worker folder:
+To publish boundary, lexical, and syntax annotations for collaborators, also
+replace collaboration-worker/src/index.js with the packaged version and redeploy
+the Worker from the collaboration-worker folder:
 
 npm run deploy
 
-The Worker upgrade preserves existing editorial-overrides.json content and
-adds lexiconEntries and syntaxAnnotations during the next publication.
+The Worker upgrade preserves existing editorial-overrides.json content and adds
+sentenceEdits, lexiconEntries, and syntaxAnnotations during the next
+publication.
 
 DharmaNexus matches are not copied into the corpus. An authorized export can be
 imported with scripts/build_trial_corpus.py --authorized-alignments FILE.json.
