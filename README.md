@@ -105,18 +105,19 @@ witness heading to change its width. Widths are saved in the browser.
 ## Embedded editor
 
 In `Reading` or `Comparison`, press `Edit text & annotations`; alternatively open the
-dedicated `Editor` view. Drag across tokens, or Shift-click, to select spans in
-Sanskrit and corresponding witnesses. The shared editor creates sections,
-subsections, subsubsections, phrases, notes, and reviewed sentence, phrase, or
-token-span correspondences. Sentence and phrase correspondences automatically
-become synchronized rows in Comparison. Editorial annotations are saved in the
-browser and can be exported as `vimsika-editor-annotations.json`.
+dedicated `Editor` view. The inline editor starts with `Numbered sections`, where
+visible units such as `1.1`, `1.2`, and `15.3` are literal editable records. You can
+change a section number, display order, label, note, and the text shown for each
+visible witness, or create a new numbered section. These section edits are saved as
+`sectionEdits`, so the shell no longer depends on token-boundary moves for basic
+sentence/phrase correction.
 
-The editor also supports structural sentence-boundary corrections. Select a
-span inside one witness, choose the numbered sentence where that span belongs,
-and save the adjustment. The shell then redraws the Reading and Comparison
-sections with the selected text moved into that sentence, while keeping the
-underlying witness text untouched.
+Drag across tokens, or Shift-click, to select spans in Sanskrit and corresponding
+witnesses for advanced word-level correspondence. The shared editor still creates
+sections, subsections, subsubsections, phrases, notes, and reviewed sentence,
+phrase, or token-span correspondences. Sentence and phrase correspondences
+automatically become synchronized rows in Comparison. Editorial annotations are
+saved in the browser and can be exported as `vimsika-editor-annotations.json`.
 
 Each visible witness also receives an `Edit text` control. Revised text is
 retokenized immediately, stored as a reversible local override, and included in

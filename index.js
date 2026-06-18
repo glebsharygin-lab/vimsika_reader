@@ -360,6 +360,9 @@ function normalizeEditorial(editorial) {
   const sentenceEdits = Array.isArray(editorial?.sentenceEdits)
     ? editorial.sentenceEdits
     : [];
+  const sectionEdits = Array.isArray(editorial?.sectionEdits)
+    ? editorial.sectionEdits
+    : [];
   const lexiconEntries = Array.isArray(editorial?.lexiconEntries)
     ? editorial.lexiconEntries
     : [];
@@ -378,6 +381,7 @@ function normalizeEditorial(editorial) {
     units,
     alignments,
     sentenceEdits,
+    sectionEdits,
     textEdits,
     lexiconEntries,
     syntaxAnnotations,
@@ -389,6 +393,17 @@ function mergeById(existing, incoming) {
     ...new Map(
       [...(existing || []), ...(incoming || [])].map((item) => [
         item.id,
+        item,
+      ]),
+    ).values(),
+  ];
+}
+
+function mergeByUnitId(existing, incoming) {
+  return [
+    ...new Map(
+      [...(existing || []), ...(incoming || [])].map((item) => [
+        item.unitId || item.id,
         item,
       ]),
     ).values(),
@@ -407,6 +422,10 @@ function mergeEditorial(existing, incoming, login) {
     sentenceEdits: mergeById(
       current.sentenceEdits,
       changes.sentenceEdits,
+    ),
+    sectionEdits: mergeByUnitId(
+      current.sectionEdits,
+      changes.sectionEdits,
     ),
     lexiconEntries: mergeById(
       current.lexiconEntries,
@@ -429,6 +448,7 @@ function editorialChangeCount(editorial) {
     normalized.units.length +
     normalized.alignments.length +
     normalized.sentenceEdits.length +
+    normalized.sectionEdits.length +
     Object.keys(normalized.textEdits).length +
     normalized.lexiconEntries.length +
     normalized.syntaxAnnotations.length
@@ -537,6 +557,7 @@ async function getEditorialFile(branch, token, env) {
         units: [],
         alignments: [],
         sentenceEdits: [],
+        sectionEdits: [],
         lexiconEntries: [],
         syntaxAnnotations: [],
         textEdits: {},

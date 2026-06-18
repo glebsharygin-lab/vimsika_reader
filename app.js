@@ -22,6 +22,7 @@ const state = {
     units: [],
     alignments: [],
     sentenceEdits: [],
+    sectionEdits: [],
     textEdits: {},
     lexiconEntries: [],
     syntaxAnnotations: [],
@@ -30,6 +31,7 @@ const state = {
     units: [],
     alignments: [],
     sentenceEdits: [],
+    sectionEdits: [],
     textEdits: {},
     lexiconEntries: [],
     syntaxAnnotations: [],
@@ -130,6 +132,32 @@ function sentenceEditsForPassage(passageId) {
   return allSentenceEdits().filter((edit) => edit.passageId === passageId);
 }
 
+function allSectionEdits() {
+  return [
+    ...new Map(
+      [
+        ...(state.publishedEditorData.sectionEdits || []),
+        ...(state.editorData.sectionEdits || []),
+      ].map((edit) => [edit.unitId || edit.id, edit]),
+    ).values(),
+  ].sort(
+    (left, right) =>
+      Number(left.order ?? Number.MAX_SAFE_INTEGER) -
+        Number(right.order ?? Number.MAX_SAFE_INTEGER) ||
+      String(left.number || "").localeCompare(String(right.number || "")),
+  );
+}
+
+function sectionEditsForPassage(passageId) {
+  return allSectionEdits().filter((edit) => edit.passageId === passageId);
+}
+
+function localSectionEditFor(passageId, unitId) {
+  return (state.editorData.sectionEdits || []).find(
+    (edit) => edit.passageId === passageId && edit.unitId === unitId,
+  );
+}
+
 function candidateAlignments() {
   return state.corpus.candidateAlignments || [];
 }
@@ -199,6 +227,7 @@ function loadEditorData() {
         units: stored.units,
         alignments: stored.alignments,
         sentenceEdits: stored.sentenceEdits || [],
+        sectionEdits: stored.sectionEdits || [],
         textEdits: stored.textEdits || {},
         lexiconEntries: stored.lexiconEntries || [],
         syntaxAnnotations: stored.syntaxAnnotations || [],
@@ -209,6 +238,7 @@ function loadEditorData() {
       units: [],
       alignments: [],
       sentenceEdits: [],
+      sectionEdits: [],
       textEdits: {},
       lexiconEntries: [],
       syntaxAnnotations: [],
@@ -233,6 +263,7 @@ async function loadPublishedEditorData() {
       units: published.units || [],
       alignments: published.alignments || [],
       sentenceEdits: published.sentenceEdits || [],
+      sectionEdits: published.sectionEdits || [],
       textEdits,
       lexiconEntries: published.lexiconEntries || [],
       syntaxAnnotations: published.syntaxAnnotations || [],
@@ -537,6 +568,7 @@ function cloneSentenceUnit(unit) {
   return {
     ...unit,
     targets: { ...(unit.targets || {}) },
+    targetTexts: { ...(unit.targetTexts || {}) },
     targetTokenIds: Object.fromEntries(
       Object.entries(unit.targetTokenIds || {}).map(([sourceId, tokenIds]) => [
         sourceId,
@@ -544,6 +576,22 @@ function cloneSentenceUnit(unit) {
       ]),
     ),
   };
+}
+
+function sentenceOrderKey(unit) {
+  if (Number.isFinite(Number(unit.order))) return Number(unit.order);
+  const number = String(unit.number || "").split(".").at(-1);
+  if (Number.isFinite(Number(number))) return Number(number);
+  return Number.MAX_SAFE_INTEGER;
+}
+
+function sortSentenceUnits(units) {
+  return [...units].sort(
+    (left, right) =>
+      sentenceOrderKey(left) - sentenceOrderKey(right) ||
+      String(left.number || "").localeCompare(String(right.number || "")) ||
+      String(left.id || "").localeCompare(String(right.id || "")),
+  );
 }
 
 function sortedTokenIdsForSource(passage, sourceId, tokenIds) {
@@ -597,7 +645,44 @@ function effectiveSentenceUnits(passage) {
     targetUnit.sentenceEdited = true;
   });
 
-  return units;
+  sectionEditsForPassage(passage.id).forEach((edit) => {
+    const unitId = edit.unitId || edit.id;
+    if (!unitId) return;
+    const existing = byId.get(unitId);
+    const targetUnit =
+      existing ||
+      {
+        id: unitId,
+        verse: passage.number,
+        level: edit.level || "sentence",
+        targetTokenIds: {},
+        targets: {},
+      };
+
+    targetUnit.number = edit.number || targetUnit.number;
+    targetUnit.label =
+      edit.label || targetUnit.label || `Section ${targetUnit.number || ""}`;
+    targetUnit.order = Number.isFinite(Number(edit.order))
+      ? Number(edit.order)
+      : sentenceOrderKey(targetUnit);
+    targetUnit.level = edit.level || targetUnit.level || "sentence";
+    targetUnit.note = edit.note ?? targetUnit.note ?? "";
+    targetUnit.targetTexts = {
+      ...(targetUnit.targetTexts || {}),
+      ...(edit.targetTexts || {}),
+    };
+    targetUnit.status = "editorial-section";
+    targetUnit.confidence = "reviewed";
+    targetUnit.sentenceEdited = true;
+    targetUnit.literalSection = true;
+
+    if (!existing) {
+      units.push(targetUnit);
+      byId.set(unitId, targetUnit);
+    }
+  });
+
+  return sortSentenceUnits(units);
 }
 
 function alignmentsOverlappingSanskrit(passage, tokenIds) {
@@ -1092,6 +1177,12 @@ function phraseAlignments(passage) {
   );
 
   return [...generated, ...editorial].sort((left, right) => {
+    if (left.level === "sentence" && right.level === "sentence") {
+      return (
+        sentenceOrderKey(left) - sentenceOrderKey(right) ||
+        String(left.number || "").localeCompare(String(right.number || ""))
+      );
+    }
     const positionDifference =
       alignmentPosition(left, passage) -
       alignmentPosition(right, passage);
@@ -1157,6 +1248,9 @@ function readingSentenceList(passage, source, witness) {
           if (!focusedId && hidingCollapsed && collapsed) return "";
           const tokenIds = unit.targetTokenIds?.[source.id] || [];
           const target = alignmentTargetText(unit, passage, source.id);
+          const literalText =
+            unit.targetTexts &&
+            Object.prototype.hasOwnProperty.call(unit.targetTexts, source.id);
           const generated = unit.status === "machine-segmented";
           const adjusted =
             unit.sentenceEdited || unit.status === "editorial-boundary";
@@ -1183,7 +1277,13 @@ function readingSentenceList(passage, source, witness) {
               </div>
               <div class="reading-sentence-body">${
                 target
-                  ? tokenIds.length
+                  ? literalText
+                    ? highlightedText(
+                        target,
+                        source.id,
+                        passage.number,
+                      )
+                    : tokenIds.length
                     ? tokenizedText(
                         witness,
                         source.id,
@@ -1386,6 +1486,12 @@ function lexicalPopover(passage) {
 
 function alignmentTargetText(alignment, passage, sourceId) {
   if (
+    alignment.targetTexts &&
+    Object.prototype.hasOwnProperty.call(alignment.targetTexts, sourceId)
+  ) {
+    return alignment.targetTexts[sourceId] || "";
+  }
+  if (
     alignment.status === "machine-segmented" &&
     !alignment.sentenceEdited &&
     alignment.targets?.[sourceId] &&
@@ -1580,6 +1686,102 @@ function publicationButtons() {
   `;
 }
 
+function literalSectionEditor(passage, sources, sentenceUnits) {
+  if (!sources.length) return "";
+  const nextOrder =
+    Math.max(0, ...sentenceUnits.map((unit) => sentenceOrderKey(unit))) + 1;
+  const nextNumber = `${passage.number}.${nextOrder}`;
+  return `
+    <section class="literal-section-editor">
+      <div class="literal-section-heading">
+        <div>
+          <h4>Numbered sections</h4>
+          <p>
+            These are the actual visible sections. Edit their number, order, label,
+            and the text shown for each visible witness.
+          </p>
+        </div>
+      </div>
+
+      <form class="literal-section-new" data-new-section-form="${passage.id}">
+        <label>
+          New number
+          <input data-field="new-section-number" type="text" value="${escapeHtml(nextNumber)}">
+        </label>
+        <label>
+          Order
+          <input data-field="new-section-order" type="number" min="1" step="1" value="${nextOrder}">
+        </label>
+        <label>
+          Label
+          <input data-field="new-section-label" type="text" value="Sentence ${escapeHtml(nextNumber)}">
+        </label>
+        <button class="editor-primary" type="submit">Create section</button>
+      </form>
+
+      <div class="literal-section-list">
+        ${sentenceUnits
+          .map((unit) => {
+            const localEdit = localSectionEditFor(passage.id, unit.id);
+            const sectionLabel = unit.label || `Sentence ${unit.number || ""}`;
+            return `
+              <form
+                class="literal-section-card"
+                data-section-edit-form="${passage.id}"
+                data-unit-id="${unit.id}"
+              >
+                <div class="literal-section-card-heading">
+                  <strong>${escapeHtml(unit.number || unit.label)}</strong>
+                  <span>${unit.literalSection ? "edited section" : "generated section"}</span>
+                  ${
+                    localEdit
+                      ? `<button data-discard-section-edit="${unit.id}" type="button">Discard local edit</button>`
+                      : ""
+                  }
+                </div>
+                <div class="literal-section-meta">
+                  <label>
+                    Number
+                    <input data-field="section-number" type="text" value="${escapeHtml(unit.number || "")}">
+                  </label>
+                  <label>
+                    Order
+                    <input data-field="section-order" type="number" min="1" step="1" value="${sentenceOrderKey(unit)}">
+                  </label>
+                  <label>
+                    Label
+                    <input data-field="section-label" type="text" value="${escapeHtml(sectionLabel)}">
+                  </label>
+                  <label>
+                    Note
+                    <input data-field="section-note" type="text" value="${escapeHtml(unit.note || "")}">
+                  </label>
+                </div>
+                <div class="literal-section-witnesses">
+                  ${sources
+                    .map(
+                      (source) => `
+                        <label>
+                          ${escapeHtml(source.shortLabel || source.label)}
+                          <textarea
+                            data-section-source="${source.id}"
+                            rows="4"
+                          >${escapeHtml(alignmentTargetText(unit, passage, source.id))}</textarea>
+                        </label>
+                      `,
+                    )
+                    .join("")}
+                </div>
+                <button class="editor-primary" type="submit">Save section</button>
+              </form>
+            `;
+          })
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
 function editorWorkbench(passage) {
   const units = editorUnitsForPassage(passage.id);
   const sentenceUnits = effectiveSentenceUnits(passage).filter(
@@ -1589,6 +1791,7 @@ function editorWorkbench(passage) {
   const localSentenceEditIds = new Set(
     (state.editorData.sentenceEdits || []).map((edit) => edit.id),
   );
+  const sources = selectedSourceRecords();
   const selections = selectionsForPassage(passage.id);
   const selectionCount = Object.values(selections).reduce(
     (total, tokenIds) => total + tokenIds.length,
@@ -1601,6 +1804,9 @@ function editorWorkbench(passage) {
     (edit) => edit.passageId === passage.id,
   ).length;
   const sentenceEditCount = (state.editorData.sentenceEdits || []).filter(
+    (edit) => edit.passageId === passage.id,
+  ).length;
+  const sectionEditCount = (state.editorData.sectionEdits || []).filter(
     (edit) => edit.passageId === passage.id,
   ).length;
   const inline = state.view !== "editor";
@@ -1619,17 +1825,27 @@ function editorWorkbench(passage) {
       </div>
 
       <p class="editor-guidance">
-        Drag across tokens, or Shift-click, in any visible witness. Use the selected spans
-        to create nested sections or a reviewed sentence-to-sentence correspondence.
+        ${
+          inline
+            ? "Edit numbered sections directly here. Token selection remains available below for advanced word-level correspondence only."
+            : "Drag across tokens, or Shift-click, in any visible witness to create reviewed correspondences."
+        }
       </p>
       <div class="editor-selection-summary">
         <strong>${selectionCount} selected tokens</strong>
         <span>${Object.keys(selections).length} witnesses represented</span>
         <span>${textEditCount} revised witness text${textEditCount === 1 ? "" : "s"}</span>
-        <span>${sentenceEditCount} sentence boundary draft${sentenceEditCount === 1 ? "" : "s"}</span>
+        <span>${sectionEditCount} literal section draft${sectionEditCount === 1 ? "" : "s"}</span>
+        ${
+          sentenceEditCount
+            ? `<span>${sentenceEditCount} legacy boundary move${sentenceEditCount === 1 ? "" : "s"}</span>`
+            : ""
+        }
       </div>
 
-      <div class="editor-forms">
+      ${inline ? literalSectionEditor(passage, sources, sentenceUnits) : ""}
+
+      <div class="editor-forms ${inline ? "advanced-token-forms" : ""}">
         <form class="editor-form" data-unit-form="${passage.id}">
           <h4>Create structural unit</h4>
           <label>
@@ -1728,7 +1944,7 @@ function editorWorkbench(passage) {
           </button>
         </form>
 
-        <form class="editor-form" data-sentence-edit-form="${passage.id}">
+        <form class="editor-form obsolete-boundary-form" hidden data-sentence-edit-form="${passage.id}">
           <h4>Adjust sentence boundary</h4>
           <p class="editor-form-note">
             Select words in one witness, then move that span into the sentence where it belongs.
@@ -1784,7 +2000,7 @@ function editorWorkbench(passage) {
           }
         </section>
         <section>
-          <h4>Sentence boundaries</h4>
+          <h4>Legacy token boundary moves</h4>
           ${
             sentenceEdits.length
               ? `<ol class="editor-boundary-list">${sentenceEdits
@@ -1804,7 +2020,7 @@ function editorWorkbench(passage) {
                     `;
                   })
                   .join("")}</ol>`
-              : '<p class="editor-empty">No sentence-boundary edits yet.</p>'
+              : '<p class="editor-empty">No legacy token-boundary moves.</p>'
           }
         </section>
       </div>
@@ -1864,6 +2080,12 @@ function phraseRow(alignment, passage, sources, template, index) {
         .map((source) => {
           const target = alignmentTargetText(alignment, passage, source.id);
           const tokenIds = alignment.targetTokenIds?.[source.id] || [];
+          const literalText =
+            alignment.targetTexts &&
+            Object.prototype.hasOwnProperty.call(
+              alignment.targetTexts,
+              source.id,
+            );
           const witness = effectiveWitness(passage, source.id);
           return `
             <div
@@ -1872,7 +2094,13 @@ function phraseRow(alignment, passage, sources, template, index) {
               data-source="${source.id}"
             >${
               target
-                ? tokenIds.length
+                ? literalText
+                  ? highlightedText(
+                      target,
+                      source.id,
+                      passage.number,
+                    )
+                  : tokenIds.length
                   ? tokenizedText(
                       witness,
                       source.id,
@@ -2104,12 +2332,20 @@ function updateEditorSelectionSummary(passageId) {
   const sentenceEditCount = (state.editorData.sentenceEdits || []).filter(
     (edit) => edit.passageId === passageId,
   ).length;
+  const sectionEditCount = (state.editorData.sectionEdits || []).filter(
+    (edit) => edit.passageId === passageId,
+  ).length;
   const summary = panel.querySelector(".editor-selection-summary");
   summary.innerHTML = `
     <strong>${count} selected tokens</strong>
     <span>${Object.keys(selections).length} witnesses represented</span>
     <span>${textEditCount} revised witness text${textEditCount === 1 ? "" : "s"}</span>
-    <span>${sentenceEditCount} sentence boundary draft${sentenceEditCount === 1 ? "" : "s"}</span>
+    <span>${sectionEditCount} literal section draft${sectionEditCount === 1 ? "" : "s"}</span>
+    ${
+      sentenceEditCount
+        ? `<span>${sentenceEditCount} legacy boundary move${sentenceEditCount === 1 ? "" : "s"}</span>`
+        : ""
+    }
   `;
 }
 
@@ -2232,6 +2468,13 @@ function nextAnnotationId(prefix, passageId) {
     .slice(2, 7)}`;
 }
 
+function upsertSectionEdit(edit) {
+  state.editorData.sectionEdits = (state.editorData.sectionEdits || []).filter(
+    (item) => !(item.passageId === edit.passageId && item.unitId === edit.unitId),
+  );
+  state.editorData.sectionEdits.push(edit);
+}
+
 function deleteUnitAndDescendants(unitId) {
   const ids = new Set([unitId]);
   let found = true;
@@ -2257,6 +2500,7 @@ function exportEditorAnnotations() {
     units: state.editorData.units,
     alignments: state.editorData.alignments,
     sentenceEdits: state.editorData.sentenceEdits,
+    sectionEdits: state.editorData.sectionEdits,
     textEdits: Object.values(state.editorData.textEdits),
     lexiconEntries: state.editorData.lexiconEntries,
     syntaxAnnotations: state.editorData.syntaxAnnotations,
@@ -2276,6 +2520,7 @@ function localEditorialPayload() {
     units: state.editorData.units,
     alignments: state.editorData.alignments,
     sentenceEdits: state.editorData.sentenceEdits,
+    sectionEdits: state.editorData.sectionEdits,
     textEdits: state.editorData.textEdits,
     lexiconEntries: state.editorData.lexiconEntries,
     syntaxAnnotations: state.editorData.syntaxAnnotations,
@@ -2287,6 +2532,7 @@ function localEditorialChangeCount() {
     state.editorData.units.length +
     state.editorData.alignments.length +
     state.editorData.sentenceEdits.length +
+    state.editorData.sectionEdits.length +
     Object.keys(state.editorData.textEdits).length +
     state.editorData.lexiconEntries.length +
     state.editorData.syntaxAnnotations.length
@@ -2318,6 +2564,14 @@ function mergePublishedEditorialData() {
       ].map((edit) => [edit.id, edit]),
     ).values(),
   ];
+  state.publishedEditorData.sectionEdits = [
+    ...new Map(
+      [
+        ...state.publishedEditorData.sectionEdits,
+        ...state.editorData.sectionEdits,
+      ].map((edit) => [edit.unitId || edit.id, edit]),
+    ).values(),
+  ];
   state.publishedEditorData.textEdits = {
     ...state.publishedEditorData.textEdits,
     ...state.editorData.textEdits,
@@ -2342,6 +2596,7 @@ function mergePublishedEditorialData() {
     units: [],
     alignments: [],
     sentenceEdits: [],
+    sectionEdits: [],
     textEdits: {},
     lexiconEntries: [],
     syntaxAnnotations: [],
@@ -2385,6 +2640,91 @@ async function publishEditorialData(mode, panel) {
 }
 
 function bindEditorControls(reader) {
+  reader.querySelectorAll("[data-section-edit-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const passageId = form.dataset.sectionEditForm;
+      const passage = passageById(passageId);
+      const unitId = form.dataset.unitId;
+      const targetTexts = Object.fromEntries(
+        [...form.querySelectorAll("[data-section-source]")].map((field) => [
+          field.dataset.sectionSource,
+          field.value,
+        ]),
+      );
+      const order = Number(form.querySelector("[data-field='section-order']").value);
+      upsertSectionEdit({
+        id:
+          localSectionEditFor(passageId, unitId)?.id ||
+          nextAnnotationId("section-edit", passageId),
+        unitId,
+        passageId,
+        verse: passage.number,
+        number: form.querySelector("[data-field='section-number']").value.trim(),
+        order: Number.isFinite(order) ? order : Number.MAX_SAFE_INTEGER,
+        label: form.querySelector("[data-field='section-label']").value.trim(),
+        level: "sentence",
+        note: form.querySelector("[data-field='section-note']").value.trim(),
+        targetTexts,
+        updatedAt: new Date().toISOString(),
+      });
+      saveEditorData();
+      renderSummary();
+      state.openPassages.add(passageId);
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-new-section-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const passageId = form.dataset.newSectionForm;
+      const passage = passageById(passageId);
+      const order = Number(form.querySelector("[data-field='new-section-order']").value);
+      const number = form
+        .querySelector("[data-field='new-section-number']")
+        .value.trim();
+      const label =
+        form.querySelector("[data-field='new-section-label']").value.trim() ||
+        `Sentence ${number}`;
+      const unitId = nextAnnotationId("section", passageId);
+      upsertSectionEdit({
+        id: nextAnnotationId("section-edit", passageId),
+        unitId,
+        passageId,
+        verse: passage.number,
+        number,
+        order: Number.isFinite(order) ? order : Number.MAX_SAFE_INTEGER,
+        label,
+        level: "sentence",
+        note: "",
+        targetTexts: Object.fromEntries(
+          selectedSourceRecords().map((source) => [source.id, ""]),
+        ),
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      });
+      saveEditorData();
+      renderSummary();
+      state.openPassages.add(passageId);
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-discard-section-edit]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const passageId = button.closest("[data-section-edit-form]")?.dataset
+        .sectionEditForm;
+      const unitId = button.dataset.discardSectionEdit;
+      state.editorData.sectionEdits = (state.editorData.sectionEdits || []).filter(
+        (edit) => !(edit.passageId === passageId && edit.unitId === unitId),
+      );
+      saveEditorData();
+      renderSummary();
+      renderReader();
+    });
+  });
+
   reader.querySelectorAll("[data-unit-form]").forEach((form) => {
     form.addEventListener("submit", (event) => {
       event.preventDefault();

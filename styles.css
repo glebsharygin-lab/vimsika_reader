@@ -1397,6 +1397,128 @@ button:disabled {
   gap: 14px;
 }
 
+.editor-forms.advanced-token-forms {
+  margin-top: 16px;
+  opacity: 0.92;
+}
+
+.literal-section-editor {
+  display: grid;
+  gap: 12px;
+  margin: 15px 0;
+  padding: 14px;
+  background: #fffdf8;
+  border: 1px solid #c9d7dc;
+  border-radius: 8px;
+}
+
+.literal-section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.literal-section-heading h4 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.literal-section-heading p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.literal-section-new,
+.literal-section-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.literal-section-new {
+  align-items: end;
+  padding: 12px;
+  background: #edf3f5;
+  border-radius: 7px;
+}
+
+.literal-section-list {
+  display: grid;
+  gap: 12px;
+}
+
+.literal-section-card {
+  display: grid;
+  gap: 11px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+
+.literal-section-card-heading {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.literal-section-card-heading strong {
+  color: var(--accent);
+}
+
+.literal-section-card-heading span {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.literal-section-card-heading button {
+  margin-left: auto;
+  padding: 4px 8px;
+  color: #8b322b;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font-size: 0.72rem;
+}
+
+.literal-section-witnesses {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.literal-section-new label,
+.literal-section-meta label,
+.literal-section-witnesses label {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+
+.literal-section-new input,
+.literal-section-meta input,
+.literal-section-witnesses textarea {
+  width: 100%;
+  padding: 8px 9px;
+  color: var(--ink);
+  background: #fffdf8;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.literal-section-witnesses textarea {
+  min-height: 94px;
+  resize: vertical;
+}
+
 .editor-form {
   display: grid;
   gap: 10px;
