@@ -1485,6 +1485,66 @@ button:disabled {
   font-size: 0.72rem;
 }
 
+.literal-section-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.editor-danger {
+  padding: 8px 10px;
+  color: #8b322b;
+  background: #fff7f0;
+  border: 1px solid #e4b7a8;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.literal-section-hidden {
+  display: grid;
+  gap: 8px;
+  padding: 11px;
+  background: #f7f2e9;
+  border: 1px dashed #c9b99a;
+  border-radius: 7px;
+}
+
+.literal-section-hidden h5 {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.literal-hidden-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  padding: 7px 8px;
+  background: #fffdf8;
+  border-radius: 6px;
+}
+
+.literal-hidden-row span {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.literal-hidden-row button {
+  padding: 5px 9px;
+  color: var(--accent);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .literal-section-witnesses {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

@@ -9,16 +9,16 @@ existing copies:
 6. corpus.js
 7. editorial-overrides.json
 
-The new index.html uses asset version 0.17.0 for app.js, analysis.js,
+The new index.html uses asset version 0.17.1 for app.js, analysis.js,
 styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
 Pages and visitors' browsers fetch the current interface and Worker
 configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.17.0
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.17.1
 
 Expected result:
-- the sidebar displays `Build 0.17.0 · Corpus 0.6.0-trial`;
+- the sidebar displays `Build 0.17.1 · Corpus 0.6.0-trial`;
 - the main notice begins `Research prototype` and ends `Only for research purposes.`;
 - Sources & rights lists 23 witnesses;
 - the summary reports 89,652 addressable tokens and 255 numbered sentences;
@@ -33,6 +33,8 @@ Expected result:
 - lexical records and CoNLL-U syntax drafts save in the local editorial layer;
 - `Edit text & annotations` contains a `Numbered sections` editor where 1.1,
   1.2, etc. can be edited directly as literal section records;
+- unnecessary numbered sections can be hidden from Reading and Comparison and
+  restored later from the hidden-sections list;
 - direct section edits are saved as `sectionEdits`, while legacy token-boundary
   moves remain hidden as an advanced compatibility layer;
 - Sanskrit root verses are bold, including interleaved kārikā fragments;

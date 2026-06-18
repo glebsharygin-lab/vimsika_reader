@@ -611,6 +611,7 @@ function sortedTokenIdsForSource(passage, sourceId, tokenIds) {
 function effectiveSentenceUnits(passage) {
   const units = (passage.sentenceUnits || []).map(cloneSentenceUnit);
   const byId = new Map(units.map((unit) => [unit.id, unit]));
+  const hiddenUnitIds = new Set();
 
   sentenceEditsForPassage(passage.id).forEach((edit) => {
     const sourceId = edit.sourceId;
@@ -648,6 +649,10 @@ function effectiveSentenceUnits(passage) {
   sectionEditsForPassage(passage.id).forEach((edit) => {
     const unitId = edit.unitId || edit.id;
     if (!unitId) return;
+    if (edit.deleted) {
+      hiddenUnitIds.add(unitId);
+      return;
+    }
     const existing = byId.get(unitId);
     const targetUnit =
       existing ||
@@ -682,7 +687,7 @@ function effectiveSentenceUnits(passage) {
     }
   });
 
-  return sortSentenceUnits(units);
+  return sortSentenceUnits(units.filter((unit) => !hiddenUnitIds.has(unit.id)));
 }
 
 function alignmentsOverlappingSanskrit(passage, tokenIds) {
@@ -1688,17 +1693,21 @@ function publicationButtons() {
 
 function literalSectionEditor(passage, sources, sentenceUnits) {
   if (!sources.length) return "";
+  const hiddenSections = sectionEditsForPassage(passage.id).filter(
+    (edit) => edit.deleted,
+  );
   const nextOrder =
     Math.max(0, ...sentenceUnits.map((unit) => sentenceOrderKey(unit))) + 1;
   const nextNumber = `${passage.number}.${nextOrder}`;
   return `
-    <section class="literal-section-editor">
+    <section class="literal-section-editor" data-literal-section-editor="${passage.id}">
       <div class="literal-section-heading">
         <div>
           <h4>Numbered sections</h4>
           <p>
             These are the actual visible sections. Edit their number, order, label,
-            and the text shown for each visible witness.
+            and the text shown for each visible witness. Hiding a section removes
+            it from the shell without deleting the underlying imported witness text.
           </p>
         </div>
       </div>
@@ -1772,12 +1781,37 @@ function literalSectionEditor(passage, sources, sentenceUnits) {
                     )
                     .join("")}
                 </div>
-                <button class="editor-primary" type="submit">Save section</button>
+                <div class="literal-section-actions">
+                  <button class="editor-primary" type="submit">Save section</button>
+                  <button
+                    class="editor-danger"
+                    data-hide-section="${unit.id}"
+                    type="button"
+                  >Hide section</button>
+                </div>
               </form>
             `;
           })
           .join("")}
       </div>
+
+      ${
+        hiddenSections.length
+          ? `<div class="literal-section-hidden">
+              <h5>Hidden sections</h5>
+              ${hiddenSections
+                .map(
+                  (edit) => `
+                    <div class="literal-hidden-row">
+                      <span>${escapeHtml(edit.number || edit.label || edit.unitId)}</span>
+                      <button data-restore-section="${escapeHtml(edit.unitId || edit.id)}" type="button">Restore</button>
+                    </div>
+                  `,
+                )
+                .join("")}
+            </div>`
+          : ""
+      }
     </section>
   `;
 }
@@ -2666,6 +2700,7 @@ function bindEditorControls(reader) {
         level: "sentence",
         note: form.querySelector("[data-field='section-note']").value.trim(),
         targetTexts,
+        deleted: false,
         updatedAt: new Date().toISOString(),
       });
       saveEditorData();
@@ -2701,6 +2736,7 @@ function bindEditorControls(reader) {
         targetTexts: Object.fromEntries(
           selectedSourceRecords().map((source) => [source.id, ""]),
         ),
+        deleted: false,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       });
@@ -2721,6 +2757,72 @@ function bindEditorControls(reader) {
       );
       saveEditorData();
       renderSummary();
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-hide-section]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const form = button.closest("[data-section-edit-form]");
+      const passageId = form?.dataset.sectionEditForm;
+      const passage = passageById(passageId);
+      const unitId = button.dataset.hideSection;
+      if (!passage || !unitId) return;
+      const targetTexts = Object.fromEntries(
+        [...form.querySelectorAll("[data-section-source]")].map((field) => [
+          field.dataset.sectionSource,
+          field.value,
+        ]),
+      );
+      const order = Number(form.querySelector("[data-field='section-order']").value);
+      upsertSectionEdit({
+        id:
+          localSectionEditFor(passageId, unitId)?.id ||
+          nextAnnotationId("section-edit", passageId),
+        unitId,
+        passageId,
+        verse: passage.number,
+        number: form.querySelector("[data-field='section-number']").value.trim(),
+        order: Number.isFinite(order) ? order : Number.MAX_SAFE_INTEGER,
+        label: form.querySelector("[data-field='section-label']").value.trim(),
+        level: "sentence",
+        note: form.querySelector("[data-field='section-note']").value.trim(),
+        targetTexts,
+        deleted: true,
+        updatedAt: new Date().toISOString(),
+      });
+      saveEditorData();
+      renderSummary();
+      state.openPassages.add(passageId);
+      renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-restore-section]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const passageId = button.closest("[data-literal-section-editor]")?.dataset
+        .literalSectionEditor;
+      const passage = passageById(passageId);
+      const unitId = button.dataset.restoreSection;
+      const hiddenEdit = sectionEditsForPassage(passageId).find(
+        (edit) => (edit.unitId || edit.id) === unitId,
+      );
+      if (!passage || !hiddenEdit) return;
+      upsertSectionEdit({
+        ...hiddenEdit,
+        id:
+          localSectionEditFor(passageId, unitId)?.id ||
+          nextAnnotationId("section-edit", passageId),
+        passageId,
+        unitId,
+        verse: passage.number,
+        deleted: false,
+        restoredAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      });
+      saveEditorData();
+      renderSummary();
+      state.openPassages.add(passageId);
       renderReader();
     });
   });

@@ -108,9 +108,10 @@ In `Reading` or `Comparison`, press `Edit text & annotations`; alternatively ope
 dedicated `Editor` view. The inline editor starts with `Numbered sections`, where
 visible units such as `1.1`, `1.2`, and `15.3` are literal editable records. You can
 change a section number, display order, label, note, and the text shown for each
-visible witness, or create a new numbered section. These section edits are saved as
-`sectionEdits`, so the shell no longer depends on token-boundary moves for basic
-sentence/phrase correction.
+visible witness, create a new numbered section, or hide an unnecessary section.
+Hidden sections disappear from Reading and Comparison but remain restorable from
+the editor. These section edits are saved as `sectionEdits`, so the shell no
+longer depends on token-boundary moves for basic sentence/phrase correction.
 
 Drag across tokens, or Shift-click, to select spans in Sanskrit and corresponding
 witnesses for advanced word-level correspondence. The shared editor still creates
