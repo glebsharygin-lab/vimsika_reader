@@ -848,8 +848,14 @@ function buildSidebar() {
 
   sourceFilters.addEventListener("change", (event) => {
     if (!(event.target instanceof HTMLInputElement)) return;
-    if (event.target.checked) state.selectedSources.add(event.target.value);
-    else state.selectedSources.delete(event.target.value);
+    if (event.target.checked) {
+      state.selectedSources.add(event.target.value);
+      Object.keys(state.focusedSentenceByPassage).forEach((passageId) => {
+        state.openSourcePanels.add(`${passageId}:${event.target.value}`);
+      });
+    } else {
+      state.selectedSources.delete(event.target.value);
+    }
     renderSummary();
     renderReader();
   });

@@ -16,7 +16,8 @@ This workspace contains a local trial reader generated from the supplied Viṃś
   portions of every witness, including kārikās split by intervening commentary.
 - A synchronized Reading focus workspace: collapsed sentences can be hidden
   across all witnesses, or one sentence can be isolated with `Focus`; focusing
-  automatically opens every currently selected witness.
+  automatically opens every currently selected witness, and witnesses selected
+  while Focus remains active open directly on the focused line.
 - Clickable Sanskrit words in Reading. Reviewed token links take priority;
   otherwise the shell highlights the existing low-confidence projected spans.
 - Clickable token surfaces in Reading, Comparison, and Alignment, with a
