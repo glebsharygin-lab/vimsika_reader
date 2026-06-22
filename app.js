@@ -695,6 +695,7 @@ function alignmentsOverlappingSanskrit(passage, tokenIds) {
   const reviewed = allAlignments().filter(
     (alignment) =>
       alignment.verse === passage.number &&
+      alignment.status !== "dharmanexus-authorized" &&
       alignment.targetTokenIds?.san_levi_1925?.some((tokenId) =>
         selected.has(tokenId),
       ),
@@ -893,7 +894,7 @@ function renderSummary() {
     </div>
     <div class="summary-item">
       <span class="summary-number">${sentenceUnits.toLocaleString()} / ${alignments} + ${candidates.toLocaleString()}</span>
-      <span class="summary-label">numbered sentences / reviewed + machine token links</span>
+      <span class="summary-label">numbered sentences / DharmaNexus, reviewed + machine token links</span>
     </div>
     <div class="summary-item">
       <span class="summary-number">${knownRights}/${state.corpus.sources.length}</span>
@@ -1166,11 +1167,52 @@ function alignmentPosition(alignment, passage) {
 }
 
 function phraseAlignments(passage) {
-  const editorial = allAlignments().filter(
+  const sectionEdits = sectionEditsForPassage(passage.id);
+  const passageAlignments = allAlignments().filter(
     (alignment) =>
       alignment.verse === passage.number &&
       ["sentence", "phrase"].includes(alignment.level || "phrase"),
   );
+  const humanAlignments = passageAlignments.filter(
+    (alignment) => alignment.status !== "dharmanexus-authorized",
+  );
+  const editorial = passageAlignments
+    .filter(
+      (alignment) =>
+        alignment.status !== "dharmanexus-authorized" ||
+        !humanAlignments.some(
+          (humanAlignment) =>
+            humanAlignment.level === "sentence" &&
+            alignmentsOverlap(alignment, humanAlignment),
+        ),
+    )
+    .map((alignment) => {
+      const edit = sectionEdits.find(
+        (item) =>
+          item.unitId === alignment.id ||
+          (item.number && item.number === alignment.number),
+      );
+      if (!edit) return alignment;
+      if (edit.deleted) return null;
+      const unit = cloneSentenceUnit(alignment);
+      unit.number = edit.number || unit.number;
+      unit.label = edit.label || unit.label;
+      unit.order = Number.isFinite(Number(edit.order))
+        ? Number(edit.order)
+        : sentenceOrderKey(unit);
+      unit.level = edit.level || unit.level || "sentence";
+      unit.note = edit.note ?? unit.note ?? "";
+      unit.targetTexts = {
+        ...(unit.targetTexts || {}),
+        ...(edit.targetTexts || {}),
+      };
+      unit.status = "editorial-section";
+      unit.confidence = "reviewed";
+      unit.sentenceEdited = true;
+      unit.literalSection = true;
+      return unit;
+    })
+    .filter(Boolean);
   const reviewedSentences = editorial.filter(
     (alignment) => alignment.level === "sentence",
   );
@@ -1194,6 +1236,17 @@ function phraseAlignments(passage) {
     if (positionDifference) return positionDifference;
     return (left.order || 0) - (right.order || 0);
   });
+}
+
+function alignmentStatusLabel(alignment, rootVerse = false) {
+  const dharmanexus = alignment.status === "dharmanexus-authorized";
+  if (rootVerse) return dharmanexus ? "root · DharmaNexus" : "root verse";
+  if (alignment.sentenceEdited || alignment.status === "editorial-boundary") {
+    return "edited";
+  }
+  if (dharmanexus) return "DharmaNexus base";
+  if (alignment.status === "machine-segmented") return "projected";
+  return "reviewed";
 }
 
 function readingSentenceControls(passage, units) {
@@ -1269,7 +1322,7 @@ function readingSentenceList(passage, source, witness) {
                   type="button"
                 >
                   <span class="reading-sentence-number">${escapeHtml(unit.number || unit.label)}</span>
-                  <span class="reading-sentence-status">${rootVerse ? "root verse" : adjusted ? "edited" : generated ? "projected" : "reviewed"}</span>
+                  <span class="reading-sentence-status">${alignmentStatusLabel(unit, rootVerse)}</span>
                   <span aria-hidden="true">${collapsed ? "+" : "−"}</span>
                 </button>
                 <button
@@ -2106,7 +2159,7 @@ function phraseRow(alignment, passage, sources, template, index) {
     >
       <button class="phrase-label" data-toggle-unit="${alignment.id}" type="button">
         <span class="phrase-index">${escapeHtml(alignment.number || `${passage.number}.${index + 1}`)}</span>
-        <span class="phrase-status">${rootVerse ? "root verse" : adjusted ? "edited" : generated ? "projected" : "reviewed"}</span>
+        <span class="phrase-status">${alignmentStatusLabel(alignment, rootVerse)}</span>
         <span class="phrase-title">${escapeHtml(alignment.label)}</span>
         <span class="phrase-toggle" aria-hidden="true">${collapsed ? "+" : "−"}</span>
       </button>
@@ -3349,18 +3402,23 @@ function renderSourceLedger() {
     .join("");
   const alignmentSources = (state.corpus.externalAlignmentSources || [])
     .map(
-      (source) => `
+      (source) => {
+        const authorized = source.importStatus.includes("authorized");
+        return `
         <article class="ledger-entry external-alignment-source">
           <div class="ledger-topline">
             <strong>${escapeHtml(source.label)}</strong>
-            <span class="rights-badge unknown">${escapeHtml(source.importStatus.replaceAll("-", " "))}</span>
+            <span class="rights-badge ${authorized ? "open" : "unknown"}">${escapeHtml(source.importStatus.replaceAll("-", " "))}</span>
           </div>
           <p>${escapeHtml(source.note)}</p>
           <p><strong>Method:</strong> ${escapeHtml(source.type.replaceAll("-", " "))}</p>
+          ${source.license ? `<p><strong>Authorization:</strong> ${escapeHtml(source.license)}</p>` : ""}
+          ${source.authorizationReference ? `<p><strong>Permission record:</strong> <code>${escapeHtml(source.authorizationReference)}</code></p>` : ""}
           <p><strong>Contact:</strong> ${escapeHtml(source.contact)}</p>
           <p><a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">Open external record</a></p>
         </article>
-      `,
+      `;
+      },
     )
     .join("");
   document.querySelector("#sourceLedger").innerHTML =

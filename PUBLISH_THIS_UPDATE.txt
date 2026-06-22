@@ -9,23 +9,30 @@ existing copies:
 6. corpus.js
 7. editorial-overrides.json
 
-The new index.html uses asset version 0.17.1 for app.js, analysis.js,
+For provenance and reproducibility, the package also contains the authorized
+DharmaNexus import, permission record, QA report, and import/build scripts in
+their folders. These are not required by the live page, but should ideally be
+kept in the repository.
+
+The new index.html uses asset version 0.18.0 for app.js, analysis.js,
 styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
 Pages and visitors' browsers fetch the current interface and Worker
 configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.17.1
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.18.0
 
 Expected result:
-- the sidebar displays `Build 0.17.1 · Corpus 0.6.0-trial`;
+- the sidebar displays `Build 0.18.0 · Corpus 0.7.0-trial`;
 - the main notice begins `Research prototype` and ends `Only for research purposes.`;
 - Sources & rights lists 23 witnesses;
-- the summary reports 89,652 addressable tokens and 255 numbered sentences;
+- the summary reports 89,652 addressable tokens, 255 generated sections, 265
+  DharmaNexus-based alignment rows, and 1,639 preliminary word links;
 - verse 1 contains foldable units 1.1 through 1.9 in numeric order;
 - every opened witness displays corresponding numbered units;
 - collapsed sentences can be hidden, and any sentence can be focused;
-- clicking a Sanskrit word highlights its reviewed or projected counterparts;
+- clicking a Sanskrit word highlights its reviewed or DharmaNexus-bounded
+  projected counterparts;
 - Focus mode removes preserved blank space and packs witnesses closely;
 - Comparison and Alignment contain clickable token-level surfaces;
 - token clicks open a dictionary-ready lexical inspector;
@@ -50,5 +57,9 @@ The Worker upgrade preserves existing editorial-overrides.json content and adds
 sectionEdits, sentenceEdits, lexiconEntries, and syntaxAnnotations during the
 next publication.
 
-DharmaNexus matches are not copied into the corpus. An authorized export can be
-imported with scripts/build_trial_corpus.py --authorized-alignments FILE.json.
+DharmaNexus reuse was authorized in writing on 20 June 2026. This build imports
+264 source segments and 416 Tibetan/Chinese match records as 265 local rows.
+Direct local anchoring succeeds for 211 Tibetan and 170 Paramārtha Chinese
+spans; unresolved records and other witnesses remain clearly marked
+provisional projections. Please preserve the permission record, import JSON,
+and QA report included in the package.

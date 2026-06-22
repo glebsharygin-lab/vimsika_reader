@@ -151,6 +151,7 @@ def projected_token_span(
 def candidate_alignments(
     passages: list[dict[str, object]],
     sources: list[dict[str, object]],
+    sentence_alignments: list[dict[str, object]] | None = None,
 ) -> list[dict[str, object]]:
     candidates: list[dict[str, object]] = []
     target_source_ids = [
@@ -158,6 +159,19 @@ def candidate_alignments(
         for source in sources
         if source["id"] != "san_levi_1925"
     ]
+    alignments_by_verse: dict[int, list[dict[str, object]]] = {}
+    for alignment in sentence_alignments or []:
+        if (
+            alignment.get("level") == "sentence"
+            and alignment.get("status") == "dharmanexus-authorized"
+        ):
+            alignments_by_verse.setdefault(
+                int(alignment["verse"]),
+                [],
+            ).append(alignment)
+    for alignments in alignments_by_verse.values():
+        alignments.sort(key=lambda item: int(item.get("order", 0)))
+
     for passage in passages:
         sanskrit_witness = passage["texts"]["san_levi_1925"]
         sanskrit_tokens = sanskrit_witness["tokens"]
@@ -167,21 +181,42 @@ def candidate_alignments(
             if is_alignable_token(token, "san_levi_1925")
         ]
         lexical_count = len(lexical_tokens)
-        for source_index, sanskrit_token in enumerate(lexical_tokens):
+        passage_alignments = alignments_by_verse.get(
+            int(passage["number"]),
+            [],
+        )
+        covered_token_ids: set[str] = set()
+
+        def append_candidate(
+            sanskrit_token: dict[str, object],
+            source_index: int,
+            source_count: int,
+            target_tokens_by_source: dict[str, list[dict[str, object]]],
+            source_alignment: dict[str, object] | None = None,
+        ) -> None:
             target_token_ids: dict[str, list[str]] = {
                 "san_levi_1925": [str(sanskrit_token["id"])]
             }
+            target_methods: dict[str, str] = {
+                "san_levi_1925": "source-token",
+            }
+            anchored_sources = set(
+                source_alignment.get("anchoredSources", [])
+                if source_alignment
+                else []
+            )
             for source_id in target_source_ids:
-                target_tokens = [
-                    token
-                    for token in passage["texts"][source_id]["tokens"]
-                    if is_alignable_token(token, source_id)
-                ]
+                target_tokens = target_tokens_by_source.get(source_id, [])
                 if target_tokens:
                     target_token_ids[source_id] = projected_token_span(
                         target_tokens,
                         source_index,
-                        lexical_count,
+                        source_count,
+                    )
+                    target_methods[source_id] = (
+                        "dharmanexus-anchored-span-projection"
+                        if source_id in anchored_sources
+                        else "dharmanexus-segment-bounded-projection"
                     )
             candidates.append(
                 {
@@ -190,14 +225,84 @@ def candidate_alignments(
                     "level": "token-span",
                     "status": "machine-suggested",
                     "confidence": "low",
-                    "method": "monotonic-proportional-projection-v1",
+                    "method": (
+                        "dharmanexus-segment-bounded-token-projection-v1"
+                        if source_alignment
+                        else "monotonic-proportional-projection-v1"
+                    ),
                     "label": str(sanskrit_token["text"]),
                     "note": (
-                        "Automatically projected by relative token position within the passage. "
+                        "Automatically projected within a DharmaNexus-aligned segment. "
                         "This is a review candidate, not a philological assertion."
+                        if source_alignment
+                        else (
+                            "Automatically projected by relative token position within "
+                            "the passage. This is a review candidate, not a philological "
+                            "assertion."
+                        )
                     ),
+                    "sourceAlignmentId": (
+                        source_alignment.get("id")
+                        if source_alignment
+                        else None
+                    ),
+                    "targetMethods": target_methods,
                     "targetTokenIds": target_token_ids,
                 }
+            )
+
+        for alignment in passage_alignments:
+            alignment_target_ids = alignment.get("targetTokenIds", {})
+            source_ids = set(
+                alignment_target_ids.get("san_levi_1925", [])
+            )
+            source_tokens = [
+                token
+                for token in lexical_tokens
+                if str(token["id"]) in source_ids
+            ]
+            if not source_tokens:
+                continue
+            target_tokens_by_source: dict[str, list[dict[str, object]]] = {}
+            for source_id in target_source_ids:
+                target_ids = set(alignment_target_ids.get(source_id, []))
+                if not target_ids:
+                    continue
+                target_tokens_by_source[source_id] = [
+                    token
+                    for token in passage["texts"][source_id]["tokens"]
+                    if str(token["id"]) in target_ids
+                    and is_alignable_token(token, source_id)
+                ]
+            for source_index, sanskrit_token in enumerate(source_tokens):
+                token_id = str(sanskrit_token["id"])
+                if token_id in covered_token_ids:
+                    continue
+                covered_token_ids.add(token_id)
+                append_candidate(
+                    sanskrit_token,
+                    source_index,
+                    len(source_tokens),
+                    target_tokens_by_source,
+                    alignment,
+                )
+
+        fallback_targets = {
+            source_id: [
+                token
+                for token in passage["texts"][source_id]["tokens"]
+                if is_alignable_token(token, source_id)
+            ]
+            for source_id in target_source_ids
+        }
+        for source_index, sanskrit_token in enumerate(lexical_tokens):
+            if str(sanskrit_token["id"]) in covered_token_ids:
+                continue
+            append_candidate(
+                sanskrit_token,
+                source_index,
+                lexical_count,
+                fallback_targets,
             )
     return candidates
 
@@ -1401,8 +1506,12 @@ def main() -> None:
     passages_by_number = {passage["number"]: passage for passage in passages}
     for alignment in alignments:
         passage = passages_by_number[int(alignment["verse"])]
-        alignment["targetTokenIds"] = {}
+        alignment["targetTokenIds"] = dict(
+            alignment.get("targetTokenIds", {})
+        )
         for source_id, target in alignment["targets"].items():
+            if alignment["targetTokenIds"].get(source_id):
+                continue
             witness = passage["texts"][source_id]
             alignment["targetTokenIds"][source_id] = alignment_token_ids(
                 witness["text"],
@@ -1410,9 +1519,10 @@ def main() -> None:
                 target,
             )
 
-    candidates = candidate_alignments(passages, sources)
+    candidates = candidate_alignments(passages, sources, alignments)
+    dharmanexus_authorized = bool(args.authorized_alignments)
     corpus = {
-        "schemaVersion": "0.6.0-trial",
+        "schemaVersion": "0.7.0-trial",
         "work": {
             "id": "vasubandhu-vimsika",
             "title": "Viṃśikā",
@@ -1438,15 +1548,37 @@ def main() -> None:
                     "SA_T06_vasvvmsu/text"
                 ),
                 "type": "algorithmic-intertextual-matches",
-                "importStatus": "permission-required",
+                "importStatus": (
+                    "authorized-reuse"
+                    if dharmanexus_authorized
+                    else "permission-required"
+                ),
                 "termsUrl": (
                     "https://dharmamitra.github.io/"
                     "dharmamitra-guides/dharmanexus/"
                 ),
                 "contact": "dharmamitra.project@gmail.com",
+                "authorizationReference": (
+                    "reference-source/dharmanexus-permission-2026-06-20.txt"
+                    if dharmanexus_authorized
+                    else ""
+                ),
+                "license": (
+                    "Reuse and redistribution authorized in writing; "
+                    "no separate license specified."
+                    if dharmanexus_authorized
+                    else ""
+                ),
                 "note": (
-                    "The shell is ready to import an explicitly authorized export. "
-                    "The public DharmaNexus API is not copied into this corpus."
+                    "Imported with written authorization received 20 June 2026. "
+                    "The snapshot contains 264 Sanskrit segments and 416 Tibetan "
+                    "or Chinese match records; one segment is split at a local verse "
+                    "boundary, producing 265 preliminary corpus alignments."
+                    if dharmanexus_authorized
+                    else (
+                        "The shell is ready to import an explicitly authorized export. "
+                        "The public DharmaNexus API is not copied into this corpus."
+                    )
                 ),
             }
         ],

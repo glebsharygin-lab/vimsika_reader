@@ -31,15 +31,20 @@ This workspace contains a local trial reader generated from the supplied Viṃś
 - Resizable witness columns with saved user preferences.
 - Collapsible navigation panel with a remembered full-width reading mode.
 - Synchronized phrase rows with sticky subsection labels.
+- An authorized DharmaNexus sentence backbone: 264 source segments become 265
+  local rows because one segment crosses a local verse boundary.
+- Preliminary word candidates constrained inside those sentence spans rather
+  than projected across an entire verse.
 - Stable IDs for 89,652 atomic tokens across all supplied witnesses.
 - An embedded Editor mode plus inline text and annotation editing in Reading and Comparison.
 - Source provenance and provisional copyright labels.
 - Reproducible extraction from DOCX, PDF, and UTF-8 text sources.
 
-All passage boundaries and phrase alignments are provisional and require scholarly review.
-Sanskrit sentence boundaries are mechanically derived from the supplied
-edition. Corresponding spans in the other witnesses initially use low-confidence
-monotonic projection and are intended to be replaced by reviewed alignments in
+All passage boundaries and phrase alignments remain provisional and require
+scholarly review. Sanskrit, Tibetan, and Paramārtha Chinese spans use the
+authorized DharmaNexus data wherever a local anchor could be located. Other
+witnesses, and unresolved target records, use low-confidence monotonic
+projection within each DharmaNexus segment and are intended to be corrected in
 the embedded editor.
 The supplied Nilanjan Das English draft does not contain verses 5–10; the
 reader marks those passages explicitly rather than synthesizing missing text.
@@ -144,14 +149,21 @@ The corpus build accepts an optional shell-native alignment export:
   --authorized-alignments '.\authorized-alignments.json'
 ```
 
-An example schema is in
-`reference-source/dharmanexus-authorized-import.example.json`. DharmaNexus
-describes its links as algorithmic intertextual matches, and its published terms
-prohibit using its database API to populate a third-party presentation layer
-without authorization. The shell therefore records the DharmaNexus source and
-is ready for an explicitly authorized export, but does not copy the public API.
-Contact `dharmamitra.project@gmail.com` to request permission or a collaboration
-export.
+Written reuse and redistribution authorization was received from the
+DharmaNexus team on 20 June 2026. The permission record is in
+`reference-source/dharmanexus-permission-2026-06-20.txt`; the reproducible
+authorized import is
+`reference-source/dharmanexus-SA_T06_vasvvmsu-authorized.json`; and detailed QA
+is in `qa-metadata/dharmanexus-import-report.json`.
+
+The imported snapshot contains 264 Sanskrit source segments and 416 target
+match records: 239 Tibetan records and 177 Paramārtha Chinese records. Local
+anchoring directly located 211 Tibetan and 170 Chinese target spans. The
+remaining 37 target records and all other translations receive explicitly
+provisional segment-bounded projections. One DharmaNexus segment crosses the
+local Verse 7/8 partition, so it is represented as two local parts, yielding
+265 numbered alignment rows. DharmaNexus invited corrected alignments to be
+shared back for possible integration into its database.
 
 ## Trusted collaboration and publication
 
@@ -184,11 +196,12 @@ omissions, additions, paraphrases, and uncertain correspondences without
 pretending that automatically suggested equivalences are final.
 
 The build also generates a preliminary candidate mapping for every alignable
-Sanskrit token. These candidates use monotonic proportional projection within
-each passage. They are useful for rapidly locating a probable region in each
-witness, but they are explicitly marked `machine-suggested`, `low` confidence,
-and must not be cited as reviewed philological equivalences. Existing reviewed
-and editorial links always take priority over projected candidates.
+Sanskrit token. These candidates use monotonic proportional projection inside
+the corresponding DharmaNexus sentence span, not across the whole passage.
+They are useful for rapidly locating a probable region in each witness, but
+they are explicitly marked `machine-suggested`, `low` confidence, and must not
+be cited as reviewed philological equivalences. Existing human-reviewed and
+editorial links always take priority over DharmaNexus-based projections.
 
 In `Alignment` view, click a Sanskrit token or Shift-click a later token to
 extend the selected Sanskrit phrase.
