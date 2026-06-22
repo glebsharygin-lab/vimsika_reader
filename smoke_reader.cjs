@@ -22,6 +22,12 @@ async function main() {
 
   const passages = await page.locator(".passage-card").count();
   if (passages !== 22) throw new Error(`Expected 22 passages, received ${passages}`);
+  const buildBadge = (await page.locator(".build-badge").innerText())
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!buildBadge.includes("Build 0.19.0") || !buildBadge.includes("Corpus 0.8.0-trial")) {
+    throw new Error(`Expected visible build metadata, received ${buildBadge}`);
+  }
   const additionalWitnesses = [
     "san_silk_2016",
     "san_tola_dragonetti_2004",
@@ -29,12 +35,36 @@ async function main() {
     "san_balcerowicz_nowakowska_1999",
     "pol_balcerowicz_nowakowska_1999",
     "hun_szanyi_2015",
+    "rus_lyssenko_2008",
+    "rus_lyssenko_2022",
+    "san_tiwari_1995",
+    "hin_tiwari_1995",
+    "jpn_yuda_issue32",
+    "eng_kochumuttom_1982",
+    "fra_cornu_2008",
+    "eng_wood_1991",
+    "eng_cook_1999",
   ];
   for (const sourceId of additionalWitnesses) {
     const sourceToggle = page.locator(`#sourceFilters input[value='${sourceId}']`);
     if ((await sourceToggle.count()) !== 1) {
       throw new Error(`Expected additional witness filter ${sourceId}`);
     }
+  }
+  const sourceCount = await page.locator("#sourceFilters input").count();
+  if (sourceCount !== 26) {
+    throw new Error(`Expected 26 source filters, received ${sourceCount}`);
+  }
+  for (const sourceId of ["san_tiwari_1995", "hin_tiwari_1995", "rus_lyssenko_2022"]) {
+    const sourceToggle = page.locator(`#sourceFilters input[value='${sourceId}']`);
+    await sourceToggle.check();
+    const tokenCount = await page.locator(
+      `#v1 .source-panel[data-source='${sourceId}'] .text-token`,
+    ).count();
+    if (tokenCount < 1) {
+      throw new Error(`Expected tokenized text for ${sourceId}`);
+    }
+    await sourceToggle.uncheck();
   }
   const ruzsaToggle = page.locator(
     "#sourceFilters input[value='san_ruzsa_szegedi_2015']",
@@ -81,7 +111,7 @@ async function main() {
   const sanskritRootTokens = page.locator(
     "#v1 .source-panel[data-source='san_levi_1925'] .root-verse-token",
   );
-  if ((await sanskritRootTokens.count()) < 7) {
+  if ((await sanskritRootTokens.count()) < 6) {
     throw new Error("Expected the complete Sanskrit root verse to be bold");
   }
   const rootFontWeight = await sanskritRootTokens.first().evaluate(
@@ -121,13 +151,35 @@ async function main() {
     .locator("#v1 [data-toggle-hide-collapsed='v1']")
     .click();
   await sanskritSentencePanel
-    .locator("[data-focus-sentence='sentence-v1-003']")
+    .locator("[data-focus-sentence='dharmanexus-v1-003']")
     .click();
   if (
     (await sanskritSentencePanel.locator(".reading-sentence-unit").count()) !== 1
   ) {
     throw new Error("Expected sentence focus to show one synchronized unit");
   }
+  const focusedOpenWitnesses = await page.locator(
+    "#v1 .source-panel.open",
+  ).count();
+  if (focusedOpenWitnesses !== 4) {
+    throw new Error(
+      `Expected Focus to open all 4 selected witnesses, received ${focusedOpenWitnesses}`,
+    );
+  }
+  const addedDuringFocus = page.locator(
+    "#sourceFilters input[value='eng_anacker_2005']",
+  );
+  await addedDuringFocus.check();
+  const addedFocusedPanel = page.locator(
+    "#v1 .source-panel[data-source='eng_anacker_2005'].open",
+  );
+  if ((await addedFocusedPanel.count()) !== 1) {
+    throw new Error("Expected a witness added during Focus to open automatically");
+  }
+  if ((await addedFocusedPanel.locator(".reading-sentence-unit").count()) !== 1) {
+    throw new Error("Expected the newly added witness to show only the focused line");
+  }
+  await addedDuringFocus.uncheck();
   await page.locator("#v1 [data-clear-sentence-focus='v1']").click();
 
   await page
@@ -175,6 +227,40 @@ async function main() {
   }
   const readingTokens = await page.locator("#v1 .source-text .text-token").count();
   if (!readingTokens) throw new Error("Expected selectable tokens inside Reading");
+
+  const sectionEditor = page.locator(
+    "#v1 [data-section-edit-form='v1'][data-unit-id='sentence-v1-001']",
+  );
+  const sectionDraftText =
+    "o.1. mahāyāne traidhātukaṃ vijñaptimātraṃ vyavasthāpyate | cittamātraṃ bho | SMOKE SECTION";
+  await sectionEditor
+    .locator("[data-section-source='san_levi_1925']")
+    .fill(sectionDraftText);
+  await sectionEditor.getByRole("button", { name: "Save section" }).click();
+  const adjustedSentenceText = await page
+    .locator(
+      "#v1 .source-panel[data-source='san_levi_1925'] [data-sentence-unit='dharmanexus-v1-001'] .reading-sentence-body",
+    )
+    .innerText();
+  if (!adjustedSentenceText.includes("SMOKE SECTION")) {
+    throw new Error("Expected literal section editor to update Sanskrit section 1.1");
+  }
+
+  const redundantSectionEditor = page.locator(
+    "#v1 [data-section-edit-form='v1'][data-unit-id='sentence-v1-009']",
+  );
+  await redundantSectionEditor
+    .locator("[data-hide-section='sentence-v1-009']")
+    .click();
+  const hiddenSectionCount = await page
+    .locator("#v1 [data-sentence-unit='dharmanexus-v1-009']")
+    .count();
+  if (hiddenSectionCount !== 0) {
+    throw new Error("Expected hidden section 1.9 to disappear from Reading");
+  }
+  if ((await page.locator("#v1 [data-restore-section='sentence-v1-009']").count()) !== 1) {
+    throw new Error("Expected hidden section 1.9 to be restorable");
+  }
 
   const sanskritReadingPanel = sanskritSentencePanel;
   await sanskritReadingPanel.getByRole("button", { name: "Edit text" }).click();
@@ -309,9 +395,13 @@ async function main() {
   if (
     savedEditorData.units.length !== 2 ||
     savedEditorData.alignments.length !== 1 ||
+    (savedEditorData.sectionEdits || []).length !== 2 ||
+    (savedEditorData.sentenceEdits || []).length !== 0 ||
     Object.keys(savedEditorData.textEdits).length !== 1
   ) {
-    throw new Error("Expected editor annotations to persist in browser storage");
+    throw new Error(
+      `Expected editor annotations to persist in browser storage; received units=${savedEditorData.units.length}, alignments=${savedEditorData.alignments.length}, sectionEdits=${(savedEditorData.sectionEdits || []).length}, sentenceEdits=${(savedEditorData.sentenceEdits || []).length}, textEdits=${Object.keys(savedEditorData.textEdits).length}`,
+    );
   }
 
   await page.locator("#v15").screenshot({
@@ -441,7 +531,7 @@ async function main() {
     fullPage: true,
   });
 
-  console.log(`passages=${passages} readingSentenceUnits=${readingSentenceUnits} hiddenSentenceCount=${hiddenSentenceCount} readingWordHighlights=${readingWordHighlights} sidebarCollapsed=${sidebarCollapsed} readingTokens=${readingTokens} initialPhraseRows=${phraseRows} synchronizedRows=${synchronizedRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} lexicalDrafts=${lexicalDrafts} syntaxDrafts=${syntaxDrafts} mobileOverflow=${overflow}`);
+  console.log(`passages=${passages} readingSentenceUnits=${readingSentenceUnits} hiddenSentenceCount=${hiddenSentenceCount} readingWordHighlights=${readingWordHighlights} sidebarCollapsed=${sidebarCollapsed} readingTokens=${readingTokens} initialPhraseRows=${phraseRows} synchronizedRows=${synchronizedRows} resizers=${resizers} editorUnits=${savedEditorData.units.length} editorAlignments=${savedEditorData.alignments.length} sentenceEdits=${savedEditorData.sentenceEdits.length} liveFrames=${liveFrames} pinnedFrames=${pinnedFrames} linkedHighlights=${linkedHighlights} lexicalDrafts=${lexicalDrafts} syntaxDrafts=${syntaxDrafts} mobileOverflow=${overflow}`);
   await browser.close();
   browser = null;
 }

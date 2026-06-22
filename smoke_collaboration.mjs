@@ -100,9 +100,11 @@ const forbiddenDirect = await call("/api/publish", {
   body: {
     mode: "direct",
     editorial: {
-      units: [{ id: "unit-1" }],
+      units: [],
       alignments: [],
       textEdits: {},
+      lexiconEntries: [{ id: "lexicon-1" }],
+      syntaxAnnotations: [{ id: "syntax-1" }],
     },
   },
 });

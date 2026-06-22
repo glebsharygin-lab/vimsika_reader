@@ -1000,6 +1000,33 @@ def source_records() -> list[dict[str, object]]:
             ),
         },
         {
+            "id": "san_tiwari_1995",
+            "label": "Sanskrit · Tiwari 1995",
+            "shortLabel": "Tiwari Sanskrit",
+            "language": "Sanskrit",
+            "languageCode": "san",
+            "script": "Devanagari",
+            "role": "edition",
+            "color": "#a34f35",
+            "citation": (
+                "Mahesh Tiwari, ed. and trans., Vijñaptimātratāsiddhiḥ: "
+                "Viṃśatikā-Triṃśikābhidhāna-prakaraṇadvayātmikā, "
+                "Chaukhambha Vidyabhavan, Varanasi, 1995."
+            ),
+            "file": (
+                "Internet Archive item vijnaptimatrasiddhiofvasubandhu"
+                "vigyanptimaheshtiwarichowkambhasanskritseries_492_y, "
+                "printed pages 25–26"
+            ),
+            "rights": "rights-review",
+            "rightsLabel": "Rights status requires verification",
+            "extraction": (
+                "Numbered Sanskrit kārikā appendix extracted from DjVu OCR. "
+                "The Devanagari text is preliminary and requires proofing "
+                "against the scan."
+            ),
+        },
+        {
             "id": "tib_derge",
             "label": "Tibetan · Derge",
             "shortLabel": "Tibetan",
@@ -1253,6 +1280,33 @@ def source_records() -> list[dict[str, object]]:
             ),
         },
         {
+            "id": "hin_tiwari_1995",
+            "label": "Hindi · Tiwari 1995",
+            "shortLabel": "Tiwari Hindi",
+            "language": "Hindi",
+            "languageCode": "hin",
+            "script": "Devanagari",
+            "role": "modern-translation",
+            "color": "#9a6b32",
+            "citation": (
+                "Mahesh Tiwari, ed. and trans., Vijñaptimātratāsiddhiḥ: "
+                "Viṃśatikā-Triṃśikābhidhāna-prakaraṇadvayātmikā, "
+                "Chaukhambha Vidyabhavan, Varanasi, 1995."
+            ),
+            "file": (
+                "Internet Archive item vijnaptimatrasiddhiofvasubandhu"
+                "vigyanptimaheshtiwarichowkambhasanskritseries_492_y, "
+                "printed pages 1–24"
+            ),
+            "rights": "rights-review",
+            "rightsLabel": "Rights status requires verification",
+            "extraction": (
+                "Two-page spreads reconstructed from DjVu layout coordinates; "
+                "Hindi translation lines were separated heuristically from the "
+                "interleaved Sanskrit. OCR and segmentation require proofing."
+            ),
+        },
+        {
             "id": "rus_lyssenko_2008",
             "label": "Russian · Lyssenko 2008",
             "shortLabel": "Lyssenko",
@@ -1273,6 +1327,31 @@ def source_records() -> list[dict[str, object]]:
                 "Custom Cyrillic font recovered to Unicode and segmented from "
                 "the numbered kārikās. Bracket glyphs and transliteration require "
                 "scholarly proofing."
+            ),
+        },
+        {
+            "id": "rus_lyssenko_2022",
+            "label": "Russian · Lyssenko 2022",
+            "shortLabel": "Lyssenko 2022",
+            "language": "Russian",
+            "languageCode": "rus",
+            "script": "Cyrillic",
+            "role": "modern-translation",
+            "color": "#86516f",
+            "citation": (
+                "В. Г. Лысенко, Индийские философы о природе восприятия: "
+                "Дигнага и его оппоненты. Тексты и исследования, 2022."
+            ),
+            "file": (
+                "Индийские философы о природе восприятия … (2022).djvu, "
+                "OCR leaves 83–107"
+            ),
+            "rights": "rights-review",
+            "rightsLabel": "Rights status requires verification",
+            "extraction": (
+                "Revised Russian translation and commentary extracted from "
+                "DjVu OCR layout blocks. Translator footnotes were excluded; "
+                "OCR and section boundaries require proofing."
             ),
         },
         {
@@ -1412,6 +1491,9 @@ def main() -> None:
             / "passages.json",
             require_text=False,
         ),
+        "san_tiwari_1995": load_segmented_witness_records(
+            args.witness_dir / "san_tiwari_1995" / "passages.json"
+        ),
         "pol_balcerowicz_nowakowska_1999": load_segmented_witness_records(
             args.witness_dir
             / "pol_balcerowicz_nowakowska_1999"
@@ -1420,8 +1502,14 @@ def main() -> None:
         "hun_szanyi_2015": load_segmented_witness_records(
             args.witness_dir / "hun_szanyi_2015" / "passages.json"
         ),
+        "hin_tiwari_1995": load_segmented_witness_records(
+            args.witness_dir / "hin_tiwari_1995" / "passages.json"
+        ),
         "rus_lyssenko_2008": load_segmented_witness_records(
             args.witness_dir / "rus_lyssenko_2008" / "passages.json"
+        ),
+        "rus_lyssenko_2022": load_segmented_witness_records(
+            args.witness_dir / "rus_lyssenko_2022" / "passages.json"
         ),
         "jpn_yuda_issue32": load_segmented_witness_records(
             args.witness_dir / "jpn_yuda_issue32" / "passages.json"
@@ -1522,7 +1610,7 @@ def main() -> None:
     candidates = candidate_alignments(passages, sources, alignments)
     dharmanexus_authorized = bool(args.authorized_alignments)
     corpus = {
-        "schemaVersion": "0.7.0-trial",
+        "schemaVersion": "0.8.0-trial",
         "work": {
             "id": "vasubandhu-vimsika",
             "title": "Viṃśikā",

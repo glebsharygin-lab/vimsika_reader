@@ -1,0 +1,17 @@
+{
+  "id": "san_tiwari_1995",
+  "label": "Sanskrit · Tiwari 1995",
+  "language": "Sanskrit",
+  "languageCode": "san",
+  "script": "Devanagari",
+  "role": "edition",
+  "citation": "Mahesh Tiwari, ed. and trans., Vijñaptimātratāsiddhiḥ: Viṃśatikā-Triṃśikābhidhāna-prakaraṇadvayātmikā, Chaukhambha Vidyabhavan, Varanasi, 1995.",
+  "rights": "Rights status requires verification before public redistribution",
+  "sourceFileName": "Internet Archive DjVu OCR",
+  "primaryOutput": "edition.txt",
+  "extractionEngine": "Internet Archive DjVu OCR with manual appendix line slices",
+  "extractedAt": "2026-06-22T19:02:05.139155+00:00",
+  "status": "machine-extracted Sanskrit kārikās; requires proofing against the scan",
+  "characterCount": 1847,
+  "wordCount": 242
+}
