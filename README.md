@@ -15,7 +15,8 @@ This workspace contains a local trial reader generated from the supplied Viṃś
 - Bold root-verse typography in Sanskrit and in the corresponding aligned
   portions of every witness, including kārikās split by intervening commentary.
 - A synchronized Reading focus workspace: collapsed sentences can be hidden
-  across all witnesses, or one sentence can be isolated with `Focus`.
+  across all witnesses, or one sentence can be isolated with `Focus`; focusing
+  automatically opens every currently selected witness.
 - Clickable Sanskrit words in Reading. Reviewed token links take priority;
   otherwise the shell highlights the existing low-confidence projected spans.
 - Clickable token surfaces in Reading, Comparison, and Alignment, with a

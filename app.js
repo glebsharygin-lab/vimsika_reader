@@ -3326,6 +3326,9 @@ function renderReader() {
       const unitId = button.dataset.focusSentence;
       state.collapsedUnits.delete(unitId);
       state.focusedSentenceByPassage[passageId] = unitId;
+      selectedSourceRecords().forEach((source) => {
+        state.openSourcePanels.add(`${passageId}:${source.id}`);
+      });
       renderReader();
     });
   });
