@@ -1,10 +1,9 @@
-DharmaNexus Viṃśikā alignment reuse authorization
+DharmaNexus Viṃśikā alignment permission record
 
 Date: 2026-06-20
-From: DharmaNexus / Dharmamitra AI (Sebastian)
-To: Gleb Sharygin
 
-The authorization was given in reply to a request that explicitly asked to:
+The explicit permission to export and reuse the DharmaNexus alignments was
+received by the project owner on 20 June 2026. The permission covered:
 
 - incorporate the Sanskrit–Tibetan–Chinese correlations for
   SA_T06_vasvvmsu into the Viṃśikā research shell;
@@ -12,8 +11,6 @@ The authorization was given in reply to a request that explicitly asked to:
 - record modifications and scholarly corrections;
 - redistribute the relevant Viṃśikā alignment subset; and
 - credit and link DharmaNexus prominently.
-
-Reply: “Yes please go ahead, this is great! You have our full support.”
 
 The DharmaNexus team also invited improved alignments to be shared back for
 possible integration into its database.

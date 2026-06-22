@@ -150,8 +150,8 @@ The corpus build accepts an optional shell-native alignment export:
   --authorized-alignments '.\authorized-alignments.json'
 ```
 
-Written reuse and redistribution authorization was received from the
-DharmaNexus team on 20 June 2026. The permission record is in
+The explicit permission to export and reuse the DharmaNexus alignments was
+received by the project owner on 20 June 2026. The permission record is in
 `reference-source/dharmanexus-permission-2026-06-20.txt`; the reproducible
 authorized import is
 `reference-source/dharmanexus-SA_T06_vasvvmsu-authorized.json`; and detailed QA
