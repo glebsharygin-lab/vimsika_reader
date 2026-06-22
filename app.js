@@ -3608,6 +3608,15 @@ async function init() {
     if (!response.ok) throw new Error(`Corpus request failed: ${response.status}`);
     state.corpus = await response.json();
   }
+  state.corpus.passages.forEach((passage) => {
+    Object.values(passage.texts).forEach((witness) => {
+      (witness.tokens || []).forEach((token) => {
+        if (typeof token.text !== "string") {
+          token.text = (witness.text || "").slice(token.start, token.end);
+        }
+      });
+    });
+  });
   document.querySelector("#buildVersion").textContent = APP_BUILD_VERSION;
   document.querySelector("#corpusSchemaVersion").textContent =
     state.corpus.schemaVersion || "unversioned";
