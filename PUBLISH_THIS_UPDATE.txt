@@ -1,5 +1,5 @@
 Upload these files to the root of the GitHub repository, replacing the
-existing copies:
+existing copies and preserving folders exactly as shown:
 
 1. .nojekyll
 2. index.html
@@ -10,26 +10,35 @@ existing copies:
 7. corpus.js
 8. editorial-overrides.json
 9. README.md
-10. scripts/convert_balcerowicz_amrita.py
-11. source-witnesses/README.md
-12. source-witnesses/san_balcerowicz_nowakowska_1999/ENCODING-NOTE.md
-13. source-witnesses/san_balcerowicz_nowakowska_1999/edition-unicode-draft-devanagari.txt
-14. source-witnesses/san_balcerowicz_nowakowska_1999/conversion-report.md
+10. PUBLISH_THIS_UPDATE.txt
+11. scripts/convert_balcerowicz_amrita.py
+12. scripts/segment_additional_witnesses.py
+13. scripts/build_trial_corpus.py
+14. scripts/smoke_reader.cjs
+15. source-witnesses/README.md
+16. source-witnesses/san_balcerowicz_nowakowska_1999/ENCODING-NOTE.md
+17. source-witnesses/san_balcerowicz_nowakowska_1999/edition-unicode-draft-devanagari.txt
+18. source-witnesses/san_balcerowicz_nowakowska_1999/conversion-report.md
+19. source-witnesses/san_balcerowicz_nowakowska_1999/passages.json
 
-The new index.html uses asset version 0.19.5 for app.js, analysis.js,
+Do not upload data/corpus.json. It is the large readable build artifact and is
+not needed by GitHub Pages. Upload the root-level corpus.js instead.
+
+The new index.html uses asset version 0.19.6 for app.js, analysis.js,
 styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
 Pages and visitors' browsers fetch the current interface and Worker
 configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.19.5
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.19.6
 
 Expected result:
-- the sidebar displays `Build 0.19.5 · Corpus 0.8.0-trial`;
+- the sidebar displays `Build 0.19.6 ? Corpus 0.8.0-trial`;
 - the main notice begins `Research prototype` and ends `Only for research purposes.`;
 - Sources & rights lists 26 witnesses;
-- Sources & rights shows citations and rights labels without technical file metadata;
-- the summary reports 97,396 addressable tokens, 255 generated sections, 265
+- Sanskrit ? Balcerowicz & Nowakowska 1999 appears as a visible Devan?gar? draft witness;
+- the old AMRITA/Unicode-conversion-pending warning does not appear for Balcerowicz Sanskrit;
+- the summary reports 99,273 addressable tokens, 255 generated sections, 265
   DharmaNexus-based alignment rows, and 1,639 preliminary word links;
 - verse 1 contains foldable units 1.1 through 1.9 in numeric order;
 - every opened witness displays corresponding numbered units;
@@ -40,8 +49,6 @@ Expected result:
   projected counterparts;
 - Focus mode removes preserved blank space and packs witnesses closely;
 - interface transitions and reveal animations are disabled;
-- a source-preparation draft exists for the Balcerowicz Sanskrit AMRITA text,
-  but it is not yet promoted into the live corpus witness;
 - Comparison and Alignment contain clickable token-level surfaces;
 - token clicks open a dictionary-ready lexical inspector;
 - Analysis opens Lexicon, Concordance, Morphology, Syntax, and Statistics;
@@ -52,10 +59,10 @@ Expected result:
   restored later from the hidden-sections list;
 - direct section edits are saved as `sectionEdits`, while legacy token-boundary
   moves remain hidden as an advanced compatibility layer;
-- Sanskrit root verses are bold, including interleaved kārikā fragments;
-- corresponding sentence spans are bold in every aligned witness.
-- Sanskrit · Tiwari 1995, Hindi · Tiwari 1995, and Russian · Lyssenko 2022
-  appear as new preliminary OCR witnesses with explicit rights-review labels.
+- Sanskrit root verses are bold, including interleaved k?rik? fragments;
+- corresponding sentence spans are bold in every aligned witness;
+- Sanskrit ? Tiwari 1995, Hindi ? Tiwari 1995, and Russian ? Lyssenko 2022
+  appear as preliminary OCR witnesses with explicit rights-review labels.
 
 To publish section, lexical, syntax, and alignment annotations for
 collaborators, also replace collaboration-worker/src/index.js with the packaged
@@ -69,6 +76,6 @@ next publication.
 
 DharmaNexus reuse was authorized in writing on 20 June 2026. This build uses
 264 source segments and 416 Tibetan/Chinese match records as 265 local rows.
-Direct local anchoring succeeds for 211 Tibetan and 170 Paramārtha Chinese
+Direct local anchoring succeeds for 211 Tibetan and 170 Param?rtha Chinese
 spans; unresolved records and other witnesses remain clearly marked
 provisional projections.

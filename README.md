@@ -5,8 +5,8 @@ This workspace contains a local trial reader for the Vimsika research corpus.
 ## Included in the pilot
 
 - Verses 1–22 with the supplied commentary.
-- Five readable Sanskrit editions plus the registered Balcerowicz Sanskrit
-  source awaiting Unicode conversion; Tibetan; three Chinese translations;
+- Six readable Sanskrit editions, including the Balcerowicz Sanskrit
+  Unicode draft requiring proofing; Tibetan; three Chinese translations;
   seven English translations; Polish; Hungarian; Hindi; two Russian
   translations; Japanese; two French translations; and German.
 - Foldable reading mode and multi-column comparison mode.
@@ -36,7 +36,7 @@ This workspace contains a local trial reader for the Vimsika research corpus.
   local rows because one segment crosses a local verse boundary.
 - Preliminary word candidates constrained inside those sentence spans rather
   than projected across an entire verse.
-- Stable IDs for 97,396 atomic tokens across all supplied witnesses.
+- Stable IDs for 99,273 atomic tokens across all supplied witnesses.
 - An embedded Editor mode plus inline text and annotation editing in Reading and Comparison.
 - Provisional rights labels.
 
@@ -53,9 +53,10 @@ Yuda, and Cook witnesses contain all 22 passages with commentary or a
 provisional transcription of it. Wood supplies a verse-only English
 translation. Cook translates Xuanzang?s Chinese and is mapped semantically
 from its twenty-one numbered verses to the shell?s twenty-two Sanskrit passages.
-The Tiwari Sanskrit and Hindi witnesses, the 2022 Lyssenko witness, and the
-Japanese witness require line-by-line scholarly proofing of layout, punctuation,
-transliteration, and language separation. The 2022 Lyssenko witness is a
+The Balcerowicz Sanskrit draft, the Tiwari Sanskrit and Hindi witnesses,
+the 2022 Lyssenko witness, and the Japanese witness require line-by-line
+scholarly proofing of layout, punctuation, transcription, transliteration, and
+language separation. The 2022 Lyssenko witness is a
 revised Russian translation distinct from the 2008 article version.
 The project owner has confirmed the previously supplied witnesses for this
 research corpus. Some modern witnesses remain marked `Rights status requires
