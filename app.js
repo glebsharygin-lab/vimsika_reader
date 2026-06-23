@@ -3403,7 +3403,6 @@ function renderSourceLedger() {
             <span class="rights-badge ${source.rights}">${source.rightsLabel}</span>
           </div>
           <p>${source.citation}</p>
-          <p><strong>Source file:</strong> ${source.file}</p>
           <p><strong>Import:</strong> ${source.extraction}</p>
         </article>
       `,
