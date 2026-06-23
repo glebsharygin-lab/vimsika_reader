@@ -1160,6 +1160,61 @@ function alignmentsOverlap(left, right, sourceId = "san_levi_1925") {
   );
 }
 
+function mergeMissingUnitTargets(unit, baseUnits) {
+  const merged = cloneSentenceUnit(unit);
+  const matches = baseUnits.filter(
+    (baseUnit) =>
+      baseUnit.id === merged.id ||
+      (baseUnit.number && merged.number && baseUnit.number === merged.number) ||
+      alignmentsOverlap(baseUnit, merged),
+  );
+  if (!matches.length) return merged;
+
+  state.corpus.sources.forEach((source) => {
+    const sourceId = source.id;
+    const hasLiteralText =
+      merged.targetTexts &&
+      Object.prototype.hasOwnProperty.call(merged.targetTexts, sourceId);
+    const hasTokenIds = Boolean(merged.targetTokenIds?.[sourceId]?.length);
+    if (hasLiteralText || hasTokenIds) return;
+
+    const replacement = matches.find(
+      (baseUnit) =>
+        (baseUnit.targetTexts &&
+          Object.prototype.hasOwnProperty.call(baseUnit.targetTexts, sourceId)) ||
+        baseUnit.targetTokenIds?.[sourceId]?.length ||
+        baseUnit.targets?.[sourceId],
+    );
+    if (!replacement) return;
+
+    if (
+      replacement.targetTexts &&
+      Object.prototype.hasOwnProperty.call(replacement.targetTexts, sourceId)
+    ) {
+      merged.targetTexts = {
+        ...(merged.targetTexts || {}),
+        [sourceId]: replacement.targetTexts[sourceId],
+      };
+      return;
+    }
+
+    if (replacement.targetTokenIds?.[sourceId]?.length) {
+      merged.targetTokenIds = {
+        ...(merged.targetTokenIds || {}),
+        [sourceId]: [...replacement.targetTokenIds[sourceId]],
+      };
+    }
+    if (replacement.targets?.[sourceId]) {
+      merged.targets = {
+        ...(merged.targets || {}),
+        [sourceId]: replacement.targets[sourceId],
+      };
+    }
+  });
+
+  return merged;
+}
+
 function alignmentPosition(alignment, passage) {
   const ids = new Set(
     alignment.targetTokenIds?.san_levi_1925 || [],
@@ -1174,6 +1229,7 @@ function alignmentPosition(alignment, passage) {
 
 function phraseAlignments(passage) {
   const sectionEdits = sectionEditsForPassage(passage.id);
+  const baseUnits = effectiveSentenceUnits(passage);
   const passageAlignments = allAlignments().filter(
     (alignment) =>
       alignment.verse === passage.number &&
@@ -1218,11 +1274,12 @@ function phraseAlignments(passage) {
       unit.literalSection = true;
       return unit;
     })
-    .filter(Boolean);
+    .filter(Boolean)
+    .map((alignment) => mergeMissingUnitTargets(alignment, baseUnits));
   const reviewedSentences = editorial.filter(
     (alignment) => alignment.level === "sentence",
   );
-  const generated = effectiveSentenceUnits(passage).filter(
+  const generated = baseUnits.filter(
     (unit) =>
       !reviewedSentences.some((alignment) =>
         alignmentsOverlap(unit, alignment),

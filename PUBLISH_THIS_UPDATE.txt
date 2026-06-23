@@ -24,20 +24,21 @@ existing copies and preserving folders exactly as shown:
 Do not upload data/corpus.json. It is the large readable build artifact and is
 not needed by GitHub Pages. Upload the root-level corpus.js instead.
 
-The new index.html uses asset version 0.19.6 for app.js, analysis.js,
+The new index.html uses asset version 0.19.7 for app.js, analysis.js,
 styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
 Pages and visitors' browsers fetch the current interface and Worker
 configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.19.6
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.19.7
 
 Expected result:
-- the sidebar displays `Build 0.19.6 ? Corpus 0.8.0-trial`;
+- the sidebar displays `Build 0.19.7 ? Corpus 0.8.0-trial`;
 - the main notice begins `Research prototype` and ends `Only for research purposes.`;
 - Sources & rights lists 26 witnesses;
 - Sanskrit ? Balcerowicz & Nowakowska 1999 appears as a visible Devan?gar? draft witness;
 - the old AMRITA/Unicode-conversion-pending warning does not appear for Balcerowicz Sanskrit;
+- edited or reviewed sentence rows inherit missing Balcerowicz spans instead of showing `? no corresponding span assigned ?`;
 - the summary reports 99,273 addressable tokens, 255 generated sections, 265
   DharmaNexus-based alignment rows, and 1,639 preliminary word links;
 - verse 1 contains foldable units 1.1 through 1.9 in numeric order;
