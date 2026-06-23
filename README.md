@@ -1,14 +1,14 @@
 # Viṃśikā Parallel Text Laboratory
 
-This workspace contains a local trial reader generated from the supplied Viṃśikā source bundle.
+This workspace contains a local trial reader for the Vimsika research corpus.
 
 ## Included in the pilot
 
 - Verses 1–22 with the supplied commentary.
-- Four readable Sanskrit editions plus the registered Balcerowicz Sanskrit
+- Five readable Sanskrit editions plus the registered Balcerowicz Sanskrit
   source awaiting Unicode conversion; Tibetan; three Chinese translations;
-  seven English translations; Polish; Hungarian; Russian; Japanese; two
-  French translations; and German.
+  seven English translations; Polish; Hungarian; Hindi; two Russian
+  translations; Japanese; two French translations; and German.
 - Foldable reading mode and multi-column comparison mode.
 - Foldable sentence units numbered `1.1`, `1.2`, and so on, derived from
   Sanskrit dandas, vertical strokes, slashes, and source paragraph boundaries.
@@ -37,10 +37,9 @@ This workspace contains a local trial reader generated from the supplied Viṃś
   local rows because one segment crosses a local verse boundary.
 - Preliminary word candidates constrained inside those sentence spans rather
   than projected across an entire verse.
-- Stable IDs for 89,652 atomic tokens across all supplied witnesses.
+- Stable IDs for 97,396 atomic tokens across all supplied witnesses.
 - An embedded Editor mode plus inline text and annotation editing in Reading and Comparison.
-- Source provenance and provisional copyright labels.
-- Reproducible extraction from DOCX, PDF, and UTF-8 text sources.
+- Provisional rights labels.
 
 All passage boundaries and phrase alignments remain provisional and require
 scholarly review. Sanskrit, Tibetan, and Paramārtha Chinese spans use the
@@ -50,16 +49,18 @@ projection within each DharmaNexus segment and are intended to be corrected in
 the embedded editor.
 The supplied Nilanjan Das English draft does not contain verses 5–10; the
 reader marks those passages explicitly rather than synthesizing missing text.
-The Silk, Anacker, Tola–Dragonetti, Kochumuttom, Cornu, Lyssenko, Yuda, and
-Cook witnesses contain all 22 passages with commentary. Wood supplies a
-verse-only English translation. Cook translates Xuanzang’s Chinese and is
-mapped semantically from its twenty-one numbered verses to the shell’s
-twenty-two Sanskrit passages.
-The Japanese witness was recovered from a legacy Shift-JIS text layer and
-requires manual Japanese scholarly proofing of layout order, punctuation, and
-Sanskrit forms. The Russian custom-font recovery likewise retains some
-provisional bracket glyphs and transliteration.
-The project owner has confirmed that all supplied witnesses are public domain or openly available for public scholarly publication.
+The Silk, Anacker, Tola?Dragonetti, Kochumuttom, Cornu, Lyssenko, Tiwari,
+Yuda, and Cook witnesses contain all 22 passages with commentary or a
+provisional transcription of it. Wood supplies a verse-only English
+translation. Cook translates Xuanzang?s Chinese and is mapped semantically
+from its twenty-one numbered verses to the shell?s twenty-two Sanskrit passages.
+The Tiwari Sanskrit and Hindi witnesses, the 2022 Lyssenko witness, and the
+Japanese witness require line-by-line scholarly proofing of layout, punctuation,
+transliteration, and language separation. The 2022 Lyssenko witness is a
+revised Russian translation distinct from the 2008 article version.
+The project owner has confirmed the previously supplied witnesses for this
+research corpus. Some modern witnesses remain marked `Rights status requires
+verification` until their publication rights are confirmed.
 
 ## Build the corpus
 
@@ -70,41 +71,27 @@ The project owner has confirmed that all supplied witnesses are public domain or
   '.\data\corpus.json'
 ```
 
-The build also writes `data/corpus.js` and a root-level `corpus.js`. The root-level
-file keeps GitHub Pages deployment simple and allows `index.html` to work directly
-from a `file://` URL.
+The build also writes `data/corpus.js` and a root-level `corpus.js`. The
+root-level script keeps GitHub Pages deployment simple.
 
 The main-page announcement is the corpus `notice` field. For a quick manual
 change, edit it in `data/corpus.json` and in the deployed root `corpus.js`.
 For a permanent rebuild-safe change, edit the `notice` string in
 `scripts/build_trial_corpus.py`.
 
-Before rebuilding, regenerate the extracted passage segmentation:
-
-```powershell
-& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
-  '.\scripts\segment_english_witnesses.py' `
-  --source-witnesses '.\source-witnesses'
-
-& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
-  '.\scripts\segment_additional_witnesses.py' `
-  --source-witnesses '.\source-witnesses'
-
-& 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
-  '.\scripts\segment_translation_witnesses_batch2.py' `
-  --source-witnesses '.\source-witnesses'
-```
-
-The corresponding reproducible source extraction is implemented in
-`scripts/extract_translation_witnesses_batch2.py`; run it with `--help` to see
-the six required PDF/EPUB path arguments.
+Maintainer-only build helpers are kept out of the public upload package.
 
 ## Publish with GitHub Pages
 
 Upload `index.html`, `styles.css`, `app.js`, `analysis.js`, `auth-config.js`,
 `editorial-overrides.json`, and `corpus.js` to the repository root.
-The `data`, `scripts`, and `reference-source` folders are not required by the
-published reader.
+Development folders are not required by the published reader.
+
+Do not upload `data/corpus.json` to GitHub Pages. It is the readable,
+indent-formatted build artifact and exceeds GitHub's browser-upload limit.
+The live reader uses the compact root-level `corpus.js`, which contains the
+same corpus data and reconstructs duplicated token surface strings in the
+browser.
 
 In Comparison or Alignment view, drag the boundary at the right edge of a
 witness heading to change its width. Widths are saved in the browser.
@@ -129,9 +116,8 @@ saved in the browser and can be exported as `vimsika-editor-annotations.json`.
 
 Each visible witness also receives an `Edit text` control. Revised text is
 retokenized immediately, stored as a reversible local override, and included in
-the annotation export with its original imported text, revision note, and
-timestamp. `Revert` restores the imported witness without changing the raw
-corpus files.
+the annotation export with its original base text, revision note, and timestamp.
+`Revert` restores the base witness text without changing the generated corpus.
 
 When `auth-config.js` has an empty `apiBaseUrl`, every edit remains only in that
 browser's `localStorage`. This is expected: a static GitHub Pages site cannot
@@ -139,7 +125,7 @@ write back to its repository. After the collaboration Worker is deployed and
 its URL is configured, administrators and editors can publish those drafts to
 `editorial-overrides.json`.
 
-## External alignment imports
+## External alignment data
 
 The corpus build accepts an optional shell-native alignment export:
 
@@ -152,13 +138,9 @@ The corpus build accepts an optional shell-native alignment export:
 ```
 
 The explicit permission to export and reuse the DharmaNexus alignments was
-received by the project owner on 20 June 2026. The permission record is in
-`reference-source/dharmanexus-permission-2026-06-20.txt`; the reproducible
-authorized import is
-`reference-source/dharmanexus-SA_T06_vasvvmsu-authorized.json`; and detailed QA
-is in `qa-metadata/dharmanexus-import-report.json`.
+received by the project owner on 20 June 2026.
 
-The imported snapshot contains 264 Sanskrit source segments and 416 target
+The authorized snapshot contains 264 Sanskrit source segments and 416 target
 match records: 239 Tibetan records and 177 Paramārtha Chinese records. Local
 anchoring directly located 211 Tibetan and 170 Chinese target spans. The
 remaining 37 target records and all other translations receive explicitly
@@ -184,8 +166,8 @@ GitHub account that should administer the project has a different login, change
 `administratorLogin` in `auth-config.js`.
 
 Published corrections are written to `editorial-overrides.json`, not directly
-into the generated `corpus.js`. This preserves the imported corpus, provides
-Git history and rollback, and allows the build pipeline to incorporate reviewed
+into the generated `corpus.js`. This preserves the base corpus, provides Git
+history and rollback, and allows the build pipeline to incorporate reviewed
 corrections later. The editorial schema includes structural units, alignments,
 sentence-boundary overrides, text corrections, lexical entries, and
 sentence-level syntax annotations.

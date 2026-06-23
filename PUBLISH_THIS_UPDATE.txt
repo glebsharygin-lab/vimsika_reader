@@ -1,32 +1,29 @@
-Upload these seven files to the root of the GitHub repository, replacing the
+Upload these files to the root of the GitHub repository, replacing the
 existing copies:
 
-1. index.html
-2. auth-config.js
-3. app.js
-4. analysis.js
-5. styles.css
-6. corpus.js
-7. editorial-overrides.json
+1. .nojekyll
+2. index.html
+3. auth-config.js
+4. app.js
+5. analysis.js
+6. styles.css
+7. corpus.js
+8. editorial-overrides.json
 
-For provenance and reproducibility, the package also contains the authorized
-DharmaNexus import, permission record, QA report, and import/build scripts in
-their folders. These are not required by the live page, but should ideally be
-kept in the repository.
-
-The new index.html uses asset version 0.18.2 for app.js, analysis.js,
+The new index.html uses asset version 0.19.3 for app.js, analysis.js,
 styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
 Pages and visitors' browsers fetch the current interface and Worker
 configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.18.2
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.19.3
 
 Expected result:
-- the sidebar displays `Build 0.18.2 · Corpus 0.7.0-trial`;
+- the sidebar displays `Build 0.19.3 · Corpus 0.8.0-trial`;
 - the main notice begins `Research prototype` and ends `Only for research purposes.`;
-- Sources & rights lists 23 witnesses;
-- the summary reports 89,652 addressable tokens, 255 generated sections, 265
+- Sources & rights lists 26 witnesses;
+- Sources & rights shows citations and rights labels without technical file metadata;
+- the summary reports 97,396 addressable tokens, 255 generated sections, 265
   DharmaNexus-based alignment rows, and 1,639 preliminary word links;
 - verse 1 contains foldable units 1.1 through 1.9 in numeric order;
 - every opened witness displays corresponding numbered units;
@@ -48,6 +45,8 @@ Expected result:
   moves remain hidden as an advanced compatibility layer;
 - Sanskrit root verses are bold, including interleaved kārikā fragments;
 - corresponding sentence spans are bold in every aligned witness.
+- Sanskrit · Tiwari 1995, Hindi · Tiwari 1995, and Russian · Lyssenko 2022
+  appear as new preliminary OCR witnesses with explicit rights-review labels.
 
 To publish section, lexical, syntax, and alignment annotations for
 collaborators, also replace collaboration-worker/src/index.js with the packaged
@@ -59,9 +58,8 @@ The Worker upgrade preserves existing editorial-overrides.json content and adds
 sectionEdits, sentenceEdits, lexiconEntries, and syntaxAnnotations during the
 next publication.
 
-DharmaNexus reuse was authorized in writing on 20 June 2026. This build imports
+DharmaNexus reuse was authorized in writing on 20 June 2026. This build uses
 264 source segments and 416 Tibetan/Chinese match records as 265 local rows.
 Direct local anchoring succeeds for 211 Tibetan and 170 Paramārtha Chinese
 spans; unresolved records and other witnesses remain clearly marked
-provisional projections. Please preserve the permission record, import JSON,
-and QA report included in the package.
+provisional projections.
