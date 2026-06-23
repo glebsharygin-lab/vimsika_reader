@@ -29,7 +29,6 @@ This workspace contains a local trial reader for the Vimsika research corpus.
 - Lexical glosses, readings, lemmas, parts of speech, morphology, and syntax
   drafts use the same permanent token IDs as the reading and alignment views.
   The interface never invents missing scholarly analysis.
-- Subtle interface transitions with reduced-motion accessibility support.
 - Resizable witness columns with saved user preferences.
 - Collapsible navigation panel with a remembered full-width reading mode.
 - Synchronized phrase rows with sticky subsection labels.
