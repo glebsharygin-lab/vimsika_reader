@@ -5,3 +5,11 @@ The supplied Hamilton translation scan includes facing-page Chinese text attribu
 The Chinese pages were recovered with local Windows OCR from the scanned vertical text and saved as `chinese_ocr.txt`. Because the OCR reads vertical columns inconsistently and can reverse or scramble column order, this file is kept as source-preparation material only.
 
 The live shell continues to use the existing clean `Chinese · Xuanzang` witness. This Hamilton Chinese OCR should be proofed manually before it is promoted to a separate live edition witness.
+
+A preliminary collation has been generated against the existing clean Xuanzang witness:
+
+- `collation-summary.md`: readable coverage summary and first review prompts.
+- `collation-review.tsv`: spreadsheet-friendly review table.
+- `collation.json`: full machine-readable collation with per-passage differences.
+
+The collation uses the clean Xuanzang witness as the base text and treats Hamilton OCR as a comparator. It is not yet a critical apparatus and should be reviewed against the scan before publication as a live edition witness.

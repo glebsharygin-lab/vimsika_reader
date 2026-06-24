@@ -17,49 +17,51 @@ existing copies and preserving folders exactly as shown:
 14. scripts/smoke_reader.cjs
 15. scripts/extract_witnesses_batch3.py
 16. scripts/extract_hamilton_ocr.ps1
-17. scripts/segment_witnesses_batch3.py
-18. source-witnesses/README.md
-19. source-witnesses/san_balcerowicz_nowakowska_1999/ENCODING-NOTE.md
-20. source-witnesses/san_balcerowicz_nowakowska_1999/edition-unicode-draft-devanagari.txt
-21. source-witnesses/san_balcerowicz_nowakowska_1999/conversion-report.md
-22. source-witnesses/san_balcerowicz_nowakowska_1999/passages.json
-23. source-witnesses/tib_silk_dunhuang_2017/transcription.txt
-24. source-witnesses/tib_silk_dunhuang_2017/passages.json
-25. source-witnesses/tib_lvp_1911/transcription.txt
-26. source-witnesses/tib_lvp_1911/passages.json
-27. source-witnesses/fra_lvp_1911/translation.txt
-28. source-witnesses/fra_lvp_1911/passages.json
-29. source-witnesses/eng_cronk_1998/translation.txt
-30. source-witnesses/eng_cronk_1998/passages.json
-31. source-witnesses/eng_hamilton_1938/translation_ocr.txt
-32. source-witnesses/eng_hamilton_1938/passages.json
-33. source-witnesses/eng_hamilton_1938/scan-manifest.json
-34. source-witnesses/eng_hamilton_1938/INGESTION-NOTE.md
-35. source-witnesses/zho_hamilton_xuanzang_1938/chinese_ocr.txt
-36. source-witnesses/zho_hamilton_xuanzang_1938/scan-manifest.json
-37. source-witnesses/zho_hamilton_xuanzang_1938/INGESTION-NOTE.md
+17. scripts/collate_hamilton_chinese.py
+18. scripts/segment_witnesses_batch3.py
+19. source-witnesses/README.md
+20. source-witnesses/san_balcerowicz_nowakowska_1999/ENCODING-NOTE.md
+21. source-witnesses/san_balcerowicz_nowakowska_1999/edition-unicode-draft-devanagari.txt
+22. source-witnesses/san_balcerowicz_nowakowska_1999/conversion-report.md
+23. source-witnesses/san_balcerowicz_nowakowska_1999/passages.json
+24. source-witnesses/tib_silk_dunhuang_2017/transcription.txt
+25. source-witnesses/tib_silk_dunhuang_2017/passages.json
+26. source-witnesses/tib_lvp_1911/transcription.txt
+27. source-witnesses/tib_lvp_1911/passages.json
+28. source-witnesses/fra_lvp_1911/translation.txt
+29. source-witnesses/fra_lvp_1911/passages.json
+30. source-witnesses/eng_cronk_1998/translation.txt
+31. source-witnesses/eng_cronk_1998/passages.json
+32. source-witnesses/eng_hamilton_1938/translation_ocr.txt
+33. source-witnesses/eng_hamilton_1938/passages.json
+34. source-witnesses/eng_hamilton_1938/scan-manifest.json
+35. source-witnesses/eng_hamilton_1938/INGESTION-NOTE.md
+36. source-witnesses/zho_hamilton_xuanzang_1938/chinese_ocr.txt
+37. source-witnesses/zho_hamilton_xuanzang_1938/scan-manifest.json
+38. source-witnesses/zho_hamilton_xuanzang_1938/INGESTION-NOTE.md
+39. source-witnesses/zho_hamilton_xuanzang_1938/collation-summary.md
+40. source-witnesses/zho_hamilton_xuanzang_1938/collation-review.tsv
+41. source-witnesses/zho_hamilton_xuanzang_1938/collation.json
 
 Do not upload data/corpus.json. It is the large readable build artifact and is
 not needed by GitHub Pages. Upload the root-level corpus.js instead.
 
-The new index.html uses asset version 0.20.1 for app.js, analysis.js,
+The new index.html uses asset version 0.20.2 for app.js, analysis.js,
 styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
 Pages and visitors' browsers fetch the current interface and Worker
 configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.20.1
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.20.2
 
 Expected result:
-- the sidebar displays `Build 0.20.1 · Corpus 0.8.0-trial`;
+- the sidebar displays `Build 0.20.2 · Corpus 0.8.0-trial`;
 - Sources & rights lists 31 witnesses;
-- the new live witness appears as `English · Hamilton 1938`;
-- Hamilton 1938 is marked as a provisional OCR witness requiring proofing;
-- the Hamilton-facing Chinese text is preserved in `source-witnesses/zho_hamilton_xuanzang_1938/` as source-preparation OCR, not as a live witness yet;
-- the summary reports 133,481 addressable tokens, 255 generated sections, 265 DharmaNexus-based alignment rows, and 1,639 preliminary word links;
-- the sidebar top phrase reads `An exercise in polyphonic reading`;
-- the main notice begins `Research prototype` and ends `Only for research purposes.`;
-- Focus mode, dense witness layout, token highlighting, lexical inspector, and section editing continue to work.
+- the live Hamilton English witness still appears as `English · Hamilton 1938`;
+- the Hamilton Chinese OCR remains source-preparation material, not a live witness;
+- the Hamilton Chinese collation files are available under `source-witnesses/zho_hamilton_xuanzang_1938/`;
+- the collation summary reports 1,966 matched base characters out of 3,695 clean Xuanzang CJK characters, or 53.2% preliminary OCR support;
+- the main shell summary still reports 133,481 addressable tokens, 255 generated sections, 265 DharmaNexus-based alignment rows, and 1,639 preliminary word links.
 
 To publish section, lexical, syntax, and alignment annotations for
 collaborators, also replace collaboration-worker/src/index.js with the packaged

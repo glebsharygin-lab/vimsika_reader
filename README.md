@@ -59,7 +59,9 @@ shell?s twenty-two Sanskrit passages. Hamilton 1938 is a provisional OCR
 witness recovered from scan-only pages; its English text, notes, typography,
 and passage boundaries require proofing. The facing Hamilton Chinese text has
 been OCRed as source-preparation material, but it is not yet promoted as a live
-witness because vertical Chinese OCR order still requires manual checking.
+witness because vertical Chinese OCR order still requires manual checking. A
+preliminary Hamilton Chinese collation is available in
+`source-witnesses/zho_hamilton_xuanzang_1938/` for proofing.
 The Balcerowicz Sanskrit draft, the La Vall?e-Poussin OCR witnesses, the
 Tiwari Sanskrit and Hindi witnesses, the 2022 Lyssenko witness, and the
 Japanese witness require line-by-line scholarly proofing of layout, punctuation,
