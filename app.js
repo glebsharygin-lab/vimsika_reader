@@ -56,6 +56,9 @@ const state = {
   analysisPassageId: "v1",
   analysisSentenceId: "",
   analysisSyntaxDraft: null,
+  renderCache: {
+    key: "",
+  },
 };
 
 const escapeHtml = (value) =>
@@ -101,18 +104,95 @@ function highlightedText(text, sourceId, verse) {
 }
 
 function sourceById(sourceId) {
-  return state.corpus.sources.find((source) => source.id === sourceId);
+  const cache = renderCache();
+  if (!cache.sourcesById) {
+    cache.sourcesById = new Map(
+      state.corpus.sources.map((source) => [source.id, source]),
+    );
+  }
+  return cache.sourcesById.get(sourceId);
+}
+
+function cacheItemsSignature(items = []) {
+  return items
+    .map((item) =>
+      [
+        item.id,
+        item.unitId,
+        item.passageId,
+        item.verse,
+        item.updatedAt,
+        item.createdAt,
+        item.deleted,
+        item.number,
+        item.order,
+        Object.keys(item.targetTexts || {}).join(","),
+      ].join(":"),
+    )
+    .join("|");
+}
+
+function textEditsSignature(edits = {}) {
+  return Object.entries(edits)
+    .map(([key, edit]) => `${key}:${edit.updatedAt || ""}:${edit.text?.length || 0}`)
+    .join("|");
+}
+
+function renderCacheKey() {
+  return [
+    state.corpus?.sources?.length || 0,
+    state.corpus?.alignments?.length || 0,
+    state.corpus?.candidateAlignments?.length || 0,
+    cacheItemsSignature(state.publishedEditorData.alignments || []),
+    cacheItemsSignature(state.editorData.alignments || []),
+    cacheItemsSignature(state.publishedEditorData.sentenceEdits || []),
+    cacheItemsSignature(state.editorData.sentenceEdits || []),
+    cacheItemsSignature(state.publishedEditorData.sectionEdits || []),
+    cacheItemsSignature(state.editorData.sectionEdits || []),
+    textEditsSignature(state.publishedEditorData.textEdits || {}),
+    textEditsSignature(state.editorData.textEdits || {}),
+  ].join("||");
+}
+
+function renderCache() {
+  const key = renderCacheKey();
+  if (state.renderCache.key !== key) {
+    state.renderCache = {
+      key,
+      phraseAlignmentsByPassage: new Map(),
+      rootVerseTokenIdsByPassageSource: new Map(),
+    };
+  }
+  return state.renderCache;
 }
 
 function allAlignments() {
+  const cache = renderCache();
+  if (cache.allAlignments) return cache.allAlignments;
   const alignments = [
     ...state.corpus.alignments,
     ...state.publishedEditorData.alignments,
     ...state.editorData.alignments,
   ];
-  return [
+  cache.allAlignments = [
     ...new Map(alignments.map((alignment) => [alignment.id, alignment])).values(),
   ];
+  cache.alignmentsById = new Map(
+    cache.allAlignments.map((alignment) => [alignment.id, alignment]),
+  );
+  cache.alignmentsByVerse = new Map();
+  cache.allAlignments.forEach((alignment) => {
+    const verseAlignments = cache.alignmentsByVerse.get(alignment.verse) || [];
+    verseAlignments.push(alignment);
+    cache.alignmentsByVerse.set(alignment.verse, verseAlignments);
+  });
+  return cache.allAlignments;
+}
+
+function alignmentsForVerse(verse) {
+  const cache = renderCache();
+  if (!cache.alignmentsByVerse) allAlignments();
+  return cache.alignmentsByVerse.get(verse) || [];
 }
 
 function allSentenceEdits() {
@@ -129,7 +209,16 @@ function allSentenceEdits() {
 }
 
 function sentenceEditsForPassage(passageId) {
-  return allSentenceEdits().filter((edit) => edit.passageId === passageId);
+  const cache = renderCache();
+  if (!cache.sentenceEditsByPassage) {
+    cache.sentenceEditsByPassage = new Map();
+    allSentenceEdits().forEach((edit) => {
+      const edits = cache.sentenceEditsByPassage.get(edit.passageId) || [];
+      edits.push(edit);
+      cache.sentenceEditsByPassage.set(edit.passageId, edits);
+    });
+  }
+  return cache.sentenceEditsByPassage.get(passageId) || [];
 }
 
 function allSectionEdits() {
@@ -149,7 +238,16 @@ function allSectionEdits() {
 }
 
 function sectionEditsForPassage(passageId) {
-  return allSectionEdits().filter((edit) => edit.passageId === passageId);
+  const cache = renderCache();
+  if (!cache.sectionEditsByPassage) {
+    cache.sectionEditsByPassage = new Map();
+    allSectionEdits().forEach((edit) => {
+      const edits = cache.sectionEditsByPassage.get(edit.passageId) || [];
+      edits.push(edit);
+      cache.sectionEditsByPassage.set(edit.passageId, edits);
+    });
+  }
+  return cache.sectionEditsByPassage.get(passageId) || [];
 }
 
 function localSectionEditFor(passageId, unitId) {
@@ -162,11 +260,23 @@ function candidateAlignments() {
   return state.corpus.candidateAlignments || [];
 }
 
+function candidateAlignmentsForVerse(verse) {
+  const cache = renderCache();
+  if (!cache.candidateAlignmentsByVerse) {
+    cache.candidateAlignmentsByVerse = new Map();
+    candidateAlignments().forEach((alignment) => {
+      const alignments = cache.candidateAlignmentsByVerse.get(alignment.verse) || [];
+      alignments.push(alignment);
+      cache.candidateAlignmentsByVerse.set(alignment.verse, alignments);
+    });
+  }
+  return cache.candidateAlignmentsByVerse.get(verse) || [];
+}
+
 function tokenAlignmentFor(passage, sourceId, tokenId) {
-  const reviewed = allAlignments()
+  const reviewed = alignmentsForVerse(passage.number)
     .filter(
       (alignment) =>
-        alignment.verse === passage.number &&
         alignment.level === "token-span" &&
         alignment.targetTokenIds?.[sourceId]?.includes(tokenId),
     )
@@ -177,9 +287,8 @@ function tokenAlignmentFor(passage, sourceId, tokenId) {
     );
   if (reviewed.length) return reviewed[0];
 
-  return candidateAlignments().find(
+  return candidateAlignmentsForVerse(passage.number).find(
     (alignment) =>
-      alignment.verse === passage.number &&
       alignment.targetTokenIds?.[sourceId]?.includes(tokenId),
   );
 }
@@ -205,8 +314,10 @@ function lexiconEntryFor(sourceId, tokenId, surface) {
 }
 
 function alignmentById(alignmentId) {
+  const cache = renderCache();
+  if (!cache.alignmentsById) allAlignments();
   return (
-    allAlignments().find((alignment) => alignment.id === alignmentId) ||
+    cache.alignmentsById.get(alignmentId) ||
     state.corpus.passages
       .flatMap((passage) => effectiveSentenceUnits(passage))
       .find((alignment) => alignment.id === alignmentId)
@@ -692,9 +803,8 @@ function effectiveSentenceUnits(passage) {
 
 function alignmentsOverlappingSanskrit(passage, tokenIds) {
   const selected = new Set(tokenIds);
-  const reviewed = allAlignments().filter(
+  const reviewed = alignmentsForVerse(passage.number).filter(
     (alignment) =>
-      alignment.verse === passage.number &&
       alignment.status !== "dharmanexus-authorized" &&
       alignment.targetTokenIds?.san_levi_1925?.some((tokenId) =>
         selected.has(tokenId),
@@ -708,9 +818,8 @@ function alignmentsOverlappingSanskrit(passage, tokenIds) {
   const uncovered = new Set(
     tokenIds.filter((tokenId) => !covered.has(tokenId)),
   );
-  const candidates = candidateAlignments().filter(
+  const candidates = candidateAlignmentsForVerse(passage.number).filter(
     (alignment) =>
-      alignment.verse === passage.number &&
       alignment.targetTokenIds?.san_levi_1925?.some((tokenId) =>
         uncovered.has(tokenId),
       ),
@@ -998,7 +1107,12 @@ function rootVerseTokenIdsForSource(passage, sourceId) {
   if (sourceId === "san_levi_1925") {
     return sanskritRootVerseTokenIds(passage);
   }
-  return new Set(
+  const cache = renderCache();
+  const cacheKey = `${passage.id}:${sourceId}`;
+  if (cache.rootVerseTokenIdsByPassageSource.has(cacheKey)) {
+    return cache.rootVerseTokenIdsByPassageSource.get(cacheKey);
+  }
+  const result = new Set(
     phraseAlignments(passage)
       .filter(
         (alignment) =>
@@ -1007,13 +1121,13 @@ function rootVerseTokenIdsForSource(passage, sourceId) {
       )
       .flatMap((alignment) => alignment.targetTokenIds?.[sourceId] || []),
   );
+  cache.rootVerseTokenIdsByPassageSource.set(cacheKey, result);
+  return result;
 }
 
 function alignmentRibbon(passage) {
   if (state.view !== "alignment") return "";
-  const alignments = allAlignments().filter(
-    (alignment) => alignment.verse === passage.number,
-  );
+  const alignments = alignmentsForVerse(passage.number);
   if (!alignments.length) {
     return `
       <div class="alignment-ribbon">
@@ -1228,11 +1342,14 @@ function alignmentPosition(alignment, passage) {
 }
 
 function phraseAlignments(passage) {
+  const cache = renderCache();
+  if (cache.phraseAlignmentsByPassage.has(passage.id)) {
+    return cache.phraseAlignmentsByPassage.get(passage.id);
+  }
   const sectionEdits = sectionEditsForPassage(passage.id);
   const baseUnits = effectiveSentenceUnits(passage);
-  const passageAlignments = allAlignments().filter(
+  const passageAlignments = alignmentsForVerse(passage.number).filter(
     (alignment) =>
-      alignment.verse === passage.number &&
       ["sentence", "phrase"].includes(alignment.level || "phrase"),
   );
   const humanAlignments = passageAlignments.filter(
@@ -1286,7 +1403,7 @@ function phraseAlignments(passage) {
       ),
   );
 
-  return [...generated, ...editorial].sort((left, right) => {
+  const result = [...generated, ...editorial].sort((left, right) => {
     if (left.level === "sentence" && right.level === "sentence") {
       return (
         sentenceOrderKey(left) - sentenceOrderKey(right) ||
@@ -1299,6 +1416,8 @@ function phraseAlignments(passage) {
     if (positionDifference) return positionDifference;
     return (left.order || 0) - (right.order || 0);
   });
+  cache.phraseAlignmentsByPassage.set(passage.id, result);
+  return result;
 }
 
 function alignmentStatusLabel(alignment, rootVerse = false) {
@@ -2366,14 +2485,14 @@ function passageCard(passage) {
     (alignment) => alignment.level === "sentence",
   );
   const sourcePanels =
-    state.view === "reading" && (!editingEnabled() || open)
+    state.view === "reading" && open
       ? sources.map((source) => sourcePanel(source, passage)).join("")
       : "";
   const content =
     state.view === "reading"
-      ? editingEnabled() && !open
-        ? ""
-        : `${editingEnabled() ? editorWorkbench(passage) : ""}${readingSentenceControls(passage, sentenceUnits)}<div class="text-stack">${sourcePanels || '<div class="empty-state">Select at least one witness in the sidebar.</div>'}</div>`
+      ? open
+        ? `${editingEnabled() ? editorWorkbench(passage) : ""}${readingSentenceControls(passage, sentenceUnits)}<div class="text-stack">${sourcePanels || '<div class="empty-state">Select at least one witness in the sidebar.</div>'}</div>`
+        : ""
       : open
         ? collationView(passage, sources)
         : "";
@@ -3317,11 +3436,7 @@ function renderReader() {
       if (!card) return;
       if (card.classList.contains("open")) state.openPassages.delete(card.id);
       else state.openPassages.add(card.id);
-      if (state.view === "reading" && !editingEnabled()) {
-        card.classList.toggle("open");
-      } else {
-        renderReader();
-      }
+      renderReader();
     });
   });
 

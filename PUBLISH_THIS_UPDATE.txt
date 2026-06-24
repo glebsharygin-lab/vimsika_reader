@@ -51,28 +51,29 @@ existing copies and preserving folders exactly as shown:
 Do not upload data/corpus.json. It is the large readable build artifact and is
 not needed by GitHub Pages. Upload the root-level corpus.js instead.
 
-The new index.html uses asset version 0.20.3 for app.js, analysis.js,
+The new index.html uses asset version 0.20.4 for app.js, analysis.js,
 styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
 Pages and visitors' browsers fetch the current interface and Worker
 configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.20.3
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.20.4
 
 Expected result:
-- the sidebar displays `Build 0.20.3 · Corpus 0.8.0-trial`;
+- the sidebar displays `Build 0.20.4 · Corpus 0.8.0-trial`;
 - Sources & rights lists 32 witnesses;
 - the live Hamilton English witness appears as `English · Hamilton 1938`;
 - the live Hamilton Chinese witness appears as `Chinese · Xuanzang / Hamilton 1938`;
 - the Hamilton Chinese collation files are available under `source-witnesses/zho_hamilton_xuanzang_1938/`;
 - the collation summary reports 3,014 matched base characters out of 3,695 clean Xuanzang CJK characters, or 81.6% preliminary OCR support;
 - the main shell summary reports 136,891 addressable tokens, 255 generated sections, 265 DharmaNexus-based alignment rows, and 1,639 preliminary word links.
+- witness selection in the sliding sidebar should feel snappier because closed passage bodies are no longer rendered and phrase/alignment lookups are cached.
 
 If publishing from the command line, copy the contents of the generated
-UPLOAD_TO_GITHUB_0.20.3 folder into your local clone, then run:
+UPLOAD_TO_GITHUB_0.20.4 folder into your local clone, then run:
 
 git add .
-git commit -m "Update reader build 0.20.3"
+git commit -m "Update reader build 0.20.4"
 git push
 
 DharmaNexus reuse was authorized in writing on 20 June 2026. This build uses
