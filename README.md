@@ -6,8 +6,8 @@ This workspace contains a local trial reader for the Vimsika research corpus.
 
 - Verses 1–22 with the supplied commentary.
 - Six readable Sanskrit editions, including the Balcerowicz Sanskrit
-  Unicode draft requiring proofing; three Tibetan witnesses; three Chinese
-  translations; eight English translations/adaptations; Polish; Hungarian;
+  Unicode draft requiring proofing; three Tibetan witnesses; four Chinese
+  witnesses; eight English translations/adaptations; Polish; Hungarian;
   Hindi; two Russian translations; Japanese; three French translations; and
   German.
 - Foldable reading mode and multi-column comparison mode.
@@ -37,7 +37,7 @@ This workspace contains a local trial reader for the Vimsika research corpus.
   local rows because one segment crosses a local verse boundary.
 - Preliminary word candidates constrained inside those sentence spans rather
   than projected across an entire verse.
-- Stable IDs for 133,481 atomic tokens across all supplied witnesses.
+- Stable IDs for 136,891 atomic tokens across all supplied witnesses.
 - An embedded Editor mode plus inline text and annotation editing in Reading and Comparison.
 - Provisional rights labels.
 
@@ -57,11 +57,13 @@ for 17 of the 22 local passages. Cook and Hamilton translate Xuanzang?s Chinese
 and are mapped semantically from their twenty-one numbered verses to the
 shell?s twenty-two Sanskrit passages. Hamilton 1938 is a provisional OCR
 witness recovered from scan-only pages; its English text, notes, typography,
-and passage boundaries require proofing. The facing Hamilton Chinese text has
-been OCRed as source-preparation material, but it is not yet promoted as a live
-witness because vertical Chinese OCR order still requires manual checking. A
-preliminary Hamilton Chinese collation is available in
-`source-witnesses/zho_hamilton_xuanzang_1938/` for proofing.
+and passage boundaries require proofing. The facing Hamilton Chinese text is
+now a separate provisional live witness reconstructed from vertical columns by
+right-to-left OCR ordering and base-assisted collation against the clean
+Xuanzang witness. Its current collation support is 3,014 matched base
+characters out of 3,695 clean Xuanzang CJK characters, or 81.6%; OCR variants
+and passage boundaries still require proofing. The Hamilton Chinese extraction
+and collation files are in `source-witnesses/zho_hamilton_xuanzang_1938/`.
 The Balcerowicz Sanskrit draft, the La Vall?e-Poussin OCR witnesses, the
 Tiwari Sanskrit and Hindi witnesses, the 2022 Lyssenko witness, and the
 Japanese witness require line-by-line scholarly proofing of layout, punctuation,

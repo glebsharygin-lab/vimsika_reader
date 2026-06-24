@@ -3664,10 +3664,18 @@ async function init() {
     state.corpus = await response.json();
   }
   state.corpus.passages.forEach((passage) => {
-    Object.values(passage.texts).forEach((witness) => {
+    Object.entries(passage.texts).forEach(([sourceId, witness]) => {
       (witness.tokens || []).forEach((token) => {
         if (typeof token.text !== "string") {
           token.text = (witness.text || "").slice(token.start, token.end);
+        }
+        if (!token.type) {
+          token.type =
+            token.text.length === 1 && isCjk(token.text)
+              ? "character"
+              : sourceId === "tib_derge"
+                ? "syllable"
+                : "word";
         }
       });
     });

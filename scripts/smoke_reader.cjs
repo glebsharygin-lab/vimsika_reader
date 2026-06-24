@@ -25,7 +25,7 @@ async function main() {
   const buildBadge = (await page.locator(".build-badge").innerText())
     .replace(/\s+/g, " ")
     .trim();
-  if (!buildBadge.includes("Build 0.20.2") || !buildBadge.includes("Corpus 0.8.0-trial")) {
+  if (!buildBadge.includes("Build 0.20.3") || !buildBadge.includes("Corpus 0.8.0-trial")) {
     throw new Error(`Expected visible build metadata, received ${buildBadge}`);
   }
   const additionalWitnesses = [
@@ -49,6 +49,7 @@ async function main() {
     "fra_lvp_1911",
     "eng_cronk_1998",
     "eng_hamilton_1938",
+    "zho_hamilton_xuanzang_1938",
   ];
   for (const sourceId of additionalWitnesses) {
     const sourceToggle = page.locator(`#sourceFilters input[value='${sourceId}']`);
@@ -57,8 +58,8 @@ async function main() {
     }
   }
   const sourceCount = await page.locator("#sourceFilters input").count();
-  if (sourceCount !== 31) {
-    throw new Error(`Expected 31 source filters, received ${sourceCount}`);
+  if (sourceCount !== 32) {
+    throw new Error(`Expected 32 source filters, received ${sourceCount}`);
   }
   for (const sourceId of [
     "san_tiwari_1995",
@@ -69,6 +70,7 @@ async function main() {
     "fra_lvp_1911",
     "eng_cronk_1998",
     "eng_hamilton_1938",
+    "zho_hamilton_xuanzang_1938",
   ]) {
     const sourceToggle = page.locator(`#sourceFilters input[value='${sourceId}']`);
     await sourceToggle.check();

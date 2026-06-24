@@ -1103,6 +1103,31 @@ def source_records() -> list[dict[str, object]]:
             "extraction": "First column of the supplied four-column comparative table.",
         },
         {
+            "id": "zho_hamilton_xuanzang_1938",
+            "label": "Chinese · Xuanzang / Hamilton 1938",
+            "shortLabel": "Hamilton Chinese",
+            "language": "Chinese",
+            "languageCode": "zho",
+            "script": "Traditional Chinese",
+            "role": "edition-ocr",
+            "color": "#ad5870",
+            "citation": (
+                "Facing Chinese text printed with Clarence H. Hamilton, trans., "
+                "“Wei-shih-er-shih-lun or The Treatise in Twenty Stanzas on "
+                "Representation-Only by Vasubandhu,” 1938; Hamilton identifies "
+                "the Chinese base as Xuanzang’s text established by the Chinese "
+                "Academy of Buddhist Learning, Nanking, 1930."
+            ),
+            "file": "Hamilton 1938 scan, facing Chinese pages",
+            "rights": "public-domain",
+            "rightsLabel": "Public domain / OCR proofing needed",
+            "extraction": (
+                "Vertical Chinese scan reconstructed with column-aware Windows "
+                "OCR and segmented by base-assisted collation against the clean "
+                "Xuanzang witness. OCR and passage boundaries require proofing."
+            ),
+        },
+        {
             "id": "zho_paramartha",
             "label": "Chinese · Paramārtha",
             "shortLabel": "Paramārtha",
@@ -1596,6 +1621,11 @@ def main() -> None:
         "eng_hamilton_1938": load_segmented_witness_records(
             args.witness_dir / "eng_hamilton_1938" / "passages.json"
         ),
+        "zho_hamilton_xuanzang_1938": load_segmented_witness_records(
+            args.witness_dir
+            / "zho_hamilton_xuanzang_1938"
+            / "passages.json"
+        ),
         "eng_cronk_1998": load_segmented_witness_records(
             args.witness_dir / "eng_cronk_1998" / "passages.json",
             require_text=False,
@@ -1815,6 +1845,7 @@ def main() -> None:
         for witness in passage["texts"].values():
             for token in witness.get("tokens", []):
                 token.pop("text", None)
+                token.pop("type", None)
     for candidate in javascript_corpus.get("candidateAlignments", []):
         for field in (
             "confidence",
