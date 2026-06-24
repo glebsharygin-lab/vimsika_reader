@@ -25,7 +25,7 @@ async function main() {
   const buildBadge = (await page.locator(".build-badge").innerText())
     .replace(/\s+/g, " ")
     .trim();
-  if (!buildBadge.includes("Build 0.19.8") || !buildBadge.includes("Corpus 0.8.0-trial")) {
+  if (!buildBadge.includes("Build 0.19.9") || !buildBadge.includes("Corpus 0.8.0-trial")) {
     throw new Error(`Expected visible build metadata, received ${buildBadge}`);
   }
   const additionalWitnesses = [

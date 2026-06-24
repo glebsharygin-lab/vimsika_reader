@@ -24,16 +24,17 @@ existing copies and preserving folders exactly as shown:
 Do not upload data/corpus.json. It is the large readable build artifact and is
 not needed by GitHub Pages. Upload the root-level corpus.js instead.
 
-The new index.html uses asset version 0.19.8 for app.js, analysis.js,
+The new index.html uses asset version 0.19.9 for app.js, analysis.js,
 styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
 Pages and visitors' browsers fetch the current interface and Worker
 configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.19.8
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.19.9
 
 Expected result:
-- the sidebar displays `Build 0.19.8 ? Corpus 0.8.0-trial`;
+- the sidebar displays `Build 0.19.9 ? Corpus 0.8.0-trial`;
+- the sidebar top phrase reads `An exercise in polyphonic reading`;
 - the main notice begins `Research prototype` and ends `Only for research purposes.`;
 - Sources & rights lists 26 witnesses;
 - the Chinese T1588 witness is displayed as `Chinese · Prajñāruci`;
