@@ -25,7 +25,7 @@ async function main() {
   const buildBadge = (await page.locator(".build-badge").innerText())
     .replace(/\s+/g, " ")
     .trim();
-  if (!buildBadge.includes("Build 0.19.9") || !buildBadge.includes("Corpus 0.8.0-trial")) {
+  if (!buildBadge.includes("Build 0.20.1") || !buildBadge.includes("Corpus 0.8.0-trial")) {
     throw new Error(`Expected visible build metadata, received ${buildBadge}`);
   }
   const additionalWitnesses = [
@@ -44,6 +44,11 @@ async function main() {
     "fra_cornu_2008",
     "eng_wood_1991",
     "eng_cook_1999",
+    "tib_silk_dunhuang_2017",
+    "tib_lvp_1911",
+    "fra_lvp_1911",
+    "eng_cronk_1998",
+    "eng_hamilton_1938",
   ];
   for (const sourceId of additionalWitnesses) {
     const sourceToggle = page.locator(`#sourceFilters input[value='${sourceId}']`);
@@ -52,10 +57,19 @@ async function main() {
     }
   }
   const sourceCount = await page.locator("#sourceFilters input").count();
-  if (sourceCount !== 26) {
-    throw new Error(`Expected 26 source filters, received ${sourceCount}`);
+  if (sourceCount !== 31) {
+    throw new Error(`Expected 31 source filters, received ${sourceCount}`);
   }
-  for (const sourceId of ["san_tiwari_1995", "hin_tiwari_1995", "rus_lyssenko_2022"]) {
+  for (const sourceId of [
+    "san_tiwari_1995",
+    "hin_tiwari_1995",
+    "rus_lyssenko_2022",
+    "tib_silk_dunhuang_2017",
+    "tib_lvp_1911",
+    "fra_lvp_1911",
+    "eng_cronk_1998",
+    "eng_hamilton_1938",
+  ]) {
     const sourceToggle = page.locator(`#sourceFilters input[value='${sourceId}']`);
     await sourceToggle.check();
     const tokenCount = await page.locator(

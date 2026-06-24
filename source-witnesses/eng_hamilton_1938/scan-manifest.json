@@ -1,0 +1,457 @@
+﻿[
+    {
+        "page":  1,
+        "image":  "page_01_Im1.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2334
+    },
+    {
+        "page":  2,
+        "image":  "page_02_Im11.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  409
+    },
+    {
+        "page":  3,
+        "image":  "page_03_Im16.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2805
+    },
+    {
+        "page":  4,
+        "image":  "page_04_Im21.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  360
+    },
+    {
+        "page":  5,
+        "image":  "page_05_Im26.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2588
+    },
+    {
+        "page":  6,
+        "image":  "page_06_Im1.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  391
+    },
+    {
+        "page":  7,
+        "image":  "page_07_Im11.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2865
+    },
+    {
+        "page":  8,
+        "image":  "page_08_Im16.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  398
+    },
+    {
+        "page":  9,
+        "image":  "page_09_Im21.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2365
+    },
+    {
+        "page":  10,
+        "image":  "page_10_Im26.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  311
+    },
+    {
+        "page":  11,
+        "image":  "page_11_Im31.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2436
+    },
+    {
+        "page":  12,
+        "image":  "page_12_Im36.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  215
+    },
+    {
+        "page":  13,
+        "image":  "page_13_Im41.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2508
+    },
+    {
+        "page":  14,
+        "image":  "page_14_Im46.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  247
+    },
+    {
+        "page":  15,
+        "image":  "page_15_Im51.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2225
+    },
+    {
+        "page":  16,
+        "image":  "page_16_Im56.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  238
+    },
+    {
+        "page":  17,
+        "image":  "page_17_Im61.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2481
+    },
+    {
+        "page":  18,
+        "image":  "page_18_Im66.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  227
+    },
+    {
+        "page":  19,
+        "image":  "page_19_Im71.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2514
+    },
+    {
+        "page":  20,
+        "image":  "page_20_Im76.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  249
+    },
+    {
+        "page":  21,
+        "image":  "page_21_Im1.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2891
+    },
+    {
+        "page":  22,
+        "image":  "page_22_Im11.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  163
+    },
+    {
+        "page":  23,
+        "image":  "page_23_Im16.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2520
+    },
+    {
+        "page":  24,
+        "image":  "page_24_Im21.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  249
+    },
+    {
+        "page":  25,
+        "image":  "page_25_Im26.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2681
+    },
+    {
+        "page":  26,
+        "image":  "page_26_Im31.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  283
+    },
+    {
+        "page":  27,
+        "image":  "page_27_Im36.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2584
+    },
+    {
+        "page":  28,
+        "image":  "page_28_Im41.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  250
+    },
+    {
+        "page":  29,
+        "image":  "page_29_Im46.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2308
+    },
+    {
+        "page":  30,
+        "image":  "page_30_Im51.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  314
+    },
+    {
+        "page":  31,
+        "image":  "page_31_Im56.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  1975
+    },
+    {
+        "page":  32,
+        "image":  "page_32_Im61.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  252
+    },
+    {
+        "page":  33,
+        "image":  "page_33_Im66.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2553
+    },
+    {
+        "page":  34,
+        "image":  "page_34_Im71.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  207
+    },
+    {
+        "page":  35,
+        "image":  "page_35_Im76.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2502
+    },
+    {
+        "page":  36,
+        "image":  "page_36_Im81.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  320
+    },
+    {
+        "page":  37,
+        "image":  "page_37_Im1.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2418
+    },
+    {
+        "page":  38,
+        "image":  "page_38_Im11.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  295
+    },
+    {
+        "page":  39,
+        "image":  "page_39_Im1.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2663
+    },
+    {
+        "page":  40,
+        "image":  "page_40_Im11.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  278
+    },
+    {
+        "page":  41,
+        "image":  "page_41_Im16.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2748
+    },
+    {
+        "page":  42,
+        "image":  "page_42_Im21.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  199
+    },
+    {
+        "page":  43,
+        "image":  "page_43_Im26.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2532
+    },
+    {
+        "page":  44,
+        "image":  "page_44_Im31.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  291
+    },
+    {
+        "page":  45,
+        "image":  "page_45_Im36.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2660
+    },
+    {
+        "page":  46,
+        "image":  "page_46_Im41.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  193
+    },
+    {
+        "page":  47,
+        "image":  "page_47_Im46.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2677
+    },
+    {
+        "page":  48,
+        "image":  "page_48_Im51.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  237
+    },
+    {
+        "page":  49,
+        "image":  "page_49_Im56.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2463
+    },
+    {
+        "page":  50,
+        "image":  "page_50_Im61.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  232
+    },
+    {
+        "page":  51,
+        "image":  "page_51_Im66.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2510
+    },
+    {
+        "page":  52,
+        "image":  "page_52_Im71.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  146
+    },
+    {
+        "page":  53,
+        "image":  "page_53_Im76.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2865
+    },
+    {
+        "page":  54,
+        "image":  "page_54_Im81.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  153
+    },
+    {
+        "page":  55,
+        "image":  "page_55_Im86.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2976
+    },
+    {
+        "page":  56,
+        "image":  "page_56_Im91.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  258
+    },
+    {
+        "page":  57,
+        "image":  "page_57_Im96.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2978
+    },
+    {
+        "page":  58,
+        "image":  "page_58_Im101.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  172
+    },
+    {
+        "page":  59,
+        "image":  "page_59_Im106.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2400
+    },
+    {
+        "page":  60,
+        "image":  "page_60_Im111.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  176
+    },
+    {
+        "page":  61,
+        "image":  "page_61_Im116.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2814
+    },
+    {
+        "page":  62,
+        "image":  "page_62_Im121.jpg",
+        "kind":  "chinese-text",
+        "ocrLanguage":  "zh-Hant-TW",
+        "chars":  211
+    },
+    {
+        "page":  63,
+        "image":  "page_63_Im126.jpg",
+        "kind":  "english-translation-notes",
+        "ocrLanguage":  "en-US",
+        "chars":  2148
+    },
+    {
+        "page":  64,
+        "image":  "page_64_Im131.jpg",
+        "kind":  "bibliography",
+        "ocrLanguage":  "en-US",
+        "chars":  1574
+    },
+    {
+        "page":  65,
+        "image":  "page_65_Im136.jpg",
+        "kind":  "bibliography",
+        "ocrLanguage":  "en-US",
+        "chars":  1060
+    }
+]

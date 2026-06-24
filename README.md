@@ -6,9 +6,10 @@ This workspace contains a local trial reader for the Vimsika research corpus.
 
 - Verses 1–22 with the supplied commentary.
 - Six readable Sanskrit editions, including the Balcerowicz Sanskrit
-  Unicode draft requiring proofing; Tibetan; three Chinese translations;
-  seven English translations; Polish; Hungarian; Hindi; two Russian
-  translations; Japanese; two French translations; and German.
+  Unicode draft requiring proofing; three Tibetan witnesses; three Chinese
+  translations; eight English translations/adaptations; Polish; Hungarian;
+  Hindi; two Russian translations; Japanese; three French translations; and
+  German.
 - Foldable reading mode and multi-column comparison mode.
 - Foldable sentence units numbered `1.1`, `1.2`, and so on, derived from
   Sanskrit dandas, vertical strokes, slashes, and source paragraph boundaries.
@@ -36,7 +37,7 @@ This workspace contains a local trial reader for the Vimsika research corpus.
   local rows because one segment crosses a local verse boundary.
 - Preliminary word candidates constrained inside those sentence spans rather
   than projected across an entire verse.
-- Stable IDs for 99,273 atomic tokens across all supplied witnesses.
+- Stable IDs for 133,481 atomic tokens across all supplied witnesses.
 - An embedded Editor mode plus inline text and annotation editing in Reading and Comparison.
 - Provisional rights labels.
 
@@ -48,15 +49,21 @@ projection within each DharmaNexus segment and are intended to be corrected in
 the embedded editor.
 The supplied Nilanjan Das English draft does not contain verses 5–10; the
 reader marks those passages explicitly rather than synthesizing missing text.
-The Silk, Anacker, Tola?Dragonetti, Kochumuttom, Cornu, Lyssenko, Tiwari,
-Yuda, and Cook witnesses contain all 22 passages with commentary or a
-provisional transcription of it. Wood supplies a verse-only English
-translation. Cook translates Xuanzang?s Chinese and is mapped semantically
-from its twenty-one numbered verses to the shell?s twenty-two Sanskrit passages.
-The Balcerowicz Sanskrit draft, the Tiwari Sanskrit and Hindi witnesses,
-the 2022 Lyssenko witness, and the Japanese witness require line-by-line
-scholarly proofing of layout, punctuation, transcription, transliteration, and
-language separation. The 2022 Lyssenko witness is a
+The Silk, Anacker, Tola?Dragonetti, Kochumuttom, Cornu, La Vall?e-Poussin,
+Lyssenko, Tiwari, Yuda, and Cook witnesses contain all 22 passages with
+commentary or a provisional transcription of it. Wood supplies a verse-only
+English translation. Cronk supplies a partial adapted English rendition marked
+for 17 of the 22 local passages. Cook and Hamilton translate Xuanzang?s Chinese
+and are mapped semantically from their twenty-one numbered verses to the
+shell?s twenty-two Sanskrit passages. Hamilton 1938 is a provisional OCR
+witness recovered from scan-only pages; its English text, notes, typography,
+and passage boundaries require proofing. The facing Hamilton Chinese text has
+been OCRed as source-preparation material, but it is not yet promoted as a live
+witness because vertical Chinese OCR order still requires manual checking.
+The Balcerowicz Sanskrit draft, the La Vall?e-Poussin OCR witnesses, the
+Tiwari Sanskrit and Hindi witnesses, the 2022 Lyssenko witness, and the
+Japanese witness require line-by-line scholarly proofing of layout, punctuation,
+transcription, transliteration, and language separation. The 2022 Lyssenko witness is a
 revised Russian translation distinct from the 2008 article version.
 The project owner has confirmed the previously supplied witnesses for this
 research corpus. Some modern witnesses remain marked `Rights status requires

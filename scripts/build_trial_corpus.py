@@ -1043,6 +1043,51 @@ def source_records() -> list[dict[str, object]]:
             "extraction": "UTF-8 text; sections inferred from Roman-numeral headings.",
         },
         {
+            "id": "tib_silk_dunhuang_2017",
+            "label": "Tibetan · Dunhuang PT 797 (Silk 2017)",
+            "shortLabel": "Dunhuang PT 797",
+            "language": "Tibetan",
+            "languageCode": "bod",
+            "script": "Latin transliteration",
+            "role": "manuscript-transcription",
+            "color": "#7a7048",
+            "citation": (
+                "Jonathan A. Silk, “Materials Toward the Study of Vasubandhu’s "
+                "Viṃśikā (II): An edition of the Dunhuang Manuscript Pelliot "
+                "tibétain 797,” Revue d’Etudes Tibétaines 39 (2017), 342–360."
+            ),
+            "file": "Materials_Toward_the_Study_of_Vasubandhu (1).pdf, pages 344–358",
+            "rights": "open-access",
+            "rightsLabel": "Open access / research use",
+            "extraction": (
+                "Pelliot tibétain 797 critical transcription extracted from "
+                "Silk's imposed Roman divisions. Verse rubrics and line notes "
+                "require scholarly review."
+            ),
+        },
+        {
+            "id": "tib_lvp_1911",
+            "label": "Tibetan · La Vallée-Poussin 1911",
+            "shortLabel": "LVP Tibetan",
+            "language": "Tibetan",
+            "languageCode": "bod",
+            "script": "Latin transliteration",
+            "role": "edition-ocr",
+            "color": "#716238",
+            "citation": (
+                "Louis de La Vallée-Poussin, “Vasubandhu: "
+                "Viṃśakakārikāprakaraṇa. Traité des vingt ślokas avec le "
+                "commentaire de l’auteur,” Le Muséon 30 (1911), 53–90."
+            ),
+            "file": "lemuson30soc1i (1).pdf, pages 54–65",
+            "rights": "public-domain",
+            "rightsLabel": "Public domain / OCR proofing needed",
+            "extraction": (
+                "Le Muséon Tibetan OCR layer segmented by visible verse "
+                "anchors. OCR and segmentation require line-by-line correction."
+            ),
+        },
+        {
             "id": "zho_xuanzang",
             "label": "Chinese · Xuanzang",
             "shortLabel": "Xuanzang",
@@ -1236,6 +1281,51 @@ def source_records() -> list[dict[str, object]]:
             ),
         },
         {
+            "id": "eng_hamilton_1938",
+            "label": "English · Hamilton 1938",
+            "shortLabel": "Hamilton",
+            "language": "English",
+            "languageCode": "eng",
+            "script": "Latin",
+            "role": "modern-translation-from-chinese-ocr",
+            "color": "#6e6f9e",
+            "citation": (
+                "Clarence H. Hamilton, trans., “Wei-shih-er-shih-lun or "
+                "The Treatise in Twenty Stanzas on Representation-Only by "
+                "Vasubandhu,” 1938."
+            ),
+            "file": "Hamilton 1938 scan, printed pages 19–79",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus / OCR proofing needed",
+            "extraction": (
+                "Scanned English translation from Xuanzang’s Chinese recovered "
+                "with local Windows OCR and segmented by semantic stanza anchors. "
+                "OCR typography, notes, and boundaries require proofing."
+            ),
+        },
+        {
+            "id": "eng_cronk_1998",
+            "label": "English · Cronk 1998",
+            "shortLabel": "Cronk",
+            "language": "English",
+            "languageCode": "eng",
+            "script": "Latin",
+            "role": "modern-adaptation",
+            "color": "#6f7142",
+            "citation": (
+                "George Cronk, rendition and editing, “Twenty Verses on "
+                "Consciousness-Only (Vimsatika-Karika),” 1998."
+            ),
+            "file": "twenty-verses-on-consciousness-only-vimsatika-karika.pdf",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus",
+            "extraction": (
+                "Adapted English rendition segmented from bracketed verse "
+                "labels. The supplied PDF marks 17 of the 22 local verse "
+                "passages."
+            ),
+        },
+        {
             "id": "pol_balcerowicz_nowakowska_1999",
             "label": "Polish · Balcerowicz & Nowakowska 1999",
             "shortLabel": "Balcerowicz–Nowakowska",
@@ -1414,6 +1504,28 @@ def source_records() -> list[dict[str, object]]:
             ),
         },
         {
+            "id": "fra_lvp_1911",
+            "label": "French · La Vallée-Poussin 1911",
+            "shortLabel": "LVP French",
+            "language": "French",
+            "languageCode": "fra",
+            "script": "Latin",
+            "role": "modern-translation-ocr",
+            "color": "#3d7164",
+            "citation": (
+                "Louis de La Vallée-Poussin, “Vasubandhu: "
+                "Viṃśakakārikāprakaraṇa. Traité des vingt ślokas avec le "
+                "commentaire de l’auteur,” Le Muséon 30 (1911), 53–90."
+            ),
+            "file": "lemuson30soc1i (1).pdf, pages 67–90",
+            "rights": "public-domain",
+            "rightsLabel": "Public domain / OCR proofing needed",
+            "extraction": (
+                "French translation segmented from numbered headings in the "
+                "Le Muséon OCR layer. OCR accents and punctuation require proofing."
+            ),
+        },
+        {
             "id": "de_frauwallner",
             "label": "German · Frauwallner",
             "shortLabel": "Frauwallner",
@@ -1481,6 +1593,13 @@ def main() -> None:
         "eng_cook_1999": load_segmented_witness_records(
             args.witness_dir / "eng_cook_1999" / "passages.json"
         ),
+        "eng_hamilton_1938": load_segmented_witness_records(
+            args.witness_dir / "eng_hamilton_1938" / "passages.json"
+        ),
+        "eng_cronk_1998": load_segmented_witness_records(
+            args.witness_dir / "eng_cronk_1998" / "passages.json",
+            require_text=False,
+        ),
         "san_silk_2016": load_segmented_witness_records(
             args.witness_dir / "san_silk_2016" / "passages.json"
         ),
@@ -1510,6 +1629,12 @@ def main() -> None:
         "hin_tiwari_1995": load_segmented_witness_records(
             args.witness_dir / "hin_tiwari_1995" / "passages.json"
         ),
+        "tib_silk_dunhuang_2017": load_segmented_witness_records(
+            args.witness_dir / "tib_silk_dunhuang_2017" / "passages.json"
+        ),
+        "tib_lvp_1911": load_segmented_witness_records(
+            args.witness_dir / "tib_lvp_1911" / "passages.json"
+        ),
         "rus_lyssenko_2008": load_segmented_witness_records(
             args.witness_dir / "rus_lyssenko_2008" / "passages.json"
         ),
@@ -1521,6 +1646,9 @@ def main() -> None:
         ),
         "fra_cornu_2008": load_segmented_witness_records(
             args.witness_dir / "fra_cornu_2008" / "passages.json"
+        ),
+        "fra_lvp_1911": load_segmented_witness_records(
+            args.witness_dir / "fra_lvp_1911" / "passages.json"
         ),
     }
     passages_by_source: dict[str, dict[int, str | None]] = {
@@ -1687,6 +1815,17 @@ def main() -> None:
         for witness in passage["texts"].values():
             for token in witness.get("tokens", []):
                 token.pop("text", None)
+    for candidate in javascript_corpus.get("candidateAlignments", []):
+        for field in (
+            "confidence",
+            "level",
+            "method",
+            "note",
+            "sourceAlignmentId",
+            "status",
+            "targetMethods",
+        ):
+            candidate.pop(field, None)
     javascript = (
         "window.CORPUS_DATA = "
         + json.dumps(javascript_corpus, ensure_ascii=False, separators=(",", ":"))
