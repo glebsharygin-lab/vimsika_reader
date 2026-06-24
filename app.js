@@ -47,6 +47,7 @@ const state = {
   selectionAnchors: {},
   draggingSelection: null,
   dynamicFrames: [],
+  loadedVideos: new Set(),
   lexicalPopover: null,
   analysisTab: "lexicon",
   analysisSourceId: "san_levi_1925",
@@ -66,6 +67,22 @@ const escapeHtml = (value) =>
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;");
+
+const escapeAttribute = (value) =>
+  escapeHtml(value).replaceAll('"', "&quot;");
+
+const PASSAGE_VIDEO_EMBEDS = {
+  v1: {
+    title: "Verse 1 video companion",
+    videoId: "YhaGH8nWEe0",
+    url: "https://youtu.be/YhaGH8nWEe0",
+  },
+  v2: {
+    title: "Verse 2 video companion",
+    videoId: "hvt8as4EUH0",
+    url: "https://youtu.be/hvt8as4EUH0",
+  },
+};
 
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
@@ -257,7 +274,18 @@ function localSectionEditFor(passageId, unitId) {
 }
 
 function candidateAlignments() {
-  return state.corpus.candidateAlignments || [];
+  const cache = renderCache();
+  if (!cache.candidateAlignments) {
+    cache.candidateAlignments = (state.corpus.candidateAlignments || []).map(
+      (alignment) => ({
+        ...alignment,
+        level: alignment.level || "token-span",
+        status: alignment.status || "machine-suggested",
+        confidence: alignment.confidence || "low",
+      }),
+    );
+  }
+  return cache.candidateAlignments;
 }
 
 function candidateAlignmentsForVerse(verse) {
@@ -1614,7 +1642,7 @@ function wordAlignmentBar(passage) {
   if (
     !alignment ||
     alignment.verse !== passage.number ||
-    alignment.level !== "token-span"
+    !alignment.targetTokenIds
   ) {
     return "";
   }
@@ -1630,7 +1658,7 @@ function wordAlignmentBar(passage) {
   return `
     <div class="word-alignment-bar ${machine ? "machine" : "reviewed"}">
       <div>
-        <span class="word-alignment-kicker">${machine ? "Machine-projected word link" : "Reviewed word link"}</span>
+        <span class="word-alignment-kicker">${machine ? "Machine-projected correspondence" : "Reviewed correspondence"}</span>
         <strong>${escapeHtml(sanskrit || alignment.label)}</strong>
         <span>${witnessCount} witness span${witnessCount === 1 ? "" : "s"} highlighted</span>
       </div>
@@ -2475,6 +2503,34 @@ function collationView(passage, sources) {
         )}
       </div>
     </div>
+  `;
+}
+
+function passageVideoEmbed(passage) {
+  if (state.view !== "reading") return "";
+  const video = PASSAGE_VIDEO_EMBEDS[passage.id];
+  if (!video) return "";
+  const loaded = state.loadedVideos.has(passage.id);
+  const sourceUrl = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(video.videoId)}?rel=0`;
+
+  return `
+    <section class="passage-video-card" aria-label="${escapeAttribute(video.title)}">
+      <div class="passage-video-copy">
+        <span class="passage-video-kicker">Video companion</span>
+        <strong>${escapeHtml(video.title)}</strong>
+        <a href="${escapeAttribute(video.url)}" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+      </div>
+      <div class="passage-video-frame">
+        ${
+          loaded
+            ? `<iframe src="${sourceUrl}" title="${escapeAttribute(video.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`
+            : `<button class="passage-video-placeholder" type="button" data-load-video="${passage.id}">
+                <span class="passage-video-play" aria-hidden="true">▶</span>
+                <span>Load embedded video</span>
+              </button>`
+        }
+      </div>
+    </section>
   `;
 }
 
@@ -3428,7 +3484,16 @@ function renderReader() {
     bindAnalysisControls(reader);
     return;
   }
-  reader.innerHTML = state.corpus.passages.map(passageCard).join("");
+  reader.innerHTML = state.corpus.passages
+    .map((passage) => `${passageVideoEmbed(passage)}${passageCard(passage)}`)
+    .join("");
+
+  reader.querySelectorAll("[data-load-video]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.loadedVideos.add(button.dataset.loadVideo);
+      renderReader();
+    });
+  });
 
   reader.querySelectorAll(".passage-header").forEach((button) => {
     button.addEventListener("click", () => {

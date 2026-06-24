@@ -11,6 +11,8 @@ This workspace contains a local trial reader for the Vimsika research corpus.
   Hindi; two Russian translations; Japanese; three French translations; and
   two German witnesses.
 - Foldable reading mode and multi-column comparison mode.
+- Click-to-load YouTube companion videos before verses 1 and 2; the shell
+  creates the embedded player only when a reader requests it.
 - Foldable sentence units numbered `1.1`, `1.2`, and so on, derived from
   Sanskrit dandas, vertical strokes, slashes, and source paragraph boundaries.
 - Bold root-verse typography in Sanskrit and in the corresponding aligned
