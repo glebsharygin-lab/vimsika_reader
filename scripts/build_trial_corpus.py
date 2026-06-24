@@ -1195,6 +1195,28 @@ def source_records() -> list[dict[str, object]]:
             ),
         },
         {
+            "id": "eng_siderits_2007",
+            "label": "English · Siderits 2007",
+            "shortLabel": "Siderits",
+            "language": "English",
+            "languageCode": "eng",
+            "script": "Latin",
+            "role": "modern-translation-excerpt",
+            "color": "#487d7a",
+            "citation": (
+                "Mark Siderits, Buddhism as Philosophy: An Introduction, "
+                "Ashgate, 2007, chapter 8."
+            ),
+            "file": "Buddhism as Philosophy, PDF chapter 8",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus / partial witness",
+            "extraction": (
+                "Selected printed Viṃśatikā passages extracted from the PDF "
+                "text layer. Verses not quoted in the supplied chapter are "
+                "left blank."
+            ),
+        },
+        {
             "id": "eng_anacker_2005",
             "label": "English · Anacker 2005",
             "shortLabel": "Anacker",
@@ -1565,6 +1587,28 @@ def source_records() -> list[dict[str, object]]:
             "rightsLabel": "Public domain / open access",
             "extraction": "Searchable PDF text layer; passages inferred from verse labels.",
         },
+        {
+            "id": "de_kitayama_1934",
+            "label": "German · Kitayama 1934",
+            "shortLabel": "Kitayama",
+            "language": "German",
+            "languageCode": "deu",
+            "script": "Latin",
+            "role": "modern-translation-ocr",
+            "color": "#6f6b38",
+            "citation": (
+                "Kitayama, chapter 4, “Vijñaptimātratā-siddhi-"
+                "viṃśatikā,” 1934, pp. 234–268."
+            ),
+            "file": "User-supplied screenshots of printed pages 234–268",
+            "rights": "cleared-research",
+            "rightsLabel": "Cleared for research corpus / OCR proofing needed",
+            "extraction": (
+                "German translation reconstructed from local Windows OCR of "
+                "screenshots and segmented by printed Vers headings. OCR and "
+                "boundaries require proofing."
+            ),
+        },
     ]
     for source in sources:
         source.pop("file", None)
@@ -1602,6 +1646,10 @@ def main() -> None:
     segmented_witnesses = {
         "eng_silk_2016": load_segmented_witness_records(
             args.witness_dir / "eng_silk_2016" / "passages.json"
+        ),
+        "eng_siderits_2007": load_segmented_witness_records(
+            args.witness_dir / "eng_siderits_2007" / "passages.json",
+            require_text=False,
         ),
         "eng_anacker_2005": load_segmented_witness_records(
             args.witness_dir / "eng_anacker_2005" / "passages.json"
@@ -1679,6 +1727,9 @@ def main() -> None:
         ),
         "fra_lvp_1911": load_segmented_witness_records(
             args.witness_dir / "fra_lvp_1911" / "passages.json"
+        ),
+        "de_kitayama_1934": load_segmented_witness_records(
+            args.witness_dir / "de_kitayama_1934" / "passages.json"
         ),
     }
     passages_by_source: dict[str, dict[int, str | None]] = {

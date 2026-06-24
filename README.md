@@ -7,9 +7,9 @@ This workspace contains a local trial reader for the Vimsika research corpus.
 - Verses 1–22 with the supplied commentary.
 - Six readable Sanskrit editions, including the Balcerowicz Sanskrit
   Unicode draft requiring proofing; three Tibetan witnesses; four Chinese
-  witnesses; eight English translations/adaptations; Polish; Hungarian;
+  witnesses; nine English translations/adaptations; Polish; Hungarian;
   Hindi; two Russian translations; Japanese; three French translations; and
-  German.
+  two German witnesses.
 - Foldable reading mode and multi-column comparison mode.
 - Foldable sentence units numbered `1.1`, `1.2`, and so on, derived from
   Sanskrit dandas, vertical strokes, slashes, and source paragraph boundaries.
@@ -37,7 +37,7 @@ This workspace contains a local trial reader for the Vimsika research corpus.
   local rows because one segment crosses a local verse boundary.
 - Preliminary word candidates constrained inside those sentence spans rather
   than projected across an entire verse.
-- Stable IDs for 136,891 atomic tokens across all supplied witnesses.
+- Stable IDs for 148,075 atomic tokens across all supplied witnesses.
 - An embedded Editor mode plus inline text and annotation editing in Reading and Comparison.
 - Provisional rights labels.
 
@@ -50,14 +50,15 @@ the embedded editor.
 The supplied Nilanjan Das English draft does not contain verses 5–10; the
 reader marks those passages explicitly rather than synthesizing missing text.
 The Silk, Anacker, Tola?Dragonetti, Kochumuttom, Cornu, La Vall?e-Poussin,
-Lyssenko, Tiwari, Yuda, and Cook witnesses contain all 22 passages with
-commentary or a provisional transcription of it. Wood supplies a verse-only
+Lyssenko, Tiwari, Yuda, Cook, and Kitayama witnesses contain all 22 passages
+with commentary or a provisional transcription of it. Wood supplies a verse-only
 English translation. Cronk supplies a partial adapted English rendition marked
-for 17 of the 22 local passages. Cook and Hamilton translate Xuanzang?s Chinese
+for 17 of the 22 local passages; Siderits 2007 supplies 17 selected passages
+quoted in the supplied chapter. Cook and Hamilton translate Xuanzang?s Chinese
 and are mapped semantically from their twenty-one numbered verses to the
-shell?s twenty-two Sanskrit passages. Hamilton 1938 is a provisional OCR
-witness recovered from scan-only pages; its English text, notes, typography,
-and passage boundaries require proofing. The facing Hamilton Chinese text is
+shell?s twenty-two Sanskrit passages. Hamilton 1938 and Kitayama 1934 are
+provisional OCR witnesses; their text, notes, typography, and passage
+boundaries require proofing. The facing Hamilton Chinese text is
 now a separate provisional live witness reconstructed from vertical columns by
 right-to-left OCR ordering and base-assisted collation against the clean
 Xuanzang witness. Its current collation support is 3,014 matched base
