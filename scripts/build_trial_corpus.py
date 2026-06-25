@@ -1028,6 +1028,28 @@ def source_records() -> list[dict[str, object]]:
             ),
         },
         {
+            "id": "san_kalupahana_1987",
+            "label": "Sanskrit · Kalupahana 1987",
+            "shortLabel": "Kalupahana Sanskrit",
+            "language": "Sanskrit",
+            "languageCode": "san",
+            "script": "Latin transliteration",
+            "role": "edition",
+            "color": "#9f5b45",
+            "citation": (
+                "David J. Kalupahana, The Principles of Buddhist Psychology, "
+                "SUNY Press, 1987, Appendix II."
+            ),
+            "file": "The Principles of Buddhist Psychology, PDF pages 184–203",
+            "rights": "rights-review",
+            "rightsLabel": "Rights status requires verification / OCR proofing needed",
+            "extraction": (
+                "Appendix II Sanskrit text extracted from the PDF text layer. "
+                "The romanization is noisy and requires proofing against the "
+                "printed appendix."
+            ),
+        },
+        {
             "id": "tib_derge",
             "label": "Tibetan · Derge",
             "shortLabel": "Tibetan",
@@ -1214,6 +1236,28 @@ def source_records() -> list[dict[str, object]]:
                 "Selected printed Viṃśatikā passages extracted from the PDF "
                 "text layer. Verses not quoted in the supplied chapter are "
                 "left blank."
+            ),
+        },
+        {
+            "id": "eng_kalupahana_1987",
+            "label": "English · Kalupahana 1987",
+            "shortLabel": "Kalupahana",
+            "language": "English",
+            "languageCode": "eng",
+            "script": "Latin",
+            "role": "modern-translation",
+            "color": "#4f7396",
+            "citation": (
+                "David J. Kalupahana, The Principles of Buddhist Psychology, "
+                "SUNY Press, 1987, Appendix II."
+            ),
+            "file": "The Principles of Buddhist Psychology, PDF pages 184–203",
+            "rights": "rights-review",
+            "rightsLabel": "Rights status requires verification / OCR proofing needed",
+            "extraction": (
+                "English translation and annotation extracted from Appendix II "
+                "via the PDF text layer. OCR-like spelling and line-break noise "
+                "require proofreading."
             ),
         },
         {
@@ -1515,6 +1559,28 @@ def source_records() -> list[dict[str, object]]:
             ),
         },
         {
+            "id": "jpn_yuda_watakushi_yuishiki",
+            "label": "Japanese · Yuda, “Watakushi no Yuishiki”",
+            "shortLabel": "Yuda essay",
+            "language": "Japanese",
+            "languageCode": "jpn",
+            "script": "Japanese",
+            "role": "modern-translation-excerpt",
+            "color": "#7b5fa5",
+            "citation": (
+                "湯田豊, 「わたくしの“唯識” —ヴァスバンドゥの世界—」, "
+                "scan supplied as 14201.pdf."
+            ),
+            "file": "14201.pdf, scan-only pages 1–26",
+            "rights": "rights-review",
+            "rightsLabel": "Rights status requires verification / OCR proofing needed",
+            "extraction": (
+                "Vertical Japanese scan reconstructed with Windows OCR. The "
+                "source is an interpretive essay with selected Viṃśikā excerpts, "
+                "not a complete 22-verse running translation."
+            ),
+        },
+        {
             "id": "fr_levi_1932",
             "label": "French · Lévi 1932",
             "shortLabel": "Lévi",
@@ -1651,6 +1717,9 @@ def main() -> None:
             args.witness_dir / "eng_siderits_2007" / "passages.json",
             require_text=False,
         ),
+        "eng_kalupahana_1987": load_segmented_witness_records(
+            args.witness_dir / "eng_kalupahana_1987" / "passages.json"
+        ),
         "eng_anacker_2005": load_segmented_witness_records(
             args.witness_dir / "eng_anacker_2005" / "passages.json"
         ),
@@ -1696,6 +1765,9 @@ def main() -> None:
         "san_tiwari_1995": load_segmented_witness_records(
             args.witness_dir / "san_tiwari_1995" / "passages.json"
         ),
+        "san_kalupahana_1987": load_segmented_witness_records(
+            args.witness_dir / "san_kalupahana_1987" / "passages.json"
+        ),
         "pol_balcerowicz_nowakowska_1999": load_segmented_witness_records(
             args.witness_dir
             / "pol_balcerowicz_nowakowska_1999"
@@ -1721,6 +1793,12 @@ def main() -> None:
         ),
         "jpn_yuda_issue32": load_segmented_witness_records(
             args.witness_dir / "jpn_yuda_issue32" / "passages.json"
+        ),
+        "jpn_yuda_watakushi_yuishiki": load_segmented_witness_records(
+            args.witness_dir
+            / "jpn_yuda_watakushi_yuishiki"
+            / "passages.json",
+            require_text=False,
         ),
         "fra_cornu_2008": load_segmented_witness_records(
             args.witness_dir / "fra_cornu_2008" / "passages.json"

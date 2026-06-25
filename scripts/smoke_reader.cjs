@@ -25,7 +25,7 @@ async function main() {
   const buildBadge = (await page.locator(".build-badge").innerText())
     .replace(/\s+/g, " ")
     .trim();
-  if (!buildBadge.includes("Build 0.20.8") || !buildBadge.includes("Corpus 0.8.0-trial")) {
+  if (!buildBadge.includes("Build 0.20.9") || !buildBadge.includes("Corpus 0.8.0-trial")) {
     throw new Error(`Expected visible build metadata, received ${buildBadge}`);
   }
   const videoCards = await page.locator(".passage-video-card").count();
@@ -61,9 +61,12 @@ async function main() {
     "rus_lyssenko_2008",
     "rus_lyssenko_2022",
     "san_tiwari_1995",
+    "san_kalupahana_1987",
     "hin_tiwari_1995",
     "jpn_yuda_issue32",
+    "jpn_yuda_watakushi_yuishiki",
     "eng_siderits_2007",
+    "eng_kalupahana_1987",
     "eng_kochumuttom_1982",
     "fra_cornu_2008",
     "eng_wood_1991",
@@ -83,11 +86,14 @@ async function main() {
     }
   }
   const sourceCount = await page.locator("#sourceFilters input").count();
-  if (sourceCount !== 34) {
-    throw new Error(`Expected 34 source filters, received ${sourceCount}`);
+  if (sourceCount !== 37) {
+    throw new Error(`Expected 37 source filters, received ${sourceCount}`);
   }
   for (const sourceId of [
     "san_tiwari_1995",
+    "san_kalupahana_1987",
+    "eng_kalupahana_1987",
+    "jpn_yuda_watakushi_yuishiki",
     "hin_tiwari_1995",
     "rus_lyssenko_2022",
     "tib_silk_dunhuang_2017",

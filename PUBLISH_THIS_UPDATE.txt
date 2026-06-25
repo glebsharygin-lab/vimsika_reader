@@ -1,95 +1,72 @@
-Upload these files to the root of the GitHub repository, replacing the
-existing copies and preserving folders exactly as shown:
+Upload the contents of `UPLOAD_TO_GITHUB_0.20.9` to the root of the GitHub
+repository, replacing existing copies and preserving folders exactly as shown.
 
-1. .nojekyll
-2. index.html
-3. auth-config.js
-4. app.js
-5. analysis.js
-6. styles.css
-7. corpus.js
-8. editorial-overrides.json
-9. README.md
-10. PUBLISH_THIS_UPDATE.txt
-11. scripts/convert_balcerowicz_amrita.py
-12. scripts/segment_additional_witnesses.py
-13. scripts/build_trial_corpus.py
-14. scripts/smoke_reader.cjs
-15. scripts/extract_witnesses_batch3.py
-16. scripts/extract_hamilton_ocr.ps1
-17. scripts/extract_hamilton_chinese_columns.ps1
-18. scripts/reconstruct_hamilton_chinese_witness.py
-19. scripts/collate_hamilton_chinese.py
-20. scripts/segment_witnesses_batch3.py
-21. scripts/segment_siderits_2007.py
-22. scripts/extract_kitayama_ocr.ps1
-23. scripts/reconstruct_kitayama_witness.py
-24. source-witnesses/README.md
-25. source-witnesses/san_balcerowicz_nowakowska_1999/ENCODING-NOTE.md
-26. source-witnesses/san_balcerowicz_nowakowska_1999/edition-unicode-draft-devanagari.txt
-27. source-witnesses/san_balcerowicz_nowakowska_1999/conversion-report.md
-28. source-witnesses/san_balcerowicz_nowakowska_1999/passages.json
-29. source-witnesses/tib_silk_dunhuang_2017/transcription.txt
-30. source-witnesses/tib_silk_dunhuang_2017/passages.json
-31. source-witnesses/tib_lvp_1911/transcription.txt
-32. source-witnesses/tib_lvp_1911/passages.json
-33. source-witnesses/fra_lvp_1911/translation.txt
-34. source-witnesses/fra_lvp_1911/passages.json
-35. source-witnesses/eng_cronk_1998/translation.txt
-36. source-witnesses/eng_cronk_1998/passages.json
-37. source-witnesses/eng_hamilton_1938/translation_ocr.txt
-38. source-witnesses/eng_hamilton_1938/passages.json
-39. source-witnesses/eng_hamilton_1938/scan-manifest.json
-40. source-witnesses/eng_hamilton_1938/INGESTION-NOTE.md
-41. source-witnesses/zho_hamilton_xuanzang_1938/chinese_ocr.txt
-42. source-witnesses/zho_hamilton_xuanzang_1938/chinese_ocr_lines.json
-43. source-witnesses/zho_hamilton_xuanzang_1938/chinese_ocr_pages.json
-44. source-witnesses/zho_hamilton_xuanzang_1938/passages.json
-45. source-witnesses/zho_hamilton_xuanzang_1938/scan-manifest.json
-46. source-witnesses/zho_hamilton_xuanzang_1938/INGESTION-NOTE.md
-47. source-witnesses/zho_hamilton_xuanzang_1938/collation-summary.md
-48. source-witnesses/zho_hamilton_xuanzang_1938/collation-review.tsv
-49. source-witnesses/zho_hamilton_xuanzang_1938/collation.json
-50. source-witnesses/eng_siderits_2007/translation_ocr.txt
-51. source-witnesses/eng_siderits_2007/passages.json
-52. source-witnesses/eng_siderits_2007/INGESTION-NOTE.md
-53. source-witnesses/de_kitayama_1934/kitayama_ocr_lines.json
-54. source-witnesses/de_kitayama_1934/translation_ocr.txt
-55. source-witnesses/de_kitayama_1934/passages.json
-56. source-witnesses/de_kitayama_1934/INGESTION-NOTE.md
+Do not upload `data/corpus.json`. It is the large readable build artifact and is
+not needed by GitHub Pages. Upload the root-level `corpus.js` instead.
 
-Do not upload data/corpus.json. It is the large readable build artifact and is
-not needed by GitHub Pages. Upload the root-level corpus.js instead.
+Main files included:
 
-The new index.html uses asset version 0.20.8 for app.js, analysis.js,
-styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
-Pages and visitors' browsers fetch the current interface and Worker
+1. `.nojekyll`
+2. `index.html`
+3. `auth-config.js`
+4. `app.js`
+5. `analysis.js`
+6. `styles.css`
+7. `corpus.js`
+8. `editorial-overrides.json`
+9. `README.md`
+10. `PUBLISH_THIS_UPDATE.txt`
+
+Updated scripts included:
+
+1. `scripts/build_trial_corpus.py`
+2. `scripts/smoke_reader.cjs`
+3. `scripts/segment_kalupahana_yuda_batch5.py`
+4. Existing helper scripts already listed in earlier upload packages.
+
+Updated source-witness folders included:
+
+1. `source-witnesses/README.md`
+2. `source-witnesses/san_kalupahana_1987/`
+3. `source-witnesses/eng_kalupahana_1987/`
+4. `source-witnesses/jpn_yuda_watakushi_yuishiki/`
+5. Existing live source-witness folders from the previous upload package.
+
+The new `index.html` uses asset version `0.20.9` for `app.js`, `analysis.js`,
+`styles.css`, and `corpus.js`, plus version `0.9.1` for `auth-config.js`, so
+GitHub Pages and visitors' browsers fetch the current interface and Worker
 configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.20.8
+
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.20.9
 
 Expected result:
-- the sidebar displays `Build 0.20.8 · Corpus 0.8.0-trial`;
-- the page header reads `Viṃśikā Research Environment`;
-- Sources & rights lists 34 witnesses;
-- the live Siderits witness appears as `English · Siderits 2007`;
-- the live Kitayama witness appears as `German · Kitayama 1934`;
-- verse 1 and verse 2 each show a clean full-width click-to-load YouTube player before the verse card;
-- Siderits 2007 is a partial witness with 17 filled local passages;
-- Kitayama 1934 is a complete provisional OCR witness with all 22 passages;
-- the main shell summary reports 148,075 addressable tokens, 255 generated sections, 265 DharmaNexus-based alignment rows, and 1,639 preliminary word links;
-- witness selection in the sliding sidebar should remain snappy because closed passage bodies are not rendered and phrase/alignment lookups are cached.
+
+- The sidebar displays `Build 0.20.9 · Corpus 0.8.0-trial`.
+- The page header reads `Viṃśikā Research Environment`.
+- Sources & rights lists 37 witnesses.
+- New complete witnesses appear as `Sanskrit · Kalupahana 1987` and
+  `English · Kalupahana 1987`.
+- The new partial Japanese excerpt witness appears as
+  `Japanese · Yuda, “Watakushi no Yuishiki”`.
+- Verse 1 and verse 2 each show a clean full-width click-to-load YouTube
+  player before the verse card.
+- The main shell summary reports 155,206 addressable tokens, 255 generated
+  sections, 265 DharmaNexus-based alignment rows, and 1,639 preliminary word
+  links.
 
 If publishing from the command line, copy the contents of the generated
-UPLOAD_TO_GITHUB_0.20.8 folder into your local clone, then run:
+`UPLOAD_TO_GITHUB_0.20.9` folder into your local clone, then run:
 
+```bash
 git add .
-git commit -m "Update reader build 0.20.8"
+git commit -m "Update reader build 0.20.9"
 git push
+```
 
 DharmaNexus reuse was authorized in writing on 20 June 2026. This build uses
 264 source segments and 416 Tibetan/Chinese match records as 265 local rows.
-Direct local anchoring succeeds for 211 Tibetan and 170 Paramartha Chinese
+Direct local anchoring succeeds for 211 Tibetan and 170 Paramārtha Chinese
 spans; unresolved records and other witnesses remain clearly marked
 provisional projections.

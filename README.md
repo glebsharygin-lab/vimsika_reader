@@ -5,11 +5,11 @@ This workspace contains a local trial reader for the Vimsika research corpus.
 ## Included in the pilot
 
 - Verses 1–22 with the supplied commentary.
-- Six readable Sanskrit editions, including the Balcerowicz Sanskrit
-  Unicode draft requiring proofing; three Tibetan witnesses; four Chinese
-  witnesses; nine English translations/adaptations; Polish; Hungarian;
-  Hindi; two Russian translations; Japanese; three French translations; and
-  two German witnesses.
+- Seven readable Sanskrit editions, including the Balcerowicz Sanskrit
+  Unicode draft and Kalupahana appendix text requiring proofing; three Tibetan
+  witnesses; four Chinese witnesses; eleven English translations/adaptations;
+  Polish; Hungarian; Hindi; two Russian translations; two Japanese witnesses;
+  three French translations; and two German witnesses.
 - Foldable reading mode and multi-column comparison mode.
 - Click-to-load YouTube players before verses 1 and 2; the shell
   creates the embedded player only when a reader requests it.
@@ -39,7 +39,7 @@ This workspace contains a local trial reader for the Vimsika research corpus.
   local rows because one segment crosses a local verse boundary.
 - Preliminary word candidates constrained inside those sentence spans rather
   than projected across an entire verse.
-- Stable IDs for 148,075 atomic tokens across all supplied witnesses.
+- Stable IDs for 155,206 atomic tokens across all supplied witnesses.
 - An embedded Editor mode plus inline text and annotation editing in Reading and Comparison.
 - Provisional rights labels.
 
@@ -52,13 +52,16 @@ the embedded editor.
 The supplied Nilanjan Das English draft does not contain verses 5–10; the
 reader marks those passages explicitly rather than synthesizing missing text.
 The Silk, Anacker, Tola?Dragonetti, Kochumuttom, Cornu, La Vall?e-Poussin,
-Lyssenko, Tiwari, Yuda, Cook, and Kitayama witnesses contain all 22 passages
-with commentary or a provisional transcription of it. Wood supplies a verse-only
-English translation. Cronk supplies a partial adapted English rendition marked
-for 17 of the 22 local passages; Siderits 2007 supplies 17 selected passages
-quoted in the supplied chapter. Cook and Hamilton translate Xuanzang?s Chinese
-and are mapped semantically from their twenty-one numbered verses to the
-shell?s twenty-two Sanskrit passages. Hamilton 1938 and Kitayama 1934 are
+Lyssenko, Tiwari, Yuda issue-32, Cook, Kitayama, and Kalupahana witnesses
+contain all 22 passages with commentary, annotation, or a provisional
+transcription of it. Wood supplies a verse-only English translation. Cronk
+supplies a partial adapted English rendition marked for 17 of the 22 local
+passages; Siderits 2007 supplies 17 selected passages quoted in the supplied
+chapter; the Yuda "Watakushi no Yuishiki" scan supplies selected Japanese
+Viṃśikā excerpts for verses 1, 2, and 17. Cook and Hamilton translate
+Xuanzang?s Chinese and are mapped semantically from their twenty-one numbered
+verses to the shell?s twenty-two Sanskrit passages. Hamilton 1938 and Kitayama
+1934 are
 provisional OCR witnesses; their text, notes, typography, and passage
 boundaries require proofing. The facing Hamilton Chinese text is
 now a separate provisional live witness reconstructed from vertical columns by
@@ -68,9 +71,10 @@ characters out of 3,695 clean Xuanzang CJK characters, or 81.6%; OCR variants
 and passage boundaries still require proofing. The Hamilton Chinese extraction
 and collation files are in `source-witnesses/zho_hamilton_xuanzang_1938/`.
 The Balcerowicz Sanskrit draft, the La Vall?e-Poussin OCR witnesses, the
-Tiwari Sanskrit and Hindi witnesses, the 2022 Lyssenko witness, and the
-Japanese witness require line-by-line scholarly proofing of layout, punctuation,
-transcription, transliteration, and language separation. The 2022 Lyssenko witness is a
+Tiwari Sanskrit and Hindi witnesses, the 2022 Lyssenko witness, the Kalupahana
+appendix witnesses, and the Japanese witnesses require line-by-line scholarly
+proofing of layout, punctuation, transcription, transliteration, and language
+separation. The 2022 Lyssenko witness is a
 revised Russian translation distinct from the 2008 article version.
 The project owner has confirmed the previously supplied witnesses for this
 research corpus. Some modern witnesses remain marked `Rights status requires
