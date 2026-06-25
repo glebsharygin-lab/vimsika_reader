@@ -2515,18 +2515,12 @@ function passageVideoEmbed(passage) {
 
   return `
     <section class="passage-video-card" aria-label="${escapeAttribute(video.title)}">
-      <div class="passage-video-copy">
-        <span class="passage-video-kicker">Video companion</span>
-        <strong>${escapeHtml(video.title)}</strong>
-        <a href="${escapeAttribute(video.url)}" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
-      </div>
       <div class="passage-video-frame">
         ${
           loaded
             ? `<iframe src="${sourceUrl}" title="${escapeAttribute(video.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`
-            : `<button class="passage-video-placeholder" type="button" data-load-video="${passage.id}">
-                <span class="passage-video-play" aria-hidden="true">▶</span>
-                <span>Load embedded video</span>
+            : `<button class="passage-video-placeholder" type="button" data-load-video="${passage.id}" aria-label="Load ${escapeAttribute(video.title)}">
+                <span class="passage-video-play" aria-hidden="true">&#9658;</span>
               </button>`
         }
       </div>

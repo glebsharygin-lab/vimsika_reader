@@ -25,8 +25,24 @@ async function main() {
   const buildBadge = (await page.locator(".build-badge").innerText())
     .replace(/\s+/g, " ")
     .trim();
-  if (!buildBadge.includes("Build 0.20.5") || !buildBadge.includes("Corpus 0.8.0-trial")) {
+  if (!buildBadge.includes("Build 0.20.6") || !buildBadge.includes("Corpus 0.8.0-trial")) {
     throw new Error(`Expected visible build metadata, received ${buildBadge}`);
+  }
+  const videoCards = await page.locator(".passage-video-card").count();
+  if (videoCards !== 2) {
+    throw new Error(`Expected two verse video companions, received ${videoCards}`);
+  }
+  const videoPlaceholders = await page.locator("[data-load-video]").count();
+  if (videoPlaceholders !== 2) {
+    throw new Error(`Expected two click-to-load video placeholders, received ${videoPlaceholders}`);
+  }
+  await page.locator("[data-load-video='v1']").click();
+  const firstVideoSource = await page
+    .locator(".passage-video-card iframe")
+    .first()
+    .getAttribute("src");
+  if (!firstVideoSource?.includes("YhaGH8nWEe0")) {
+    throw new Error(`Expected Verse 1 YouTube embed, received ${firstVideoSource}`);
   }
   const additionalWitnesses = [
     "san_silk_2016",
