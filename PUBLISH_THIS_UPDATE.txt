@@ -61,16 +61,17 @@ existing copies and preserving folders exactly as shown:
 Do not upload data/corpus.json. It is the large readable build artifact and is
 not needed by GitHub Pages. Upload the root-level corpus.js instead.
 
-The new index.html uses asset version 0.20.7 for app.js, analysis.js,
+The new index.html uses asset version 0.20.8 for app.js, analysis.js,
 styles.css, and corpus.js, plus version 0.9.1 for auth-config.js, so GitHub
 Pages and visitors' browsers fetch the current interface and Worker
 configuration.
 
 After GitHub Pages finishes deploying, open:
-https://glebsharygin-lab.github.io/vimsika_reader/?v=0.20.7
+https://glebsharygin-lab.github.io/vimsika_reader/?v=0.20.8
 
 Expected result:
-- the sidebar displays `Build 0.20.7 · Corpus 0.8.0-trial`;
+- the sidebar displays `Build 0.20.8 · Corpus 0.8.0-trial`;
+- the page header reads `Viṃśikā Research Environment`;
 - Sources & rights lists 34 witnesses;
 - the live Siderits witness appears as `English · Siderits 2007`;
 - the live Kitayama witness appears as `German · Kitayama 1934`;
@@ -81,10 +82,10 @@ Expected result:
 - witness selection in the sliding sidebar should remain snappy because closed passage bodies are not rendered and phrase/alignment lookups are cached.
 
 If publishing from the command line, copy the contents of the generated
-UPLOAD_TO_GITHUB_0.20.7 folder into your local clone, then run:
+UPLOAD_TO_GITHUB_0.20.8 folder into your local clone, then run:
 
 git add .
-git commit -m "Update reader build 0.20.7"
+git commit -m "Update reader build 0.20.8"
 git push
 
 DharmaNexus reuse was authorized in writing on 20 June 2026. This build uses

@@ -25,7 +25,7 @@ async function main() {
   const buildBadge = (await page.locator(".build-badge").innerText())
     .replace(/\s+/g, " ")
     .trim();
-  if (!buildBadge.includes("Build 0.20.7") || !buildBadge.includes("Corpus 0.8.0-trial")) {
+  if (!buildBadge.includes("Build 0.20.8") || !buildBadge.includes("Corpus 0.8.0-trial")) {
     throw new Error(`Expected visible build metadata, received ${buildBadge}`);
   }
   const videoCards = await page.locator(".passage-video-card").count();

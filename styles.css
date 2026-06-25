@@ -179,6 +179,11 @@ button:disabled {
   color: var(--muted);
 }
 
+.topbar .eyebrow {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
 .sidebar .eyebrow,
 .sidebar .section-label {
   color: rgba(255, 255, 255, 0.58);
