@@ -73,12 +73,12 @@ const escapeAttribute = (value) =>
 
 const PASSAGE_VIDEO_EMBEDS = {
   v1: {
-    title: "Verse 1 video companion",
+    title: "Verse 1",
     videoId: "YhaGH8nWEe0",
     url: "https://youtu.be/YhaGH8nWEe0",
   },
   v2: {
-    title: "Verse 2 video companion",
+    title: "Verse 2",
     videoId: "hvt8as4EUH0",
     url: "https://youtu.be/hvt8as4EUH0",
   },

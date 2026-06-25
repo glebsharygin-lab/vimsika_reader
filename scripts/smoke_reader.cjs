@@ -25,12 +25,19 @@ async function main() {
   const buildBadge = (await page.locator(".build-badge").innerText())
     .replace(/\s+/g, " ")
     .trim();
-  if (!buildBadge.includes("Build 0.20.6") || !buildBadge.includes("Corpus 0.8.0-trial")) {
+  if (!buildBadge.includes("Build 0.20.7") || !buildBadge.includes("Corpus 0.8.0-trial")) {
     throw new Error(`Expected visible build metadata, received ${buildBadge}`);
   }
   const videoCards = await page.locator(".passage-video-card").count();
   if (videoCards !== 2) {
-    throw new Error(`Expected two verse video companions, received ${videoCards}`);
+    throw new Error(`Expected two verse video players, received ${videoCards}`);
+  }
+  const visibleVideoText = (await page.locator(".passage-video-card").allInnerTexts())
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (/Video companion|Open on YouTube|video companion/i.test(visibleVideoText)) {
+    throw new Error(`Expected clean video players without captions, received ${visibleVideoText}`);
   }
   const videoPlaceholders = await page.locator("[data-load-video]").count();
   if (videoPlaceholders !== 2) {
@@ -500,7 +507,9 @@ async function main() {
       `#v15 .full-text-cell[data-source='san_levi_1925'] [data-token-id='${unalignedSanskritToken}']`,
     )
     .click();
-  const machineLabels = await page.locator("#v15 .machine-label").count();
+  const machineLabels = await page
+    .locator("#v15 .machine-label, #v15 .word-alignment-bar.machine")
+    .count();
   if (machineLabels < 1) {
     throw new Error("Expected a clearly marked machine-projected candidate");
   }
