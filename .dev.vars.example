@@ -1,5 +1,0 @@
-GITHUB_OAUTH_CLIENT_ID=replace_me
-GITHUB_OAUTH_CLIENT_SECRET=replace_me
-GITHUB_APP_ID=replace_me
-GITHUB_INSTALLATION_ID=replace_me
-GITHUB_PRIVATE_KEY_BASE64=base64_encoded_pkcs8_private_key

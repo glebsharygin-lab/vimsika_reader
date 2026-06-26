@@ -9,7 +9,7 @@ This workspace contains a local trial reader for the Vimsika research corpus.
   Unicode draft and Kalupahana appendix text requiring proofing; three Tibetan
   witnesses; four Chinese witnesses; eleven English translations/adaptations;
   Polish; Hungarian; Hindi; two Russian translations; two Japanese witnesses;
-  three French translations; and two German witnesses.
+  three French translations; Italian; Spanish; and two German witnesses.
 - Foldable reading mode and multi-column comparison mode.
 - Click-to-load YouTube players before verses 1 and 2; the shell
   creates the embedded player only when a reader requests it.
@@ -39,7 +39,7 @@ This workspace contains a local trial reader for the Vimsika research corpus.
   local rows because one segment crosses a local verse boundary.
 - Preliminary word candidates constrained inside those sentence spans rather
   than projected across an entire verse.
-- Stable IDs for 155,206 atomic tokens across all supplied witnesses.
+- Stable IDs for 165,271 atomic tokens across all supplied witnesses.
 - An embedded Editor mode plus inline text and annotation editing in Reading and Comparison.
 - Provisional rights labels.
 
@@ -52,7 +52,8 @@ the embedded editor.
 The supplied Nilanjan Das English draft does not contain verses 5–10; the
 reader marks those passages explicitly rather than synthesizing missing text.
 The Silk, Anacker, Tola?Dragonetti, Kochumuttom, Cornu, La Vall?e-Poussin,
-Lyssenko, Tiwari, Yuda issue-32, Cook, Kitayama, and Kalupahana witnesses
+Lyssenko, Tiwari, Yuda issue-32, Cook, Kitayama, Kalupahana, Sferra, and
+Losang Gyatso witnesses
 contain all 22 passages with commentary, annotation, or a provisional
 transcription of it. Wood supplies a verse-only English translation. Cronk
 supplies a partial adapted English rendition marked for 17 of the 22 local
@@ -72,7 +73,7 @@ and passage boundaries still require proofing. The Hamilton Chinese extraction
 and collation files are in `source-witnesses/zho_hamilton_xuanzang_1938/`.
 The Balcerowicz Sanskrit draft, the La Vall?e-Poussin OCR witnesses, the
 Tiwari Sanskrit and Hindi witnesses, the 2022 Lyssenko witness, the Kalupahana
-appendix witnesses, and the Japanese witnesses require line-by-line scholarly
+appendix witnesses, the Italian and Spanish witnesses, and the Japanese witnesses require line-by-line scholarly
 proofing of layout, punctuation, transcription, transliteration, and language
 separation. The 2022 Lyssenko witness is a
 revised Russian translation distinct from the 2008 article version.
