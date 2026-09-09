@@ -2,19 +2,24 @@
 
 This workspace contains a local trial reader for the Vimsika research corpus.
 
+Build 0.23.0 adds two attributed Slavic excerpts and replaces positional
+translation projections with source-anchored draft alignment. See
+[the Slavic source survey](SLAVIC_SOURCES.md) for coverage and limitations.
+
 ## Included in the pilot
 
 - Verses 1–22 with the supplied commentary.
 - Seven readable Sanskrit editions, including the Balcerowicz Sanskrit
   Unicode draft and Kalupahana appendix text requiring proofing; three Tibetan
   witnesses; four Chinese witnesses; fourteen English translations/adaptations;
-  Polish; Hungarian; Hindi; two Russian translations; two Japanese witnesses;
+  Polish; Hungarian; Hindi; two Russian translations and a Russian opening
+  excerpt; a Slovenian verse-1 excerpt; two Japanese witnesses;
   three French translations; Italian; Spanish; and three German witnesses.
 - Foldable reading mode and multi-column comparison mode.
 - Click-to-load YouTube players before verses 1 and 2; the shell
   creates the embedded player only when a reader requests it.
-- Foldable sentence units numbered `1.1`, `1.2`, and so on, derived from
-  Sanskrit dandas, vertical strokes, slashes, and source paragraph boundaries.
+- Foldable phrase units numbered `1.1`, `1.2`, and so on, using one shared
+  265-unit backbone in Reading, Comparison, and Alignment.
 - Bold root-verse typography in Sanskrit and in the corresponding aligned
   portions of every witness, including kārikās split by intervening commentary.
 - A synchronized Reading focus workspace: collapsed sentences can be hidden
@@ -22,7 +27,8 @@ This workspace contains a local trial reader for the Vimsika research corpus.
   automatically opens every currently selected witness, and witnesses selected
   while Focus remains active open directly on the focused line.
 - Clickable Sanskrit words in Reading. Reviewed token links take priority;
-  otherwise the shell highlights the existing low-confidence projected spans.
+  otherwise the shell highlights exact normalized textual candidates in
+  other Sanskrit editions, explicitly pending review.
 - Clickable token surfaces in Reading, Comparison, and Alignment, with a
   floating lexical inspector showing the selected form and linked witness
   spans.
@@ -37,18 +43,21 @@ This workspace contains a local trial reader for the Vimsika research corpus.
 - Synchronized phrase rows with sticky subsection labels.
 - An authorized DharmaNexus sentence backbone: 264 source segments become 265
   local rows because one segment crosses a local verse boundary.
-- Preliminary word candidates constrained inside those sentence spans rather
-  than projected across an entire verse.
-- Stable IDs for 180,705 atomic tokens across all supplied witnesses.
+- Shared translation spans displayed once with references to all covered units.
+- Unassigned text available under each witness for further alignment.
+- Stable IDs for 180,739 atomic tokens across 45 witnesses.
 - An embedded Editor mode plus inline text and annotation editing in Reading and Comparison.
 - Provisional rights labels.
 
 All passage boundaries and phrase alignments remain provisional and require
-scholarly review. Sanskrit, Tibetan, and Paramārtha Chinese spans use the
-authorized DharmaNexus data wherever a local anchor could be located. Other
-witnesses, and unresolved target records, use low-confidence monotonic
-projection within each DharmaNexus segment and are intended to be corrected in
-the embedded editor.
+scholarly review. Alignment now uses the authorized DharmaNexus anchors,
+character correspondences between Sanskrit editions, the supplied three-way
+Chinese/Sanskrit table, and explicit phrase selections. No target span is
+assigned merely from its relative position or length. The repair removes 5,684
+positional assignments and retains 2,514 anchored witness spans across 265
+units, including 203 shared groups. Conflicting overlaps are withheld for
+review; omitted assignments do not remove the source text. This is a draft
+repair, not a completed philological alignment of every translation.
 The supplied Nilanjan Das English draft does not contain verses 5–10; the
 reader marks those passages explicitly rather than synthesizing missing text.
 The Silk, Anacker, Tola?Dragonetti, Kochumuttom, Cornu, La Vall?e-Poussin,
@@ -89,11 +98,17 @@ verification` until their publication rights are confirmed.
 & 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
   '.\scripts\build_trial_corpus.py' `
   'C:\Users\glebs\OneDrive\Dokumente\Vimsika\Vimsika\texts' `
-  '.\data\corpus.json'
+  '.\data\corpus.json' `
+  --authorized-alignments '.\authorized-alignments.json'
 ```
 
 The build also writes `data/corpus.js` and a root-level `corpus.js`. The
 root-level script keeps GitHub Pages deployment simple.
+It also writes `data/alignment-report.json`. Run
+`scripts/validate_phrase_alignments.py` after rebuilding to check exact token
+references, shared groups, collisions, and the common sentence backbone.
+Source-specific `phrase-anchors.json` files contain reproducible exact-surface
+selections. `source.json` metadata files register additional witnesses.
 
 The main-page announcement is the corpus `notice` field. For a quick manual
 change, edit it in `data/corpus.json` and in the deployed root `corpus.js`.
@@ -163,9 +178,10 @@ received by the project owner on 20 June 2026.
 
 The authorized snapshot contains 264 Sanskrit source segments and 416 target
 match records: 239 Tibetan records and 177 Paramārtha Chinese records. Local
-anchoring directly located 211 Tibetan and 170 Chinese target spans. The
-remaining 37 target records and all other translations receive explicitly
-provisional segment-bounded projections. One DharmaNexus segment crosses the
+anchoring originally located 211 Tibetan and 170 Chinese target spans.
+Unresolved records now remain unassigned. Further anchors come from the
+supplied Chinese parallel table and explicit source selections; automatic
+cross-language proportional projection is disabled. One DharmaNexus segment crosses the
 local Verse 7/8 partition, so it is represented as two local parts, yielding
 265 numbered alignment rows. DharmaNexus invited corrected alignments to be
 shared back for possible integration into its database.
@@ -200,13 +216,11 @@ scholarly annotation task: the interface stores reviewed many-to-many links,
 omissions, additions, paraphrases, and uncertain correspondences without
 pretending that automatically suggested equivalences are final.
 
-The build also generates a preliminary candidate mapping for every alignable
-Sanskrit token. These candidates use monotonic proportional projection inside
-the corresponding DharmaNexus sentence span, not across the whole passage.
-They are useful for rapidly locating a probable region in each witness, but
-they are explicitly marked `machine-suggested`, `low` confidence, and must not
-be cited as reviewed philological equivalences. Existing human-reviewed and
-editorial links always take priority over DharmaNexus-based projections.
+The build generates exact normalized text-match candidates between Sanskrit
+editions, including Devanagari/IAST normalization. These are marked
+`machine-suggested` and must not be cited as reviewed philological equivalences.
+Normalization is a matching aid, not an assertion that variant readings are
+identical. Existing reviewed and editorial links take priority.
 
 In `Alignment` view, click a Sanskrit token or Shift-click a later token to
 extend the selected Sanskrit phrase.

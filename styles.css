@@ -2763,3 +2763,18 @@ mark {
     grid-template-columns: 1fr;
   }
 }
+/* A shared translation cell corresponds to several Sanskrit clauses. */
+.shared-span-label {
+  display: block;
+  font-size: .75rem;
+  font-weight: 600;
+  opacity: .72;
+  margin-bottom: .45rem;
+}
+.unassigned-witness-text {
+  padding: .7rem;
+  border-top: 1px solid var(--line, #d9d4c9);
+  white-space: pre-wrap;
+}
+.unassigned-witness-text summary { cursor: pointer; font-size: .8rem; }
+.unassigned-excerpt + .unassigned-excerpt { margin-top: 1rem; border-top: 1px dotted var(--line); padding-top: .6rem; }

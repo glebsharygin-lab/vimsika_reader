@@ -750,12 +750,13 @@ function sortedTokenIdsForSource(passage, sourceId, tokenIds) {
 function effectiveSentenceUnits(passage) {
   const units = (passage.sentenceUnits || []).map(cloneSentenceUnit);
   const byId = new Map(units.map((unit) => [unit.id, unit]));
+  const canonicalId = (id) => byId.has(id) ? id : String(id || "").replace(/^sentence-/, "dharmanexus-");
   const hiddenUnitIds = new Set();
 
   sentenceEditsForPassage(passage.id).forEach((edit) => {
     const sourceId = edit.sourceId;
     const tokenIds = edit.tokenIds || [];
-    const targetUnit = byId.get(edit.toUnitId);
+    const targetUnit = byId.get(canonicalId(edit.toUnitId));
     if (!sourceId || !tokenIds.length || !targetUnit) return;
 
     const movedIds = new Set(tokenIds);
@@ -767,6 +768,7 @@ function effectiveSentenceUnits(passage) {
           ...(unit.targetTokenIds || {}),
           [sourceId]: filtered,
         };
+        unit.targets[sourceId] = tokenTextFromIds(passage, sourceId, filtered);
         unit.status = "editorial-boundary";
         unit.confidence = "reviewed";
         unit.sentenceEdited = true;
@@ -780,13 +782,14 @@ function effectiveSentenceUnits(passage) {
         ...tokenIds,
       ]),
     };
+    targetUnit.targets[sourceId] = tokenTextFromIds(passage, sourceId, targetUnit.targetTokenIds[sourceId]);
     targetUnit.status = "editorial-boundary";
     targetUnit.confidence = "reviewed";
     targetUnit.sentenceEdited = true;
   });
 
   sectionEditsForPassage(passage.id).forEach((edit) => {
-    const unitId = edit.unitId || edit.id;
+    const unitId = canonicalId(edit.unitId || edit.id);
     if (!unitId) return;
     if (edit.deleted) {
       hiddenUnitIds.add(unitId);
@@ -1304,6 +1307,7 @@ function alignmentsOverlap(left, right, sourceId = "san_levi_1925") {
 
 function mergeMissingUnitTargets(unit, baseUnits) {
   const merged = cloneSentenceUnit(unit);
+  if (unit.alignmentPolicy === "attested-only") return merged;
   const matches = baseUnits.filter(
     (baseUnit) =>
       baseUnit.id === merged.id ||
@@ -1399,7 +1403,8 @@ function phraseAlignments(passage) {
           item.unitId === alignment.id ||
           (item.number && item.number === alignment.number),
       );
-      if (!edit) return alignment;
+      const effective = baseUnits.find((unit) => unit.id === alignment.id);
+      if (!edit) return effective || alignment;
       if (edit.deleted) return null;
       const unit = cloneSentenceUnit(alignment);
       unit.number = edit.number || unit.number;
@@ -1449,6 +1454,9 @@ function phraseAlignments(passage) {
 }
 
 function alignmentStatusLabel(alignment, rootVerse = false) {
+  if (alignment.alignmentPolicy === "attested-only" && !alignment.sentenceEdited) {
+    return rootVerse ? "root · draft" : "anchored draft";
+  }
   const dharmanexus = alignment.status === "dharmanexus-authorized";
   if (rootVerse) return dharmanexus ? "root · DharmaNexus" : "root verse";
   if (alignment.sentenceEdited || alignment.status === "editorial-boundary") {
@@ -1495,6 +1503,19 @@ function readingSentenceControls(passage, units) {
   `;
 }
 
+function sharedSpanFor(unit, units, sourceId) {
+  const group = unit.targetGroups?.[sourceId];
+  if (!group || Object.prototype.hasOwnProperty.call(unit.targetTexts || {}, sourceId)) return null;
+  const signature = JSON.stringify(unit.targetTokenIds?.[sourceId]);
+  const members = units.filter((other) =>
+    other.targetGroups?.[sourceId]?.id === group.id &&
+    !Object.prototype.hasOwnProperty.call(other.targetTexts || {}, sourceId) &&
+    JSON.stringify(other.targetTokenIds?.[sourceId]) === signature,
+  );
+  if (members.length < 2) return null;
+  return { ...group, numbers: members.map((other) => other.number), firstUnitId: members[0].id };
+}
+
 function readingSentenceList(passage, source, witness) {
   const units = phraseAlignments(passage).filter(
     (alignment) => alignment.level === "sentence",
@@ -1515,7 +1536,11 @@ function readingSentenceList(passage, source, witness) {
           if (focusedId && unit.id !== focusedId) return "";
           if (!focusedId && hidingCollapsed && collapsed) return "";
           const tokenIds = unit.targetTokenIds?.[source.id] || [];
-          const target = alignmentTargetText(unit, passage, source.id);
+          const visibleUnits = !focusedId && hidingCollapsed ? units.filter((other) => !state.collapsedUnits.has(other.id)) : units;
+          const group = sharedSpanFor(unit, visibleUnits, source.id);
+          const continued = group && group.firstUnitId !== unit.id && !focusedId;
+          const target = continued ? "" : alignmentTargetText(unit, passage, source.id);
+          const groupNote = group ? `Shared span: ${group.numbers.join(", ")}` : "";
           const literalText =
             unit.targetTexts &&
             Object.prototype.hasOwnProperty.call(unit.targetTexts, source.id);
@@ -1543,7 +1568,7 @@ function readingSentenceList(passage, source, witness) {
                   title="Show this sentence only across every witness"
                 >Focus</button>
               </div>
-              <div class="reading-sentence-body">${
+              <div class="reading-sentence-body">${groupNote ? `<span class="shared-span-label">${escapeHtml(groupNote)}</span>` : ""}${
                 target
                   ? literalText
                     ? highlightedText(
@@ -1563,14 +1588,31 @@ function readingSentenceList(passage, source, witness) {
                         source.id,
                         passage.number,
                       )
-                  : '<span class="alignment-gap">— no corresponding span assigned —</span>'
+                  : continued ? `<span class="alignment-gap">Included in ${escapeHtml(group.numbers[0])}</span>` : '<span class="alignment-gap">— no corresponding span assigned —</span>'
               }</div>
             </section>
           `;
         })
         .join("")}
+      ${!focusedId ? unassignedWitnessText(passage, source, witness, units) : ""}
     </div>
   `;
+}
+
+function unassignedWitnessText(passage, source, witness, units) {
+  const assigned = new Set(units.flatMap((u) => u.targetTokenIds?.[source.id] || []));
+  const runs = [];
+  let run = [];
+  for (const token of witness.tokens || []) {
+    if (assigned.has(token.id)) {
+      if (run.length) runs.push(run);
+      run = [];
+    } else run.push(token.id);
+  }
+  if (run.length) runs.push(run);
+  if (!runs.length) return "";
+  const count = runs.reduce((sum, ids) => sum + ids.length, 0);
+  return `<details class="unassigned-witness-text"><summary>Text awaiting phrase alignment (${count} tokens)</summary>${runs.map((ids) => `<div class="unassigned-excerpt">${tokenizedText(witness, source.id, passage, ids)}</div>`).join("")}</details>`;
 }
 
 function witnessUnavailable(witness) {
@@ -1658,7 +1700,7 @@ function wordAlignmentBar(passage) {
   return `
     <div class="word-alignment-bar ${machine ? "machine" : "reviewed"}">
       <div>
-        <span class="word-alignment-kicker">${machine ? "Machine-projected correspondence" : "Reviewed correspondence"}</span>
+        <span class="word-alignment-kicker">${machine ? "Sanskrit text-match candidate" : "Reviewed correspondence"}</span>
         <strong>${escapeHtml(sanskrit || alignment.label)}</strong>
         <span>${witnessCount} witness span${witnessCount === 1 ? "" : "s"} highlighted</span>
       </div>
@@ -1818,7 +1860,7 @@ function correspondenceFrame(frame, passage, sources, live = false) {
                 .join("")}
               ${
                 machineAlignments.length
-                  ? `<span class="machine-label">Machine-projected candidate · ${machineAlignments.length} Sanskrit token${machineAlignments.length === 1 ? "" : "s"} · low confidence</span>`
+                  ? `<span class="machine-label">Sanskrit text-match candidate · ${machineAlignments.length} Sanskrit token${machineAlignments.length === 1 ? "" : "s"} · review pending</span>`
                   : ""
               }
             </div>
@@ -2375,7 +2417,9 @@ function phraseRow(alignment, passage, sources, template, index) {
       </button>
       ${sources
         .map((source) => {
-          const target = alignmentTargetText(alignment, passage, source.id);
+          const group = sharedSpanFor(alignment, phraseAlignments(passage), source.id);
+          const continued = group && group.firstUnitId !== alignment.id;
+          const target = continued ? "" : alignmentTargetText(alignment, passage, source.id);
           const tokenIds = alignment.targetTokenIds?.[source.id] || [];
           const literalText =
             alignment.targetTexts &&
@@ -2389,7 +2433,7 @@ function phraseRow(alignment, passage, sources, template, index) {
               class="phrase-cell"
               data-alignment="${alignment.id}"
               data-source="${source.id}"
-            >${
+            >${group ? `<span class="shared-span-label">Shared span: ${escapeHtml(group.numbers.join(", "))}</span>` : ""}${
               target
                 ? literalText
                   ? highlightedText(
@@ -2409,7 +2453,7 @@ function phraseRow(alignment, passage, sources, template, index) {
                       source.id,
                       passage.number,
                     )
-                : '<span class="alignment-gap">— no aligned phrase —</span>'
+                : continued ? `<span class="alignment-gap">Included in ${escapeHtml(group.numbers[0])}</span>` : '<span class="alignment-gap">— no aligned phrase —</span>'
             }</div>
           `;
         })

@@ -1,0 +1,202 @@
+{
+  "removedPositionalSpans": 5684,
+  "methods": {
+    "exact-token-sequence": 258,
+    "dharmanexus-target:exact-token-sequence": 201,
+    "explicit-source-anchor-2026-09-08": 233,
+    "explicit-source-anchor-2026-09-07": 259,
+    "parallel-sanskrit:character-sequence": 952,
+    "supplied-chinese-parallel-table": 572,
+    "dharmanexus-target:fuzzy-token-sequence": 21,
+    "fuzzy-token-sequence": 5,
+    "fuzzy-token-sequence:split-at-local-passage-boundary": 2,
+    "parallel-sanskrit:fuzzy-token-sequence": 10,
+    "parallel-sanskrit:exact-token-sequence": 1
+  },
+  "unassigned": {
+    "san_levi_1925": 40,
+    "san_silk_2016": 272,
+    "san_tola_dragonetti_2004": 188,
+    "san_ruzsa_szegedi_2015": 146,
+    "san_balcerowicz_nowakowska_1999": 623,
+    "san_tiwari_1995": 80,
+    "san_kalupahana_1987": 102,
+    "tib_derge": 1346,
+    "tib_silk_dunhuang_2017": 4989,
+    "tib_lvp_1911": 4644,
+    "zho_xuanzang": 1222,
+    "zho_hamilton_xuanzang_1938": 3194,
+    "zho_paramartha": 1035,
+    "zho_bodhiruci": 3223,
+    "eng_das": 3796,
+    "eng_silk_2016": 4614,
+    "eng_siderits_2007": 4155,
+    "eng_frauwallner_sangpo_2010": 4295,
+    "eng_kalupahana_1987": 6161,
+    "eng_kachru_2021": 5274,
+    "eng_kellner_taber_2014": 3453,
+    "eng_anacker_2005": 4580,
+    "eng_tola_dragonetti_2004": 6455,
+    "eng_kochumuttom_1982": 4891,
+    "eng_wood_1991": 882,
+    "eng_cook_1999": 5795,
+    "eng_hamilton_1938": 13184,
+    "eng_cronk_1998": 3401,
+    "pol_balcerowicz_nowakowska_1999": 3738,
+    "hun_szanyi_2015": 547,
+    "hin_tiwari_1995": 3280,
+    "rus_lyssenko_2008": 3203,
+    "rus_lyssenko_2022": 3913,
+    "jpn_yuda_issue32": 3365,
+    "jpn_yuda_watakushi_yuishiki": 618,
+    "fr_levi_1932": 6910,
+    "fra_cornu_2008": 4402,
+    "fra_lvp_1911": 6256,
+    "ita_sferra_gnoli": 4397,
+    "spa_losang_gyatso_2021": 4925,
+    "de_frauwallner": 4156,
+    "de_kitayama_1934": 6095,
+    "de_schmithausen_1967": 1310,
+    "rus_kiy_2001": 0,
+    "slv_petek_2022": 0
+  },
+  "scope": "Source-anchored draft; scholarly review remains pending.",
+  "rejectedLegacyAnchors": [
+    {
+      "verse": 1,
+      "number": "1.9",
+      "sourceId": "eng_frauwallner_sangpo_2010",
+      "reason": "Reuses words from the root verse or an analytical illustration, not a separately attested translation of nārthaḥ kaścid asti."
+    },
+    {
+      "verse": 1,
+      "number": "1.9",
+      "sourceId": "san_balcerowicz_nowakowska_1999",
+      "reason": "Reuses words from the root verse or an analytical illustration, not a separately attested translation of nārthaḥ kaścid asti."
+    },
+    {
+      "verse": 1,
+      "number": "1.9",
+      "sourceId": "san_kalupahana_1987",
+      "reason": "Reuses words from the root verse or an analytical illustration, not a separately attested translation of nārthaḥ kaścid asti."
+    },
+    {
+      "verse": 1,
+      "number": "1.9",
+      "sourceId": "jpn_yuda_watakushi_yuishiki",
+      "reason": "Reuses words from the root verse or an analytical illustration, not a separately attested translation of nārthaḥ kaścid asti."
+    },
+    {
+      "verse": 1,
+      "number": "1.9",
+      "sourceId": "spa_losang_gyatso_2021",
+      "reason": "Reuses words from the root verse or an analytical illustration, not a separately attested translation of nārthaḥ kaścid asti."
+    },
+    {
+      "verse": 1,
+      "number": "1.9",
+      "sourceId": "eng_siderits_2007",
+      "reason": "Reuses words from the root verse or an analytical illustration, not a separately attested translation of nārthaḥ kaścid asti."
+    },
+    {
+      "verse": 1,
+      "number": "1.9",
+      "sourceId": "de_kitayama_1934",
+      "reason": "Reuses words from the root verse or an analytical illustration, not a separately attested translation of nārthaḥ kaścid asti."
+    },
+    {
+      "verse": 2,
+      "number": "2.1",
+      "sourceId": "eng_kellner_taber_2014",
+      "reason": "Analytical paraphrase was reused as both root verse and commentary. Retain the narrower commentary assignments only."
+    },
+    {
+      "verse": 2,
+      "number": "2.2",
+      "sourceId": "eng_kellner_taber_2014",
+      "reason": "Analytical paraphrase was reused as both root verse and commentary. Retain the narrower commentary assignments only."
+    }
+  ],
+  "withheldOverlaps": [
+    {
+      "number": "4.13",
+      "sourceId": "zho_paramartha",
+      "method": "dharmanexus-target:exact-token-sequence",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "6.1",
+      "sourceId": "zho_paramartha",
+      "method": "dharmanexus-target:exact-token-sequence",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "6.2",
+      "sourceId": "zho_paramartha",
+      "method": "dharmanexus-target:exact-token-sequence",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "11.7",
+      "sourceId": "zho_paramartha",
+      "method": "supplied-chinese-parallel-table",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "11.9",
+      "sourceId": "zho_paramartha",
+      "method": "dharmanexus-target:fuzzy-token-sequence",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "11.10",
+      "sourceId": "zho_paramartha",
+      "method": "supplied-chinese-parallel-table",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "11.11",
+      "sourceId": "zho_paramartha",
+      "method": "supplied-chinese-parallel-table",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "16.8",
+      "sourceId": "zho_paramartha",
+      "method": "dharmanexus-target:exact-token-sequence",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "16.9",
+      "sourceId": "zho_paramartha",
+      "method": "dharmanexus-target:exact-token-sequence",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "20.4",
+      "sourceId": "tib_derge",
+      "method": "dharmanexus-target:exact-token-sequence",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "20.5",
+      "sourceId": "tib_derge",
+      "method": "dharmanexus-target:exact-token-sequence",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "20.6",
+      "sourceId": "tib_derge",
+      "method": "dharmanexus-target:exact-token-sequence",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    },
+    {
+      "number": "20.8",
+      "sourceId": "tib_derge",
+      "method": "dharmanexus-target:exact-token-sequence",
+      "reason": "Conflicting overlapping anchor; retained in full witness for review."
+    }
+  ],
+  "assignedWitnessSpans": 2514,
+  "sharedGroups": 203
+}
