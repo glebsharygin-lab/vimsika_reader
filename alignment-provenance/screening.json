@@ -1,0 +1,54 @@
+{
+  "input": 367,
+  "kept": 355,
+  "withheld": [
+    {
+      "candidate": 46,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 50,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 116,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 121,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 163,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 177,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 219,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 222,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 240,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 242,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 266,
+      "reason": "Boundary or OCR is not reliable enough."
+    },
+    {
+      "candidate": 318,
+      "reason": "Boundary or OCR is not reliable enough."
+    }
+  ]
+}

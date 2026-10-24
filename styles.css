@@ -2778,3 +2778,10 @@ mark {
 }
 .unassigned-witness-text summary { cursor: pointer; font-size: .8rem; }
 .unassigned-excerpt + .unassigned-excerpt { margin-top: 1rem; border-top: 1px dotted var(--line); padding-top: .6rem; }
+/* Per-witness provenance stays visible beside suggested phrase spans. */
+.alignment-suggestion-label {
+  display: block;
+  margin-bottom: .4rem;
+  font: 600 .7rem/1.4 system-ui, sans-serif;
+  color: #825719;
+}

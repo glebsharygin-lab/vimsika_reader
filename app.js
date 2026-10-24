@@ -1307,7 +1307,7 @@ function alignmentsOverlap(left, right, sourceId = "san_levi_1925") {
 
 function mergeMissingUnitTargets(unit, baseUnits) {
   const merged = cloneSentenceUnit(unit);
-  if (unit.alignmentPolicy === "attested-only") return merged;
+  if (["attested-only", "source-anchors-and-labelled-suggestions"].includes(unit.alignmentPolicy)) return merged;
   const matches = baseUnits.filter(
     (baseUnit) =>
       baseUnit.id === merged.id ||
@@ -1453,8 +1453,18 @@ function phraseAlignments(passage) {
   return result;
 }
 
-function alignmentStatusLabel(alignment, rootVerse = false) {
-  if (alignment.alignmentPolicy === "attested-only" && !alignment.sentenceEdited) {
+function alignmentSuggestionLabel(alignment, sourceId) {
+  if (alignment.sentenceEdited || Object.prototype.hasOwnProperty.call(alignment.targetTexts || {}, sourceId)) return "";
+  const status = alignment.targetProvenance?.[sourceId]?.reviewStatus;
+  if (status === "unreviewed-machine-suggestion") return "suggested · check span";
+  if (status === "unreviewed-textual-match") return "text match · draft";
+  return "";
+}
+
+function alignmentStatusLabel(alignment, rootVerse = false, sourceId = null) {
+  const suggestion = sourceId && alignmentSuggestionLabel(alignment, sourceId);
+  if (suggestion) return suggestion;
+  if (["attested-only", "source-anchors-and-labelled-suggestions"].includes(alignment.alignmentPolicy) && !alignment.sentenceEdited) {
     return rootVerse ? "root · draft" : "anchored draft";
   }
   const dharmanexus = alignment.status === "dharmanexus-authorized";
@@ -1557,7 +1567,7 @@ function readingSentenceList(passage, source, witness) {
                   type="button"
                 >
                   <span class="reading-sentence-number">${escapeHtml(unit.number || unit.label)}</span>
-                  <span class="reading-sentence-status">${alignmentStatusLabel(unit, rootVerse)}</span>
+                  <span class="reading-sentence-status">${alignmentStatusLabel(unit, rootVerse, source.id)}</span>
                   <span aria-hidden="true">${collapsed ? "+" : "−"}</span>
                 </button>
                 <button
@@ -2433,7 +2443,7 @@ function phraseRow(alignment, passage, sources, template, index) {
               class="phrase-cell"
               data-alignment="${alignment.id}"
               data-source="${source.id}"
-            >${group ? `<span class="shared-span-label">Shared span: ${escapeHtml(group.numbers.join(", "))}</span>` : ""}${
+            >${alignmentSuggestionLabel(alignment, source.id) ? `<span class="alignment-suggestion-label">${alignmentSuggestionLabel(alignment, source.id)}</span>` : ""}${group ? `<span class="shared-span-label">Shared span: ${escapeHtml(group.numbers.join(", "))}</span>` : ""}${
               target
                 ? literalText
                   ? highlightedText(

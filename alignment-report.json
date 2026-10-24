@@ -3,10 +3,13 @@
   "methods": {
     "exact-token-sequence": 258,
     "dharmanexus-target:exact-token-sequence": 201,
-    "explicit-source-anchor-2026-09-08": 233,
+    "explicit-source-anchor-2026-09-08": 215,
     "explicit-source-anchor-2026-09-07": 259,
     "parallel-sanskrit:character-sequence": 952,
+    "explicit-semantic-anchor-2026-10-22": 263,
+    "multilingual-semantic-suggestion-v1": 504,
     "supplied-chinese-parallel-table": 572,
+    "parallel-witness:character-sequence": 211,
     "dharmanexus-target:fuzzy-token-sequence": 21,
     "fuzzy-token-sequence": 5,
     "fuzzy-token-sequence:split-at-local-passage-boundary": 2,
@@ -22,45 +25,45 @@
     "san_tiwari_1995": 80,
     "san_kalupahana_1987": 102,
     "tib_derge": 1346,
-    "tib_silk_dunhuang_2017": 4989,
-    "tib_lvp_1911": 4644,
+    "tib_silk_dunhuang_2017": 2409,
+    "tib_lvp_1911": 4206,
     "zho_xuanzang": 1222,
-    "zho_hamilton_xuanzang_1938": 3194,
+    "zho_hamilton_xuanzang_1938": 2469,
     "zho_paramartha": 1035,
     "zho_bodhiruci": 3223,
-    "eng_das": 3796,
-    "eng_silk_2016": 4614,
-    "eng_siderits_2007": 4155,
-    "eng_frauwallner_sangpo_2010": 4295,
-    "eng_kalupahana_1987": 6161,
-    "eng_kachru_2021": 5274,
-    "eng_kellner_taber_2014": 3453,
-    "eng_anacker_2005": 4580,
-    "eng_tola_dragonetti_2004": 6455,
-    "eng_kochumuttom_1982": 4891,
-    "eng_wood_1991": 882,
-    "eng_cook_1999": 5795,
-    "eng_hamilton_1938": 13184,
-    "eng_cronk_1998": 3401,
-    "pol_balcerowicz_nowakowska_1999": 3738,
-    "hun_szanyi_2015": 547,
-    "hin_tiwari_1995": 3280,
-    "rus_lyssenko_2008": 3203,
-    "rus_lyssenko_2022": 3913,
-    "jpn_yuda_issue32": 3365,
-    "jpn_yuda_watakushi_yuishiki": 618,
-    "fr_levi_1932": 6910,
-    "fra_cornu_2008": 4402,
-    "fra_lvp_1911": 6256,
-    "ita_sferra_gnoli": 4397,
-    "spa_losang_gyatso_2021": 4925,
-    "de_frauwallner": 4156,
-    "de_kitayama_1934": 6095,
+    "eng_das": 3242,
+    "eng_silk_2016": 53,
+    "eng_siderits_2007": 3969,
+    "eng_frauwallner_sangpo_2010": 3392,
+    "eng_kalupahana_1987": 6106,
+    "eng_kachru_2021": 4677,
+    "eng_kellner_taber_2014": 3367,
+    "eng_anacker_2005": 3520,
+    "eng_tola_dragonetti_2004": 5662,
+    "eng_kochumuttom_1982": 4566,
+    "eng_wood_1991": 844,
+    "eng_cook_1999": 5373,
+    "eng_hamilton_1938": 12921,
+    "eng_cronk_1998": 3372,
+    "pol_balcerowicz_nowakowska_1999": 3421,
+    "hun_szanyi_2015": 467,
+    "hin_tiwari_1995": 3271,
+    "rus_lyssenko_2008": 2815,
+    "rus_lyssenko_2022": 3586,
+    "jpn_yuda_issue32": 3093,
+    "jpn_yuda_watakushi_yuishiki": 576,
+    "fr_levi_1932": 6757,
+    "fra_cornu_2008": 4130,
+    "fra_lvp_1911": 5923,
+    "ita_sferra_gnoli": 4080,
+    "spa_losang_gyatso_2021": 4198,
+    "de_frauwallner": 3752,
+    "de_kitayama_1934": 6012,
     "de_schmithausen_1967": 1310,
     "rus_kiy_2001": 0,
     "slv_petek_2022": 0
   },
-  "scope": "Source-anchored draft; scholarly review remains pending.",
+  "scope": "Source anchors, parallel textual matches and labelled semantic suggestions; scholarly review remains pending.",
   "rejectedLegacyAnchors": [
     {
       "verse": 1,
@@ -197,6 +200,328 @@
       "reason": "Conflicting overlapping anchor; retained in full witness for review."
     }
   ],
-  "assignedWitnessSpans": 2514,
-  "sharedGroups": 203
+  "assignedWitnessSpans": 3474,
+  "sharedGroups": 360,
+  "boundaryMoves": [
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 2,
+      "toVerse": 1,
+      "numbers": [
+        "1.8"
+      ],
+      "tokens": 6
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 3,
+      "toVerse": 2,
+      "numbers": [
+        "2.13"
+      ],
+      "tokens": 7
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 5,
+      "toVerse": 4,
+      "numbers": [
+        "4.23"
+      ],
+      "tokens": 16
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 5,
+      "toVerse": 4,
+      "numbers": [
+        "4.24"
+      ],
+      "tokens": 20
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 6,
+      "toVerse": 5,
+      "numbers": [
+        "5.6"
+      ],
+      "tokens": 2
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 6,
+      "toVerse": 5,
+      "numbers": [
+        "5.7"
+      ],
+      "tokens": 33
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 6,
+      "toVerse": 5,
+      "numbers": [
+        "5.8",
+        "5.9"
+      ],
+      "tokens": 24
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 6,
+      "toVerse": 5,
+      "numbers": [
+        "5.10"
+      ],
+      "tokens": 32
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 6,
+      "toVerse": 5,
+      "numbers": [
+        "5.11"
+      ],
+      "tokens": 16
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 7,
+      "toVerse": 8,
+      "numbers": [
+        "8.1"
+      ],
+      "tokens": 20
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 9,
+      "toVerse": 8,
+      "numbers": [
+        "8.9"
+      ],
+      "tokens": 8
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 10,
+      "toVerse": 9,
+      "numbers": [
+        "9.9"
+      ],
+      "tokens": 18
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 11,
+      "toVerse": 10,
+      "numbers": [
+        "10.18",
+        "10.19"
+      ],
+      "tokens": 57
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 12,
+      "toVerse": 11,
+      "numbers": [
+        "11.12"
+      ],
+      "tokens": 13
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 15,
+      "toVerse": 14,
+      "numbers": [
+        "14.21"
+      ],
+      "tokens": 6
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 15,
+      "toVerse": 14,
+      "numbers": [
+        "14.22"
+      ],
+      "tokens": 14
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 16,
+      "toVerse": 15,
+      "numbers": [
+        "15.14",
+        "15.15"
+      ],
+      "tokens": 52
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 17,
+      "toVerse": 16,
+      "numbers": [
+        "16.10"
+      ],
+      "tokens": 51
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 17,
+      "toVerse": 16,
+      "numbers": [
+        "16.11"
+      ],
+      "tokens": 14
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 18,
+      "toVerse": 17,
+      "numbers": [
+        "17.13"
+      ],
+      "tokens": 28
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 18,
+      "toVerse": 17,
+      "numbers": [
+        "17.14",
+        "17.15"
+      ],
+      "tokens": 40
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 19,
+      "toVerse": 18,
+      "numbers": [
+        "18.9"
+      ],
+      "tokens": 16
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 19,
+      "toVerse": 18,
+      "numbers": [
+        "18.10",
+        "18.11"
+      ],
+      "tokens": 14
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 19,
+      "toVerse": 18,
+      "numbers": [
+        "18.12"
+      ],
+      "tokens": 27
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 19,
+      "toVerse": 20,
+      "numbers": [
+        "20.1"
+      ],
+      "tokens": 13
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 19,
+      "toVerse": 20,
+      "numbers": [
+        "20.2"
+      ],
+      "tokens": 29
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 19,
+      "toVerse": 20,
+      "numbers": [
+        "20.3"
+      ],
+      "tokens": 16
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 19,
+      "toVerse": 20,
+      "numbers": [
+        "20.4"
+      ],
+      "tokens": 23
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 19,
+      "toVerse": 20,
+      "numbers": [
+        "20.5"
+      ],
+      "tokens": 2
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 19,
+      "toVerse": 20,
+      "numbers": [
+        "20.6"
+      ],
+      "tokens": 14
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 21,
+      "toVerse": 20,
+      "numbers": [
+        "20.12"
+      ],
+      "tokens": 21
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 21,
+      "toVerse": 20,
+      "numbers": [
+        "20.13"
+      ],
+      "tokens": 5
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 21,
+      "toVerse": 20,
+      "numbers": [
+        "20.14"
+      ],
+      "tokens": 20
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 21,
+      "toVerse": 20,
+      "numbers": [
+        "20.15"
+      ],
+      "tokens": 17
+    },
+    {
+      "sourceId": "eng_silk_2016",
+      "fromVerse": 22,
+      "toVerse": 21,
+      "numbers": [
+        "21.7"
+      ],
+      "tokens": 13
+    }
+  ]
 }

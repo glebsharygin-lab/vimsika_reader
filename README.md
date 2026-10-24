@@ -2,9 +2,11 @@
 
 This workspace contains a local trial reader for the Vimsika research corpus.
 
-Build 0.23.0 adds two attributed Slavic excerpts and replaces positional
-translation projections with source-anchored draft alignment. See
-[the Slavic source survey](SLAVIC_SOURCES.md) for coverage and limitations.
+Build 0.24.0 repairs Silk's passage boundaries and aligns it to 263 of the
+265 phrase units. It also adds labelled multilingual suggestions and textual
+matches between parallel Chinese/Tibetan witnesses. All 180,739 original token
+identities and surfaces are preserved. See the [alignment report](ALIGNMENT_REPORT.md).
+This release adds no translations to the reader.
 
 ## Included in the pilot
 
@@ -53,10 +55,12 @@ All passage boundaries and phrase alignments remain provisional and require
 scholarly review. Alignment now uses the authorized DharmaNexus anchors,
 character correspondences between Sanskrit editions, the supplied three-way
 Chinese/Sanskrit table, and explicit phrase selections. No target span is
-assigned merely from its relative position or length. The repair removes 5,684
-positional assignments and retains 2,514 anchored witness spans across 265
-units, including 203 shared groups. Conflicting overlaps are withheld for
-review; omitted assignments do not remove the source text. This is a draft
+assigned merely from its relative position or length. Following the earlier
+removal of positional assignments, build 0.24.0 increases coverage from 2,514
+to 3,474 unit/witness assignments across 265 units, including 360 shared groups.
+New semantic suggestions and parallel-edition matches carry separate draft
+labels. Conflicting overlaps are withheld for review; omitted assignments do
+not remove the source text. This is a draft
 repair, not a completed philological alignment of every translation.
 The supplied Nilanjan Das English draft does not contain verses 5–10; the
 reader marks those passages explicitly rather than synthesizing missing text.
@@ -94,6 +98,11 @@ verification` until their publication rights are confirmed.
 
 ## Build the corpus
 
+The public repository is a static deployment bundle with selected audit scripts.
+A full rebuild requires the original source collection, extraction files and
+authorized alignment snapshot from the research workspace; these are not all
+included here. See [reproduction notes](ALIGNMENT_REPORT.md#reproduction-and-source-files).
+
 ```powershell
 & 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
   '.\scripts\build_trial_corpus.py' `
@@ -115,12 +124,12 @@ change, edit it in `data/corpus.json` and in the deployed root `corpus.js`.
 For a permanent rebuild-safe change, edit the `notice` string in
 `scripts/build_trial_corpus.py`.
 
-Maintainer-only build helpers are kept out of the public upload package.
+The model cache and original source collection are kept out of the public package.
 
 ## Publish with GitHub Pages
 
 Upload `index.html`, `styles.css`, `app.js`, `analysis.js`, `auth-config.js`,
-`editorial-overrides.json`, and `corpus.js` to the repository root.
+`editorial-overrides.json` and `corpus.js` to the repository root.
 Development folders are not required by the published reader.
 
 Do not upload `data/corpus.json` to GitHub Pages. It is the readable,
