@@ -1979,6 +1979,205 @@ button:disabled {
   line-height: 1.4;
 }
 
+.lexical-open-analysis {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 12px;
+  padding: 9px 11px;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: 750;
+  text-align: left;
+}
+
+.lexical-equivalents {
+  display: grid;
+  gap: 7px;
+  margin: 16px 0;
+}
+
+.lexical-equivalent-row {
+  display: grid;
+  grid-template-columns: 105px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.lexical-equivalent-row > span {
+  padding-top: 5px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 750;
+}
+
+.lexical-equivalent-row > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.lexical-equivalent-row strong {
+  padding: 4px 7px;
+  color: var(--accent);
+  background: #edf4f6;
+  border: 1px solid #c8dce3;
+  border-radius: 4px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.lexical-equivalents.compact {
+  margin: 11px 0 13px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.lexical-equivalents.compact .lexical-equivalent-row {
+  grid-template-columns: 70px 1fr;
+  gap: 8px;
+}
+
+.lexical-equivalents.compact .lexical-equivalent-row strong {
+  font-size: 0.78rem;
+}
+
+.analysis-token-meta button {
+  padding: 4px 6px;
+  color: var(--accent);
+  background: #edf4f6;
+  border: 1px solid #c8dce3;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 750;
+}
+
+.analysis-multilingual-card {
+  display: grid;
+  gap: 4px;
+}
+
+.analysis-glossary-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 5px;
+}
+
+.analysis-glossary-summary > div {
+  display: grid;
+  gap: 4px;
+  padding: 11px 12px;
+  background: #f7f3eb;
+  border-radius: 5px;
+}
+
+.analysis-glossary-summary span {
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.analysis-glossary-summary strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.lexical-evidence-heading {
+  display: flex;
+  gap: 16px;
+  align-items: end;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+
+.lexical-evidence-heading p,
+.lexical-evidence-heading h4 {
+  margin: 0;
+}
+
+.lexical-evidence-heading h4 {
+  margin-top: 3px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+}
+
+.lexical-evidence-heading > span {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.lexical-evidence-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.lexical-evidence-item {
+  min-width: 0;
+  padding: 11px 12px;
+  background: #faf7f0;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+
+.lexical-evidence-item header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 10px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.lexical-evidence-item header strong {
+  color: var(--accent);
+  font-size: 0.72rem;
+}
+
+.lexical-evidence-item header span {
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+.lexical-evidence-item p {
+  margin: 7px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.lexical-evidence-empty {
+  padding: 14px;
+  color: var(--muted);
+  background: #faf7f0;
+  border-radius: 5px;
+  font-size: 0.78rem;
+}
+
+@media (max-width: 760px) {
+  .analysis-glossary-summary,
+  .lexical-evidence-list {
+    grid-template-columns: 1fr;
+  }
+
+  .lexical-equivalent-row {
+    grid-template-columns: 80px 1fr;
+  }
+}
+
 .comparison-grid .source-panel-header {
   cursor: default;
 }

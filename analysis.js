@@ -34,6 +34,145 @@ function normalizeAnalysisForm(value) {
   return String(value || "").normalize("NFKC").toLocaleLowerCase().trim();
 }
 
+const LEXICON_LANGUAGE_LABELS = {
+  en: "English",
+  bo: "Tibetan",
+  zh: "Chinese",
+  fr: "French",
+  de: "German",
+  ru: "Russian",
+  pl: "Polish",
+  hu: "Hungarian",
+  hi: "Hindi",
+  ja: "Japanese",
+  it: "Italian",
+  es: "Spanish",
+  sl: "Slovenian",
+};
+
+const DEVANAGARI_CONSONANTS = {
+  क: "k", ख: "kh", ग: "g", घ: "gh", ङ: "ṅ",
+  च: "c", छ: "ch", ज: "j", झ: "jh", ञ: "ñ",
+  ट: "ṭ", ठ: "ṭh", ड: "ḍ", ढ: "ḍh", ण: "ṇ",
+  त: "t", थ: "th", द: "d", ध: "dh", न: "n",
+  प: "p", फ: "ph", ब: "b", भ: "bh", म: "m",
+  य: "y", र: "r", ल: "l", व: "v",
+  श: "ś", ष: "ṣ", स: "s", ह: "h", ळ: "ḷ",
+};
+
+const DEVANAGARI_VOWELS = {
+  अ: "a", आ: "ā", इ: "i", ई: "ī", उ: "u", ऊ: "ū",
+  ऋ: "ṛ", ॠ: "ṝ", ऌ: "ḷ", ॡ: "ḹ", ए: "e", ऐ: "ai",
+  ओ: "o", औ: "au",
+};
+
+const DEVANAGARI_VOWEL_SIGNS = {
+  "ा": "ā", "ि": "i", "ी": "ī", "ु": "u", "ू": "ū", "ृ": "ṛ",
+  "ॄ": "ṝ", "ॢ": "ḷ", "ॣ": "ḹ", "े": "e", "ै": "ai", "ो": "o", "ौ": "au",
+};
+
+function transliterateDevanagari(value) {
+  const characters = [...String(value || "").normalize("NFKC")];
+  return characters
+    .map((character, index) => {
+      if (DEVANAGARI_CONSONANTS[character]) {
+        const next = characters[index + 1];
+        const inherentA = next !== "्" && !DEVANAGARI_VOWEL_SIGNS[next];
+        return DEVANAGARI_CONSONANTS[character] + (inherentA ? "a" : "");
+      }
+      if (DEVANAGARI_VOWELS[character]) return DEVANAGARI_VOWELS[character];
+      if (DEVANAGARI_VOWEL_SIGNS[character]) return DEVANAGARI_VOWEL_SIGNS[character];
+      if (character === "ं") return "ṃ";
+      if (character === "ँ") return "m̐";
+      if (character === "ः") return "ḥ";
+      if (character === "्" || character === "़") return "";
+      return character;
+    })
+    .join("");
+}
+
+function foldAnalysisText(value) {
+  return String(value || "")
+    .normalize("NFKD")
+    .replace(/\p{M}/gu, "")
+    .toLocaleLowerCase()
+    .trim();
+}
+
+function normalizeLexicalForm(value) {
+  return foldAnalysisText(transliterateDevanagari(value)).replace(/[^a-z0-9]/g, "");
+}
+
+function glossaryEntries() {
+  return window.VIMSIKA_LEXICON?.entries || [];
+}
+
+function glossaryEntryForSurface(surface) {
+  const normalized = normalizeLexicalForm(surface);
+  if (!normalized) return null;
+  return (
+    glossaryEntries().find((entry) =>
+      [entry.lemma, ...(entry.forms || [])].some(
+        (form) => normalizeLexicalForm(form) === normalized,
+      ),
+    ) || null
+  );
+}
+
+function glossaryEntryFor(sourceId, tokenId, surface) {
+  const source = sourceId ? sourceById(sourceId) : null;
+  if (source && source.languageCode !== "san") return null;
+  return glossaryEntryForSurface(surface);
+}
+
+function resolvedLexicalRecord(sourceId, tokenId, surface) {
+  const editorial = lexiconEntryFor(sourceId, tokenId, surface);
+  const glossary = glossaryEntryFor(sourceId, tokenId, surface);
+  const normalized = normalizeLexicalForm(surface);
+  const morphologyKey = Object.keys(glossary?.morphology || {}).find(
+    (form) => normalizeLexicalForm(form) === normalized,
+  );
+  return {
+    editorial,
+    glossary,
+    lemma: editorial?.lemma || glossary?.lemma || "",
+    partOfSpeech: editorial?.partOfSpeech || glossary?.partOfSpeech || "",
+    morphology:
+      editorial?.morphology ||
+      (morphologyKey ? glossary.morphology[morphologyKey] : "") ||
+      glossary?.analysis ||
+      "",
+    reading: editorial?.reading || "",
+    gloss: editorial?.gloss || glossary?.gloss || "",
+    notes: editorial?.notes || glossary?.note || "",
+  };
+}
+
+function analysisRecordMatchesQuery(record, query = state.analysisQuery) {
+  const foldedQuery = foldAnalysisText(query);
+  if (!foldedQuery) return true;
+  const editorial = lexiconEntryFor(record.sourceId, record.token.id, record.token.text);
+  const glossary = glossaryEntryFor(record.sourceId, record.token.id, record.token.text);
+  const equivalents = Object.values(glossary?.equivalents || {}).flat();
+  const haystack = foldAnalysisText(
+    [
+      record.token.text,
+      transliterateDevanagari(record.token.text),
+      editorial?.lemma,
+      editorial?.gloss,
+      editorial?.notes,
+      glossary?.lemma,
+      glossary?.gloss,
+      glossary?.analysis,
+      glossary?.note,
+      ...equivalents,
+    ]
+      .filter(Boolean)
+      .join(" "),
+  );
+  return haystack.includes(foldedQuery);
+}
+
 function allLexiconEntries() {
   const entries = [
     ...(state.corpus.lexiconEntries || []),
@@ -115,7 +254,7 @@ function selectedAnalysisRecord() {
         record.token.id === state.analysisSelectedTokenId &&
         record.passageId === state.analysisSelectedPassageId,
     ) ||
-    records.find((record) => record.normalized === normalizeAnalysisForm(state.analysisQuery)) ||
+    records.find((record) => analysisRecordMatchesQuery(record)) ||
     records[0] ||
     null
   );
@@ -190,6 +329,120 @@ function analysisContextHtml(record) {
   return `${start ? "… " : ""}${escapeHtml(text.slice(start, record.token.start))}<mark>${escapeHtml(record.token.text)}</mark>${escapeHtml(text.slice(record.token.end, end))}${end < text.length ? " …" : ""}`;
 }
 
+function lexicalEquivalentsHtml(glossary, compact = false) {
+  const equivalents = Object.entries(glossary?.equivalents || {});
+  if (!equivalents.length) return "";
+  return `
+    <div class="lexical-equivalents ${compact ? "compact" : ""}">
+      ${equivalents
+        .map(
+          ([languageCode, values]) => `
+            <div class="lexical-equivalent-row">
+              <span>${escapeHtml(LEXICON_LANGUAGE_LABELS[languageCode] || languageCode)}</span>
+              <div lang="${analysisAttribute(languageCode)}">
+                ${values.map((value) => `<strong>${escapeHtml(value)}</strong>`).join("")}
+              </div>
+            </div>
+          `,
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function lexicalEvidenceFor(record) {
+  const unit = record.sentence;
+  if (!unit) return [];
+  const languagePriority = [
+    "eng", "tib", "zho", "fra", "de", "rus", "pol", "hun", "hin", "jpn", "ita", "spa", "slv",
+  ];
+  const byLanguage = new Map();
+  state.corpus.sources.forEach((source) => {
+    if (source.languageCode === "san" || byLanguage.has(source.languageCode)) return;
+    const text = alignmentTargetText(unit, record.passage, source.id).replace(/\s+/g, " ").trim();
+    if (!text) return;
+    byLanguage.set(source.languageCode, { source, text, unit });
+  });
+  return [...byLanguage.values()].sort(
+    (left, right) =>
+      (languagePriority.indexOf(left.source.id.split("_")[0]) + 1 || 99) -
+      (languagePriority.indexOf(right.source.id.split("_")[0]) + 1 || 99),
+  );
+}
+
+function lexicalEvidenceHtml(record, limit = 0) {
+  const evidence = lexicalEvidenceFor(record);
+  const visible = limit ? evidence.slice(0, limit) : evidence;
+  if (!visible.length) {
+    return '<p class="lexical-evidence-empty">No aligned non-Sanskrit sentence is available for this token.</p>';
+  }
+  return `
+    <div class="lexical-evidence-list">
+      ${visible
+        .map(
+          ({ source, text, unit }) => `
+            <article class="lexical-evidence-item">
+              <header>
+                <strong>${escapeHtml(source.language)}</strong>
+                <span>${escapeHtml(source.shortLabel || source.label)} · ${escapeHtml(unit.number || unit.label)}</span>
+              </header>
+              <p lang="${analysisAttribute(source.languageCode)}">${escapeHtml(text)}</p>
+            </article>
+          `,
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function analysisLexicalWorkbench(record) {
+  const resolved = resolvedLexicalRecord(
+    record.sourceId,
+    record.token.id,
+    record.token.text,
+  );
+  const glossary = resolved.glossary;
+  const evidence = lexicalEvidenceFor(record);
+  if (!glossary && !evidence.length) return "";
+  return `
+    <section class="analysis-card analysis-multilingual-card">
+      <div class="analysis-card-heading">
+        <div>
+          <p class="eyebrow">Sanskrit lexical inspector</p>
+          <h3>${escapeHtml(resolved.lemma || record.token.text)} · multilingual correspondences</h3>
+        </div>
+        <span class="analysis-origin">${glossary ? "Working glossary · draft" : "Witness evidence"}</span>
+      </div>
+      ${
+        glossary
+          ? `<div class="analysis-glossary-summary">
+              <div>
+                <span>Lexical gloss</span>
+                <strong>${escapeHtml(resolved.gloss)}</strong>
+              </div>
+              <div>
+                <span>Grammar</span>
+                <strong>${escapeHtml([resolved.partOfSpeech, glossary.gender].filter(Boolean).join(" · ") || "Not specified")}</strong>
+              </div>
+              ${glossary.analysis ? `<div><span>Compound analysis</span><strong>${escapeHtml(glossary.analysis)}</strong></div>` : ""}
+            </div>
+            ${lexicalEquivalentsHtml(glossary)}
+            <p class="analysis-guidance">${escapeHtml(window.VIMSIKA_LEXICON.description)}${resolved.notes ? ` ${escapeHtml(resolved.notes)}` : ""}</p>`
+          : ""
+      }
+      <div class="lexical-evidence-heading">
+        <div>
+          <p class="eyebrow">In this passage</p>
+          <h4>Aligned sentence witnesses</h4>
+        </div>
+        <span>${evidence.length} language${evidence.length === 1 ? "" : "s"}</span>
+      </div>
+      <p class="analysis-guidance">These are sentence-level translation contexts for the selected token, not reviewed word-for-word alignments.</p>
+      ${lexicalEvidenceHtml(record)}
+    </section>
+  `;
+}
+
 function analysisEntryOrigin(entry, collection = "lexiconEntries") {
   if (!entry) return "Unannotated";
   if (state.editorData[collection].some((item) => item.id === entry.id)) {
@@ -202,16 +455,15 @@ function analysisEntryOrigin(entry, collection = "lexiconEntries") {
 }
 
 function analysisTopFormsList(limit = 80) {
-  const query = normalizeAnalysisForm(state.analysisQuery);
   const rows = analysisFrequencyRows()
-    .filter((row) => !query || row.normalized.includes(query))
+    .filter((row) => analysisRecordMatchesQuery(row.representative))
     .slice(0, limit);
   if (!rows.length) {
-    return '<div class="analysis-empty">No forms match this search.</div>';
+    return '<div class="analysis-empty">No forms, lemmas, glosses, or equivalents match this search.</div>';
   }
   return rows
     .map((row) => {
-      const entry = lexiconEntryFor(
+      const resolved = resolvedLexicalRecord(
         row.representative.sourceId,
         row.representative.token.id,
         row.form,
@@ -228,7 +480,7 @@ function analysisTopFormsList(limit = 80) {
         >
           <span class="analysis-form-main">
             <strong>${escapeHtml(row.form)}</strong>
-            <small>${escapeHtml(entry?.lemma || entry?.gloss || "No lexical annotation")}</small>
+            <small>${escapeHtml([resolved.lemma, resolved.gloss].filter(Boolean).join(" · ") || "No lexical annotation")}</small>
           </span>
           <span class="analysis-count">${row.count.toLocaleString()}</span>
         </button>
@@ -242,13 +494,17 @@ function lexiconPanel() {
   if (!record) {
     return '<div class="analysis-empty">This witness has no addressable tokens.</div>';
   }
-  const entry = lexiconEntryFor(
+  const resolved = resolvedLexicalRecord(
     record.sourceId,
     record.token.id,
     record.token.text,
   );
+  const entry = resolved.editorial;
   const editable = canEdit();
-  const partOfSpeech = entry?.partOfSpeech || "";
+  const partOfSpeech = resolved.partOfSpeech;
+  const frequency = analysisFrequencyRows().find(
+    (row) => row.normalized === record.normalized,
+  );
   return `
     <div class="analysis-two-column">
       <section class="analysis-card analysis-index-card">
@@ -267,12 +523,13 @@ function lexiconPanel() {
             <p class="eyebrow">Lexical record</p>
             <h3>${escapeHtml(record.token.text)}</h3>
           </div>
-          <span class="analysis-origin">${escapeHtml(analysisEntryOrigin(entry))}</span>
+          <span class="analysis-origin">${escapeHtml(entry ? analysisEntryOrigin(entry) : resolved.glossary ? "Working glossary · draft" : "Unannotated")}</span>
         </div>
         <div class="analysis-token-meta">
           <code>${escapeHtml(record.token.id)}</code>
           <span>Verse ${record.verse}${record.sentence ? ` · ${escapeHtml(record.sentence.number)}` : ""}</span>
           <span>${escapeHtml(record.token.type || "token")}</span>
+          <button data-analysis-concordance-selected type="button">${(frequency?.count || 1).toLocaleString()} occurrence${(frequency?.count || 1) === 1 ? "" : "s"}</button>
         </div>
         <p class="analysis-context">${analysisContextHtml(record)}</p>
         <form class="analysis-lexicon-form" data-analysis-lexicon-form>
@@ -281,7 +538,7 @@ function lexiconPanel() {
           <div class="analysis-field-grid">
             <label>
               Lemma
-              <input name="lemma" value="${analysisAttribute(entry?.lemma || "")}" ${editable ? "" : "disabled"}>
+              <input name="lemma" value="${analysisAttribute(resolved.lemma)}" ${editable ? "" : "disabled"}>
             </label>
             <label>
               Universal POS
@@ -295,15 +552,15 @@ function lexiconPanel() {
             </label>
             <label>
               Morphology / UD FEATS
-              <input name="morphology" value="${analysisAttribute(entry?.morphology || "")}" placeholder="Case=Loc|Number=Sing" ${editable ? "" : "disabled"}>
+              <input name="morphology" value="${analysisAttribute(resolved.morphology)}" placeholder="Case=Loc|Number=Sing" ${editable ? "" : "disabled"}>
             </label>
             <label>
               Reading / transliteration
-              <input name="reading" value="${analysisAttribute(entry?.reading || "")}" ${editable ? "" : "disabled"}>
+              <input name="reading" value="${analysisAttribute(resolved.reading)}" ${editable ? "" : "disabled"}>
             </label>
             <label class="analysis-wide-field">
               Gloss
-              <input name="gloss" value="${analysisAttribute(entry?.gloss || "")}" ${editable ? "" : "disabled"}>
+              <input name="gloss" value="${analysisAttribute(resolved.gloss)}" ${editable ? "" : "disabled"}>
             </label>
             <label>
               Confidence
@@ -323,7 +580,7 @@ function lexiconPanel() {
             </label>
             <label class="analysis-wide-field">
               Notes
-              <textarea name="notes" rows="4" ${editable ? "" : "disabled"}>${escapeHtml(entry?.notes || "")}</textarea>
+              <textarea name="notes" rows="4" ${editable ? "" : "disabled"}>${escapeHtml(resolved.notes)}</textarea>
             </label>
           </div>
           <div class="analysis-editor-actions">
@@ -342,16 +599,17 @@ function lexiconPanel() {
         </form>
       </section>
     </div>
+    ${analysisLexicalWorkbench(record)}
   `;
 }
 
 function concordancePanel() {
   const query = normalizeAnalysisForm(state.analysisQuery);
   const records = analysisTokenRecords().filter(
-    (record) => query && record.normalized.includes(query),
+    (record) => query && analysisRecordMatchesQuery(record),
   );
   const frequencies = analysisFrequencyRows()
-    .filter((row) => !query || row.normalized.includes(query))
+    .filter((row) => analysisRecordMatchesQuery(row.representative))
     .slice(0, 30);
   return `
     <div class="analysis-two-column concordance-layout">
@@ -447,7 +705,7 @@ function morphologyPanel() {
                 <tbody>
                   ${tokens
                     .map((token, index) => {
-                      const entry = lexiconEntryFor(
+                      const resolved = resolvedLexicalRecord(
                         analysisSource().id,
                         token.id,
                         token.text,
@@ -460,10 +718,10 @@ function morphologyPanel() {
                         >
                           <td>${index + 1}</td>
                           <td><strong>${escapeHtml(token.text)}</strong></td>
-                          <td>${escapeHtml(entry?.lemma || "—")}</td>
-                          <td>${escapeHtml(entry?.partOfSpeech || "—")}</td>
-                          <td><code>${escapeHtml(entry?.morphology || "—")}</code></td>
-                          <td>${escapeHtml(entry?.gloss || "—")}</td>
+                          <td>${escapeHtml(resolved.lemma || "—")}</td>
+                          <td>${escapeHtml(resolved.partOfSpeech || "—")}</td>
+                          <td><code>${escapeHtml(resolved.morphology || "—")}</code></td>
+                          <td>${escapeHtml(resolved.gloss || "—")}</td>
                         </tr>
                       `;
                     })
@@ -496,14 +754,14 @@ function starterConllu() {
   const { passage, unit, tokens } = selectedAnalysisSentence();
   if (!passage || !unit) return "";
   const rows = tokens.map((token, index) => {
-    const entry = lexiconEntryFor(analysisSource().id, token.id, token.text);
+    const resolved = resolvedLexicalRecord(analysisSource().id, token.id, token.text);
     return [
       index + 1,
       conlluValue(token.text),
-      conlluValue(entry?.lemma),
-      conlluValue(entry?.partOfSpeech),
+      conlluValue(resolved.lemma),
+      conlluValue(resolved.partOfSpeech),
       "_",
-      conlluValue(entry?.morphology),
+      conlluValue(resolved.morphology),
       "_",
       "_",
       "_",
@@ -792,6 +1050,14 @@ function bindAnalysisControls(reader) {
       state.analysisTab = "concordance";
       renderReader();
     });
+  });
+
+  reader.querySelector("[data-analysis-concordance-selected]")?.addEventListener("click", () => {
+    const record = selectedAnalysisRecord();
+    if (!record) return;
+    state.analysisQuery = record.token.text;
+    state.analysisTab = "concordance";
+    renderReader();
   });
 
   reader.querySelectorAll("[data-analysis-select-token]").forEach((button) => {

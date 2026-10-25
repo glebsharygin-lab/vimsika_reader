@@ -1898,26 +1898,22 @@ function lexicalPopover(passage) {
   );
   if (!source || !token) return "";
 
-  const entry = lexiconEntryFor(
+  const resolved = resolvedLexicalRecord(
     popover.sourceId,
     popover.tokenId,
     token.text,
   );
-  const alignment =
-    tokenAlignmentFor(
-      passage,
-      popover.sourceId,
-      popover.tokenId,
-    );
+  const glossary = resolved.glossary;
+  const alignment = tokenAlignmentFor(
+    passage,
+    popover.sourceId,
+    popover.tokenId,
+  );
   const linkedTerms = state.corpus.sources
+    .filter((linkedSource) => linkedSource.id !== popover.sourceId)
     .map((linkedSource) => {
-      const tokenIds =
-        alignment?.targetTokenIds?.[linkedSource.id] || [];
-      const text = tokenTextFromIds(
-        passage,
-        linkedSource.id,
-        tokenIds,
-      );
+      const tokenIds = alignment?.targetTokenIds?.[linkedSource.id] || [];
+      const text = tokenTextFromIds(passage, linkedSource.id, tokenIds);
       return text
         ? {
             label: linkedSource.shortLabel || linkedSource.label,
@@ -1927,13 +1923,18 @@ function lexicalPopover(passage) {
     })
     .filter(Boolean);
   const machine = alignment?.status === "machine-suggested";
+  const origin = resolved.editorial
+    ? "Editorial lexical record"
+    : glossary
+      ? "Working glossary · draft"
+      : "Token inspector";
 
   return `
-    <aside class="lexical-popover" aria-live="polite">
+    <aside class="lexical-popover" aria-live="polite" aria-label="Lexical inspector for ${escapeAttribute(token.text)}">
       <div class="lexical-popover-heading">
         <div>
-          <span class="lexical-kicker">${escapeHtml(source.language)} lexical inspector</span>
-          <strong>${escapeHtml(entry?.lemma || token.text)}</strong>
+          <span class="lexical-kicker">${escapeHtml(source.language)} lexical inspector · ${escapeHtml(origin)}</span>
+          <strong>${escapeHtml(resolved.lemma || token.text)}</strong>
         </div>
         <button data-close-lexical-popover type="button" aria-label="Close lexical inspector">×</button>
       </div>
@@ -1943,16 +1944,18 @@ function lexicalPopover(passage) {
           <dd>${escapeHtml(token.text)}</dd>
         </div>
         <div>
-          <dt>Analysis</dt>
-          <dd>${escapeHtml(entry?.morphology || entry?.reading || "Not yet annotated")}</dd>
+          <dt>Grammar</dt>
+          <dd>${escapeHtml([resolved.partOfSpeech, resolved.morphology || resolved.reading].filter(Boolean).join(" · ") || "Not yet annotated")}</dd>
         </div>
         <div>
           <dt>Gloss</dt>
-          <dd>${escapeHtml(entry?.gloss || "No dictionary gloss has been entered yet.")}</dd>
+          <dd>${escapeHtml(resolved.gloss || "No dictionary gloss has been entered yet.")}</dd>
         </div>
+        ${glossary?.analysis ? `<div><dt>Compound</dt><dd>${escapeHtml(glossary.analysis)}</dd></div>` : ""}
       </dl>
+      ${lexicalEquivalentsHtml(glossary, true)}
       <div class="lexical-correspondences">
-        <span>${machine ? "Projected correspondences" : "Recorded correspondences"}</span>
+        <span>${machine ? "Machine-matched Sanskrit readings" : "Recorded Sanskrit correspondences"}</span>
         ${
           linkedTerms.length
             ? `<ul>${linkedTerms
@@ -1965,9 +1968,16 @@ function lexicalPopover(passage) {
         }
       </div>
       <p class="lexical-note">
-        This panel is dictionary-ready: reviewed lemma, morphology, reading,
-        and gloss records can be attached without changing token IDs.
+        ${glossary ? "Draft equivalents are lexical aids, not reviewed word-for-word translation claims." : "No curated entry covers this form yet; editorial analysis can be added in Analysis."}
       </p>
+      <button
+        class="lexical-open-analysis"
+        data-open-lexical-analysis
+        data-analysis-token-id="${escapeAttribute(popover.tokenId)}"
+        data-source-id="${escapeAttribute(popover.sourceId)}"
+        data-passage-id="${escapeAttribute(passage.id)}"
+        type="button"
+      >Open lexical workbench <span aria-hidden="true">→</span></button>
     </aside>
   `;
 }
@@ -3813,6 +3823,28 @@ function renderReader() {
     button.addEventListener("click", () => {
       state.lexicalPopover = null;
       renderReader();
+    });
+  });
+
+  reader.querySelectorAll("[data-open-lexical-analysis]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.view = "analysis";
+      state.analysisTab = "lexicon";
+      state.analysisSourceId = button.dataset.sourceId;
+      state.analysisSelectedTokenId = button.dataset.analysisTokenId;
+      state.analysisSelectedPassageId = button.dataset.passageId;
+      state.analysisPassageId = button.dataset.passageId;
+      state.analysisQuery = "";
+      state.lexicalPopover = null;
+      state.activeAlignment = null;
+      state.activeTextEditor = null;
+      document.querySelectorAll(".view-button").forEach((item) => {
+        item.classList.toggle("active", item.dataset.view === "analysis");
+      });
+      document.querySelector("#pageTitle").textContent = "Linguistic and statistical analysis";
+      updateInlineEditorToggle();
+      renderReader();
+      window.scrollTo(0, 0);
     });
   });
 

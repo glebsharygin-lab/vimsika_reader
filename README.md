@@ -2,6 +2,28 @@
 
 This workspace contains a local trial reader for the Vimsika research corpus.
 
+Build 0.26.0 adds a Sanskrit lexical workbench with 60 draft glossary entries,
+IAST and Devanagari lookup, diacritic-insensitive search, grammatical notes,
+Sanskrit–English–Tibetan–Chinese equivalents, and multilingual sentence-level
+witness evidence. The reading inspector opens the same token in Analysis.
+Editorial records override starter entries. Glossary equivalents remain clearly
+labelled as working drafts, not reviewed word-for-word translation alignments.
+The corpus and its token identities are unchanged.
+
+Build 0.25.0 restores word lookup in edited sections and for unaligned tokens.
+It reconnects word links after inserted numbering, avoids stale lexical records,
+and keeps Analysis section references consistent with edited text. Saved browser
+drafts are preserved. The opening gains 59 correspondences and 13 refined spans
+across 13 existing versions, all labelled as source-reading drafts. See the
+[alignment report](ALIGNMENT_REPORT.md) for coverage and remaining gaps.
+
+Build 0.24.1 fixes duplicate rows when saved boundary/section edits are present.
+It reconnects unchanged phrases after whole-witness numbering edits and recovers
+otherwise orphaned spans hidden by empty fields saved by older forms. Edited
+wording is retained; newly deliberate blanks and hidden sections remain respected.
+Section saves now record changed witness fields rather than freezing every
+visible translation. No corpus text or saved browser draft is rewritten.
+
 Build 0.24.0 repairs Silk's passage boundaries and aligns it to 263 of the
 265 phrase units. It also adds labelled multilingual suggestions and textual
 matches between parallel Chinese/Tibetan witnesses. All 180,739 original token
@@ -32,8 +54,12 @@ This release adds no translations to the reader.
   otherwise the shell highlights exact normalized textual candidates in
   other Sanskrit editions, explicitly pending review.
 - Clickable token surfaces in Reading, Comparison, and Alignment, with a
-  floating lexical inspector showing the selected form and linked witness
-  spans.
+  floating lexical inspector showing the selected form, grammar, draft glossary
+  equivalents, and linked Sanskrit readings, plus direct access to Analysis.
+- The Analysis Lexicon tab searches forms, lemmas, English glosses, and Tibetan
+  or Chinese equivalents; it displays aligned sentence witnesses separately from
+  glossary-level correspondences. Starter entries also populate morphology and
+  CoNLL-U scaffolds without changing the underlying corpus.
 - A five-part Analysis workspace: editable lexical records, searchable KWIC
   concordance and frequency lists, sentence-level morphology tables, draft
   UD/CoNLL-U syntax annotation, and cross-witness corpus statistics.
@@ -128,8 +154,8 @@ The model cache and original source collection are kept out of the public packag
 
 ## Publish with GitHub Pages
 
-Upload `index.html`, `styles.css`, `app.js`, `analysis.js`, `auth-config.js`,
-`editorial-overrides.json` and `corpus.js` to the repository root.
+Upload `index.html`, `styles.css`, `app.js`, `analysis.js`, `lexicon.js`,
+`auth-config.js`, `editorial-overrides.json` and `corpus.js` to the repository root.
 Development folders are not required by the published reader.
 
 Do not upload `data/corpus.json` to GitHub Pages. It is the readable,
@@ -241,8 +267,17 @@ explicitly and can then be annotated in `Editor` mode.
 ## Run the reader
 
 ```powershell
+npm run dev -- --host 127.0.0.1 --port 7100
+```
+
+Open `http://localhost:7100`. The development server uses Node's standard library;
+no runtime packages are required by the static reader. For browser validation,
+install the development dependencies with `npm install`, then run
+`node scripts/smoke_lexicon.cjs`.
+
+The original Python command also remains available:
+
+```powershell
 & 'C:\Users\glebs\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
   -m http.server 8000
 ```
-
-Open `http://localhost:8000`.
