@@ -187,9 +187,9 @@ function allAlignments() {
   const cache = renderCache();
   if (cache.allAlignments) return cache.allAlignments;
   const alignments = [
-    ...state.corpus.alignments,
-    ...state.publishedEditorData.alignments,
-    ...state.editorData.alignments,
+    ...state.corpus.alignments.map((alignment) => reanchorTokenAlignment(alignment, true)),
+    ...state.publishedEditorData.alignments.map((alignment) => reanchorTokenAlignment(alignment)),
+    ...state.editorData.alignments.map((alignment) => reanchorTokenAlignment(alignment)),
   ];
   cache.allAlignments = [
     ...new Map(alignments.map((alignment) => [alignment.id, alignment])).values(),
@@ -294,7 +294,7 @@ function candidateAlignments() {
   if (!cache.candidateAlignments) {
     cache.candidateAlignments = (state.corpus.candidateAlignments || []).map(
       (alignment) => ({
-        ...alignment,
+        ...reanchorTokenAlignment(alignment, true),
         level: alignment.level || "token-span",
         status: alignment.status || "machine-suggested",
         confidence: alignment.confidence || "low",
@@ -318,6 +318,9 @@ function candidateAlignmentsForVerse(verse) {
 }
 
 function tokenAlignmentFor(passage, sourceId, tokenId) {
+  const token = tokenById(passage, sourceId, tokenId);
+  if (token?.literal) tokenId = token.sourceTokenId;
+  if (!tokenId) return null;
   const reviewed = alignmentsForVerse(passage.number)
     .filter(
       (alignment) =>
@@ -340,7 +343,7 @@ function tokenAlignmentFor(passage, sourceId, tokenId) {
 function tokenById(passage, sourceId, tokenId) {
   return effectiveWitness(passage, sourceId).tokens?.find(
     (token) => token.id === tokenId,
-  );
+  ) || renderCache().literalTokens?.get(tokenId);
 }
 
 function lexiconEntryFor(sourceId, tokenId, surface) {
@@ -348,7 +351,8 @@ function lexiconEntryFor(sourceId, tokenId, surface) {
     .reverse()
     .filter((entry) => entry.sourceId === sourceId);
   return (
-    entries.find((entry) => entry.tokenId === tokenId) ||
+    entries.find((entry) => entry.tokenId === tokenId &&
+      normalizeAnalysisForm(entry.surface) === normalizeAnalysisForm(surface)) ||
     entries.find(
       (entry) =>
         normalizeAnalysisForm(entry.normalizedSurface || entry.surface) ===
@@ -684,12 +688,108 @@ function effectiveWitness(passage, sourceId) {
   const witness = passage.texts[sourceId] || {};
   const edit = textEditFor(passage.id, sourceId);
   if (!edit) return witness;
-  return {
+  const cache = renderCache();
+  cache.editedWitnesses ||= new Map();
+  const key = textEditKey(passage.id, sourceId);
+  if (cache.editedWitnesses.has(key)) return cache.editedWitnesses.get(key);
+  const tokens = tokenizeEditedText(edit.text, passage.id, sourceId);
+  const tokenMap = matchingTokenContexts(witness.tokens || [], witness.text || "", tokens, edit.text);
+  const result = {
     ...witness,
     text: edit.text,
-    tokens: tokenizeEditedText(edit.text, passage.id, sourceId),
+    tokens,
+    originalTokenMap: tokenMap,
     editoriallyEdited: true,
   };
+  cache.editedWitnesses.set(key, result);
+  return result;
+}
+
+function tokensWithoutNumberLabels(tokens, text) {
+  const labels = [...text.matchAll(/^\s*\d+(?:\.\d+)+\.\s+/gm)]
+    .map((match) => [match.index, match.index + match[0].length]);
+  return tokens.filter((token) => !labels.some(
+    ([start, end]) => token.start >= start && token.end <= end,
+  ));
+}
+
+// Locate unchanged words by unique, exact context on both sides of an edit.
+// Repeated or conflicting contexts stay unresolved instead of trusting the
+// ordinal token IDs, which change when numbering or words are inserted.
+function matchingTokenContexts(beforeTokens, beforeText, afterTokens, afterText) {
+  const before = tokensWithoutNumberLabels(beforeTokens, beforeText);
+  const after = tokensWithoutNumberLabels(afterTokens, afterText);
+  const proposals = new Map();
+  const windows = (tokens, size) => {
+    const result = new Map();
+    for (let i = 0; i + size <= tokens.length; i += 1) {
+      const key = JSON.stringify(tokens.slice(i, i + size).map((token) => token.text.normalize("NFC")));
+      result.set(key, result.has(key) ? -1 : i);
+    }
+    return result;
+  };
+  for (const size of [1, 3, 5, 9, 17]) {
+    const left = windows(before, size), right = windows(after, size);
+    left.forEach((start, key) => {
+      const target = right.get(key);
+      if (start < 0 || target === undefined || target < 0) return;
+      for (let offset = 0; offset < size; offset += 1) {
+        const id = before[start + offset].id;
+        if (!proposals.has(id)) proposals.set(id, new Set());
+        proposals.get(id).add(after[target + offset].id);
+      }
+    });
+  }
+  const reverse = new Map();
+  proposals.forEach((ids, id) => ids.forEach((target) => {
+    if (!reverse.has(target)) reverse.set(target, new Set());
+    reverse.get(target).add(id);
+  }));
+  return new Map([...proposals].filter(([, ids]) => ids.size === 1 && reverse.get([...ids][0]).size === 1)
+    .map(([id, ids]) => [id, [...ids][0]]));
+}
+
+function reanchorTokenAlignment(alignment, fromCorpus = false) {
+  const passage = passageById(`v${alignment.verse}`);
+  if (!passage) return alignment;
+  const edited = Object.keys(alignment.targetTokenIds || {})
+    .filter((sid) => textEditFor(passage.id, sid));
+  if (!edited.length) return alignment;
+  const result = { ...alignment, targetTokenIds: { ...alignment.targetTokenIds } };
+  edited.forEach((sid) => {
+    const witness = effectiveWitness(passage, sid);
+    const ids = fromCorpus
+      ? alignment.targetTokenIds[sid].map((id) => witness.originalTokenMap.get(id))
+      : exactEditedSpanIds(passage, sid, alignment.targets?.[sid]);
+    result.targetTokenIds[sid] = ids.length && ids.every(Boolean) ? ids : [];
+  });
+  return result;
+}
+
+function literalSectionWitness(passage, unit, sourceId) {
+  const cache = renderCache();
+  cache.literalWitnesses ||= new Map();
+  cache.literalTokens ||= new Map();
+  const key = `${passage.id}:${unit.id}:${sourceId}`;
+  if (cache.literalWitnesses.has(key)) return cache.literalWitnesses.get(key);
+  const text = unit.targetTexts[sourceId] || "";
+  const tokens = tokenizeEditedText(text, passage.id, sourceId).map((token, index) => ({
+    ...token, id: `literal:${key}:${index}`, literal: true,
+  }));
+  const witness = effectiveWitness(passage, sourceId);
+  const allowed = new Set(unit.targetTokenIds?.[sourceId] || []);
+  const sourceTokens = witness.tokens.filter((token) => allowed.has(token.id));
+  const mapping = matchingTokenContexts(sourceTokens, witness.text, tokens, text);
+  const sourceIndices = new Map(witness.tokens.map((token, index) => [token.id, index]));
+  const inverse = new Map([...mapping].map(([id, literalId]) => [literalId, id]));
+  tokens.forEach((token) => {
+    token.sourceTokenId = inverse.get(token.id);
+    token.sourceTokenIndex = sourceIndices.get(token.sourceTokenId) ?? -1;
+    cache.literalTokens.set(token.id, token);
+  });
+  const result = { text, tokens };
+  cache.literalWitnesses.set(key, result);
+  return result;
 }
 
 function selectionKey(passageId, sourceId) {
@@ -764,20 +864,13 @@ function sortedTokenIdsForSource(passage, sourceId, tokenIds) {
 }
 
 function exactEditedSpanIds(passage, sourceId, text) {
-  const withoutNumberLabels = (tokens, surface) => {
-    const labels = [...surface.matchAll(/^\s*\d+(?:\.\d+)+\.\s+/gm)]
-      .map((match) => [match.index, match.index + match[0].length]);
-    return tokens.filter((token) => !labels.some(
-      ([start, end]) => token.start >= start && token.end <= end,
-    ));
-  };
-  const needle = withoutNumberLabels(
+  const needle = tokensWithoutNumberLabels(
     tokenizeEditedText(text || "", passage.id, sourceId), text || "",
   )
     .map((token) => token.text.normalize("NFC"));
   if (!needle.length) return [];
   const witness = effectiveWitness(passage, sourceId);
-  const tokens = withoutNumberLabels(witness.tokens || [], witness.text || "");
+  const tokens = tokensWithoutNumberLabels(witness.tokens || [], witness.text || "");
   const matches = [];
   for (let start = 0; start <= tokens.length - needle.length; start += 1) {
     if (needle.every((word, offset) => tokens[start + offset].text.normalize("NFC") === word)) {
@@ -1286,13 +1379,14 @@ function tokenizedText(witness, sourceId, passage, tokenIds = null) {
   indexedTokens.forEach(({ token, index }) => {
     output += escapeHtml(witness.text.slice(cursor, token.start));
     const classes = ["text-token"];
-    if (rootVerseIds.has(token.id)) classes.push("root-verse-token");
-    if (activeIds.has(token.id)) classes.push("alignment-active");
-    if (selectedIds.has(token.id)) classes.push("editor-selected");
+    const sourceTokenId = token.literal ? token.sourceTokenId : token.id;
+    if (rootVerseIds.has(sourceTokenId)) classes.push("root-verse-token");
+    if (activeIds.has(sourceTokenId)) classes.push("alignment-active");
+    if (selectedIds.has(sourceTokenId)) classes.push("editor-selected");
     if (search && token.text.toLocaleLowerCase().includes(search)) {
       classes.push("search-match");
     }
-    output += `<button class="${classes.join(" ")}" data-token-id="${token.id}" data-token-index="${index}" data-token-passage="${passage.id}" data-token-source="${sourceId}" type="button" title="${token.id}">${escapeHtml(token.text)}</button>`;
+    output += `<button class="${classes.join(" ")}" data-token-id="${escapeHtml(token.id)}" data-token-index="${token.literal ? token.sourceTokenIndex : index}" data-token-passage="${passage.id}" data-token-source="${sourceId}" type="button" title="Look up ${escapeHtml(token.text)}">${escapeHtml(token.text)}</button>`;
     cursor = token.end;
   });
   output += escapeHtml(witness.text.slice(cursor, rangeEnd));
@@ -1537,6 +1631,7 @@ function alignmentSuggestionLabel(alignment, sourceId) {
   const status = alignment.targetProvenance?.[sourceId]?.reviewStatus;
   if (status === "unreviewed-machine-suggestion") return "suggested · check span";
   if (status === "unreviewed-textual-match") return "text match · draft";
+  if (status === "draft-source-reading") return "source reading · draft";
   return "";
 }
 
@@ -1610,9 +1705,7 @@ function readingSentenceList(passage, source, witness) {
     (alignment) => alignment.level === "sentence",
   );
   if (!units.length) {
-    return editingEnabled()
-      ? tokenizedText(witness, source.id, passage)
-      : highlightedText(witness.text || "", source.id, passage.number);
+    return tokenizedText(witness, source.id, passage);
   }
 
   const focusedId = state.focusedSentenceByPassage[passage.id];
@@ -1660,11 +1753,7 @@ function readingSentenceList(passage, source, witness) {
               <div class="reading-sentence-body">${groupNote ? `<span class="shared-span-label">${escapeHtml(groupNote)}</span>` : ""}${
                 target
                   ? literalText
-                    ? highlightedText(
-                        target,
-                        source.id,
-                        passage.number,
-                      )
+                    ? tokenizedText(literalSectionWitness(passage, unit, source.id), source.id, passage)
                     : tokenIds.length
                     ? tokenizedText(
                         witness,
@@ -1819,7 +1908,7 @@ function lexicalPopover(passage) {
       passage,
       popover.sourceId,
       popover.tokenId,
-    ) || state.activeAlignment;
+    );
   const linkedTerms = state.corpus.sources
     .map((linkedSource) => {
       const tokenIds =
@@ -2527,11 +2616,7 @@ function phraseRow(alignment, passage, sources, template, index) {
             >${alignmentSuggestionLabel(alignment, source.id) ? `<span class="alignment-suggestion-label">${alignmentSuggestionLabel(alignment, source.id)}</span>` : ""}${group ? `<span class="shared-span-label">Shared span: ${escapeHtml(group.numbers.join(", "))}</span>` : ""}${
               target
                 ? literalText
-                  ? highlightedText(
-                      target,
-                      source.id,
-                      passage.number,
-                    )
+                  ? tokenizedText(literalSectionWitness(passage, alignment, source.id), source.id, passage)
                   : tokenIds.length
                   ? tokenizedText(
                       witness,
@@ -2762,10 +2847,11 @@ function setTokenRange(passageId, sourceId, startIndex, endIndex) {
 
 function syncTokenSelectionClasses(reader) {
   reader.querySelectorAll("[data-token-id]").forEach((token) => {
+    const record = tokenById(passageById(token.dataset.tokenPassage), token.dataset.tokenSource, token.dataset.tokenId);
     const selected = selectedTokenIds(
       token.dataset.tokenPassage,
       token.dataset.tokenSource,
-    ).includes(token.dataset.tokenId);
+    ).includes(record?.literal ? record.sourceTokenId : token.dataset.tokenId);
     token.classList.toggle("editor-selected", selected);
   });
 }
@@ -2818,7 +2904,8 @@ function bindTokenInteractions(reader) {
       };
       if (
         state.view === "alignment" &&
-        token.dataset.tokenSource === "san_levi_1925"
+        token.dataset.tokenSource === "san_levi_1925" &&
+        Number(token.dataset.tokenIndex) >= 0
       ) {
         event.preventDefault();
         const passageId = token.dataset.tokenPassage;
@@ -2849,21 +2936,15 @@ function bindTokenInteractions(reader) {
           passage,
           token.dataset.tokenSource,
           token.dataset.tokenId,
-        ) ||
-        allAlignments().find((item) =>
-          item.targetTokenIds?.[token.dataset.tokenSource]?.includes(
-            token.dataset.tokenId,
-          ),
         );
-      if (!alignment) return;
       state.activeAlignment =
-        state.activeAlignment?.id === alignment.id ? null : alignment;
-      state.openPassages.add(`v${alignment.verse}`);
+        !alignment || state.activeAlignment?.id === alignment.id ? null : alignment;
+      state.openPassages.add(passage.id);
       renderReader();
     });
 
     token.addEventListener("pointerdown", (event) => {
-      if (!editingEnabled()) return;
+      if (!editingEnabled() || Number(token.dataset.tokenIndex) < 0) return;
       event.preventDefault();
       const passageId = token.dataset.tokenPassage;
       const sourceId = token.dataset.tokenSource;
@@ -2895,7 +2976,8 @@ function bindTokenInteractions(reader) {
       if (
         !drag ||
         drag.passageId !== token.dataset.tokenPassage ||
-        drag.sourceId !== token.dataset.tokenSource
+        drag.sourceId !== token.dataset.tokenSource ||
+        Number(token.dataset.tokenIndex) < 0
       ) {
         return;
       }

@@ -66,7 +66,7 @@ function analysisTokenRecords(sourceId = analysisSource().id) {
   return state.corpus.passages.flatMap((passage) => {
     const witness = effectiveWitness(passage, sourceId);
     const sentenceByToken = new Map();
-    (passage.sentenceUnits || []).forEach((unit) => {
+    effectiveSentenceUnits(passage).forEach((unit) => {
       (unit.targetTokenIds?.[sourceId] || []).forEach((tokenId) => {
         sentenceByToken.set(tokenId, unit);
       });
