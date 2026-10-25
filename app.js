@@ -244,7 +244,10 @@ function allSectionEdits() {
       [
         ...(state.publishedEditorData.sectionEdits || []),
         ...(state.editorData.sectionEdits || []),
-      ].map((edit) => [edit.unitId || edit.id, edit]),
+      ].map((edit) => [
+        `${edit.passageId}:${canonicalSentenceUnitId(edit.unitId || edit.id)}`,
+        edit,
+      ]),
     ).values(),
   ].sort(
     (left, right) =>
@@ -269,8 +272,21 @@ function sectionEditsForPassage(passageId) {
 
 function localSectionEditFor(passageId, unitId) {
   return (state.editorData.sectionEdits || []).find(
-    (edit) => edit.passageId === passageId && edit.unitId === unitId,
+    (edit) => edit.passageId === passageId &&
+      canonicalSentenceUnitId(edit.unitId) === canonicalSentenceUnitId(unitId),
   );
+}
+
+function canonicalSentenceUnitId(id) {
+  return String(id || "").replace(/^sentence-/, "dharmanexus-");
+}
+
+function sectionTargetTexts(edit) {
+  // Older forms saved every visible field, including unresolved empty spans.
+  // Only new, explicitly edited blanks should suppress an existing alignment.
+  return Object.fromEntries(Object.entries(edit.targetTexts || {}).filter(
+    ([, text]) => edit.targetTextsVersion === 1 || String(text || "").trim(),
+  ));
 }
 
 function candidateAlignments() {
@@ -747,15 +763,56 @@ function sortedTokenIdsForSource(passage, sourceId, tokenIds) {
   );
 }
 
+function exactEditedSpanIds(passage, sourceId, text) {
+  const withoutNumberLabels = (tokens, surface) => {
+    const labels = [...surface.matchAll(/^\s*\d+(?:\.\d+)+\.\s+/gm)]
+      .map((match) => [match.index, match.index + match[0].length]);
+    return tokens.filter((token) => !labels.some(
+      ([start, end]) => token.start >= start && token.end <= end,
+    ));
+  };
+  const needle = withoutNumberLabels(
+    tokenizeEditedText(text || "", passage.id, sourceId), text || "",
+  )
+    .map((token) => token.text.normalize("NFC"));
+  if (!needle.length) return [];
+  const witness = effectiveWitness(passage, sourceId);
+  const tokens = withoutNumberLabels(witness.tokens || [], witness.text || "");
+  const matches = [];
+  for (let start = 0; start <= tokens.length - needle.length; start += 1) {
+    if (needle.every((word, offset) => tokens[start + offset].text.normalize("NFC") === word)) {
+      const first = tokens[start].start;
+      const last = tokens[start + needle.length - 1].end;
+      matches.push(witness.tokens.filter((token) => token.start >= first && token.end <= last).map((token) => token.id));
+      if (matches.length > 1) return [];
+    }
+  }
+  return matches[0] || [];
+}
+
 function effectiveSentenceUnits(passage) {
   const units = (passage.sentenceUnits || []).map(cloneSentenceUnit);
   const byId = new Map(units.map((unit) => [unit.id, unit]));
-  const canonicalId = (id) => byId.has(id) ? id : String(id || "").replace(/^sentence-/, "dharmanexus-");
+  const canonicalId = (id) => byId.has(id) ? id : canonicalSentenceUnitId(id);
   const hiddenUnitIds = new Set();
+
+  // Whole-witness edits retokenize the text. Numeric token IDs alone cannot
+  // identify the old words after inserted numbering or an OCR correction.
+  units.forEach((unit) => {
+    Object.keys(unit.targetTokenIds || {}).forEach((sourceId) => {
+      if (!textEditFor(passage.id, sourceId)) return;
+      const ids = exactEditedSpanIds(passage, sourceId, unit.targets[sourceId]);
+      unit.targetTokenIds[sourceId] = ids;
+      unit.targets[sourceId] = tokenTextFromIds(passage, sourceId, ids);
+    });
+  });
+  const anchoredUnits = new Map(units.map((unit) => [unit.id, cloneSentenceUnit(unit)]));
 
   sentenceEditsForPassage(passage.id).forEach((edit) => {
     const sourceId = edit.sourceId;
-    const tokenIds = edit.tokenIds || [];
+    const tokenIds = textEditFor(passage.id, sourceId)
+      ? exactEditedSpanIds(passage, sourceId, edit.selectedText)
+      : edit.tokenIds || [];
     const targetUnit = byId.get(canonicalId(edit.toUnitId));
     if (!sourceId || !tokenIds.length || !targetUnit) return;
 
@@ -816,8 +873,12 @@ function effectiveSentenceUnits(passage) {
     targetUnit.note = edit.note ?? targetUnit.note ?? "";
     targetUnit.targetTexts = {
       ...(targetUnit.targetTexts || {}),
-      ...(edit.targetTexts || {}),
+      ...sectionTargetTexts(edit),
     };
+    Object.entries(targetUnit.targetTexts).forEach(([sourceId, text]) => {
+      const ids = exactEditedSpanIds(passage, sourceId, text);
+      if (ids.length) targetUnit.targetTokenIds[sourceId] = ids;
+    });
     targetUnit.status = "editorial-section";
     targetUnit.confidence = "reviewed";
     targetUnit.sentenceEdited = true;
@@ -829,7 +890,23 @@ function effectiveSentenceUnits(passage) {
     }
   });
 
-  return sortSentenceUnits(units.filter((unit) => !hiddenUnitIds.has(unit.id)));
+  const visible = units.filter((unit) => !hiddenUnitIds.has(unit.id));
+  sectionEditsForPassage(passage.id).forEach((edit) => {
+    if (edit.targetTextsVersion === 1 || edit.deleted) return;
+    const unit = visible.find((item) => item.id === canonicalId(edit.unitId || edit.id));
+    if (!unit) return;
+    Object.entries(edit.targetTexts || {}).forEach(([sourceId, text]) => {
+      if (String(text || "").trim() || unit.targetTokenIds[sourceId]?.length) return;
+      const ids = anchoredUnits.get(unit.id)?.targetTokenIds[sourceId] || [];
+      // Recover only otherwise orphaned anchors; never undo a move to another
+      // visible section or manufacture text missing from the supplied source.
+      if (!ids.length || visible.some((other) => other.id !== unit.id &&
+        other.targetTokenIds[sourceId]?.some((id) => ids.includes(id)))) return;
+      unit.targetTokenIds[sourceId] = [...ids];
+      unit.targets[sourceId] = tokenTextFromIds(passage, sourceId, ids);
+    });
+  });
+  return sortSentenceUnits(visible);
 }
 
 function alignmentsOverlappingSanskrit(passage, tokenIds) {
@@ -1400,12 +1477,12 @@ function phraseAlignments(passage) {
     .map((alignment) => {
       const edit = sectionEdits.find(
         (item) =>
-          item.unitId === alignment.id ||
-          (item.number && item.number === alignment.number),
+          canonicalSentenceUnitId(item.unitId || item.id) === alignment.id,
       );
       const effective = baseUnits.find((unit) => unit.id === alignment.id);
-      if (!edit) return effective || alignment;
-      if (edit.deleted) return null;
+      if (edit?.deleted) return null;
+      if (effective) return effective;
+      if (!edit) return alignment;
       const unit = cloneSentenceUnit(alignment);
       unit.number = edit.number || unit.number;
       unit.label = edit.label || unit.label;
@@ -1416,7 +1493,7 @@ function phraseAlignments(passage) {
       unit.note = edit.note ?? unit.note ?? "";
       unit.targetTexts = {
         ...(unit.targetTexts || {}),
-        ...(edit.targetTexts || {}),
+        ...sectionTargetTexts(edit),
       };
       unit.status = "editorial-section";
       unit.confidence = "reviewed";
@@ -1432,11 +1509,13 @@ function phraseAlignments(passage) {
   const generated = baseUnits.filter(
     (unit) =>
       !reviewedSentences.some((alignment) =>
-        alignmentsOverlap(unit, alignment),
+        unit.id === alignment.id || alignmentsOverlap(unit, alignment),
       ),
   );
 
-  const result = [...generated, ...editorial].sort((left, right) => {
+  const result = [...new Map([...generated, ...editorial].map(
+    (unit) => [unit.id, unit],
+  )).values()].sort((left, right) => {
     if (left.level === "sentence" && right.level === "sentence") {
       return (
         sentenceOrderKey(left) - sentenceOrderKey(right) ||
@@ -2021,7 +2100,9 @@ function literalSectionEditor(passage, sources, sentenceUnits) {
           <h4>Numbered sections</h4>
           <p>
             These are the actual visible sections. Edit their number, order, label,
-            and the text shown for each visible witness. Hiding a section removes
+            and the text shown for each visible witness. Only changed witness
+            fields are saved; clearing a field leaves that witness blank.
+            Hiding a section removes
             it from the shell without deleting the underlying imported witness text.
           </p>
         </div>
@@ -2843,9 +2924,21 @@ function nextAnnotationId(prefix, passageId) {
 
 function upsertSectionEdit(edit) {
   state.editorData.sectionEdits = (state.editorData.sectionEdits || []).filter(
-    (item) => !(item.passageId === edit.passageId && item.unitId === edit.unitId),
+    (item) => !(item.passageId === edit.passageId &&
+      canonicalSentenceUnitId(item.unitId) === canonicalSentenceUnitId(edit.unitId)),
   );
   state.editorData.sectionEdits.push(edit);
+}
+
+function sectionTextChanges(form, passageId, unitId) {
+  const previous = sectionEditsForPassage(passageId).find(
+    (edit) => canonicalSentenceUnitId(edit.unitId) === canonicalSentenceUnitId(unitId),
+  );
+  const texts = previous ? sectionTargetTexts(previous) : {};
+  form.querySelectorAll("[data-section-source]").forEach((field) => {
+    if (field.value !== field.defaultValue) texts[field.dataset.sectionSource] = field.value;
+  });
+  return texts;
 }
 
 function deleteUnitAndDescendants(unitId) {
@@ -3019,12 +3112,7 @@ function bindEditorControls(reader) {
       const passageId = form.dataset.sectionEditForm;
       const passage = passageById(passageId);
       const unitId = form.dataset.unitId;
-      const targetTexts = Object.fromEntries(
-        [...form.querySelectorAll("[data-section-source]")].map((field) => [
-          field.dataset.sectionSource,
-          field.value,
-        ]),
-      );
+      const targetTexts = sectionTextChanges(form, passageId, unitId);
       const order = Number(form.querySelector("[data-field='section-order']").value);
       upsertSectionEdit({
         id:
@@ -3039,6 +3127,7 @@ function bindEditorControls(reader) {
         level: "sentence",
         note: form.querySelector("[data-field='section-note']").value.trim(),
         targetTexts,
+        targetTextsVersion: 1,
         deleted: false,
         updatedAt: new Date().toISOString(),
       });
@@ -3092,7 +3181,8 @@ function bindEditorControls(reader) {
         .sectionEditForm;
       const unitId = button.dataset.discardSectionEdit;
       state.editorData.sectionEdits = (state.editorData.sectionEdits || []).filter(
-        (edit) => !(edit.passageId === passageId && edit.unitId === unitId),
+        (edit) => !(edit.passageId === passageId &&
+          canonicalSentenceUnitId(edit.unitId) === canonicalSentenceUnitId(unitId)),
       );
       saveEditorData();
       renderSummary();
@@ -3107,12 +3197,7 @@ function bindEditorControls(reader) {
       const passage = passageById(passageId);
       const unitId = button.dataset.hideSection;
       if (!passage || !unitId) return;
-      const targetTexts = Object.fromEntries(
-        [...form.querySelectorAll("[data-section-source]")].map((field) => [
-          field.dataset.sectionSource,
-          field.value,
-        ]),
-      );
+      const targetTexts = sectionTextChanges(form, passageId, unitId);
       const order = Number(form.querySelector("[data-field='section-order']").value);
       upsertSectionEdit({
         id:
@@ -3127,6 +3212,7 @@ function bindEditorControls(reader) {
         level: "sentence",
         note: form.querySelector("[data-field='section-note']").value.trim(),
         targetTexts,
+        targetTextsVersion: 1,
         deleted: true,
         updatedAt: new Date().toISOString(),
       });
