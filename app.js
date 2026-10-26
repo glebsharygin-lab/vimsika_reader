@@ -6,6 +6,10 @@ const APP_BUILD_VERSION = (() => {
 
 const state = {
   corpus: null,
+  researchLibrary: null,
+  libraryLanguage: "all",
+  librarySelectedDocumentId: "",
+  libraryComponentByDocument: {},
   selectedSources: new Set(),
   view: "reading",
   search: "",
@@ -1189,8 +1193,9 @@ function renderSummary() {
       ),
     0,
   );
-  const knownRights = state.corpus.sources.filter(
-    (source) => source.rights !== "unknown",
+  const libraryDocuments = state.researchLibrary?.documents || [];
+  const importedLibraryDocuments = libraryDocuments.filter(
+    (documentRecord) => documentRecord.textStatus === "text-imported",
   ).length;
   const tokenSummary = tokens
     ? tokens.toLocaleString()
@@ -1213,8 +1218,8 @@ function renderSummary() {
       <span class="summary-label">numbered sentences / DharmaNexus, reviewed + machine token links</span>
     </div>
     <div class="summary-item">
-      <span class="summary-number">${knownRights}/${state.corpus.sources.length}</span>
-      <span class="summary-label">rights statuses classified</span>
+      <span class="summary-number">${importedLibraryDocuments} / ${libraryDocuments.length}</span>
+      <span class="summary-label">records with imported text / researched documents</span>
     </div>
   `;
 }
@@ -1701,6 +1706,17 @@ function sharedSpanFor(unit, units, sourceId) {
 }
 
 function readingSentenceList(passage, source, witness) {
+  if (witness.mappingLevel === "passage") {
+    return `
+      <div class="passage-mapped-witness">
+        <p class="passage-mapping-note">
+          <strong>Whole-passage translation.</strong>
+          ${escapeHtml(witness.mappingNote || "No sentence or phrase alignment is implied.")}
+        </p>
+        <div class="passage-mapped-text">${tokenizedText(witness, source.id, passage)}</div>
+      </div>
+    `;
+  }
   const units = phraseAlignments(passage).filter(
     (alignment) => alignment.level === "sentence",
   );
@@ -1804,7 +1820,9 @@ function witnessAvailabilityLabel(witness, source) {
   if (witness.status === "not-present-in-supplied-source") {
     return "not present in supplied source";
   }
-  return source.rightsLabel;
+  if (source.fidelityLabel) return source.fidelityLabel;
+  const tokenCount = (witness.tokens || []).length.toLocaleString();
+  return `${tokenCount} addressable tokens · ${source.language}`;
 }
 
 function sourcePanel(source, passage) {
@@ -3716,8 +3734,13 @@ function bindFrameControls(reader) {
 
 function renderReader() {
   const reader = document.querySelector("#reader");
-  reader.classList.toggle("collation-active", state.view !== "reading");
+  reader.classList.toggle("collation-active", !["reading", "library"].includes(state.view));
   reader.classList.toggle("analysis-active", state.view === "analysis");
+  reader.classList.toggle("library-active", state.view === "library");
+  if (state.view === "library") {
+    renderTranslationLibrary(reader);
+    return;
+  }
   if (state.view === "analysis") {
     reader.innerHTML = renderAnalysisWorkspace();
     bindAnalysisControls(reader);
@@ -3897,10 +3920,15 @@ function renderSourceLedger() {
       (source) => `
         <article class="ledger-entry" style="--source-color:${source.color}">
           <div class="ledger-topline">
-            <strong>${source.label}</strong>
-            <span class="rights-badge ${source.rights}">${source.rightsLabel}</span>
+            <strong>${escapeHtml(source.label)}</strong>
+            <span class="ledger-badges">
+              <span class="source-kind-badge">${escapeHtml(source.language)}</span>
+              <span class="source-kind-badge">${escapeHtml(source.role.replaceAll("-", " "))}</span>
+              ${source.fidelityLabel ? `<span class="source-kind-badge">${escapeHtml(source.fidelityLabel)}</span>` : ""}
+            </span>
           </div>
-          <p>${source.citation}</p>
+          <p>${escapeHtml(source.citation)}</p>
+          ${source.coverageLabel ? `<p><strong>Coverage:</strong> ${escapeHtml(source.coverageLabel)}</p>` : ""}
         </article>
       `,
     )
@@ -3908,19 +3936,15 @@ function renderSourceLedger() {
   const alignmentSources = (state.corpus.externalAlignmentSources || [])
     .map(
       (source) => {
-        const authorized = source.importStatus.includes("authorized");
+        const externalUrl = translationLibraryExternalUrl(source.url);
         return `
         <article class="ledger-entry external-alignment-source">
           <div class="ledger-topline">
             <strong>${escapeHtml(source.label)}</strong>
-            <span class="rights-badge ${authorized ? "open" : "unknown"}">${escapeHtml(source.importStatus.replaceAll("-", " "))}</span>
+            <span class="source-kind-badge">${escapeHtml(source.type.replaceAll("-", " "))}</span>
           </div>
-          <p>${escapeHtml(source.note)}</p>
-          <p><strong>Method:</strong> ${escapeHtml(source.type.replaceAll("-", " "))}</p>
-          ${source.license ? `<p><strong>Authorization:</strong> ${escapeHtml(source.license)}</p>` : ""}
-          ${source.authorizationReference ? `<p><strong>Permission record:</strong> <code>${escapeHtml(source.authorizationReference)}</code></p>` : ""}
-          <p><strong>Contact:</strong> ${escapeHtml(source.contact)}</p>
-          <p><a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">Open external record</a></p>
+          <p>External source for machine-generated intertextual matches.</p>
+          ${externalUrl ? `<p><a href="${escapeAttribute(externalUrl)}" target="_blank" rel="noreferrer">Open external record</a></p>` : ""}
         </article>
       `;
       },
@@ -3987,6 +4011,29 @@ async function loadAccessList() {
   }
 }
 
+function updateViewPresentation() {
+  const titles = {
+    reading: "Parallel reading shell",
+    comparison: "Multi-witness comparison",
+    alignment: "Phrase alignment laboratory",
+    analysis: "Linguistic and statistical analysis",
+    library: "Translation library & research records",
+    editor: "Embedded structure and alignment editor",
+  };
+  document.querySelectorAll(".view-button").forEach((item) => {
+    item.classList.toggle("active", item.dataset.view === state.view);
+  });
+  document.querySelector("#pageTitle").textContent = titles[state.view] || titles.reading;
+  const libraryActive = state.view === "library";
+  document.querySelector(".search-label").textContent = libraryActive
+    ? "Search translation library"
+    : "Search selected texts";
+  document.querySelector("#searchInput").placeholder = libraryActive
+    ? "e.g. Japanese, Nedu, Hindi"
+    : "e.g. dream, sems, 佛";
+  updateInlineEditorToggle();
+}
+
 function bindControls() {
   document.querySelector("#sidebarToggle").addEventListener("click", () => {
     setSidebarCollapsed(true);
@@ -4025,17 +4072,7 @@ function bindControls() {
       state.view = button.dataset.view;
       state.activeAlignment = null;
       state.activeTextEditor = null;
-      document.querySelectorAll(".view-button").forEach((item) => {
-        item.classList.toggle("active", item === button);
-      });
-      document.querySelector("#pageTitle").textContent = {
-        reading: "Parallel reading shell",
-        comparison: "Multi-witness comparison",
-        alignment: "Phrase alignment laboratory",
-        analysis: "Linguistic and statistical analysis",
-        editor: "Embedded structure and alignment editor",
-      }[state.view];
-      updateInlineEditorToggle();
+      updateViewPresentation();
       renderReader();
     });
   });
@@ -4104,6 +4141,9 @@ async function init() {
     if (!response.ok) throw new Error(`Corpus request failed: ${response.status}`);
     state.corpus = await response.json();
   }
+  state.researchLibrary = window.RESEARCHED_TRANSLATIONS || null;
+  integrateResearchedTranslations(state.corpus, state.researchLibrary, tokenizeEditedText);
+  state.librarySelectedDocumentId = state.researchLibrary?.documents?.[0]?.id || "";
   state.corpus.passages.forEach((passage) => {
     Object.entries(passage.texts).forEach(([sourceId, witness]) => {
       (witness.tokens || []).forEach((token) => {
