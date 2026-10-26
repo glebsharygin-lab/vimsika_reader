@@ -12,6 +12,7 @@ const state = {
   libraryComponentByDocument: {},
   selectedSources: new Set(),
   view: "reading",
+  activeDocumentId: "",
   search: "",
   activeAlignment: null,
   columnWidths: {},
@@ -1141,7 +1142,14 @@ function buildSidebar() {
     if (!button) return;
     const passageId = `v${button.dataset.verse}`;
     state.openPassages.add(passageId);
-    if (state.view === "reading" && editingEnabled()) renderReader();
+    if (state.view === "document") {
+      state.view = "reading";
+      state.activeDocumentId = "";
+      updateViewPresentation();
+      renderReader();
+    } else if (state.view === "reading" && editingEnabled()) {
+      renderReader();
+    }
     const card = document.querySelector(`#${passageId}`);
     card?.classList.add("open");
     card?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1170,9 +1178,15 @@ function buildSidebar() {
     } else {
       state.selectedSources.delete(event.target.value);
     }
+    if (state.view === "document") {
+      state.view = "reading";
+      state.activeDocumentId = "";
+      updateViewPresentation();
+    }
     renderSummary();
     renderReader();
   });
+  buildDocumentShortcuts();
 }
 
 function renderSummary() {
@@ -3734,11 +3748,16 @@ function bindFrameControls(reader) {
 
 function renderReader() {
   const reader = document.querySelector("#reader");
-  reader.classList.toggle("collation-active", !["reading", "library"].includes(state.view));
+  reader.classList.toggle("collation-active", !["reading", "library", "document"].includes(state.view));
   reader.classList.toggle("analysis-active", state.view === "analysis");
   reader.classList.toggle("library-active", state.view === "library");
+  reader.classList.toggle("document-active", state.view === "document");
   if (state.view === "library") {
     renderTranslationLibrary(reader);
+    return;
+  }
+  if (state.view === "document") {
+    renderDocumentReader(reader);
     return;
   }
   if (state.view === "analysis") {
@@ -3746,9 +3765,10 @@ function renderReader() {
     bindAnalysisControls(reader);
     return;
   }
-  reader.innerHTML = state.corpus.passages
+  reader.innerHTML = `${state.view === "reading" ? renderDocumentShelf() : ""}${state.corpus.passages
     .map((passage) => `${passageVideoEmbed(passage)}${passageCard(passage)}`)
-    .join("");
+    .join("")}`;
+  if (state.view === "reading") bindDocumentShelf(reader);
 
   reader.querySelectorAll("[data-load-video]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -3950,8 +3970,39 @@ function renderSourceLedger() {
       },
     )
     .join("");
-  document.querySelector("#sourceLedger").innerHTML =
-    witnesses + alignmentSources;
+  const researchDocuments = (state.researchLibrary?.documents || []).map((documentRecord) => `
+    <article class="ledger-entry research-document-ledger" data-ledger-document-record="${escapeAttribute(documentRecord.id)}">
+      <div class="ledger-topline">
+        <strong>${escapeHtml(researchedDocumentLabel(documentRecord))}</strong>
+        <span class="ledger-badges">
+          <span class="source-kind-badge">Research document</span>
+          <span class="source-kind-badge">${escapeHtml(documentRecord.language)}</span>
+          <span class="source-kind-badge">${escapeHtml(translationLibraryHumanize(documentRecord.textStatus))}</span>
+        </span>
+      </div>
+      <p>${escapeHtml(documentRecord.citation)}</p>
+      <p><strong>Coverage:</strong> ${escapeHtml(documentRecord.coverage)}</p>
+      <p><strong>Text and extraction:</strong> ${escapeHtml(documentRecord.fidelity)}</p>
+      <button class="text-record-open" data-ledger-document="${escapeAttribute(documentRecord.id)}" type="button">
+        ${documentRecord.textStatus === "text-imported" ? "Read continuous document" : "View bibliographic record"}
+      </button>
+    </article>
+  `).join("");
+  const ledger = document.querySelector("#sourceLedger");
+  ledger.innerHTML = `
+    <h3 class="ledger-section-heading">Parallel witnesses · ${state.corpus.sources.length}</h3>
+    ${witnesses}
+    <h3 class="ledger-section-heading">External alignment sources</h3>
+    ${alignmentSources}
+    <h3 class="ledger-section-heading">Researched translation documents · ${state.researchLibrary?.documents?.length || 0}</h3>
+    ${researchDocuments}
+  `;
+  ledger.querySelectorAll("[data-ledger-document]").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelector("#sourcesDialog").close();
+      openResearchedDocument(button.dataset.ledgerDocument);
+    });
+  });
 }
 
 function renderAccessList(users) {
@@ -4018,19 +4069,32 @@ function updateViewPresentation() {
     alignment: "Phrase alignment laboratory",
     analysis: "Linguistic and statistical analysis",
     library: "Translation library & research records",
+    document: "Continuous translation document",
     editor: "Embedded structure and alignment editor",
   };
+  const activeView = state.view === "document" ? "reading" : state.view;
   document.querySelectorAll(".view-button").forEach((item) => {
-    item.classList.toggle("active", item.dataset.view === state.view);
+    item.classList.toggle("active", item.dataset.view === activeView);
   });
-  document.querySelector("#pageTitle").textContent = titles[state.view] || titles.reading;
+  const activeDocument = (state.researchLibrary?.documents || []).find(
+    (documentRecord) => documentRecord.id === state.activeDocumentId,
+  );
+  document.querySelector("#pageTitle").textContent = state.view === "document" && activeDocument
+    ? researchedDocumentLabel(activeDocument)
+    : titles[state.view] || titles.reading;
   const libraryActive = state.view === "library";
+  const documentActive = state.view === "document";
   document.querySelector(".search-label").textContent = libraryActive
     ? "Search translation library"
-    : "Search selected texts";
+    : documentActive
+      ? "Search current document"
+      : "Search selected texts";
   document.querySelector("#searchInput").placeholder = libraryActive
     ? "e.g. Japanese, Nedu, Hindi"
-    : "e.g. dream, sems, 佛";
+    : documentActive
+      ? "Search every component of this document"
+      : "e.g. dream, sems, 佛";
+  updateDocumentShortcutState();
   updateInlineEditorToggle();
 }
 
@@ -4070,6 +4134,7 @@ function bindControls() {
         return;
       }
       state.view = button.dataset.view;
+      state.activeDocumentId = "";
       state.activeAlignment = null;
       state.activeTextEditor = null;
       updateViewPresentation();

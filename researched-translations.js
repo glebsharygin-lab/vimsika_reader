@@ -1,5 +1,5 @@
 window.RESEARCHED_TRANSLATIONS = {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "2.0.0",
   "researchDate": "2026-10-26",
   "title": "Researched Viṃśikā translation library",
   "description": "Source-located translations, OCR navigation texts, abridged material, alternate copies, and bibliographic records. Passage mappings do not assert phrase alignment.",
@@ -1356,16 +1356,16 @@ window.RESEARCHED_TRANSLATIONS = {
       "title": "『유식이십론』연구—관념론적 해석을 중심으로—",
       "creators": "Lee Gil-san / 이길산",
       "date": "February 2021",
-      "citation": "Lee Gil-san, 『유식이십론』연구—관념론적 해석을 중심으로—, Seoul National University doctoral dissertation, February 2021; Part II, Sanskrit text, Korean translation, and notes.",
+      "citation": "Lee Gil-san, 『유식이십론』연구—관념론적 해석을 중심으로—, Seoul National University doctoral dissertation, February 2021; Part II, Sanskrit text, Korean translation, and notes, printed pages 184–462.",
       "recordKind": "translation",
       "translationStatus": "complete",
-      "textStatus": "metadata-only",
-      "textualBasis": "Jonathan A. Silk’s new Sanskrit edition, as documented in the dissertation abstract.",
-      "coverage": "Complete Korean translation documented in Part II; bibliographic record retained in the library.",
-      "fidelity": "No Korean body text imported: the retrieved PDF extraction has corrupted font mappings. The local sample contains wrong-font glyphs rather than usable Hangul in the translation section.",
+      "textStatus": "text-imported",
+      "textualBasis": "Jonathan A. Silk’s Sanskrit edition, as identified by the dissertation.",
+      "coverage": "Part II in full: editorial outline, sixteen source-defined argument sections containing Sanskrit text, Korean translation, and annotations, PDF pages 193–471 (printed pages 184–462); bibliography excluded.",
+      "fidelity": "Direct PDF text extraction with PyMuPDF. Standalone exclamation-mark lines inserted by the text layer are removed; source wording, annotations, symbols, and remaining line breaks are retained. Argument sections follow the dissertation’s own sixteen-part outline and are not passage-aligned.",
       "sourceSnapshot": {
-        "path": "research/vimsika-translations-2026-10-26/sources/korean-snu-vimsika-thesis-clean.txt",
-        "sha256": "5a2a265ae4be48f7ac0331c1897b35c1422acda0f642a9bdf507796349b4f30e"
+        "path": "research/vimsika-translations-2026-10-26/sources/korean-snu-vimsika-thesis.pdf",
+        "sha256": "ce29430993a75c0c6606d170403c7cd4df0d91792762207e936f3b5cae3c8ca4"
       },
       "links": [
         {
@@ -1377,7 +1377,1801 @@ window.RESEARCHED_TRANSLATIONS = {
           "url": "https://www.dbpia.co.kr/journal/detail?nodeId=T15825766"
         }
       ],
-      "components": []
+      "components": [
+        {
+          "id": "kor-lee-section-01",
+          "label": "Argument section 1 · verse 1",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-194",
+              "label": "Printed page 185",
+              "locator": "PDF page 194 · printed page 185 · direct PDF text extraction",
+              "text": "Silk(2018) 30쪽: theg pa chen po la khams gsum pa rnam par rig pa\ntsam du rnam par gzhag ste | mdo las | kye rgyal ba’i sras dag ’di lta\nste | khams gsum pa ’di ni sems tsam mo zhes ’byung ba’i phyir ro ||\n\n sems dang yid dang | rnam par shes pa dang | rnam par rig pa\n276\nzhes bya ba ni rnam grangs su gtogs pa’o || sems de yang ’dir\nmtshungs par ldan pa dang bcas par dgongs pa’o || tsam zhes bya\nba smos pa ni don dgag pa’i phyir ro || rnam par shes pa ’di nyid don\ndu snang ba\n\n ’byung ste | dper na rab rib can rnams kyis skra zla\n277\n#185\n#\n 해당 산스크리트 원문을 레비는 ‘cittamātram bho jinaputrā yad uta traidhātukam\n276\niti sūtrāt’으로 간주하고 나수 지슈는 ‘cittamātram idaṁ bho jinaputrā yad uta\ntraidhātukam iti sūtre vacanāt’로 상정한다. Silk(2018) 149쪽-150쪽 참조.!\n   한편 하라다 와소는 ‘uktam hi sūtre cittamātram idaṁ bho jinaputrā yad idaṁ\ntraidhātukam iti’로 이해한다. 原田 和宗(1999) 105쪽 참조.\n#\n ba가 tib.797에는 bar로 표기. Silk(2017) 344쪽 참조.\n277"
+            },
+            {
+              "id": "kor-lee-page-195",
+              "label": "Printed page 186",
+              "locator": "PDF page 195 · printed page 186 · direct PDF text extraction",
+              "text": "la sogs\n\n pa med par mthong ba bzhin\n\n te | don gang yang med\n278\n279\n#186\n#\n zla la sogs이 tib.797에는 lastogs로 표기. Silk(2017) 344쪽 참조.\n278\n#\n 밑줄 친 bzhin(‘-와 마찬가지이다’)이 구문상 문제를 일으키는 것으로 보인다. 이 bzhin\n279\n은 같은 절의 dper na(‘예를 들어’)에 호응하는 표현이며 이 두 표현은 아마도 산스크리트의\n*yathā(‘예를 들어 -와 마찬가지이다’)에 대응될 것이다. 의도인지 실수인지 알 수 없지만,\n티벳역자는 문제의 bzhin을 현위치에 놓음으로써 후속 표현 don gang yang med do(‘어\n떠한 대상도 비존재한다’)를 *yathā의 지배범위 바깥에 두게 되었다. 이 경우, bzhin 전후의\n두 절의 의미는 ‘예를 들어 비문증 환자들이 비존재하는 머리카락·달 등을 보는 것과 마찬가\n지이니, 어떠한 대상도 비존재한다’가 된다. 즉, ‘어떠한 대상도 비존재한다’는 명제가 눈병의\n비유 바깥에 위치하게 되는 것이다. 이러한 귀결은 비록 불가능하지는 않지만 상당히 어색하\n다. 왜냐하면 문제의 비유가 불완전한 것이 되는 한편 유식성의 명제가 비논리적으로 도출되\n어버리기 때문이다.!\n   이 문제에 대해 두 가지 해결 방식이 가능할 것으로 보인다. 하나는 문제의 bzhin을 후속\n절의 med 와 do 사이로 옮기는 방법이다. 이는 dper na의 문법적 지배 범위를 정정하는 방\n식으로서, 이 경우 해당 구절은 ‘예를 들어 비문증 환자들이 비존재하는 머리카락·달 등을 보\n지만 어떠한 대상도 비존재하는 것과 마찬가지이다’라는 의미가 된다. 다른 하나는 문제의\nbzhin 바로 앞에 위치한 mthong ba에서 ba를 제거하는 방법이다. 이는 bzhin과 dper na\n사이의 호응 자체를 끊는 방식으로서, 이 경우 해당 구절은 ‘예를 들어 비문증 환자들이 비존\n재하는 머리카락·달 등을 보고 있으나 어떠한 대상도 비존재하는 것과 마찬가지이다’라는 의\n미가 된다. 이 두 가지 선택지 중에서 본고는 일단 전자를 채택하였다.!\n   한편 편역자 씰크는 해당 표현을 “For example, it is like those with an eye disease\nseeing non-existent hair, a [double] moon and so on, but there is no [real] object\nat all.(‘예를 들어 이는 비존재하는 머리카락·[두 개의] 달 등을 보는 비문증 환자들과 같지\n만, [실재하는] 대상은 전혀 없다’)”(Silk(2018) 31쪽)라고 함으로써 dper na(for example\n에 해당)와 bzhin(like에 해당) 사이의 호응 관계를 애매한(ambiguous) 것으로 만들고 있\n다. 별도의 논평이 없기 때문에 저 번역 배후에 놓인 편역자의 본래 의도는 알 수 없지만, 그\n의 영역은 전술한 티벳역의 문제점을 방치하는 것에 더해 다소 은폐하는 효과까지 낳기 때문\n에 좀 더 문제적이라고 할 수 있다."
+            },
+            {
+              "id": "kor-lee-page-196",
+              "label": "Printed page 187",
+              "locator": "PDF page 196 · printed page 187 · direct PDF text extraction",
+              "text": "do ||\n\n\n\n280281\n#187\n#\n 마지막 절 don gang yang med do에 해당하는 산스크리트 표현은 nārthaḥ kaścid\n280\nasti로 확인된다. Silk(2018) 30쪽-31쪽 참조.\n#\n 티벳역에는 게송과 저자 자신의 주석을 함께 번역한 것과 게송만 따로 모아 번역한 것 두\n281\n종류가 있는데, 여기서 후자에는 소위 제1송, 즉 “’di dag rnam par rig tsam nyid ||\nyod pa ma yin don snang phyir || dper na rab rib can dag gis || skra zla la\nsogs med mthong bzhin ||(‘이 [삼계에 속한 것들]은 오직 표상일 뿐이다. 존재하지 않\n는 것이 [존재하는 것처럼] 보이기 때문이다. 예를 들어 비문증 환자들이 머리카락·달 등을\n보는 것과 같이.)”이 등장한다. Silk(2018) 4쪽 참조.!\n제1송의 존재는 보디루찌 한역 및 빠라마르타의 한역에서도 확인된다. T1588_063c27-28\n및 T1589_070c27-28 참조.!\n반면에 게송-주석 합본의 티벳역 및 현장의 한역에는 제1송이 누락되어 있다. Silk(2018) 30\n쪽 및 T1590_074b27-c1 참조.!\n   이러한 문헌적 상위 현상에 대해 하라다 와소와 위르겐 하네더는 ‘게송-주석 합본이 선행\n했고, 나중에 게송만 뽑아 따로 유통하게 되었을 때 반론으로 구성된 제2송으로 논서를 시작\n하게 되어버리는 문제를 해결하기 위해 저 ‘제1송’을 산문주석의 내용에 바탕을 두고 덧붙인\n것이다’라는 동일한 결론을 내리고 있다. 原田 和宗(2003) 및 Hanneder(2007) 참조."
+            },
+            {
+              "id": "kor-lee-page-197",
+              "label": "Printed page 188",
+              "locator": "PDF page 197 · printed page 188 · direct PDF text extraction",
+              "text": "【1】 대승(*mahāyāna)에서는〖a〗 삼계〖b〗에 속한 것이 오직 표상〖c〗일 뿐\n(*vijñaptimātra)이라고 확립(*vy ava √sthā)하니, 경전에 “오, 승리자의 아들\n들이여, 삼계에 속한 것은 오직 마음일 뿐(*cittamātra)이다.”라고 나오기 때문\n이다. 마음[=심](*citta)·의(*manas)·식(*vijñāna)·표상(*vijñapti)은 동의어\n(*paryāya)에 해당한다.〖d〗 나아가 여기서 이 ‘마음’은 상응(*saṁprayoga)을\n수반한 것으로 의도된 것이다. ‘오직 -일 뿐(*mātra)’이라고 한 것은 대상\n(*artha)을 배제(*pratiṣeḍha)하기 위함이다.〖e〗 이 식은 대상인양 보이는 것\n(*arthapratibhāsa)으로서 발생하니, 예를 들어 비문증\n\n 환자(*taimirika)들\n282\n이 비존재하는 머리카락·[두 번째? 두 개의?]\n\n 달 등을 보지만 어떠한\n283\n(kaścid) 대상도 비존재하는 것과 마찬가지이다.〖f〗〖g〗!\n\n#188\n#\n 앤 맥도널드는 timira를 비문증(muscae volitantes, vitreous ﬂoaters)으로 추정한다.\n282\nMacDonald(2015) 2권 111쪽 228번 각주 참조.\n#\n 문제의 달이 ‘두 개의 달’인지 ‘두 번째 달’인지는 꽤나 미묘할 수 있는 해석의 포인트이\n283\n다. 그러나 본고에서는 이 문제에 깊게 개입하지 않을 것이다. 왜냐하면 이 문제는 디그나가\n에 있어서도 이견이 좁혀지지 않는 한편 바수반두에게서 이 문제를 확정할 수 있는 결정적\n대목이 발견되지 않기 때문이다. 관련 논의는 김성옥(2018) 참조."
+            },
+            {
+              "id": "kor-lee-page-198",
+              "label": "Printed page 189",
+              "locator": "PDF page 198 · printed page 189 · direct PDF text extraction",
+              "text": "【1】 〖a〗!\n‘대승에서는’이라는 표현의 원래 형태를 현재 비록 확인할 수는 없\n지만, 한역·티벳역본들이 공통되게 7격 형태인 mahāyāne(‘대승에서는’)를 상\n정하고 있는 것으로 보인다.\n\n 그런데 독특하게도 비닛따데바는 이 ‘대승에서\n284\n는’을 ‘대승을 얻게 하기 위하여’로 이해한다. 즉, 저자는 『이십론』이란 논서를\n통해 ‘삼계에 속한 것이 오직 표상일 뿐이다’라는 내용의 말하고자 하는 바\n(*abhidheya)를 확립하려는 목적(*prayojana)을 달성하며 이는 다시 교화대\n상들로 하여금 대승에서 설하는 유식의 진리를 이해하게 하려는 궁극적인 목\n적, 다시 말해 ‘목적의 목적(*prayojanasya prayojanam)’을 염두에 뒀다는\n것이다.\n\n 효도 가즈오가 지적했듯, 비닛따데바의 저 특이한 이해방식은 학술\n285\n서의 합목적성에 대한 당대의 진전된 요구를 반영한 결과이기도 하다. 즉, 온전\n한 논서라면 (1)말하고자 하는 내용, (2)목적, (3)궁극적 목적, 그리고 (4)전술\n한 삼자의 연관성이 구비되어야 한다는 형식적 기준에 부응하게끔 주석자가 『이\n십론』의 첫 문장을 재조직화한 것이다.\n\n\n286\n#189\n#\n Silk(2018) 151쪽 참조.\n284\n#\n 山口 益·野澤 靜證(1965) 16쪽-17쪽 참조.\n285\n#\n 효도 가즈오(2011) 82쪽 참조.!\n286\n   한편 다음 대목을 보면 적어도 이 ‘대승에서는’에 한해서는 다르마빨라 역시 비닛따데바와\n동일한 이해를 가지고 있었을 가능성이 있다.!\nT1591_077b27-78b01: 言大乘者。謂是菩提薩埵所行之路。及佛勝果。爲得此故。修唯識\n觀。…依大乘說。卽第七聲目其所爲。謂欲證得彼大乘理說唯識觀。(‘대승’이라고 하는 것은\n보살의 가야할 길이자 붓다의 탁월한 결과이다. 이 [결과로서의 대승]을 얻기 위해 유식관을\n수습한다. … ‘대승에서는’이라는 말은 곧 제7격의 표현으로서 그 목표하는 바를 지목하는\n것이다. 이를테면, 저 대승의 이치를 증득케 하려고 유식관을 말한 것이다.)"
+            },
+            {
+              "id": "kor-lee-page-199",
+              "label": "Printed page 190",
+              "locator": "PDF page 199 · printed page 190 · direct PDF text extraction",
+              "text": "한편 자은 기는 mahāyāne로 시작하는 『이십론』의 첫 문장을 다음 세\n가지 방식으로 이해한다.!\n\n지금 여기서 이야기되는 ‘安立大乘三界唯識’은 바로 종지를 수립하는 것이다. [여기에\n는] 대체로 세 가지 취지가 있으니, (1) 대승에서의 유식의 가르침을 확립하는 것이\n다. 여러 종파들이 붓다가 설한 바를 믿지 않기 때문에 가르침 및 이치를 자세히 인용\n하여 『성유식론』에서와 같이 이들이 해명하는 바를 비판한다. 추론[식]으로 말하자면,\n“우리는 대승이, 삼법인을 갖추는 한에서, 붓다가 설하신 바라고 말한다. [이치에] 부\n합하는 경전의 범주이기 때문이다. 『증일아함경』 등과 같이.”라고 한다. 지금 여기서\n이야기되는 ‘三界唯識’은 곧 표현(*abhidhāna)으로서의 유식의 가르침을 밝히는 것\n이다. (2) 대승에서 이야기되는 ‘삼계에 속한 것이 오직 표상일 뿐’이라는 이치를 확립\n하는 것이다. 여러 종파들이 마음 바깥의 대상영역이 존재한다고 이야기하기 때문에\n‘삼계에 속한 것이 오직 표상일 뿐’이라는 이치를 믿지 않으니 그래서 지금  [그 이치\n를] 성립시키는 것이다. 지금 ‘大乘三界唯識’이라고 한 것은 곧 내용(*abhidheya)으\n로서의 유식의 이치를 밝히는 것이다. (3) 여러 대승의 가르침에다가 유식의 이치까\n지 확립하는 것이다. 가르침과 이치에 대해 모두 믿지 않기 때문이다.\n\n\n287\n\n여기서 관건은 『이십론』의 첫 문장에 세 가지 독해의 가능성이 있다는 것 자체\n보다는 교법 자체의 권위의 문제와 그 내용의 진실성의 문제를 각기 ‘표현’과 ‘내\n#190\n#\n T1834_980a12-22: 今此所言。安立大乘三界唯識。卽立宗也。凡有三意。一者安立大\n287\n乘之中唯識之敎。諸宗不信佛所說故。廣引敎理。如成唯識。非此所明。比量云。我說大乘是\n佛所說。許具三法印契經攝故。如增一等。今此所言三界唯識。卽顯能詮唯識之敎。二者安立\n大乘中所說三界唯識理。諸宗說有心外境故。不信三界唯心之理。故今成也。今言大乘三界唯\n識。卽顯所詮唯識之理。三者安立諸大乘敎及唯識理。於敎理中俱不信故。"
+            },
+            {
+              "id": "kor-lee-page-200",
+              "label": "Printed page 191",
+              "locator": "PDF page 200 · printed page 191 · direct PDF text extraction",
+              "text": "용’이라는 개념으로 포착하는 것에 있는 것으로 보인다. 이를 통해 자은 기는 『이\n십론』을 대승불설론이라는 논쟁적 맥락에 위치시키고 있다. 『이십론』을 대승불\n설론의 맥락 위에서 읽자는 제안 자체는 물론 온당한 것이라고 할 수 있다. 그\n러나 현장의 번역 ‘安立大乘三界唯識’에서 ‘大乘’이 mahāyāne의 대역어라면,\n이 ‘大乘’을 ‘唯識’에 병행시키는 (3)은 물론 ‘大乘’이 ‘唯識’의 한정어라고 보는\n(1)과 (2) 역시 오독의 결과라고 할 수 있다.!\n\n본고는 이 ‘대승에서는’이란 표현을, 해당 절의 서술어 ‘확립(*vy ava\n√sthā)하니’라는 표현과 함께, 【6】의 반론을 예고하는 것으로 이해하고자 한\n다. 【6】의 대론자는 대승의 법무아, 즉 법은 본질을 결여한다는 주장을 문자 그\n대로 이해할 경우 ‘오직 표상일 뿐인 것’이란 표현이 적용되는 대상 역시 비존재\n에 불과하기에 여기 【1】에서처럼 ‘삼계에 속한 것이 오직 표상일 뿐이다’라는\n등의 명제를 개념화된 형태로 적극적으로 제시할 수 없다고 반문한다. 요컨대,\n대승에서는 어떠한 개념적 구축도 허용될 수 없다는 문제의식이 표출된 것이\n다.\n\n 그렇다면 여기 【1】의 첫 문장에서 논의의 범위를 ‘대승에서’로 한정하면\n288\n서 유식성의 ‘확립’을 거론한 것은 이후 【6】의 법무아에 대한 다른 이해를 유도\n하기 위한 하나의 복선이라고 할 수 있다.!\n\n【1】 〖b〗!\n‘삼계’라는 말은 욕계(kāmadhātu)·색계(rūpadhātu)·무색계\n(ārūpyadhātu)의 총칭이자, 불교의 세계관에서 윤회의 전 영역을 지칭하는 표\n#191\n#\n 【6】 〖b-1〗 참조.\n288"
+            },
+            {
+              "id": "kor-lee-page-201",
+              "label": "Printed page 192",
+              "locator": "PDF page 201 · printed page 192 · direct PDF text extraction",
+              "text": "현이다. 따라서 ‘삼계에 속한 것’은 윤회를 겪는 존재자 및 그에게 주어진 것 일\n반을 뜻한다. 그렇다면 ‘삼계에 속한 것이 오직 표상일 뿐이다’라는 유식성의 명\n제의 적용 범위는 윤회적 존재에 한정된다고 할 수 있으며, 윤회를 벗어난 존재\n는 일단 논의의 범위 밖이라고 할 수 있다. 실제로 『이십론』에 제시된 모든 유식\n성 논의는, 심지어 타심지의 경우마저도, 윤회적 존재에 초점이 맞춰져 있다.!\n\n【1】 〖c-1〗!\n‘표상’의 원어 vijñapti의 어형과 뜻은 우이 하쿠쥬 이래로 vi √jñā\n의 사역(causative) 이차활용에서 파생된 명사로서 ‘알리는 것’을 의미한다고\n간주되어 왔다.\n\n 이에 대해 이종철은 우이 하쿠쥬 식의 분석은 rnam par rig\n289\nbyed 및 有表 등으로 옮겨지는 vijñapti에만 타당할 뿐 rnam par rig pa 및\n了別 등으로 옮겨지는 vijñapti에는 적용될 수 없다고 본다. 이때 후자의\nvijñapti가 바로 『이십론』에서 거론되는 표상이다. 이에 그는 두 번째 유형의\nvijñapti의 가능한 어형으로서, Dhātupāṭha에 근거해, (1) vi √jñā에서 파생\n되었지만 사역의 의미가 없는 것(‘아는 것’)과 (2) vi √jñap에서 파생된 것(‘아\n는 것’) 두 가지를 제안하였다.\n\n 이종철의 두 대안 중 어느 것을 따르더라도\n290\n『이십론』에서의 vijñapti의 의미는 ‘아는 것’이 된다.!\n#192\n#\n 宇井 伯寿(1953b) 197쪽-198쪽 참조.\n289\n#\n 李鍾徹(2004) 참조.!\n290\n   이에 대한 이규완의 논평은 이규완(2017) 157쪽-162쪽 참조.!\n이규완의 이해는 이종철이 거부한 전통적 관점, 즉 두 유형의 vijñapti를 엄격히 구분하지 않\n는 관점으로 회귀한 것으로 보인다."
+            },
+            {
+              "id": "kor-lee-page-202",
+              "label": "Printed page 193",
+              "locator": "PDF page 202 · printed page 193 · direct PDF text extraction",
+              "text": "【1】 〖c-2〗!\n이 ‘아는 것’으로서의 vijñapti에 대해 슈미트하우젠은 ‘표상\n(representation, Vorstellung)’이라는 번역어를 채택한다. 그는 그 이유로\n“vijñapti가 인지작용에 대해 사용된 것인지 아니면 그 [인지작용] 안에 나타난\n내용들에 대해 사용된 것인지에 대해 이 [‘표상’이라는 역어]가 애매하기\n(noncommittal) 때문이며, 나아가 잠재의식적인 심적 과정들 내지 그것들의\n내용들도 배제하지 않기 때문”(Schmithausen(2007) 98쪽 각주2번)이라고\n밝힌다. 이에 대해 홀처럼 ‘표상’이라는 단어가 “무언가의 표상, 아마도 외적인\n대상 혹은 지시체를 함축하며 이는 ‘표상주의적’ 인식론을 시사한\n다”(Hall(1986) 14쪽)는 이유로 거부할 수도 있을 것이다. 혹은 다시 슈미트하\n우젠처럼 “저 ‘표상’이라는 용어를 사용하면서 외적인 대상[의 존재성]에 대해\n시사하려는 것은 물론 아니다”(Schmithausen(1987) 384쪽 미주628a-1번)\n라고 응수할 수도 있을 것이다.\n\n\n291\n\n한편 ‘표상’에 반대한 홀은 vijñapti가 “소박하게 실재론적 의미로 받아들\n이거나 소박하게 관념론적 의미로 받아들여서는 안 된다는 점을 명심하는 한에\n#193\n#\n 이에 대해 켈너·테이버는 『이십론』 내에서 vijñapti가 주로 인지작용을 가리키며 잠재의\n291\n식적 측면은 거론되지 않다는 이유에서 ‘인지(cognition)’로 번역한다.\nKellner&Taber(2014) 735쪽 각주90번 참조.!\n   이에 반해 시더리츠는 vijñapti의 역어로 ‘인상(impression)’을 선택하면서도 “‘오직 인상\n일 뿐’의 ‘인상’은 표상주의자들이 표상이라고 부르는 것, 즉 우리의 감각적 인지들의 지향적\n대상들에 해당하는 심적 이미지와 같다”(Siderits(2007) 148쪽)고 하여 작용적 측면보다는\n대상적 측면에 초점을 둔다. 물론 왜 그가 굳이 흄을 연상시키는 ‘인상’이라는 역어를 선택했\n는지는 여전히 불분명하다."
+            },
+            {
+              "id": "kor-lee-page-203",
+              "label": "Printed page 194",
+              "locator": "PDF page 203 · printed page 194 · direct PDF text extraction",
+              "text": "서 의식의 ‘현상(phenomenon)’, 의식에 ‘현현한 것(manifestation)’, 혹은 ‘지\n각상(percept)’을 나타낸다”고 말한다. 이 제안은 『이십론』을 비관념론적인 것\n으로 읽으려는 자신의 문제의식에서 비롯된 것으로 보이지만 이를 증명할 수\n있는 별도의 근거는 제시하지 않는다. 심지어 대안적인 번역어를 제공하려 한\n것인지도 의문이다. 왜냐하면, 그의 저 진술이 vijñapti의 새로운 번역어를 제\n시한 것이라고 한다면, 【1】의 뒷부분에서 ‘이 식은 대상인양 보이는 것\n(*arthapratibhāsa)으로서 발생하니’라고 하는 대목이 동어반복적인 사소한\n진술로 전락해버리기 때문이다. 이 문제는 ‘현상’이나 ‘현현’이 ‘-인양 보이는 것’\n과 의미상 너무 근접하다는 점에 기인한다. 따라서 vijñapti에 적절한 번역어를\n할당하는 문제에 한해 홀은 실패했거나 아니면 애초에 무관했다고 할 수 있다.\n\n\n292\n\n본고는 슈미트하우젠에 따라 ‘표상’이라는 번역어를 채택한다. 단, ‘표상’\n에 대한 홀의 우려에 대한 슈미트하우젠의 응답은 좀 더 음미할 필요가 있다고\n본다. 애초에 홀의 문제제기는 ‘표상’이 표상주의적 실재론을 시사한다는 것이\n었다. 이것을 슈미트하우젠은 실재론 일반의 문제로 확장해서 응답했다. 즉, ‘표\n상’이 꼭 표상주의적 실재론만 시사하는 것이 아니라 소박 실재론도 함축할 수\n있다는 것이다. 슈미트하우젠의 이러한 일반화는, 정확한 의도는 알 수 없지만,\n그 자체로 홀의 우려를 와해시킨다. 아울러 표상주의적 실재론이 표상이라는\n용어를 독점할 권리가 없다는 점이 인정되면, ‘표상’이란 용어로 자신이 외적인\n#194\n#\n 한편 편역자 씰크는 특별한 설명 없이 vijñapti를 ‘현현(manifestation)’으로 옮긴다.\n292\nSilk(2018) 31쪽 참조.!\n그가 홀의 제안에 따른 것인지 여부는 알 수 없지만, 홀에 대한 본고의 논평으로부터 더욱 자\n유로울 수 없다."
+            },
+            {
+              "id": "kor-lee-page-204",
+              "label": "Printed page 195",
+              "locator": "PDF page 204 · printed page 195 · direct PDF text extraction",
+              "text": "대상을 의도하지 않았다는 식으로 번역자의 의도를 강조하는 슈미트하우젠의\n응답도 보다 적절한 것이 된다. 번역은 본성상 취사선택이 불가피하며, vijñapti\n에 대한 홀의 ‘대안적 번역어’들처럼 명백한 오류가 없는 한 그리고 슈미트하우\n젠 자신이 vijñapti의 작용적 측면과 내용적 측면 양자를 유가행파의 사상사 일\n반의 맥락에서 고려했던 것\n\n과 같이 번역자가 자신의 해석적 고민이 적절히\n293\n개진되는 한, 번역자의 권위와 양해는 최우선적으로 존중되어야 할 것이기 때\n문이다.!\n\n【1】 〖c-3〗!\n이와 같은 표상은 ‘삼계에 속한 것이 (혹은 존재 일반이) 단지 표\n상에 불과하다(vijñaptimātra)’는 유식성 명제가 진지하게 제기되면서부터 비\n로소 비중 있게 사용되기 시작한 것으로 보인다. 다시 말해 전통적 교학의 관점\n에서 보자면 표상은 그다지 중요한 개념이 아니라고 할 수 있다. 이십론주의 또\n다른 저작  『구사론』에 따르면, 표상은 식(vijñāna)의 정의항으로서 단지 세 차\n례 등장할 뿐이다.!\n\n식은 [대상]에 대한 표상이다.!\n각각의 대상에 대한 표상, 즉 지각이 ‘식온(=식의 무더기)’라고 이야기된다.\n\n\n294\n\n#195\n#\n Schmithausen(2014) 2부 참조.\n293\n#\n Pradhan(1967) 11쪽: vijñānaṁ prati vijñaptiḥ |!\n294\nviṣayaṁ viṣayaṁ prati vijñaptir upalabdhir vijñānaskandha ity ucyate |"
+            },
+            {
+              "id": "kor-lee-page-205",
+              "label": "Printed page 196",
+              "locator": "PDF page 205 · printed page 196 · direct PDF text extraction",
+              "text": "사물에 대한 표상이 식이다.\n\n\n295\n\n[앞서] “식은 [대상]에 대한 표상이다. 또 그것이 의처이다.”라고 하였다.\n\n\n296\n\n이렇게 식의 설명항 역할을 맡는 표상 개념의 지리적·역사적 한계는 ‘범-설일체\n유부적’이라고 말할 수 있을 것이다. 왜냐하면 『대비바사론』과 같은 오래된 설\n일체유부 문헌은 물론 『유가사지론』과 같이 설일체유부 교학의 언어를 채택하\n는 전적에서 동일한 용례를 발견할 수 있기 때문이다.!\n\n자상에 대한 작의(*svalakṣaṇamanaskāra)는 ‘색(*rūpa)이 변화(*rūpaṇīya) 및\n장애(*rūpya)를 특징으로 하는 것이고, 수(*vedanā)가 경험(*anubhava)을 특징으\n로 하는 것이며, 행(*saṁskāra)[들]이 작위(*abhisaṁskāra)를 특징으로 하는 것이\n고, 식(*vijñāna)이 표상(*vijñapti)을 특징으로 하는 것이라고 생각하는 것이다.\n\n\n297\n\n대상영역(*viṣaya)에 대한 표상이 식이다.\n\n\n298\n\n안식은 어떤 것인가? 눈을 토대로 한, 색에 대한 표상이다.\n\n\n299\n#196\n#\n Pradhan(1967) 133쪽: vastu prati vijñaptir vijñānam |\n295\n#\n Pradhan(1967) 150쪽: vijñānaṁ prati vijñaptir manaāyatanaṁ ca tad iti |\n296\n#\n T1545_053a14-15: 自相作意者。思惟色是變礙相。受是領納相。想是取像相。行是造\n297\n作相。識是了別相。\n#\n T1545_118c19: 了別境者是識。\n298\n#\n Bhattacharya(1957) 4쪽: cakṣurvijñānaṁ katamat | yā cakṣurāśrayā\n299\nrūpaprativijñaptiḥ ||"
+            },
+            {
+              "id": "kor-lee-page-206",
+              "label": "Printed page 197",
+              "locator": "PDF page 206 · printed page 197 · direct PDF text extraction",
+              "text": "식은 대상영역에 대한 표상으로 특징지워지는 것이다.\n\n\n300\n\n문제의 표상 개념을 북방전승에 한정하는 또 다른 이유는 남방전승에서는 식의\n동의어 내지 정의항으로 간주할 수 있는 viññatti(vijñapti)가 발견되지 않기 때\n문이다.\n\n\n301\n\n【1】 〖d〗!\n심·의·식이 동의어라는 것은 대체로 상식에 속하며 일찍이 레비가\n지적한 것처럼 『구사론』에도 명시되어 있다.\n\n 물론 『이십론』에서 저 삼자를 동\n302\n일시하는 것은 김성철의 논평대로 하나의 선택으로 간주해야 할 것이다. 왜냐\n하면 『섭대승론』 「소지의분」에서는 심·의·식 삼자가 동일한 것이 아니라 각각\n알라야식·염오의·[안·이·비·설·신·의]식을 지칭하는 것으로 이해하기 때문이다.\n물론 이러한 해석적 선택은 유심(cittamātra)과 유식(vijñaptimātra)을 동일시\n하기 위한 사전작업의 일환이다. 표상(vijñapti)이 심·의·식 삼자와 동의어 관계\n에 있다는 명확한 선언은 주지하다시피 『이십론』이 처음이며, 『십지경』의 삼계\n유심 명제를 이십론주가 전유(appropriation)하는 데에 이 해석적 조작이 핵심\n#197\n#\n D4035_182a6: rnam par shes pa ni yul so sor rnam par rig pa’i mtshan nyid\n300\ngang yin pa’o ||\n#\n PTS 618쪽 참조.\n301\n#\n Silk(2018) 151쪽 참조.\n302"
+            },
+            {
+              "id": "kor-lee-page-207",
+              "label": "Printed page 198",
+              "locator": "PDF page 207 · printed page 198 · direct PDF text extraction",
+              "text": "적이라고 할 수 있다. 물론 이러한 경전 해석은 단지 자의적인 것에 불과하다는\n비판이 바비베까를 위시로 하여 중관학파로부터 제기된 바 있다.\n\n\n303\n\n【1】 〖e〗!\n이 대목과 관련해 김성철은 “‘唯心’의 ‘唯’는 심소가 아니라 외계대\n상을 배제하는 것”(김성철(2016) 276쪽)이며 “이 구절은 심소를 부정하는 경\n량부를 염두에 둔 것으로 보인다”(김성철(2016) 277쪽 각주6번)고 설명한다.\n‘오직 마음일 뿐(*cittamātra)’이라는 표현을 통해 대상이 아니라 심소를 부정\n할 가능성을 상정하는 것은 아스바바바로 소급된다.\n\n 그리고, 비록 그 전거를\n304\n밝히지 않았지만, 다르마빨라의 주석 및 현장의 『이십론』 번역에서도 동일한 생\n각이 발견된다.\n\n 그러나 다른 번역가들이나 주석가들은 이 가능성을 고려하\n305\n지 않는 것 같기에 이 후자 쪽이 『이십론』의 본의에 가까울 것으로 보인다. 한편\n해당 대목이 경량부를 고려한 것이라는 추정은 자은 기의 『이십론술기』에서도\n#198\n#\n 효도 가즈오(2011) 84쪽-87쪽 및 김성철(2016) 274쪽-281쪽 참조.\n303\n#\n 김성철(2016) 284쪽-285쪽 참조.\n304\n#\n T1591_078c08-10: 若如斯解。由同生法及所緣境。俱是離心別有其體。一便遮止一乃\n305\n見留。豈得事無由緒而空談自愛。(이러한 이해대로라면, [심과] 동시발생하는 [심소]법 및 인\n식대상은 모두 심을 떠나 별도로 그 자체가 있는데, [‘오직 -일 뿐’이라는 표현으로] 하나는\n배제되고 하나는 남겨지니, 사태 차원에 단서가 없음에도 공연한 말로 자신[의 견해]를 아끼\n는가?)!\nT1590_074b28: 此中說心意兼心所。唯遮外境不遣相應。(여기서 ‘심’을 말한 것은 심소까\n지 포괄하는 것을 의도한 것이다. ‘唯’는 외적인 대상영역을 배제하는 것이지, 상응[관계에\n있는 심소]를 배제한 것이 아니다.)"
+            },
+            {
+              "id": "kor-lee-page-208",
+              "label": "Printed page 199",
+              "locator": "PDF page 208 · printed page 199 · direct PDF text extraction",
+              "text": "발견된다.\n\n 그러나 경량부에서 심소를 심과 별개의 것이 아닌 특정 양태(viśe\n306\nṣa)로 간주했다는 사실이 ‘유심’ 내지 ‘유식’이라는 표현의 적절성에 문제제기\n를 하는 것과 어떠한 함축관계가 있는 것인지 의문이다. 이에 본고는 이십론주\n가 이 구절을 발화할 때 경량부 같은 특정 학파를 고려했다고 생각하지 않는다.!\n\n【1】 〖f〗!\n말미에서 비문증 환자의 병적인 경험에 유비를 취해서 우리들의\n소위 ‘정상적인 인식’도 “대상인양 보이는 것(*arthapratibhāsa)으로서 발생”\n한다고 하였다. 이는 ‘대상 x로 나타나는 마음 y가 발생한다’는 『해심밀경』의 정\n식화를 그대로 계승한 것이다.\n\n 인도불교전통에서 이 정식화 자체에 대한 반\n307\n대를 제기하기는 쉽지 않을 것이다. 왜냐하면 우리가 흔히 전제하는 주객의 구\n도가 세속적인, 즉 철저한 분석이 동반되지 않은 이해의 소산임을 밝히는 맥락\n에서 이 정식화가 제기되기 때문이다. 일단 이 정식화를 받아들인다고 하면, 그\n리고 현상적인 차원에 서서 모든 선입견을 배제하고 보이는 대로만 판단한다\n#199\n#\n T1834_981c23: 經部等問。旣言唯識。應無心所不。說唯故。(경량부 등은 “이미 ‘오직\n306\n표상일 뿐’이라고 말했는데 심소는 없어야 할 것 아닌가? ‘오직 -일 뿐’이라고 말했기 때문이\n다.”라고 말한다.)\n#\n Lamotte(1935) 91쪽: bka’ stal ba | byams pa de la chos gang yang chos\n307\ngang la ’ang rtog par mi byed mod kyi | ’on kyang de ltar skyes pa’i sems gang\nyin pa de ni de ltar snang ngo || ([세존께서] 말씀하셨다. “미륵이여, 여기서 어떤 법 x\n가 어떤 법 y에 대해 보지 않으며 그럼에도 저와 같이 발생된 마음은 저와 같이 현현한 것일\n뿐이다.”)!\nT0676_698b04-b05: 善男子。此中無有少法能見少法。然卽此心如是生時。卽有如是影像\n顯現。"
+            },
+            {
+              "id": "kor-lee-page-209",
+              "label": "Printed page 200",
+              "locator": "PDF page 209 · printed page 200 · direct PDF text extraction",
+              "text": "면, 눈병에서 걸려 헛것이 보이는 경우와 그렇지 않은 경우를 분간할 방법은 원\n천적으로 없다. 물론 이것이 곧바로 모든 것이 오직 표상에 불과하다는 주장으\n로 이어질 수는 없을 것이다.\n\n\n308\n\n【1】 〖g〗!\n이 【1】은 『이십론』에서 논증하려는 유식성의 명제를 표명하면서\n곧바로 『십지경』의 삼계유심구를 교증으로 제시하고 이에 대한 유식적 주석을\n제공하고 있다. 그런데, 김성철이 잘 지적했듯이, 『십지경』의 해당 구절에 대한\n바수반두의 태도는 『십지경론』·『섭대승론석』·『이십론』에서 모두 다르다. 그는\n이 현상을 바수반두의 동일성 여부를 의심했던 프라우발너의 오래된 학설에 기\n대 해명하려 한다.\n\n 물론 바수반두가 한 사람이라고 하더라도 저 태도들의 차\n309\n이는 저작의 목적이라든가 장르적 한계 등을 통해 설명될 수는 있을 것이다. 이\n러한 이유로 본고는 바수반두의 동일성 여부를 본성상 풀릴 수 없는 문제로 간\n주한다. 다만 『섭대승론석』 등의 저작군과 『이십론』 등의 저작군이 여러 측면에\n서 구별된다는 프라우발너의 통찰 자체는 바수반두 및 유가행파를 연구하는 학\n#200\n#\n 시더리츠는 이 대목이 ‘선결문제 요구의 오류(Petitio Principii)’로 받아들여질 수 있다\n308\n고 본다. Siderits(2007) 150쪽 참조.!\n물론 그의 논평은 문제의 제1송의 존재를 전제하는 판본에 따른 것이다. Siderits(2007)\n149쪽 및 본고 10번 각주 참조.\n#\n 김성철(2016) 291쪽 각주37번 및 292쪽 참조.\n309"
+            },
+            {
+              "id": "kor-lee-page-210",
+              "label": "Printed page 201",
+              "locator": "PDF page 210 · printed page 201 · direct PDF text extraction",
+              "text": "인들한테 해석적 풍부함에 기대 역사적 엄밀성을 저버리지 않게 해주는 교훈으\n로 남아 있기를 기대한다.\n\n\n310\n#201\n#\n 이 바수반두 동일성 문제에 대해 비록 대립되는 견해를 지니고 있지만 유보적인 태도를\n310\n앞세우는 호리우치 도시오와 오다케 스스무의 사례가 좋은 본보기가 되는 것으로 보인다. 김\n성철 옮김(2014) 117쪽 및 大竹 晋校(2005) 39쪽-40쪽 참조.!\n한편 최근 이 문제를 취급했던 골드에 대한 프랑코의 논평 또한 유용하다. Franco(2017)\n참조."
+            },
+            {
+              "id": "kor-lee-page-211",
+              "label": "Printed page 202",
+              "locator": "PDF page 211 · printed page 202 · direct PDF text extraction",
+              "text": "Silk(2018) 32쪽-35쪽: ’dir ’di skad ces brgal te |!\nna deśakālaniyamaḥ santānāniyamo na [ca] |!\nna ca kṛtyakriyā yuktā vijñaptir yadi nārthataḥ || 2 ||!\nji skad du bstan par ’gyur zhe na | gal te gzugs la sogs pa’i don med\npar gzugs la sogs pa’i rnam par rig pa ’byung ste gzugs la sogs pa’i\ndon las ma yin na | ci’i phyir yul la lar ’byung la thams cad na ma yin\n| yul de nyid na yang res ’ga’ ’byung la thams cad du ma yin | yul\ndang dus de na ’khod pa thams cad kyi sems la nges pa med pa\n’byung la ’ga’ tsam la ma yin | ji ltar rab rib can nyid kyi sems la skra\nla sogs pa snang gi | gzhan dag la ni ma yin || ci’i phyir gang rab rib\ncan gyis mthong ba’i skra dang | sbrang bu la sogs pas skra la sogs\npa’i bya ba mi byed la | de ma yin pa gzhan dag gis ni byed | rmi lam\nna mthong ba’i bza’ ba dang btung ba dang bgo ba dang dug dang\nmtshon la sogs pas zas dang skom la sogs pa’i bya ba mi byed la |\nde ma yin pa gzhan dag gis ni byed | dri za’i grong khyer yod pa ma\nyin pas grong khyer gyi bya ba mi byed la | de ma yin pa gzhan dag\ngis ni byed | ’di dag don med par med du ’dra na yul dang dus nges\npa dang | sems nges pa med pa dang | bya ba byed pa ’di dag\nkyang mi rung ngo zhe na\n\n\n311\n#202\n#\n 마지막 절 nges pa dang sems nges pa med pa dang bya ba byed pa ’di dag\n311\nkyang mi rung ngo에 해당하는 산스크리트 표현은 -niyamaḥ santānāniyamaḥ\nkṛtyakriyā ca na yujyate로 확인된다. Silk(2018) 34쪽-35쪽 참조."
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-02",
+          "label": "Argument section 2 · verse 2",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-212",
+              "label": "Printed page 203",
+              "locator": "PDF page 212 · printed page 203 · direct PDF text extraction",
+              "text": "【2】 이에 대해 이런 말로 반박된다.!\n[대론자:] 공간·시간의 한정〖a〗이 [타당하지] 않고, 상속에의 비한정〖b〗이 [타당\n하지] 않으며, 기대 효과의 발휘〖c〗가 타당하지 않다. 만약 표상이 대상으로부터\n[발생한 것이] 아니라고 한다면. 〖제2송〗!\n어떻게 이야기된 것이냐면, 만약 색 등의 대상이 없이 색 등에 대한 표상이 발\n생한 것이지, 색 등의 대상으로부터 [색 등에 대한 표상이 발생한 것이] 아니라\n고 하면, 왜 특정 장소에서만 발생하지 모든 [장소]에서 [발생하지] 않고, 바로\n그 장소에서도 특정 시간에만 발생하지 모든 [시간]에 [발생하지] 않으며, 그 장\n소 및 때에 위치한 모든 중생들에게 비한정적인 [내용의 표상]이 발생하지 일부\n[의 중생들]에게만 [발생하지] 않는가? 예를 들어 바로 저 비문증 환자들의 마\n음에는 머리카락 등이 나타나지만 나머지들에게는 [나타나지] 않는 것과 같이.\n〖d〗 왜 비문증 환자들이 보는 머리카락과 벌 등은 머리카락 등에의 기대 효과를\n발휘하지 않지만 저 [비문증 환자가] 아닌 다른 이들에게는 [기대 효과를] 발휘\n하고, 꿈 속에 나타나는 음식·의복·독·무기 등은 먹고 마시는 등의 기대 효과〖e〗\n를 발휘하지 않지만 저 [꿈을 꾸지 않는] 다른 이들에게는 [기대 효과를] 발휘하\n는가? 존재하지 않는 간달바의 성은 성의 기대 효과를 발휘하지 않지만 저 [간\n달바의 성이] 아닌 다른 [성]들은 [기대 효과를] 발휘한다. 이들 [색 등에 대한 표\n상]이 대상이 없이 [발생하여 대상이 비문증 환자에게 나타나는 머리카락 등의]\n비존재와 유사하다면〖f〗, 공간·시간의 한정성, 상속에의 비한정성, 기대 효과의\n발휘가 타당하지 않을 것이다.〖g〗\n#203"
+            },
+            {
+              "id": "kor-lee-page-213",
+              "label": "Printed page 204",
+              "locator": "PDF page 213 · printed page 204 · direct PDF text extraction",
+              "text": "【2】 〖a-1〗!\n‘한정(niyama)’은 『이십론』에서 ‘원인에 따른 결과의 규정’이라는\n고정된 의미로 사용되며, 이곳 【2】 외에도 【3】과 【12】에서 등장한다. 이러한 용\n례는 『구사론』에서도 다수 확인된다. 나아가 『보살지』 「역종성품」에서 ‘다양한\n이질적인 것에 있어 차별적인 원인이 되는 것(nānāvijātīye vibhinnakāraṇ\natva)’으로 규정되는 정별인(pratiniyamahetu)과 같은 사례를 볼 때 아마도\n보다 포괄적이면서 오래된 기원을 가졌으리라 추측된다.\n\n 그러나 원인의 규\n312\n정성에 주목하는 「역종성품」의 용례와 달리 바수반두는 이 ‘한정’이라는 개념을\n사용할 때 일관되게 결과적 양상에 초점을 맞춘다. 일례로 『구사론』 「분별세품」\n의 다음 용례를 들 수 있다.!\n\n[대론자:] 싹 등에 대한 이 종자 등의 역량은 무엇인가? 저 [종자 등을 구성하던] 극미\n들을 [싹 등의 형태로] 유도하는 것을 제외하면 어떤 것도 없다. [바수반두:] 또 무슨\n까닭에 그들은 이처럼 주장하는가? [대론자:] 왜냐하면 이질적인 것으부터의 발생이\n타당하지 않기 때문이다. [바수반두:] 왜 타당하지 않은가? [대론자:] 왜냐하면 [결과\n의] 비한정 때문이다. [바수반두:] [종자 등의] 능력에 따른 [결과의] 한정 때문에 이와\n같이 되지는 않을 것이다. [각각 북 등 및 불이라는 이질적인 원인으로부터] 소리 및\n익힘이 생겨나는 것과 같이.\n\n\n313\n\n#204\n#\n 안성두 역주(2015) 140쪽-141쪽 참조.\n312\n#\n Pradhan(1967) 189쪽: kim idaṁ bījādīnām aṅkurādiṣu sāmarthyam | na kiñ\n313\ncid anyatra tatparamāṇūpasarpaṇāt | kiṁ punaḥ kāraṇaṁ ta evam icchanti | na\nhi vijātīyāt saṁbhavo yukta iti | kasmān na yuktaḥ | aniyamo hi syāt |\nśaktiniyamān naivaṁ bhaviṣyati | śabdapākajotpattivat |"
+            },
+            {
+              "id": "kor-lee-page-214",
+              "label": "Printed page 205",
+              "locator": "PDF page 214 · printed page 205 · direct PDF text extraction",
+              "text": "야쇼미뜨라에 따르면, 대론자가 우려하는 ‘이질적인 것으부터의 발생’의 사례는\n‘[짚이 아닌] 실 등에서도 멍석이 생겨나는 것’이다.\n\n\n314\n\n이러한 결과적 측면에 대비되어 ‘결과에 대한 원인의 작용’이라는 의미로\n『이십론』에서 일관되게 사용되는 개념은 바로 ‘영향력(ādhipatya 혹은\nadhipatitva)’이며, 그 용례가 【3】, 【12】, 【14】에서 확인된다. 이 개념에 대한\n보다 상세한 설명은 【3】 〖c〗에 있다.!\n\n한편 【12】를 보면 ‘한정’이라는 개념이 교육적 맥락에서 사용되고 있는\n데 여기서 이 개념의 고전적인 의미의 흔적을 발견할 수 있다. 여기서 고전적인\n의미란, 스승의 교법에 따라 수행하여 특정한 인격적 유형 내지 정신적 단계를\n‘확정적으로 획득한 상태’를 의미한다. 『구사론』에서는 이 좁은 의미의 한정에\n‘niyāma’라는 표현을 배당하고 보다 일반적인 차원의 한정은 ‘niyama’를 배당\n하여 양자를 구별하고 있다.!\n\n【2】 〖a-2〗!\n치즈코 요시미즈는 저 ‘공간·시간의 한정(deśakālaniyama)’이\n라는 표현이 『구사론』의 제3장 「세품」에서도 발견된다고 보고한다.\n\n\n315\n\n#205\n#\n Wogihara(1936) 340쪽: tantvādibhyo ’pi kaṭādyutpattiḥ |\n314\n#\n Kellner etc.(2007) 1054쪽-1060쪽 참조.\n315"
+            },
+            {
+              "id": "kor-lee-page-215",
+              "label": "Printed page 206",
+              "locator": "PDF page 215 · printed page 206 · direct PDF text extraction",
+              "text": "싹 등에 대한 종자 등의 역량(sāmarthya)이 (ㄱ)장소와 때에 따른 한정\n(deśakālapratiniyama)으로부터\n\n 경험되고 또 익힘 등에 대한 불 등의 [역량이\n316\n장소와 때에 따른 한정으로부터 경험된다]는 점에서 원인 없는 생성은 없다. (ㄴ)영원\n한 원인이 존재한다는 주장은 바로 앞에서\n\n 기각하였다.\n\n\n317\n318\n\n왜냐하면, 만일 이슈바라(Īśvara)나 혹은 다른 [뿌루샤(puruṣa) 내지 원질\n(pradhāna) 같은 것]이 단적으로 단일한 원인이라고 한다면, 온 우주가 (ㄷ)동시에\n생겨나야 할 것이다. 그러나 존재들은 (ㄹ)순서에 따라 발생하는 것으로 경험된다.\n\n\n319\n#206\n#\n 치즈코 요시미즈는 이 5격 표현을 ‘시공간상의 한정을 통해(through spatiotemporal\n316\nrestriction)’라고 옮기는 한편 이 한정의 작용을 종자에 귀속한다. 각각 Kellner\netc.(2007) 1058쪽 및 1059쪽 참조.!\n   그러나 문제의 ‘한정’은 여기서 수동적인 의미로 이해되며 따라서 싹에 귀속해야 할 것이\n다. 그러면 ‘~을 통해’라는 비록 불가능하지는 않지만 매우 어색한 번역을 피할 수 있을 것이\n다. 그리고 무엇보다도 본고처럼 저 한정을 결과에 귀속해야만 『이십론』과의 유비가 가능해\n질 것이다. 야쇼미뜨라의 주석 또한 본고의 이해를 뒷받침한다.!\nWogihara(1936) 284쪽: kasmāt | deśakālapratiniyamāt | deśakālayos tu\npratiniyamāt | tatra deśapratiniyamo bījādisaṁbaddha eva deśa utpatteḥ |\nkālapratiniyamo bījānantaram utpatteḥ | (무엇 때문인가? 장소와 때에 따른 한정 때문\n이다. 즉, 장소와 때 양자에 있어 한정되기 때문이다. 여기서 장소의 한정은 종자 등이 위치\n한 바로 그 장소에 [싹이] 발생하기 때문이다. 때의 한정은 종자[가 존재했던 순간] 직후에 [싹\n이] 발생하기 때문이다.\n#\n Pradhan(1967) 101쪽-102쪽 참조.\n317\n#\n Pradhan(1967) 130쪽-131쪽: dṛṣṭaṁ cāṅkurādīṣu bījādīnāṁ sāmarthyaṁ\n318\n(ㄱ)deśakālapratiniyamād agnyādīnāṁ ca pākajādiṣv iti nāsti nirhetukaḥ\nprādurbhāvaḥ | (ㄴ)nityakāraṇāstitvavādaś ca prāg eva paryudastaḥ |\n#\n Pradhan(1967) 101쪽: yadi hy ekam eva kāraṇam īśvaraḥ syād anyad vā\n319\n(ㄷ)yugapat sarveṇa jagatā bhavitavyaṁ syāt | dṛśyate ca bhāvānāṁ\n(ㄹ)kramasaṁbhavaḥ"
+            },
+            {
+              "id": "kor-lee-page-216",
+              "label": "Printed page 207",
+              "locator": "PDF page 216 · printed page 207 · direct PDF text extraction",
+              "text": "우선 (ㄱ)을 보면 표현의 일치가 곧바로 확인된다. 한편 (ㄴ)은 두 번째 인용문\n의 내용을 전제하고 있는데, 거기서의 (ㄷ)의 동시적 발생과 (ㄹ)의 순서에 따른\n발생은 각각 『이십론』 상의 병적인 지각 경험과 정상적인 지각 경험에 정확히\n대응한다.!\n\n혹자는 『이십론』의 한정과 『구사론』의 한정이 정확히 일치하지 않는다고\n지적할 수 있을 것이다. 왜냐하면 (ㄱ)에서 의도하는 한정성은 원인과 결과의\n근접성, 즉, 원인이 위치한 시공간적 좌표 바로 그곳에 해당 원인의 결과가 위\n치한다는 것이기 때문이다. 여기서 결과는 물론 그 원인 역시 원칙적으로 직접\n경험될 수 있는 것이다.\n\n 따라서 『이십론』에 나타난 시공간상의 한정과는 내\n320\n용이 정확히 일치하지는 않는다. 왜냐하면 『이십론』의 경우 원인에 해당하는 인\n식 독립적인 대상이 원리상 직접 경험될 수 없는 것이기 때문이다. 이러한 지적\n자체는 타당하나, 그렇다고 해서 치즈코 요시미즈의 저 발견이 곧바로 무의미\n해지는 것 역시 아니다.!\n#207\n#\n 혹자는 첫 번째 인용문의 ‘역량(sāmarthya)’이란 표현에 주목하여 『구사론』의 원인 역\n320\n시 『이십론』의 경우처럼 직접 경험될 수 없는 것이라고 주장할 수도 있다. 이 경우 『구사론』\n과 『이십론』은 이 ‘deśakāla(prati)niyama’라는 표현만 공유하는 것이 아니라 그 배후의 아\n이디어까지 공유하는 셈이다. 꽤 정교한 지적이기는 하지만 적어도 『구사론』의 논의 맥락에\n서는 문제의 원인이 번뇌 및 업이기에 통속적인 의미에서 비가시적인 것이지 원리적인 차원\n에서 비가시적인 것이라고 할 수는 없다."
+            },
+            {
+              "id": "kor-lee-page-217",
+              "label": "Printed page 208",
+              "locator": "PDF page 217 · printed page 208 · direct PDF text extraction",
+              "text": "또 혹자는 치즈코 요시미즈가 발견한 저 대목이 바수반두에게 한정할 수\n없는 보다 일반적인 이해를 반영하고 있을 가능성을 제기할 수도 있다.\n\n 앞서\n321\n말했듯, 두 문헌 사이의 연속성을 주장하려면, 이것이 『구사론』 이외의 문헌들\n도 검토해야 한다. 그런데 위의 두 인용문에 대응하는 『순정리론』에서의 상가바\n드라의 발화를 바수반두의 것과 비교해 보면, 그녀의 소견이 옳다는 것이 간접\n적으로 정당화된다.!\n\n[원인 없는 생성은] 경험과 배치된다. 이 때문에 원인 없이 발생하는 법은 확정적으로\n없는 것이다. 그리고 원인이 되는 여하간의 단일하고 영원한 것은 없으니, 이슈바라\n를 논파할 때 이미 자세히 배제했었다.\n\n\n322\n\n이를테면 온 우주가 만약 이슈바라 등의 단일한 원인에서 생겨난 것이라면, 모든 것\n은 동시에 생겨나야 하며 순서에 따라 발생하지 않아야 한다. [이슈바라 등의] 원인이\n지금 존재하기 때문이다. [이 경우] 어떤 것이 동시에 생겨나는 것을 방해한단 말인\n가? [그러나] 모든 것을 순서에 따라 발생하는 것으로 경험되기 때문에, 단적으로 단\n일한 원인으로부터 생겨나는 것이 아님을 알 수 있다.\n\n\n323\n#208\n#\n 그녀는 『구사론』에서 확인할 수 있는 시공간의 한정 및 기대 효과의 발휘가 이후 다르마\n321\n끼르띠에게로 이어지는 ‘경량부적인’ 사고라고 말할 뿐이어서 이러한 반론에 특히 취약하다.\n아울러 본고 각주 138번에서 이야기했듯이, ‘경량부’가 무엇을 지칭하는 표현인지도 여전히\n문제가 된다.\n#\n T1562_480b15-18: 現見相違。由此定無無因起法。無一常法。少能爲因。破自在中。\n322\n已廣遮遣。\n#\n T1562_451c08-12: 謂諸世間若自在等一因生者。則應一切俱時而生。非次第起。因現\n323\n有故。何法爲障令不俱生。現見諸法次第而起。故知非但一因所生。"
+            },
+            {
+              "id": "kor-lee-page-218",
+              "label": "Printed page 209",
+              "locator": "PDF page 218 · printed page 209 · direct PDF text extraction",
+              "text": "두 번째 인용문은 『구사론』 상의 바수반두의 이해와 내용상 완전히 일치한다.\n그러나 첫 번째 인용문을 보면 양자의 진술이 갈라지고 있다. 둘 다 원인 없는\n발생 및 단일한 원인으로부터의 발생을 거부하고 있지만, 상가바드라는 밑줄\n친 부분과 같이 단지 ‘경험과 배치된다’라고만 하여 구체적인 언급은 피하고 있\n다. 다시 말해 종자-싹의 비유나 ‘장소와 때에 따른 한정’과 같은 표현을 일부러\n삭제한 것으로 보인다. 당파적으로 해석되는 이 최초의 ‘논평’과 함께 『구사론』\n이전에는 ‘장소와 때에 따른 한정’라는 표현 및 이에 상당하는 아이디어가 발견\n되지 않는다는 점을 고려하면, 문제의 표현 및 아이디어는 구사론주에게만 귀\n속시키는 편이 보다 개연적이라고 할 수 있다.!\n\n【2】 〖b〗!\n‘상속에의 비한정(santānāniyama)’은 『이십론』에서 처음 등장\n하는 표현으로 보인다. 복수의 개체가 동일한 인식 내용을 가질 경우 이 ‘공통성’\n은 보통 ‘sādhāraṇatva’로 표현된다.\n\n\n324\n\n#209\n#\n Pradhan(1967) 28쪽: rūpasya tu sādhāraṇatvāt anekasantānavaśena | (그러\n324\n나 색은 [여러 개체들에게] 공통되기(sādhāraṇa) 때문에 다수의 상속(santāna)들에 따라\n[동분 및 피동분이 설정된다].)"
+            },
+            {
+              "id": "kor-lee-page-219",
+              "label": "Printed page 210",
+              "locator": "PDF page 219 · printed page 210 · direct PDF text extraction",
+              "text": "【2】 〖c〗!\n‘기대 효과의 발휘(kṛtyakriyā)’ 역시 그 표현과 개념이 『구사론』\n으로 소급된다. 그러나 시공간상의 한정은 특정한 내용을 가진 인식이 일단 주\n어지기만 하면 그 자체로 확인이 가능한 것인 반면에, 여기서 말하는 기대 효과\n의 발휘는 문제의 인식이 주어진 후에도 또다른 조건이 부가되어야만 비로소\n판정이 가능한 것이다. 예를 들어 꿈 속에 나타난 음식 등은 실제의 음식과 외\n견상 구별이 되지 않지만 그것을 섭취할 경우 포만감이나 기력 등을 얻을 수 없\n다. 이 예에서 ‘섭취’가 별도의 조건이고 ‘포만감 및 기력’이 기대 효과라고 할\n수 있다. 대론자는 이처럼 일종의 변인통제를 통해 비가시적인 원인의 존재를\n추론하고 있다.!\n\n이와 같은 자못 합리적인 접근법이 『구사론』에서 눈 등의 감각기관의 존\n재를 확보할 때 바수반두 자신이 동원했던 방법이기도 하다.!\n\n[득(prāpti)의 존재와 관련해] 다음이 타당하지가 않으니, 색·소리 등[의 경우]처럼 혹\n은 탐·진 등[의 경우]처럼 바로 저 [득]의 자체(svabhāva)가 [지각에 의해 직접적으\n로] 알려지지 않고 또 눈·귀 등[의 경우]처럼 [득의] 기대 효과(kṛtya)가 [추리에 의해\n간접적으로 알려지지 않는다]. 따라서 실체(dravya) 차원의 법으로서 [성립하는 것\n이] 가능하지 않기 때문에 [득의 존재를 주장하는 것은] 타당하지 않다.\n\n\n325\n\n#210\n#\n Pradhan(1967) 63쪽: ayam ayogaḥ yad asyā naiva svabhāvaḥ prajñāyate\n325\nrūpaśabdādivad rāgadveṣādivad vā na cāpi kṛtyaṁ cakṣuḥśrotrādivat | tasmāt\ndravyadharmāsaṁbhavād ayogaḥ |"
+            },
+            {
+              "id": "kor-lee-page-220",
+              "label": "Printed page 211",
+              "locator": "PDF page 220 · printed page 211 · direct PDF text extraction",
+              "text": "여기서 자체(svabhāva)는 기대 효과(kṛtya)에 대비되고 있는데, 이는 다음 인\n용문에서의 지각의 대상과 추리의 대상에 각각 대응한다.!\n\n‘단지 [오]온의 상속(santāna)에 대해 ‘아뜨만’이라는 표현(abhidhāna)이 생겨나는\n것이지 다른 표현대상(abhidheya)에 대해서는 아니다’라는 이것이 또 어떻게 알려\n지는가? 지각과 추리가 없기 때문이다. 왜냐하면 어떤 법들이 존재할 경우 장애가 없\n으면 그것들에 대한 지각(pratyakṣam), 곧 인식(upalabdhi)이 있기 때문이다. 예를\n들어 여섯 가지 대상영역들 및 의(manas)에 대해 [지각이 있다]. 그리고 [어떤 법들\n이 존재할 경우 그것들에 대한] 추리가 있다. 예컨대 다섯 가지 감각능력들에 대해 [추\n리가 있다]. 이와 관련해 다음이 추리이다. 하나의 원인이 있더라도 다른 원인이 없으\n면 결과가 없음이 경험(dṛṣṭa)되고, 나아가 [다른 원인도] 있으면 [결과도] 있음[이 경\n험되니], 이를테면 싹의 경우와 같다. 그래서 대상영역이 나타나 있는 상태\n(ābhāsaprāpta)이고 또 주의력(manaskāra)이 원인[으로 가능할] 경우, 맹인·농인\n들에게 대상영역의 파악이 없음이 경험되고 또 맹인·농인이 아닌 자들에게 [대상영역\n의 파악이] 있음이 [경험된다]. 따라서 여기서도 별도의 원인이 [맹인·농인들에게는]\n없다는 것 및 [나머지에게는] 있다는 것이 해명된다. 그리고 그 [대상영역의 파악]의\n#211"
+            },
+            {
+              "id": "kor-lee-page-221",
+              "label": "Printed page 212",
+              "locator": "PDF page 221 · printed page 212 · direct PDF text extraction",
+              "text": "별도의 원인이 감각능력이라는 것이 그 추리이다. 그리고 아뜨만에 대해서는 이와 같\n은 [지각이나 추리가] 없다. 따라서 아뜨만은 존재하지 않는다.\n\n\n326\n\n가시적인 안구와 달리 시각능력 자체는 비가시적이기 때문에\n\n 구사론주는 이\n327\n를 추리의 대상으로 삼고 있다. 이를테면 대상의 현전 및 주의력은 통제변인이\n고 맹인과 비맹인을 구별하는 것은 조작변인이며 이상의 독립변인들에 체계적\n으로 대응되는 시각적 경험의 차이가 종속변인이다. 그리고 눈 등의 감각능력\n은 이러한 시험에 통과하기에 그 존재를 인정할 수 있지만 득(prāpti) 등은 그\n렇지 못하다.\n\n\n328\n#212\n#\n Lee(2005) 4쪽: katham punar idaṁ gamyate | skandhasantāna evedam\n326\nātmābhidhānam varttate nānyasminn abhidheya iti <|> pratyakṣānumānābhāvāt\n| ye hi dharmmāḥ santi | teṣāṁ pratyakṣam upalabdhir bhavaty asaty antarāye |\ntadyathā ṣaṇṇām viṣayā{nā}ṇāṁ manasaś ca | anumānaṁ ca | ta{tha}dyathā\npañcānām indriyāṇāṁ | tatredam anumānaṁ | sati {sa}kāraṇe\nkāraṇāntarasyābhāve kāryasyābhāvo dṛṣṭo bhāve ca punar bhāvas\ntadyathāṁkurasya | saty eva cābhāsaprāpte viṣaye manaskāre ca kāraṇe\nviṣayagrahaṇasyābhāvo dṛṣṭaḥ punaś ca bhāvo (’)ndhabadhirādīnām\n<an>andhābadhirādīnāṁ ca | atas tatrāpi karaṇāntarasyābhāvo bhāvaś ca\nniścīyate | yac ca tatkāraṇāntaram tad indriyam ity etad anumānaṁ | na caivam\nātmano (’)stīti {|} nāsty ātmā |\n#\n Pradhan(1967) 24쪽: uktaṁ ca sūtre cakṣur bhikṣo ādhyātmikam āyatanaṁ\n327\ncatvāri mahābhūtāny upādāya rūpaprasādo rūpy anidarśanaṁ sapratigham | (또\n경전에서 다음과 같이 이야기된다. “비구여, 눈은 내적인 처이고 [지·수·화·풍의] 네 가지 기\n본물질요소들에 바탕을 둔 투명한 물질(rūpaprasāda)이며 물질적인 것, 비가시적인것, 길\n항적인 것이다.)\n#\n 이 비판에 대한 상가바드라의 대응은 권오민(2019) 673쪽-694쪽 참조.\n328"
+            },
+            {
+              "id": "kor-lee-page-222",
+              "label": "Printed page 213",
+              "locator": "PDF page 222 · printed page 213 · direct PDF text extraction",
+              "text": "이와 같이 시각적 역량의 작동을 통해 그 기능이 사후적으로 인정되는\n것처럼, ‘실제의’ 대상 역시 기대 효과의 발휘를 통해 그 존재가 전제된다고 『이\n십론』의 대론자는 주장하는 것이다. 그리고 핵심 개념의 사용 및 배경적 논리의\n구조적 측면에서 볼 때, 『이십론』의 사례와 일치하는 것은 바로 앞에서 인용한\n『구사론』의 예문 말고는 더이상 발견되지 않는 것 같다. 그나마 가장 가까운 것\n이 『유가사지론』의 다음 구절이라고 할 수 있다.!\n\n운동(karman)을 통한 추리는 무엇인가? 작용(kāritra)을 통해 운동의 기반(āśraya)\n을 추측하는 것(abhyūhana)이다. 이를테면, 흔들림 없는 것과 새가 내려앉는 것 등\n을 통해 기둥을 추리한다. … 봄을 통해 눈을, 들음을 통해 귀를, 맡음을 통해 코를,\n맛봄을 통해 혀를, 만져짐을 통해 촉각을, 인식됨을 통해 의(manas)를 [추리한다].)\n\n\n329\n\n여기서도 기대 효과(kṛtya)의 동계어(cognate word)인 ‘운동(karman)’이나\n‘작용(kāritra)’이 등장하며 또 감감적 능력이 추리의 대상으로 간주된다. 그러\n나 첫 번째 사례에서 추론의 대상이 되는 기둥이 원칙상 직접 경험될 수 있는\n것이기 때문에 이 『유가사지론』의 추리와 저 『구사론』·『이십론』 상의 추리가 성\n격상 다를 가능성을 완전히 배제할 수 없다. 이점에 대해 운동과 운동의 기반\n(āśraya) 사이에 성립하는 관계가 저 ‘운동을 통한 추리’의 핵심을 구성하고 있\n#213\n#\n 矢板 秀臣(1992) 523쪽: karmato’ numānaṁ katamat | yat kāritreṇa\n329\nkarmāśrayābhyūhanam | tad yathā aspandanapakṣiniḍīya(?)nādibhiḥ sthāṇum\nanuminoti | … darśanena cakṣuḥ | śravaṇena śrotram | jighritena ghrāṇam |\nsvāditena jihvām | sparśitena kāyam | vijñātena manaḥ |"
+            },
+            {
+              "id": "kor-lee-page-223",
+              "label": "Printed page 214",
+              "locator": "PDF page 223 · printed page 214 · direct PDF text extraction",
+              "text": "다는 점에 주목해 『유가사지론』의 추리와 『구사론』·『이십론』의 추리 사이의 간\n격을 좁히는 해석을 시도할 수도 있을 것이다. 그러나 관건이 되는 ‘기반’이 중\n의적으로 사용되고 있는 것처럼 보여 진척을 가로막는다. 새의 착지를 ‘지탱’해\n주는 역할과 감각적 인식을 ‘유발’하는 역할은 동일시하기 어렵기 때문이다.!\n\n【2】 〖d〗!\n‘예를 들어 바로 저 비문증 환자들의 마음에는 머리카락 등이 나타\n나지만 나머지들에게는 [나타나지] 않는 것과 같이’라는 구절이 이상하게 보인\n다. 관견에 따르면, 기존의 모든 번역들은 저 구절을 상속에의 비한정의 예시로\n옮긴다.\n\n 그러나 이는, 자은 기가 옳게 지적하고 있듯이, 한정의 사례를 가지\n330\n고서 비한정의 경우를 예시하는 셈이다.!\n\n[본문:] 예를 들어 비문증 환자가 머리카락·파리 등을 보지만, 비문증이 없는 [이]에게\n는 이러한 [머리카락·파리 등에 대한] 인식의 발생이 있는 것이 아닌 것처럼.!\n[술기:] 이는 한정[의 경우]를 들어 비한정[의 경우]를 예시하는 것이다. 이미 ‘허망분별\n을 조건으로 삼기 때문에 외적 대상인양 [보이는 식이] 발생하지만 실제로는 외적인\n대상]은 없다고 했다. 예를 들어 비문증 환자가 머리카락·파리 등을 보지만 [그것에 대\n응하는] 실제 대상은 전혀 없고 오직 표상인 것이 있을 뿐이다. [이는] 세간적인 눈(=\n육안)이 침침한데 그 안 [각막]에 상처가 있는 것을 조건으로 삼기 때문에 같은 때에\n허공에서 이 [비문증 환자들]은 확정적으로 머리카락·파리·꽃 등 온갖 것들이 있다고\n#214\n#\n Silk(2018) 33쪽 및 효도 가즈오(2011) 95쪽 참조.\n330"
+            },
+            {
+              "id": "kor-lee-page-224",
+              "label": "Printed page 215",
+              "locator": "PDF page 224 · printed page 215 · direct PDF text extraction",
+              "text": "보지만, 눈에 비문증이 없는 자에게 이 때 [이] 장소에서 머리카락·파리 등을 보는 표\n상이 생기는 경우가 있음을 인정하지는 않는다.\n\n\n331\n\n밑줄 친 부분에서 분명히 드러나듯, 자은 기는 비문증 환자의 경험 사례가 조건\n에 다른 한정을 나타내는 사례이며 『이십론』이 이 사례를 가지고서 상속에의 비\n한정의 경우를 설명하는 것으로 간주한다. 비록 『이십론』 자체에서 비문증을 한\n정의 조건으로 직접 표현한 적은 없지만, 이러한 개념 적용 자체는 타당할 것으\n로 보인다. 문제는 자은 기의 이해대로라면 바수반두가 부적절한 예시를 거론\n한 것이 된다는 점이다.!\n\n그래서인지 이 대목에 대한 보디루찌의 『이십론』 번역은 다른 모든 현존\n번역들과 달리 저 사례를 별도의 반론인양 따로 제시한다.!\n\n재차 비판을 하니, 만약 색 등 외적인 대상들이 없는데도 헛되이(=실재와 일치하지 않\n게) 본다고 한다면, 어떤 점에서 눈에 비문증이 있는 사람이 헛되이 해·달·털·바퀴·밧\n줄 등을 보지만 깨끗한(=정상적인) 눈을 가진 사람은 헛되이 보지 않는가?\n\n\n332\n\n#215\n#\n T1834_984c05-11: 論。如眩翳人見髮蠅等。非無眩翳有此識生。!\n331\n述曰。此擧決定。例不決定。旣言虛妄分別以爲緣故。似外境生。實無外境。如有眩翳見髮蠅\n等無小實義唯有識者。如世目眩及中有翳以爲緣故。同一時間於虛空中。此決定見有髮蠅花等\n種種異物。非是眼中無眩翳者於此時處許有見髮蠅等識生。\n#\n T1588_064c26-28: 又復有難。若無色等外諸境界虛妄見者。以何義故。眼瞖之人妄見\n332\n日月毛輪蠅等。淨眼之人則不妄見。"
+            },
+            {
+              "id": "kor-lee-page-225",
+              "label": "Printed page 216",
+              "locator": "PDF page 225 · printed page 216 · direct PDF text extraction",
+              "text": "이 경우 대론자의 비판 논거는 공간의 한정·시간의 한정·상속에의 비한정·기대\n효과의 발휘 외에 한 가지가 더 있는 셈이다. 그러나 【3】에서 바수반두 자신은\n대론자의 비판 근거가 네 가지라고 못을 박는다. 보다 심각한 문제는 보디루찌\n의 저 번역은 유식성의 명제와 비문증의 사례 사이에 어떤 논리적 연관성이 있\n는지 전혀 밝히지 못한다는 점이다. 구체적으로 말하자면 ‘비문증의 존재’가 무\n엇에 대한 비유인지가 불분명하다.!\n\n그렇다면 이 난항을 어떻게 해명하면 좋을까? 한 가지 가능한 방법은 ‘비\n문증을 가짐’을 ‘동일한 시공간에 위치함’에 대응하는 사례로 읽는 것이다.\n\n\n333\n물론 이는 자은 기 자신의 이해는 아니다. 자은 기에게 비문증의 상관항은 대상\n이 아니라 ‘허망분별’이기 때문이다. 나아가 이러한 예시는 매우 반직관적이기\n에, 논리적으로 가능하다고는 해도, 수사적으로 기피해야 하는 것이다.  또 다\n른 해결책은 해당 절을 상속에의 비한정의 예시가 아니라 기대 효과의 발휘 부\n분의 도입부로 읽는 것이다.\n\n 이는 전통적인 주석가들은 물론 현대 연구자들\n334\n#216\n#\n 이지수가 이 경우에 해당할 수도 있다. 왜냐하면 그는 해당 구절을 “그대는 안질자(眼疾\n333\n者)의 예를 들고 있으나 비유의 경인 머리카락이나 이월(二月) 따위는 눈병 든 사람의 심상\n에만 한정되어 나타나는 것이며, 건강한 눈을 <가진> 사람들에겐 만일 그들이 특정 장소·시\n간에서 달을 본다면 그 달은 그들 가운데 특정인에게 한정되지 않고 모든 심상속에 나타난\n다. 그런 현상을 어떻게 설명하겠는가?”(이지수(2014) 223쪽)라는 식으로 많은 보충과 함\n께 번역하였는데, 이는 비문증의 경우를 비한정의 사례가 아닌 한정의 사례로 이해하는 것처\n럼 보이기 때문이다.\n#\n 티벳역의 ji ltar와 현장 한역의 如에 대응하는 산스크리트 단어는 yathā가 유일할 텐데,\n334\n그렇다면 문제의 yathā가 이끄는 절을 후속절의 종속절로 읽는 것은 원어상으로는 별 문제\n가 없다고 할 수 있다."
+            },
+            {
+              "id": "kor-lee-page-226",
+              "label": "Printed page 217",
+              "locator": "PDF page 226 · printed page 217 · direct PDF text extraction",
+              "text": "중에서 누구도 제시한 적이 없는 길이지만\n\n 지금까지 제기한 모든 난점들을\n335\n다 피할 수 있는 유일한 길이기도 하다. 본고는 후자를 선호한다.!\n\n【2】 〖e〗!\n본고에서 ‘먹고 마시는 등의 기대 효과’으로 옮긴 zas dang\nskom la sogs pa’i bya ba를 편역자 씰크는 ‘causal efﬁcacy [to address]\nhunger, thirst’로 옮겼다.\n\n 아마도 skom이 ‘갈증’의 의미로 많이 쓰인다는\n336\n점에 근거를 둔 것 같은데, 이는 역으로 zas의 경우를 잘 설명하지 못해 합리적\n인 선택이라고 보기는 힘들다. zas dang skom은 ‘음식’ 혹은 ‘먹고 마시기’로\n도 모두 이해될 수 있고 실제로 그렇게 사용되고 있는 표현이다.!\n\n【2】 〖f〗!\n본고에서 ‘이들 [색 등에 대한 표상]이 대상이 없이 [발생하여 대상\n이 비문증 환자에게 나타나는 머리카락 등의] 비존재와 유사하다면’으로 옮\n긴 ’di dag don med par med du ’dra na이라는 조건절에 대해 씰크는 “If\nthese [things like dream food] resemble the non-existent in lacking\n#217\n#\n 사이구사 미쯔요시의 『이십론』 번역에서는 문제의 구절이 상속에의 비한정 부분이 아니\n335\n라 기대 효과의 발휘 부분과 같은 단락으로 묶인다. 그렇다면 그가 본고의 이 제안을 선취하\n고 있는 셈이다. 사이구사 미쯔요시(1993) 129쪽 참조.!\n물론 저자 자신의 상세한 문제 제기 및 해명은 따로 없다. 나아가 현재 그의 저작의 우리말\n번역본만 입수된 상태라 문제의 단락 배치가 우리말 번역자의 재량일 가능성 역시 아직 남아\n있다.\n#\n Silk(2018) 35쪽 참조.\n336"
+            },
+            {
+              "id": "kor-lee-page-227",
+              "label": "Printed page 218",
+              "locator": "PDF page 227 · printed page 218 · direct PDF text extraction",
+              "text": "any [real external] object”라고 옮겼다.\n\n 그러나 그의 번역대로라면 무엇\n337\n과 무엇이 닮은 것인지가 전혀 해명되지 않는다. 본고는 해당 대목이 제2송의\n마지막 구절인 vijñaptir yadi nārthataḥ(‘만약 표상이 대상으로부터 [발생한\n것이] 아니라고 한다면’)에 대한 환언(paraphrase)적 주해라고 본 것이다.!\n\n【2】 〖g-1〗!\n‘대상 x로 나타나는 마음 y가 발생한다’는 『해심밀경』의 정식화의\n정식화를 받아들인다고 해서, 즉 현상적인 차원에서 인식 외부의 대상은 우리\n에게 직접 주어지지 않는다고 해서, 곧바로 모든 것이 단지 표상에 불과할 뿐이\n라는 결론에 도달할 수는 없을 것이다. 우리는 전자(electron)의 존재를 믿지만\n누구도 전자를 문자 그대로 ‘보지는’ 못한다. 그러나 전자의 존재를 믿을 훌륭한\n이유는 가지고 있다. 전자는 비록 직접 경험되지는 않지만 세계에서 일정한 인\n과적 역할을 수행하기 때문에 이러한 측면에 기대 우리는 전자의 존재를 상정\n한다. 따라서 인식 외부의 대상의 경우에도 모종의 인과적 역할을 할당할 수만\n있다면, 보이지 않더라도 여전히 그 존재를 주장할 수 있을 것이다. 이런 취지\n에서 바수반두는 이곳 【2】에서 대론자로 하여금 인식 외부의 대상이 수행하리\n라 여겨지는 네 가지 인과적 역할, 즉 공간상의 한정·시간상의 한정·상속에의\n비한정·기대 효과의 발휘를 근거로 대상의 존재를 주장하게끔 한 것이다.!\n\n효도 가즈오는 이 【2】의 대론자의 반론에 대해 “어떤 의미에서 우리들의\n상식적인 입장이기 때문에, 여기서 제기된 네 가지에 대한 의문은 지극히 당연\n#218\n#\n Silk(2018) 35쪽 참조.\n337"
+            },
+            {
+              "id": "kor-lee-page-228",
+              "label": "Printed page 219",
+              "locator": "PDF page 228 · printed page 219 · direct PDF text extraction",
+              "text": "한 것이라고 생각합니다”(효도 가즈오(2011) 96쪽)라고 하였다. 그러나 【2】의\n반론은 일단 듣고 나면 불가역적으로 타당하게 느껴지지만 그 전에도 저런 반\n론을 ‘상식적으로’ 가지고 있기는 힘들어 보인다. 여기서 이십론주는 효도 가즈\n오의 생각처럼 일반적인 상식에 호소한다기보다는, 대론자를 동원해 표상주의\n적 실재론\n\n의 관점이 마치 상식적인 출발점인양 상정하고 있는 것으로 보인\n338\n다.!\n\n한편 시더리츠는 여기 【2】에서 대론자가 표상주의자스러운 반론을 전개\n하고 있다는 점에 착안해 『이십론』의 대론자를 표상주의적 실재론자로 규정하\n는 것 같다.\n\n 그의 대론자 이해는 【2】의 내용 전개와는 조화롭지만 그 이상의\n339\n일반화가 과연 성공적일지는 의문이다. 그의 이해대로 【10】에서 ‘시간차 논변’\n이 사용되고 있는데 정작 이 논변은 그 자신 역시 밝히듯 직접 실재론자에게만\n유효하기에\n\n 『이십론』의 대론자를 표상주의적 실재론자로 한정하기는 어려울\n340\n것이다. 이에 대한 보다 자세한 분석은 【10】 〖b-2〗에 있다.!\n\n【2】 〖g-2〗!\n선행 연구자들 중에서 시더리츠가 이 대목에 대해 남긴 다음의 철\n학적 논평이 상당히 흥미롭다.!\n#219\n#\n 시더리츠는 『이십론』의 대론자의 범위에서 ‘대상이 인식에 직접 주어진다’고 믿는 소박\n338\n실재론자(naive realist)는 빼고 ‘표상주의적 실재론적 논적(the representationalist\nrealist opponent)’ 내지 ‘세련된 실재론자(a sophisticated realist)’만을 남긴다. 각각\nSiderits(2007) 150쪽, 152쪽 참조.\n#\n 본고 3.1.1 참조.\n339\n#\n Siderits(2007) 169쪽 참조.\n340"
+            },
+            {
+              "id": "kor-lee-page-229",
+              "label": "Printed page 220",
+              "locator": "PDF page 229 · printed page 220 · direct PDF text extraction",
+              "text": "반박을 정식화하는 법에 관해 여기서 한 마디 해야겠다. 대론자는 감각적 경험이 오직\n‘특정 장소에서’만 일어난다는 [형태의] 주장으로 공간적 한정성에 기반한 반박을 세웠\n다. 이는 미해결된 선결문제를 내포한(question-begging) 방식으로 반박을 서술한\n것이다. 관념론자로서 바수반두는 공간적 위치의 존재를 부인한다. 오직 물리적 대상\n들만이 공간적 위치를 가질 수 있다. 대론자가 우리의 경험들에는 공간적 한정성이 있\n다고 말할 때, 그들은 사실상 그들이 증명하기로 나선 것, 즉 외적인 대상들이 존재한\n다는 것을 가정하고 있는 셈이다. 그래도 이 반대에 뭔가 뼈가 있기는 하니, 미해결된\n선결문제를 내포하지 않는 방식으로 재정식화하기만 하면 될 것이다.\n\n\n341\n\n즉, 공간적 위치는 개념적으로 물리적 대상을 함축하기에, 쌍방에게 공평한 논\n의가 되기 위해서 대론자가 오로지 현상적인 언어만을 사용해서 반론을 기술했\n어야 한다는 것이다. 그런데, 바수반두의 대론자의 모델이 따로 발견되지 않기\n때문에 이 논평은 바수반두 자신에게 가해지는 논평이기도 하다. 이 논평이 착\n시(錯時, anachronism)가 아닌 방식으로 유효하려면 ‘오직 물리적 대상들만\n#220\n#\n Siderits(2007) 151쪽: A word should be said here about how to formulate\n341\nobjections. The opponent has put the objection from spatial determinacy as the\nclaim that sensory experiences only occur ‘at a certain place’. This is a\nquestion-begging way of stating the objection. As an impressions-only theorist,\nVasubandhu denies the existence of spatial locations. Only physical objects can\nhave spatial location. When the opponent says that our experiences have\nspatial determinacy, they are in effect assuming what they set out to prove, that\nthere are external objects. There is something to this objection though; it just\nneeds to be reformulated in a way that doesn’t beg the question."
+            },
+            {
+              "id": "kor-lee-page-230",
+              "label": "Printed page 221",
+              "locator": "PDF page 230 · printed page 221 · direct PDF text extraction",
+              "text": "이 공간적 위치를 가질 수 있다’는 시더리츠의 전제가 바수반두 자신이나 적어\n도 당대에 통용되는 것이어야 할 것이다.!\n\n그러나 『구사론』 제1장 「계품」의 다음 대목을 보면 오히려 저 전제가 상\n당히 무력함을 확인할 수 있다.!\n\n[5온은 색·수·상·행·식의 순서인데] 왜냐하면 색은 길항적(sapratigha)이기 때문에 [오\n온 중에서 가장] 거친 것이다. 비물질적인 것(arūpin)들 중에서 수는 활동(pracāra)\n이 [가장] 거칠기에 [순서상 두 번째이다]. 이를테면 “내 손에 느낌이 있다.” [혹은] “내\n발에 느낌이 있다.”라고 지칭하기 때문이다. 상은 [행과 식] 양자보다 거칠기에 [세 번\n째이다.] 행들은 식보다 [거칠기에 네 번째이다]. 이처럼 보다 거친 것이 [보다] 앞에 이\n야기된 것이다.\n\n\n342\n\n여기서 수(vedanā), 즉 느낌이 비물질적인 것(arūpin)인 동시에 손과 발처럼\n공간적 위치가 분명히 구분되는 곳에 특정될 수 있다는 점이 주목된다. 시더리\n츠의 저 주문은 보다 후대의 유가행파인 스티라마띠 단계에 가서야 존중되는\n것 같다.!\n\n[상·행·식] 삼자보다 활동이 거칠기에 수는 거친 것이다. 이를테면 상 등과 마찬가지로\n[수는] 장소를 점하는 것이 아니지만 활동이 거칠기 때문에 “내 손에 느낌이 있다.” [혹\n#221\n#\n Pradhan(1967) 15쪽: rūpaṁ hi sapratighatvāt sarvaudārikam | arūpiṇāṁ\n342\nvedanā pracāraudārikatayā | tathā hi vyapadiśanti haste me vedanā pāde me\nvedaneti | dvābhyāṁ caudārikatarā saṁjñā | vijñānāt saṁskārā ity ato yad\naudārikataraṁ tat pūrvam uktam |"
+            },
+            {
+              "id": "kor-lee-page-231",
+              "label": "Printed page 222",
+              "locator": "PDF page 231 · printed page 222 · direct PDF text extraction",
+              "text": "은] “내 머리에 느낌이 있다.”라고 장소를 판별하는 식으로 바로 저 [수를] 특정하지 상\n등은 [특정하지 못한다]. 따라서 색 다음으로 이야기된 것이다.\n\n\n343\n\n이처럼 스티라마띠는 『구사론』의 저 설명을 거의 그대로 사용하면서도, 시더리\n츠가 요구한 ‘오직 물리적 대상들만이 공간적 위치를 가질 수 있다’는 원칙을 지\n킬 수 있게끔 설명을 부가하고 있다.\n#222\n#\n Kramer(2013) 1권 3쪽: tribhyaḥ pracārodārikatayaudarikatarā vedanā || tathā\n343\nhy adeśasthām api sañjñādivat pracāraudārikatvād deśaparicchedena tām eva\nvyapadisanti na sañjñādīn haste me vedanā śirasi me vedaneti | ato\nrūpānantaram uktā |"
+            },
+            {
+              "id": "kor-lee-page-232",
+              "label": "Printed page 223",
+              "locator": "PDF page 232 · printed page 223 · direct PDF text extraction",
+              "text": "Silk(2018) 37쪽-47쪽: na khalu na yujyate yasmāt ||!\ndeśādiniyamaḥ siddhas svapnavat!\nsvapna iva svapnavat <|> kathaṁ tāvat svapne vināpy arthena\nkvacid eva deśe kiñcid grāmārāmastrīpuruṣādikaṁ dṛśyate na\nsarvatra tatraiva ca deśe kadācid dṛśyate na sarvakālam iti siddho\nvināpy arthena deśakālaniyamaḥ || pretavat punaḥ!\nsantānāniyamaḥ ||!\nsiddha iti vartate <|>\n\n pretānām iva pretavat |  kathaṁ siddhaḥ |\n344\nsamaṁ!\nsarvaiḥ pūyanadyādidarśane || [3 ||]!\npūyapūrṇṇā nadī pūyanadī | ghṛtaghaṭavat |\ntulyakarmmavipākāvasthā hi pretāḥ sarve <’>pi samaṁ\npūyapūrṇṇān nadīm paśyanti naika eva | yathā pūyapūrṇṇām evaṁ\nmūtrapurīṣādipūrṇṇāṁ daṇḍāsidharaiś ca puruṣair adhiṣṭhitām ity\nādigrahaṇena | evaṁ santānāniyamo vijñaptīnām asaty apy arthe\nsiddhaḥ ||!\nsvapnopaghātavat kṛtyakriyā |!\nsiddheti veditavyaṁ | yathā svapne dvayasamāpattim antareṇa\nśukravisarggalakṣaṇaḥ svapnopaghātaḥ | evan tāvad anyānyair\ndṛṣṭāntair deśakālaniyamādicatuṣṭayaṁ siddhaṁ |!\n#223\n#\n 편역자 씰크는 ‘|’가 아니라 ‘;’로 표기. Silk(2018) 39쪽 참조.\n344"
+            },
+            {
+              "id": "kor-lee-page-233",
+              "label": "Printed page 224",
+              "locator": "PDF page 233 · printed page 224 · direct PDF text extraction",
+              "text": "narakavat punaḥ sarvaṁ!\nsiddham iti veditavyaṁ | narakeṣv iva narakavat <|> kathaṁ\nsiddhaṁ |!\nnarakapālādidarśane taiś ca bādhane |[| 4 ||]!\nyathā hi narakeṣu nārakāṇāṁ narakapālādidarśanaṁ\ndeśakālaniyamena siddhaṁ <|>\nśvavāyasāyasaparvatādyāgamanagamanadarśanañ cety\nādigrahaṇena <|> sarveṣāñ ca naikasyaiva <|> taiś ca tadbādhanaṁ\nsiddham asatsv api narakapālādiṣu\nsamānasvakarmmavipākādhipatyāt | tathānyatrāpi sarvam etad\ndeśakālaniyamādicatuṣṭayaṁ siddham iti veditavyaṁ |\n#224"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-03",
+          "label": "Argument section 3 · verses 3–7, part 1",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-234",
+              "label": "Printed page 225",
+              "locator": "PDF page 234 · printed page 225 · direct PDF text extraction",
+              "text": "【3】 [바수반두:] 타당하지 않은 것이 전혀 아니다. 왜냐하면!\n공간 등의 한정이 꿈처럼 성립하기 때문이다.!\n‘꿈처럼’이란 꿈에서처럼이다. 우선 어떻게 꿈에서 대상이 없는데도 바로 특정\n한 장소에서 모종의 마을·숲·여자·남자 등이 보이고 모든 곳에서는 [보이지] 않\n으며, 그리고 바로 그곳에서 특정한 시간에 보이고 모든 때에는 [보이지] 않는\n가? 따라서 대상이 없더라도 공간·시간의 한정이 성립한다. 또 아귀처럼,!\n상속에의 비한정이.!\n‘성립한다’가 [생략적으로] 따른다. ‘아귀처럼’은 아귀들에게처럼이다. 어떻게\n성립하는가? 함께 [즉]!\n모두에 의해 고름강 등이 보이는 경우 〖제3송〗!\n‘고름강’은 고름으로 가득찬 강이다. [버터로 가득찬 항아리를] 버터항아리[라고\n부르는 경우]처럼. 왜냐하면 균등한 업의 이숙 상태〖a〗에 놓인 모든 아귀들이 함\n께 고름으로 가득찬 강을 보는 것이지 단지 한 [아귀]만 [보는 것이] 아니기 때\n문이다. ‘등’이란 표현으로는 고름이 가득찬 것과 마찬가지로 오줌·똥 등으로 가\n득차고 몽둥이 등을 지닌 사람들에 의해 관할되는 [것을 나타낸 것이다]. 이처\n럼 표상들에 있어 상속에의 비한정이 [저 표상들에게] 대상이 없더라도 성립한\n다.〖b〗!\n기대 효과의 발휘는 몽정처럼.!\n#225"
+            },
+            {
+              "id": "kor-lee-page-235",
+              "label": "Printed page 226",
+              "locator": "PDF page 235 · printed page 226 · direct PDF text extraction",
+              "text": "‘성립한다’가 [생략적으로 따른다]고 알아야 할 것이다. 마치 꿈 속에서 [남녀]\n양자의 성교 없이도 정자의 배출을 특징으로 하는 몽정이 [성립한다]. 우선 이\n처럼 제각기 다른 유례들을 통해 공간·시간의 한정 등 네 가지가 성립한다.!\n또 모든 것은 지옥처럼.!\n‘성립한다’가 [생략적으로 따른다]고 알아야 할 것이다. ‘지옥처럼’은 지옥들에\n서처럼이다. 어떻게 성립하는가?!\n지옥옥졸 등을 보는 경우, 그리고 저들에 의해 박해당하는 경우 〖제4송〗!\n왜냐하면 이를테면 지옥들에서 지옥중생들이 지옥옥졸 등을 보는 것이 공간·시\n간이 한정된 채 성립하는 것과 같다. ‘등’이란 표현으로는 개·까마귀·철산 등의\n왕래를 보는 것[을 나타낸 것이다]. 그리고 모든 [지옥중생들]에게 [보이는 것이\n지] 단지 한 [지옥중생]에게만 [보이는 것은] 아니다. 그리고 저들에 의해 이 [지\n옥중생들]의 박해가 성립한다. 비록 지옥옥졸 등이 비존재하지만 유사한, [지옥\n중생들] 스스로의 업의 이숙의 영향력(ādhipatya)〖c〗 때문이다. 이처럼 이 공\n간·시간의 한정 등 네 가지 모두가 다른 경우에 전부 성립한다고 알아야 할 것\n이다.\n#226"
+            },
+            {
+              "id": "kor-lee-page-236",
+              "label": "Printed page 227",
+              "locator": "PDF page 236 · printed page 227 · direct PDF text extraction",
+              "text": "【3】 〖a-1〗!\n‘균등한 업(tulyakarma)’이란 현생의 아귀들을 아귀로 만든, 그\n들이 전생에 개별적으로 지은 동일한 유형의 악업을 뜻한다. 이는 【4】에서 ‘하\n늘에 태어나는 동물들은 그 [하늘이라는] 기세간(bhājanaloka)[에 속한] 즐거\n움을 유발할 업에 의해 저 [하늘]에서 발생’한 것이라고 한 것과 동일한 메커니\n즘을 전제하고 있다. 한편 ‘이숙(vipāka)’은 좀 더 엄밀히 말하자면 이숙과\n(vipākaphala)를 뜻한다. 따라서 ‘균등한 업의 이숙 상태’란 전생에 유사한 업\n을 지은 자들이 현생에 그 업보를 유사하게 받는 것을 말한다. 그 구체적인 내\n용은, 전통적인 이해에 따르자면, 비슷한 인지능력, 즉 감각능력(indriya)을 부\n여받는 것이다. 그러나 감각능력 자체는 통상 물질적인 것으로 상정된다. 이것\n은 물론 『이십론』의 유식성 명제와 충돌하기 때문에, 【5】에서 이 감각능력이 ‘종\n자’로 재정의된다.!\n\n한편 효도 가즈오는 이 ‘균등한 업’을 기세간을 형성시키는 ‘공업\n(sādhāraṇakarma)’으로 이해한다.\n\n 각자의 윤회적 운명을 개별적으로 결\n345\n정하는 불공업(asādhāraṇakarma)에 대비되여 모든 생명체들이 공유하는 물\n질적인 기세간의 발생은 공통된 업의 소산이리라는 관념은 물론 설일체유부 교\n학에 뿌리를 둔 것이지만 유가행파 역시 채택하고 있는 발상이다.\n\n 그러나 이\n346\n러한 공업의 개념은 『이십론』의 유식성 명제와 선뜻 조화되기 어렵다. 삼계에\n#227\n#\n 효도 가즈오(2011) 106쪽 각주34번, 108쪽 참조.!\n345\n이지수 역시 문제의 ‘균등한 업(tulyakarma)’에 대해 ‘동업(同業)’과 함께 ‘공업(共業)’이란\n번역어를 사용하고 있지만, 효도 가즈오처럼 ‘공업에 의해 기세간이 발생한다’는 전통적 사\n고방식을 『이십론』에 투영하고 있지는 않다. 이지수(2014) 224쪽-225쪽 참조.\n#\n Schmithausen(1987) 203쪽 참조.\n346"
+            },
+            {
+              "id": "kor-lee-page-237",
+              "label": "Printed page 228",
+              "locator": "PDF page 237 · printed page 228 · direct PDF text extraction",
+              "text": "속한 모든 것이 단지 표상에 불과하다면, 기세간 역시 표상에 속한 것이어야 하\n기 때문이다.\n\n 따라서 ‘상속에의 비한정’ 논거가 문제를 삼고 있는 소위 ‘공통\n347\n의 경험’은 동일한 외적 대상으로부터 기인한 것이 아니라 과거의 유사한 행위\n로부터 발원하는 것이다. 이십론주는 이러한 동일 유형의 업을, 아마도 저 ‘공업’\n과 구분하고자, ‘균등한 업’이라는 별도의 개념으로 표현한 것으로 보인다.\n\n\n348\n\n【3】 〖a-2〗!\n시더리츠는 문제의 ‘공통의 경험’을 집단적 환상(collective\nhallucination)에 유비하는 한편 ‘균등한 업’을 버클리의 신에 비유한다.\n\n 그\n349\n의 견해는 곧 경험의 객관성 및 규칙성이 대상 자체의 객관성 및 규칙성에 의존\n적인 것으로 보는 통념에 반대하기 위해 버클리가 신의 적극적 개입을 요청한\n것처럼, 바수반두 역시 동일한 이유에서 업의 역할을 확대하고 있다는 것이다.\n본고는 이것을 탁견으로 평가한다. 왜냐하면 【7】부터 【9】까지의 물질 개념 비\n판과 함께 여기서처럼 업을 규칙성 일반의 원천으로 간주하는 발상 때문에 『이\n십론』의 사상이 버클리로 대표되는 주관적 관념론(subjective idealism)에 비\n#228\n#\n 『이십론』 자체는 기세간의 발생 문제를 전면에 부각시키지 않기 때문에 ‘기세간 또한 표\n347\n상에 속한 것이다’라는 결론을 내리기 위해서는 별도의 해석이 필요하다. 이에 대한 구체적\n인 해석은 【4】 〖b〗 참조.\n#\n 효도 가즈오의 오독은 아마도 『아비달마집론』의 공업 개념을 『이십론』에 과도하게 적용\n348\n한 결과로 보인다. 『아비달마집론』의 공업 개념에 대해서는 Schmithausen(1987) 203쪽\n및 491쪽 이하 미주1302번 및 1303번 참조.\n#\n Siderits(2007) 155쪽-158쪽 참조.!\n349\n관견에 따르면 이 ‘집단적 환상’ 개념을 최초로 동원한 연구자는 우드이다. Wood(1991) 제\n9장 및 제10장 참조."
+            },
+            {
+              "id": "kor-lee-page-238",
+              "label": "Printed page 229",
+              "locator": "PDF page 238 · printed page 229 · direct PDF text extraction",
+              "text": "견될 수 있기 때문이다. 그리고 바로 이 지점에서 『이십론』이 흄으로부터 멀어\n진다고 할 수 있다. 흄은 규칙성을 설명하기 위해 신은 고사하고 어떠한 인과적\n원리도 받아들이지 않으며 오히려 규칙성 자체를 주어진 것으로 단지 받아들일\n뿐인 반면에\n\n 바수반두는 도처에서 업이라는 형이상학적 원인을 상정해 현상\n350\n의 규칙성을 설명해내기 때문이다.!\n\n【3】 〖b-1〗!\n아귀의 사례는 『섭대승론』 「소지상분」, 「증상혜학분」 및 『아비달마\n잡집론』에 묘사되는, 소위 ‘一水四見’의 상황을 연상시킨다.!\n\n대상이 보임에도 존재하지 않는 것이라고 어떻게 보냐면, 세존께서 “이를테면 보살이\n[다음] 네 가지 것을 갖춘다면 모든 표상의 대상이 비실재함을 깨닫게 될 것이니, (1)\n[내용이 서로] 어긋나는 인식들의 원인[의 단일성]에 대한 앎\n(*viruddhavijñānanimittatvajñāna)으로니, 예컨대 아귀(*preta), 동물(*tiryak),\n인간(*manuṣya), 천신(*deva)들이 동일한 사물(*tulyavastu)에 대해 다양한 표상\n#229\n#\n 규칙성 자체에 대한 흄의 태도 및 버클리 등과의 비교는 Robinson(1994) 제9장 참조.\n350"
+            },
+            {
+              "id": "kor-lee-page-239",
+              "label": "Printed page 230",
+              "locator": "PDF page 239 · printed page 230 · direct PDF text extraction",
+              "text": "을 보는 것과 같고, … 따라서 세 가지 앎에 부합하는 것 및 앞서의 [세 가지] 이유들로\n대상이 비실재함이 성립되는 것이다.\n\n\n351\n\n그런데 이 『섭대승론』의 경우 ‘동일한 사태(*tulyavastu)’라는 표현에 대해 두\n가지 해석이 주어질 수 있다. 하나는 문제의 ‘동일한 사태’를 문자 그대로 읽는\n방식이다. 이 경우, 비록 아귀나 인간과 같은 윤회적 존재들이 각자의 종별성에\n따라 표상의 내용들을 달리한다 하더라도, 그 인식적 차이들의 원인(*nimitta)\n이 되는 단일한 사태의 존재가 상정된다. 이 해석에 따르면, 범부들은 단일한\n특정 사태에 대해 저마다의 분별을 더해 제멋대로 대상세계를 상상해내는 반\n면, 성자들은 바로 그 동일한 사태에 대해 무분별지로 응하기 때문에 대상을 ‘있\n는 그대로’ 인식하는 것이다. 그러나 이런 독해는 「소지상분」의 전체적인 논지\n#230\n#\n 長尾 雅人(1987a) 부록 70쪽-71쪽: ji ltar na don snang bzhin du yang med pa\n351\nnyid du blta zhe na | bcom ldan ’das kyis ji skad du | byang chub sems dpa’\nchos bzhi dang ldan na | rnam par rig pa thams cad kyi don med pa khong du\nchud par ’gyur te | rnam par shes pa mi mthun pa’i rgyu mtshan nyid shes pas\nni dper na yi dwags dang | dud ’gro dang | mi dang lha rnams kyis dngos po\ngcig la rnam par rig pa tha dad pa mthong ba lta bu dang | … de ltar na shes pa\nrnam pa gsum gyi rjes su mthun pa dang | gtan tshigs gong ma rnams kyis don\nmed par grub pa yin no |!\nT1594_139a12-25: 諸義現前分明顯現而非是有。云何可知。如世尊言。若諸菩薩成就四\n法。能隨悟入一切唯識都無有義。一者成就相違識相智。如餓鬼傍生及諸天人同於一事見彼所\n識有差別故。… 由此所說三種勝智隨轉妙智。及前所說三種因緣諸義無義道理成就。!\n동일한 내용이 「증상혜학분」의 소위 ‘무분별지 증명’ 항목에도 게재되어 있다. 長尾 雅人\n(1987b) 282-287쪽 및 152쪽-155쪽 참조.!\n대응하는 산스크리트 구문은 『대승아비달마잡집론』에서 회수할 수 있다. 산스크리트 원문\n및 기타 제반 사항은 김성철(2008) 153쪽 각주10번 참조."
+            },
+            {
+              "id": "kor-lee-page-240",
+              "label": "Printed page 231",
+              "locator": "PDF page 240 · printed page 231 · direct PDF text extraction",
+              "text": "전개의 관점에서 보면 매우 어색하다고 할 수 있다. 왜냐하면, 이 해석에 따를\n경우, 앞에서부터 여러 단계에 걸쳐 ‘특별한 제한 없이’ 대상이 실재하지 않는다\n고 설명해 오다가, 이 한 대목에 걸려 이전의 모든 대목들을 재해석해야 하기\n때문이다.!\n\n따라서 문제의 ‘단일한 사태’라는 표현을 다르게 읽는 해석이 제기될 수\n있다. 실제로 아스바바바는 다음과 같이 주석한다.!\n\n‘[내용이 서로] 어긋나는 인식들의 원인’이라는 ‘사태’가 바로 [대상의 비실재성에 대\n한] 인식이 발생하는 원인으로, 외적인 대상은 원인으로는 타당하지 않기 때문에 저 [사\n실]을 알고서 대상이 없다고 깨달아야 할 것이다. ‘아귀’·‘동물’·‘인간’ 등은 [우리 기준\n에서] 강인 것에 대해 아귀들은 자신의 업의 이숙의 영향력(*ādhipatya)으로 고름 등\n으로 가득찬 것으로 보는 바로 그것에 대해 동물·물고기 등등에 의해 [각각] 마실 것·\n집으로 생각해 안주한다. 인간들은 달고(?) 깨끗하고 시원한 물이라고 분별하고서 씻\n고, 마시고, [몸을 식히러] 들어간다. 공무변처(*ākāśānantyāyatana)에서 입정한\n#231"
+            },
+            {
+              "id": "kor-lee-page-241",
+              "label": "Printed page 232",
+              "locator": "PDF page 241 · printed page 232 · direct PDF text extraction",
+              "text": "(*samāpanna) 천신들은 하늘을 보니, 색의 관념을 소멸시켰기 때문이다. 동일한 사\n물에 대해 [내용이 서로] 어긋나는 여러 인식들이 생겨나는 것은 타당하지 않다.\n\n\n352\n\n첫 번째 밑줄 부분은, 꺾쇠괄호로 보충한 내용이 아니라면 분명히, 본래는 ‘강’\n인 것이 각각의 존재자들에게 제각기 달리 보인다고 읽힐 수 있는 대목이다.\n  3\n그러나 두 번째 밑줄은 의심의 여지 없이 본문의 ‘동일한 사물’을 일종의 ‘불가\n능한 것의 표현’으로 서술하고 있다.!\n\n아마도 아스바바바는 『이십론』의 내용에 부합하게끔 『섭대승론』을 읽고\n있는 것 같다. 즉, 『이십론』에서 대상의 인과적 기여가 명시적으로 부정되기 때\n#232\n#\n D4051_225a4-7: phan tshun mi mthun pa ’gal pa’i rnam par shes pa rnams\n352\nkyi rgyu mtshan gyi dngos po ni rnam par shes pa ’byung ba’i rgyu mtshan nyid\nde | phyi rol gyi don ni rgyu mtshan nyid du mi rung ba’i phyir de shes pas ni\ndon med par khong du chud par bya’o || yi dags dang | dud ’gro dang mi zhes\nbya ba la sogs pa ni chu klung gang la yi dags rnams kyi rang gi las kyi rnam\npar smin pa’i dbang gis rnag la sogs pas gang bar mthong ba de nyid la dud\n’gro nya la sogs pas btung ba dang gnas yin pa’i blos gnas par byed do || mi\nrnams ni dngar ba(?) dang dad pa dang bsil ba’i chur rtog cing khrus byed do ||\n’thung ngo || ’jug go || nam mkha’ mtha’ yas skye mched la snyoms par ’jug pa’i\nlha rnams kyis ni nam mkhar mthong ste | gzugs kyi ’du shes rnam par bshig\npa’i phyir ro || dngos po gcig la phan tshun mi mthun pa’i rnam par shes pa du\nma ’byung ba de ni mi rung ba ste | !\nT1598_402c12-21: 相違識相智者。更相違反故名相違。相違者識名相違識。生此識因說名\n爲相。了知此相唯內心變外義不成。故無有義說名爲智。如餓鬼傍生及諸天人等者。謂於餓鬼\n自業變異增上力故。所見江河皆悉充滿膿血等處。魚等傍生卽見舍宅遊從道路。天見種種寶莊\n嚴地。人見是處有淸冷水波浪湍洄。若入虛空無邊處定。卽於是處唯見虛空。一物實有爲互相\n違。非一品類智生因性不應道理。\n#\n 「증상혜학분」에 대한 아스바바바의 주석에서는 이런 혼동의 여지를 주는 표현 자체가 없\n353\n이 본고가 이해한 대로 서술되어 있다. 김성철(2008) 306쪽-307쪽 참조."
+            },
+            {
+              "id": "kor-lee-page-242",
+              "label": "Printed page 233",
+              "locator": "PDF page 242 · printed page 233 · direct PDF text extraction",
+              "text": "문에, ‘동일한 사물’로부터 ‘어긋나는 인식들’을 설명해낼 수는 없다. 따라서 설\n명의 방향이 뒤집어져야 한다. 아귀들은 그들 나름대로 유사한 이미지를 함께\n경험하고, 인간들도 인간들 나름대로 비슷한 인식내용을 공유한다. 그런데 양\n측 모두 어쨌든 지각활동을 하는 이상, 비록 표상의 내용은 종별적이라고 하더\n라도, 그 내용이 시공간적으로 배열된다는 특성만큼은 아귀와 인간 모두에게\n공통될 것이다. 그렇다면 시공간상의 상대적 배치의 일치라는 이 공통점에 기\n반해 저 ‘동일한 사물’을 서로 다르게 본다는 인식에 이를 수 있을 것이다. 이것\n이 바로 소위 ‘一水四見’의 상황이, 대상의 비실재성을 전면적으로 받아들인다\n하더라도, 상상될 수 있는 방식일 것이다.!\n\n물론 아스바바바 자신은 후자의 해석이 『이십론』을 투사하는 것이 아니\n라 『섭대승론』의 내용 자체에 충실한 것이라고 항변할 수 있다. 그러나 바수반\n두에게 귀속되는 『섭대승론』의 주석에서는 본고나 아스바바바의 주석의 이해처\n럼 선명한 입장을 노정하고 있지 않다.\n\n 이 경우, 전자의 해석 가능성이 배제\n354\n될 수 없을 것이다. 그렇다면 너무 말쑥한 후자의 이해방식이 오히려 해석적 주\n관에 과도하게 노출된 것으로 간주될 수도 있을 것이다. 이런 까닭에서 『이십론』\n과 달리 『섭대승론』에서는 소위 ‘一水四見’의 상황에 대한 확정적 이해가 주어\n지지 않은 것으로 간주해야 할 것이다.!\n\n#233\n#\n 김성철(2008) 228쪽-229쪽 참조.\n354"
+            },
+            {
+              "id": "kor-lee-page-243",
+              "label": "Printed page 234",
+              "locator": "PDF page 243 · printed page 234 · direct PDF text extraction",
+              "text": "【3】 〖b-2〗!\n여기서 아귀들의 ‘공통의 경험’이 ‘상속에의 비한정’ 논거를 무효\n화하는 사례로 소개되는데, 여기에 중대한 논리적 결함이 발견된다. 바수반두\n는 이 사례를 통해 대상이 비존재하더라도 상속에의 비한정이 여전히 성립하기\n때문에 【2】에서의 대론자의 비판이 무위로 돌아감을 보여주려 했던 것 같다. 따\n라서 이 예시가 제대로 작동하려면 비문증 환자에게 보이는 머리카락 이미지처\n럼 문제의 대상의 ‘비실재성’이 설정상 불가결하다. 그런데 아귀의 사례는 이 조\n건을 만족시키지 못하는 것으로 보인다. 우리 인간의 입장에서야 강이 깨끗한\n것으로 보이지, 아귀 입장에서는 고름이 가득찬 것으로 보일텐데, 어떤 기준을\n채택하였길래 고름이라는 대상이 단적으로 없는 것으로 간주되는지가 불분명\n하다. 만약 아귀들이 경험한다는 고름강의 비실재성을 확보할 기준이 없다면,\n이 대목의 예시는 부적절한 것이 되어 버린다.!\n\n후대의 주석가 내지 연구자들은 대체로 이 문제를 선명히 감지해내지 못\n하는 것 같다. 예를 들어 비닛따데바는 단지 다음과 같이 설명할 뿐이다.!\n\n[제3송에서 ‘모두에 의해’ 등을 말한] 까닭은 저 장소 및 시간에 위치한 모든 아귀가 고\n름강 등을 보는데, 그렇기에 대상영역이 없어도 상속에의 비한정이 성립하는 것이[기\n때문이]다.\n\n\n355\n\n#234\n#\n 山口 益·野澤 靜證(1965) 35쪽-36쪽 참조.\n355"
+            },
+            {
+              "id": "kor-lee-page-244",
+              "label": "Printed page 235",
+              "locator": "PDF page 244 · printed page 235 · direct PDF text extraction",
+              "text": "이처럼 비닛따데바는 고름강의 비실재성에 대한 아무런 기준도 제시하지 않는\n다. 대다수의 현대 연구자들은 비닛따데바처럼 별다른 설명을 제공하지 않는\n다.\n\n 한편 다르마빨라는 다음과 같이 설명한다.!\n356\n\n‘개체(=상속)에의 비한정’이 ‘[아]귀처럼’이라고 한 것은 실제로는 맑은 강이어서 다른\n별도의 대상영역이 없지만, 여러 아귀들이 모두 함께 고름이 가득차 흐르는 것을 보는\n것이지 단지 한 [아귀]만이 목도하는 것은 아니나, 이곳에 실로 지각할 만한 약간의 고\n름·피가 인정되지 않으니 [강]둔덕을 넘쳐 흐를만한 [고름·피]가 있을 수 있다는 것이\n어떻게 용납되겠는냐는 것이다.\n\n\n357\n\n아귀들에게 고름강으로 경험되는 것이 실제로는 맑은 강이라는 다르마빨라의\n진술은 비닛따데바보다 양호하다. 그러나 이 역시 인간의 관점에 설 경우에만\n타당한 것이다. 그러나 다르마빨라는 왜 인간의 관점이 논의의 기준이 되어야\n하는지 따로 설명하지 않는다.!\n\n이 문제에 대한 주목 및 해결책은 자은 기에 의해 유일하게 제공되었던\n것 같다. 『이십론술기』는 이 대목을 다음과 같이 해설한다.!\n\n외도 및 소승의 경량부 논사 등은 모두 아귀가 함께 고름강을 본다고 믿기 때문에 이 [아\n귀의 경우]를 가지고 유례를 삼은 것이다. 〖논증식〗 [주장명제:] 같이 동일 때 동일한\n#235\n#\n Siderits(2007) 152쪽-156쪽, 효도 가즈오(2011) 103쪽-104쪽,\n356\nKellner&Taber(2014) 738쪽 참조.\n#\n T1591_082c13-15: 身不定。如鬼者。實是淸河。無外異境。然諸餓鬼。悉皆同見膿滿\n357\n而流。非唯一睹。然於此處。實無片許膿血可得。何容得有溢岸而流。"
+            },
+            {
+              "id": "kor-lee-page-245",
+              "label": "Printed page 236",
+              "locator": "PDF page 245 · printed page 236 · direct PDF text extraction",
+              "text": "장소에서 [복수의] 상속(=개체)들에게 [표상의 내용이] 비한정된다는 저 이치가 성립\n한다. [근거:] 실제의 대상영역이 없다고 인정하기 때문이다. [유례:] 아귀에게 보이는\n고름강처럼.\n\n\n358\n\n자은 기는 ‘대론자가 아귀들이 공통적으로 고름강을 경험한다고는 믿는다’고 하\n여, 문제의 강이 실제로는 어떤 상태인지에 대해서는 함구한다. 이러한 입장은\n강의 본래 상태를 함부로 규정하는 다르마빨라와 선명히 구분된다. 물론 저 믿\n음로부터 곧바로 ‘실제의 대상영역이 없다’는 결론을 이끌어내는 것은 비약에\n해당한다. 바로 이 때문에 자은 기는 ‘실제의 대상영역이 없다’를 근거로 삼지\n않고 ‘실제의 대상영역이 없다고 인정한다’를 근거로 삼은 것으로 보인다.\n\n\n359\n#236\n#\n T1834_986a18-21: 外道小乘經部師等。皆信餓鬼同見膿河。故以爲喩。 量云。同於一\n358\n時同於此處相續不定其理得成。許無實境故。如餓鬼所見膿河。\n#\n 자은 기의 이러한 섬세함은 【3】의 초두에 거론된 꿈의 비유에 대해서도 발휘된다.!\n359\nT1834_984b13-c8: 謂立量云。非緣終南處。緣此識應生。執境實無識得生故。如緣終南\n處。… 此夢境無。經部大乘。彼此共許。故以爲喩。(이를테면 [3지작법의 형태의] 추론[식]\n을 말하자면, 종남산[이 위치한] 장소를 대상으로 하지 않더라도 [종남산]을 대상으로 하는\n이 식이 생겨나야 할 것이다. 대상영역이 실제로 없더라도 식이 생겨날 수 있다고 주장하기\n때문이다. 종남산[이 위치한] 장소를 대상으로 하는 경우에서와 같이. … 이와 같이 꿈의 대\n상영역이 비존재한다는 점은 경량부와 대승 피차간에 함께 인정하기 때문에 이것을 가지고\n유례로 삼은 것이다.)!\n   여기서 다소 잉여적으로 보이는 ‘-고 주장하기’라는 표현을 덧붙이거나 대론자를 굳이 경\n량부를 상정하는 것 등은 ‘꿈 속의 대상이 비실재이다’라는 명제가 모두에게 받아들여지지\n않았기 때문이다. 주지하다시피 설일체유부는 꿈 속의 인식대상 역시 실재한다고 보는 반면\n에 경량부는 그렇지 않다고 본다. 그러나 꿈 속의 대상마저 실재한다고 보는 설일체유부의\n생각이 독특한 것이기 때문에, 자은 기처럼 굳이 ‘경량부’를 지정하는 것보다는 ‘설일체유부’\n를 대론자의 범위에서 배제하는 편이 보다 적확하다고 할 수 있다. ‘비존재에 대한 인식’을\n주제로 한 포괄적인 연구는 권오민(2019) 제8장 참조."
+            },
+            {
+              "id": "kor-lee-page-246",
+              "label": "Printed page 237",
+              "locator": "PDF page 246 · printed page 237 · direct PDF text extraction",
+              "text": "이상과 같은 자은 기의 이해는 다시 두 가지 방향으로 해석될 수 있다.\n하나는 상기의 논리적 결함을 일종의 ‘논증적 허용’으로 간주하는 방식이다. 일\n단 논쟁 당사자들끼리 고름강의 비실재성이 간주관적으로 합의된다면, 문제의\n고름강이 정말로 비실재하는지 여부는 무시될 수 있다는 것이다. 다른 하나는\n유식성 명제를 선취하여 고름강의 비실재성 자체를 객관적 사실로 간주하는 방\n식이다. 만약 모든 것이 단지 표상에 불과하다면 고름강 역시 표상에 불과하며,\n그런 한에서 고름강은 비실재이기 때문이다. 바수반두 자신은 전자의 방향에\n서 있을 것으로 추측되지만, 저 두 방향이 모순되는 것이 아니기 때문에, 후자\n의 가능성 또한 배제할 수는 없을 것이다.!\n\n【3】 〖c〗!\n‘영향력(ādhipatya 혹은 adhipatitva)’은 【3】, 【12】, 【14】에서 ‘결\n과에 대한 원인의 작용’이라는 의미로 일관되게 사용되며, 앞서 【2】 〖a-1〗에서\n언급했듯 ‘원인에 따른 결과의 규정’이라는 의미의 ‘한정(niyama)’과 대칭적이\n다.!\n\n이 ādhipatya 자체는 『구사론』에서 감각능력(indriya)을 설명하는 개념\n으로 등장한다.!\n\n그런데 감각능력(indriya)의 의미는 무엇인가? ‘√id는 ‘우위’를 뜻한다’라고 한다. 그\n것에 있어 감각능력들이 우위를 점한다[는 뜻에서 indriya이다]. 따라서 감각능력의\n의미는 ‘지배적(ādhipatya)’의 의미이다. 그러면 이들 중 무엇이 무엇에 대해 지배적\n#237"
+            },
+            {
+              "id": "kor-lee-page-247",
+              "label": "Printed page 238",
+              "locator": "PDF page 247 · printed page 238 · direct PDF text extraction",
+              "text": "인가? … 눈 등의 다섯 가지 [감각능력]들의 경우는 제각기의 대상을 지각\n(upalabdha)함에 있어 지배적이다. 또 의(manas)의 경우는 모든 대상을 지각함에\n있어 지배적이다. 따라서 이들 여섯 가지가 각각 감각능력인 것이다. 그런데 대상들의\n경우도 역시 이 [지각함]에 있어 지배적인 것이 아닌가? 지배적이지 않다. 왜냐하면\n지배적인 것은 훨씬 더(adhikam) 주도적인 것(prabhutva)이기 때문이다. 눈은 색의\n지각에 있어 훨씬 더 자재로운 것이다. 모든 색의 지각에 있어 공통적인 원인이기 때\n문이고 또 지각은 저 [눈]의 예리함 여부 등에 종속적이기 때문이다. 색의 경우는 그렇\n지 않으니, 저 [눈]과 반대되기 때문이다. 의의 경우 [의의 대상인] 법들에 대해서까지\n마찬가지로 적용되어야 할 것이다.\n\n\n360\n\n『구사론』에서는 지배의 주체가 감각능력이고 그 대상이 감각적 대상영역이었지\n만, 이곳 『이십론』에서는 지배의 주체는 업의 이숙이고 그 대상은 표상의 내용\n이다. 한편 상가바드라의 판정에 따르면 여기서 바수반두가 ‘지각(upalabdha)’\n으로 의도한 것은 다름 아닌 식(vijñāna)이다.\n\n 따라서 문제의 지배의 장은\n361\n식, 즉 표상이라고 할 수 있다.!\n#238\n#\n Pradhan(1967) 38쪽-39쪽: kaḥ punar indriyārthaḥ | idi paramaiśvarye | tasya\n360\nindantīti indriyāṇi | ata ādhipatyārtha indriyārthaḥ | kasya caiṣāṁ kvādhipatyam\n| …cakṣurādīnāṁ pañcānāṁ svasya svasyārthasyopalabdhādhipatyam |\nmanasaḥ punaḥ sarvārthopalabdhāvādhipatyam | ata etāni ṣaṭ pratyekam\nindriyam | nanu cārthānām apy atrādhipatyam | nādhipatyam | adhikaṁ hi\nprabhutvam ādhipatyam | cakṣuṣaś cakṣūrūpopalabdhāv adhikam aiśvaryam |\nsarvarūpopalabdhau sāmānyakāraṇatvāt tatpaṭumandatādyanuvidhānāc\ncopalabdheḥ | na rūpasya | tadviparyayāt | evaṁ yāvat manaso dharmeṣu\nyojyam |\n#\n 이에 대한 상가바드라의 체계적인 비판은 T1562_378a12-b05 참조.\n361"
+            },
+            {
+              "id": "kor-lee-page-248",
+              "label": "Printed page 239",
+              "locator": "PDF page 248 · printed page 239 · direct PDF text extraction",
+              "text": "한편 다르마끼르띠 연구자 추쭌찌에는 슈미트하우젠이 소개한 『유가사\n지론』의 용례를 인용하며 “이 ādhipatya란 단어가 “구별되는 중생들 상호간의\n영향력을 뜻하는 유가행파 체계의 특별한 용어”(Chu(2005) 36쪽)라고 한다.\n 362\n그러나 정작 슈미트하우젠은 저 용어가 ‘특별한 것’이라고 말하지 않는다. 그는\n단지 『아비달마집론』에서 이 ādhipatya가 그에 상응하는 ‘특별한’ 업 때문에\n발생한 결과라고 언급했을 뿐이다.\n\n 슈미트하우젠의 이 진술로부터 추쭌찌에\n363\n의 저 결론으로 나아가는 것은 비약이라고 할 수 있다. 나아가 슈미트하우젠은\n저 ādhipatya 개념을 알라야식의 개념사라는 맥락에 한정해 소개할 뿐 『이십\n론』의 용례에 대한 어떠한 시사도 내비추지 않는다.\n\n 관견에 따르면, 슈미트\n364\n하우젠은 다른 어디서도 ādhipatya를 추쭌찌에처럼 특별한 것으로 간주한 적\n이 없다.\n\n 따라서 추쭌찌에의 저 평가는 일단 독창적인 것으로 보인다.!\n365\n\n본고 역시 저 ādhipatya가 ‘특별한 용어’로 사용되었다는 점에 한해서는\n추쭌찌에에게 동의한다. 그러나 『유가사지론』이나 혹은 『아비달마집론』처럼 비\n교적 이른 시기의 문헌에 주목하는 그와 달리, 본고는 ādhipatya의 용어화가\n『이십론』에서 비로소 이루어진다고 본다. 왜냐하면 『이십론』의 용례들을 살펴\n보면 『유가사지론』이나 『아비달마집론』으로부터의 단절점들이 선명히 감지되\n#239\n#\n 추쭌찌에의 견해는 편역자 씰크 역시 주목한다. Silk(2018) 154쪽 참조.\n362\n#\n Schmithausen(1987) 491쪽 이하 미주 1303번 참조.\n363\n#\n Schmithausen(1987) 203쪽 및 491쪽 이하 미주 1303번 참조.\n364\n#\n 대표적인 예로 Schmithausen(1967)를 들 수 있을 것이다.\n365"
+            },
+            {
+              "id": "kor-lee-page-249",
+              "label": "Printed page 240",
+              "locator": "PDF page 249 · printed page 240 · direct PDF text extraction",
+              "text": "고, 이 단절점들이 『이십론』에서 중요하게 부각되며 이후의 용례의 범형을 이루\n기 때문이다.!\n\n먼저, 『유가사지론』에서는, 앞서 언급했듯, ādhipatya 자체가 알라야식\n의 작용의 결과로 간주되지만\n\n 『이십론』에서는 애초에 알라야식의 존재를 전\n366\n제하지 않는다.\n\n 다음으로, 『유가사지론』과 『아비달마집론』에서 ādhipatya\n367\n는 복수의 개체들 사이에서만 작동하지만, 『이십론』의 경우 바로 이곳 【3】에서\nādhipatya 단일한 개체 내에서도 성립한다. 다음으로, 『아비달마집론』에서는\n기세간의 발생과 중생들 상호간의 영향력(ādhipatya)을 모두 공업(sādhāraṇ\nakarma) 개념을 가지고 설명하지만\n\n 『이십론』에서는 공업 대신 ‘균등한 업\n368\n(tulyakarma)’ 내지 ‘유사한, [중생들] 스스로의 업(samānasvakarma)’이 거\n론되고 기세간의 발생 문제 자체는 직접 다뤄지지 않는다.\n\n\n369\n#240\n#\n 『아비달마집론』 역시 알라야식의 존재를 승인하나 문제의 ādhipatya가 등장하는 대목\n366\n은 꼭 알라야식을 전제하지 않더라도 충분히 이해된다.\n#\n 일찍이 슈미트하우젠은 『이십론』이 단층적 식 모델에 입각한 것이며 따라서 ‘경량부적’이\n367\n라고 평석하였다. Schmithausen(1967) 참조.!\n프랑코의 전언에 따르면, 슈미트하우젠 자신의 의도는 바수반두가 『이십론』에서 알라야식\n개념 및 중충적 식 모델을 거부했다는 것이 아니라 단지 사용하지 않았다는 것이다.\nFranco(2017) 962쪽 각주4번 참조.\n#\n 『유가사지론』에서도 물론 기세간의 발생과 중생들 상호간의 영향력이 알라야식이 작동한\n368\n결과로서 함께 취급되지만, 관견에 따르면 적어도 중생들 상호간의 영향력은 『아비달마집론』\n에서처럼 공업 개념과 관련지어지지 않는다. Schmithausen(1987) 203쪽 및 491쪽 이하\n미주1302번 및 1303번 참조.\n#\n 기세간의 발생 문제에 대한 논의는 【4】 〖b〗 참조.\n369"
+            },
+            {
+              "id": "kor-lee-page-250",
+              "label": "Printed page 241",
+              "locator": "PDF page 250 · printed page 241 · direct PDF text extraction",
+              "text": "마지막으로, 이 ādhipatya는 소위 네 가지 조건, 즉 인연·등무간연·소연\n연·증상연이라는 범-설일체유부적 구도 중에서 증상연(adhipatipratyaya)에\n해당하는데, 『유가사지론』과 『아비달마집론』은 저 전통적 구도 자체를 준수하\n는 반면 『이십론』은 ‘네 가지 조건’의 구분을 무위로 돌리는 것처럼 보인다.\n\n\n370\n예를 들어, 【3】에서 “비록 지옥옥졸 등이 비존재하지만 유사한, [지옥중생들] 스\n스로의 업의 이숙의 영향력(ādhipatya) 때문”이라고 할 때, 이 ādhipatya의\n인과적 역할은 소연연과 인연을 겸한다. 또 【10】에서 “저 표상으로부터 기억\n(smṛti)와 상응하는(samprayukta), 바로 저 [표상]인양 보이는, [그래서] 색\n등을 [상기적으로] 분별해내는 정신적 표상(manovijñapti)가 발생”한다고 할\n때, 비록 ādhipatya 자체는 직접 나타나지는 않지만, 등무간연과 인연의 역할\n이 선명히 구분되지 않는다.!\n\n물론 문제의 ādhipatya가 【3】에서 소연연 역할을 하는 ‘동시에’ 인연의\n역할을 한다고 볼 수는 없을 것이다. 이것은 【5】에서 “색인양 보이는 표상이 A\n라는 자신의 종자로부터 특수한 변화(pariṇāmaviśeṣa)가 달성되었기 때문에\n발생할 경우의 그리고 저 종자 [A] 및 [그렇게 발생된 표상이] B인양 보일 경우\n그 [이미지 B], 이 [A와 B] 양자가 저 표상의 안처·색처인 것이라고” 한 것에 맞\n춰 분석되어야 할 것이다. 즉, 전생의 균등한 업이 결과를 내려는 할 때가 인연(=\n#241\n#\n 이에 반해 기존의 증상연 개념을 그대로 사용하여 『이십론』을 해석하는 시도로는 박기열\n370\n(2017) 참조.!\n이러한 관점 역시 물론 가능하겠으나 적어도 “각각의 등무간연이 상속의 직접적인 인(因)이\n라고 한다면 영향력은 보조적인 연(緣)을 의미한다는 점에서 증상연(增上緣)이라고 할 수 있\n다”(박기열(2017) 124쪽)는 진술은 여기 【3】의 용례와 합치하지 않는다."
+            },
+            {
+              "id": "kor-lee-page-251",
+              "label": "Printed page 242",
+              "locator": "PDF page 251 · printed page 242 · direct PDF text extraction",
+              "text": "【5】의 종자)이고 그 결과 동일하게 고름강 등을 보는 것이 소연연(=【5】의 이미\n지)이라고 할 수 있다. 반면에 【10】에서처럼 등무간연 역할과 인연의 역할을 겸\n하는 것은, 물론 이 사례에까지 ādhipatya 개념을 적용하는 것이 인정된다면,\n원칙적으로 문제가 없어 보인다.!\n\n이십론주가 전통적인 ‘네 가지 조건’의 구분을 무효화하면서 항상\nādhipatya 개념을 염두에 두었는지는 물론 알 수 없다. 만약 그렇다고 한다면,\nādhipatya는 niyama와 함께 짝을 이뤄 종래의 6인·4연·5과의 구도 전체를\n대체하거나 혹은 설명할 수 있는 보다 분석적이면서 일반적인 용어로서 고안되\n었다고까지 평가할 수 있을 것이다. 그렇지 않다면, 『유가사지론』이나 『아비달\n마집론』에서 복수의 개체들 사이에서만 적용되던 ādhipatya가 여기 『이십론』\n에서 단일한 개체 내에서도 사용되는 이 ‘의미 확장’을 합리적으로 설명하기 어\n렵기 때문이다. 물론 바수반두의 이러한 개념적 혁신은 슈릴라따의 일원론적\n인과관을 유식적으로 번안·계승한 것이라고 할 수 있다.\n\n\n371\n#242\n#\n 슈릴라따의 인과관에 대해서는 권오민(2019) 제9장 참조.\n371"
+            },
+            {
+              "id": "kor-lee-page-252",
+              "label": "Printed page 243",
+              "locator": "PDF page 252 · printed page 243 · direct PDF text extraction",
+              "text": "Silk(2018) 49쪽-59쪽: kim punaḥ kāraṇaṁ narakapālās te ca śvāno\nvāyasāś ca satvā neṣyante |!\nayogāt | na hi te nārakā yujyante tathaiva\ntadduḥkhāpratisamvedanāt | parasparaṁ yātayatām ime nārakā ime\nnarakapālā iti vyavasthā na syāt | tulyākṛtipramāṇabalānāñ ca\nparasparaṁ yātayatān na tathā bhayaṁ syāt | dāhaduḥkhañ ca\npradīptāyām ayomayyāṁ bhūmāv asahamānāḥ kathaṁ tatra parān\nyātayeyuḥ | anārakāṇāṁ vā narake kutaḥ sambhavaḥ <|>!\nkathan tāvat tiraścāṁ svarge sambhavaḥ | evaṁ narakeṣu\ntiryakpretaviśeṣāṇāṁ narakapālādīnāṁ sambhavaḥ syāt ||!\ntiraścāṁ sambhavaḥ svarge yathā na narake tathā |!\nna pretānāṁ yatas tajjaṁ duḥkhan nānubhavanti te || [5 ||]!\nye hi tiryañcaḥ svarge sambhavanti te\ntadbhājanalokasukhasaṁvarttanīyena karmmaṇā tatra sambhūtās\ntajjaṁ sukhaṁ pratyanubhavanti | na caivan narakapālādayo\nnārakaṁ duḥkhaṁ pratyanubhavanti tasmān na tiraścāṁ sambhavo\nyukto nāpi pretānāṁ <|>!\nteṣān tarhi nārakāṇāṁ karmmabhis tatra bhūtaviśeṣāḥ sambhavanti\nvarṇṇākṛtipramāṇabalaviśiṣṭā ye narakapālādisaṁjñāṁ\n#243"
+            },
+            {
+              "id": "kor-lee-page-253",
+              "label": "Printed page 244",
+              "locator": "PDF page 253 · printed page 244 · direct PDF text extraction",
+              "text": "pratilabhante | tathā ca pariṇamanti yadvividhāṁ\n\n\n372\nhastavikṣepādikriyāṁ kurvanto dṛśyante bhayotpādanārthaṁ yathā\nmeṣākṛtayaḥ parvatā āgacchanto gacchantaḥ (ayaḥśālmalī)vane ca\nkaṇṭakā adhomukhībhavanta ūrddhamukhībhavantaś ceti | na te na\nsambhavanty eva ||\n\n\n373\nyadi tatkarmmabhis tatra bhūtānāṁ sambhavas tathā |!\niṣyate pariṇāmaś ca kiṁ vijñānasya neṣyate || 6 ||!\n(vi)jñānasyaiva tatkarmmabhis tathāpariṇāmaḥ kasmān neṣyate <|>\nkim punar bhūtāni kalpyante || api ca ||!\nkarmmaṇo vāsanānyatra phalam anyatra kalpyate |!\ntatraiva neṣyate yatra vāsanā kin nu kāraṇaṁ || 7 ||!\nyena hi karmmaṇā nārakāṇāṁ tatra tādṛśo bhūtānāṁ sambhavaḥ\nkalpyate pariṇāmaś ca tasya karmmaṇo vāsanā teṣāṁ\nvi[jñā]na(saṁtāna)sanniviṣṭā nānyatra yatraiva ca vāsanā tatraiva\ntasyāḥ phalaṁ tādṛśo vijñānapariṇāmaḥ kin neṣyate <|> yatra\nvāsanā nāsti tatra tasyāḥ phalaṁ kalpyata iti kim a(t)ra kāraṇaṁ |\n#244\n#\n 편역자 씰크는 yad과 vividhāṁ 사이를 띄어 각기 서로 독립된 단어들로 간주하나, 그\n372\n자신의 번역처럼 이 구절이 tathā에 호응하는 관계사로 작동하려면 yadvividhāṁ의 형태가\n되어야 할 것이다. Silk(2018) 55쪽 참조.\n#\n 해당 단락의 마지막 절 na te na sambhavanty eva를 현장은 非事全無然不應理\n373\n(T1590_075a25-26)로 옮기고 있어 바수반두의 응답처럼 보이게 하였고 자은 기의 주석\n이 이 사실을 분명히 한다. T1834_989a01-4 참조.!\n이에 대한 비평은 【4】 〖c-3〗 참조."
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-04",
+          "label": "Argument section 4 · verses 3–7, part 2",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-254",
+              "label": "Printed page 245",
+              "locator": "PDF page 254 · printed page 245 · direct PDF text extraction",
+              "text": "【4】 [대론자:] 그런데 무슨 이유로 저 지옥옥졸들 및 개·까마귀들을 중생이라고\n인정하지 않는가?!\n[바수반두:] 타당하지 않기 때문이다. 왜냐하면 저 [지옥옥졸·개·까마귀]들이 지\n옥중생들이라는 것이 타당하지 않게 때문이다. 바로 저 [지옥중생들의 경우]처\n럼 [이 지옥옥졸 등은] 저 [지옥에 속한] 고통을 느끼지 않기 때문이다. [만약] 상\n호간에 괴롭힌다고 하면 ‘이들은 지옥중생이다’, ‘이들은 지옥옥졸이다’라는 규\n정(vyavasthā)이 가능하지 않을 것이다. [이 경우] 균등한 형태·크기·힘을 가\n진 자들이 상호간에 괴롭히는 것이기 때문에 그토록 두렵지는 않을 것이다. 나\n아가 불타오르는 쇠의 땅에서 태워지는 고통을 이겨내지 못하는 자들이 어떻게\n저 [지옥]에서 남들을 괴롭힌단 말인가? 한편 지옥중생이 아닌 자들이 어찌하\n여 지옥에 발생한 것인가?〖a〗!\n[대론자:] 우선 [그러면] 동물들은 어떻게 하늘에 발생할 것인가? 이처럼 지옥\n들에서도 특정 동물·아귀들이 지옥옥졸 등으로서 발생할 것이다.!\n[바수반두:] 동물들이 하늘에 발생하는 양상으로 지옥에서 [지옥옥졸 등이 발생\n하는 것이] 아니다. 아귀들의 경우도 [그렇게 발생하는 것이] 아니다. 왜냐하면\n이 [지옥옥졸 등은] 저 [지옥]에서 생긴 고통을 경험하지 않기 때문이다. 〖제5\n송〗!\n왜냐하면 하늘에 발생하는 동물들은 그 [하늘이라는] 기세간(bhājanaloka)[에\n속한] 즐거움을 유발할 업에 의해 저 [하늘]에서 발생한 것이어서 저 [하늘]에서\n생긴 즐거움을 경험한다.〖b〗 그러나 지옥옥졸 등은 저처럼 지옥의 고통을 경험\n#245"
+            },
+            {
+              "id": "kor-lee-page-255",
+              "label": "Printed page 246",
+              "locator": "PDF page 255 · printed page 246 · direct PDF text extraction",
+              "text": "하지 않는다. 따라서 [지옥에] 동물들이 발생하는 것이 타당하지 않고, 아귀들\n이 [발생한다는 것]도 [타당하지] 않다.!\n[대론자:] 그 경우 저 지옥중생들의 업들에 의해 저 [지옥]에서 특정 색깔·형태·\n크기·힘을 띤 특정 물질요소(bhūtaviśeṣa)들이 발생하는데, 이 [물질요소]들\n이 ‘지옥옥졸’ 등의 명칭을 획득한다. 그리고 [이 요소들은] 그처럼 변화하여 손\n을 내뻗는 등의 다양한 작용을 하는 자들로 보여 공포를 유발하게 되니, [그 변\n화의 양상은] 이를테면 [좌우에서] 왕래하는 숫양 형태의 산맥들이라든가, 또\n쇠가시나무 숲에서 위아래로 움직이는 [가시]바늘들로 [보이는 것이다]. 이런\n점에서 저 [지옥옥졸] 등이 발생하지 않는 것이 전혀 아니다.〖c〗!\n[바수반두:] 만약 저 [지옥중생들]의 업들에 의해 저 [지옥]에서 물질요소들이\n그처럼 발생하는 것을 인정하고, 또 [물질요소들의 그와 같은] 변화(pariṇ\nāma)〖d〗를 [인정하]면, 왜 식(vijñāna)의 변화는 인정하지 않는가? 〖제6송〗!\n저 [지옥중생들]의 업들에 의해 그처럼 변화하는 것이 바로 이 식에 [속한다고]\n는 무엇 때문에 인정하지 않는가? 왜 또 물질요소들이 상정되는 것인가? 심지\n어,!\n업의 훈습〖e〗이 A에 있고 결과는 B에 있다고 상정하지 훈습이 있는 바로 그곳\n에 [결과가] 있다고 인정하지 않는데, 도대체 무슨 까닭인가? 〖제7송〗!\n지옥중생들의 업 때문에 저 [지옥]에서 물질요소들이 그와 같이 발생하고 또 변\n화한다고 상정되는 한편 [바로] 그 [동일한] 업의 훈습은 다른 곳이 아니라 저 [지\n옥중생]들의 식의 상속(vijñānasaṁtāna)에 자리한다고 [상정되는데], 그런데\n#246"
+            },
+            {
+              "id": "kor-lee-page-256",
+              "label": "Printed page 247",
+              "locator": "PDF page 256 · printed page 247 · direct PDF text extraction",
+              "text": "훈습이 있는 바로 그곳에 그 [훈습]의 결과가 있는, 그와 같은 식의 변화는 왜\n인정하지 않는가? 훈습이 없는 곳에 그 [훈습]의 결과가 있다고 상정하는 것에\n무슨 까닭이 있는가?〖f〗\n#247"
+            },
+            {
+              "id": "kor-lee-page-257",
+              "label": "Printed page 248",
+              "locator": "PDF page 257 · printed page 248 · direct PDF text extraction",
+              "text": "【4】 〖a〗!\n‘지옥옥졸(narakapāla)’이 중생인지 여부를 검토할 때 『이십론』\n은 ‘개(śvan)’나 ’까마귀(vāyasa)’ 등도 함께 취급하지만 『구사론』에서는 지옥\n옥졸의 경우만을 따로 거론한다.\n\n\n374\n\n저들 지옥옥졸들은 중생으로 산정되는가, 아닌가? 어떤 이들은 아니라고 한다. 이 경\n우 어떻게 활동하는가? 중생들의 업들에 의해서이다. 마치 성겁(vivartanī) [시의] 바\n람의 종자처럼. 그렇다면 대덕 다르마수부띠가 말한 “분노하며 잔혹한 업을 [행하고]\n악을 즐기며 고통받는 이들에 대해 기뻐하는 자들은 염라[대왕]의 [수하]괴물들로 태\n어난다.”라고 한 것은 [어떻게 설명할 것인가]? 염라의 지시를 받고 중생들을 지옥들\n로 내던지는 바로 그 자들이 ‘염라의 괴물들’이라고 불리는 것이니, [지옥중생들에게]\n해를 끼치는 자들이 [‘염라의 괴물들’이라고 불리는 것은] 아니다. [한편] 어떤 이들은\n중생으로 산정된다고 한다. 이 경우 저 [지옥옥졸들이 지옥중생들을 괴롭혀서 생기는]\n업은 어디서 이숙(vipāka)하는가? 바로 저 지옥들에서이니, 왜냐하면 무간업을 지은\n자들의 이숙도 수용하는 터에 저 [지옥]에 저 [지옥옥졸들의 업이 이숙하는 것]들에 무\n#248\n#\n 개와 까마귀는 지옥의 모습을 묘사할 때 한 차례씩 언급되기만 한다. Pradhan(1967)\n374\n163쪽 2행 및 4행 참조."
+            },
+            {
+              "id": "kor-lee-page-258",
+              "label": "Printed page 249",
+              "locator": "PDF page 258 · printed page 249 · direct PDF text extraction",
+              "text": "슨 방해가 있겠는가? 어떻게 [지옥]불에 의해 타지 않는가? [지옥]불이 확실히 업들에\n의해 제한되어 있기 때문에 혹은 특정 물질요소로 생성되었기 때문이다.\n\n\n375\n\n이처럼 지옥옥졸이 중생인지 여부에 대해 설일체유부 내부에는 일정한 합의가\n존재하지 않았다. 유사한 양상이 『대비바사론』 및 『순정리론』에서도 확인된다.\n『대비바사론』은 지옥옥졸 중생설과 비중생설을 모두 소개한 뒤 각각의 경우 수\n반되는 난문들을 해명하고 있기 때문에 『구사론』과 거의 일치한다.\n\n 한편 『순\n376\n정리론』은 지옥옥졸에는 염라대왕의 심부름꾼들 및 그밖의 중생인 옥졸과 물질\n현상에 불과한 옥졸이 모두 있다고 하기 때문에 『구사론』보다 절충적인 모습을\n보여주기는 하지만 이 역시 설일체유부 내부의 의견 대립을 방증하는 것으로\n보인다.\n\n\n377\n#249\n#\n Pradhan(1967) 164쪽: kiṁ te narakapālāḥ sattvasaṁkhyātā utāho neti | nety\n375\neke | katham idānīṁ ceṣṭante | sattvānāṁ karmabhir vivarttanīvāyubījavat | yat\ntarhi bhadantadharmasubhūtinoktaṁ krodhanāḥ krūrakarmāṇaḥ\npāpābhirucayaś ca ye | duḥkhiteṣu ca nandanti jāyante yamarākṣasā iti || ye te\nyamenānuśiṣṭāḥ sattvān narakeṣu prakṣipanti ta ete yamarākṣasā uktā na tu ye\nkāraṇāḥ kārayantīti [|] sattvasaṁkhyātā ity eke | tasyedānīṁ karmaṇaḥ kva\nvipākaḥ | teṣv eva narakeṣu hi ānantaryakāriṇāṁ vipākāvakāśas tatra teṣāṁ ko\nvipratibandhaḥ | katham agninā na dahyante | agner nūnaṁ karmabhiḥ\nkṛtāvadhitvāt bhūtaviśeṣanirvṛtter vā |!\n밑줄 친 부분이 『이십론』의 【4-2】에 대응한다. 그러나 『이십론』에서는 이 생각이 비중생설에\n부속하는 반면 이 『구사론』에서는 중생설의 보조 논리로 등장한다. 한편 『구사론』의 설명에\n따르면 지옥불의 맹위를 견디게끔 해주는 물질적 방어막이 지옥옥졸들에게 있는데, 바로 이\n특수물질을 조성한 업은 지옥중생이 아니라 지옥옥졸들에게 속한 것으로 보인다. 이에 반해\n『이십론』은 문제의 업을 지옥중생에게 귀속시킨다.\n#\n T1545_0866b12-c12 참조.\n376\n#\n T1562_517a28-b03 참조.\n377"
+            },
+            {
+              "id": "kor-lee-page-259",
+              "label": "Printed page 250",
+              "locator": "PDF page 259 · printed page 250 · direct PDF text extraction",
+              "text": "이상의 내용에 비추어볼 때 자은 기는 【4】 전체의 내용을 다음과 같이 파\n악한 점은 자못 이상하다.!\n\n그런데 여러 부파 중에서 대중부(Mahāsaṅghika)·정량부(Sāṁmitīya)는 [지옥]옥\n졸 등이 실재하는 중생이라고 주장한다. 설일체유부 논사들은 비록 중생은 아니지만\n마음 외적인 것[으로 보니], 악업에 의해 촉발된 영향력(*ādhipatya) 때문에 물질요소\n의 변화로 생겨난, 특정 형태·색깔·크기·힘을 띤 파생물질이다. 경량부 논사 등은 비록\n중생은 아니지만 마음 외적인 것[으로 보니] 업을 지을 때에만 내부의 식을 훈습하고\n그 [훈습]이 결과를 받을 때에는 곧 마음 외부에 물질요소가 변화하여 형태·색깔 등을\n일으킨다[는 것이다]. 이제 대승의 생각도 역시 유정이 아니다. 업을 지을 때에 내적인\n식에 있을 뿐만 아니라, 결과를 받을 때에도 식에 존재하는 것이지 기타 다른 것[에 존\n재하는 것이] 아니다. 따라서 이제 대승은 여러 부파들과 다르다.\n\n\n378\n\n『이십론술기』에 따르면, 【4】는 크게 (1) 대중부·정량부의 지옥옥졸 중생설 및\n그에 대한 바수반두의 논박, (2) 설일체유부·경량부의 지옥옥졸 비중생-물질파\n생설, (3) 대승의 지옥옥졸 비중생-식파생설로 구분된다. 그러나 앞서 인용한\n『구사론』 등에 따르면 이 문제에 관한 설일체유부의 정설은 없다. 따라서 자은\n#250\n#\n T1834_987a17-24: 然諸部中。大衆正量說。獄卒等是實有情。薩婆多師。雖非有情。\n378\n然是心外。惡業所感增上。大種轉變所生。造色形顯量力差別。經部師等。雖非有情。然是心\n外。造業之時。唯熏內識。及其受果。乃在心外。大種轉變起形顯等。今大乘意。亦非有情。\n造業之時。旣在內識。受果之世。在識非餘。故今大乘與諸部異。"
+            },
+            {
+              "id": "kor-lee-page-260",
+              "label": "Printed page 251",
+              "locator": "PDF page 260 · printed page 251 · direct PDF text extraction",
+              "text": "기의 도식은 명백한 오류를 포함하고 있다.\n\n 바수반두가 『이십론』에서 지옥옥\n379\n졸의 위상을 논의할 때 설일체유부의 학설을 폭넓게 참조한 것은 분명하지만,\n그의 역할은 단순한 전달자에 국한되지 않는다고 할 수 있다.!\n\n바수반두의 적극적 역할은 여기서 자은 기가 대승의 정설로 간주하는 소\n위 ‘지옥옥졸 비중생-식파생설’이 문제의 지옥옥졸의 위상에 대한 유가행파의\n오래된 견해에서 이탈한 것이라는 점을 통해서도 잘 드러난다.!\n\n그곳에 네 가지 성(caturvarṇa)이 나타나자, 좋거나 나쁜 다섯 취에 조응하는 업을 일\n으키게 된다. 그 후 그 중의 어느 한 중생이 염오된, 지배력으로 유발된 업에 의해 염\n라대왕으로 태어난다. 그 직후 신통력으로 만들어진 것(nirmitta)에 비견(upamā)되\n는 지옥옥졸들이 발생하고 고문도구 노릇을 하는 구리 등등과 지옥불이 출현한다. 그\n후 갖추고 있는 업에 따라 중생들이 저 [지옥]에 그리고 그와 다른 취들에 태어난다.\n\n\n380\n#251\n#\n 따라서 바수반두가 “설일체유부의 입장을 떠맡고 있다(taking on the position of\n379\nSarvāstivāda school)”(Kellner&Taber(2014) 739쪽)는 켈너·테이버의 진술 역시 문제\n적이라고 할 수 있다. 그들의 독해는 자은 기의 도식을 무비판적으로 따르는 한편 앞서 인용\n한 『구사론』의 비중생설 부분을 다소 오독한 결과로 보이기 때문이다.\nKellner&Taber(2014) 739쪽 각주103번 참조.!\n   비슷한 문제가 효도 가즈오에게도 발견된다. 그 역시 『구사론』의 비중생설만을 단장취의하\n여 “『구사론』에서는 옥졸 등은 유정이 아니지만, 기세간으로 외계에 실재하는 것이라는 입장\n을 취하고”(효도 가즈오(2011) 116쪽) 있다고 왜곡되게 보고하기 때문이다.\n#\n Bhattacharya(1957) 43쪽-44쪽: tasmiṇś caturvarṇaprasava\n380\niṣṭāniṣṭapañcagativedanīyakarmasamārambho bhavati | tato ’nyatamaḥ sattvaḥ\nsaṁkliṣṭenādhipatyasaṁvartanīyena karmaṇā yamo rājotpadyate |\ntasyānantaraṁ narakapālā nirmitopamā utpadyante yātanākāraṇānirva[rtakā]\nlohādayo nārakaś cāginiḥ prādurbhavati | tatas te yathākarmopagāḥ sattvās\ntatrotpadyante tadanyasu ca gatiṣu |"
+            },
+            {
+              "id": "kor-lee-page-261",
+              "label": "Printed page 252",
+              "locator": "PDF page 261 · printed page 252 · direct PDF text extraction",
+              "text": "문제의 신통력이 누구의 것인지가 명시되어 있지는 않다. 그러나 한 가지 분명\n한 점은 지옥중생들에게 귀속될 수는 없다는 것이다. 따라서 여기에 나타난 대\n승 전통의 오래된 학설은 『이십론』에 나타난 것과 거리가 있다고 할 수 있다. 또\n다른 백과사전적 문헌인 『대지도론』에도 지옥옥졸의 위상에 대한 논의나 설명\n은 전혀 발견되지 않는다. 그렇다면 지옥옥졸에 대한 『이십론』의 견해는 설일체\n유부 및 경량부의 담론을 유식적 관점에 부합하게 변형시킨 새로운 것이라고\n할 수 있을 것이다.!\n\n【4】 〖b〗!\n『이십론』 전체에서 기세간의 발생 문제 자체는 전면에 부각되고\n있지는 않다. 공업 내지 알라야식 개념이 『이십론』에서 사용되지 않는다는 점이\n하나의 방증으로 간주될 수 있다.\n\n 그러나 이 ‘하늘에 태어나는 동물들’ 같은\n381\n표현들은 기세간의 독립적 존재를 전제로 하는 것처럼 보인다. 이것들을 문자\n그대로 읽을 경우 기세간 자체는 단지 표상에 불과한 것이 아닐 가능성이 배제\n되지 않기 때문이다. 이 경우, 유식성 명제에 이중적 예외가 발생한다. 인식의\n‘외부에’ 심지어 ‘물질적인’ 세계가 상정되는 것이기 때문이다. 그러나 이러한\n함축은 『이십론』 전체의 기획을 너무 쉽게 무너뜨린다는 점에서 받아들이기 어\n렵다. 따라서 기세간 또한 표상에 속한 것으로 해석할 필요성이 제기된다.!\n#252\n#\n 【3】 〖a-1〗 및 〖c〗 참조.\n381"
+            },
+            {
+              "id": "kor-lee-page-262",
+              "label": "Printed page 253",
+              "locator": "PDF page 262 · printed page 253 · direct PDF text extraction",
+              "text": "이에 대한 가장 간단한 해결 방법은 윤회적 주체들이 저마다 겪게 되는\n기세간의 경험들과 독립되는 별도의 기세간의 존재를 거부하는 방식이다. 즉,\n기세간을 기세간 경험들로 환원시키는 것이다. 여기서 ‘기세간 경험들’이란 【4】\n에서 이야기되는 ‘저 [하늘]에서 생긴 즐거움’이나 ‘지옥의 고통’ 나아가 이러한\n느낌을 수반하거나 유발하는, 이를테면 ‘숫양 형태의 산맥들’이나 ‘쇠가시나무\n숲’ 등의 각종 감각적 이미지들을 말한다. 【4】의 말미에서 “훈습이 있는 바로 그\n곳에 그 [훈습]의 결과가 있”다고 할 때 그 ‘결과’가 다름 아닌 이러한 기세간의\n경험들인 것이다. 이에 반해 (【4】의 후반부의) 대론자에게 기세간의 존재는 지\n옥옥졸의 존재와 마찬가지로 물질적인 것이자 인식 외적인 것이며, 이러한 발\n상은 “훈습이 없는 곳에 그 [훈습]의 결과가 있다고 상정하는 것”에 해당한다.\n\n\n382\n\n이렇게 해석하면, 기세간의 발생 문제는 해소되어 없어진다고 할 수 있\n다. 그런데 유가행파의 또 다른 핵심 개념인 알라야식이 이 문제를 복잡하게 만\n든다. 일반적인 규정에 따르면, 이 심층적인 식의 주된 인식대상 중의 하나는\n다름 아니라 바로 저 기세간이기 때문이다.!\n\n그리고 그것은 알려지지 않은 집수 및 장소의 요별을 가진 것이다.!\n#253\n#\n 효도 가즈오 역시 【4】의 후반부의 반론자의 입장에 대해 “옥졸 등은 지옥의 유정이 아니\n382\n지만 외계의 사물(기세간)로 존재한다는 입장의 사람이 반론을 제기”(효도 가즈오(2011)\n116쪽)하는 것이라고 이해하므로, 비록 이십론주의 입장을 적극적으로 재구성하지는 않았\n으나 그 역시 본고처럼 이십론주가 기세간을 기세간 경험들로 환원시키고 있는 것으로 이해\n했을 가능성이 있다. 그러나 앞서 언급했듯 그는 『이십론』의 ‘균등한 업’을 ‘공업으로 이해하\n기 때문에 그에게 기세간의 발생 문제가 해결되지 않고 남아 있을 가능성 또한 있다. 【3】 〖a-\n1〗 참조."
+            },
+            {
+              "id": "kor-lee-page-263",
+              "label": "Printed page 254",
+              "locator": "PDF page 263 · printed page 254 · direct PDF text extraction",
+              "text": "어떤 것에 대한 집수가 알려지지 않을 경우, 또 어떤 것에 대한 처소의 요별이 알려지지 않을\n경우, 바로 그것이 알려지지 않은 집수 및 알려지지 않은 처소의 요별을 가진 알라야식이다.\n… 처소의 요별은 기세간의 분포에 대한 요별이다. 이는 또 판명하지 않은 소연 및 [인지적]\n형태를 가진 채 발생하기 때문에 ‘알려지지 않은 [것]’이라고 이야기된다.\n\n\n383\n\n여기서처럼 기세간을 지각하는 알라야식의 존재를 시야에 넣을 경우, 기세간의\n발생 문제는 전술한 간결한 방식만으로 해결되지 않는다. 이 경우 별도의 복잡\n한 해석이 필요할 것이다.\n\n 그러나 이러한 사정을 뒤집어 생각할 경우, 본고\n384\n가 앞서 제안한 간단한 해결 방법은 알라야식의 개념을 전제하지 않는 『이십론』\n의 방침과 잘 어울린다고도 평가할 수 있다.!\n\n【4】 〖c-1〗!\n『이십론』에 묘사된 ’쇠가시나무 숲’의 모습은, 편역자 씰크도 지적\n했듯이, 『구사론』에서도 발견된다.\n\n\n385\n\n#254\n#\n Buescher(2007) 52쪽: asaṁviditakopādisthānavijñaptikañ ca tat | 3ab!\n383\n#asaṁviditaka upādir yasmin asaṁviditakā ca sthānavijñaptir yasmin tad\nālayavijñānam asaṁviditakopādisthānavijñaptikam | … #sthānavijñaptir\nbhājanalokasaṁniveśavijñaptiḥ | sāpy aparicchinnālambanākārapravṛttatvād\nasaṁviditety ucyate |\n#\n 『삼십송』의 저 구절에 대한 해석과 함께, 기세간을 포함한 알라야식의 인식대상 문제 일\n384\n반에 관한 포괄적 논의는 Schmithausen(1987) 제5장 참조.\n#\n Silk(2018) 155쪽 참조.\n385"
+            },
+            {
+              "id": "kor-lee-page-264",
+              "label": "Printed page 255",
+              "locator": "PDF page 264 · printed page 255 · direct PDF text extraction",
+              "text": "날카로운, 열여섯 마디 [길이]의 바늘로 [구성된] 쇠가시나무 숲이 있다. 저 중생들이\n[나무에] 오를 경우 바늘들이 [중생들이 있는] 아래쪽으로 향해 [그들의] 신체를 찢고,\n[중생들이] 내려갈 경우 [바늘들이] 올라간다.\n\n\n386\n\n그러나 ‘숫양 형태의 산맥들’에 대한 언급은 『구사론』에서 발견되지 않는다. 이\n에 대한 언급은 『유가사지론』 「유심유사등삼지」의 중합(saṅghāta) 대지옥 묘\n사에 나타난다.\n\n\n387\n\n【4】 〖c-2〗!\n엄밀히 말해 ‘숫양 형태의 산맥들’ 및 ‘쇠가시나무 숲’의 등장은 맥\n락상 어색하다. 왜냐하면 여태까지 지옥옥졸 등 중생처럼 보이는 것들이 실제\n로 중생이냐 아니면 유사-중생인 물질 현상이냐를 검토해왔기에 애초에 중생으\n로 간주되기 힘든 산맥이나 숲에 논의의 초점이 갈 수는 없기 때문이다. 이에\n대한 해명은 크게 두 가지가 발견된다. 하나는 지옥옥졸 등의 경우와 마찬가지\n로 문제의 산맥이나 숲 역시 비록 중생이 아니나 지옥중생들한테는 중생처럼\n보이는 것이라고 보는 방식이다. 이것은 비닛따데바·다르마빨라의 해석이다.\n\n\n388\n#255\n#\n Pradhan(1967) 163쪽: ayaḥśālmalīvanaṁ tīkṣṇaṣoḍaśāṅgulakaṇṭakam |\n386\nteṣāṁ sattvānām abhirohatāṁ kaṇṭakā avāṅmukhībhavantaḥ kāyaṁ bhindanti\navataratāṁ cordhvībhavantaḥ |\n#\n Bhattacharya(1957) 80쪽-81쪽 참조.!\n387\n자은 기 역시 이를 중합지옥의 광경으로 소개한다. T1834_988c13-20 참조.\n#\n 山口 益·野澤 靜證(1965) 50쪽 및 T1591_087c02-4 참조.\n388"
+            },
+            {
+              "id": "kor-lee-page-265",
+              "label": "Printed page 256",
+              "locator": "PDF page 265 · printed page 256 · direct PDF text extraction",
+              "text": "다른 하나는 산맥이나 숲의 언급을 단지 방론으로 간주하는 방식이다. 이것은\n자은 기의 해석이다.\n\n\n389\n\n【4】 〖c-3〗!\n앞서 본고의 각주 373번에서 밝혔듯, na te na sambhavanty\neva를 현장은 非事全無然不應理(T1590_075a25-26)로 옮겨 마치 여기서부\n터 바수반두의 응답이 시작하는 것처럼 보이게 하였고 이점을 자은 기의 주석\n이 확실히 하였다. 그러나 문제의 然不應理에 대응하는 산스크리트 표현이 아\n예 없고, 또 현장역의 事 ‘사태’를 자은 기가 此所說業果等事事 ‘여기서 이야기\n된 업과 [그것의] 과보 등 각각의 사태들’(T1834_0989a02)이라고 옮기나 정\n작 산스크리트 대명사 te가 지시하는 것은 bhūtaviśeṣāḥ ‘특정 물질요소’ 혹\n은 narakapālādi ‘지옥옥졸 등’이기 때문에, 현장·자은 기의 이해 방식은 원전\n과 다소 거리가 있다. 이에 본고는 해당 절을 논적에게 귀속하며 그 취지를 ‘지\n옥옥졸 등이 중생이 아니지만 그렇게 보일 법한 소지가 있다’로 간주하는 비닛\n따데바의 해석에 따랐다.\n\n 한편 다르마빨라는 非事全無然不應理라는 현장의\n390\n번역 자체는 지지하면서도 정작 바수반두의 반론이 然不應理에서부터 시작하\n는 것으로 이해하는 것처럼 보인다.\n\n\n391\n\n#256\n#\n T1834_988c26-28 참조.\n389\n#\n 山口 益·野澤 靜證(1965) 50쪽-51쪽 참조.\n390\n#\n T1591_087c05-13 참조.\n391"
+            },
+            {
+              "id": "kor-lee-page-266",
+              "label": "Printed page 257",
+              "locator": "PDF page 266 · printed page 257 · direct PDF text extraction",
+              "text": "【4】 〖d〗!\n‘변화(pariṇāma)’는 주지하다시피 쌍캬 학파의 핵심 개념이다.\n『구사론』에서 바수반두는 쌍캬 학파의 저 변화 개념을 다음과 같이 비판적으로\n소개한다.!\n\n[바수반두:] 그래서 쌍캬들에게 변화는 어떤 것인가? 한 실체(dravya)가 지속하기에\n다른 법이 사라지고 또 다른 법이 나타나는 경우이다. 여기에 어떤 오류가 있는가? 어\n떤 것이 지속하는데 [다른] 법들이 [사라지거나 나타나는 등] 변화가 상정되는 바로 그\n[법의] 담지자(dharmin)는 가능하지 않기 때문이다. [반론자:] ‘[법의] 담지자는 법들\n과 다른 것이다’고 누가 그처럼 말하겠는가? 변화란 반대로 바로 그 실체가 달라진 상\n태에 불과하다. [바수반두:] 이와 같더라도 타당하지 않다. 여기에 무슨 오류가 있는\n가? ‘x가 다름 아닌 y이면서 [동시에] x가 그렇지 않다(=y가 아니라)’는 이런 지당한\n말은 전례가 없다.\n\n\n392\n\n여기서 구사론주는 쌍캬 식의 변화 개념에 내재된 문제점을 딜레마의 형태로\n제시한다. 즉, 그들처럼 불변의 실체와 그것의 양태를 상정하게 되면 양자가 서\n로 무관하거나 혹은 모순을 범하게 된다는 것이다.!\n#257\n#\n Pradhan(1967) 159쪽: kathaṁ ca sāṁkhyānāṁ pariṇāmaḥ | avasthitasya\n392\ndravyasya dharmāntaranivṛttau dharmāntaraprādurbhāva iti | kaś cātra doṣaḥ |\nsa eva hi dharmī na saṁvidyate yasyāvasthitasya dharmāṇāṁ pariṇāmaḥ\nkalpyeta | kaś caivam āha dharmebhyo ’nyo dharmīti | tasyaiva tu\ndravyasyānyathībhāvamātraṁ pariṇāmaḥ | evam apy ayuktam | kim atrāyuktam\n| tad eva cedaṁ na cedaṁ tatheti apūrvaiṣā vācoyuktiḥ |!\n쁘라단은 밑줄 친 부분을 vāyo yuktiḥ로 읽지만, 빠라마르타와 현장이 각기 言說道理와 言\n義로 번역한 것에 따라 고쳐 읽었다. 각각 T1559_214c05 및 T1558_057b27 참조."
+            },
+            {
+              "id": "kor-lee-page-267",
+              "label": "Printed page 258",
+              "locator": "PDF page 267 · printed page 258 · direct PDF text extraction",
+              "text": "바수반두에게 있어 올바른 변화 개념이란 다음과 같이 비실체적인 인과\n의 형태로 규정되어야 한다.!\n\n그렇다면? 저 상속의 특수한 변화(santatipariṇāmaviśeṣa)로부터다. 마치 종자와\n열매[의 관계]와 같다. …업에 후속하는, 다음다음 [찰나]의 마음이 생겨나는 것이 ‘상\n속’이다. 이 [상속]이 [이전과] 다르게 발생하는 것이 ‘변화’이다. 그 [변화]는 나아가 직\n후에 결과를 발생시키는 역량을 가질 경우, 다음 [순간]의 변화와 구별되기 때문에 ‘특\n수한 변화’이다. 이를테면, 집착을 수반한 채 죽는 [순간의] 마음이 이에 해당한다. 내\n생이 세 종류의 업에 후속한다고는 해도, 무겁거나 가깝거나 되풀이된 업을 지닌 바로\n그자에게 조성된 역량이 선명하지, 다른 경우는 그렇지 않다.\n\n\n393\n\n즉, 변화란 불변의 실체 개념이 포기되어야만 비로소 온전하게 성립한다. 이 ‘변\n화’는 개체의 인과적 연속성을 뜻하는 ‘상속’ 및 변화의 임계성을 나타내는 ‘특\n수한’이라는 한정어와 함께 바수반두의 사상을 대표하는 용어로 잘 알려져 있\n다.\n\n\n394\n#258\n#\n Pradhan(1967) 477쪽: kiṁ tarhi? tatsantatipariṇāmaviśeṣād, bījaphalavat |\n393\n… yaḥ karmapūrva uttarottaracittaprasavaḥ sā santatiḥ | tasyā anyathotpattiḥ\npariṇāmaḥ | sa punar yo ’nantaraṁ phalotpādanasamarthaḥ so\n’ntyapariṇāmaviśiṣṭatvāt pariṇāmaviśeṣaḥ | tadyathā sopādānaṁ maraṇacittaṁ\n<|> punarbhavasya | trividhakarmapūrvakatve ’pi yatkarma guru vā bhavaty\nāsannam abhyastaṁ vā tatkṛtaṁ sāmarthyaṁ dyotyate | na tv anyasya |\n#\n Schmithausen(1967), Park(2014) 346쪽-369쪽, 권오민(2019) 제10장 및 제15장\n394\n참조."
+            },
+            {
+              "id": "kor-lee-page-268",
+              "label": "Printed page 259",
+              "locator": "PDF page 268 · printed page 259 · direct PDF text extraction",
+              "text": "『이십론』에서 ‘상속의 특수한 변화’가 온전히 언급된 것은 【12】의 한 대\n목이 전부이다. 그러나 【5】에서 두 차례 언급되는 ‘특수한 변화’는 물론 이곳 【4】\n에서 수 차례 거론된 ‘변화’ 역시 전술한 개념적 구도를 전제하고 있다. 한편\n【14】에 나타나는 변형(vikāra 혹은 vikriyā) 역시 죽음과 같은 ‘임계적인 전환’\n을 의미하므로 ‘특수한 변화’와 밀접한 연관이 있다고 할 수 있을 것이다.\n\n\n395\n\n그런데 【4】의 용례에서 주목할 점은 대론자에게 있어 ‘변화(pariṇāma)’\n및 그것의 동계어(cognate word) pari √nam이 ‘발생(sambhava)’ 및 그것\n의 동계어 sam √bhū와 대비되어 사용된다는 사실이다. 즉, ‘발생’은 업의 힘\n에 의해 물질적 요소들이 특수한 양태로 조성되는 것이고, ‘변화’는 그렇게 조성\n된 물질적 요소들이 공포와 고통을 유발하는 작용(kriyā)이 이뤄지는 것이다.\n\n\n396\n이 경우 대론자가 말하는 ‘발생’은 『구사론』 등에서 ‘특수한 변화’라고 부르는 사\n#259\n#\n 【14】 〖a〗 참조.\n395\n#\n 이 양자의 대비를 다르마빨라·자은 기는 자체(體, *svabhāva)와 작용(用, *karman)의\n396\n대별로 개념화한다. T1591_087c15 및 T1834_989a04 참조."
+            },
+            {
+              "id": "kor-lee-page-269",
+              "label": "Printed page 260",
+              "locator": "PDF page 269 · printed page 260 · direct PDF text extraction",
+              "text": "건과 등가적인 것이다.\n\n 이러한 일치는 우연적인 것으로 간주하기 어렵다. 왜\n397\n냐하면 대론자가 여기서 업에 의한 물질적 요소의 ‘발생’을 거론한 것은 이십론\n주가 바로 직전에서 ‘업—>발생—>경험’의 구도로 논의의 프레임을 선점하였\n기 때문이다.!\n\n한 가지 더 지적할 점은 ‘상속의 특수한 변화’의 가시성 여부이다. 『구사\n론』에서 유례로 거론된 ‘종자—>싹—>…—>열매—>종자’의 인과적 계열은\n물론 각 단계가 가시적이지만 각 단계 ‘사이에’ 상정되는 인과성 자체는 비가시\n적이다. 이와 마찬가지로 ‘업—>발생—>경험’의 인과적 계열 역시 각 단계는\n가시적이나 인과성 자체는 비가시적이다. 바로 이 때문에 이곳 【4】의 말미에서\n지옥옥졸 등이 물질요소의 특정 양태일 가능성과 식의 특정 양태일 가능성이\n경합할 수 있는 것이다. 바꿔 말하면, 바수반두는 ‘변화’ 개념에 함축된 비가시\n성을 징검다리로 활용해 유식성 논의를 진행시키고 있는 것이다.!\n\n#260\n#\n 이와 관련해 『구사론』에서는 물질의 운동 역시 ‘특수한 변화’ 개념으로 포착한다는 점이\n397\n환기될 필요가 있다.!\nPradhan(1967) 77쪽: kṣiptākṣiptabalidurbalakṣiptasya vajrādeś\ncirāśutarapātakālabhedāt tanmahābhūtānāṁ pariṇāmaviśeṣasiddheḥ | (다이아몬\n드 등을 던지거나 안 던질 경우 [던지더라도] 힘차게 [던지거나] 힘없이 던질 경우 [보다] 더\n디게 혹은 보다 빨리 [지면에] 떨어진다는 시간상의 차이[가 있기] 때문에 저 [다이아몬드를\n구성하는] 물질요소들의 특수한 변화가 성립하기 때문이다.)!\n즉, ‘상속의 특수한 변화’는 심적인 것에 한정될 필요가 없다.!\nPradhan(1967) 64쪽: kiṁ punar idaṁ bījaṁ nāma | yan nāmarūpaṁ\nphalotpattau samarthaṁ sākṣāt pāraṁparyeṇa vā | santatipariṇāmaviśeṣāt | (이\n‘종자’라고 이름하는 것은 또 무엇인가? 상속의 특수한 변화 때문에 결과의 발생에 대한 직·\n간접적인 역량(samartha)을 지닌 명·색이다.)"
+            },
+            {
+              "id": "kor-lee-page-270",
+              "label": "Printed page 261",
+              "locator": "PDF page 270 · printed page 261 · direct PDF text extraction",
+              "text": "【4】 〖e〗!\n자은 기가 이 대목의 논적을 경량부로 특정한 것은\n\n 바로 이 ‘훈\n398\n습(vāsanā)’ 때문으로 보인다. 그에 따르면, 이 ‘훈습’ 개념은 대승과 경량부가\n같이 인정하는 한편 한편 설일체유부는 거부한다.!\n\n지금은 저들 [경량부]의 종지가 훈습은 내적인 식에 [발생한다는 것]이니 우리 [대승]\n과 비슷하여 이를 비판 [대상]으로 삼기 때문에 단지 ‘훈습[되는] 식’이라고만 말한 것\n이다.\n\n\n399\n\n설일체유부에게는 훈습이 없기 때문이다.\n\n\n400\n\n설일체유부의 거장 상가바드라 역시 자은 기의 저 주장에 동조하는 것처럼 보\n인다.!\n\n여러 아비달마 논사(*ābhidharmika)들이 논의하는 주제에 대해 여러 비유자(*Dārṣṭ\nāntika)들이 많은 부분 이에 대해 스스로가 주장하는 여러 법들의 종자(*bīja)[로 요\n약되는 주장]을 개진하여 정론을 혼란시켜 불분명하게 만든다. 또 여러 논사들이 있어\n이 종자에 대해 곳곳에서 내용에 따라(*anvarthā saṁjñā?) 다른 명칭을 세우니 어\n떤 경우는 ‘수계(*anudhātu)’라 이름을 붙이고 어떤 경우는 ‘훈습(*vāsanā)’이라고\n이름을 붙이고 어떤 경우는 ‘역량(*sāmarthya)’라 이름을 붙이고 어떤 경우는 ‘손실\n#261\n#\n 【4】 〖a〗 참조.\n398\n#\n T1834_989b03-4: 今取彼宗。熏習內識。與己相似。以爲難故。但言熏識。\n399\n#\n T1834_989a20-21: 以薩婆多無熏習故。\n400"
+            },
+            {
+              "id": "kor-lee-page-271",
+              "label": "Printed page 262",
+              "locator": "PDF page 271 · printed page 262 · direct PDF text extraction",
+              "text": "되지 않는 것(*avipraṇāśa)’라고 이름을 붙이고 어떤 경우는 ‘자라나는 것\n(*upacaya)’라 이름을 붙인다. 따라서 나는 이에 대해 검토를 통한 해명(*viniścaya)\n을 자세히 행해 저들이 주장하는 바를 꺾고 바른 종지를 세운 것이다.\n\n\n401\n\n그에 따르면, ‘훈습’은 ‘종자’ 내지 ‘역량’ 등의 동의어이다.!\n\n그런데 『구사론』에서 ‘종자’나 ‘역량’은 앞서 〖d〗에서 소개한 ‘상속의 특\n수한 변화’와 함께 경량부 및 구사론주 자신의 업(karman) 이론에서 핵심적인\n위치를 차지한다. !\n\n따라서 저 [상속]에서 뽑히거나 손상되지 않고 자라나는 바로 이 종자가, 자재성[을\n띨] 때, ‘득(prāpti)’이란 명칭을 얻는 것이지 다른 실체가 [이 명칭을 얻는 것은] 아니\n다. 이 ‘종자’라고 이름하는 것은 또 무엇인가? 상속의 특수한 변화 때문에 결과의 발\n생에 대한 직·간접적인 역량(samartha)을 지닌 명·색이다.\n\n\n402\n\n#262\n#\n T1562_398b25-c01: 對法諸師議論宗處。諸譬喩者。多分於中申自所執諸法種子。惑亂\n401\n正義。令不分明。復有諸師。於此種子。處處隨義。建立別名。或名隨界。或名熏習。或名功\n能。或名不失。或名增長。故我此中廣興決擇。摧彼所執建立正宗。\n#\n Pradhan(1967) 64쪽: tasmād bījam evātrānapoddhṛtam anupahatam\n402\nparipuṣṭaṁ ca vaśitvakāle samanvāgamākhyāṁ labhate nānyad dravyam | kiṁ\npunar idaṁ bījaṁ nāma | yan nāmarūpaṁ phalotpattau samarthaṁ sākṣāt\npāraṁparyeṇa vā | santatipariṇāmaviśeṣāt |!\n쁘라단은 밑줄 친 부분을 paripṛṣṭa로 읽으나, 두 한역자가 增長로 옮기고 티벳역이 rgyas\npa라 번역하고 있기에, paripuṣṭa로 고쳤다."
+            },
+            {
+              "id": "kor-lee-page-272",
+              "label": "Printed page 263",
+              "locator": "PDF page 272 · printed page 263 · direct PDF text extraction",
+              "text": "경량부는 과거의 업으로부터 결과가 발생함을 전혀 말하지 않기 때문이다. 그렇다면?\n‘저 [과거의 업]에 후속하는 상속의 특수한 [변화]로부터 [결과가 발생한다]’고 [말한\n다]. 「파아품」에서 자세히 말하겠다.\n\n\n403\n\n이곳 【4】에서 이십론주가 ‘식의 변화’를 ‘훈습이 이루어진 장소인 식에 그 훈습\n의 결과에 해당하는 각종 경험들이 위치하는 것’이라고 한 것은 『구사론』의 ‘상\n속의 특수한 변화’ 개념에서 유식적 각색만을 거친 최소한의 규정이라는 점에\n유의할 필요가 있다. 슈미트하우젠이 지적했듯, 일반적으로 말해 유가행파에서\n훈습이 이루어지는 장소는 알라야식이며 그 훈습의 결과가 발생하는 장소는 알\n라야식을 제외한 다른 식들이기 때문에, 『이십론』에서 알라야식은 배제되어 있\n거나 최소한 전면에 나오지 않고 있다고 할 수 있다.\n\n\n404\n\n【4】 〖f〗!\n여기 【4】에서는 전체적으로 트리형 소거법이 작동하고 있다고 할\n수 있다. 대론이라는 형식 자체를 일단 괄호 안에 넣을 경우, 여기서의 논지는\n지옥옥졸 등의 적법한 위상에 관한 선택지들을 계층적으로 나열한 뒤 하나씩\n비판적으로 검토하여 선택지를 좁혀 나가는 방향으로 전개되어 나가고 있기 때\n문이다. 이를 간단히 시각화하면 다음과 같다.!\n#263\n#\n Pradhan(1967) 300쪽: naiva hi sautrāntikā atītāt karmaṇaḥ phalotpatti\n403\nvarṇayanti | kiṁ tarhi | tatpūrvakāt saṁtānaviśeṣād ity ātmavādapratiṣedhe\nsaṁpravedayiṣyāmaḥ |\n#\n Schmithausen(1967) 112쪽-116쪽 참조.\n404"
+            },
+            {
+              "id": "kor-lee-page-273",
+              "label": "Printed page 264",
+              "locator": "PDF page 273 · printed page 264 · direct PDF text extraction",
+              "text": "— 지옥옥졸 등이 중생일 가능성!\n— 지옥옥졸 등이 지옥중생일 가능성!\n기각의 이유: 지옥중생이면서 지옥의 고통을 겪지 않을\n수 없기 때문에!\n(만약 고통을 겪는다고 하면?)!\n기강의 이유: 지옥옥졸 등과 나머지 지옥중생이 그 자체\n로 구별되지 않기 때문에!\n(만약 그 자체로 구별되지 않는다고 하면?)!\n기각의 이유: 나머지 지옥중생이 지옥옥졸 등을 두려워할\n이유가 없기 때문에!\n(천신이 아니지만 하늘에 태어나는 동물들처럼)!\n— 지옥옥졸 등이 동물 내지 아귀일 가능성!\n(동물의 경우)!\n기각의 이유: 하늘에 태어나는 동물들은 하늘에 속한 즐거\n움을 겪는 것과 달리 지옥에 ‘태어나는’ 지옥옥졸 등은 지\n옥에 속한 고통을 겪지 않기 때문에!\n(아귀의 경우도 마찬가지 이유로 기각)!\n(— 지옥옥졸 등이 인간 내지 천신일 가능성은 애초에 배제)!\n∴ 지옥옥졸 등이 중생일 수 없음!\n— 지옥옥졸 등이 중생이 아닐 가능성!\n\n— 지옥옥졸 등이 물질요소의 특정 양태일 가능성!\n\n— 지옥옥졸 등이 식의 특정 양태일 가능성!\n\n#264"
+            },
+            {
+              "id": "kor-lee-page-274",
+              "label": "Printed page 265",
+              "locator": "PDF page 274 · printed page 265 · direct PDF text extraction",
+              "text": "여기서 해석의 관건은 마지막 두 선택지 사이에 놓여 있다. 물론 바수반두 자신\n은 제6송 및 해당 자주(自注)에서 후자, 즉 지옥옥졸 등이 식의 특정 양태일 가\n능성을 선호하고 있다. 그러나 후자를 선택할 정당한 이유를 그가 제공하고 있\n는지는 불분명하다.!\n\n제6송에서 ‘만약 저 [지옥중생들]의 업들에 의해 저 [지옥]에서 물질요소\n들이 그처럼 발생하는 것을 인정하고, 또 [물질요소들의 그와 같은] 변화(pariṇ\nāma)를 [인정한다]면, 왜 식(vijñāna)의 변화는 인정하지 않는가?’라고 하고\n이어지는 저자 자신의 주석에서 ‘저 [지옥중생들]의 업들에 의해 그처럼 변화하\n는 것이 바로 이 식에 [속한다고]는 무엇 때문에 인정하지 않는가? 왜 또 물질\n요소들이 상정되는 것인가?’라고 하며 수사적인 방식으로 입증 부담을 상대에\n게 떠넘기고 있을 뿐이다.\n\n 그러나, 시더리츠가 잘 지적했듯이, 여기서 입증\n405\n의 부담은 물론 낯선 주장을 펼치고 있는 이십론주 자신에게 있다고 봐야할 것\n이다.\n\n\n406\n\n시더리츠는 바수반두가 여기서 적극적인 논변을 제공하고 있다고 해석\n한다. 그에 따르면, 지옥옥졸 등을 물질요소의 특정 양태로 보는 선택지는 설정\n상 ‘외적인 대상’이라는 그 존재를 직접 확인할 수 없는 존재자를 상정하는 반면\n#265\n#\n 효도 가즈오는 이 제6송 부분에 대해 “업의 증상력에 의해 옥졸 등이 기세간으로서 대종\n405\n으로부터 만들어지고 그것이 전변한다는 생각보다는, 지옥 유정 자신의 식이 전변하여 이와\n같은 괴로움을 감수한다고 생각하는 것이 훨씬 합리적이라는 것입니다”(효도 가즈오(2011)\n119쪽)라고 하나 정작 합리성의 기준이 무엇인지는 분명히 밝히지 않는다. 효도 가즈오의\n이 발언은 우이 하쿠쥬를 무비판적으로, 그리고 인용 표시를 누락한 채, 답습하고 있다. 宇井\n伯寿(1953a) 56쪽 네 번째 주석 참조.\n#\n Siderits(2007) 157쪽 참조.\n406"
+            },
+            {
+              "id": "kor-lee-page-275",
+              "label": "Printed page 266",
+              "locator": "PDF page 275 · printed page 266 · direct PDF text extraction",
+              "text": "에 식의 특정 양태로 보는 선택지에는 그런 상정이 없다. 다시 말해, 후자의 설\n명이 형이상학적으로 보다 가볍다고 할 수 있다. 바수반두는 이러한 ‘가벼움의\n원리’에 따라 지옥옥졸 등을 식의 변화 양태로 간주하는 편이 보다 합리적이라\n고 논증하고 있다는 것이다.\n\n 바수반두가 이 대목의 논변을 구성할 때 ‘가벼움\n407\n의 원리’를 염두에 뒀을 가능성은 물론 배제할 수 없으며\n\n 나아가 그렇게 보는\n408\n편이 보다 거시적인 관점에서 일관적일 수도 있다.\n\n\n409\n#266\n#\n Siderits(2007) 152쪽-158쪽 참조.\n407\n#\n 심지어 시더리츠에게 비판적인 켈너·테이버조차 제7송에서 ‘가벼움의 원리’가 사용되고\n408\n있다고 볼 가능성이 있다고 말한다. Kellner&Taber(2014) 726쪽 49번 각주 참조.!\n그러나 여기에 ‘가벼움의 원리’가 전제되어 있다고 한다면 그 논의의 범위에 제7송 뿐만 아\n니라 제6송도 포함되어야 할 것이다.\n#\n 이에 대한 자세한 논평은 본고 2.2.2 참조.\n409"
+            },
+            {
+              "id": "kor-lee-page-276",
+              "label": "Printed page 267",
+              "locator": "PDF page 276 · printed page 267 · direct PDF text extraction",
+              "text": "나아가 전통적인 견해들 역시 시더리츠의 관점에 가까운 것으로 보인다.\n 410\n#267\n#\n 山口 益·野澤 靜證(1965) 51쪽: さうせずして却て汝は何故に諸大種を分別するのであ\n410\nるか。實にそれら諸大種の上には格別な何等の功能も見られないのである。何故ならば、諸\n大種の異類なるそれらのものが唯有ることのみ(sattāmātra)によつて怖畏等は生起するの\nではなく、了得すること(upalabdhi)によつて生起する。そして了得することとは、それら\nのものについての彼人の識の生起である。それ故に[彼經量部に於ても認め、我宗にも認め\nて]兩者に於てよく知られてゐる識が轉變すると了解するのが理に應ずべく、諸大種を立す\nることは理に應ずない。兩者によく知られてないからである。(이렇게 하지 않고 도리어 너\n는 왜 물질요소들을 상정하는 것인가? 실로 이들 물질요소상에는 특기할 만한 어떤 역량도\n보이지 않는다. 왜냐면 저 특수한 물질요소들이 오직 존재하는 것만에 의해 공포 등을 유발\n하는 것이 아니라 지각되는 것에 의해 [공포 등이] 유발되기 [때문이다]. 그리고 지각된다는\n것은 저것들에 대한 저들의 식이 발생하는 것이다. 따라서 [저 경량부한테서도 인정되고 우\n리들에게도 인정되어] 양자에게 잘 알려져 있는, ‘식이 변화한다’라는 식으로 이해하는 것은\n이치에 부합하나 물질요소들을 설정하는 것은 이치에 부합하지 않는다. 양자에게 잘 알려져\n있지 않기 때문이다.)!\nT1591_087c13-19: 若許由業力。何用異大種者。諸獄卒等。由四大種。種種轉變。動手足\n等。作用別故。如夢所見色等處故。彼等形狀無體用故。…離識之外。更無一物而有可見。(만\n약 업의 힘에 의한 것이라고 인정한다면, 특수한 물질요소는 무슨 소용이냐(*kiṁ tair\nbhūtaviśeṣaiḥ)고 할 경우, 옥졸 등이 [지·수·화·풍의] 네 가지 물질요소에 의해 갖가지 변\n화 [이를테면] 손·발 등을 움직이는 등 작용이 다양하기 때문이라고 [응수할 수 있겠으나, 이\n경우 결국 경험되는 것은] 꿈 속에서 보이는 색처 등(*rūpāyatanādi)과 마찬가지이기 때문\n에, 저 [옥졸] 등의 이미지는 [이미지 이상의] 자체(*svabhāva)나 작용(*karman)이 없기\n때문에 … 식을 떠나서는 지각될 수 있는 것이 어떤 것도 없다.)!\nT1834_989a13-15: 然無比量。若爲共因。比量亦得。量云。此獄卒等物皆不離識等。許所\n知故。如心心所眞如等法不離識有。無不定失。(그러나 추론식이 없으니 [대론 당사자들에\n게] 공통되는 근거를 [바탕으로] 하면 추론식[을 만드는 것]이 또한 가능하다. 추론식[을 세\n워] 말하자면, 이 옥졸 등의 것들은 모두 식 등을 떠난 것이 아니다. 인식되는 것이라고 인정\n하기 때문에. 마치 심·심소·진여 등의 법이 식을 떠나 존재하지 않는 것과 같이. [여기에는]\n불확정의 오류가 없다.)"
+            },
+            {
+              "id": "kor-lee-page-277",
+              "label": "Printed page 268",
+              "locator": "PDF page 277 · printed page 268 · direct PDF text extraction",
+              "text": "문제는 시더리츠의 해석이 주어진 텍스트에 대한 문자적 독해가 아니라\n는 점이다. 앞서 말했듯, 바수반두는 제6송 부분에서 특별한 이유를 제시하지\n않은 채 대론자에게 입증의 부담을 넘기고 있을 뿐이다. 나아가 이러한 수사적\n전술은 제7송 부분에서도 그대로 반복되며, 결국 대론자가 십이처의 교설을 근\n거로 내세우면서 【5】의 논의로 넘어갈 뿐이다. 이러한 ‘회피’의 양상은 이제껏\n주장 내지 반박의 이유를 어김없이 제시해왔던 이십론주 자신의 모습과 불일치\n하기에 더욱 부각된다. 따라서, 보다 안전하게 말하자면, 바수반두는 여기 【4】\n의 말미에서 우리의 경험을 잘 설명하는, 경합 관계에 있는 두 이론을 내세우고\n만 있을 뿐 이에 대한 ‘합리적인’ 결정은 뒤로 미루고 있는 것이다.!\n\n그렇다면 제7송 부분에서는 별다른 논증적 기여는 없는 것이 된다.\n\n 혹\n411\n은 오히려 마이너스적인 요소가 발견된다고 할 수 있다. 여기서 등장하는 일종\n의 ‘공간적 일치의 원리’, 즉 훈습이라는 원인과 그 훈습의 발현이라는 결과는\n공간적으로 일치하는 편이 합리적이리라는 기대는, 관념론적 세계관을 제외한\n다면 굳이 받아들일 동기가 없을 정도로 과도한 것이기에, 논증의 적법성만 고\n려했더라면 사용하지 않는 편이 좋았을 것이다.\n\n 제7송 부분의 기여는 훈습\n412\n이 저장되는 장소를 논의의 전면에 내세우면서 이것을 훈습의 결과로서의 이미\n#268\n#\n 물론 제7송에서 ‘훈습’ 개념을 도입함으로써 자은 기의 견해처럼 대론자를 경량부로 특정\n411\n하고 있다고 보거나 혹은 보다 안전하게 말해 설일체유부를 배제하는 효과가 발생했다고 보\n는 것은 얼마든지 가능하다. 【4】 〖e〗 참조.\n#\n 효도 가즈오는 “원인이 존재하는 장소와는 별도의 장소에 결과가 생기한다고 생각할 수\n412\n도 있습니다만, 그것보다는 같은 식상속에 원인과 결과가 있다고 생각하는 것이 훨씬 합리적\n일 것입니다”(효도 가즈오(2011) 120쪽)라고 하여 본고와 정반대의 생각을 가졌으나 여기\n서도 합리성의 기준을 제시하고 있지는 않다."
+            },
+            {
+              "id": "kor-lee-page-278",
+              "label": "Printed page 269",
+              "locator": "PDF page 278 · printed page 269 · direct PDF text extraction",
+              "text": "지와 병치시킴으로써 이후 【5】의 십이처의 구도를 예고하는 데에 한정된다고\n할 수 있다.\n#269"
+            },
+            {
+              "id": "kor-lee-page-279",
+              "label": "Printed page 270",
+              "locator": "PDF page 279 · printed page 270 · direct PDF text extraction",
+              "text": "Silk(2018) 61쪽-71쪽: āgamaḥ kāraṇaṁ | yadi vijñānam eva\nrūpādipratibhāsaṁ syān na rūpādiko <’>rthas tadā\nrūpādyāyatanāstitvaṁ bhagavatā noktaṁ syāt |!\nakāraṇam etat yasmāt!\nrūpādyāyatanāstitvaṁ tadvineyajanam prati |!\nabhiprāyavaśād uktam upapādukasatvavat || [8 ||]!\nyathāsti satva upapāduka ity uktaṁ bhagavatā ’bhiprāyavaśāc\ncittasantatyanucchedam āyatyām abhipretya | nāstīha satva ātmā\nvā dharmmās tv ete sahetukāḥ < ||> iti vacanāt | evaṁ\nrūpādyāyatanāstitvam apy uktaṁ bhagavatā taddeśanāvineyajanam\nadhikṛtyety ābhiprāyikaṁ tad vacanaṁ |!\nko <’>trābhiprāyaḥ |!\nyataḥ svabījād vijñaptir yadābhāsā pravarttate |!\ndvividhāyatanatvena te tasyā munir abravīt || [9 ||]!\nkim uktam bhavati | rūpapratibhāsā vijñaptir yataḥ svabījāt\npariṇāmaviśeṣaprāptād utpadyate tac ca bījaṁ yatpratibhāsā ca sā\nte tasyā vijñapteś cakṣūrūpāyatanatvena yathākramaṁ bhagavān\nabravīt | evaṁ yāvat spraṣṭavyapratibhāsā vijñaptir yataḥ svabījāt\npariṇāmaviśeṣaprāptād utpadyate <|> tac ca bījaṁ yatpratibhāsā ca\nsā te tasyāḥ kāyaspraṣṭavyāyatanatvena yathākramam bhagavān\nabravīd ity aya[m] (abhi)prāyaḥ |!\n#270"
+            },
+            {
+              "id": "kor-lee-page-280",
+              "label": "Printed page 271",
+              "locator": "PDF page 280 · printed page 271 · direct PDF text extraction",
+              "text": "evaṁ punar abhiprāyavaśena deśayitvā ko guṇaḥ ||!\ntathā pudgalanairātmyapraveśo hi ||!\ntathā hi deśyamāne pudgalanairātmyaṁ praviśanti | dva(ya)ṣ[a]\n(ṭkābhyāṁ vijñā)naṣaṭkaṁ pravarttate\n\n na tu kaścid eko draṣṭāsti\n413\nna yāvan mantety evaṁ viditvā ye pudgalanairātmyadeśanāvineyās\nte pudgalanairātmyaṁ praviśanti ||\n#271\n#\n 편역자 씰크는 vijñā)naṣaṭkaṁ과 pravarttate를 붙여 쓰고 있으나 이는 단순한 착오로\n413\n보인다. Silk(2018) 71쪽 참조."
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-05",
+          "label": "Argument section 5 · verses 8–10, part 1",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-281",
+              "label": "Printed page 272",
+              "locator": "PDF page 281 · printed page 272 · direct PDF text extraction",
+              "text": "【5】 [대론자:] [그] 까닭은 전승이다. 만약 단지 식인 것이 색 등인양 보이는 것\n이고 색 등인 대상이 없다면, 세존께서 “색 등의 처(āyatana)가 존재한다.”〖a〗\n고 말씀하지 않으셨을 것이다.!\n[바수반두:] 이는 까닭이 못된다. 왜냐하면!\n색 등의 처가 존재함은 [나름의] 의도〖b〗 때문에 그것으로 지도받아야 할 사람\n들한테 말해진 것이다. 마치 자연발생인 중생처럼. 〖제8송〗!\n이를테면, 세존께서 “자연발생인 중생이 존재한다.”〖c〗라고 말씀하셨던 것은 의\n도 때문이니, 마음의 상속이 미래에까지 끊어지지 않음을 의도하고 [그런 말씀\n을 하셨던 것이다]. ‘여기 [불교의 가르침]에서는 중생도 아뜨만도 존재하지 않\n는다. 원인들을 수반한 저 법들이 [존재한다]’라고 [경전에서] 말하기 때문이다.\n이처럼 비록 색처 등 [십이처가] 존재한다고 세존께서 말씀하셨지만 그 교설로\n지도받아야 할 사람들을 염두에 두고〖d〗 [그렇게 하신 것]이기에 그 말씀은 의도\n를 띤 것이다. 여기서 무엇이 [십이처설의] 의도인가?!\nA라는 자신의 종자로부터 표상이 B인양 보이게끔 발생할 경우, 저 [A와 B] 양\n자를 저 [표상]의 [내·외의] 두 가지 [종류]의 처인 것으로 성자께서 말씀하셨\n다. 〖제9송〗!\n무엇이 이야기된 것인가? 색인양 보이는 표상이 A라는 자신의 종자로부터 특\n수한 변화(pariṇāmaviśeṣa)가 달성되었기 때문에 발생할 경우의 그리고 저\n종자 [A] 및 [그렇게 발생된 표상이] B인양 보일 경우 그 [이미지 B], 이 [A와\nB] 양자가 저 표상의 안처·색처인 것이라고 순서대로 세존께서 말씀하셨다. 이\n#272"
+            },
+            {
+              "id": "kor-lee-page-282",
+              "label": "Printed page 273",
+              "locator": "PDF page 282 · printed page 273 · direct PDF text extraction",
+              "text": "와 같이 촉[처]인양 보이는 표상이 A`라는 자신의 종자로부터 특수한 변화가 달\n성되었기 때문에 발생할 경우 저 종자 [A`] 및 [그렇게 발생된 표상이] B` [즉 촉\n처]인양 보일 경우 그 [이미지 B`], 이 [A`와 B`] 양자가 저 표상의 신처·촉처인\n것이라고 순서대로 세존께서 말씀하셨다. 이상이 의도이다.!\n[대론자:] 그런데 저와 같이 의도를 가지고 교설하고 날 경우 무슨 이점(guṇa)\n이 있는가?!\n[바수반두:] 왜냐하면 그렇게 해야 인무아(pudgalanairātmya)에 들어가는\n것(praveśa)이 가능해지기 때문이다.!\n왜냐하면 그렇게 교설을 받아야 인무아에 들어간다. ‘[내·외의] 두 가지 [종류]의\n여섯 [쌍]의 처(=십이처)로부터 여섯 가지 식이 발생하는 것이지 어떠한 단일한\n보는 자도 존재하지 않고 나아가 [어떠한 단일한] 생각하는 자도 존재하지 않는\n다’라고 이처럼 알아야 인무아의 교설로 지도받아야 할 바로 그자들이 인무아\n에 들어가는 것이다.〖e〗\n#273"
+            },
+            {
+              "id": "kor-lee-page-283",
+              "label": "Printed page 274",
+              "locator": "PDF page 283 · printed page 274 · direct PDF text extraction",
+              "text": "【5】 〖a〗!\n이종철에 따르면, “색 등의 처(āyatana)가 존재한다”는 이 『이십\n론』의 ‘인용’과 정확히 일치하는 경전은 아직 발견되지 않았으나 유사한 내용이\n『구사론』 「세간품」 및 「파아품」에 보인다.\n\n\n414\n\n브라만이여, “모든 것이 존재한다”라고 한 것은 단지 십이처에 한해서다.\n\n\n415\n#274\n#\n 이종철(1997) 190쪽-191쪽 참조.\n414\n#\n Pradhan(1967) 301쪽, 465쪽: sarvam astīti brāhmaṇa yāvad eva\n415\ndvādaśāyatanāni |!\n이 경증에 대한 혼죠 요시부미의 연구에 대한 간략한 개관은 이종철(1997) 191쪽 3번 각주\n참조.!\n   여기서 yāvat ‘-에 한해서’의 역할에 주목할 필요가 있다. 이 표현은 주해 장르에서 주석의\n대상이 되는 표현을 특정하는 방식으로 풀이할 때 사용하는 ‘iti yāvat’을 연상시킨다. Tubb,\nGary A.&Boose, Emery R.(2007) 25쪽 참조.!\n『구사론』의 용례 역시 ‘모든 것’을 ‘십이처’에 한정하는 방식으로 이해하고 있기 때문이다. 그\n러나 여기의 yāvat은 『보살지』 「진실의품」의 도입부를 연상시키기도 한다.!\n高橋 晃一(2005b) 85쪽: tattvārthaḥ katamaḥ | samāsato dvividhaḥ ||\nyathāvadbhāvikatāṁ ca dharmāṇām ārabhya yā bhūtatās | yāvadbhāvikatāṁ\ncārabhya yā dharmāṇāṁ sarvatā || iti bhūtatā sarvatā ca dharmāṇāṁ samastas\ntattvārtho veditavyaḥ || (진실로서의 대상은 어떤 것인가? 간략히는 두 종류이다. 법들이\n존재하는 양태와 관련한 실재성 및 존재하는 한도와 관련한 법들의 전체성이다. 이상 법들의\n실재성과 전체성이 간략히 진실로서의 대상이라고 알아야 할 것이다.!\n『해심밀경』 등에 따르면, 전체성은 곧 오온·십이처·십팔계 등의 전통적인 존재자 리스트에\n따라 분류·포착되는 전 우주의 존재자들 일반이고, 실재성은 저 존재자들의 본성, 곧 진여\n(tathatā)이다. 여기서 실재성 내지 진여는 【6】에 등장하는 법무아와 무리 없이 동치될 수 있\n을 것이다. 문제는 전체성이다. 여기 【5】에서 이십론주는 전통적인 십이처의 교설을 미료의\n로 간주하고서 감각 능력과 그 대상영역을 종자와 종자에서 발생한 표상의 대상-이미지로 환\n원하였다. 따라서 십이처의 교설은 유식성의 명제, 즉 ‘존재하는 것은 오직 표상일 뿐이다’를\n만족시키는 방향으로 조정된 셈이다. 그렇다면 십이처의 교설은, 재정의 이전이든 이후이든,\n외연적 차원에서 ‘모든 것’을 관장하는 범주로 간주되어야 할 것이다."
+            },
+            {
+              "id": "kor-lee-page-284",
+              "label": "Printed page 275",
+              "locator": "PDF page 284 · printed page 275 · direct PDF text extraction",
+              "text": "이종철이 잘 지적한 것처럼, 「세간품」에서 저 경증이 거론되는 맥락은 설일체유\n부의 삼세실유설에 대한 비판이다.\n\n 설일체유부가 저 “모든 것이 존재한다”는\n416\n붓다의 말씀을 현재의 것은 물론 과거의 것과 미래의 것도 모두 ‘실체적으로 존\n재한다(dravyato ’sti)’고 보는 해석에 반대해 구사론주가 ‘모든 것’의 범위를\n십이처에 한정하는 맥락이다. 한편 「파아품」의 맥락은 정량부 등의 자아 개념에\n대한 비판이다. 정량부가 주장하는 ‘뿌드갈라(pudgala)’ 같은 것은 십이처와\n구별되는 것이기에 실제로 존재하지 않는다는 것이다.\n\n\n417\n\n이에 반해 동일한 내용이 『이십론』에서는 유식성 명제를 거부할 근거로\n서 도입되고 있다. 유식성 명제가 옳다면, 색·성·향·미·촉의 다섯 가지 외적인\n대상 영역은 모두 허상에 불과하기 때문이다. 또 안·이·비·설·신의 다섯 가지 감\n각 능력 역시 문제가 될 수 있다. 이것들이 비록 ‘내적인’ 것으로 간주되기는 하\n나 여전히 ‘물질적인’ 것이기에 유식성 명제와 충돌할 수 있기 때문이다.!\n\n【5】 〖b〗!\n‘의도(abhiprāya)’는 미료의설 / 요의설의 구분, 즉 불교 해석학\n에 있어 핵심적인 개념이라고 할 수 있다. 그러나 바수반두가 이 ‘의도’를 정확\n히 어떻게 규정하고 있는지는 충분히 연구되지 않은 것 같다. 자은 기는 『이십\n론』의 ‘의도’ 개념을 『섭대승론』 등으로 대표되는, 전통적인 유가행파의\n#275\n#\n 이종철(1997) 191쪽-192쪽 참조.\n416\n#\n 이종철(2015) 391쪽-392쪽 참조.\n417"
+            },
+            {
+              "id": "kor-lee-page-285",
+              "label": "Printed page 276",
+              "locator": "PDF page 285 · printed page 276 · direct PDF text extraction",
+              "text": "abhiprāya(‘意趣’) / abhisaṁdhi(‘祕密’)의 구분의 연속성 상에서 이해하고\n있다.\n\n 그러나 『구사론』이나 『이십론』 등의 ‘의도’ 개념은 『섭대승론』 등의 세\n418\n밀한 설명보다는 보다 전통적이면서 범박한 미료의설 / 요의설의 구분에 기초\n하고 있는 것으로 보인다. 이점은 그의 또 다른 저작 Vyākhyāyukti에서도 확\n인이 된다.!\n\n이 [대승]은 미료의(*neyārtha)인지 아니면 글자대로의 의미[를 가진 것=요의\n(nītārtha)]인지 탐구되어야 할 텐데, 요의[의] 말씀이 나타나지 않기도 하여 이제 글\n자대로의 의미[를 가진 것]이라고 알 수는 없다. 반대로 의도를 띤 것(*ābhiprāyika)\n이다.\n\n\n419\n\n여기서 ‘의도를 띤 것’은 미료의와 동일시되고 있을 뿐이고 『섭대승론』 등의 영\n향은 확인되지 않기 때문이다.!\n\n#276\n#\n T1834_989c23-28 참조.!\n418\n『섭대승론』 등에 나타나는 abhiprāya와 abhisaṁdhi의 대별에 대한 개관은 長尾 雅人\n(1987a) 395쪽 이하 미주들 참조.\n#\n 堀内 俊郎(2009) 211쪽: ci ’di bkri ba’i don nam | ’on te sgra ji bzhin gyi don yin\n419\nzhes dpyad par bya ste | nges pa’i don bshad pa mi snang bar yang ’di sgra ji\nbzhin gyi don yin no zhes shes par ni mi nus so || ’on kyang dgongs pa can yin\nno ||"
+            },
+            {
+              "id": "kor-lee-page-286",
+              "label": "Printed page 277",
+              "locator": "PDF page 286 · printed page 277 · direct PDF text extraction",
+              "text": "【5】 〖c〗!\n“자연발생인 중생이 존재한다.”에 대해 비닛따데바나 자은 기는\n윤회의 사실성 자체를 거부하는 단견론자를 위한 학설로 소개하고 있다.\n\n 이\n420\n러한 주석은 상식적이라고도 할 수도 있지만, 다른 한편으로 『구사론』 「파아품」\n에 근거한 주석이라고도 할 수 있다.\n\n\n421\n\n[독자부:] 뿌드갈라(pudgala)는 단적으로 존재한다. 왜냐하면 ‘자연발생인 중생이 존\n재하지 않는다’라는 것은 사견(mithyādṛṣṭi)라고 [경전에서] 말하기 때문이다.!\n[바수반두:] 도대체 누가 그런 식으로 ‘자연발생인 중생이 존재하지 않는다’라고 말하\n는가? 중생은 세존께서 선별하신 대로 존재한다고 [보통] 말한다. 따라서 [내생에 도\n달한] 다른 곳에 ‘자연발생인 중생’이라고 불리는 [오]온의 상속을 [비존재라고] 손감\n(apavāda)해버리는 바로 그 자에게 이 ‘자연발생인 중생이 존재하지 않는다’라는 사\n견이 있다는 것이다. [실상은 내생의 저곳에서 오]온이 자연발생한 것이기 때문이다.\n만약 뿌드갈라를 [비존재로] 손감\n\n해버리는 것이 저 사견이라고 [그대가 주장]하면\n422\n[문제의 사견은] 무엇으로 끊어져야 하는 것인가? 왜냐하면 [그대가 이해한 것과 같이\n‘뿌드갈라의 부정’이라는] 저 사견이 보는 것(darśana) 및 수습하는 것(bhāvanā)을\n#277\n#\n 효도 가즈오(2011) 125쪽 참조.\n420\n#\n 편역자 씰크 역시 『구사론』 「파아품」에 주목하고 ‘자연발생인 중생’을 언급하는\n421\nPrasannapadā 등의 다른 텍스트들도 소개하나, 정작 『구사론』과 『이십론』의 비교·분석은\n미루고 있다. Silk(2018) 156쪽-157쪽 참조.\n#\n 뿌드갈라는 손감해도 괜찮은 것처럼 말하는 바수반두의 언어사용 방식에 주목할 필요가\n422\n있다. 즉, 그에게 ‘손감’은 상대적 개념이지 절대적 개념은 아니다."
+            },
+            {
+              "id": "kor-lee-page-287",
+              "label": "Printed page 278",
+              "locator": "PDF page 287 · printed page 278 · direct PDF text extraction",
+              "text": "통해 끊어진다는 것은 타당하지 않기 때문이다. [성자들의 네 가지] 진리(satya)에 뿌\n드갈라는 들어가 있지 않기 때문이다.\n\n\n423\n\n이 “자연발생인 중생이 존재한다.”는 경증과 관련해 『구사론』에서는 오온의 구\n도에서 소개되는 반면 『이십론』에서는 십이처의 구도에서 소개된다. 그러나 이\n차이는 사소한 것으로 보인다. 보다 중요한 점은 『구사론』에서 오온의 구도를 ‘전\n제한 채’ 저 구절을 풀이하지만 『이십론』에서는 십이처의 구도를 ‘파기하기 위\n해’ 저 구절을 유례로 사용한다는 점이다. 문제의 구절이 『구사론』에서는 독자\n부의 ‘잘못된’ 경전 해석을 바로잡는 맥락에서 등장했었는데 『이십론』에서는 『구\n사론』의 해석을 다시 상대화시키는 방향으로 해당 구절을 사용한다는 점이 특\n히 흥미롭다고 할 수 있다.\n\n\n424\n\n#278\n#\n Lee(2005) 15쪽-16쪽: asty eva pudgalo yasmād uktaṁ nāsti satva\n423\nupapāduka iti mithyādṛṣṭiḥ |!\nkaś caivam āha nāsti satva upapāduka iti | satvas tu yathāsti tathā vibhakto\nbhagavateti brūmo | tasmād yaḥ\nparatropapādukasatvākhyaskandhasaṁtānāpavādaṁ karoti {|} tasyaiṣā\nmithyādṛṣṭir nāsti satva upapāduka iti | skandhānām upapādukatvāt | athaiṣā\nmithyādṛṣṭiḥ pudgalāpavādikā satī kiṁprahātavyā bhavet | na hy eṣā\ndarśanabhāvanāprahātavyā yujyate | pudgalasya satveṣv <an>antarbhāvāt |\n#\n 바수반두의 또 다른 저작 Vyākhyāyukti에서도 동일한 양상이 보인다. 이는 【5】 〖d〗에\n424\n서 상세히 다루겠다."
+            },
+            {
+              "id": "kor-lee-page-288",
+              "label": "Printed page 279",
+              "locator": "PDF page 288 · printed page 279 · direct PDF text extraction",
+              "text": "【5】 〖d〗!\n강성용은 ‘-를 염두에 두고(adhikṛtya)’와 동계어인 adhikaraṇa\n를 기존사전에는 없는 ‘타깃층’으로 읽는 참신한 시도를 보여주었다.\n\n 그가 주\n425\n목하는 Vādavidhāna의 단편3 및 해당 자주(自注)의 내용은 다음과 같다.\n\n\n426\n\n단편3: 논의(vāda)란 자신의 입장을 성립(siddhi)시키고 상대의 입장을 반증\n(asiddhi)하기 위한 말이다. … (산문주석b) 성립 및 반증이란 [자신의 입장 및 상대\n의 입장을] 타깃층(adhikaraṇa)\n\n에게 타당한 것으로 혹은 타당하지 않은 것으로 규\n427\n명하는 것이다. (산문주석c) (원문 불확실) 질문자(prāśnika)들은 [논의가] 규명될 당\n사자이다. (산문주석d) 질문자들에게 규명해 내야지만 논의자(vādin)\n\n의 규명이 완\n428\n#279\n#\n 강성용(2004a) 및 (2004b) 참조.!\n425\n그러나 불전에서 등장하는 adhi √kṛ의 파생어들이 모든 경우에 ‘타깃층’ 즉 ‘청중’으로 읽힐 필요는 없다.\n#\n Nyāyavārttika로부터 회수한 원문은 Frauwallner (1933) 참조. 번역 및 연구는\n426\nFrauwallner (1957) 참조.\n#\n adhikaraṇa를 기존사전에는 없는 ‘타깃층’으로 읽는 참신한 시도는 강성용(2004a) 및\n427\n(2004b) 참조.!\n그러나 불전에서 등장하는 adhi √kṛ의 파생어들이 모든 경우에 ‘타깃층’ 즉 ‘청중’으로 읽힐\n필요는 없다. 이를테면, 『보성론』의 저 유명한 진술 “더러움을 수반한 진여에 관해 ‘일체 중생\n은 여래를 태장으로 가지고 있다’는 것은 어떤 의미에서 설한 것인가?”(안성두 역주 (2015)\n102쪽:  tatra samalāṁ tathatām adhikṛtya yad uktaṁ sarvasattvās\ntathāgatagarbhā iti tat kenārthena, 번역은 274쪽 참조.)에서 문제의 adhikṛtya는 ‘-에\n관해’라는 기존의 사전적 의미에 부합한다.\n#\n 웃됴따까라는 이를 논의자가 아닌 반대논의자 prativādin으로 간주하며 바수반두의 모\n428\n순을 지적한다. 강성용(2004b) 63쪽 참조.!\n그런데 이 양자가 어떻게 혼용될 수 있는지 의문이다. 만약 바수반두가 이 혼용을 범했다면,\n웃됴따까라는 혼용의 결과 바수반두가 범하는 모순을 지적하기에 앞서 저 혼용 자체를 지적\n했어야 할 것이다. 이에, 본고는 글자 그대로 읽었다. 그러나 Vādavidhāna가 단편으로만\n존재하기 때문에 웃됴따까라의 독법에 대한 평가는 잠정적일 수 밖에 없을 것이다."
+            },
+            {
+              "id": "kor-lee-page-289",
+              "label": "Printed page 280",
+              "locator": "PDF page 289 · printed page 280 · direct PDF text extraction",
+              "text": "료되게 될 것이다. … (산문주석g) … 질문자들 및 대론자(prativādin)들에게 흡족하\n거나 흡족하지 않은 말에 대해서도 ‘논의’라고 해버리게 될 것이다.\n\n\n429\n\n여기서 성립 및 반증의 성패가, 특히 단편3의 산문주석d가 적시하듯, 객관성에\n의 호소나 형식적 절차의 준수보다는 목표청중의 반응에 의존하는 것으로 그려\n진다는 점이 눈에 띈다. 바로 이점에 착안해 강성용은 문제의 adhikaraṇa에\n대한 새로운 독해를 통해 이후 본격적인 인식론-논리학(Pramāṇa) 담론의 논\n리적 엄밀성에 매몰되어버리기 이전 시기의, 청중의 적극적 역할이라는 논쟁술\n적 계기를 발굴해내는데 성공했다.\n\n 본고는 이 탁견에 더해 교육적 고려의 계\n430\n기 또한 여기서 발견할 수 있다고 보며, 나아가 바수반두에게는 이 계기가 보다\n중심적이라고 생각한다.!\n\n실제로 고전기 인도의 많은 논서들은 비판적 문답이라는 형식으로 쓰여\n졌으며, 이 경우 논쟁과 교육을 날카롭게 구분하려는 시도는 태생적으로 한계\n#280\n#\n Frauwallner (1933) 300쪽-301쪽:!\n429\n단편3: svaparapakṣayoḥ siddhyasiddhyarthaṁ vacanaṁ vādaḥ | … (산문주석b)\nyuktāyuktatvenādhikaraṇapratyāyanaṁ siddhyasiddhī | (산문주석c) (원문 불확실)\nprāśnikāḥ pratyāyyāḥ | (산문주석d) prāśnikapratyāyanād eva vādipratyayanaṁ\nkṛtaṁ bhaviṣyati | … (산문주석g) … prāśnikaprativādinoḥ priyāpriyavacasi\nvādaprasaṅga …!\n한편 대안적 번역 및 특히 웃됴따까라의 바수반두 비판에 대한 자세한 분석 및 진단은 강성\n용(2003) 및 강성용(2004b) 참조.\n#\n 강성용(2004a) 및 (2004b), 특히 강성용(2004a) 72쪽 이하 참조.\n430"
+            },
+            {
+              "id": "kor-lee-page-290",
+              "label": "Printed page 281",
+              "locator": "PDF page 290 · printed page 281 · direct PDF text extraction",
+              "text": "가 있다. 그리고 앞서 단편2에 등장하는 ‘진실의 교시(avabodha)’\n\n는 순수\n431\n한 논쟁의 맥락에서도 유효하지만 교육의 맥락에 놓을 때 보다 더 잘 이해된다.\n무엇보다도 여기 『이십론』의 용례가 교육적 고려의 맥락에서 등장하고 있다. 교\n육적 측면에 방점을 찍는다면, 단편3의 산문주석c, d, g에서 타깃층 내지 질문\n#281\n#\n Frauwallner (1933) 300쪽:!\n431\n단편2 (원문 불확실): traividhyānabhyupagamāt | eka evāyaṁ kathāmārgaḥ | tasya\nprayojanaṁ tattvāvabodho lābhādayaś ca | (단편2 (원문 불확실): 세 종류라는 것이\n받아들여지지 않기 때문에, 이와 같은 오직 한 가지일 뿐인 말하기 방식이 있고, 그것의 목적\n은 진실(tattva)의 교시(avabodha) 및 재화(lābha) 등이다.)!\n   여기서 ‘교시’로 옮긴 avabodha는 ‘인식’으로 읽는 편이 자연스럽게 느껴질 수 있다. 실제\n로 강성용은 이 표현을 ‘인식’으로 옮긴다. 강성용(2003) 466쪽 참조.!\n그러나 단편3 이후의 맥락이 특정 주제를 놓고 입장이 나뉘는 논쟁적 상황인 것을 고려하면\n여기서의 진실은 새롭게 인식되는 것이라기보다는 상대에게 관철되는 것이다. 따라서 논쟁\n에서 이긴 자는, 마치 재화를 가져가는 것처럼 새로운 지식을 얻는 것이 아니라, 상대에게 문\n제의 진실을 인식시켜 주는 것이라고 할 수 있다. (혹은 듣는 쪽이 진리를 인식하고 그 대가\n로 말하는 쪽이 재화를 얻는다는 구도도 가능하겠으나, 그다지 매력적인 방식은 아닌 것 같\n다.) 아울러 곧 다루게 될 『유가사지론』의 용례 역시 ‘교시’로 읽는 편을 지지하는 것 같다. 본\n고 436번 각주 및 해당 본문 참조.!\n한편 강성용이 ‘[재물을] 얻는 것’으로 옮긴 lābha를 보다 구체적으로 ‘재화’로 읽는 것은\nPradhan(1967) 241쪽 등을 참조한 것이다."
+            },
+            {
+              "id": "kor-lee-page-291",
+              "label": "Printed page 282",
+              "locator": "PDF page 291 · printed page 282 · direct PDF text extraction",
+              "text": "자(prāśnika)\n\n가 대론자(prativādin)보다도 빈출하며 더 중요한 위상을 부\n432\n여받는 이유를 설명할 수 있다. 교육적인 목적만이라면 사실상 논의자(vādin)\n와 청중만 있으면 되기 때문이다. 대론자는 당면목표에 맞게 얼마든지 기존의\n입장들 중에서 취사선택되거나 조합되거나 심지어 상상될 수 있다. 『이십론』은\n이러한 경향의 좋은 사례로 보인다.!\n\n반대로 강성용의 제안대로 논쟁술적 맥락에서 청자의 중요성을 받아들\n이고 따라서 Vādavidhāna의 타깃층 언급을 옛 관행의 유산으로 인정한다고\n하더라도\n\n 여전히 그 정도차 및 변용의 가능성에 대해서는 얼마든지 재론의\n433\n여지가 열려있다고 할 수 있다. 본고가 보기에 이미 『유가사지론』 단계에서 논\n쟁술적 언어의 교육적 재정위가 상당히 진척된 것 같다.!\n\n#282\n#\n 웃됴따까라는 이 prāśnika를 ‘심판’으로 이해하나 강성용의 지적대로 이는 문제가 있다.\n432\n강성용(2004b) 66쪽 이하 참조.!\n다음 대목을 보면 prāśnika는 본고의 번역처럼 ‘질문자’이다.!\nJambuvijaya(2009) 2쪽: pakṣahetudṛṣṭāntavacanair hi prāśnikānām\napratīto ’rthaḥ pratipādyata iti || (왜냐하면 주장명제·근거·유례를 말하는 것을 통해 질\n문자들에게 이해되지 않았던 내용을 이해시키기 때문이다.)!\nT1630_011b02-3: 由宗因喩多言開示諸有問者未了義故。!\n한편 자은 기의 다음 주석에 따르면 이 ‘질문자’는 대론자와 심판을 가리키는 표현이다.!\nT1840_097b11-20: 諸有問者。謂敵證等。…瑜伽等說。有六處所。…於此六中。必須證\n者。善自他宗。心無偏儻。出言有則。能定是非。!\n그런데 밑줄 친 부분의 요구사항을 단지 이상적인 것으로 치부해버리면, 證은 ‘청중’과 사실\n상 동일해진다.\n#\n 강성용(2004a) 참조.\n433"
+            },
+            {
+              "id": "kor-lee-page-292",
+              "label": "Printed page 283",
+              "locator": "PDF page 292 · printed page 283 · direct PDF text extraction",
+              "text": "말(vāda)은 어떤 것인가? 이는 여섯 종류라고 보아야 한다. 말·통론(pravāda)·논쟁\n(vivāda)·매도(apavāda)·조언(anuvāda)·가르침(avavāda)이다. … 이들 여섯 가\n지 말 중에서 몇 가지 말들이 실재적인 것·참된 것·이익을 갖춘 것들로서 종사되어야\n하는가? 몇 가지 말들이 비실재적인 것·참되지 않은 것·이익을 갖추지 않은 것들로서\n기각되어야 하는가? 뒤의 두 가지 말들이 실재적인 것·참된 것·이익을 갖춘 것들로서\n종사되어야 할 것이다. 중간의 두 가지 말들이 비실재적인 것·참되지 않은 것·이익을\n갖추지 않은 것들로서 기각되어야 할 것이다. 앞의 두 가지 말들에는 갈라짐이 있다.\n\n\n434\n\nVādavidhāna의 단편2에서는 말하기(kathā)가 가장 포괄적인 것으로 등장하\n고 논의(vāda)는 그 일부인 것처럼 등장하였는데\n\n 여기 「문소성지」에서는 그\n435\n총괄적 역할을 말(vāda)이 맡고 대신 논쟁(vivāda)은 vāda의 일부로 제시되\n어 있다. 여기서 vāda가 유적인 차원에서 여섯 종류를 총괄하고 있는 동시에\n종적인 차원에서 여섯 종류 중 하나인 점은, 적어도 아리스토텔레스적 감각에\n서는, 문제적인 것이겠지만, 흥미로운 점은 따로 있는 것 같다. 즉, 온갖 말들이\n중구난방으로 소환되는 것처럼 보이지만, 실재성·진리성·유효성이라는 선명한\n잣대에 따라 서로 대별될 수 있다는 점이 이 기묘한 ‘분류’의 핵심 메시지인 것\n으로 보인다.!\n#283\n#\n 矢板 秀臣(1992) 512쪽-515쪽: vādaḥ katamaḥ | sa ṣaḍvidho draṣṭavyaḥ |\n434\nvādaḥ pravādo vivādo ’pavādo ’nuvādo ’vavādaś ca | … eṣāṁ ṣaṇṇāṁ\nvādānāṁ kati vādā bhūtās tattvā arthopasaṁhitāḥ sevitavyaḥ | kati vādā abhūtā\natattvā anarthopasaṁhitāḥ parivarjayitavyāḥ | dvau paścimau vādau bhūtau\ntattvāv arthopasaṁhitau sevitavyau | dvau madhyau vādāv abhūtāv atattvāv\nanarthopasaṁhitau parivarjayitavyau | ādayor dvayor vādayor bhedaḥ |\n#\n 본고 431번 각주 참조.\n435"
+            },
+            {
+              "id": "kor-lee-page-293",
+              "label": "Printed page 284",
+              "locator": "PDF page 293 · printed page 284 · direct PDF text extraction",
+              "text": "논쟁이 모종의 이유로 여러 말들 중 하나로 상대화되는 현상 자체가 본\n고의 문제의식에서는 중요해 보인다. 여기서 단적으로 기각되어야 할 것으로\n묘사된 논쟁과 달리 적극적으로 종사되어야 할 것으로 지정된 조언(anuvāda)\n및 가르침(avavāda)은 그 이름만으로도, 또 그 내용 규정을 통해서도 교육적\n인 성격을 강하게 노정한다는 점에 주목하고 싶다.!\n\n(1.3) 논쟁은 어떤 것인가? … 혹은 견해와 관련한 [것이니], 이를테면 유신견·단견…\n사견과 관련한, 혹은 다른 나쁜 견해들과 관련한 [것으로] 이와 같은 부류의 견해들을\n자신이 가지고 남들이 부술 경우 … 탐욕을 떠나지 못한 중생들에게 앞서와 같은 온갖\n말·논쟁·적대적인 말이 있다. 이를 ‘논쟁’이라고 한다. … (1.5) 조언은 어떤 것인가?\n잘 이야기된 법·율에 대한 설법·해명·지도(anuśāsana)이고, 발생된 의혹을 부수고\n심오한 뜻을 지닌 구절을 통찰케 하며 지견의 청정케 하는 해탈에 기여하고(anukūla)\n조응하는(anulomika) 말이다. 이 [anu의 의미] 때문에 조언(anuvāda)라고 한다. 이\n를 ‘조언’이라고 한다.  (1.6) 가르침은 어떤 것인가? 증상심·증상혜를 향해 노력하고\n자 하는 사람에게 집중상태가 아닌(asamāhita) 마음을 안정시키기 위해 혹은 집중상\n태인 마음을 해탈시키기 위해 말을 하고, 진실에 대한 앎을 교시(avabodha)하기 위\n#284"
+            },
+            {
+              "id": "kor-lee-page-294",
+              "label": "Printed page 285",
+              "locator": "PDF page 294 · printed page 285 · direct PDF text extraction",
+              "text": "해 [또] 진실에 대한 앎을 이해시키기(avagama) 위해 말을 하니, 이 [ava의 의미] 때\n문에 가르침(avavāda)이라고 한다. 이를 ‘가르침’이라고 한다.\n\n\n436\n\n이처럼 조언과 가르침은 특정한 이념적 목적의 지향과 함께 이를 달성하기 위\n한 수단으로 구성되어 있다. 특히 두 번째 밑줄 부분은 명백히 Vādavidhāna\n의 단편2와 일치한다. 한편Vādavidhāna에서, 본고의 해석에 따를 경우, 교육\n적 성격이 인정된 논의와 달리, 『유가사지론』의 논쟁은 단지 맹목적이며 심지어\n유해한 것으로 묘사된다. 첫 번째 밑줄 부분이 부정적 평가의 원천을 시사한다.\n즉, 논쟁은 ‘탐욕’과 같은 부정적 심리상태에서 발원한 언어활동이기에 부정적\n이며 따라서 해탈이나 진리와 같은 긍정적 목표에 백해무익하다고 단정되고 있\n는 것 같다. 그러나 역설적이게도, 비교육적인 것으로 자리매김된 논쟁은, 약간\n의 조정을 통해 이를테면 탐욕과 같은 부정적 동기 대신에 진리 탐구라는 새로\n#285\n#\n 矢板 秀臣(1992) 512-514쪽: (1.3) vivādaḥ katamaḥ | … dṛṣtiṁ vā punar\n436\nārabhya | tad yathā satkāyadṛṣṭim ucchedadṛṣṭiṁ … mithyādṛṣṭim iti | yā vā\npunar anyā pāpikā dṛṣṭiḥ | ity evaṁbhāgīyadṛṣṭiṣu svaparigṛhītāsu parair\nvicchidyamāne … avītarāgāṇāṁ sattvānāṁ pūrvavad yāvan nānāvādo vivādo\nvipratyanīkavādaḥ | ayam ucyate vivādaḥ | … (1.5) anuvādaḥ katamaḥ | yā\nsvākhyāte dharmavinaye dharmadeśanā sāṁkathyaviniścayo ’nuśāsanam\nutpannasya saṁśayasya cchedāya gambhīrasyārthapadasya prativedhāya\njñānadarśanasya viśuddhaye mokṣasyānukūlo ’nulomiko vādaḥ | tasmād\nanuvāda ity ucyate | ayam ucyate ’nuvādaḥ | (1.6) avavādaḥ katamaḥ | adhicitte\n’dhiprajñe prayoktukāmasya pudgalasyāsamāhitasya vā cittasya samādhānāya\nsamāhitasya vā cittasya vimokṣāya yo vādas tattvajñānāvabodhāya\ntattvajñānāvagamāya vādaḥ | tasmād avavāda ity ucyate | ayam ucyate\n’vavādaḥ |"
+            },
+            {
+              "id": "kor-lee-page-295",
+              "label": "Printed page 286",
+              "locator": "PDF page 295 · printed page 286 · direct PDF text extraction",
+              "text": "운 목표를 할당함으로써, Vādavidhāna에서처럼 교육적인 것으로 재정위될\n수 있게 된 것이기도 하다.!\n\n한편 Vādavidhāna 단편3의 또 다른 포인트는 산문주석b의 ‘타당한 것\n으로 혹은 타당하지 않은 것으로’라고 한 것의 역할이다. 앞서 산문주석d에 따\n라 성립의 성패가 객관성이나 형식성보다는 타깃의 호응으로 결정된다고 했다.\n그렇다고 해서 이 반응이 자의적이어도 좋다는 결론에 바수반두가 빠져버리는\n것은 아니다. 그는 여전히 모종의 타당성을 요구한다. 단지 문제의 타당성이 바\n로 수용의 차원에서 구성된다고 보는 것이다. 산문주석g가 바로 이점을 분명하\n게 하는 것으로 보인다. 단지 청자의 마음에 드는 말을 한다고 해서 혹은 그가\n좋아하는 방식으로 이야기한다고 해서 내 입장이 성립이 되는 것은 아니다. 이\n는 아부에 불과하다. 마찬가지로 대론자의 기분을 나쁘게 하는 결론을 제시한\n다고 해서 반증이 이루어지는 것도 아니다. 이는 단지 시비를 거는 것이다.!\n\n바로 여기서 객관성 및 형식성이 재차 조건들로서 호출된다. 본고의 관\n점이 옳다면 Vādavidhāna의 나머지 단편들은 바로 이점을 보여주려는 것 같\n다.!\n\n단편3: … (산문주석e) 입장의 성립을 영역으로 하는 규명이 ‘입장의 성립’이라는 말\n로 가설(upa √car)되어 있으니, 마치 공성을 영역으로 하는 삼매를 ‘공성’이라고 하는\n것과 마찬가지이다. (산문주석f) 입증(sādhana), 유사입증(sādhanābhāsa), 반박\n(dūṣaṇa), 유사반박(dūṣaṇābhāsa)이 주어질 것이다.!\n단편4: 저 [성립 및 반증] 양자는 입증 및 반박들을 통해서다.!\n#286"
+            },
+            {
+              "id": "kor-lee-page-296",
+              "label": "Printed page 287",
+              "locator": "PDF page 296 · printed page 287 · direct PDF text extraction",
+              "text": "단편5: 주장명제(pratijñā)란 입장(pakṣa)을 발화하는 것이다.!\n단편6: 입장은 입증하고자 하는 것이다.!\n단편7: 근거(hetu)는 다른 부류(vipakṣa)와의 차별점(viśeṣa)이다. (산문주석a) 같\n은 부류(sapakṣa)에서는 성립되고(siddha) 다른 부류에서는 없는, 입장의 속성\n(dharma)이다.!\n단편8: 유례(dṛṣṭānta)란 그와 같이 성립되는 것이다.!\n단편9: 반박들은 [논거의?] 부족함(nyūnatā)·[논증 구성] 요소(avayava) 및 응대\n(uttara)의 오류(doṣa)·반대(ākṣepa) 가능성이다. 왜냐하면 이것들을 통해 상대의\n입장이 반박되기 때문이다.\n\n\n437\n\n이 단편들을 일관되게 만들어 주는 교차점은 단편4 및 단편6으로 보인다. 앞서\n입장의 성립 등이 이야기되었는데, 바로 단편4에서 그 수단으로 입증이 거론되\n었고, 이에 대한 상술 내지 부연이 단편9와 단편3의 산문주석f로 볼 수 있기 때\n문이다. 또  단편6에서 바로 저 입장이 입증되어야 할 것이라는 점을 분명히 함\n#287\n#\n Frauwallner (1933) 301쪽:!\n437\n단편3: … (산문주석e) pakṣasiddhiviṣayaṁ pratyāyanaṁ\npakṣasiddhiśabdenopacaritaṁ yathā śūnyatāviṣayaḥ samādhiḥ śūnyateti | (산문\n주석f) … sādhanaṁ sādhanābhāso dūṣaṇaṁ dūṣaṇābhāsaś ca sampatsyata …!\n단편4: te sādhanadūṣaṇaiḥ |!\n단편5: pakṣavacanaṁ pratijñā |!\n단편6: pakṣo yaḥ sādhayitum iṣṭaḥ |!\n단편7: hetur vipakṣād viśeṣaḥ | (산문주석a) yo dharmaḥ pakṣasya sapakṣe\nsiddho vipakṣe nāsti |!\n단편8: tathā siddho dṛṣṭāntaḥ |!\n단편9: dūṣaṇāni nyūnatāvayavottaradoṣākṣepabhāvodbhāvanāni | ebhir hy\nasau parapakṣo dūṣyate |"
+            },
+            {
+              "id": "kor-lee-page-297",
+              "label": "Printed page 288",
+              "locator": "PDF page 297 · printed page 288 · direct PDF text extraction",
+              "text": "으로써 나머지 단편5부터 단편8을 묶어주고 있기 때문이다. 이러한 조직화가\n타당하다면, 비록 저 단편들에는 명시되어 있지 않지만, 입증은 주장명제·근거·\n유례로 구성되며 바로 이 세 가지가 단편9에서 말하는 논증 구성의 요소인 것\n으로 해석된다.\n\n\n438\n\n그렇다면 이러한 요소들을 제대로 갖추는 것이 형식성 조건이라고 할 수\n있다. 논의란 논자 혹은 교육자는 청중 혹은 피교육자에게 특정 명제를 규명하\n는 것인데, 이는 아무렇게나 진행되는 것이 아니라 주장명제·근거·유례라는 형\n식적 요건을 갖춤으로써 전개된다는 것이다. 그리고 논자 혹은 교육자의 말이\n저 조건에 부합하는지를 잘 따지는 것이 청중 혹은 피교육자에게 요구된다고\n할 수 있다. 또 이런 형편 때문에 논자 혹은 교육자 역시 자의성을 배제하기 위\n해 저 형식성 조건을 만족시켜야할 것으로 보인다.!\n\n한편 형식성 조건은 사태 차원의 실질적 내용을 반영하는 방식으로 짜여\n져 있는 것 같다. 입증하고자 하는 것과 같은 부류인 것과 다른 부류인 것이 세\n계에서 객관적으로, 혹은 최소한 간주관적으로는, 구분되는 방식으로 나타나며\n이 양자를 갈라주면서 동시에 논의 당사자들에게 이미 받아들여지고 있는\n(siddha) 변별적 속성이 이유로서 성공적으로 지목되어야지만 저 형식성 조건\n을 제대로 만족시킬 수 있을 것이기 때문이다. 따라서 논의 참가자들은 형식 요\n건에 대한 주의와 함께 객관성에 대한 응시가 불가피하다.!\n#288\n#\n 이 사안이 명시되지 않은 이유를 상상해보자면, 이 명제가 Nyāyasūtra 단계에서 이미\n438\n상식이 되어버린 탓이지 않을까 싶다.!\nNS 1.1.32: pratijñāhetūdāharṇopanayanigamanāni avayavāḥ || (주장명제·근거·유\n례 제시·적용·결론들이 [논증 구성] 요소들이다.)"
+            },
+            {
+              "id": "kor-lee-page-298",
+              "label": "Printed page 289",
+              "locator": "PDF page 298 · printed page 289 · direct PDF text extraction",
+              "text": "이는 논리적 증명의 성립과 객관적 사태의 성립 사이의 긴밀한 관계를\n시사한다. 즉, 논리적 성립이 가능하려면 사태적 성립이 전제되어야 하며, 반대\n로 논리적 성립을 통해 사태적 성립을 새로이 알게 되는 것이다.\n\n 단편3 산문\n439\n주석e는 바로 이런 사정에서 발원한 중의성을 지적하고 저자 자신의 언어 사용\n을 선명히 하려는 의도로 읽힌다. 즉 ‘입장의 성립’이란, 그것이 올바른 것일 경\n우, 그 입장을 가지는 것을 가능케 하는 사태 차원의 성립으로 이해하는 것이\n문자적인 이해라고 하겠지만, 저자 자신에게 (혹은 그가 속한 언어공동체 일반\n에서) ‘입장의 성립’은 그 사태를 논리적으로 규명하는 행위 내지 그 성과를 대\n신 지칭하는 것이다.!\n\n다른 한편 단편3 산문주석f에서 말하는 유사입증 및 유사반박은 아마도\n형식성·객관성 조건에서 결격사유가 있음에도 논의 당사자들에게는 모종의 이\n유 때문에 입증 및 반박으로 잘못되게 받아들여지는 것을 지칭하는 것으로 보\n인다. 이상화된 논의 말고 실제 우리가 경험하는 논의의 현장에서는 사실 곧바\n로 그리고 정확하게 입증과 유사입증을 구별해내기가 쉽지 않을 것이다. 전후\n맥락이 없어 확언하기는 어렵지만, 산문주석f에서 이러한 정황을 지적하여 산\n문주석g에서 그럼에도 형식성·객관성 조건을 갖춰야 하는 이유를 귀류적으로\n제공하는 것일 수 있다. 즉, 논의가 자의적인 것이 되지 않으려면 당사자들이\n저 형식성·객관성 조건을 엄수해야 한다는 것이다.!\n#289\n#\n 그래서인지 『이십론』 내에서도 이 성립(siddhi)의 동계어들이 종종 논리적 성립보다는\n439\n사태적 성립으로 읽었을 때 더 잘 이해되는 경우가 있다."
+            },
+            {
+              "id": "kor-lee-page-299",
+              "label": "Printed page 290",
+              "locator": "PDF page 299 · printed page 290 · direct PDF text extraction",
+              "text": "마지막으로 지적할 것은 단편2에서 말하기 방식의 목적이 ‘진실(tattva)\n의 교시’라고 할 때 전제되는 진실의 공적 성격이다. 어떤 것을 교시하기 위해서\n는, 즉 남이 알도록 하기 위해서는, 그것이 공적으로 전달 가능한 것이어야 한\n다. 한편 『이십론』에서 유식성을 성립시키기 위해 바수반두가 제공한 일련의 논\n변들은 일정 수준 이상의 지적 역량을 가진 존재라면 쉽게 이해하고 나아가 납\n득하거나 혹은 반대할 수 있는 것들이다. 그러나 궁극적인 것이 그 자체로 언어\n화될 수 없는 것이라면, 여기서 교류되는 것은 정확히 무엇이며 어떤 의미에서\n여전히 ‘진실’이라고 할 수 있는 것일까? 한편 『이십론』 말미에서는 『이십론』 에\n서 제시된 일련의 논증들이 저자의 역량으로 한정된 것이라고 말하는데\n\n 그\n440\n렇다면 이때의 한정이 진실의 진리성에 어떤 영향을 끼치는 것일까? 문제의 능\n력의 정체가 변증(tarka)이라면 이것이 어떻게 진실을 전달할 수 있는 것일까?\n안타깝께도 Vādavidhāna는 물론이고 『이십론』에서는 이에 대한 답변은 고사\n하고 문제의식조차 구체화하기 어렵다. 이에 대한 본격적인 해명은 【16】 〖c〗에\n서 진행하겠다.!\n\n【5】 〖e-1〗!\n【5】의 논지는 다소 압축적이어서 정확히 이해하기 어렵다. 그런데\n바수반두의 또 다른 저작 Vyākhyāyukti에서 동일한 내용이 보다 상세히 다뤄\n지고 있어 검토될 필요가 있다.!\n\n#290\n#\n 【16】 참조.\n440"
+            },
+            {
+              "id": "kor-lee-page-300",
+              "label": "Printed page 291",
+              "locator": "PDF page 300 · printed page 291 · direct PDF text extraction",
+              "text": "[질문:] 만약 [‘일체법무자성’의 명제가] 그처럼 확정적으로 설시되어야 하는 것이라면,\n무엇 때문에 [세존께서는] 성문들에게도 성문승으로 그처럼 설시하지 않으셨냐고 하\n면?!\n[답변:] 그들에게는 그처럼 설시할 수가 없다. 그것이 무엇 때문이냐고 하면, 그들은\n법무아에 대해 확신(*adhimukti)에 들어설 수 없으니, [윤회를] 염리할 것이기 때문이\n다. 이를테면, 그들은 본성상 고통에 대해 두려워하고 비심이 적다. [그러나] 인무아에\n대해서는 들어설 수 있으니, 저 [오온 등]을 아뜨만이라고 파악함에 따라 존재의 바탕\n(*ātmabhāva)을 갈구하여 고통으로부터 [아직] 해탈하지 못했기 때문이다. 그래서\n그들에게 인무아만을 설시하고 법무아는 [설시하지] 않으셨던 것이다.\n\n\n441\n[질문:] [그렇다면] 세존께서 성문들에게 절반은 진리를 말씀하시고 절반은 거짓을 [말\n씀하신 꼴이니] ‘뿌드갈라는 존재하지 않는다’라고 한 것은 진리이다. ‘법들은 존재한\n#291\n#\n 堀内 俊郎(2009) 228쪽-229쪽: gal te de skad gdon mi za bar bstan par bya ba\n441\nyin na | ci’i phyir nyan thos rnams la yang nyan thos kyi theg par de skad ma\nbstan zhe na |!\nde dag la ni de skad bstan par mi bya’o || de ci’i phyir zhes na | de dag ni chos\nla bdag med pa nyid la mos pa la gzud par mi bya ste | skyo bar bya ba yin pa’i\nphyir ro || ’di ltar de dag ni rang bzhin gyis sdug bsngal la ’jigs pa dang snying\nrje chung ba yin no || gang zag la bdag med pa nyid la ni gzud par bya ste | de\nla bdag tu ’dzin pa’i dbang gis lus la sred pas sdug bsngal las rnam par mi grol\nba’i phyir ro || de lta bas na de dag la gang zag med pa kho na bstan gyi chos\nmed pa ni ma yin no ||"
+            },
+            {
+              "id": "kor-lee-page-301",
+              "label": "Printed page 292",
+              "locator": "PDF page 301 · printed page 292 · direct PDF text extraction",
+              "text": "다’라고 한 것은 거짓으로, 이를테면 “여기 [불교의 가르침]에서(*iha)\n\n 아뜨만\n442\n(*ātman)이나 중생(*sattva)은 없고 이 법이 원인을 수반함에 의해(?) 발생한다.”[라\n든가] “업은 존재하고 이숙은 존재하나 행위자는 지각되지 않는다.”\n\n라고 말씀하신\n443\n것처럼, [‘법들은 존재한다’는 것이 거짓이라고] 하면?!\n[답변:] 세존께서 “자연발생인 중생이 존재한다.”고 말씀하신 것은 거짓인가?!\n[질문:] 세존께서 모종의 의도로(*yenābhiprāyena) [“자연발생인 중생이 존재한다.”\n고] 말씀하셨던 것이라 그와 같이 거짓은 아니라고 하면?!\n[답변:] 세존께서 모종의 의도로 “법들은 존재한다.”고 말씀하셨던 것 역시 그와 같이\n거짓이 아니다.!\n#292\n#\n 호리우치 도시오는 ‘여기(*iha)’를 ‘이 세계’로 이해한다. 堀内 俊郎(2009) 326쪽 참조.!\n442\n이종철 역시 Vyākhyāyukti와 동일한 문구를 인용한 것으로 보이는 『이십론』의 nāstīha\nsatva ātmā vā dharmmās tv ete sahetukāḥ에서의 iha를 ‘이 세상’으로 옮긴다. 이종철\n(1997) 198쪽 참조.!\n『구사론』에서도 정확히 동일한 표현이 나타나는데(Pradhan(1967) 466쪽), 이에 대한 이\n종철의 번역 역시 변함이 없다. 이종철(2015) 393쪽 참조.!\n   그러나 해당 표현이 아뜨만이나 중생이 존재하는 ‘저 세계’가 있을 여지를 남기고 있는 것\n이 아니기 때문에 받아들이기 어렵다. 본고는 ‘여기’가 ‘불교의 가르침’이라고 이해하였다. iha\n를 비슷하게 옮긴 사례로 가라시마 세이시(2012) 320쪽 및 이영진(2013) 162쪽 참조.!\n『구사론』의 해당 구절에 대한 야쇼미뜨라의 주석 역시 본고와 일치하는 것으로 보인다.!\nWogihara(1936) 704쪽: nāstīha sattva ātmā ceti | idam ihodāharaṇaṁ\npudgalo nopalabhyata ity etac ca | na vidyate so ’pi kaścid itīdaṁ vāpy\nudāharaṇaṁ | (‘여기에서는 중생도 아뜨만도 존재하지 않는다’라는 이것은 이쪽의 선언이\n고, ‘뿌드갈라는 지각되지 않는다’라는 이것과 혹은 ‘그 어떤 [뿌드갈라 같은] 것도 존재하지\n않는다’라는 이것 역시 [이쪽의] 선언이다.)\n#\n 이 경증이 Vyākhyāyukti의 또 다른 대목에서도 등장한다. 본고 452번 각주 참조.\n443"
+            },
+            {
+              "id": "kor-lee-page-302",
+              "label": "Printed page 293",
+              "locator": "PDF page 302 · printed page 293 · direct PDF text extraction",
+              "text": "[질문:] [“법들은 존재한다.”고 말씀하셨던] 그 의도를 성문들이 이해할 수 있냐고 하\n면?\n\n\n444\n[답변:] 진리를 보지 못한 자들은 이해하지 못한다.\n\n\n445\n[질문:] 저 [성문]들이 변계소집된 대로 파악한 것이라면 어째서 기만당한 것이 아니냐\n고 [따라서 세존께서 성문들에게 거짓을 말씀하신 꼴이 되는 것이 아니냐고] 하면?!\n[답변:] 세존께서 모종의 의도로 세간적 정견에 들어설 수 있는, [그것을 통해] 지도받\n아야 할 자(*vineya)들을 염두에 두고(*adhikṛtya) “자연발생인 중생이 존재한다.”고\n말씀하셨는데, 이 [경우에서]도 저들은 그 의도를 이해한 것인가?!\n[질문:] 답하길, 아니라고 하면?!\n[답변:] 변계소집된 대로 파악한 것이라면 어째서 기만당한 것이 아닌가, [따라서 세존\n께서 저들에게도 거짓을 말씀하신 꼴이 되는 것이 아닌가]?!\n#293\n#\n 호리우치 도시오는 이 대목을 포함해 Vyākhyāyukti의 제4장 전체가 성문(śrāvaka)과\n444\n바수반두 사이의 대화로 간주한다. 堀内 俊郎(2009) 참조.!\n그러나 성문의 정체성을 가진 자가 “[법들은 존재한다’고 말씀하셨던] 그 의도를 성문들이 이\n해할 수 있냐고 하면?”과 같은 질문을 하는 것은, 비록 불가능하지는 않지만, 매우 어색하다\n고 할 수 있다. 그렇다면 질문자의 정체성은 괄호 안에 넣어두는 편이 좋을 것이다.\n#\n 堀内 俊郎(2009) 229쪽: bcom ldan ’das kyis nyan thos rnams la phyed ni\n445\nbden pa bstan | phyed ni brdzun pa ste | gang zag med do zhes bya ba ni bden\npa’o || chos rnams yod do zhes bya ba ni brdzun pa ste | ji skad du | ’di na bdag\ngam sems can med || chos ’di rgyu dang bcas las(?) ’byung || las yod rnam par\nsmin pa yod || byed pa po ni mi dmigs so || zhes gsungs pa lta bu’o zhe na |!\nbcom ldan ’das kyis sems can brdzus te byung ba yod do zhes gang bshad pa\nde ci brdzun nam |!\nbcom ldan ’das kyis dgongs pa gang gis bshad pa de ltar mi brdzun no zhe na |!\nbcom ldan ’das kyis dgongs pa gang gis chos rnams yod do zhes bshad pa ’di\nyang de ltar mi brdzun no ||!\nci dgongs pa de nyan thos rnams kyis rtogs sam zhe na |!\nbden pa ma mthong ba rnams kyis mi rtogs so ||"
+            },
+            {
+              "id": "kor-lee-page-303",
+              "label": "Printed page 294",
+              "locator": "PDF page 303 · printed page 294 · direct PDF text extraction",
+              "text": "[질문:] 저들의 저 태생적인(*sahaja) 중생견(*sattvadṛṣṭi: 중생이 실재한다고 보는\n생각)은 선취(*sugati)에 갈 때까지 단절케 할 수가 없어서, 그것 때문에 저 [“자연발\n생인 중생이 존재한다.”는 것]을 말씀하셨던 것이라고 하면?!\n[답변:] 저 [성문]들의 저 태생적인 법견(*dharmadṛṣṭi: 법이 실재한다고 보는 생각)\n도 열반[에 이를 때]까지 단절케 할 수가 없어서, 마찬가지로 그것 때문에 저 [“법들은\n존재한다.”는 것]을 말씀하셨던 것이다.\n\n\n446\n[질문:] 만약 ‘윤회는 고통스럽다.’ 혹은 ‘열반은 적정하다.’고 여실하지 않게 변계\n(*parikalpa)한다면, 어째서 [여실하게 변계]하도록 하지 않는\n\n 것인가?!\n447\n[답변:] 여실하지 않은 변계 역시 성자의 지혜의 등류(*niṣyanda)[에 해당하는], 설시\n의 토대(*āśraya)를 갖춘 모종의 것들 일부는 청정(*vyavadāna)에 기여하는 것\n(*anukūla)이니, 그 [발화]의 바탕[이 되는 사태](*vastu)는 불가언설을 특징으로 하\n#294\n#\n 堀内 俊郎(2009) 229쪽-230쪽: ji ltar na de dag gis ji ltar kun tu brtags pa bzhin\n446\ndu ’dzin na bslus par mi ’gyur zhe na |!\nbcom ldas ’das kyis dgongs pa gang gis ’jig rten pa’i yang dag pa’i lta ba la\ngzud par bya ba’i gdul ba rnam kyi dbang du mdzad nas brdzus te byung ba’i\nsems can yod do zhes bshad pa ’di yang ji de dag gis dgongs pa de rtogs sam |!\nsmras pa | ma yin no zhe na |!\nji ltar na ji ltar kun tu brtags pa bzhin du ’dzin na bslus par mi ’gyur |!\nde rnams kyi lhan cig skyes pa’i sems can du lta ba de ni bde ’gror ’gro ba’i bar\ndu gcod par mi byed pas de’i phyir de bshad pa yin no zhe na |!\nde rnams kyi lhan cig skyes pa’i chos su lta ba de yang mya ngan las ’das pa’i\nbar du gcod par mi byed pas de’i phyir yang de bshad pa yin no ||\n#\n 호리우치 도시오는 문제의  mi byed를 de rnams kyi lhan cig skyes pa’i chos su\n447\nlta ba de yang mya ngan las ’das pa’i bar du gcod par mi byed의 축약으로 간주한\n다. 堀内 俊郎(2009) 327쪽 참조.!\n그러나 그의 제안에 따르자면 질문의 동기가 미궁에 빠져 버리는 동시에 이후의 답변의 내용\n과도 조화롭지 못한 것 같다. 이에 본고는, 특히 후속하는 답변에 착안해, 문제의 mi byed를\nyang dag pa ji lta ba bzhin du yin par kun tu rtog par mi byed의 축약으로 보았다."
+            },
+            {
+              "id": "kor-lee-page-304",
+              "label": "Printed page 295",
+              "locator": "PDF page 304 · printed page 295 · direct PDF text extraction",
+              "text": "는 것으로서(*nirabhilāpyalakṣaṇena) 존재하기 때문이다. 예를 들어, 사람들이 욕\n[계]·색[계]·무색[계]에서 활동하는(*caryā) 자들의 존재의 바탕(*ātmabhāva)·머무\n름(*sthāna)·삼매·등지(*samāpatti) 혹은 출세간의 해탈인 것들을 듣고 이해하게 한\n다면, 저들은 여실하게 변계할 것인가? [아니다.] 그럼에도 그 변계는 저것에 진력하\n는 자들이 저것을 얻을 수 있게끔 기여하는 것이 아닌가? [맞다.] 그와 같이 범부(*pṛ\nthagjana)들은 무상(*anitya) 등의 행상(*ākāra)들로 법들을 변계한다면, [이는] 여\n실하게 변계하는 것이 아니니, *Māyājāla[sūtra]에 “세존께서 “성자[들에게 속한] 출\n세간[의 것]이 진리다.”라고 말씀하신다.”라고 하기 때문이다. 그 [범부의] 변계도 여실\n한 법[의] 이해를 얻을 수 [있게 하기]에 기여하지 않는 것이 아니다. 나아가, 『대승장\n엄경론』에는 “허망분별·진실되지도 허망하지도 않은 분별·무분별·분별도 무분별도 아\n닌 것이 알려져야 할 것 전부라고 이야기된다.”라는 게송도 있다.\n\n 여기서 ‘허망분별’\n448\n은 해탈에 기여하지 않는 것이다. ‘진실되지도 허망하지도 않은 분별’은 유루의\n(*sāsrava), 해탈에 기여하는 것이다. [모든 법이] 불가언설을 특징으로 한다는 것을\n이해하지 못하기 때문이고 그것[의] 이해에 기여하기 때문이다. ‘무분별’은 출세간도와\n#295\n#\n 해당 게송은 『대승장엄경론』 「구법품」의 31번 게송과 정확히 일치하나 후속하는 설명은\n448\n석궤론주의 설명과 약간 차이가 난다.!\n長尾 雅人(2007) 2권 79쪽: abhūtakalpo na bhūto nābhūto ’kalpa eva ca | na\nkalpo nāpi cākalpaḥ sarvaṁ jñeyaṁ nirucyate ||31|| abhūtakalpo yo na\nlokottarajñānānukūlaḥ kalpaḥ | na bhūto nābhūto yas tadanukūlo yāvan\nnirvedhabhāgīyaḥ | akalpas tathatā lokottaraṁ ca jñānaṁ | na kalpo nāpi\ncālakpo lokottarapṛṣṭhalabdhaṁ laukikaṁ jñānaṁ | etāvac ca sarvaṁ jñeyam ||\n(허망분별·진실되지도 허망하지도 않은 분별·무분별·분별도 무분별도 아닌 것이 알려져야\n할 것 전부라고 이야기된다. (31송) ‘허망분별’은 세간지에 기여하는 분별이다. ‘진실되지도\n허망하지도 않은 분별’은 순결택분까지의 저 [출세간지]에 기여하는 분별이다. ‘무분별’은 진\n여 및 출세간지이다. ‘분별도 무분별도 아닌 것’은 출세간후득세간지이다. 그리고 이상이 ‘알\n려져야 할 것 전부’이다.)!\n이 차이에 대한 지적은 堀内 俊郎(2009) 327쪽 188번 각주 참조."
+            },
+            {
+              "id": "kor-lee-page-305",
+              "label": "Printed page 296",
+              "locator": "PDF page 305 · printed page 296 · direct PDF text extraction",
+              "text": "법들의 진여성이니, 인·법무아에는 분별(*vikalpa)을 특징으로 하는 것이 없기 때문이\n다. ‘분별도 무분별도 아닌 것’은 성자들의, 출세간후득청정세간지\n\n이니, 여실함을\n449\n대상영역으로 하는 것이기 때문이고 법의 특징(*dharmalakṣaṇā)을 개념적으로 확\n립(*vy ava √sthā)하기 때문이다.\n\n\n450\n#296\n#\n 후득지에 대한 『이십론』의 논의는 【11】 참조.\n449\n#\n 堀内 俊郎(2009) 230쪽-231쪽: gal te ’khor ba la ni sdug bsngal ba nyid dam\n450\nmya ngan las ’das pa la ni zhi ba nyid du yang dag pa ji lta ba bzhin du ma yin\npar kun tu rtog na ji ltar mi byed ce na | !\nyang dag pa ji lta ba bzhin ma yin par kun tu rtog pa yang gang ’phags pa’i ye\nshes kyi rgyu mthun pa bstan pa’i rten can kha cig rnam par byang ba dang\nmthun pa yin te | de’i gzhi ni brjod du med pa’i mtshan nyid du yod pa’i phyir ro\n|| dper na mi dag ’dod pa dang | gzugs dang gzugs med pa na spyod pa rnams\nkyi lus dang gnas dang | ting nge ’dzin dang | snyoms par ’jug pa ’am | ’jig rten\nlas ’das pa’i rnam par grol ba gang yin pa dag thos nas rtog par byed na | ci de\ndag yang dag pa ji lta ba bzhin du kun tu rtog pa yin nam | ’on kyang rtog pa de\nde la brtson pa rnams kyis de thob par bya ba’i phyir mthun pa ma yan nam | de\nbzhin du so so’i skye bo rnams mi rtag pa la sogs pa’i rnam pa dag gis chos\nrnams la kun tu rtog pa na | yang dag pa ji lta ba bzhin du rtog pa ma yin te |\nsgyu ma’i dra ba las bcom ldan ’das kyis ’phags pa ’jig rten las ’das pa ni bden\npa yin par gsungs so zhes ’byung ba’i phyir ro || rtog pa de yang yang dag pa ji\nlta ba bzhin gyi chos rtogs pa thob par bya ba’i phyir mi mthun pa ma yin no ||\ngzhan yang theg pa chen po las | yang dag min rtog yang dag min || yang dag\nmin pa min mi rtog || rtog min mi rtog ma yan par || shes bya thams cad yin par\nbstan || zhes tshigs su bcad pa yang yin no || de la yang dag min rtog ni gang\nzhig thar pa dang mi mthun pa’o || yang dag min yang dag min pa min ni zag pa\ndang bcas pa’i thar pa dang mthun pa ste | brjod du med pa’i mtshan nyid mi\nrtogs pa’i phyir dang | de rtogs pa dang mthun pa’i phyir ro || mi rtog ni ’jig rten\nlas ’das pa’i lam dang | chos rnams kyi de bzhin nyid de <|> gang zag dang\nchos la bdag med pa nyid ni rnam par rtog pa’i mtshan nyid med pa’i phyir ro ||\nrtog min mi rtog ma yin pa ni ’phags pa rnams kyi ’jig rten las ’das pa’i rjes las\nthob pa dag pa ’jig rten pa’i ye shes yin te | yang dag pa ji lta ba’i yul yin pa’i\nphyir dang | chos kyi mtshan myid rnam par ’jog pa’i phyir ro ||"
+            },
+            {
+              "id": "kor-lee-page-306",
+              "label": "Printed page 297",
+              "locator": "PDF page 306 · printed page 297 · direct PDF text extraction",
+              "text": "밑줄 친 부분들을 보면 Vyākhyāyukti가 『이십론』의 【5】 그리고 【6】과 내용은\n물론 용어까지도 일치한다. 그러면서도 특히 【5】와 비교할 때 그 논증적 형태가\n선명하다. 초점은 여기 Vyākhyāyukti에서 “자연발생인 중생이 존재한다.”는\n유례가 수행하는 역할에 있다. 바수반두는 “자연발생인 중생이 존재한다.”는 이\n구절을 범형으로 삼아, 한편으로는 비록 경전의 내용이 문자적으로 참은 아니\n더라도 그것을 듣는 자의 역량을 고려했을 때 불가피한 의도가 인정되기에 다\n른 한편으로는 참이 아니면서도 바람직한 효과를 내기에, 문제의 구절을 단적\n인 거짓이라고 할 수 없음을 보인다. 그리고 이에 따라 “법들은 존재한다.”는 생\n각 역시 상대화시키고 있다.\n\n\n451\n\n상기 인용문에서 ‘중생의 존재 (및 그에 대한 허망분별) / 법의 존재 (및\n그에 대한 앎=인무아에 들어섬) / 법의 비존재 (및 그에 대한 앎=법무아에 들어\n섬)’의 세 단계가 상정되고 있는 점에 주목할 필요가 있다. Vyākhyāyukti의 또\n다른 대목에서도 이 삼층 구조가 발견된다.!\n\n[질문:] 세존께서 『승의공경』에서 “업(*karman)도 존재하고 이숙(*vipāka)도 존재하\n나 행위자(*kāraka)는 지각되지 않는다.”라고 말씀하신 저 [업·이숙]은 승의적으로\n(*paramārthataḥ) [존재하는가] 아니면 세속적으로(*saṁvṛtitaḥ) 존재하는가?!\n[답변:] 그렇다고 하면 어떻게 되는가?!\n#297\n#\n 이 면모를 이종철은 ‘실체의 이차적 환원’이라 명명하였다. 이종철(1997) 200쪽 참조.\n451"
+            },
+            {
+              "id": "kor-lee-page-307",
+              "label": "Printed page 298",
+              "locator": "PDF page 307 · printed page 298 · direct PDF text extraction",
+              "text": "[질문:] 만약 승의적으로 [존재한다]고 한다면 어떻게 모든 법이 자성이 없는 것이겠\n고, 만약 세속적으로 [존재한다]고 한다면 행위자도 세속적으로 존재하여 ‘행위자는 지\n각되지 않는다’라고 말할 수 없다고 하면?!\n[답변:] 먼저 ‘세속’이라고 하는 이 [표현]은 무엇이고 ‘승의’는 어떤 것이길래, 그에 따\n라 무엇이 세속적 존재(*saṁvṛtisat)이고 무엇이 승의적 존재(*paramārthasat)라고\n알아야 하는가?!\n[질문:] 명칭(*nāma)·언어(*abhilāpa)·가설(*prajñapti)·언설(*vyavahāra)이 세속\n이고 법들의 자상(*svalakṣaṇa)이 승의라고 하면?!\n[답변:] 그러면 그 경우 업과 이숙 양자는 명칭으로도 존재하고 자상으로도 존재하니\n저 양자는 [세속적 존재·승의적 존재 중 어느 쪽이든] 바라는 대로의 존재라고 이해해\n도 될 것이다. 우리에게는 뿌드갈라(*Pudgala)가 세속적으로 존재하나 실체적으로는\n(*dravyataḥ) [존재하지] 않으니, [오]온들에 대해 그것의 명칭이 가설되기 때문이다.\n업과 이숙은 세속적으로 [그리고] 실체적으로 존재하나 승의적으로는 존재하지 않으\n니, 세간적(*laukika) 앎의 대상영역이기 때문이다. 뛰어난 것(*parama)은 출세간적\n앎(*lokottarajñāna)으로, 그것의 대상이라서 ‘승의(*paramārtha)’이다. 저 [업과 이\n숙] 양자의 자상은 이 [출세간적 앎]의 대상영역이 아니니, 이것의 대상영역은 언어화\n될 수 없는(*anabhilāpya) 공상(*sāmānyalakṣaṇa)이기 때문이다.!\n[질문:] 여기서 세간적 앎[이 바른 인식수단(*pramāṇa)인가] 아니면 출세간적 [앎]은\n바른 인식수단인가라고 하면?!\n[답변:] 단적으로는 출세간적 [앎이 바른 인식수단]이다. 세간적 [앎]에는 구분이 있으\n니, 출세간적 [앎] 이후에 얻는 [앎]은 바른 인식수단이다. 다른 [세간적 앎]은 바른 인\n식수단이 아니다. 이에 대중부(*Mahāsaṁghika) 승가의 게송, [즉] “눈·귀·코도 바른\n인식수단이 아니고, 혀·몸·마음도 바른 인식수단이 아니니, 만약 이 감각 능력\n#298"
+            },
+            {
+              "id": "kor-lee-page-308",
+              "label": "Printed page 299",
+              "locator": "PDF page 308 · printed page 299 · direct PDF text extraction",
+              "text": "(*indriya)들이 바른 인식수단이라고 하면, 성자들의 길(*āryamārga)이라는 과업(*k\nṛtya)이 없어질 것이다.”라고 한 것과도 부합한다.\n\n\n452\n\n즉, ‘뿌드갈라의 세속적 존재 (및 그에 대한 지각) / 오온 내지 업·이숙 등 법의\n실체적 존재(=자상) (및 그에 대한 세간적 앎) / 불가언설의 승의적 존재(=공\n#299\n#\n 堀内 俊郎(2009) 233쪽-234쪽 : bcom ldan ’das kyis don dam pa stong pa nyid\n452\nlas | las kyang yod rnam par smin pa yang yod la byed pa po ni mi dmigs so\nzhes gsungs pa gang yin pa de ci don dam pa nyid du ’am |!\n’on te kun rdzob nyid du yin zhes na | de las cir ’gyur |!\ngal te don dam pa nyid du yin na | ji ltar na chos thams cad ngo bo nyid med pa\nyin | gal te kun rdzob tu yin na byed pa po yang kun rdzob tu yod pas byed pa\npo ni mi dmigs so zhes brjod par mi bya’o zhes na |!\nre zhig kun rdzob ces bya ba ’di ni ci yin | don dam pa ni gang zhig yin | de las\nci kun rdzob tu yod dam | ci don dam par yod par shes par bya’o ||!\nming dang | brjod pa dang | gdags pa dang | tha snyad ni kun rdzob yin la chos\nrnams kyi rang gi mtshan nyid ni don dam pa yin no zhes na |!\n’o na de lta na las dang rnam par smin pa gnyis ming du yang yod | rang gi\nmtshan nyid du yang yod pas de gnyis ji ltar ’dod par yod pa nyid du rtogs la rag\ngo || nged ni gang zag kun rdzob tu yod kyi rdzas su ni ma yin te | phung po\nrnams la de’i ming gdags pa’i phyir ro || las dang rnam par smin pa dag ni kun\nrdzob tu rdzas su yod | don dam par ni med de | ’jig rten pa’i shes pa’i yul yin\npa’i phyir ro || dam pa ni ye shes ’jig rten las ’das pa yin te | de’i don yin pas don\ndam pa’o || de gnyis kyi rang gi mtshan nyid ni de’i yul ma yin te | de’i yul ni\nbrjod du med pa’i spyi’i mtshan nyid yin pa’i phyir ro ||!\n’dir ’jig rten pa’i shes pa ’am | ’jig rten las ’das pa tshad ma yin zhe na |!\ngcig kho nar ni ’jig rten las ’das pa yin no || ’jig rten pa ni dbye ba yod de | ’jig\nrten las ’das pa’i rjes las thob pa gang yin pa de ni tshad ma yin no || gzhan ni\ntshad ma ma yin no || de ltar na dge ’dun phal chen sde pa rnams kyi tshigs su\nbcad pa | mig dang rna ba sna yang tshad ma min || lce dang lus dang sems\nkyang tshad ma min || gal te dbang po de dag tshad yin na || ’phags pa’i lam kyi\nbya ba med par ’gyur || zhes bya ba ’di dang yang mthun par byas pa yin no ||"
+            },
+            {
+              "id": "kor-lee-page-309",
+              "label": "Printed page 300",
+              "locator": "PDF page 309 · printed page 300 · direct PDF text extraction",
+              "text": "상) (및 그에 대한 출세간적인 앎’의 삼중 구조이다. 따라서 이 대목에서 행위자\n내지 뿌드갈라 등의 자아를 업과 이숙(=법들)로 환원시키는 것은 『이십론』의\n제9송에서 외적인 대상을 표상에 부대하는 이미지로, 감각 능력을 그 표상을\n산출하는 종자로 재규정한 것에 유비될 수 있다.!\n\n그러나 이 대목과 관련해 보다 흥미로운 점은 상기의 인용문의 전반부는\n저 유명한 「현성품」의 승의·세속 구분을 연상시키는 동시에 상대화시키고 있다\n는 점이 주목된다.!\n\n또 두 가지 진리, 즉 세속제(saṁvṛtisatya)와 승의제(paramārthasatya)가 있다.\n이 양자의 정의는 무엇인가?!\n어떤 x가 쪼개질 때 혹은 판단력(dhī)으로 다른 것이 배제될 때, 항아리와 같은 대상\n처럼 그 x에 대한 인식이 없어질 경우 그 x가 세속적 존재(saṁvṛtisat)이고, [이와]\n다르게 [인식이 남는 것이] 승의적 존재(paramārthasat)이다.!\n어떤 x가 부분적으로 쪼개질 때 그 x에 대한 인식이 없어질 경우 그 x가 세속적 존재\n이다. 예를 들어 항아리가 그러니, 왜냐하면 이 [항아리]가 조각들로 쪼개질 때 항아\n리에 대한 인식이 없어지기 때문이다. 그리고 어떤 x가 판단력(buddhi)에 의해 다른\n속성(dharma)들을 배제하면 그 x에 대한 인식이 없어질 경우 그 x 또한 세속적 존재\n라고 알아야 할 것이다. 예를 들어 물이 그러니, 왜냐하면 이 [물]은 지혜를 통해 색 등\n의 속성들을 배제하면 물에 대한 인식이 없어지기 때문이다. 한편 바로 저것들에 대\n해 세속[에서 통용되는] 명칭이 붙여졌기에 세속[에 통용되는 관습의] 힘 때문에 ‘항아\n리가 존재한다’라거나 ‘물이 존재한다’라고 말하는 경우 단적으로 참되게(satyam)\n말한 것이지 거짓되게(mṛṣā) [말한 것이] 아니기에 저 [진술 내지 언어적 인식]이 세\n속제이다. 이와 다르게 [되는 진술 내지 언어적 인식이] 승의제이다. 어떤 x가 쪼개져\n#300"
+            },
+            {
+              "id": "kor-lee-page-310",
+              "label": "Printed page 301",
+              "locator": "PDF page 310 · printed page 301 · direct PDF text extraction",
+              "text": "도 [혹은] 지혜에 의해 다른 속성들이 배제되도, 그 x에 대한 인식이 단적으로 존재할\n경우 그 x가 승의적 존재이다. 예를 들어 색이 그러하니, 왜냐하면 이 [색]인 것이 극\n미들로 쪼개져도 혹은 지혜에 의해 맛 등의 속성들이 배제되어도 색의 본성\n(svabhāva)에 대한 인식이 단적으로 존재하기 때문이다. 이 [색의 경우]처럼 수\n(vedanā) 등도 마찬가지라고 보아야 할 것이다. 이것은 승의적으로 존재하기 때문에\n‘승의제’이다. [한편] 선대의 스승들은 “출세간적 앎에 의해 혹은 저 [출세간적 앎] 이\n후에 얻는 세간적 [앎]에 의해 파악된 양상이 승의제이다. 다른 [앎]에 의해 [파악된]\n양상이 세속제이다.”라고 하였다.\n\n\n453\n\n#301\n#\n Pradhan(1967) 333쪽-334쪽: dve api satye saṁvṛtisatyaṁ\n453\nparamārthasatyaṁ ca | tayoḥ kiṁ lakṣaṇam |!\nyatra bhinne na tadbuddhir anyāpohe dhiyā(dhyā?) ca tat | ghaṭārthavat\nsaṁvṛtisat paramārthasad anyathā ||!\nyasminn avayavaśo bhinne na tadbuddhir bhavati tat saṁvṛtisat | tadyathā\nghaṭaḥ | tatra hi kapālaśo bhinne ghaṭabuddhir na bhavati | yatra cānyān\napohya dharmān buddhyā tadbuddhir na bhavati tac cāpi saṁvṛtisad\nveditavyam | tadyathāmbu | tatra hi buddhyā rūpādīn dharmān\napohyāmbubuddhir na bhavati | teṣv eva tu saṁvṛtisaṁjñā kṛteti saṁvṛtivaśāt\nghaṭaś cāmbu cāstīti bruvantaḥ satyam evāhur na mṛṣety etat saṁvṛtisatyam |\nato ’nyathā paramārthasatyam | tatra(yatra?) bhinne ’pi tadbuddhir bhavaty eva\n| anyadharmāpohe ’pi buddhyā tat paramārthasat | tadyathā rūpam | tatra hi\nparamāṇuśo bhinne vastuni rasārhān(rasādīn?) api ca dharmān apohya\nbuddhyā rūpasya svabhāvabuddhir bhavaty eva | evaṁ vedanādayo ’pi\ndraṣṭavyāḥ | etat paramārthena bhāvāt paramārthasatyam iti | yathā lokottarena\njñānena gṛhyate tatpṛṣṭhalabdhena vā laukikena tathā paramārthasatyam |\nyathānyena tathā saṁvṛtisatyam iti pūrvācāryāḥ |"
+            },
+            {
+              "id": "kor-lee-page-311",
+              "label": "Printed page 302",
+              "locator": "PDF page 311 · printed page 302 · direct PDF text extraction",
+              "text": "「현성품」의 이 구절은 형이상학적 함축 때문에 일찍부터 특히 구미 쪽 연구자들\n의 주목을 받아왔다.\n\n 여기서 세속적 존재와 승의적 존재는 분석의 한계에 도\n454\n달했는지 여부로 구분된다. 즉, 분석이 아직 가능하여 분석시 본래의 모습을 상\n실하는 것이 세속적 존재이고, 최종적 분석에 도달한 것이 승의적 존재이다. 그\n리고 이에 근거해 세속제와 승의제가 정의되고 있다.!\n\n흥미로운 점은 「현성품」의 세속적 존재 대 승의적 존재의 구분은\nVyākhyāyukti에서는 질문자에게 귀속되는 입장과 일치한다는 점이다. 또 「현\n성품」 말미에 소개된 선대의 스승들의 견해에 나타난 세속제와 승의제의 구별\n은 Vyākhyāyukti에서의 답변자의 견해에 가깝다. 야쇼미뜨라 역시 이런 정황\n을 보고하는 것 같다.!\n\n왜냐하면 유가행파들에게는 존재가 승의적·세속적 존재에 실체적 존재(dravyasat)까\n지 해서 세 가지 종류이기 때문이다. 실체적인, 즉 자상적인 존재가 실체적 존재이다.\n\n\n455\n\n마츠다 카즈노부도 시사하듯\n\n 야쇼미뜨라의 보고하는 ‘실체적 존재’의 경우,\n456\n앞서 인용한Vyākhyāyukti 방식의 규정이 아니라면, 별도의 위상을 지닌 존재\n#302\n#\n 대표적인 경우로 Matilal(1986), Siderits(2007), 박창환(2010) 정도를 거론할 수 있\n454\n을 것이다.\n#\n Wogihara(1936) 524쪽: trividhaṁ hi yogācārāṇāṁ sat |\n455\nparamārthasaṁvṛtisat dravyasac ca | dravyataḥ svalakṣaṇataḥ sad dravyasad\niti |\n#\n 일찌기 마츠다 카즈노부가 Vyākhyāyukti의 이제설 부분을 「현성품」에 나타난 선대의\n456\n스승들의 견해와 관련지어 번역하고 소개했다. 松田 和信(1985) 참조."
+            },
+            {
+              "id": "kor-lee-page-312",
+              "label": "Printed page 303",
+              "locator": "PDF page 312 · printed page 303 · direct PDF text extraction",
+              "text": "로서 선뜻 이해되기가 어려운 것이다.\n\n Vyākhyāyukti의 구도가 「현성품」의\n457\n두 가지 버전의 승의·세속 이해를 종합한 것이라면, 저 종합이 이뤄진 한 가지\n분명한 동기는 기존의 아비달마적 진리관에 유가행파 고유의 진리관을 반영하\n려는 것이다.\n\n\n458\n\n그리고 동일한 요구가 『이십론』에서도 관철되고 있는 것으로 보인다. 즉,\n바수반두에게 자연발생인 중생(=아뜨만, 뿌드갈라)은 십이처(=오온)에 대한\n#303\n#\n 그러나 「섭결택분 보살지」에서 실체적 존재(dravyasat)·가설적 존재(prajñāptisat)의\n457\n외연이 세속적 존재(saṁvṛtisat)·승의적 존재(paramārthasat)의 외연과 다르게 나타나고,\n특히 세속·승의의 대별의 기준으로 염오·청정 여부가 명시된다는 점에서 Vyākhyāyukti의\n삼분법에 그나마 접근하는 경우로 꼽힐 수 있겠지만, 여기서도 체계적인 설명이 있는 것은\n아니다. 高橋 晃一(2005b) 124쪽-125쪽 참조.\n#\n 유가행파의 삼성의 학설을 나가르주나 류의 이제의 학설의 비판적 계승으로 보고자 하는\n458\n김재권 역시 상기 Vyākhyāyukti의 구절에 주목한다. 김재권(2009) 참조.!\n   본고 역시 그의 큰 그림에 대체로 동의한다. 다만 Vyākhyāyukti의 저 구절이 과연 유가행\n파 고유의 ‘이제관’을 표명하는 지에 대해서는 다소 유보할 필요가 있다고 생각한다. 설일체\n유부와 나가르주나 류의 이제의 학설을 비판한다고 해서 꼭 대안적인 이제의 학설을 마련할\n필요는 없으며, 실제로 Vyākhyāyukti에서 대안적 관점으로 제시되는 것은 이제의 구도에\n부합하는 이층구조물이 아니라 삼성의 구도에 맞춘 삼층구조물이다. 따라서 김재권이 주목\n하고자 하는 사상사적 변화는 ‘이제’나 ‘삼성’보다는 이 둘을 아우를 수 있는 새로운 진리 개\n념으로 포착되는 편이 보다 적절해 보인다. 흥미롭게도 유가행파 전통에서는 매우 이른 시기\n부터 저 둘을 포괄하는 개념으로, 불교 전통에서는 다소 낯선, ‘진실(tattva)’이라는 용어를\n일관되게 사용해 왔다. 이를테면 『중변분별론』 「진실품」에서 이제는 물론 삼성조차, 해당 챕\n터명이 선명히 보여주듯, 모두 ‘진실’이라는 표제어 아래에서 취급된다. ‘진실’ 개념의 역사적\n면모에 대해서는 이길산(2020) 참조.!\n   한편 “아무튼 이러한 것은 유식학파의 존재론의 특징으로 청정세간지의 대상인 실유가 의\n타기성으로 새롭게 확립되었음을 시사한다. … 유식학파의 존재영역인 3유가 3성으로 전개\n되었다고 볼 수 있다.”(김재권(2009) 296쪽)는 그의 진술은 오해의 여지가 있어 보인다. ‘3\n유’는 Vyākhyāyukti에 이르러 등장하기 때문에 3성에 선행할 수는 없을 것이기 때문이다.\n따라서 저 진술은 대물(de re) 해석 하에서만 성립할 수 있다."
+            },
+            {
+              "id": "kor-lee-page-313",
+              "label": "Printed page 304",
+              "locator": "PDF page 313 · printed page 304 · direct PDF text extraction",
+              "text": "가설(prajñapti 혹은 upacāra\n\n)이고, 십이처 중에서 안·이·비·설·신·색·성·\n459\n향·미·촉의 물질적인 십처는 다시 종자 및 이미지에 대한 가설로 간주할 수 있\n다.\n\n 십이처 중에서 여전히 정신적인 의처·법처는 다른 것으로 환원될 필요가\n460\n없다는 점, 그리고 어쨌든 종자나 이미지는 여전히 윤회적 세계에 속한 것이라\n는 점 이 양자를 고려할 때 『이십론』의 이 구도는 앞서 Vyākhyāyukti의 ‘세속\n적 존재 / 실체적 존재 / 승의적 존재’ 구도에서 ‘실체적 존재’ 부분을 좀 더 복잡\n하게 묘사한, 그렇지만 전반적으로는 동일한 구도라고 평가할 수 있을 것이다.\n\n\n461\n\n【5】 〖e-2〗!\n『이십론』에서는 여태껏 물질 세계의 한 축인 대상을 표상의 이미\n지로 환원시키는 작업에 집중해왔는데, 이 【5】에 이르러 비로소 다른 축인 감각\n#304\n#\n 이 upacāra에 얽힌 복잡한 철학적 역할 및 개념적 변천에 대한 시론적 연구로는\n459\nTzohar(2011) 참조.!\n유가행파의 upacāra 개념을 보다 일반적인 인도철학사의 맥락에서 읽고자 하는 쪼하르의\n방향성에 본고는 기본적으로 동의한다. 그러나 upacāra를 metaphor로 옮기는 것과 더불\n어 『보살지』 「진실의품」을 취급하는 제3장과 스티라마띠의 『삼십송』 주석을 분석하는 제5장\n은 많은 부분에서 재고될 필요가 있다고 본다.\n#\n 그러나 자은 기는 이 대목을 독해할 때 ‘알라야식’을 전제하여 『이십론』 자체에서 이탈하\n460\n는 양상을 보여준다.!\nT1834_990a08-10: 唯第八心相續不斷。能從前世。往於後世。結生不斷。佛觀此心密意。\n說有化生有情。非觀實有化生有情。(오직 제8식(=알라야식)의 심상속만이 끊어지지 않으며,\n전생에서 후생으로 가니, 결생이 끊어지지 않는다. 붓다는 이 마음을 통할하고서 숨겨진 의\n도로 자연발생인 유정이 있다고 설하신 것이지, 실재하는 자연발생인 유정을 보고 이에 다시\n[자연발생인 유정이 있다고] 설하신 것이 아니다.)\n#\n 이종철 역시 본고와 동일한 그림을 그리고 있다. 이종철(1996) 199쪽-200쪽 참조.\n461"
+            },
+            {
+              "id": "kor-lee-page-314",
+              "label": "Printed page 305",
+              "locator": "PDF page 314 · printed page 305 · direct PDF text extraction",
+              "text": "능력을 비물질적인 종자로 규정하고 있다. 이 특이한 발상은 이후 유가행파 내\n에서 논란거리로 받아들여진다.!\n\n역량(*śakti 혹은 sāmarthya)이 곧 종자의 다른 명칭이다. 또 다섯 가지 감각 능력의\n정체는 표상의 종자라고 한다. 『성유식론』 제4권에 간략히 두 가지 학설이 있다. [제1\n설] 어떤 이는 눈 등의 다섯 가지 감각 능력이 곧 다섯 가지 표상이지, 구유근(=동시발\n생적인 토대로서의 감각 능력)이 되는 실제의 눈 등은 없으며, 단지 [과거의] 인연\n(*hetupratyaya?)으로부터 이미 발생이 끝난 종자를 ‘눈 등’이라고 명칭을 붙이는 것\n이다. 곧 [『이십론』의] 이 게송 및 [디그나가의] 『관소연연론』으로 진정한(?) 증거를 삼\n는 것이다. 『관소연연론』에서는 제8식에 위치한 다섯 가지 식의 종자를 ‘다섯 가지 감\n각 능력’이라고 명칭을 붙이기 때문이며, 또 항상 대상영역과 상호간에 원인이 되기 때\n문이다. 그 ‘다섯 가지 외적인 대상영역’에 대해 의타기[성]인 색처 등이 있다고 인정하\n는 데에는 이견이 없다. 저 디그나가 등은 이 『이십론』에 근거해 『관소연연론』에서 이\n와 같은 학설을 만든 것이다. [제2설] 어떤 이는 [제1설이] 타당한 것이 아니라고 한다.\n만약 다섯 가지 물질적인 감각 능력이 곧 다섯 가지 표상의 종자라면, 십팔계의 종자\n가 뒤섞여 버리고 이처럼 곧 열한 가지의 오류가 발생해버린다. 자세히는 저 [『성유식\n론』 제4권]의 설명대로이다. [제1설 지지 발언] 그러나 다르마빨라 논사는 디그나가의\n주장에 임시로 편을 들어주며 재차 해명하는 말을 내놓았으니, ‘다섯 가지 표상을 유발\n하는 지배적(*ādhipatya) 작용을 하는 종자를 ‘다섯 가지 물질적 감각 능력’이라고 명\n칭을 붙인 것이지 인연(*hetupratyaya?)을 지어서 다섯 가지 표상의 종자를 발생시\n킨 것은 아니다’라고 하였다. 저 스티라마띠 등은 재차 저 [다르마빨라]의 [해명의] 말\n을 논파하니 [저 경우] 다섯 가지 물질적인 감각 능력이 무기(*avyākṛta)가 아닌 것이\n되어버릴 것이기 때문이다. 이처럼 곧 [다르마빨라의 것까지 추가해] 열두 가지의 오\n류가 생기니, 또 자세히는 저 [『성유식론』 제4권]의 설명대로이다. 그러나 디그나가 등\n#305"
+            },
+            {
+              "id": "kor-lee-page-315",
+              "label": "Printed page 306",
+              "locator": "PDF page 315 · printed page 306 · direct PDF text extraction",
+              "text": "은 곧 문자적으로 이해하고 다시 다른 해석을 [주는 것이] 없으나, 저 스티라마띠 등은\n[『이십론』의] 이들 표현을 해석하며 말하길, “종자 및 역량을 ‘다섯 가지 감각 능력’이\n라고 명칭을 부여한 것은 ‘표상을 떠나 실제로 색 등이 있다’는 [생각]을 논파하기 위해\n서이지, 눈 등처럼 보이게 식이 전변된 것에 대해 다섯 가지 표상의 작용을 발생시킴\n이 있기 때문에 임시적으로 ‘종자’ 내지 ‘물질적인 역량’이라고 명칭을 붙인 것이지, 물\n질적인 감각 능력이 곧 표상의 업의 종자라고 한 것은 아니니, 경량부 등이 마음 바깥\n에 실제의 색 [등이 있다고 주장하고 또 저들은] 제8식이 있다고 설정하지 않기 때문\n에 ‘종자가 눈 등의 감각 능력이다’라고 말하지 않으면 ’라고 눈 등이 곧 여섯 가지 식\n을 떠나 있게 되어버리기 때문에 ‘종자가 눈 등의 감각 능력이다’라고 말한 것이다.”라\n고 하였다.\n\n\n462\n\n감각 능력-종자설이 유가행파 고유의 아비달마 체계 내에 발생시키는 수많은\n혼란상 때문에 바수반두의 이 학설을 또 ‘미료의’로 이해해야 한다는 스티라마\n띠의 설명은 주목할만 하다. 그러나 이 설명은, 아무리 논쟁상의 이유라지만,\n미료의의 미료의를 상정하는 것이라서 너무 복잡하다. 더군다나 일찌기 슈미트\n#306\n#\n T1834_990b29-c19: 功能卽是種子異名。亦說五根體卽識種。成唯識論第四卷中。略有\n462\n二說。有說眼等五根。卽五識種。無現眼等爲俱有根。唯自因緣生已種子。名爲眼等。卽引此\n頌及觀所緣。以爲誠證。觀所緣說。第八識上。五識種子。名五根故。又說常與境互得爲因故。\n其五外境許有依他色處。無諍。其陳那等。依此唯識。於觀所緣。作如是說。有說非理。若五\n色根。卽五識種。十八界種。應成雜亂。如是便有十一過失。廣如彼說。然護法論師。假朋陳\n那執。復轉救言。能感五識增上業種。名五色根。非作因緣。生五識種。其安惠等。復破彼言。\n應五色根非無記故。如是便有十二過失。亦廣如彼。然陳那等。卽隨文解。更無異釋。其安惠\n等。釋此等文云。種子功能名五根者。爲破離識實有色等。於識所變似眼根等。以有發生五識\n用故。假名種子。及色功能。非謂色根。卽識業種。破經部等心外實色。由未建立有第八識。\n若不說種爲眼等根。眼等便離六識而有。故說種子。爲眼等根。!\n여기서 자은 기가 염두에 둔 『성유식론』의 대목은 T1585_019c27 이하로 보인다."
+            },
+            {
+              "id": "kor-lee-page-316",
+              "label": "Printed page 307",
+              "locator": "PDF page 316 · printed page 307 · direct PDF text extraction",
+              "text": "하우젠이 지적했듯이\n\n 여기에는 ‘경량부’와 바수반두 자신을 묶어주는 ‘특수\n463\n한 변화(pariṇāmaviśeṣa)’라는 특이한 표현이 사용된다는 점에서 스티라마띠\n의 저 제안은 무비판적으로 수용하기는 어려울 것이다. 이 문제에 대한 최종적\n인 판단은 바수반두 자신이 새로 구축한 유가행파식 아비달마가 존재하는지 여\n부, 그리고 그 체계에 따를 때 스티라마띠가 우려하는 여러 혼란상들이 여전히\n남게 되는지 여부를 먼저 확인해야만 비로소 가능할 것이다.!\n\n그럼에도 스티라마띠의 해석적 제안은 전통적인 견지에서 보다 만족스\n럽다. 감각 능력을 종자로 간주하는 『이십론』의 관점은 유가행파 내에서도 혁신\n적인 것이기 때문이다. 효도 가즈오가 잘 지적했듯, 보다 전통적이면서 권위적\n인 “『중변분별론』, 『섭대승론』에서는 감관에 해당하는 것도 대상으로 현현한 식\n과는 별도로 현현한 식으로 생각”(효도 가즈오(2011) 127쪽)하기 때문이다.\n이 때문에 유리는 바수반두의 새로운 견해에 “다소 애매하고 불분명한 것이\n있”(유리(2017) 144쪽)다면서 그 시원을 “종자는 6처와 다른 것이 아니다.”(유\n리(2017) 151쪽)는 『성문지』의 진술에서 찾고자 한다. 그러나 『성문지』의 저\n진술 자체는, 정주희가 적절히 논평하듯, “종자와 종자훈습처의 불가분의 관\n계”(정주희(2017) 45쪽)를 표현한 것에 불과하며 따라서 종자와 육처가 동일\n하다는 뜻이 아니다. 반면에 『이십론』은 종자와 육처는 실체와 가설의 관계이며\n#307\n#\n Schmithausen(1967) 참조.\n463"
+            },
+            {
+              "id": "kor-lee-page-317",
+              "label": "Printed page 308",
+              "locator": "PDF page 317 · printed page 308 · direct PDF text extraction",
+              "text": "따라서, 적어도 사태적 차원에서, 양자는 동일하다는 입장이다. 따라서 『이십\n론』 제9송의 연원을 『성문지』에서 찾기는 어렵다.\n\n\n464\n#308\n#\n 이에 더해, 역시 정주희가 잘 지적했듯, 『성유식론』과 『이십론술기』의 최종적 입장은 『이\n464\n십론』 자체보다는 『중변분별론』이나 『섭대승론』 등 보다 고전적인 견해로 돌아가는 것이다.\n정주희(2017) 45쪽 및 본고 462번 각주 및 해당 본문 참조."
+            },
+            {
+              "id": "kor-lee-page-318",
+              "label": "Printed page 309",
+              "locator": "PDF page 318 · printed page 309 · direct PDF text extraction",
+              "text": "Silk(2018) 73쪽-81쪽: anyathā punar deśanā\ndharmanairātmyapraveśaḥ ||!\nanyatheti vijñaptimātradeśanā | kathaṁ\ndharmmanairātmyapraveśaḥ | vijñaptimātram idaṁ\nrūpādidharmmapratibhāsam utpadyate na tu rūpādilakṣaṇo\ndharmma(ḥ kaścid astī)ti viditvā |!\nyadi tarhi sarvathā dharmmo nāsti tad api vijñaptimātraṁ nāstīti <|>\nkathaṁ tarhi vyavasthāpyate |!\nna khalu sarvathā dharmmo nāstīty evaṁ\ndharmmanairātmyapraveśo bhavati (| a)pi tu |!\nkalpitātmanā [| 10 || ]!\nyo bālair dharmāṇāṁ svabhāvo grāhyagrāhakādiḥ parikalpitas tena\nkalpitenātmanā teṣāṁ nairātmyaṁ na tv anabhilāpyenātmanā yo\nbuddhānām viṣaya iti | evam vijña[pti](mātrasyā)pi\nvijñaptyantaraparikalpitenātmanā nairātmyapraveśād\nvijñaptimātravyavasthāpanayā sarvadharmmāṇāṁ\nnairātmyapraveśo bhavati na tu sarvathā tada(s)t(i)tvāpavād(ā)t |\nitarathā hi vijñapter api vijñaptyantaram arthaḥ syād iti\nvijñaptimātratvan na sidhyetārthavatītvād vijñaptīnāṁ |!\n#309"
+            },
+            {
+              "id": "kor-lee-page-319",
+              "label": "Printed page 310",
+              "locator": "PDF page 319 · printed page 310 · direct PDF text extraction",
+              "text": "kathaṁ punar idaṁ pratyetavyam anenābhiprāyeṇa bhagavatā\nrūpādyāyatanāstitvam uktaṁ na punaḥ santy eva tāni yāni\nrūpādivijñaptīnāṁ pratyekaṁ viṣayībhavantīti |\n#310"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-06",
+          "label": "Argument section 6 · verses 8–10, part 2",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-320",
+              "label": "Printed page 311",
+              "locator": "PDF page 320 · printed page 311 · direct PDF text extraction",
+              "text": "【6】 [바수반두:] 나아가 다르게 [제시된] 교설[의 이점]은 법무아\n(dharmanairātmya)에 들어가는 것이다.!\n‘다르게 [제시된 것]’은 유식(vijñaptimātra)의 교설이다. 어떻게 법무아에 들어\n가는 것인가? ‘단지 표상일 뿐인 이것이 색 등의 법인양 보이게끔 발생하는 것\n이지 색 등의 정의(lakṣaṇa)를 가진 어떠한 법도 존재하지 않는다’고 알고서 [법\n무아에 들어가는 것]이다.!\n[대론자:] 그러면, [즉] 만약 모든 측면에서 법이 존재하지 않는다면, 바로 저 단\n지 표상일 뿐인 것 또한 존재하지 않는다는 점에서, 그러면 어떻게 [‘단지 표상\n일 뿐인 것’이라고] 개념적으로 확립(vy ava √sthā)되는가?〖a〗!\n[바수반두:] 실로 ‘모든 측면에서 법이 존재하지 않는다’라고 그처럼 [생각해서]\n법무아에 들어가는 것은 아니다. 그보다는,!\n상정된 본질을 가진 것으로이다. 〖제10송〗!\n어리석은 이들에 의해 법들의 자성 A가 소취(grāgya)·능취(grāhaka) 등으로\n변계소집된 경우에 저 법들은 상정된 본질을 가진 저 [A]의 무아라는 것이지,\n반대로 [법들의 자성 B가] 붓다들의 영역인 경우 [저 법들이] 불가언설의 본질\n을 가진 [저 B의 무아라는 것]은 아니다. 이처럼 오직 표상일 뿐인 것 또한 또\n다른 표상에 의해 변계소집된 본질을 가진 [자성]의 무아에 들어가 있기 때문\n에, ‘오직 표상일 뿐인 것’이라고 개념적으로 확립함을 통해, 모든 법들의 무아\n에 들어가는 것이지, 저 [법들]이 존재함을 모든 측면에서 손감(apavāda)하기\n때문에 [모든 법들의 무아에 들어가는 것은] 아니다. 왜냐하면, 그렇지 않을 경\n#311"
+            },
+            {
+              "id": "kor-lee-page-321",
+              "label": "Printed page 312",
+              "locator": "PDF page 321 · printed page 312 · direct PDF text extraction",
+              "text": "우, 표상 C 또한 또다른 표상 D의 대상이 되어버려, 이 경우 표상들이 대상을\n가진 것이기 때문에, 오직 표상일 뿐인 상태가 성립하지 않을 것이기 때문이다.\n〖b〗!\n[대론자:] 그런데 어떻게 ‘세존께서 저 의도를 가지고 색처 등이 존재한다고 말\n씀하신 것이고 이를 넘어 색 등에 대한 표상들 각각에게 대상영역이 되어주는\n저 [색처]들이 전혀 존재하지 않는다(na punaḥ santy eva)’〖c〗는 이점을 이\n해해야 하는가?\n#312"
+            },
+            {
+              "id": "kor-lee-page-322",
+              "label": "Printed page 313",
+              "locator": "PDF page 322 · printed page 313 · direct PDF text extraction",
+              "text": "【6】 〖a〗!\n여기서 대론자는 문제의 법무아, 즉 법은 본질을 결여한다는 것을\n문자 그대로 읽고서, 그 경우 ‘오직 표상일 뿐인 것’이란 표현이 적용되는 대상\n역시 하나의 법일텐데, 어떻게 비존재에 대해 언어를 적용할 수 있느냐고 묻고\n있다. 사이구사 미쯔요시 및 효도 가즈오는 이 질문자의 사상적 정체성을 ‘중관\n파’라고 특정한다.\n\n 물론, 사이또 아키라가 지적했듯, 바비베까 이전에 ‘중관\n465\n(Mādhyamika)’ 같은 표현을 사용하는 것은 착시(錯時, anachronism)의 위\n험이 크다.\n\n 그러나 대론자의 성분이 이를테면 「보살지」 「진실의품」에서와 매\n466\n도하는 것과 같은 ‘악취공(durgṛhītā śūnyatā)’의 견해를 가진 자 혹은 ‘허무\n론자(nāstika)’라고, 그 부정적 함축은 빼고, 간주해도\n\n 여전히 문제는 남는\n467\n다. 왜냐하면 사이구사 미쯔요시 및 효도 가즈오의 해석에 따라 본문을 읽을 경\n우 대론자가 자신의 사상을 부정적으로 보거나 혹은 갑자기 자신의 사상을 고\n백하고 있는 셈이기 때문이다. 따라서 대론자의 문제 제기는, 골드가 잘 지적한\n대로, 실재론자들이 거론할 법한, “나가르주나의 Vīgrahavyāvartanī 이래 불\n교철학자들에게 익숙한, 모든 유형의 반실재론자들이 직면하게 되는 자기 참조\n적 불일치(self-referential incoherence)”를 지적한 것으로 봐야할 것이다.\n\n\n468\n\n#313\n#\n 사이구사 미쯔요시(1993) 136쪽 및 효도 가즈오(2011) 133쪽 참조.\n465\n#\n 斎藤 明(2007) 참조.\n466\n#\n 高橋 晃一(2005b) 100쪽-101쪽 참조.\n467\n#\n Gold (2015) 5장: This charge of self-referential incoherence is faced by anti-\n468\nrealists of all stripes, and it is familiar to Buddhist philosophers from Nāgārjana’s\nVīgrahavyāvartanī."
+            },
+            {
+              "id": "kor-lee-page-323",
+              "label": "Printed page 314",
+              "locator": "PDF page 323 · printed page 314 · direct PDF text extraction",
+              "text": "【6】 〖b-1〗!\n여기서 ‘그렇지 않을 경우’는 무엇을 뜻할까? 전통적인 주석가들\n이나 현대 연구자들 모두 이 표현을 잘 해명하지 않는다. 상당히 까다롭기는 하\n지만, 본고에서는 저 표현을 ‘법들이 존재함을 모든 측면에서 손감(apavāda)\n함을 통해 법들의 무아에 들어갈 수 있다면’으로 이해한다. 즉, 효도 가즈오가\n‘중관파’라고 부른 당시 대승 내의 다른 무리들을 겨냥한 말로 이해한 것이다.\n\n\n469\n바수반두의 관점에서 이들은 표상 내지 식의 특별한 위상에 주목하지 않은 채\n표상 내지 식을 다만 다른 법들과 마찬가지로 간주하기 때문에 비록 법무아의\n이념에 복무하려고는 해도 결국 실패하는 것이다. 왜냐하면 통상적인 이해에서\n표상 내지 식은 ‘대상을 가진 것’으로 이해되며, 이들은 아마도 유가행파와 달리\n이 정의 자체를 문제삼지 않고 다만 모든 법이 무자성이라고만 주장할 것이기\n때문이다. 이처럼 비록 ‘중관파’에게 귀속할 법한 정체성을 가진 자가 이 『이십\n론』에 직접 등장하는 것이 아니지만, 그럼에도 이 대목의 논의는 저 사조에 대\n한 비판적 시선을 함축하고 있다고 봐야할 것이다.\n\n\n470\n\n호리우치 도시오가 지적했듯, 바수반두는 일찍이 Vyākhyāyukti에서,\n「진실의품」에서 처음 제기되고 『해심밀경』이 이어받은 ‘언어표현의 기반은 언어\n#314\n#\n 효도 가즈오에 대한 비평은 【6】 〖c〗 참조.\n469\n#\n 『삼십송』 역시 소위 ‘중관파’에 대한 명시적 언급은 없으나, 주석가 스티라마띠는 저자 바\n470\n수반두가 ‘중관파’를 공격하는 것으로 이해한다. 이때의 핵심 논리는 가설(upacāra)에는 반\n드시 참조점 역할을 할 토대(ādhāra)가 요청된다는 것이다. 물론 스티라마띠 역시 ‘중관’이\n라는 표현은 물론 ‘대승’이라는 표현마저도 전혀 사용하지 않는다. Buescher(2007) 38쪽,\n42쪽 참조."
+            },
+            {
+              "id": "kor-lee-page-324",
+              "label": "Printed page 315",
+              "locator": "PDF page 324 · printed page 315 · direct PDF text extraction",
+              "text": "화 불가능한 사물 자체’라는 생각을 계승하여, 『승의공경』을 다르게 해석하는 ‘일\n군의 대승’을 비판한 적이 있다.\n\n\n471\n\n[바수반두:] 또 일군의 대승은 ‘모든 것이 자상적으로는(*svalakṣaṇataḥ) 단적으로\n비존재이지만 반면에 세속적으로는(*saṁvṛtitaḥ) 세존께서 “법들은 단적으로 존재\n하다.”라고 설하셨다’라며 [‘모든 법에 자성이 없다’는 명제가] 단적으로 글자대로의\n의미[를 가진 것]이라고 말하는 자들에게 전술한 것과 같은 논쟁(*vivāda)이 또한 발\n생하게 될 것이다.!\n[일군의 대승:] ‘세속(*saṁvṛti)’이라는 것 역시 말(*abhilāpa)인데, 그것이 또 잡염\n(*saṁkleśa)에 기여하는 것은 ‘나쁜 말(*durbhāṣita)’이라고 하고 청정\n(*vyavadāna)에 기여하는 것은 ‘좋은 말(*subhāṣita)’이라고 하는 것이라면?!\n[바수반두:] 단지 말 뿐이라고 하면, 어떻게 ‘좋은 말’ 혹은 ‘나쁜 말’이 되는가? 세속\n또한 무엇인가가 반드시 사태적으로(*vastutaḥ) 승인되어야 할 것이다. 혹은 저 [세\n속] 또한 비존재한다면 어떻게 ‘세속적으로 존재한다’고 말하겠는가? 잡염과 청정 모\n두를 손감(*apavāda)해버려 경우와 경우가 아닌 것\n\n 양자에 처하지 못하기 때문\n472\n#315\n#\n 김성철 옮김(2014) 128쪽 참조.\n471\n#\n 호리우치 도시오는 원어를 sthāna 및 asthāna로 비정하며 이를 可能과 不可能이라고\n472\n옮기며, 김재권의 번역 ‘타당한 이치(處)와 타당하지 않은 이치(非處)’ 역시 호리우치 도시오\n의 방식에 가까운 것처럼 보인다. 堀内 俊郎(2009) 332쪽 및 김재권(2009) 294쪽 참조.!\n   저 둘이 의도한 것이 무엇인지 불분명하나 여기서 (a)sthāna는 논리적이거나 사실적인\n(불)가능성보다는 좋은 업에 따라 즐거운 재생을 획득한다는 류의 윤회적 인과성에 대한 가\n치 평가를 담고 있는 표현이며, 이것의 윤리적인 함축까지 잘 포착한다는 점에서 본고는 안\n성두의 번역어 ‘경우에 맞는 것’ 및 ‘경우에 맞지 않음’을 선호한다. 안성두(2015) 409쪽 참\n조.!\n(a)sthāna를 가치론적으로 읽는 대표적인 전거로는 『성문지』의 사례를 들 수 있다. 声研\n(2007) 114쪽 참조."
+            },
+            {
+              "id": "kor-lee-page-325",
+              "label": "Printed page 316",
+              "locator": "PDF page 325 · printed page 316 · direct PDF text extraction",
+              "text": "에 그리고 자기가 자기[의] 말을 부정하기 때문에 말할 수 없는 것\n(*anabhilāpya)\n\n이 된다. [‘모든 법에 자성이 없다’는 명제를] 의도를 띤 것\n473\n(*ābhiprāyika)이라고 주장한다면, 이러한 오류(*doṣa)들이 없을 것이다.\n\n\n474\n[일군의 대승:] 그런데 세속이 단지 말 뿐이라고 인정하지 않는다면, “이들 모든 것은\n단지 명칭(*nāma)일 뿐이며 단지 명칭(/관념)\n\n(*saṁjñā)일 뿐인 것에 머무른다.\n475\n표현(*abhidhāna)과 별개인 표현대상(*abhidheya)이 존재하지 않는다.”\n\n라고 한\n476\n이것이 어떻게 성립하나면?!\n#316\n#\n 이 표현을 언어를 초월하는 진리의 불가언설성이 아니라 비논리적인 헛소리를 뜻하는 것\n473\n으로 보았다.\n#\n 堀内 俊郎(2009) 234쪽: yang theg pa chen po kha cig thams cad rang gi\n474\nmtshan nyid du ni med pa kho na yin la | kun rdzob tu ni bcom ldan ’das kyis\nchos rnams yod pa nyid du bstan to zhes sgra ji bzhin pa nyid kyi don yin par\nbrjod pa gang yin pa de dag la ji skad bstan pa’i brtsad pa ’di yang ’byung bar\n’gyur ro ||!\nkun rdzob ces bya ba yang brjod pa yin la | de yang kun nas nyon mongs pa\ndang mthun pa nyes par bshad pa zhes bya ba la | rnam par byang ba dang\nmthun pa ni legs par bshad pa zhes bya ba yin no zhe na |!\nbrjod pa tsam du zad na ji ltar na legs par bshad pa ’am | nyes par bshad par\n’gyur | kun rdzob kyang kha cig gdon mi za bar dngos su khas blang bar bya\nbar ’gyur ro || yang na de yang med na ni ji ltar kun rdzob tu yod pa nyid du\ngsungs pa yin | kun nas nyon mongs pa dang | rnam par byang ba thams cad la\nskur ba btab pas gnas dang gnas ma yin pa gnyis la mi gnas pa’i phyir dang |\nrang gis rang smra ba bkag pa’i phyir brjod du med par ’gyur ro || dgongs pa\ncan yin par smra ba na ni nyes pa ’di dag tu mi ’gyur ro ||\n#\n 문제의 saṁjñā는 중의적이며, 바수반두는 상대방의 문제 제기가 이 중의성을 잘못 파악\n475\n한 것에서 비롯된다고 응답하기에, 중의성을 그대로 노출시켰다.\n#\n 하카마야 노리아키가 해당 게송의 원어를 다음과 같이 확인하였다.!\n476\n袴谷 憲昭(2001) 289쪽: nāmamātram idaṁ sarvaṁ saṁjñāmātre pratiṣṭhitaṁ |\nnābhidhānāt pṛthagbhūtam abhidheyaṁ prakalpate ||"
+            },
+            {
+              "id": "kor-lee-page-326",
+              "label": "Printed page 317",
+              "locator": "PDF page 326 · printed page 317 · direct PDF text extraction",
+              "text": "[바수반두:] 여기서 ‘표현과 별개인 표현대상이 존재하지 않는다’고 부정하고 있지만,\n불가언설을 특징으로 하는 사태(*vastu)는 [부정되고 있는 것이] 아니다. 그렇다면\n저 [게송][의 의미]는 바로 이런 것이니, ‘단지 (명칭/)관념(*saṁjñā)일 뿐인 것에 머\n무른다’고 말한 것은 [심불상응행법인 명칭(nāma)의 동의어가 아니라] 심소[법]인 관\n념(saṁjñā)을 말하니, 경전에 ‘관념이 발생하는 양상 그대로 언설(anuvyavahāra)\n이 [발생한다]’\n\n고 나오기 때문이다. 다름 아닌 명칭(*nāma)이 [명칭(/관념)(*saṁ\n477\njñā)과 동일시 되는] 명칭에 머무르는 것은 타당하지 않다.\n\n\n478\n그렇기에 직후에 “이런저런 명칭에 의해 이런저런 법이 말해진다. 거기에 존재하지\n않는다. 그것이 법들의 법성이다.”\n\n라고 말하는 것이다. 만약 불가언설을 특징으로\n479\n하는 법이 비존재한다면 ‘거기에’라고 말하지 않았을 것이고, ‘존재하지 않는다’라는\n부분[만]을 말했어야 할 것이다. 어리석은 자들에 의해 변계소집된 대로 언설될 저 법\n또한 저 변계소집상에 비존재한다. 그렇기 때문에 ‘거기에 존재하지 않는다’라고 말한\n것이다. ‘그것이 법들의 법성이다’라고 말한 것 또한 여기서 불가언설성의 법성을 의\n도하였다. 단지 말 뿐이라고 하면 어떤 법들의 어떤 법성이란 말인가?!\n#317\n#\n 어떤 경전인지 확인이 되지 않는다.\n477\n#\n 堀内 俊郎(2009) 234쪽-235쪽: ’o na kun rdzob sgra tsam du mi ’dod na theg\n478\npa chen po las ’byung ba’i tshig su bcad pa | ’di dag thams cad ming tsam ste ||\n’du shes tsam la gnas pa yin || brjod pa las ni logs shig na || brjod par bya ba\nyod ma yin || zhes bya ba ’di ji ltar ’grub ce na |!\n’dir brjod pa las logs shig na brjod par bya ba med par bkag pa yin gyi brjod du\nmed pa’i mtshan nyid kyi dngos po ni ma yin te | de ltar na de ni ’di kho na ltar\nyin te | ’du shes tsam la gnas pa yin zhes gsungs pa yang ’dir sems las byung\nba’i ’du shes la ’du shes zhes te | mdo las ji ltar ’du zhes ’byung ba de ltar rjes\nsu tha snyad ’dogs so zhes ’byung ba’i phyir ro || ming nyid ming la gnas par ni\nmi rung ngo ||\n#\n 해당 구절의 원문은 『보살지』 「진실의품」에서 회수할 수 있다.高橋 晃一(2005b) 102쪽:!\n479\nyena yena hi nāmnā vai yo yo dharno ’bhilpyate || na sa saṁvidyate tatra\ndharmāṇāṁ sā hi dharmatā ||"
+            },
+            {
+              "id": "kor-lee-page-327",
+              "label": "Printed page 318",
+              "locator": "PDF page 327 · printed page 318 · direct PDF text extraction",
+              "text": "[일군의 대승:] 또 “명칭인 것은 또 명칭을 결여한다.”\n\n라고 말한 것도 ‘이 모두는 단\n480\n지 명칭일 뿐이다’라고 주장하고서 ‘명칭 또한 비존재한다’라는 것이니, [네 주장대로\n라면] 이 [경전의 구절]이 어떻게 타당하겠느냐면?!\n[바수반두:] 변계소집성을 부정하는 것이면, 표현을 자체로 하는 것으로서 변계소집\n된 표현 또한 부정하는 것이라 타당한 것(*yuktarūpa)이 된다. 또 그와 같이 인정하\n지 않는다면, ‘모든 법들은 명칭이 없고 명칭으로 표현된다’라고 말한 것 역시 만약 단\n적으로 비존재라면, 명칭이 없는 저 법들은 무엇인가? 불가언설을 특징으로 하는 것\n들이 모든 법들이라면, 어리석은 자들에 의해 변계소집된 대로 언설되어 발화될 그 [명\n#318\n#\n 하카마야 노리아키는 해당 게송의 원어를 다음과 같이 확인하였다.!\n480\n袴谷 憲昭(2001) 292쪽: nāmnā hi nāmatā śūnyā nāmni nāma na vidyate |\nanāmakā sarve dharmāḥ nāmnā tu paridīpitāḥ ||"
+            },
+            {
+              "id": "kor-lee-page-328",
+              "label": "Printed page 319",
+              "locator": "PDF page 328 · printed page 319 · direct PDF text extraction",
+              "text": "칭]에 따른다면 성자들로서도 [그것이] ’명칭이 없는 것들이 명칭으로 표현되는 것’이\n어도 타당하다.\n\n\n481\n\n호리우치 도시오가 지적했듯, 변계소집의 내용이 따로 정해져 있지 않은\nVyākhyāyukti와 달리 『이십론』에서는 그 내용이 ‘소취(grāgya)·능취\n(grāhaka) 등’으로 특정되어 있어 ‘모든 법에 자성이 없다’는 법무아의 이념과\n#319\n#\n 堀内 俊郎(2009) 235쪽-236쪽: ’di ltar mjug thogs su yang | ming ni gang dang\n481\ngang gi su || chos ni gang dang gang brjod pa || de la yod pa ma yin te || de ni\nchos rnams chos nyid do || zhes gsungs pa yang yin no || gal te brjod du med\npa’i mtshan nyid kyi chos med na de la zhes mi gsung gi yod pa ma yin no zhes\nbya ba nyi tshe gsung bar ’gyur ro || byis pa rnams kyis kun tu brtags pa bzhin\ndu chos brjod par bya ba de yang kun tu brtags pa’i mtshan nyid de la med do ||\nde la med na ming la med pas de’i phyir de la yod pa ma yin te | zhes gsungs\nso || ’di skad du | de ni chos rnams chos nyid do zhes gsungs pa gang yin pa\nyang ’dir brjod du med pa nyid kyi chos nyid la dgongs so || brjod pa tsam du\nzad na ni chos gang dag gi chos nyid gang yin par ’gyur <|>!\nyang | ming gis kyang ni ming nyid stong zhes gang gis gsungs pa de yang ’di\nthams cad ming tsam mo zhes dam bcas nas ming yang med do zhes bya ba\n’di ji ltar rigs pa yin zhes na |!\nkun tu brtags pa’i ngo bo nyid dgag pa yin na ni brjod pa’i bdag nyid du kun tu\nbrtags pa’i brjod pa gang yang bkag pa yin pas rigs pa’i ngo bor ’gyur ro || de\nltar yang mi ’dod na ni | chos rnams thams cad ming med cing || ming gis yongs\nsu brjod pa yin || zhes gang gsungs pa yang gal te med pa kho na yin na | chos\nming med pa de dag gang yin | brjod du med pa’i mtshan nyid dag chos rnams\nthams cad yin na ni | byis pa rnams kyis kun tu brtags pa bzhin du brjod pas /\nrjod par byed pa de’i rjes su ’brangs nas ’phags pa rnams kyis kyang ming med\npa rnams ming gis yongs su brjod pa yin par rung ngo ||"
+            },
+            {
+              "id": "kor-lee-page-329",
+              "label": "Printed page 320",
+              "locator": "PDF page 329 · printed page 320 · direct PDF text extraction",
+              "text": "‘삼계에 속한 것은 단지 표상일 뿐이다’라는 유식성의 사상이 중첩되어 있다고\n할 수 있다.\n\n\n482\n\n【6】 〖b-2〗!\n여기 『이십론』에서 ‘변계소집’은 실제로는 표상들에 불과한 세계\n에 대해 거기에 없는 주관(=능취)·객관(=소취)의 구도를 투사하는 것이다. 즉,\n우리와 같은 윤회적 존재들이 경험하는 세계는 변계소집된 것에 불과하다. 이\n러한 상황을 타개하는 방책으로 『이십론』에서 제시하는 것은 모든 것이 표상에\n불과하다는 가르침, 즉 유식성의 교설이다. 그러나 원칙적으로 이것 역시 변계\n소집의 그림자로부터 전적으로 자유로울 수 없다. 이점을 『삼십송』의 제27송이\n명확히 표현하고 있다.!\n\n‘이것은 단지 표상일 뿐’이라고 또 지각하기에 무엇이 되었든 눈 앞에 머무르게 하는\n[그는] 오직 그것 뿐인 것에 머무르지 못한다.\n\n\n483\n\n이러한 리스크는 유가행파의 경우라면 보다 드라마틱하게 조명하게 되겠지만\n 484\nVyākhyāyukti에 따르면 모든 유형의 진리 담론에서 불가피한 측면이기도 하\n다.!\n\n#320\n#\n 堀内 俊郎(2009) 164쪽 참조.\n482\n#\n Buescher(2007) 134쪽: vijñaptimātram evedam ity api hy upalambhataḥ |\n483\nsthāpayann agrataḥ kiñcit tanmātre nāvatiṣṭhate ||\n#\n 효도 가즈오(2011) 134쪽-135쪽 참조.\n484"
+            },
+            {
+              "id": "kor-lee-page-330",
+              "label": "Printed page 321",
+              "locator": "PDF page 330 · printed page 321 · direct PDF text extraction",
+              "text": "[질문:] 만약 ‘윤회는 고통스럽다.’ 혹은 ‘열반은 적정하다.’고 여실하지 않게 변계\n(*parikalpa)한다면, 어째서 [여실하게 변계]하도록 하지 않는 것인가?!\n[답변:] 여실하지 않은 변계 역시 성자의 지혜의 등류(*niṣyanda)[에 해당하는], 설시\n의 토대(*āśraya)를 갖춘 모종의 것들 일부는 청정(*vyavadāna)에 기여하는 것\n(*anukūla)이니, 그 [발화]의 바탕[이 되는 사태](*vastu)는 불가언설을 특징으로 하\n는 것으로서(*nirabhilāpyalakṣaṇena) 존재하기 때문이다. 예를 들어, 사람들이 욕\n[계]·색[계]·무색[계]에서 활동하는(*caryā) 자들의 존재의 바탕(*ātmabhāva)·머무\n름(*sthāna)·삼매·등지(*samāpatti) 혹은 출세간의 해탈인 것들을 듣고 이해하게 한\n다면, 저들은 여실하게 변계할 것인가? [아니다.] 그럼에도 그 변계는 저것에 진력하\n는 자들이 저것을 얻을 수 있게끔 기여하는 것이 아닌가? [맞다.] 그와 같이 범부(*pṛ\nthagjana)들은 무상(*anitya) 등의 행상(*ākāra)들로 법들을 변계한다면, [이는] 여\n실하게 변계하는 것이 아니니, *Māyājāla[sūtra]에 “세존께서 “성자[들에게 속한] 출\n세간[의 것]이 진리다.”라고 말씀하신다.”라고 하기 때문이다. 그 [범부의] 변계도 여실\n한 법[의] 이해를 얻을 수 [있게 하기]에 기여하지 않는 것이 아니다. 나아가, 『대승장\n엄경론』에는 “허망분별·진실되지도 허망하지도 않은 분별·무분별·분별도 무분별도 아\n#321"
+            },
+            {
+              "id": "kor-lee-page-331",
+              "label": "Printed page 322",
+              "locator": "PDF page 331 · printed page 322 · direct PDF text extraction",
+              "text": "닌 것이 알려져야 할 것 전부라고 이야기된다.”라는 게송도 있다.\n\n 여기서 ‘허망분별’\n485\n은 해탈에 기여하지 않는 것이다. ‘진실되지도 허망하지도 않은 분별’은 유루의\n(*sāsrava), 해탈에 기여하는 것이다. [모든 법이] 불가언설을 특징으로 한다는 것을\n이해하지 못하기 때문이고 그것[의] 이해에 기여하기 때문이다. ‘무분별’은 출세간도와\n법들의 진여성이니, 인·법무아에는 분별(*vikalpa)을 특징으로 하는 것이 없기 때문이\n다. ‘분별도 무분별도 아닌 것’은 성자들의, 출세간후득청정세간지이니, 여실함을 대상\n#322\n#\n 해당 게송은 『대승장엄경론』 「구법품」의 31번 게송과 정확히 일치하나 후속하는 설명은\n485\n석궤론주의 설명과 약간 차이가 난다.!\n長尾 雅人(2007) 2권 79쪽: abhūtakalpo na bhūto nābhūto ’kalpa eva ca | na\nkalpo nāpi cākalpaḥ sarvaṁ jñeyaṁ nirucyate ||31|| abhūtakalpo yo na\nlokottarajñānānukūlaḥ kalpaḥ | na bhūto nābhūto yas tadanukūlo yāvan\nnirvedhabhāgīyaḥ | akalpas tathatā lokottaraṁ ca jñānaṁ | na kalpo nāpi\ncālakpo lokottarapṛṣṭhalabdhaṁ laukikaṁ jñānaṁ | etāvac ca sarvaṁ jñeyam ||\n(허망분별·진실되지도 허망하지도 않은 분별·무분별·분별도 무분별도 아닌 것이 알려져야\n할 것 전부라고 이야기된다. (31송) ‘허망분별’은 세간지에 기여하는 분별이다. ‘진실되지도\n허망하지도 않은 분별’은 순결택분까지의 저 [출세간지]에 기여하는 분별이다. ‘무분별’은 진\n여 및 출세간지이다. ‘분별도 무분별도 아닌 것’은 출세간후득세간지이다. 그리고 이상이 ‘알\n려져야 할 것 전부’이다.)!\n이 차이에 대한 지적은 堀内 俊郎(2009) 327쪽 188번 각주 참조."
+            },
+            {
+              "id": "kor-lee-page-332",
+              "label": "Printed page 323",
+              "locator": "PDF page 332 · printed page 323 · direct PDF text extraction",
+              "text": "영역으로 하는 것이기 때문이고 법의 특징(*dharmalakṣaṇā)을 개념적으로 확립\n(*vy ava √sthā)하기 때문이다.\n\n\n486\n\n#323\n#\n 堀内 俊郎(2009) 230쪽-231쪽: gal te ’khor ba la ni sdug bsngal ba nyid dam\n486\nmya ngan las ’das pa la ni zhi ba nyid du yang dag pa ji lta ba bzhin du ma yin\npar kun tu rtog na ji ltar mi byed ce na | !\nyang dag pa ji lta ba bzhin ma yin par kun tu rtog pa yang gang ’phags pa’i ye\nshes kyi rgyu mthun pa bstan pa’i rten can kha cig rnam par byang ba dang\nmthun pa yin te | de’i gzhi ni brjod du med pa’i mtshan nyid du yod pa’i phyir ro\n|| dper na mi dag ’dod pa dang | gzugs dang gzugs med pa na spyod pa rnams\nkyi lus dang gnas dang | ting nge ’dzin dang | snyoms par ’jug pa ’am | ’jig rten\nlas ’das pa’i rnam par grol ba gang yin pa dag thos nas rtog par byed na | ci de\ndag yang dag pa ji lta ba bzhin du kun tu rtog pa yin nam | ’on kyang rtog pa de\nde la brtson pa rnams kyis de thob par bya ba’i phyir mthun pa ma yan nam | de\nbzhin du so so’i skye bo rnams mi rtag pa la sogs pa’i rnam pa dag gis chos\nrnams la kun tu rtog pa na | yang dag pa ji lta ba bzhin du rtog pa ma yin te |\nsgyu ma’i dra ba las bcom ldan ’das kyis ’phags pa ’jig rten las ’das pa ni bden\npa yin par gsungs so zhes ’byung ba’i phyir ro || rtog pa de yang yang dag pa ji\nlta ba bzhin gyi chos rtogs pa thob par bya ba’i phyir mi mthun pa ma yin no ||\ngzhan yang theg pa chen po las | yang dag min rtog yang dag min || yang dag\nmin pa min mi rtog || rtog min mi rtog ma yan par || shes bya thams cad yin par\nbstan || zhes tshigs su bcad pa yang yin no || de la yang dag min rtog ni gang\nzhig thar pa dang mi mthun pa’o || yang dag min yang dag min pa min ni zag pa\ndang bcas pa’i thar pa dang mthun pa ste | brjod du med pa’i mtshan nyid mi\nrtogs pa’i phyir dang | de rtogs pa dang mthun pa’i phyir ro || mi rtog ni ’jig rten\nlas ’das pa’i lam dang | chos rnams kyi de bzhin nyid de <|> gang zag dang\nchos la bdag med pa nyid ni rnam par rtog pa’i mtshan nyid med pa’i phyir ro ||\nrtog min mi rtog ma yin pa ni ’phags pa rnams kyi ’jig rten las ’das pa’i rjes las\nthob pa dag pa ’jig rten pa’i ye shes yin te | yang dag pa ji lta ba’i yul yin pa’i\nphyir dang | chos kyi mtshan myid rnam par ’jog pa’i phyir ro ||"
+            },
+            {
+              "id": "kor-lee-page-333",
+              "label": "Printed page 324",
+              "locator": "PDF page 333 · printed page 324 · direct PDF text extraction",
+              "text": "진상을 몰랐다가 교설을 듣고서 알게 되었다면, 듣었던 시점과 이해한 시점 사\n이의 기간 동안은 무지와 앎 사이의 회색지대가 되는 셈이다. Vyākhyāyukti는\n그러한 회색지대의 존재가 그 자체로 문제라고 보지 않는다. 관건은 방향성이\n다. 즉, 이해를 유도하는 방향이면 괜찮다는 것이다.\n\n 『이십론』 역시 같은 입\n487\n장일 것으로 보인다. 다만 유식성의 명제는 그것 자체를 ‘일반적인 방식으로’ 이\n해하려는 노력이 곧바로 그것을 주객의 구도에 놓게 되어 저 명제의 진리성에\n위배되는 결과를 낳는다는 점에서 이해의 난이도가 특별히 높을 뿐이다.!\n\n【6】 〖b-3〗!\n『이십론』에서 유식성의 교설과 법무아의 관계는 일단 경로·목적지\n관계로 나타난다. 그러나 이 관계는 좀 더 따져볼 필요가 있다. 우선 유식성의\n교설이 법무아로 들어가는 길이되 ‘유일한’ 길처럼 보인다.\n\n 한편 법무아 역시\n488\n교설로서의 위상을 가질 수 있다.\n\n 나아가 ‘오직 표상일 뿐인 상태가 성립하지\n489\n않을 것’이 하나의 반사실적 귀결로서 제시되고 있다. 그렇다면, 유식성은 윤회\n적 존재의 본성을 표시하는 것일 뿐만이 아니라 깨달은 자의 본성 역시 나타내\n#324\n#\n 여기로부터 진리 자체를 담보하는 것과 진리에의 방향성만 보장하는 것 양자를 구분할\n487\n수 있을 것이다. 바로 이것이 바수반두의 이중적 바른 인식수단(pramāṇa) 이해에 상당한\n다. 【10】 〖a〗 참조.\n#\n 이와 반대로 『이십론』에서는 십이처의 교설이 인무아에 들어가는 경로로 묘사되지만 십\n488\n이처의 경로를 통해서만 인무아에 들어갈 수 있는지는 의문이다. 상식적으로 볼 때, 오온·십\n팔계의 교설이나 십이연기의 교설 등 인무아로 이끄는 ‘다양한’ 경로가 있을 것이기 때문이\n다.\n#\n 이것은 『이십론』에는 나타나지 않지만 Vyākhyāyukti에는 나타난다. 본고 168번 각주\n489\n및 해당 본문 참조."
+            },
+            {
+              "id": "kor-lee-page-334",
+              "label": "Printed page 325",
+              "locator": "PDF page 334 · printed page 325 · direct PDF text extraction",
+              "text": "는 것이이라고 할 수 있다. 즉, 바수반두는 유식성 개념을 결과적 상태까지 포\n괄하도록 ‘확장’한 것으로 보인다.\n\n\n490\n\n바로 이점과 관련해 이 대목에서 두 종류의 ‘들어감(praveśa)’이 거론되\n고 있음에 주목할 필요가 있다. 먼저 ‘이처럼 오직 표상일 뿐인 것 또한 또 다른\n표상에 의해 변계소집된 본질을 가진 [자성]의 무아에 들어가 있기 때문에’라고\n했을 때의 들어감은 윤회적 존재의 본성이라는 현황을 나타내는 것이다. 즉, 비\n록 우리들은 주관(=능취)·객관(=소취)의 구도로 세계를 이해하나 실상 세계 자\n체는 표상에 불과한 것들만이 있을 뿐 그 주객 구도 자체는 투사에 불과하다는\n것이다. 다음으로 ‘‘오직 표상일 뿐인 것’이라고 개념적으로 확립함을 통해, 모\n든 법들의 무아에 들어가는 것’이라고 했을 때의 들어감은 깨달은 존재에 진입\n하는 과정을 전제하는 것이다. 즉, 모든 것이 오직 표상일 뿐이라는 개념적 사\n다리를 통해 우리는 결과로서의 유식성=법무아에 입장할 수 있다는 것이다.!\n\n【6】 〖b-4〗!\n이 대목에서 유식성의 교설이 작용하는 기제 또한 구체적으로 보\n여준다고 할 수 있다. 주·객 분화라는 변계소집(parikalpa) 현상의 메커니즘을\n#325\n#\n 【16】에서도 유식성은 ‘무한한 해명과 세부사항으로 깊고 심오’한 것으로 묘사되고 있다.!\n490\n슈미트하우젠에 따르면, 과정과 결과 양자를 포괄하는 유식성의 개념이 『이십론』은 물론 『삼\n십송』에서도 발견된다. Schmithausen(2017) 279쪽 참조.!\n그가 특히 염두에 두는 것은 『삼십송』의 제28송에서 ‘식이 인식대상을 전혀 지각하지 않을\n그때 유식성에 머무른다’(Buescher(2007) 136쪽: yadā tv ālambanaṁ jñānaṁ\nnaivopalabhate tadā | sthitaṁ vijñaptimātratve)라는 대목 같다. 물론 이러한 개념적\n확장을 바수반두의 성취라고 해야할지 아니면 『섭대승론』 「입소지상분」에서 이미 선취하고\n있다고 해야할지에 대해서는 추가적인 연구가 필요할 것으로 보인다."
+            },
+            {
+              "id": "kor-lee-page-335",
+              "label": "Printed page 326",
+              "locator": "PDF page 335 · printed page 326 · direct PDF text extraction",
+              "text": "둘 이상의 표상들의 관계로서 상세히 묘사하고 있기 때문이다. 【6】의 반사실적\n가정에 따르자면, 시간상 선행하는 표상 C가 후행하는 또다른 표상 D의 대상\n이 되어 버리면 결과적 상태로서의 유식성에 들어갈 수 없다. 그리고 【11】의 내\n용을 선취하자면, 색 등으로 현상하는 감각적 표상으로부터 저 색 등을 ‘분별해\n내는(vikalpika)’ 정신적 표상(manovijñapti)이 발생한다. 이 양자를 결합하\n면, 실상은 이미지를 수반한 표상들이지만 후속하는 변계소집 내지 분별의 작\n용으로 인해 우리는 비실재의 대상 그리고 그에 대립하는 주관을 상상해낸다는\n결론이 나온다. 이와 유사한 그림이 『섭대승론』에도 나타난다.!\n\n한편 변계(*parikalpa)가 있고 또 변계될 것(*parikalpya)이 있을 경우 변계소집성\n[이 성립한다]. 여기서 변계는 무엇이고, 변계될 것은 무엇이며, 변계소집성은 무엇인\n가? 의식(*manovijñāna)이 변계이니, 분별을 수반한 것(*savikalpa)이기 때문이다.\n그것은 스스로의 언어사용의 훈습(*svābhilāpavāsanā)의 종자에서 발생하는 것이\n자 [다른] 모든 표상의 언어사용의 훈습의 종자에서 발생한 것이다. 그래서 무한한 양\n상의 분별(*anantākāravikalpa)로 발생하니, 전방위로 분별한다는 점에서 ‘변계’라\n고 하는 것이다. 변계될 것은 의타기성이다. x라는 양상으로(*yenākāreṇa) 의타기성\n#326"
+            },
+            {
+              "id": "kor-lee-page-336",
+              "label": "Printed page 327",
+              "locator": "PDF page 336 · printed page 327 · direct PDF text extraction",
+              "text": "에 대해 변계하는 경우 그 [양상 x]가 이 [의타기성]에서의 변계소집성이다. ‘x라는 양\n상으로’는 ‘x처럼 yathā’라는 뜻이다.\n\n\n491\n\n여기서 ‘변계’ 혹은 ‘의식’에 대비되어 ‘변계될 것’이 별도의 의타기성으로 등장\n하며, 『섭대승론』에서 의타기성이 표상과 동일시되기에\n\n 여기서도 두 개의 표\n492\n상이 등장한다고 할 수 있다. 그리고 후속하는 표상이 선행 표상을 분별한 결과\n에 해당하는 오류의 양상이 변계집성이다.\n\n\n493\n\n그렇다면 ‘‘오직 표상일 뿐인 것’이라고 개념적으로 확립’하는 것, 다시\n말해 유식성의 교설의 역할은 저 변계소집의 작용을 저지하는 것이다. 물론 앞\n#327\n#\n 長尾 雅人(1987a) 부록 74쪽-75쪽: yang kun tu rtog pa yod cing kun tu brtags\n491\npar bya ba yod na | kun brtags pa’i ngo bo nyid do || de la kun tu rtog pa ni gang\nyin | kun tu brtags par bya ba ni ci zhig | kun tu brtags pa’i ngo bo nyid ni gang\nzhe na | yid kyi rnam par shes pa ni kun tu rtog pa ste | rnam par rtog pa can gyi\nphyir ro || de ni rang brjod pa’i bag chags kyi sa bon las byung ba dang | rnam\npar rig pa thams cad kyi brjod pa’i bag chags kyi sa bon las byung ba’o || de lta\nbas na rnam pa mtha’ yas pa’i rnam par rtog pa dag gis ’byung ste | thams cad\ndu rtog pas kun tu rtog pa zhes bya bas na kun tu rtog pa zhes bya’o || gzhan\ngyi dbang gi ngo bo nyid ni kun tu brtag par bya’o || rnam pa gang du gzhan gyi\ndbang gi ngo bo nyid la kun tu brtag pa de ni de la kun brtags pa’i ngo no nyid\ndo || rnam pa gang du zhes bya ba ni ji ltar na zhes bya ba’i tha tshig go ||!\nT1594_139b10-19: 復次有能遍計有所遍計。遍計所執自性乃成。此中何者能遍計。何者所\n遍計。何者遍計所執自性。當知意識是能遍計。有分別故。所以者何。由此意識用自名言熏習\n爲種子。及用一切識名言熏習爲種子。是故意識無邊行相分別而轉。普於一切分別計度。故名\n遍計。又依他起自性名所遍計。又若由此相令依他起自性成所遍計。此中是名遍計所執自性。\n由此相者是如此義。\n#\n 본고 140쪽의 도표 참조.\n492\n#\n 『섭대승론』의 이 대목이 둘 이상의 의타기성 내지 표상의 구도에서 변계소집의 메커니즘\n493\n을 설명하고 있다고 보는 것에 대한 보다 상세한 논변은 본고 149쪽-157쪽 참조."
+            },
+            {
+              "id": "kor-lee-page-337",
+              "label": "Printed page 328",
+              "locator": "PDF page 337 · printed page 328 · direct PDF text extraction",
+              "text": "서 언급했듯 유식성의 교설 역시 언어적인 것이며 변계 내지 분별의 범주이며\n따라서 변계소집으로부터 자유롭지 않다.\n\n 이를테면 「섭결택분 보살지」 또한\n494\n진리 탐구의 여정이 분별에 포함된다고 말한다.!\n\n네 가지 탐구(*paryeṣaṇā)와 다섯 가지 것(*vastu)에 있어서, 다섯 가지 것으로 [네\n가지] 탐구가 [다섯 범주] 어디에 얼마나 포괄되냐면, 답하길 이치에 따른 작의\n(*yoniśomanasikāra)를 수반한 분별로 네 가지 탐구가 모두 포괄된다.\n\n\n495\n\n「섭결택분 보살지」에서 교설의 형태를 띈 진리의 작용은 다음과 같이 그려진다. !\n\n즉, 사물(*vastu)에 의존하여 언어(*abhilāpa)가 발생하는 것도 지각되고 또 언어에\n의존해서 사물이 발생하는 것도 지각되기 때문에, … 이와 같을 경우 사물에 의존하여\n명칭과 언어가 발생하는 것이 지각되는 것이다. 이를테면 예컨대 선정자(*dhyāyin)가\n내적으로(*adhyātman?) 선정을 할 경우, 이렇게 저렇게(*yathā yathā) 마음의 소\n리(*manojalpa)\n\n라는 작의를 하는 양상 그대로(*tathā tathā) 심상속(*cittasaṁ\n496\ntati)에 떨어지는, 알아야 할 사물과 유사한 것(*sabhāga)인 이미지(*pratibimba)들\n#328\n#\n 【6】 〖b-2〗 참조.\n494\n#\n Kramer(2005) 96쪽: yongs su tshol ba bzhi dang dngos po lnga po dag las | dngos po lngas yongs su\n495\ntshol ba du dag bsdus shes na | smras pa | rnam par rtog pa tshul bzhin yid la byed pa dang ldan pas\nyongs su tshol ba bzhi po thams cad bsdus so ||\n#\n ‘마음의 소리’는 초중기 유가행파 수행론을 구성하는 핵심 개념어라고 할 수 있다. 특히 「보살지」와 『대승장엄경론』의 구\n496\n조적 유사성에 주목해 일련의 연구성과를 내놓고 있는 모토무라 타이키의 연구가 좋은 출발점이 될 것으로 보인다. 渡辺 親\n文(2002), 都 真雄(2006), 本村 耐樹(2011) 참조."
+            },
+            {
+              "id": "kor-lee-page-338",
+              "label": "Printed page 329",
+              "locator": "PDF page 338 · printed page 329 · direct PDF text extraction",
+              "text": "이 현현하는 방식으로 발생하기에, 언어에 의존해 사물이 발생하는 것도 지각되는 것\n이다.\n\n\n497\n\n과정 중인 수행자에게도 여전히 대상적인 이미지가 나타나지만 그 이미지는 진\n리와 유사하다는 것으로서 적극적으로 구현된 것이며 기존의 그릇된 세계관의\n자리를 대신 차지함으로서 그것을 교정하는 역할을 한다. 『대승장엄경론』 그리\n고 『섭대승론』에서는 밑줄 친 ‘마음의 소리’가 유식관 수행의 키워드로 부상하\n게 된다는 점을 고려하면\n\n 아울러 수행에서 핵심적인 역할을 수행하는 심소\n498\n중 하나인 조사(vitarka)를 바수반두 자신이 『오온론』에서 정의할 때 저 ‘마음의\n소리’가 유개념으로 등장한다는 점을 고려하면\n\n 『이십론』 역시 같은 입장일\n499\n것으로 보인다.!\n\n#329\n#\n 高橋 晃一(2005b) 143쪽: ’di ltar dngos po la brten nas brjod pa skye ba yang\n497\ndmigs la | brod pa la brten nas kyang dngos po skye ba dmigs pa’i phyir te | …\nde ltar na dngos po la brten nas ming dang brjod pa skye bar dmigs pa yin no ||\n’di lta ste dper na bsam gtan pa so so’i bdag nyid la bsam gtan byed pa na | ji\nlta ji ltar yid la brjod pa’i yid la byed pa de lta de ltar sems kyi rgyud du gtogs\npa’i shes bya’i dngos po dang cha mthun pa’i gzugs brnyan dag snang bar ’gyur\nba’i tshul gyis ’byung bar ’gyur bas | de ltar na brjod pa la brten nas dngos po\nskye ba yang dmigs pa yin no ||\n#\n 本村 耐樹(2011) 참조.\n498\n#\n Kramer(2013) 1권 13쪽: vitarkaḥ katamaḥ | paryeṣako manojalpaś\n499\ncetanāprajñāviśeṣaḥ | yā cittasyaudārikatā | (조사란 무엇인가? 탐구하는 마음의 소\n리(manojalpa)로, 의향(cetanā) 및 지혜 양자의 특수한 [형태]인 마음의 거침이다.)!\n한편 종차 ‘탐구하는(paryeṣaka)’이 앞서 인용한 「섭결택분 보살지」의 ‘탐구(*paryeṣaṇā)’\n와 동계어라는 점 또한 단순한 우연은 아니다. 본고 495번 각주 및 【16】 〖c〗 참조."
+            },
+            {
+              "id": "kor-lee-page-339",
+              "label": "Printed page 330",
+              "locator": "PDF page 339 · printed page 330 · direct PDF text extraction",
+              "text": "【6】 〖c-1〗!\n‘이를 넘어 색 등에 대한 표상들 각각에게 대상영역이 되어주는 저\n[색처]들이 전혀 존재하지 않는다(na punaḥ santy eva)’에서 na punaḥ라는\n표현에 주목할 필요가 있다. 이 표현은 일도양단의 상황에 주로 쓰인다. 그렇다\n면 대론자는 재해석된 십이처설과 기존의 십이처설을 양자택일의 선택지로 이\n해하고 있는 셈이다. 이는 관념론적 독해를 지지해준다. 대론자로 하여금 대상\n의 존재론적 위상을 괄호 안에 넣는 것이 아니라 오히려 적극적으로 질문하도\n록 하였기 때문이다. 그리고 그 결과 【7】 이후에서 논의되는 것이 관념론적 독\n해를 지지하는 자들이 매우 애호하는 극미의 학설에 따른 논증, 보다 정확히는\n부분-전체론적 논변이기 때문이다.!\n\n물론 한 가지 제한이 있기는 하다. 외트케에 따르면, 【7】 - 【9】의 극미 논\n의는 기껏해야 대상영역(viṣaya)이 되는 한에서의 물질적 존재를 부정하는 것\n이지 물질적 존재 자체를 부정한 것이 아니기 때문이다.\n\n 그래서 켈너·테이버\n500\n는 외트케를 ‘현상론적 독해’를 한다고 보는 것 같다.\n\n 켈너·테이버가 외트케\n501\n의 입장을 왜 이렇게 놓는지 의문이다. 다른 경로의 정보가 더 있는 것인지 모\n르겠다. 그러다, 적어도 외트케 자신의 글만 보면, 그의 관심은 바수반두가 흔\n히 ‘관념론자’로 알려져 있지만 그의 핵심논증이 실제로 관념론을 성공적으로\n입증하고 있지는 않다는 사실을 밝히는 데에 있다.\n\n 따라서 그의 말이 옳더라\n502\n#330\n#\n Oetke(1992) 218쪽-219쪽.\n500\n#\n Kellner&Taber(2014) 713쪽-714쪽.\n501\n#\n Oetke(1992) 217쪽 및 224쪽-225쪽 참조.\n502"
+            },
+            {
+              "id": "kor-lee-page-340",
+              "label": "Printed page 331",
+              "locator": "PDF page 340 · printed page 331 · direct PDF text extraction",
+              "text": "도 바수반두가 관념론자가 아님이 증명되는 것이 아니라 바수반두가 ‘자기가\n생각하는 만큼’ 혹은 ‘지금까지 사람들이 생각한 것 만큼’의 관념론자가 아님이\n증명될 뿐이다. 물론 외트케의 이 주장을 관념론적 독해를 반대하는 입장에서\n반관념론의 논리로 가져다 쓸 수는 있을 것이다. 그러나 그것이 곧 외트케가 그\n진영에 속한다는 것을 보증하지는 않는다.!\n\n한편 외트케의 저 주장은 그 자체로 문제적이다. 우리가 논변을 할 때 논\n증에서 작동하는 모든 전제를 다 명시하지는 않는다. 사실 그것은 불가능하다.\n따라서 외트케의 저 주장이 존중되려면, ‘인식의 대상이 아니면서 여전히 그 존\n재를 주장할 수 있는 것’의 가능성이 적극적으로 제기되어야 할 것이다. 그러나\n이런 가능성은 보통 받아들이지 않는다. 더군다나 불교전통은 아뜨만 비판에서\n잘 보여지듯이 이 가능성에 대해 적극적으로 반대하는 집단이다. 인식의 대상\n이 아닌 것을 단적인 비존재로 간주하는 태도 및 실제로 이를 언명하는 구절은\n도처에서 발견된다. 나아가 본고의 해석이 옳다면 바수반두는 【5】에서 십이처\n의 범주를 존재하는 것 전체를 포괄하는 범주로 도입하였다.\n\n 그렇다면, 입증\n503\n의 부담은 오히려 외트케에게 있다고 할 수 있다.!\n\n【6】 〖c-2〗!\n박현수에 따르면, 이십론주는 대상(artha)과 대상영역(viṣaya)을\n구분하며 오직 전자만이 ‘외적인 대상’으로서 부정되며 이러한 뉘앙스의 차이는\n『구사론』에서도 발견된다.\n\n\n504\n#331\n#\n 【5】 〖a〗 참조.\n503\n#\n 박현수(2013) 제1장·제2장 참조.\n504"
+            },
+            {
+              "id": "kor-lee-page-341",
+              "label": "Printed page 332",
+              "locator": "PDF page 341 · printed page 332 · direct PDF text extraction",
+              "text": "다섯 대상(artha)들은 바로 저 눈 등의 감각 능력들 각각의, ‘색·성·향·미·촉’이라 불리\n는 다섯 대상 영역(viṣaya)들이다.\n\n\n505\n\n물론 여기서 viṣaya는 이론의 여지가 없는 것인 반면에 artha는 해명되어야\n할 것처럼 제시된다. 그러나 이러한 ‘뉘앙스의 차이’는 artha가 ‘보거나 듣거나\n하는 행위가 일어나기 이전의 ‘외부존재’라는 의미를 가지’(박현수(2013) 8쪽)\n기 때문이라기보다는, 선행 게송에 (아마도 운율상의 이유로) artha가 나타나\n며 다의어인 artha가 해명되어야 할 필요가 있기 때문에 발생한 것 같다. 따라\n서 『이십론』의 artha / viṣaya 구분을 『구사론』에까지 적용하려는 시도는 난망\n하다고 할 수 있다. 나아가 『이십론』 자체에서 박현수가 상정한 것과 같은\nartha / viṣaya 대별이 예외 없이 관철되고 있지도 않다. 【11】에서 후득지를 획\n득한 자가 통찰하는 것으로 제시된 “대상영역의 비존재”의 경우, 박현수의 구도\n에 따르자면 해당 범어가 arthābhāva여야 하지만 실제로는 viṣayābhāva이\n기 때문이다.\n#332\n#\n Pradhan(1967) 5쪽: pañcārthās teṣām eva cakṣurādīnām indriyāṇāṁ\n505\nyathāsvaṁ ye pañca viṣayāḥ rūpaśabdagandharasaspraṣṭavyākhyāḥ |"
+            },
+            {
+              "id": "kor-lee-page-342",
+              "label": "Printed page 333",
+              "locator": "PDF page 342 · printed page 333 · direct PDF text extraction",
+              "text": "Silk(2018) 83쪽-89쪽: yasmān!\nna tad ekaṁ na cānekaṁ viṣayaḥ paramāṇuśaḥ |!\nna ca te saṁhatā yasmāt paramāṇur na sidhyati || [11 || ]!\niti <|> kim uktam bhavati | yat tad rūpādikam āyatanaṁ\nrūpādivijñaptīnāṁ pratyekaṁ viṣayaḥ syāt tad ekaṁ vā syād yathā\n’vayavirūpaṁ kalpyate vaiśeṣikaiḥ anekaṁ vā paramāṇuśaḥ\nsaṁhatā vā ta eva paramāṇavaḥ | na tāvad ekaṁ viṣayo bhavaty\navayavebhyo <’>nyasyāvayavirūpasya kvacid apy agrahaṇāt | nāpy\nanekaṁ paramāṇūnāṁ pratyekam agrahaṇāt | nāpi te saṁhatā\nviṣayībhavanti | yasmāt paramāṇur ekaṁ dravyaṁ na sidhyati |!\nkathaṁ na sidhyati |!\nyasmāt |!\nṣaṭkena yugapadyogāt paramāṇoḥ ṣaḍaṅśatā ||!\nṣaḍbhyo digbhyaḥ ṣaḍbhiḥ paramāṇubhir yugapadyoge sati\nparamāṇoḥ ṣaḍaṅśatā prāpnoti | ekasya yo deśas\ntatrānyasyāsambhavāt |!\nṣaṇṇāṁ samānadeśatvāt piṇḍaḥ syād aṇumātrakaḥ || [12 || ]!\natha ya evaikasya paramāṇor deśaḥ sa eva ṣaṇṇāṁ <|> tena\nsarveṣāṁ samānadeśatvāt sarvaḥ piṇḍaḥ paramāṇumātraḥ syāt\nparasparāvyatirekād iti na kaścit piṇḍo dṛśyaḥ syāt |\n#333"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-07",
+          "label": "Argument section 7 · verses 11–15, part 1",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-343",
+              "label": "Printed page 334",
+              "locator": "PDF page 343 · printed page 334 · direct PDF text extraction",
+              "text": "【7】 [바수반두:] 왜냐하면!\n저 [색처 등]은 단일한 것(eka)도 아니고 극미(paramāṇu)〖a〗 차원의 복수의\n것(aneka)이 대상영역(viṣaya)인 것도 아니다. 또 저 집합된(saṁhata) [극\n미]들도 아니다. 왜냐하면 극미는 성립하지 않기 때문이다. 〖제11송〗!\n무엇이 이야기된 것인가? 색 등에 대한 표상들 각각의 대상영역이 되어야 한다\n고 하는 저 색 등의 처는 단일한 것, 이를테면 바이셰시까들이 상상하는 것과\n같은 [부분들에 대한] 전체(avayavin)로서의 색일 수도 있고, 아니면 극미 차\n원의 복수의 것일 수도 있고, 그것도 아니면 집합된 바로 저 극미들일 수도 있\n다. 우선 단일한 것은 대상영역이 아니다. 부분(avayava)들과 다른 전체로서\n의 색은 어디서도 파악되지 않기 때문이다. 복수의 것 역시 아니다. 극미들은\n각각 파악되지 않기 때문이다. 저 집합된 [극미]들 역시 대상영역이 되는 것은\n아니다. 왜냐하면 극미는 단일 실체(dravya)로서 성립하지 않기 때문이다.〖b〗!\n[대론자:] 왜 성립하지 않는가?!\n[바수반두:] 왜냐하면,!\n여섯 개의 것과 동시에 결합하기 때문에 극미는 여섯 구역을 가진 것이다.!\n여섯 방향에서 여섯 개의 [다른] 극미들과 동시에 결합할 경우, 극미가 여섯 구\n역을 가진 것으로 되어버린다. [극미A와 결합할 여섯 개의 극미들 중] 하나의 [극\n미B]가 [극미A와 결합하는] b라는 장소에 다른 [극미]가 발생할 수 없기 때문이\n다.!\n#334"
+            },
+            {
+              "id": "kor-lee-page-344",
+              "label": "Printed page 335",
+              "locator": "PDF page 344 · printed page 335 · direct PDF text extraction",
+              "text": "[혹은] 여섯 개의 [극미]가 동일한 장소를 가진 것[이라고 한다면 바로 그것] 때\n문에 [일곱 개가 결합한 결과인] 덩어리(piṇḍa)는 극미 [하나의] 크기의 것(aṇ\numātraka)이 되어버릴 것이다. 〖제12송〗!\n혹은 한 극미가 차지한 장소 바로 그곳에 여섯 개가 있는 셈이다. 이리하여 [일\n곱 개의] 모든 [극미들이] 동일한 장소를 가진 것이기 때문에 전체 덩어리는 극\n미 [하나의] 크기의 것이 되어버릴 것이다. 상호 분리되지 않기 때문이다. 따라\n서 어떠한 덩어리도 보이지 않게 되어버릴 것이다.〖c〗\n#335"
+            },
+            {
+              "id": "kor-lee-page-345",
+              "label": "Printed page 336",
+              "locator": "PDF page 345 · printed page 336 · direct PDF text extraction",
+              "text": "【7】 〖a〗!\n극미에 대해서는 많은 연구자들이 관심을 가지며 방대한 연구 성\n과가 누적되어 있다.\n\n 그러나 정작 『이십론』에서는 더이상 분할되지 않는 물\n506\n질의 최소단위로서의 극미 개념에 초점을 맞춘 채 논의를 전개할 뿐이다.\n\n 그\n507\n렇기 때문에 이를 넘어선 극미 개념의 탐구는 『이십론』 이해에 오히려 사족이\n될 우려가 있다. 이를테면 극미의 결합 양상을 나타내는 표현인 ‘집합된(saṁ\nhata)’을 마치 대안적 모델링의 가능성을 암시하는 듯 현장이 ‘和合(*saṁ\ncita?)’과 ‘和集(*samudita?)’으로 번역한 것은, 비록 그 자체로 흥미로운 주제\n라고 할 수는 있지만, 『이십론』 자체에서 벗어난 것이며 『이십론』의 논지를 불필\n요하게 오도할 수 있다.\n\n\n508\n\n【7】 〖b〗!\n『이십론』은 인식 독립적인 감각 대상이 성립할 수 있는 가능성을\n세 가지로 상정한다. 첫 번째 선택지는 바이셰시까 학파에게 귀속되는 ‘부분으\n로 구성된 단일한 전체’라는 발상이다. 이십론주는 이 가능성을 매우 가볍게 기\n#336\n#\n 주요한 연구성과로는 山口 益(1940), 宇井 伯寿(1953b), Karunadasa(1967) 제8장,\n506\n加藤 純章(1973), 那須 円照(1997a), 那須 円照(1997b), Kapstein(2001) 181쪽-204쪽,\n阿部 真也(2004), 兵藤 一夫(2005), 兵藤 一夫(2006), Siderits(2007) 제3장·제5장·제6\n장·제8장, Dhammajoti(2009) 제8장, 박창환(2009), 박창환(2010), 권오민(2010a), 권\n오민(2010b), 加藤 純章(2011), 森山 清徹(2015a), 이규완(2017) 참조.\n#\n 극미 개념에 주목해 바수반두의 철학적 편력을 포착하려는 시도는 이규완(2017) 참조.\n507\n#\n 宇井 伯寿(1953b) 162쪽-163쪽 및 山口 益·野澤 靜證(1965) 408쪽-410쪽 및 본고\n508\n3.2.2의 뒷부분 논의 참조."
+            },
+            {
+              "id": "kor-lee-page-346",
+              "label": "Printed page 337",
+              "locator": "PDF page 346 · printed page 337 · direct PDF text extraction",
+              "text": "각한다. 부분을 떠난 전체가 없기에, 따라서 전체는 저 부분들에 명칭을 가설한\n것에 불과하기 때문이다. 다시 말해 바이셰시까 류의 물질 개념은 부분-전체론\n적 환원주의에 정면으로 위배된다는 것이다.\n\n 두 번째 후보는 ‘각각의 극미들’\n509\n이다. 그러나 누구도 개별적인 극미들을 직접 경험한 사람은 없기 때문에 이 가\n능성 역시 쉽게 거부된다. 이에 세 번째 가능성으로 ‘개별적인 극미들로 구성된\n가시적 대상’이다.!\n\n이처럼 세 가지 선택지를 제시한 후 하나씩 비판하는 【7】의 방식은 전술\n한 【4】의 방식처럼 소거법의 형태를 띠지만 한 가지 중대한 차이점이 있는 것\n같다. 【4】에서는 합리적으로 생각해볼 수 있는 사실상 모든 선택지들이 검토되\n고 있다.\n\n 그러나 【7】의 경우 배제되고 있지만 여전히 합리적으로 고려할 법\n510\n한 선택지들이 있다. 비교적 최근부터 이론적 가능성으로 고려되기 시작한 ‘무\n한분할자(atomless Gunk)’와 같은 경우는 당연히 배제하더라도\n\n 『구사론』\n511\n에서 바수반두 자신이 ‘지각 가능한 최소입자’로 재정의한 극미 관념에 대한 검\n토는 여기 『이십론』에서 전혀 이루어지고 있지 않다.\n\n\n512\n\n#337\n#\n Siderits(2007) 105쪽-111쪽 및 본고 3.3.2 참조.\n509\n#\n 본고 【4】 〖f〗 참조.\n510\n#\n ‘무한분할자’에 대해서는 Zimmerman(1996) 참조.\n511\n#\n 구사론주의 극미 재정의에 대해서는 박창환(2010) 참조.\n512"
+            },
+            {
+              "id": "kor-lee-page-347",
+              "label": "Printed page 338",
+              "locator": "PDF page 347 · printed page 338 · direct PDF text extraction",
+              "text": "【7】 〖c〗!\n상기의 세 번째 선택지에 대해 이십론주는 극미의 개념 자체에 포\n함된 모순된 측면을 지적하는 방향으로 논의를 전개해 나간다. 다시 말해 각각\n의 극미 자체가 내부 모순으로 인해 ‘불가능한 존재’임을 보임으로써 이에 기반\n한 ‘개별적인 극미들로 구성된 가시적 대상’이 성립할 수 없음을 간접적으로 보\n이고 있다. 여기서 ‘더이상 분할될 수 없다’는 극미의 핵심적 속성이 중요하게\n기능한다. 이 극미들로 가시적 세계를 구축하려면 이 극미들을 상호 결합시켜\n야 할 것이다. 이때 극미들이 서로 다른 방향으로 결합해 입체를 이룬다면, 중\n심에 위치한 극미가 저 ‘방향 차이’를 기준점으로 해 여러 부분으로 나뉘는 셈인\n데, 이는 극미의 정의에 어긋난다. 그래서 극미들이 한 점에서 모인다고 하면,\n입체를 이루려면 요소들 역시 입체여야 하기에, 정작 극미들은 입체를 이루지\n못한다. 이 경우, 극미는 가시적 세계를 건설할 수 없는 무관한 존재에 불과하\n다.\n\n\n513\n#338\n#\n 이 부분에 대한 캡슈타인의 연구, 그리고 아비달마적 맥락까지 시선에 둔 시더리츠의 분\n513\n석에 본고는 전적으로 동의한다. Kapstein(2001), Siderits(2007) 159쪽-167쪽 참조.!\n이에 대립하는 주요 해석으로는 Oetke(1992) 참조."
+            },
+            {
+              "id": "kor-lee-page-348",
+              "label": "Printed page 339",
+              "locator": "PDF page 348 · printed page 339 · direct PDF text extraction",
+              "text": "Silk(2018) 89쪽-99쪽: naiva hi paramāṇavaḥ saṁyujyante\nniravayavatvāt <|> mā bhūd eṣa doṣaprasaṅgaḥ <|> saṁghātās tu\nparasparaṁ saṁyujyanta iti kāśmīravaibhāṣikās <|> te idaṁ\npraṣṭavyāḥ | yaḥ paramāṇūnāṁ saṁghāto na sa tebhyo ’rthāntaram\niti ||!\nparamāṇor asaṁyoge tatsaṁghāte <’>sti kasya saḥ ||!\nsaṁyoga iti varttate |!\nna cānavayavatvena tatsaṁyogo na sidhyati || [13 || ]!\natha saṁghātā apy anyonyaṁ na saṁyujyante na tarhi\nparamāṇūnāṁ niravayavatvāt saṁyogo na sidhyatīti vaktavyaṁ |\nsāvayavasyāpi hi saṁghātasya saṁyogānabhyupa(gamāt | ataḥ\npa)ramāṇur ekaṁ dravyaṁ na sidhyati | yadi ca paramāṇoḥ\nsaṁyoga iṣyate yadi vā neṣyate |!\ndigbhāgabhedo yasyāsti tasyaikatvan na yujyate |!\nanyo hi paramāṇoḥ [p]ū(rvadig)[bh](āgo) yāvad adhodigbhāga iti\ndigbhāgabhede sati kathaṁ tadātmakasya paramāṇor ekatvaṁ\nyokṣyate |!\nchāyāvṛtī kathaṁ vā |!\nyady ekaikasya paramāṇor digbhāgabhedo na syād ādityodaye\nkatham anyatra pā(rśv)[e] <chāyā> bhavaty anyatrātapaḥ | na hi\ntasyānyaḥ pradeśo <’>sti yatrātapo na syāt | āvaraṇañ ca kathaṁ\n#339"
+            },
+            {
+              "id": "kor-lee-page-349",
+              "label": "Printed page 340",
+              "locator": "PDF page 349 · printed page 340 · direct PDF text extraction",
+              "text": "bhavati paramāṇoḥ paramāṇvantareṇa yadi digbhāgabhedo\nne[ṣya]te | na hi kaścid a(nya)ḥ parabhāgo <’>sti yatrāgamanād\nanyenānyasya pratighātaḥ syāt | asati ca pratighāte sarveṣāṁ\nsamānadeśatvāt sarvaḥ saṁghātaḥ paramāṇumāt[r]a[ḥ sy]ā[d] i[ty]\n(uktaṁ |)!\nkim evaṁ neṣyate piṇḍasya te cchāyāvṛtī na paramāṇor iti |!\nkiṁ khalu paramāṇubhyo ’nyaḥ piṇḍa iṣyate yasya te syātāṁ <|>!\nnety āha |!\nanyo na piṇḍaś cen na tasya te (|| 14 ||!\nyadi nā)nyaḥ paramāṇubhyaḥ piṇḍa iṣyate na te tasyeti siddham\nbhavati |\n#340"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-08",
+          "label": "Argument section 8 · verses 11–15, part 2",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-350",
+              "label": "Printed page 341",
+              "locator": "PDF page 350 · printed page 341 · direct PDF text extraction",
+              "text": "【8】 [바수반두:] 까슈미라의 설일체유부 논사들은 “실로 극미들은 전혀 결합하\n지 않는다. 부분이 없기 때문이다. [그래서] 이런 귀류(doṣaprasaṅga)는 전혀\n가당치 않다. 그러나 극미들이 응집된 것(saṁghāta)은 상호 결합한다.”라고\n[한다].〖a〗 그들에게는 ‘[전체로서의] 극미들의 응집은 [부분적인] 저 [극미]들과\n별개의 것이 아니다’라는 이점이 질문에 부쳐져야 할 것이다. [환언하면]!\n극미가 결합하지 않는데, ‘저 [극미들로] 응집된 것’에는 [극미가 아니라면] 무\n엇의 이 [결합]이 있다는 것인가?!\n[‘이’ 뒤에] ‘결합’이란 [표현이 생략적으로] 따른다.!\n그리고 [극미는] 부분이 없는 것이라서 저 [극미들]의 결합이 타당하지 않은 것\n은 아니다. 〖제13송〗!\n“만약 응집된 것 또한 서로 결합하지 않는다면, 극미들이 부분을 결여하기 때문\n에 결합이 성립하지 않는 것은 아니다.”라고 말해서는 안된다. 왜냐하면 부분을\n가진, 응집된 것이라고 하더라도 [그것의] 결합이 인정되지 않기 때문이다.〖b〗\n따라서 단일 실체로서의 극미는 성립하지 않는다. 만약 극미의 결합이 인정된\n다면, 혹은 인정되지 않는다면,!\n어떤 A에 방향에 따른 부분의 구별(bheda)이 존재할 경우, 그 [A]가 단일하다\n는 것은 타당하지가 않다.!\n실로 극미의 앞부분은 [다른 부분과] 다른 것이고 [같은 논리를 적용해] 밑부분\n까지 [다른 부분과 다른 것]이라는 식으로 방향에 따른 구별이 가능할 경우, 어\n#341"
+            },
+            {
+              "id": "kor-lee-page-351",
+              "label": "Printed page 342",
+              "locator": "PDF page 351 · printed page 342 · direct PDF text extraction",
+              "text": "떻게 저 [복수성]을 본질로 하는 극미가 단일한 것이라고 하는 것이 타당하겠는\n가?!\n혹은 그림자 및 저항(āvṛti)은 어떻게 [가능한가]?!\n만약 각각의 극미가 방향에 따른 부분의 구별이 가능하지 않다고 하면, 어떻게\n해가 떴을 때 한쪽 면에는 그림자가 있고 다른 [면]에는 햇빛이 있는 것인가?\n왜냐하면 저 [극미]에는 그림자가 생겨야 할 다른 부분이 없기 때문이다. 한편,\n만약 방향에 따른 부분의 구별이 인정되지 않는다면, 한 극미가 다른 극미에 대\n해 저항하는 것이 어떻게 가능하겠는가? [극미A의] 어떤 X라는 [부분]에 [다른\n극미B가 가까이] 왔을 때  [극미]A가 [극미]B에 대해 길항하는 것(pratighāta)\n이 가능할 [그런 X라는] 여타의 방향도 없기 때문이다. 나아가 길항성이 없다고\n할 경우, ‘모든 [극미]들이 동일한 장소를 가진 것이 되기 때문에 모든 응집은 극\n미 [하나의] 크기의 것이 되어버릴 것이다’라고 [앞에서] 이미 이야기되었다.!\n[대론자:] 이렇기에 저 그림자와 저항 양자가 극미가 아닌 덩어리에 속한 것이\n라고 인정하는 것 아닌가?!\n[바수반두:] 저 [그림자와 저항] 양자가 속하게 될, 극미들과는 다른 덩어리를\n진짜로 인정하는 것인가?!\n[대론자:] 아니다.!\n[바수반두:] 만약 덩어리가 [극미들과] 다른 것이 아니라고 한다면, 저 [그림자\n와 저항] 양자는 저 [덩어리]에 속하는 것이 아니다. 〖제14송〗!\n#342"
+            },
+            {
+              "id": "kor-lee-page-352",
+              "label": "Printed page 343",
+              "locator": "PDF page 352 · printed page 343 · direct PDF text extraction",
+              "text": "만약 덩어리가 극미들과 다른 것이 아니라고 인정한다면, 저 [그림자와 저항]\n양자는 저 [덩어리]에 [속하는 것이 아님]이 성립하게 된다.\n#343"
+            },
+            {
+              "id": "kor-lee-page-353",
+              "label": "Printed page 344",
+              "locator": "PDF page 353 · printed page 344 · direct PDF text extraction",
+              "text": "【8】 〖a〗!\n여기 【8】에서 발언하고 있는 설일체유부 논사들은 물론 이십론주\n가 가상적으로 내세운 존재들이다. 그러나 그 발언의 내용은 『구사론』에서 추적\n가능하다. 먼저 ‘극미들은 부분이 없기에 결합하지 않는다’는 발상은 거의 그대\n로 확인이 가능하다.!\n\n그런데 원자들은 서로 접촉하는가 아니면 [접촉하지] 않는가? 까슈미라[의 설일체유\n부 논사]들은 ‘접촉하지 않는다’고 한다. 무슨 까닭인가? 만약 전체적으로\n(sarvātmanā) 접촉한다고 하면 실체들이 뒤섞여버릴 것이고, 그렇다고 일부만 [접\n촉한다고 하면 극미들은] 부분을 가진 것이 되어버릴 것이다. 그런데 극미들은 부분\n이 없다.\n\n\n514\n\n한편 ‘극미들은 결합하지 않지만 그 이상의 입체들은 결합한다’는 생각은 『구사\n론』에서 직접 나타나지 않으나 다음 대목을 염두에 둔 것으로 보인다.!\n\n[바수반두:] 나아가 여기서 실체 자체(=극미)가 [문제의] ’실체’라고 파악\n된 것인가, 아니면 처(āyatana)가 [‘실체’라고 파악된 것인가]?!\n…!\n#344\n#\n Pradhan(1967) 32쪽: kiṁ punaḥ paramāṇavaḥ spṛśanty anyonyam āhosvin\n514\nna | na spṛśantīti kāśmīrakāḥ | kiṁ kāraṇam | yadi tāvat sarvātmanā spṛśeyur\nmiśrībhaveyur dravyāṇi | athaikadeśena sāvayavāḥ prasajyeran | niravayavāś\nca paramāṇavaḥ |"
+            },
+            {
+              "id": "kor-lee-page-354",
+              "label": "Printed page 345",
+              "locator": "PDF page 354 · printed page 345 · direct PDF text extraction",
+              "text": "[설일체유부:] 여기서 토대(āśraya)에 해당하는 모종의 실체 자체가 ‘실체’라고 파악\n된 것이고, 여기서 토대에 세워진 것(āśrita)에 해당하는 모종의 처가 ‘실체’라고 파악\n된 것이다.\n\n\n515\n\n박창환이 적절히 지적했듯, 여기서 설일체유부는 『대비바사론』 이래의 실체 차\n원의 특징(事自相, *dravyasvalakṣaṇa)과 인식 차원의 특징(處自相,\n*āyatanasvalakṣaṇa)의 구분에 기대고 있다.\n\n 여기서 ‘실체 차원의 특징’은\n516\n직접적인 인식을 넘어선 것으로 이해되기 때문에 극미와 외연상 일치한다.\n\n\n517\n한편 인식에 주어진 것들은 결합을 통해 우리가 경험하는 세계를 구성해낸다.!\n\n【8】 〖b〗!\n제13송 후반부, 즉 “그리고 [극미는] 부분이 없는 것이라서 저 [극\n미들]의 결합이 타당하지 않은 것은 아니다. “만약 응집된 것 또한 서로 결합하\n지 않는다면, 극미들이 부분을 결여하기 때문에 결합이 성립하지 않는 것은 아\n니다.”라고 말해서는 안된다. 왜냐하면 부분을 가진, 응집된 것이라고 하더라도\n[그것의] 결합이 인정되지 않기 때문이다.”는 다소 난해하나 그 기본적인 아이\n디어는 다음과 같다. ‘설일체유부 논사들’이 보기에, 정의상 더이상 분할될 수\n#345\n#\n Pradhan(1967) 53쪽: kiṁ punar atra dravyam eva dravyaṁ gṛhyate āhosvid\n515\nāyatanam | … kiñ cid atra dravyam eva dravyaṁ gṛhyate yad āśrayabhūtaṁ kiñ\ncid atrāyatanaṁ dravyaṁ gṛhyate yad āśritabhūtam |\n#\n 박창환(2010) 제2절 참조.\n516\n#\n 전통적인 견해는 물론 아예 두 유형의 극미를 따로 상정하는 것이다. 본고 160번 각주\n517\n참조."
+            },
+            {
+              "id": "kor-lee-page-355",
+              "label": "Printed page 346",
+              "locator": "PDF page 355 · printed page 346 · direct PDF text extraction",
+              "text": "없는 극미들은 물론 서로 떨어져서 존재해야 하며 바로 여기서 우리가 경험하\n는 입체가 나온다. 이에 대해 이십론주는 분할 불가능성이 결합 불가능성과 애\n초에 무관하다고 비판한다. 분할이 될 수 있는 ‘덩어리’들이 서로 결합 가능하다\n고 보는 것은 단지 설일체유부 논사들의 희망사항에 불과하기 때문이다. 덩어\n리들 역시 극미들로 구성된 것으로 간주하는 한, 덩어리들끼리 접촉한다는 것\n은 극미들이 접촉한다는 뜻이기 때문이다. 다시 말해, 바수반두는 설일체유부\n의 대응을 단지 회피적 대응에 불과한 것으로 묘사한다. 극미 자체가 이율배반\n적이어서 성립하지 않는다고 하였는데 그 문제는 덮어두고 극미 이상의 단위에\n서 입자들간의 결합이 가능하다고 말하고 있기 때문이다.!\n\n여기 【8】에서 당대의 유력한 학파인 설일체유부의 표준적 견해가 중대한\n모순을 범하고 있음을 보여주려 하는 바수반두의 모습은 구성상 특기할 만 하\n다. 왜냐하면 그들 역시 불교도로서 부분-전체론적 환원주의를 받아들이고 있\n으면서 유독 극미 문제에 대해서는 전체의 속성이 부분의 속성에 의존적이라고\n보지 않기 때문이다. 이러한 논리적 비일관성은 이제까지의 『이십론』의 대론자\n에게는 보이지 않던 허술함이기에 이 대목에는 설일체유부의 극미 이해에 대한\n이십론주 자신의 조롱이 담겨 있다고도 볼 수 있다.\n\n 그렇다면 【8】의 반론을\n518\n굳이 ‘까슈미라의 설일체유부 논사들’에게 ‘직접’ 돌린 것은 다분히 의도적인 것\n이라고 해석할 수 있다.\n#346\n#\n 설일체유부의 극미 이해에 대해서는 『구사론』에서도 다소 다른 각도에서 조롱을 하고 있\n518\n다. 박창환(2010) 참조."
+            },
+            {
+              "id": "kor-lee-page-356",
+              "label": "Printed page 347",
+              "locator": "PDF page 356 · printed page 347 · direct PDF text extraction",
+              "text": "Silk(2018) 99쪽-109쪽: sanniveśaparikalpa eṣaḥ <|> paramāṇuḥ\nsaṁghāta iti vā kim anayā cintayā <|> lakṣaṇan tu rūpā(dīnāṁ) na\npratiṣidhyate |\n\n\n519\nkim punas teṣāṁ lakṣaṇaṁ!\ncakṣurādiviṣayatvaṁ nīlāditvañ ca!\ntad evedaṁ sampradhāryate <|> yat tac cakṣurādīnāṁ viṣayo\nnīlapītādikam iṣyate kin tad ekaṁ dravyam (atha vā ta)d anekam iti\n|!\nkiñ cātaḥ |!\nanekatve doṣa uktaḥ ||!\nekatve na krameṇetir yugapan na grahāgrahau |!\nvicchinnānekavṛttiś ca sūkṣmānīkṣā ca no bhavet || [15 || ]!\n#347\n#\n 본고는 이 대목을 모두 대론자의 목소리이자 새로운 내용의 도입부로 이해하나, 박현수\n519\n에 따르면 (1) sanniveśaparikalpa eṣaḥ <|> paramāṇuḥ saṁghāta iti vā 혹은 (2)\nsanniveśaparikalpa eṣaḥ를 바수반두의 목소리이자 【8】의 마무리로 이해하는 견해들이\n발견되며, 특히 박현수 자신은 (1)의 가능성을 옹호한다. 【9】 및 박현수(2013) 34쪽-39쪽\n참조.!\n그는 자신의 이해가 “현장과 규기, 그리고 진제의 한역을 통해 지지”(박현수(2013) 37쪽)된\n다고 하나 그 자신 역시 간접적으로 소개하고 있듯이 비닛따데바는 본고와 같이 이해하고 있\n다. 山口 益·野澤 靜證(1965) 90쪽 및 박현수(2013) 36쪽 참조.!\n여기서 특히 sanniveśa의 사용 맥락 및 【9】의 대론자의 사상적 정체성이 해석상의 관건이\n될 것이다. 이 문제를 포괄적으로 다루기 위해서는  【8】 및 【9】에 대한 기존 주석서들의 이해\n를 상세히 검토해야 할 것이다. 그러나 범어 표현만 놓고 보면, 많은 선행 연구자들이 그랬\n듯, 이 대목을 모두 대론자의 목소리로 돌려야 할 것이다."
+            },
+            {
+              "id": "kor-lee-page-357",
+              "label": "Printed page 348",
+              "locator": "PDF page 357 · printed page 348 · direct PDF text extraction",
+              "text": "yadi yāvad avicchinnaṁ n[ī](lādi)kañ cakṣuṣo viṣayas tad ekaṁ\ndravyaṁ kalpyate pṛthivyāṁ krameṇetir na syāt <|> gamanam ity\narthaḥ | sakṛtpāda(k)[ṣ]epeṇa sarvasya gatatvāt |\na(r)vā[g]bhā[g]asya ca grahaṇaṁ parabhāgasya cāgra(haṇaṁ)\nyugapan na syāt <|> na hi tasyaiva tadānīṁ grahaṇañ cāgrahaṇañ\nca yuktam | vicchinnasya cānekasya hastyaśvādikasyaikatra vṛttir\nna syāt <|> yatraiva hy ekan tatraivāparam iti kathan tayor vicche(do\nyujya)te | katham vā tad ekaṁ yat prāptañ ca tābhyāṁ na ca\nprāptam antarāle tacchūnyagrahaṇāt | sūkṣmāṇāñ codakajantūnāṁ\nsthūlaiḥ samānarūpāṇām anīkṣaṇaṁ na syāt | yadi\nla(kṣaṇabhe)dād eva dravyāntaratvaṁ kalpyate <|> nānyathā <|>\ntasmād avaśyaṁ paramāṇuśo bhedaḥ kalpayitavyaḥ <|> sa caiko\nna sidhyati | tasyāsiddhau rūpādīnāṁ cakṣ(u)rādiviṣayatva(m\nasiddham i)ti siddhaṁ vijñaptimātram bhavatīti |\n#348"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-09",
+          "label": "Argument section 9 · verses 11–15, part 3",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-358",
+              "label": "Printed page 349",
+              "locator": "PDF page 358 · printed page 349 · direct PDF text extraction",
+              "text": "【9】 [대론자:] 이는 구성(sanniveśa)과 관련한 변계(parikalpa)이다. ‘[하나의]\n극미’냐 ‘응집된 것’이냐 하는 이런 생각이 무슨 소용인가? 그러나 색 등의 특징\n(lakṣaṇa)은 부정되지 않는다.〖a〗!\n[바수반두:] 그런데 저들 [색 등]의 특징은 무엇인가?!\n[대론자:] 눈 등의 대상영역임, 그리고 파랑 등임이다.!\n[바수반두:] ‘파랑·노랑 등 눈 등의 대상영역이라고 인정되는 이것이 단일한 실\n체인가 아니면 복수의 것인가?’라는 바로 이점이 결정되고 있는 것이다.!\n[대론자:] 그 [각각의] 경우 어떻게 되는가?!\n[바수반두:] 복수의 것인 경우는 오류가 [앞에서] 이미 이야기되었다.!\n단일한 것이라고 할 경우, 점진적인 진행이 없을 것이고, 동시적인 파악·비파악\n이 없을 것이며, 분간된 복수의 존재도 없을 것이고, 미세한 것이 관찰되지 않\n는 것도 없을 것이다. 〖제15송〗!\n만약 눈의 대상영역인 파랑 등이, 분간되지 않는 한에서(yāvat), 단일한 실체라\n고 상정된다면, 지면에서의 점진적인 진행이 없을 것이다. [‘진행’이란] ‘나아감’\n을 뜻한다. 한 걸음을 내딛는 것으로 모든 곳에 나아가기 때문이다. 한편 이쪽\n면 부분은 파악되는 동시에 다른쪽 부분이 파악되지 않는 것이 가능하지 않을\n것이다. 왜냐하면 바로 그 [동일한 사물]을 그 [동일한] 때에 파악하는데 [동시\n에] 파악하지 못하는 것은 타당하지 않기 때문이다. 다른 한편 분간된 복수의\n코끼리·말 등이 한 장소에 존재하지 않을 것이다. 왜냐하면 하나가 있는 바로\n그곳에 다른 것이 있을테니, 어떻게 양자의 분간이 타당하겠는가? 혹은 어떻게\n#349"
+            },
+            {
+              "id": "kor-lee-page-359",
+              "label": "Printed page 350",
+              "locator": "PDF page 359 · printed page 350 · direct PDF text extraction",
+              "text": "양자가 차지한 그 단일한 [장소]를 [동시에 그 양자가] 차지하지 않는 것이 어떻\n게 [타당하겠는가?] 사이에 저 [양자]가 [장소를 차지하지 않고] 비어있음을 파\n악하기 때문이다. 미세하나, 조대한 것들과 동일한 모습을 가진, 수중생물들이\n관찰되지 않는 것이 없을 것이다. 만약 바로 특징상의 구별만으로부터 [복수의\n것들이] 별개의 실체라는 점을 상정할 [뿐] 다른 방식으로 [접근하지] 않는다면\n말이다.〖b〗 따라서 반드시 극미에 따른 구별이 상정되어야 할 것이다. 그런데 이\n[극미]는 단일한 것으로 성립하지 않는다. 저 [극미]가 성립되지 않을 경우 색\n등이 눈 등의 대상영역이라는 것이 성립되지 않는다. 이런 점에서 [삼계에 속한\n것이] 단지 표상일 뿐이라는 점이 성립된다.〖c〗\n#350"
+            },
+            {
+              "id": "kor-lee-page-360",
+              "label": "Printed page 351",
+              "locator": "PDF page 360 · printed page 351 · direct PDF text extraction",
+              "text": "【9】 〖a〗!\n여기서 대론자는 ‘극미’와 관련된 골치아픈 이야기는 단지 형이상\n학적 사변으로서 배제해버리고 오직 의식에 주어진 것만 가지고 이야기를 하자\n고 태세를 전환하고 있다. 여기서 ‘변계(parikalpa)’라는 표현의 사용이 흥미롭\n다고 할 수 있. 앞서 【6】에 등장한 ‘변계소집된(parikalpita)’이란 표현과 호응\n하고 있기 때문이다. 즉, 대론자는 극미의 이율배반성에 기반한 【7】 - 【8】의 논\n의가 바수반두 자신이 문제시했던 사변에 지나지 않는다고 불만을 표하고 있는\n것이다. 대론자의 이러한 대응은 일견 합리적으로 보인다.\n\n\n520\n\n【9】 〖b〗 자은 기는 ‘만약 바로 특징상의 구별만으로부터 [복수의 것들이] 별개\n의 실체라는 점을 상정할 [뿐] 다른 방식으로 [접근하지] 않는다면 말이다’를 정\n량부의 해명으로 간주한다.\n\n\n521\n\n그러나 범어 표현을 보면 이 구절은 바수반두의 발화에 속한 것이기 때\n문에 정량부의 직접적인 해명일 수는 없고, 기껏해야 정량부를 고려한 바수반\n두의 진술 정도로 해석할 수 있다. 물론 정밀한 조사를 해봐야겠지만, 『구사론』\n이나 『성업론』 등에서 정량부로 귀속되는 학설 중에서 『이십론』의 이 ‘다른 방식’\n을 직간접적으로 보여주는 대목은 발견되지 않는다.!\n#351\n#\n 시더리츠는 더 나아가 대론자가 ‘속성-개별자 이론(the property-particulars theory)’\n520\n에 복무한다고 이해한다. Siderits(2007) 165쪽-167쪽 참조.!\n특히 제15송 이하의 바수반두의 답변을 보면 그의 ‘철학적’ 해석은 흥미롭고 또 계발적이라\n고 할 수 있다. 그러나 제15송 이전에 바수반두가 “‘파랑·노랑 등 눈 등의 대상영역이라고 인\n정되는 이것이 단일한 실체인가 아니면 복수의 것인가?’라는 바로 이점이 결정되고 있는 것\n이다.”라고 타박하고 있기에 문제의 대론자는 철학적 소양이 다소 떨어지는 자로 보인다.\n#\n T1834_998b10-18 및 효도 가즈오(2011) 183쪽 참조.\n521"
+            },
+            {
+              "id": "kor-lee-page-361",
+              "label": "Printed page 352",
+              "locator": "PDF page 361 · printed page 352 · direct PDF text extraction",
+              "text": "【9】 〖c-1〗!\n바수반두에 따르면 극미의 개념을 완전히 소거해버릴 수가 없다.\n만약 극미의 관념을 완전히 소거한다면, 이에 따라 물질적 분할과 합성의 관념\n들도 같이 사라지는데, 이 경우 경험하게 될 세계는 우리가 실제로 경험하는 세\n계와는 판연히 달라지기 때문이다. 제15송 이하의 네 가지 경우들은 그러한 ‘이\n상한 나라’의 문제적 양태들을 구체적으로 거론한 것이다.!\n\n여기서 바수반두가 결론을 내리는 방식이 흥미롭다. 파랑·노랑 등의 순\n전한 현상적 속성만 가지고는 우리가 경험하는 세계를 구축할 수 없고 극미를\n기준점으로 하는 분할과 합성의 관념을 저 현상적 속성들과 결합시켜야만 우리\n가 경험하는 것과 같은 감각 세계를 만들어 낼 수 있다. 이와 같이 불가결한 극\n미가, 앞서 【7】 - 【8】의 논의에서 밝혔듯, 그 이율배반적 면모 때문에 물질적 실\n체로서는 정작 아무런 역할을 하지 못한다. 그렇기 때문에 소위 ‘인식과 떨어진\n감각적·물질적 대상’은 불가능한 관념이다. 따라서 삼계에 속한 것이 단지 표상\n일 뿐이라는 것이다.\n\n\n522\n\n여기서 바수반두가 직접 설명하고 있지는 않지만, 유식성의 교의를 받아\n들이기에 극미를 실체로 받아들일 수 없는 유가행파로서 우리의 감각 세계를\n어떻게 설명해 낼 수 있는지가 문제가 될 수 있다. 왜냐하면 유식성 주장이 옳\n#352\n#\n 이러한 결론의 또 다른 전제는 【6】의 말미에서 대론자로 하여금 “그런데 어떻게 ‘세존께\n522\n서 저 의도를 가지고 색처 등이 존재한다고 말씀하신 것이고 이를 넘어 색 등에 대한 표상들\n각각에게 대상영역이 되어주는 저 [색처]들이 전혀 존재하지 않는다(na punaḥ santy eva)’\n는 이점을 이해해야 하는가?”라는 식으로 양자택일의 선택지를 제시하게 한 데에 있다. 【6】\n〖c-1〗 참조."
+            },
+            {
+              "id": "kor-lee-page-362",
+              "label": "Printed page 353",
+              "locator": "PDF page 362 · printed page 353 · direct PDF text extraction",
+              "text": "은 것이라면 우리의 경험 세계를 잘 설명해줘야 할 텐데, 바수반두는 극미를 실\n체로 받아들이지 않기에 여기서 대론자가 겪게 되는 어려움을 똑같이 겪지 않\n는다는 보장이 없기 때문이다. 그러나 이는 큰 문제가 되지 않을 것으로 보인\n다. 왜냐하면, 극미를 ‘실체로서’ 거부한다는 것이 극미의 관념 자체를 거부하는\n것은 아니기 때문이다. 물질의 관념을 받아들이는 자들은 극미를 실체로서 거\n부할 경우 곧바고 극미의 관념도 거부하게 되겠지만, 바수반두로서는 그럴 필\n요가 없다. 오히려 우리가 경험하는 감각적 세계는 ‘바닥이 없는 것’, 즉 ‘원칙상\n무한히 분석할 수 있는 것’이 되고, 이는 역설적이게도 감각적 세계를 단적으로\n허구로 간주할 수 있는 좋은 이유를 잘 설명해주는 것이기 때문이다.!\n\n이런 한에서 【9】의 초두에서 대론자가 “이는 구성(sanniveśa)과 관련한\n변계(parikalpa)이다. ‘[하나의] 극미’냐 ‘응집된 것’이냐 하는 이런 생각이 무슨\n소용인가?”라고 발언했던 점이 재조명될 필요가 있다. 문제의 ‘소용’을, 본고의\n상기 이해가 맞다면, 유가행파야말로 아주 잘 해명하고 있기 때문이다. 나아가\n극미론 자체를 사변으로 몰고가는 논적의 대응은 매우 단순하고 순진한 것으로\n판명난다. 정작 대론자야말로 자신의 한계는 보지 못한 채 자기가 이해하지 못\n하는 상대방의 ‘분별’을 탓하고 있기 때문이다.!\n\n〖c-2〗!이 마지막 대목에서 분명하게 드러나듯이, 일찍이 현상론적 독해를 옹호\n하던 코츄무텀이 읽었던 것처럼 ‘극미론’은 단지 포기해서 될 문제가 아니다.\n  5\n#353\n#\n 본고 1.3 참조.\n523"
+            },
+            {
+              "id": "kor-lee-page-363",
+              "label": "Printed page 354",
+              "locator": "PDF page 363 · printed page 354 · direct PDF text extraction",
+              "text": "극미의 이율배반성 때문에 극미의 관념을 포기해야 한다고 말하면, 바수반두\n역시 감각적 세계의 분할과 합성을 설명할 수 없는 사람이 되어버리기 때문이\n다. 한편 외트케의 주의 깊은 한정에도 불구하고\n\n 【7】 - 【9】의 논의를 통해, 바\n524\n수반두는 자신이 포장했던 것 이상의 내용물을 주고 있는 것 같다. 즉, 논의 자\n체는 인식의 대상인 한에 있어서의 물질적 대상의 거부로 시작하고 그렇게 진\n행되지만, 정작 그렇게 진행된 논의를 따라갈 경우, 독자로서는 기존의 물질성\n관념이 도대체 얼마나 허약한지까지 깨닫게 되기 때문이다.\n#354\n#\n 외트케의 『이십론』 독해 및 그에 대한 비평은 본고 2.1.2 참조.\n524"
+            },
+            {
+              "id": "kor-lee-page-364",
+              "label": "Printed page 355",
+              "locator": "PDF page 364 · printed page 355 · direct PDF text extraction",
+              "text": "Silk(2018) 111쪽-121쪽: pramāṇavaśād astitvaṁ nāstitvaṁ vā\nnirddhāryate | sarveṣāñ ca pramāṇānāṁ pratyakṣam pramāṇaṁ\ngariṣṭham ity asaty arthe ka(tham) iyaṁ buddhir bha(vatīdaṁ me)\npratyakṣam iti ||!\npratyakṣabuddhiḥ svapnādau yathā |!\nvināpy artheneti pūrvam eva jñāpitaṁ |!\nsā ca yadā tadā | na so <’>rtho dṛśyate tasya pratyakṣatvaṁ\nkathaṁ mataṁ || [16 ||]!\nyad(ā) ca sā pratyakṣa(buddhir bhava)tīdaṁ me pratyakṣam iti tadā\nna so <’>rtho dṛśyate manovijñānenaiva paricchedāc\ncakṣurvijñānasya ca tadā niruddhatvād iti kathaṁ tasya\npratyakṣatvam iṣṭaṁ | vi[ś]eṣ[e]ṇa tu kṣaṇika(vādino) yasya tadānīṁ\nniruddham eva tad rūpaṁ rasādikaṁ vā |!\nnānanubhūtam manovijñānena smaryate <|> ity avaśyam\narthānubhavena bhavitavyaṁ tac ca darśanam ity evaṁ\ntadviṣayasya rūpāde(ḥ) p(r)atyakṣatvaṁ mataṁ |!\nasiddham idam anubhūtasyārthasya smaraṇam bhavatīti | yasmāt |!\nuktaṁ yathā tadābhāsā vijñaptiḥ ||!\nvināpy arthena yathārthābhāsā cakṣurvijñānādikā vijñaptir\nutpa(dya)te tathoktaṁ ||!\nsmaraṇaṁ tataḥ |!\n#355"
+            },
+            {
+              "id": "kor-lee-page-365",
+              "label": "Printed page 356",
+              "locator": "PDF page 365 · printed page 356 · direct PDF text extraction",
+              "text": "tato hi vijñapteḥ smṛtisamprayuktā tatpratibhāsaiva rūpādivikalpikā\nmanovijñaptir utpadyata iti na smṛtyutpādād arthānubhavaḥ sidhyati\n|\n#356"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-10",
+          "label": "Argument section 10 · verses 16–17a",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-366",
+              "label": "Printed page 357",
+              "locator": "PDF page 366 · printed page 357 · direct PDF text extraction",
+              "text": "【10】 [대론자:] 바른 인식수단(pramāṇa)의 힘에 근거해 [어떤 것이] 존재하는\n가 혹은 존재하지 않는가가 정해진다. 그리고 모든 바른 인식수단들 중에서 지\n각(pratyakṣa)이 가장 무거운 바른 인식수단이다. 이런 한에서 대상이 비존재\n할 경우 ‘내게 지각된 것(pratyakṣa)이 있다’는 이 인식이 어떻게 가능하겠는\n가?〖a〗!\n[바수반두:] 지각적 인식은 이를테면 꿈 속에서와 같다.!\n‘대상이 없더라도’라고 저 앞에서 알려줬다.!\n그리고 그때 대상이 보이지 않는데 그 [대상]이 지각된 것(pratyakṣa)이라고\n어떻게 생각되겠는가? 〖제16송〗!\n나아가 ‘이것은 내게 지각된 것이다’라는 저 지각적 인식이 있을 때 그 대상은\n보이지 않는다. 바로 의식에 의해 판별되기 때문이고, 안식은 그때 소멸되었기\n때문이다. 따라서 저 [대상]이 지각된 것이라는 점이 어떻게 인정된단 말인가?\n더욱이 그때 그 색 혹은 맛 등의 것이 단적으로 소멸된다는 찰나론자(kṣaṇ\nikavādin)들한테는 [더 말할 것이 없다].!\n[대론자:] 경험되지 않았던 것이 의식에 의해 기억되지는 않는다. 따라서 반드\n시 대상의 경험이 있어야 할 것이다. 그리고 그것이 [곧] 봄이다. 따라서 이처럼\n저 [봄]의 대상영역인 색 등이 지각된 것이라는 점이 생각된다.!\n[바수반두:] 경험된 대상을 기억한다는 이점은 성립되지 않는다. 왜냐하면!\n이야기된 대로 표상이 저 [대상]인양 보이는 것[이기 때문이다].!\n#357"
+            },
+            {
+              "id": "kor-lee-page-367",
+              "label": "Printed page 358",
+              "locator": "PDF page 367 · printed page 358 · direct PDF text extraction",
+              "text": "대상이 없더라도 A라는 대상인양 보이는 대로의(yathārthābhāsa) 안식 등[에\n해당하는] 표상이 발생한다. [앞에서] 그렇게 이야기되었다.!\n기억은 저 [표상]으로부터다.!\n왜냐하면 저 표상으로부터 기억(smṛti)과 상응하는(samprayukta), 바로 저\n[표상]인양 보이는, [그래서] 색 등을 [상기적으로] 분별해내는 정신적 표상\n(manovijñapti)가 발생한다. 따라서 기억이 발생하기 때문에 대상의 경험이\n성립하는 것은 아니다.〖b〗\n#358"
+            },
+            {
+              "id": "kor-lee-page-368",
+              "label": "Printed page 359",
+              "locator": "PDF page 368 · printed page 359 · direct PDF text extraction",
+              "text": "【10】 〖a〗!\n켈너·테이버에 따르면, 『이십론』은 인식에 독립적인 외적인 대상\n이 존재한다고 합리적으로 믿게 할 만한 증거가 없음을 바른 인식수단들을 개\n별적으로 검토하는 방식으로 확인하고 이로부터 대상은 존재하지 않는다는 결\n론에 이른다. 그리고 【10】의 첫 구절은 그러한 대전략을 직접 노정하고 있다.\n\n\n525\n그러나 ‘어떤 것의 존재 여부는 바른 인식 수단에 따라 확인된다’고 요약할 수\n있는 문제의 대원칙은 여기서 대론자의 목소리로 표현되고 있다. 따라서 켈너·\n테이버는 이 원칙이 어떻게 바수반두 자신의 것일 수도 있는지를 추가적으로\n설명했어야 한다.!\n\n주지하다시피 냐야 전통은 일찍부터 이 원칙을 명확한 형태로 천명하고\n있다. 심지어 바수반두와 거의 동시대에 활동한 것으로 간주되는 밧챠야나에게\n서 【10】의 초두에 나타난 것과 동일한 명제가 발견된다는 점이 주목할 만하다.\n밧챠야나에게 바른 인식수단은 앎을 넘어서 삶 전체를 떠받치는 것이다.!\n\n나아가 ‘이것이 존재한다’, ‘이것이 존재하지 않는다’라는 이것이 무슨 근거로 알려지\n는가? 바른 인식수단(pramāṇa)에 의한 지각 및 비지각을 통해서이다.\n\n\n526\n\n바른 인식수단 없이는 대상 인식이 없다. 대상 인식 없이는 행동의 목적 달성의 힘\n(sāmarthya)이 없다. 실로 바른 인식수단으로 알려진 이 대상을 갖고자 혹은 버리고\n#359\n#\n 본고 2.1.1 참조.\n525\n#\n Kellner&Taber(2014) 728쪽 및 61번 각주 재인용: athāpi khalv idam asti idaṁ\n526\nnāstīti kuta etat pratipattavyam iti. pramāṇata upalabdher anupalabdheś ca,\nNBh 614,2–3."
+            },
+            {
+              "id": "kor-lee-page-369",
+              "label": "Printed page 360",
+              "locator": "PDF page 369 · printed page 360 · direct PDF text extraction",
+              "text": "자 한다. 갖고자 함 내지는 버리고자 함으로 견인된 그 자가 추구하고 또 행동한다고\n이야기된다. 또 목적 달성의 힘이란 그 [행동]이 결과와 결부된 것이다. 추구하며 그\n대상을 갖고자 혹은 버리고자 하는 자가 그 대상을 갖거나 버린다. 한편 대상이란 즐\n거움과 즐거움의 원인이고 또 고통과 고통의 원인이다.\n\n\n527\n\n또 주지하다시피 나야 전통은 바수반두와 적대관계에 있었다. 따라서 이들의\n정체성을 형성한다고까지 할 수 있는 저 명제를 아무런 해명 없이 바수반두 자\n신의 것으로 만드는 시도는 별도의 설명을 필요로 한다고 할 수 있다. 가장 간\n단한 해결책은 【10】의 대론자를 냐야 전통에 귀속시키거나 혹은 문제의 원칙에\n동조하는 불교도로 이해하는 방식이다. 즉, 바른 인식수단들 중에서 지각이 가\n장 중요하므로 다른 수단들, 다시 말해 추리 혹은 전승에 의존해 진행된 【9】까\n지의 논의들은 단지 주변적인 것이라고 할 수 있다. 여기서 문제의 원칙이 바수\n반두에게 기울어 가던 논의의 국면을 단박에 무효화시키는 효과를 발휘하도록\n배치되어 있다는 점에 주목한다면, 켈너·테이버 류의 해석에 요구되는 해명의\n무게는 더욱 커진다고 할 수 있다.!\n\n바른 인식수단 자체나 문제의 원칙에 대해 바수반두가 여기 【10】은 물론\n이후에도 침묵한다는 점 역시 켈너·테이버에게 불리하게 작용한다. 오히려 그\n#360\n#\n NBh 1.1.1: pramāṇam antareṇa nārthapratipattiḥ | nārhtapratipattim\n527\nantareṇa pravṛttisāmarthyam | pramāṇena khalv ayaṁ jñātārtham abhīpsati\njihāsati vā | tasyepsājihāsāprayuktasya samīhā pravṛttir ity ucyate | sāmarthyaṁ\npunar asyāḥ phalenābhisambandhaḥ | samīhamānas tam artham abhīpsan\njihāsan vā tam artham āpnoti jahāti vā | arthas tu sukhaṁ sukhahetuś ca |\nduḥkhaṁ duḥkhahetuś ca |"
+            },
+            {
+              "id": "kor-lee-page-370",
+              "label": "Printed page 361",
+              "locator": "PDF page 370 · printed page 361 · direct PDF text extraction",
+              "text": "는 저 원칙 자체는 그대로 둔 채 반론을 구성하고 있을 뿐이다. 이러한 태도는 ‘바\n른 인식수단들 중 지각이 가장 중요한 것’이라는 두 번째 명제에 대해서도 그대\n로 유지된다. 그의 핵심 메시지는 문제의 ‘지각적 인식’이 실상 지각 자체가 아\n니라는 점에 있다. 비슷한 구도가 『구사론』에서도 재차 발견된다.!\n\n장작 등이 불 등과 결합하기 때문에 소멸하는 것이 실로 경험(dṛṣṭa)된다. 그리고\n경험보다 무거운 바른 인식수단은 없다. 따라서 모든 것의 소멸은 원인이 없는 것이\n아니다. … 따라서 이 대상은 [경험이 아니라] 추리로 입증되어야 할 것이다.\n\n\n528\n\n여기서 ‘경험’은 바른 인식수단 중 하나인 지각과 같은 뜻으로 사용되고 있는데,\n흥미롭게도 구사론주는 소멸의 원인이 있는지 여부를 지각이 아니라 추리로 판\n단해야 한다고 발언하고 있다. 여기서도 『이십론』에서처럼 ‘바른 인식수단 중에\n서 지각이 가장 중요하다’는 대론자의 전제가, 거부되는 것이 아니라, 무시되고\n있다.!\n\n바른 인식수단에 대한 바수반두의 최종적 입장을 확인하기 위해서는\nVyākhyāyukti의 다음 대목을 참조할 필요가 있다.!\n\n#361\n#\n Pradhan(1967) 193쪽: dṛṣṭo vai kāṣṭhādīnām agnyādisaṁyogād vināśaḥ | na\n528\nca dṛṣṭād gariṣṭhaṁ pramāṇam astīti | na ca sarvasyākasmiko vināśaḥ | …\ntasmād anumānasādhyo ’yam arthaḥ |"
+            },
+            {
+              "id": "kor-lee-page-371",
+              "label": "Printed page 362",
+              "locator": "PDF page 371 · printed page 362 · direct PDF text extraction",
+              "text": "[대론자:] 세존께서 『승의공경』에서 “업(*karman)도 존재하고 이숙(*vipāka)도 존재\n하나 행위자(*kāraka)는 지각되지 않는다.”라고 말씀하신 저 [업·이숙]은 승의적으로\n(*paramārthataḥ) [존재하는가] 아니면 세속적으로(*saṁvṛtitaḥ) 존재하는가?!\n[바수반두:] 그렇다고 하면 어떻게 되는가?!\n[대론자:] 만약 승의적으로 [존재한다]고 한다면 어떻게 모든 법이 자성이 없는 것이겠\n고, 만약 세속적으로 [존재한다]고 한다면 행위자도 세속적으로 존재하여 ‘행위자는 지\n각되지 않는다’라고 말할 수 없다고 하면?!\n[바수반두:] 먼저 ‘세속’이라고 하는 이 [표현]은 무엇이고 ‘승의’는 어떤 것이길래, 그\n에 따라 무엇이 세속적 존재(*saṁvṛtisat)이고 무엇이 승의적 존재(*paramārthasat)\n라고 알아야 하는가?!\n[대론자:] 명칭(*nāma)·언어(*abhilāpa)·가설(*prajñapti)·언설(*vyavahāra)이 세\n속이고 법들의 자상(*svalakṣaṇa)이 승의라고 하면?!\n[바수반두:] 그러면 그 경우 업과 이숙 양자는 명칭으로도 존재하고 자상으로도 존재\n하니 저 양자는 [세속적 존재·승의적 존재 중 어느 쪽이든] 바라는 대로의 존재라고 이\n해해도 될 것이다. 우리에게는 뿌드갈라(*pudgala)가 세속적으로 존재하나 실체적으\n로는(*dravyataḥ) [존재하지] 않으니, [오]온들에 대해 그것의 명칭이 가설되기 때문\n이다. 업과 이숙은 세속적으로 [그리고] 실체적으로 존재하나 승의적으로는 존재하지\n않으니, 세간적(*laukika) 앎의 대상영역이기 때문이다. 뛰어난 것(*parama)은 출세\n간적 앎(*lokottarajñāna)으로, 그것의 대상이라서 ‘승의(*paramārtha)’이다. 저 [업\n과 이숙] 양자의 자상은 이 [출세간적 앎]의 대상영역이 아니니, 이것의 대상영역은 언\n어화될 수 없는(*anabhilāpya) 공상(*sāmānyalakṣaṇa)이기 때문이다.!\n[대론자:] 여기서 세간적 앎[이 바른 인식수단(*pramāṇa)인가] 아니면 출세간적 [앎]\n은 바른 인식수단인가라고 하면?!\n#362"
+            },
+            {
+              "id": "kor-lee-page-372",
+              "label": "Printed page 363",
+              "locator": "PDF page 372 · printed page 363 · direct PDF text extraction",
+              "text": "[바수반두:] 단적으로는 출세간적 [앎이 바른 인식수단]이다. 세간적 [앎]에는 구분이\n있으니, 출세간적 [앎] 이후에 얻는 [앎]은 바른 인식수단이다. 다른 [세간적 앎]은 바른\n인식수단이 아니다. 이에 대중부(*Mahāsaṁghika) 승가의 게송, [즉] “눈·귀·코도 바\n른 인식수단이 아니고, 혀·몸·마음도 바른 인식수단이 아니니, 만약 이 감관(*indriya)\n들이 바른 인식수단이라고 하면, 성자들의 길(*āryamārga)이라는 과업(*kṛtya)이 없\n어질 것이다.”라고 한 것과도 부합한다.\n\n\n529\n#363\n#\n 堀内 俊郎(2009) 233쪽-234쪽: bcom ldan ’das kyis don dam pa stong pa nyid\n529\nlas | las kyang yod rnam par smin pa yang yod la byed pa po ni mi dmigs so\nzhes gsungs pa gang yin pa de ci don dam pa nyid du ’am | ’on te kun rdzob\nnyid du yin zhes na | de las cir ’gyur | gal te don dam pa nyid du yin na | ji ltar na\nchos thams cad ngo bo nyid med pa yin | gal te kun rdzob tu yin na byed pa po\nyang kun rdzob tu yod pas byed pa po ni mi dmigs so zhes brjod par mi bya’o\nzhes na | re zhig kun rdzob ces bya ba ’di ni ci yin | don dam pa ni gang zhig yin\n| de las ci kun rdzob tu yod dam | ci don dam par yod par shes par bya’o || ming\ndang | brjod pa dang | gdags pa dang | tha snyad ni kun rdzob yin la chos\nrnams kyi rang gi mtshan nyid ni don dam pa yin no zhes na | ’o na de lta na las\ndang rnam par smin pa gnyis ming du yang yod | rang gi mtshan nyid du yang\nyod pas de gnyis ji ltar ’dod par yod pa nyid du rtogs la rag go || nged ni gang\nzag kun rdzob tu yod kyi rdzas su ni ma yin te | phung po rnams la de’i ming\ngdags pa’i phyir ro || las dang rnam par smin pa dag ni kun rdzob tu rdzas su\nyod | don dam par ni med de | ’jig rten pa’i shes pa’i yul yin pa’i phyir ro || dam\npa ni ye shes ’jig rten las ’das pa yin te | de’i don yin pas don dam pa’o || de\ngnyis kyi rang gi mtshan nyid ni de’i yul ma yin te | de’i yul ni brjod du med pa’i\nspyi’i mtshan nyid yin pa’i phyir ro || ’dir ’jig rten pa’i shes pa ’am | ’jig rten las\n’das pa tshad ma yin zhe na | gcig kho nar ni ’jig rten las ’das pa yin no || ’jig\nrten pa ni dbye ba yod de | ’jig rten las ’das pa’i rjes las thob pa gang yin pa de\nni tshad ma yin no || gzhan ni tshad ma ma yin no || de ltar na dge ’dun phal\nchen sde pa rnams kyi tshigs su bcad pa | mig dang rna ba sna yang tshad ma\nmin || lce dang lus dang sems kyang tshad ma min || gal te dbang po de dag\ntshad yin na || ’phags pa’i lam kyi bya ba med par ’gyur || zhes bya ba ’di dang\nyang mthun par byas pa yin no ||"
+            },
+            {
+              "id": "kor-lee-page-373",
+              "label": "Printed page 364",
+              "locator": "PDF page 373 · printed page 364 · direct PDF text extraction",
+              "text": "밑줄 친 부분에 따르면 ‘통상적인’ 지각·추리·성취자의 전승이 바수반두에게는\n바른 인식수단일 수 없다. 오직 진리를 깨달은 이에게만 허용되는 것이기 때문\n이다.!\n\n그러나 『구사론』 등의 다른 용례들을 보면 통상적인 바른 인식수단들에\n도 여전히 의미가 있는 것 같다. 그렇다면 당장은 접근 불가능한 진리를 인지할\n수 있도록 그 바탕을 조성하는 데에 바른 인식수단, 그 중에서도 특히 전승 및\n추리가 사용된다면, 통상적인 바른 인식수단들이 다시금 ‘바른 인식수단’이라고\n불리지 못할 이유는 없을 것이다. 이것을 Vyākhyāyukti의 상기 바른 인식수단\n이해와 결합하면 이중적 구도가 도출된다. 이때 켈너·테이버가 주목했던 저 원\n칙, 즉 ‘문제의 대상 x의 존재 여부는 바른 인식수단으로 결정된다’는 선언은 그\n표면적 의미와는 전혀 다른 의미 역시 가지게 되는 것으로 보인다. 문제의 선언\n이 깨달은 자의 후득지를 의도한 것이라면 바수반두로서는 적극 찬성할 것이\n고, 통상적인 바른 인식수단을 의도한 것이라면 선뜻 받아들일 수 없을 것이다.\n이렇게 보면, 해당 원칙을 자신이 아니라 대론자로 하여금 대신 발화하게 한 것\n과 문제의 원칙 자체에 대해서 전혀 연루되지 않은 채 논의를 전개한 것은 바른\n인식수단에 대한 바수반두 자신의 이해와 조화롭게 공존한다.\n\n\n530\n\n#364\n#\n 나아가 【10】의 저 논의 직후에 【11】에 후득지와 관련한 논의를 배치를 한 것은 상기\n530\nVyākhyāyukti의 인용문에서 후득지가 진정한 바른 인식수단으로 간주되고 있는 점을 적극\n적으로 고려할 때 비로소 잘 설명된다. 【11】 〖b〗 참조."
+            },
+            {
+              "id": "kor-lee-page-374",
+              "label": "Printed page 365",
+              "locator": "PDF page 374 · printed page 365 · direct PDF text extraction",
+              "text": "【10】 〖b-1〗! 자은 기는 제16송에 대해 다음과 같이 분석한다.!\n\n[본문:] (1) 지각적 인식은 이를테면 꿈 속등에서와 같다. (2) 지각적 인식을 이미 일\n으킨 때에는 (a) 봄 및 (b) 대상영역이 이미 없으니 어떻게 지각이 있음을 인정하겠느\n냐?!\n[술기:] … (1) 위의 첫 구절은 비유를 끌어들여 경량부를 논파한 것이고 (2) 아래의 세\n구절에서는 간략하게 두 부류를 논파하고 있는데, 앞은 정량부 등 비찰나논자들을 논\n파하는 것이고 뒤는 설일체유부 등 찰나논자들을 논파하는 것이다. (2-1) 이를테면 ‘지\n각적 인식을 이미 일으킨 때에는’ 그 [지각에 해당하는] (a) ‘봄’은 ‘이미 비존재하기 때\n문에’ ‘어떻게 지각이 있음을 인정하겠느냐’[는 식으로] 정량부 등을 논파하는 것이고,\n(2-2) [또] 이를테면 ‘지각적 인식을 이미 일으킨 때에는’  그 ‘(a) 봄 및 (b) 대상영역\n이 이미 비존재하니’ ‘어떻게 지각이 있음을 인정하겠느냐’[는 식으로] 설일체유부 등\n을 논파하는 것이다. 대중부 등의 주장·사변은 다르나 역시 설일체유부에서처럼 논파\n를 진행해야 할 것이다. 세 번째 구절에서 ‘및(及)’ 이라고 한 표현은 드반드바[를 표시\n한 것]이니 두 가지 비판이 있음을 드러내려는 의도로 아래에 가서 알게 될 것이다.\n\n\n531\n\n여기서 자은 기는 정량부와 설일체유부를 주요 논적으로 지목하며, 저 지각적\n인식이 발생하는 시점에 문제의 ‘(a)지각(=봄)’과 그 ‘(b)대상(=대상영역)’의 존\n#365\n#\n T1834_999b20-c02: 論曰。頌曰。現覺如夢等。已起現覺時。見及境已無。寧許有現\n531\n量。!\n述曰。…上一句引喩破經部。下三句中。略破二類。初破正量部等非刹那論。後破一切有等刹\n那論者。謂已起現覺時。其見已無。寧許有現量。破正量部等。謂已起現覺時。其見及境已無。\n寧許有現量。破薩婆多等。大衆部等宗計不同。亦應敍破。如薩婆多。第三句中。言及字者。\n卽相違釋。意顯有二難。至下當知。"
+            },
+            {
+              "id": "kor-lee-page-375",
+              "label": "Printed page 366",
+              "locator": "PDF page 375 · printed page 366 · direct PDF text extraction",
+              "text": "재 여부가 독립적일 수 있다고 본다. 정보의 출처는 알 수 없지만 개연성이 있\n는 설명이라고 할 수 있다. 그러나 자은 기가 의존하고 있는 현장의 번역 ‘見及\n境已無’에 대응하는 범어 표현이 na so ’rtho dṛśyate라서 문제의 ‘見及境’은\n복합어가 아니며 자은 기의 이해처럼 봄(見)과 대상영역(境)이 병렬적으로 이해\n되고 있는 것도 아니다. 어쨌든 바수반두의 답변의 골자는 소위 시간차(time-\nlag) 현상에 주목하는 것이다.!\n\n‘찰나론자(kṣaṇikavādin)’가 거론되는 대목 역시 흥미롭다. 권오민은\n씰크의 새 편집본이 나오기 전에 이 부분을 올바르게 ‘찰나론자’로 고쳐읽는 한\n편 문제의 ‘찰나론자’를 경량부라고 주장한다.\n\n 그러나 그가 주로 참고하고 있\n532\n는 「이십론술기」에서는 정작 이 대목의 대론자의 사상적 정체성을 ‘경량부’에\n한정하지 않는다.!\n\n[본문:] [하물며] 찰나논자에게 이러한 [지각적] 인식이 있을 때에는!\n[술기:] 이하는 설일체유부 등을 논파하는 것이다. 이들은 대상영역과 심·심소가 모두\n매 찰나 소멸한다고 주장하기에 ‘찰나론(*kṣaṇikavāda)’라고 이름을 붙인다. ‘이러한\n[지각적] 인식이 있을 때에는’은 게송의 두 번째 구절(已起現覺時: ‘지각적 인식을 이미\n일으켰을 때에는’)을 풀이한 것으로, 저들이 사변하는 바를 짧게 참조한 것이다.\n\n\n533\n\n#366\n#\n 권오민(2019) 제5장 5절 참조.\n532\n#\n T1834_1000a24-26 論。刹那論者有此覺時。!\n533\n述曰。下破薩婆多等。此等執境及心心所。皆念念滅。名刹那論。有此覺時。釋頌第二句。牒\n彼所計。"
+            },
+            {
+              "id": "kor-lee-page-376",
+              "label": "Printed page 367",
+              "locator": "PDF page 376 · printed page 367 · direct PDF text extraction",
+              "text": "또 다른 근거는 『순정리론』의 유관 대목에 대한 권오민 자신의 이해이다. 물론\n그가 보고하고 있는 슈릴라따와 상가바드라 사이의 논쟁 자체는 바수반두가\n【10】의 논변을 구성하는 데에 핵심적인 밑바탕이 되었을 것이다. 그러나 문제\n의 논쟁에 대한 본고의 파악은 권오민의 파악과 상당히 다르다. !\n\n[상가바드라:] 다섯 식이 과거[법]만을 인식대상으로 삼는다면, 저 [과거법]에 대해\n“[내게] 지각이 있다”는 인식은 어떻게 가능하겠는가?!\n[슈릴라따:] 자신의 경험(*anubhava)에 대해, 이를테면 “내가 일찌기 이러이러한\n고통 및 즐거움을 수용했다(*anu √bhū).”라고 하는 것처럼, “[내게] 지각이 있다”는\n인식[이 가능하다].!\n[상가바드라:] 이와 같은 해명은 타당하지 않다. 자신의 경험에 대해 수용하는 것과\n판단(*√budh?)하는 것은 시간상 차이가 나기 때문이다. 이를테면, 자신에게 일찌기\n발생했던 경험을 한 때에 수용하고 다른 때에 판단하는 것이다. ‘수용할 때’란 이를테\n면 손해 및 이익을 보는 때로, 이때 이 경험은 아직 판단의 대상영역이 되지 않았으\n니, 말하자면 [저 경험과] 다른 대상영역을 인식하는 식과 동시발생적인 경험이 바로\n지금 앞에 나타날 때 손해 및 이익을 볼 수 있는데, 이 손해 및 이익의 상태/단계\n(*avasthā)를 ‘수용할 때’라고 이름을 붙인다. 곧 자체로서의 경험이니, 동반하는 접\n촉(*sparśa)을 수용하여 자체적으로 발생하기 때문이고, 식 등이 저 손해 및 이익의\n양상(*ākāra)을 수용하여 자체적으로 일어나기 때문이다. 이것이 과거로 소멸하여\n현재의 기억을 발생시키는 대상영역이 될 수 있으니, 이 기억의 상태/단계를 ‘판단할\n때’라고 이름을 붙인다. 이러한 방식(*naya)으로 오직 지각으로 일찌기 경험한 사태\n에 대해서만 지각적 인식이 있으니, 따라서 지각적 인식이 자신의 경험에 대해 있다\n는 것은 [이처럼] 성립한다. 지각에는 세 가지가 있으니, 감관에 의존한\n#367"
+            },
+            {
+              "id": "kor-lee-page-377",
+              "label": "Printed page 368",
+              "locator": "PDF page 377 · printed page 368 · direct PDF text extraction",
+              "text": "(*indriyāśrita?) [지각], 수용적인(*anubhava?) [지각], 판단적인(*bodhi?) 지각\n으로, 본성상 차이가 나기 때문이다. 과거의 색 등을 일찌기 지각으로 경험하지 않았\n다고 이미 인정했으니, 어떻게 “자신의 경험에 대해 지각적인 인식이 있다”고 말할\n수 있겠는가? [이는] 마치 타인의 경험은 수용적인 지각으로 경험한 것이 아니기에\n“내가 일찌기 이러이러한 고통 및 즐거움을 경험했다.”고 말하는, [그러한] 지각적 인\n식은 없는 경우와 마찬가지이다. 저 사람의 경험을 인식대상으로 하는 앎은 이미 지\n각적 인식이 아닌 것이다. 이처럼 현재의 색 등은 자신의 감관에 의존한 지각으로 경\n험한 것이 아니라면 “내가 일찌기 이러이러한 색 등을 경험하였다”라는 지각적 인식\n이 없다고 해야할 것이다. 저 사람의 대상영역을 인식대상으로 하는 앎은 지각적 인\n식이 아니라고 해야할 것이다.!\n또 만약 현재의 색 등 다섯 가지 대상영역이 지각으로 파악되는 것이 아니라[고 한다]\n면, 마치 미래의 경험을 인식대상으로 하여 발생된 앎의 경우와 같이, 일찌기 경험적\n지각에 의해 파악된 것이 아닌 것을 인식대상으로 하기 때문에 “내가 일찌기 이러이\n러한 고통 및 즐거움을 경험하였다.”라고 스스로 말해서는 절대 안 될 것이다. 과거\n의 색 등을 인식대상으로 하여 일어나 앎의 경우에 준해, 감관에 의존한 지각으로 파\n악된 것이 아닌 것을 인식대상으로 하기 때문에, “내가 일찌기 이러이러한 색 등을\n경험하였다.”라고 스스로 말해서는 안 될 것이다. 괴로운 경험 등은 반드시 수용적\n지각에 의해 경험된 다음에야 저 [괴로움 등]을 인식대상으로 하는 지각적 인식이 생\n기는 경우가 있는 것처럼, 이와 같이 색 등은 반드시 감관에 의존한 지각에 의해 경\n험된 다음에야 저 [색 등]을 인식대상으로 하는 지각적 인식이 생긴다. 이치에 의해\n강제되는 바이기 때문에, 확정적으로 믿고 받아들여야 할 것이다.!\n[슈릴라따:] 만약 경험을 수용할 때가 경험을 인식대상으로 삼는 [때]가 아니고, 경험\n을 인식대상으로 삼을 때가 경험을 수용하는 [때]가 아니라면, 세존께서 무슨 까닭에\n#368"
+            },
+            {
+              "id": "kor-lee-page-378",
+              "label": "Printed page 369",
+              "locator": "PDF page 378 · printed page 369 · direct PDF text extraction",
+              "text": "“즐거운 경험을 경험할 때 ‘즐거운 경험을 경험한다’고 있는 그대로 분명히 알고…”\n와 같이 말씀하셨던 것인가?!\n[상가바드라:] 여기에는 문제될 것이 없다. 이와 같이 말씀하신 것은, 관찰을 할 때가\n수용을 할 때라는 것이 아니라, 요가수행자들이 일찌기 수용적 지각으로 파악한 즐\n거운 경험 등에 대해 오류가 없기 때문에 이와 같은 말씀을 하신 것이다. 이 때문에\n여러 지각들에 의해 일찌기 경험되지 않은 대상영역에 대해 지각적 인식이 있다[고\n해서]는 안 될 것이다.\n\n\n534\n\n권오민의 이해와 달리, 시간차 현상 자체에 대해 상가바드라와 슈릴라따 모두\n인지하고 있으며, 바수반두의 대론자의 모델은 슈릴라따라기보다는 상가바드\n#369\n#\n T1562_374c02-375a04: 又若五識唯緣過去。如何於彼有現量覺。!\n534\n如於自身受有現量覺。謂我曾領納如是苦樂。!\n此救不然。於自身受領納覺了時分異故。謂於自身曾所生受。餘時領納餘時覺了。領納時者謂\n爲損益時。爾時此受未爲覺了境。謂了餘境識俱生受。正現前時。能爲損益。此損益位。名領\n納時。卽自性受。領所隨觸自體生故。識等領彼損益行相自體起故。此滅過去。方能爲境。生\n現憶念。此憶念位。名覺了時。由斯理趣。唯於現量曾所受事。有現量覺。故現量覺於自身受\n有義得成。現量有三。依根。領納。覺了現量。性差別故。過去色等。旣許未曾現量所受。云\n何可言如自身受有現量覺。如於他身受非自領納現量所受。則無現量覺。言我曾受如是苦樂。\n緣彼受智。旣非現量覺。如是現色等。非自依根現量所受。應無現量覺。謂我曾受如是色等。\n緣彼境智。應非現量覺。!\n又若現在色等五境。非現量得。如緣未來受所起智。緣非曾領納現量所得故。必無自謂我曾領\n受如是苦樂。例緣過去色等起智。緣非曾依根現量所得故。應無自謂我曾領受如是色等。如苦\n受等。必爲領納現量受已。方有緣彼現量覺生。如是色等。必爲依根現量受已。方有緣彼現量\n覺生。現(—>理)所逼故。定應信受。!\n若領納受時非緣受爲境。緣受爲境時非領納受者。世尊何故作如是言。受樂受時如實了知受於\n樂受。乃至廣說。!\n此無違失。如是所說。是觀察時。非領納時。顯觀行者。於曾領納現量所得樂等受中。無迷謬\n故。作如是說。是故不應於諸現量曾未受境有現量覺。"
+            },
+            {
+              "id": "kor-lee-page-379",
+              "label": "Printed page 370",
+              "locator": "PDF page 379 · printed page 370 · direct PDF text extraction",
+              "text": "라이며, 아울러 상가바드라는 이전 설일체유부 논사들에게 보이지 않았던 매우\n진전된 지각(pratyakṣa) 이해를 보이고 있다. 이러한 아비달마적 논의를 배경\n에 둘 경우, 이 대목의 핵심을 시간차 논변으로 간주하는 거의 모든 선행연구들\n을 상당히 상대화시켜서 볼 수 있는 각도가 형성된다고 할 수 있다. 왜냐하면\n시간차 현상 자체는 모두가 받아들이고 있는 것이기 때문이다.!\n\n【10】 〖b-2〗! 시더리츠는 “바수반두가 시간차 논변을 사용해 직접 실재론이 틀\n렸음을 보이고 있다.”(Siderits(2007) 169쪽)고 설명한다. 그런데 그보다 앞\n서 그는 『이십론』의 대론자를 표상주의적 실재론자로 한정하였다.\n\n 이 두 가\n535\n지 진술은 상호 배치된다. 시더리츠의 이해대로 『이십론』의 대론자가 단적으로\n표상주의적 실재론자였다면, 바수반두가 여기 【10】에서 ‘시간차 논변’을 사용\n해 직접 실재론자를 논박할 필요 자체가 없다. 왜냐하면 표상주의적 실재론과\n관념론 사이의 싸움에서 직접 실재론이 끼어들 여지는 애초에 없기 때문이다.\n따라서 『이십론』의 대론자를 표상주의적 실재론자로 좁혀 읽는 그의 견해는 더\n이상 지탱되기 어렵다.!\n\n한편 『이십론』의 시간차 논변이 직접 실재론을 과연 ‘논박’하고 있는지도\n의문이다. 직접 실재론자라면 문제의 시간차 현상 자체를 거부해야 할 텐데,\n【10】 〖b-1〗에 인용한 『순정리론』에 따르면 표상주의적 실재론자인 슈릴라따\n뿐만이 아니라 직접 실재론자인 상가바드라 역시 시간차 현상을 인정하고 또\n#370\n#\n Siderits(2007) 147쪽-158쪽 참조.\n535"
+            },
+            {
+              "id": "kor-lee-page-380",
+              "label": "Printed page 371",
+              "locator": "PDF page 380 · printed page 371 · direct PDF text extraction",
+              "text": "나름대로 설명해내고 있기 때문이다. 이에 본고는 이 대목을 이십론주의 적극\n적인 논박이라기보다 유식성 명제에 부합하도록 지각(pratyakṣa) 및 기억(sm\nṛti)을 재규정하는 것이라고 제한적으로 이해한다. 물론 시더리츠 자신도 지각\n의 재정의가 일어나고 있다는 점 자체에는 동의하고 있으며 기억의 재정의가\n일어나고 있다는 관점에 동의할 것으로 보인다.\n\n 관건은 『이십론』이 직접 실\n536\n재론의 논박을 의도하고 있느냐 여부이며, 본고는 의도하고 있지 않다고 본다.\n#371\n#\n Siderits(2007) 169쪽 참조.\n536"
+            },
+            {
+              "id": "kor-lee-page-381",
+              "label": "Printed page 372",
+              "locator": "PDF page 381 · printed page 372 · direct PDF text extraction",
+              "text": "Silk(2018) 121쪽-123쪽: yadi yathā svapne vijñaptir\nabhūtārthaviṣayā tathā jāgrato <’>pi syāt tathaiva tadabhāvaṁ lokaḥ\nsvayam avagacchet* <|> na caivam bhavati <|> tasmān na svapna\nivārthopalabdhiḥ sarvā nirarthikā |!\nidam ajñāpakaṁ | yasmāt |!\nsvapnadṛgviṣayābhāvaṁ nāprabuddho ’vagacchati |[| 17 || ]!\nevaṁ vitathavikalpābhyāsavāsanānidrayā prasupto lokaḥ svapna\nivābhūtam artham paśyann aprabuddhas tadabhāvaṁ yathāvan\nnāvagacchati <|> yadā tu\ntatpratipakṣalokottaranirvikalpajñānalābhāt prabuddho bhavati tadā\ntatpṛṣṭhalabdhaśuddhalaukikajñānasammukhībhāvād\nviṣayābhāvaṁ yathāvad avagacchatīti samānam etat |\n#372"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-11",
+          "label": "Argument section 11 · verse 17b",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-382",
+              "label": "Printed page 373",
+              "locator": "PDF page 382 · printed page 373 · direct PDF text extraction",
+              "text": "【11】 [대론자:] 표상이 실재하지 않는 대상을 영역으로 함이 꿈 속에서처럼 [그\n꿈에서] 깨어난 자(jāgrat)에게도 마찬가지라고 한다면, 바로 저와 같이 [일상\n적인 표상의] 대상이 없음을 사람들은 스스로 이해하게 될 것이다. 그러나 이와\n같지가 않다. 따라서 꿈 속에서처럼 대상의 지각 모두가 대상을 결여한 것은 아\n니다.!\n[바수반두:] 이는 알려주는 것이 없는 것(ajñāpaka)이다. 왜냐하면!\n꿈에서 보는 대상영역의 비존재는 깨어나지 못한 자(aprabuddha)는 이해하\n지 못하기 [때문이다]. 〖제17송〗!\n이처럼 있는 그대로와 일치하지 않게(vitatha) 분별하는 것을 반복한 훈습이라\n는 잠에 든 사람들은 꿈 속에서처럼 실재하지 않는 대상을 보고는 깨어나지 못\n한 자로서 그 [대상]의 비존재를 제대로 이해하지 못한다. 그러나 저 [분별]의\n대치(pratipakṣa)인 출세간무분별지를 획득했기 때문에 깨달은 자\n(prabuddha)가 될 때, 그 [출세간무분별지]의 후득청정세간지의 현전이 있기\n때문에 대상영역의 비존재를 제대로 이해한다. 이런 점에서 이 [꿈의 비유]는 [유\n식성의 경우와] 동일하다.〖a〗〖b〗\n#373"
+            },
+            {
+              "id": "kor-lee-page-383",
+              "label": "Printed page 374",
+              "locator": "PDF page 383 · printed page 374 · direct PDF text extraction",
+              "text": "【11】 〖a〗!\n여기 【11】의 논의는 명백히 『섭대승론』 「소지상분」의 다음 대목을\n반복한 것이다.!\n\n이 표상들은 대상이 비실재하기 때문에 단지 표상일 뿐이라고 하는데, 이에 대한 비유\n(*dṛṣṭānta)가 뭐가 있냐고 하면, 꿈(*svapna) 등이 [그] 비유라고 봐야할 것이다. …\n만약 꿈 등에서처럼 깨어난(*prabuddha) 경우에도 [나아가] 모든 경우에도 오직 표\n상일 뿐이라면, 비유하자면 꿈 속에서 단지 표상일 뿐이라는 인식(*buddhi)이 생겨나\n는데 그와 같이 여기서는 왜 생겨나지 않냐면, 진실에 대한 앎(*tattvajñāna)으로 깨\n우친 자들에게는 생겨나니, 비유하자면 꿈 속에서 꿈을 꾸며 깨지 않은 자에게 생겨나\n지 않고 깨어난 자들에게 생겨나는 것과 같다. 진실에 대한 앎으로 깨우치지 못한 자\n에게 생겨나지 않고 진실에 대한 앎으로 깨우친 자에게 생겨난다.\n\n\n537\n\n여기서도 꿈의 비유를 그대로 받아들였을 경우에 제기되는 난점을 제기하고 있\n다. 즉, 꿈에서 깨면 꿈의 대상이 헛것이었다는 점을 알게 되지만, 왜 유식성과\n#374\n#\n 長尾 雅人(1987a) 부록 60쪽-61쪽: rnam par rig pa ’di dag ni don med pa’i phyir\n537\nrnam par rig pa tsam mo zhes bya ba ’di la dpe ci yod ce na | rmi lam la sogs pa\nni dper blta bar bya’o | … gal te rmi lam la sogs pa bzhin du sad pa na yang\nthams cad du yang rnam par rig pa tsam nyid du zad na | dper na rmi lam la\nrnam par rig pa tsam nyid kyi blo ’byung ba de bzhin du ’dir yang ci’i phyir mi\n’byung zhe na | de kho na shes pas sad pa rnams la ’byung ste | dper na rmi\nlam rmi zhing ma sad pa la mi ’byung gi sad pa la ’byung ba de bzhin du | de\nkho na shes pas ma sad pa la mi ’byung gi de kho na shes pas sad pa la ’byung\nngo |!\nT1594_138a20-b01: 又此諸識皆唯有識都無義故。此中以何爲喩顯示。應知夢等爲喩顯\n示。…若於覺時一切時處皆如夢等唯有識者。如從夢覺便覺夢中皆唯有識。覺時何故不如是\n轉。眞智覺時亦如是轉。如在夢中此覺不轉。從夢覺時此覺乃轉。如是未得眞智覺時此覺不轉。\n得眞智覺此覺乃轉。"
+            },
+            {
+              "id": "kor-lee-page-384",
+              "label": "Printed page 375",
+              "locator": "PDF page 384 · printed page 375 · direct PDF text extraction",
+              "text": "관련해서는 이런 경험이 없느냐는 비판적 질문이다. 이런 차이점 때문에 꿈의\n비유가 유식성의 유례로서 타당하지 않다는 비판을 함축하고 있는 것으로 보인\n다. 이에 대해 「소지상분」은 꿈의 비유의 구조를 그대로 보전하는 한편 그 내용\n을 확장하는 방식으로 답변한다. 즉, 꿈에서도 일단 거기서 깨어야 꿈인지 여부\n를 알 수 있는 것처럼 우리들의 경험세계도 일단 거기서 벗어나야 그 유식성이\n이해될 수 있다는 것이다. 이처럼 【11】은 『섭대승론』을 그대로 답습하고 있다고\n할 수 있다.!\n\n【11】 〖b〗!\n주어진 내용만 볼 경우, 여기 【11】과 상기 『섭대승론』 「소지상분」\n인용문의 차이는 전자만이 출세간무분별지\n\n 및 후득청정세간지(이후 ‘후득\n538\n지’로 약칭)를 직접 언급한다는 점에 있다. 이 양자와 관련해 Vyākhyāyukti의\n언급을 상기할 가치가 있다.!\n\n[질문:] 여기서 세간적 앎[이 바른 인식수단(*pramāṇa)인가] 아니면 출세간적 [앎]은\n바른 인식수단인가라고 하면?!\n[답변:] 단적으로는 출세간적 [앎이 바른 인식수단]이다. 세간적 [앎]에는 구분이 있으\n니, 출세간적 [앎] 이후에 얻는 [앎]은 바른 인식수단이다. 다른 [세간적 앎]은 바른 인\n식수단이 아니다. 이에 대중부(*Mahāsaṁghika) 승가의 게송, [즉] “눈·귀·코도 바른\n인식수단이 아니고, 혀·몸·마음도 바른 인식수단이 아니니, 만약 이 감각 능력\n#375\n#\n 『섭대승론』의 무분별지 개념에 대한 포괄적 연구로는 김성철(2008) 참조.\n538"
+            },
+            {
+              "id": "kor-lee-page-385",
+              "label": "Printed page 376",
+              "locator": "PDF page 385 · printed page 376 · direct PDF text extraction",
+              "text": "(*indriya)들이 바른 인식수단이라고 하면, 성자들의 길(*āryamārga)이라는 과업(*k\nṛtya)이 없어질 것이다.”라고 한 것과도 부합한다.\n\n\n539\n\n여기서 우선 출세간적 앎(=출세간무분별지)은 바른 인식수단으로 간주된다. 나\n아가 출세간적 앎 이후에 얻는 세간적 앎(=후득청정세간지) 역시 바른 인식수\n단으로 간주된다. 만약 『이십론』의 바른 인식수단 이해를 Vyākhyāyukti의 연\n속선 상에 놓는다면, 【10】의 도입부에서 대론자가 바른 인식수단을 운운했지만\n정작 【10】에서는 바른 인식수단 자체에 대해 별다른 언급이 없었던 점 그리고\n여기 【11】에서 『섭대승론』의 선행 논의를 그대로 가져오면서도 굳이 출세간무\n분별지와 후득지를 거론한 점이 함께 잘 설명된다고 할 수 있다.\n\n\n540\n\n한편 후득청정세간지가 어떤 의미에서 ‘세간적’인지에 대해서는 자은 기\n의 다음 설명을 참조하면 좋을 것이다.!\n\n견도에서 여기서 이야기된 무분별지를 얻고 후에 세간적인 것을 인식대상으로 하는, 무루의\n지혜가 있으니 [이것이] 눈 앞에 전개되는 상태에서는 바야흐로 이치에 부합할 수 있게 되어\n#376\n#\n 堀内 俊郎(2009) 233쪽-234쪽 : ’dir ’jig rten pa’i shes pa ’am | ’jig rten las ’das\n539\npa tshad ma yin zhe na |!\ngcig kho nar ni ’jig rten las ’das pa yin no || ’jig rten pa ni dbye ba yod de | ’jig\nrten las ’das pa’i rjes las thob pa gang yin pa de ni tshad ma yin no || gzhan ni\ntshad ma ma yin no || de ltar na dge ’dun phal chen sde pa rnams kyi tshigs su\nbcad pa | mig dang rna ba sna yang tshad ma min || lce dang lus dang sems\nkyang tshad ma min || gal te dbang po de dag tshad yin na || ’phags pa’i lam kyi\nbya ba med par ’gyur || zhes bya ba ’di dang yang mthun par byas pa yin no ||\n#\n 【10】 〖a〗 참조.\n540"
+            },
+            {
+              "id": "kor-lee-page-386",
+              "label": "Printed page 377",
+              "locator": "PDF page 386 · printed page 377 · direct PDF text extraction",
+              "text": "서 저 생사윤회하는 식의 대상영역이 비실재함을 있는 그대로 아니, 곧 후득지이다. 세간적\n인 것을 인식대상으로 하기에 ‘세간적’이라고 이름을 붙이는 것이지 자체가 유루여서 ‘세간\n적’이라고 이름을 붙인 것이 아니다. 자체가 루(*āsrava)가 아니기에 ‘청정’이라는 개념으로\n설정한다. 대상영역에 부합해 알기에 ‘있는 그대로 안다’라고 이름을 붙이니, 앞의 무분별지\n는 이치대로인 것을 인식대상으로 하기만 할 뿐이어서 단지 ‘진실한 깨달음’이라고 이름을\n붙이지만, 이 후득지는 세간적인 것을 두루 인식대상으로 하여 대상영역의 비존재를 알 수\n있기에 ‘있는 그대로 안다’라고 이름을 붙이고 또 ‘진실한 깨달음’이라고도 이름을 붙이는 것\n이다. 이 지혜가 발생하게 됨에 무분별지에 바탕을 두니, 무분별지만을 ‘진실한 깨달음’이라\n고 이름을 붙인다. 생사윤회하는 식의 경우, 비록 약간이나마 [대상의 비실재성에 대해] 스스\n로 안다 하더라도, ‘진실한 깨달음’이라고 이름을 붙이지 않는다.\n\n\n541\n\n즉, 후득지에 ‘세간적’이라는 한정이 붙는 것은 그 자체가 세간적이어서가 아니\n라 그 대상이 세간적이기 때문이다.\n\n\n542\n#377\n#\n T1834_1001c26-1002a05: 於見道中。得此所說無分別智。後有緣世間無漏之智。現\n541\n在前位。方能稱理。如實了知彼生死識境非實有。卽後得智。緣世間故。名爲世間。非體有漏\n名世間也。體非是漏。立以淨名。稱境而知。名如實知。前無分別。唯緣如理。但名眞覺。此\n後得智。遍緣世間。能知境無。名如實知。亦名眞覺。此智得起。藉無分別。無分別智。獨名\n眞覺。若生死識。雖少自知。不名眞覺。\n#\n 후득지에 대한 보다 포괄적 설명은 Schmithausen(2005) 54쪽 이하 참조.\n542"
+            },
+            {
+              "id": "kor-lee-page-387",
+              "label": "Printed page 378",
+              "locator": "PDF page 387 · printed page 378 · direct PDF text extraction",
+              "text": "Silk(2018) 125쪽-127쪽: yadi svasantānapariṇāmaviśeṣād eva\nsatvānām arthapratibhāsā vijñaptaya utpadyante nārthaviśeṣāt |\ntadā ya eṣa pāpakalyāṇamitrasaṁparkāt sadasaddharmmaśravaṇāc\nca vijñaptiniyamaḥ satvānāṁ sa kathaṁ [si]dhyati asati\nsadasatsaṁparke taddeśanāyāñ ca |!\nanyonyādhipatitvena vijñaptiniyamo mithaḥ ||!\nsarveṣāṁ hi satvānām anyonyavijñaptyādhipatyena mitho vijñapter\nniyamo bhavati yathāyogaṁ | mitha iti parasparataḥ | ataḥ\nsantānāntaravijñaptiviśeṣāt santānāntare vijñaptiviśeṣa utpadyate\nnārthaviśeṣāt |\n#378"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-12",
+          "label": "Argument section 12 · verse 18a",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-388",
+              "label": "Printed page 379",
+              "locator": "PDF page 388 · printed page 379 · direct PDF text extraction",
+              "text": "【12】 [대론자:] 만약 단지 자신의 상속의 특수한 변화로부터만 대상인양 보이는\n표상들이 중생들에게 발생하는 것이지 특정 대상으로부터 [발생하는 것이] 아\n니라고 한다면, 그 경우 나쁜 친구 혹은 좋은 친구와 어울리기 때문에 그리고\n정법 혹은 비정법을 듣기 때문에 중생들에게 [선으로의 혹은 악으로의] 식의 저\n한정(niyama)이 어떻게 성립하는가? 올바른 [이] 혹은 올바르지 못한 [이]와의\n어울림 내지 그들에 의한 교설이 비존재한다면 말이다.!\n[바수반두:] 서로 영향력(adhipatitva)[을 발휘하는] 것이기에 피차간에 표상\n의 한정이 있는 것이다.!\n왜냐하면 중생들은 서로의 표상의 영향력으로 피차간에 표상의 한정이, 각 상\n황에 맞게, 있는 것이다. ‘피차간에’란 ‘상호간에’[라는 뜻이다]. A라는 상속의\n특정 표상 때문에 B라는 상속에게 특정 표상이 발생하는 것이지 특정 대상으로\n부터 [발생하는 것이] 아니다.〖a〗\n#379"
+            },
+            {
+              "id": "kor-lee-page-389",
+              "label": "Printed page 380",
+              "locator": "PDF page 389 · printed page 380 · direct PDF text extraction",
+              "text": "【12】 〖a〗!\n시더리츠는 【4】의 말미를 해설하면서 ‘가벼움의 원리’를 거론하며\n“경쟁하는 두 설명들이 ‘동등하게 좋은지’ 여부를 분간하는 방법과 관련해 [『이\n십론』의] 논변에 최소 한 가지 추가적인 비틀기(twist)가 있다”고 하였는데\n\n\n543\n여기 【12】가 바로 그 대목이다. 여기서 비로소 복수의 개체 사이의 인과관계가\n모델링되고 있기 때문이다. 【4】와 【12】를 연결하며 표상주의적 실재론의 설명\n력과 관념론의 설명력을 대비시키면서 『이십론』의 논증 전략을 검토하는 시더\n리츠의 시도는 흥미로우나\n\n 【4】의 말미에서 뒤로 미뤄진 논변은 【7】 - 【9】에\n544\n서 일단락되었기에 구성적인 측면에서 【12】는 보론 이상으로 보기 어렵다.\n#380\n#\n Siderits(2007) 158쪽: there is at least one more twist to the argument, having\n543\nto do with the question how we tell whether two competing explanations are\n‘equally good’\n#\n 그는 더 나아가 버클리와 바수반두의 비교 또한 수행한다. Siderits(2007) 169쪽-173\n544\n쪽 참조."
+            },
+            {
+              "id": "kor-lee-page-390",
+              "label": "Printed page 381",
+              "locator": "PDF page 390 · printed page 381 · direct PDF text extraction",
+              "text": "Silk(2018) 129쪽: yadi yathā svapne nirarthikā vijñaptir evañ jāgrato\n<’>pi syāt kasmāt kuśalākuśalasamudācāre suptāsuptayos tulyaṁ\nphalam iṣṭāniṣṭam āyatyān na bhavati <|> yasmāt |!\nmiddhenopahatañ cittaṁ svapne tenāsamaṁ phalaṁ |[| 18 || ]!\nidam atra kāraṇaṁ na tv arthasadbhāvaḥ |\n#381"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-13",
+          "label": "Argument section 13 · verse 18b",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-391",
+              "label": "Printed page 382",
+              "locator": "PDF page 391 · printed page 382 · direct PDF text extraction",
+              "text": "【13】 [대론자:] 만약 꿈에서처럼 깨어난 자에게도 표상이 대상을 결여한 것이라\n고 한다면, 왜 잠에 든 자와 잠에 들지 않은 자 양자가 선한(kuśala) [마음의 활\n동(samudācāra)] 혹은 불선한 [마음의] 활동을 할 경우, [저 양자에게] 균등한\n바람직한 혹은 바람직하지 않은 결과가 미래에 없는 것인가? 왜냐하면,!\n[바수반두:] 꿈 속에서는 마음이 졸림(middha)〖a〗[이라는 심소]에게 저해되어\n결과가 동일하지 않기 때문이다. 〖제18송〗!\n이 [졸림 심소]가 저 [문제상황]에 대한 원인이지, 대상의 실재(sadbhāva)가\n[원인인 것은] 아니다.\n#382"
+            },
+            {
+              "id": "kor-lee-page-392",
+              "label": "Printed page 383",
+              "locator": "PDF page 392 · printed page 383 · direct PDF text extraction",
+              "text": "【13】 〖a〗!\n이 졸림(middha)에 대해 바수반두는 『구사론』에서 다음과 같이\n설명한다.!\n\n졸림은 모든 [심소법들]과 모순되지 않기 때문에 [졸림이] 있는 곳에 그 [졸림]은 실\n로 부가적인 것으로 [있다].\n\n\n545\n\n여기서 특히 ‘모든 심소법들과 모순되지 않는다’는 『구사론』의 진술에 주목할\n필요가 있다. 이에 따르면, 졸림은 도덕성의 세 범주인 선함·불선함·무규정 모\n두와 공존할 수 있다. 바수반두는 이러한 졸림이 꿈에서의 행위와 생시의 행위\n사이의 과보의 불일치를 설명해주는 요인이라고 해명하는 것이다.\n#383\n#\n Pradhan(1967) 58쪽: middhaṁ sarvāvirodhitvād yatra syād adhikam hi\n545\ntat ||!\n다음과 같은 졸림의 정의도 발견된다.!\nPradhan(1967) 312쪽: kāyasaṁdhāraṇāsamarthaś cittābhisaṁkṣepo middham |\n(졸림은 신체를 지탱할 역량이 없는 마음의 수축이다.)!\n이 규정은 『오온론』의 정의와 거의 일치한다.!\nKramer(2013) 1권 72쪽: middham asvatantravṛttiś cetaso ’bhisaṁkṣepaḥ | (졸림\n은 자재롭지 못하게 작동하는 마음의 수축이다.)"
+            },
+            {
+              "id": "kor-lee-page-393",
+              "label": "Printed page 384",
+              "locator": "PDF page 393 · printed page 384 · direct PDF text extraction",
+              "text": "Silk(2018) 131쪽-137쪽: yadi vijñaptimātram evedaṁ na kasyacit\nkāyo <’>sti na vāk katham upakramyamāṇānām aurabhrikādibhir\nurabhrādīnāṁ maraṇam bhavati atatkṛte vā tanmaraṇe katham\naurabhrikādīnāṁ prāṇātipātāvadyena yogo bhavati ||!\nmaraṇaṁ paravijñaptiviśeṣād vikriyā yathā |!\nsmṛtilopādikānyeṣāṁ piśācādimanovaśāt || [19 || ]!\nyathā hi piśācādimanovaśād anyeṣāṁ\nsmṛtilopasvapnadarśanabhūtagrahāveśavikārā bhavanti |\nṛddhivanmanovaśāc ca | yathā\nsāraṇasyāryamahākātyāyanādhiṣṭhānāt svapnadarśanaṁ |\nāraṇyakarṣimanaḥpradoṣāc ca vema[c]itriṇaḥ parājayaḥ | tathā\nparavijñaptiviśeṣādhipatyāt pareṣāṁ jīvitendriyavirodhinī kācid\nvikriyotpadyate yayā sabhāgasantativicchedākhyam maraṇam\nbhavatīti veditavyaṁ |!\nkathaṁ vā daṇḍakāraṇyaśūnyatvam ṛṣikopataḥ |!\nyadi paravijñaptiviśeṣādhipatyāt satvānāṁ maraṇaṁ neṣyate |\nmanodaṇḍasya hi mahāsāvadyatvaṁ sādhayatā bhagavatopālir\ngṛhapatiḥ pṛṣṭaḥ kaccit te gṛhapate śrutaṁ kena tāni\ndaṇḍakāraṇyāni mātaṅgāraṇyāni kaliṅgāraṇyāni śūnyāni\nmedhyībhūtāni <|> tenoktaṁ śrutaṁ me bho gautama ṛṣīṇāṁ\nmanaḥpradoṣeṇeti ||!\n#384"
+            },
+            {
+              "id": "kor-lee-page-394",
+              "label": "Printed page 385",
+              "locator": "PDF page 394 · printed page 385 · direct PDF text extraction",
+              "text": "manodaṇḍo mahāvadyaḥ kathaṁ vā tena sidhyati |[| 20 || ]!\nyady evaṁ kalpyate tadabhiprasannair amānuṣais tadvāsinaḥ satvā\nutsāditā na tv ṛṣīṇāṁ manaḥpradoṣān mṛtā ity evaṁ sati kathaṁ\ntena karmmaṇā manodaṇḍaḥ kāyavāgdaṇḍābhyām\nmahāvadyatamaḥ siddho bhavati <|> tan manaḥpradoṣamātreṇa\ntāvatāṁ satvānāṁ maraṇāt sidhyati |\n#385"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-14",
+          "label": "Argument section 14 · verses 19–20",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-395",
+              "label": "Printed page 386",
+              "locator": "PDF page 395 · printed page 386 · direct PDF text extraction",
+              "text": "【14】 [대론자:] 만약 이 [삼계에 속한 것]이 단지 표상일 뿐이어서 누구에게도\n신체(kāya)가 없고 언어(vāk)가 없다면, 도살자 등에게 당한 양 등의 죽음이\n어떻게 가능한가? 혹은 저 [양 등]의 죽음이 저 [도살자 등]에 의해 행해진 것이\n아니라면, 도살자 등이 살생죄(prāṇātipātāvadya)에 묶이는 것이 가능하겠는\n가?!\n[바수반두:] 죽음이란 타자의 특정 표상에 기인한 변형(vikriyā)〖a〗이다. 이를\n테면 다른 이들이 기억상실(smṛtilopa) 등의 [훼손]이 괴물 등의 심적인 힘 때\n문인 것과 같다. 〖제19송〗!\n왜냐하면, 예컨대 괴물 등의 심적 에너지 때문에 다른 이들에게 기억상실·꿈에\n서 [조작된 이미지를] 보는 것·악령(bhūta)에게 씌운 것[과 같은] 변형(vikāra)\n이 생기는 것과 같기 때문이다. 또 초능력자(ṛddhivat)의 심적 에너지 때문에,\n이를테면 싸라나[비구]가 마하까땨야나에게 제어(adhiṣṭhāna)되었기 때문에\n꿈 속에서 [마하까땨야나가 보여주는 영상을] 보았고, 숲의 선인(ṛṣi)들의 역정\n(manaḥpradoṣa) 때문에 베마찌뜨린이 멸망했다.〖b〗 그와 같이 타자의 특정\n표상의 영향력 때문에 다른 이들에게 명근(jīvitendriya)을 방해하는 모종의 변\n형이 발생하여, 그 [이례]로 인해 ‘[종별적] 유사성(sabhāga) [내에서의] 상속\n의 단절’이라고 불리는 죽음이 생긴다고 알아야 할 것이다.!\n아니라면 어떻게 단다까숲의 공동화(śūnyatva)가 선인의 분노 때문이겠는\n가?!\n#386"
+            },
+            {
+              "id": "kor-lee-page-396",
+              "label": "Printed page 387",
+              "locator": "PDF page 396 · printed page 387 · direct PDF text extraction",
+              "text": "만약 타자의 특정 표상의 영향력 때문에 중생들에게 죽음이 [생긴다고] 인정하\n지 않는다면은 말이다. 왜냐하면 의지적 범죄(manodaṇḍa)가 큰 죄를 수반한\n것임을 입증하던 세존께서 장자 우빨리에게 질문하시길, “장자여, 무언가 그대\n는 들었던 적이 없는가? 무엇 때문에 저 단다까숲·마땅가숲·깔링가숲이 공동화\n가 되어 희생제의에 적합하게 된 것(medhyībhūta)인가?” 저 [우빨리]가 말했\n다. “오 가우따마여, 저는 들었습니다. 선인들의 역정 때문이라고.”〖c〗!\n아니라면 저 [역정을] 가지고서 어떻게 의지적 범죄가 큰 죄로 성립하는가? 〖제\n20송〗!\n만약 ‘저 [선인들]에게 매우 신실한(abhiprasana) 인간이 아닌 존재들에 의해\n저 [숲들]에 살던 중생들이 절멸당한 것이지 선인들의 역정 때문에 죽은 것이\n아니다’라고 이렇게 상정한다면, 그렇다고 할 경우 어떻게 저 [역정이라는] 업을\n가지고서 의지적 범죄가 신체적·언어적 범죄보다 더 큰 죄라는 것이 성립하겠\n는가? 그것은 단지 역정[이라는 의지적인 것]만으로 저만치의 중생들이 죽었기\n때문에 성립하는 것이다.〖d〗\n#387"
+            },
+            {
+              "id": "kor-lee-page-397",
+              "label": "Printed page 388",
+              "locator": "PDF page 397 · printed page 388 · direct PDF text extraction",
+              "text": "【14】 〖a〗!\n여기서 바수반두가 죽음을 재정의할 때 유개념으로 사용한 ‘변형\n(vikriyā 혹은 vikāra)’이라는 개념에 주목할 필요가 있다. 『구사론』 「파아품」\n말미에서 이 표현은 저 유명한 ‘상속의 특수한 변화’와 함께 임계적인(critical)\n차이를 표현하는 개념으로 사용되기 때문이다.\n\n\n546\n\n[상대편:] 그런데 왜 이숙으로부터 또 다른 이숙이 생기지 않는가? 마치 종자의 열매\n에서 또 다른 열매가 있는 것처럼.!\n[바수반두:] 유선 유례가 모든 것과 동일한 것은 아니다. 그러나 저 [유례]에서도 열\n매로부터 바로 또 다른 열매가 생긴 것은 아니다.!\n[상대편:] 그렇다면?!\n[바수반두:] 특수한 습윤화(viklitti)로 생긴 특수한 변형(vikāraviśeṣa)으로부터다.\n… 이처럼 여기서도 저 이숙으로부터, 만약 정법 혹은 비정법을 듣는 등의 특수한\n조건에서 생긴 선-유루의 혹은 불선한 마음의 변형(cittavikāra)이 생기면, 다시 바\n로 그 [마음의 변형]으로부터 또 다른 이숙이 생기는 것이지 다른 방식으로 [생기는\n것은] 아니다. 이런 점에서 [유례와] 동일하다. 혹은 이는 이렇게 식별되어야 할 것이\n다. 마치 락샤액으로 염색된 구아바 꽃으로부터는 열매 안에 상속의 특수한 변화에\n서 생긴 붉은 섬유질이 부가되지만, 그러나 그 [붉은 섬유질을 가진 구아바 열매]로\n#388\n#\n 【4】 〖d〗 참조.\n546"
+            },
+            {
+              "id": "kor-lee-page-398",
+              "label": "Printed page 389",
+              "locator": "PDF page 398 · printed page 389 · direct PDF text extraction",
+              "text": "부터는 다시금 [붉은 섬유질을 가진] 다른 [구아바 열매]는 [생기지] 않는다. 이처럼\n업에서 생긴 이숙으로부터 또 다른 이숙이 [생기는 것은] 아니다.\n\n\n547\n\n여기서 ‘변형’ 직전에 ‘특정한 습윤화’ 내지 ‘정법 혹은 비정법을 듣는 등’의 조건\n이 특정되는 것처럼 『이십론』에서도 ‘타자의 특정 표상’이 지목되고 있다.!\n\n【14】 〖b〗!\n이 일화를 자은 기는 다음과 같이 전한다.!\n\n[‘大迦多衍那’는] 곧 붓다께서 세상에 계실 적의 摩訶迦旃延(*Mahākātyāyana)이\n다. ‘摩訶’는 ‘큼’을 말하고 ‘迦多衍’은 여기서는 ‘剪剃(: 머리를 깎다? √kṛt?)’라고 하\n니, 늘상 풀이되는 바대로 이는 그의 성이다. ‘那’는 남성의 소리로 곧 剪剃種을 남성\n의 소리로 불러서 남성임을 표시하는 것이다. 마치 ‘尼’라고 말하는 것이 여성의 소\n리로 불러서 여성임을 표시하는 것과 같다. ‘娑剌拏(*Sāraṇa)’는 옛 [번역]에서는 ‘娑\n羅那’라고 하는데\n\n 여기서는 ‘流轉(: 흐름 or 흐르게 함)’이다. 곧 剪剃가 신통한 바\n548\n#389\n#\n Lee(2005) 164쪽-166쪽: atha kasmād vipākād vipākāntaraṁ notpadyate |\n547\nbījaphalād iva phalāntaram |!\nna tāvad dṛṣṭāntena sarvam samānaṁ bhavati | tatrāpi tu na phalād eva punaḥ\nphalāntaram utpadyate |!\nkiṁ tarhi | viklittiviśeṣajād vikāraviśeṣāt | … evam ihāpi tasmād vipākād yadi\nsadasaddharmaśravaṇādipratyayaviśeṣajaḥ kuśalasāsravo ’kuśalo vā\ncittavikāra utpadyate | tasmāt punar vipākāntaram utpadyante nānyatheti\nsamānam etat | atha vā punar etad evaṁ vijñātavyam | yathā lākṣārasarañjitāt\nmātuluṅgapuṣṭpāt saṁtatipariṇāmaviśeṣajaḥ phale raktaḥ keśara upajāyate | na\nca tasmāt punar anyaḥ | evaṁ karmajād vipākāt na punar vipākāntaram iti |\n#\n T1588_069b16, T1589_073b16\n548"
+            },
+            {
+              "id": "kor-lee-page-399",
+              "label": "Printed page 390",
+              "locator": "PDF page 399 · printed page 390 · direct PDF text extraction",
+              "text": "람 때문에 왕이 꿈을 꾸게끔 되었으니, 이러한 사연을 말하는 것은 과거 『중아함경』\n에서 설한 것과 같다. 사라나왕은 眉稀(—>絺)羅(*Mathurā?)국의 군주로 용모가\n훌륭하여 스스로 ‘맞수가 없다’라고 여기고는 미남을 찾아내서 스스로와 비교해 자\n신의 탁월함을 드러내고자 하였다. 당시 어떤 사람이 말하길, “왕사성(*Rājagraha)\n내에 대가전연이라는 용모가 매우 뛰어난 자가 있어 세상에서 비견할 자가 없다”라\n니, 왕이 [사람을] 보내 그를 맞이하였다. 가전연이 다다르자 왕이 궁을 나서 맞이하\n는데 왕이 그에게 미치지 않았을 때 사람들은 가전연을 목도할 뿐 왕을 보는 자가 없\n었다. 왕이 그 까닭을 물으니, 대중들이 말하길, “가전연의 용모가 왕보다 뛰어납니\n다.”라고 하였다. 왕이 묻길, “대덕은 지금의 과보가 전생의 원인인 것인가?”라고 하\n였고, 가전연이 답하길, “나는 과거에 출가했었고 왕은 거지 아이였을 적에 내가 절\n의 땅을 쓸고 있었는데 왕이 와서 먹을 것을 구걸하였습니다. 내가 땅을 쓰는 것을\n마치고 왕에게 똥을 치우도록 하였고, 똥을 치우는 것이 다 끝나자 곧 왕에게 먹을\n것을 제공하였습니다. 이러한 업의 원인 때문에 사람 및 천신 중에 태어나고 또 [외\n모의] 훌륭함이라는 과보를 얻은 것입니다. 왕은 이를 듣고 나서 출가할 것을 간청하\n여 가전연의 제자가 되었다. 후에 가전연과 함께 阿盤地(*Avanti)국의 산 속에서 수\n행하였는데, 별도의 장소에 앉아 선정을 하고 있으니 鉢樹多(?)라는 아반띠의 왕이\n당시 여러 궁인들을 데리고 산에 들어와서 놀고 있었다. 궁인들은 [사라나]왕의 용모\n가 훌륭한 것을 보고는 그를 둘러싸고 보고 있었다. 발수다왕은 사라나왕을 보고서\n바라는 것이 있다고 의심하고 사라나왕에게 물으니, “너는 아라한이냐?”라고 하니,\n[사라나]왕이 “아닙니다.”라고 답하였다. 다음 순서대로 하나하나 남은 3가지 [성자\n의] 결과를 물으니, [사라나]왕은 모두 “아닙니다.”라고 답하였다. 또 묻길, “너는 욕\n망을 떠났느냐?”라고 하니 또 “아닙니다.”라고 답하였다. 발수다는 화를 내며 말하\n길, “만약 그렇다면 너는 무슨 까닭에 내 궁녀들 속에 들어와 나의 궁녀들을 보고 있\n느냐?”라고 하고는, 이내 채찍질을 하니 [사라나왕의] 몸이 부서져 졸도하고는 죽은\n#390"
+            },
+            {
+              "id": "kor-lee-page-400",
+              "label": "Printed page 391",
+              "locator": "PDF page 400 · printed page 391 · direct PDF text extraction",
+              "text": "[듯 쓰러졌다]. 밤이 되자 곧 깨어나서 원래 있던 곳에서 일어나 가전연이 있는 장소\n에 다다르니 가전연은 [그를] 보고나서는 마음에 슬픔이 일어나 여러 동학들과 함께\n치료하였다. 사라나왕이 가전연에게 말하길, “제가 스승님을 좇는 것이 마치면 잠시\n본국으로 돌아가 군대를 집결해 저 아반띠국을 박살내고 발수다왕을 죽이겠습니다.\n일이 끝나면 돌아와 스승님을 따라 수행을 하도록 하겠습니다.”라고 하였다. 가전연\n은 청에 따르며 [사라나]왕에게 말하니, “떠나길 원한다면 하룻밤만 머무르거라.”라\n고 하였다. 가전연은 좋은 집에 머무르며 잠을 자게끔 했고, 원력으로 꿈을 일으키도\n록 하였다. [그러나 사라나왕은] 꿈에서 경험하길, 군대를 집결해 아반띠를 정벌하였\n으나 자신의 군대가 격파되어 패하고 자신은 그의 포로가 되니 [상대가] 수족을 견고\n하게 결박하고 붉은 꽃을 머리에 꽂고는 장엄하게 북을 울리며 죽이려 하였다. [사라\n나]왕이 꿈 속에서 공포에 질려 크게 울부짖어서 목소리가 가버린 채로 말하길, “내\n게 지금 귀의처가 없구나. 원컨대 스승님께서는 제발 귀의처가 되어주셔서 [내] 목숨\n이 길게 이어질 수 있게 하시길.”이라고 하였다. 가전연이 신력으로 손가락에서 불\n을 내보내 그를 불러 깨게 하고는 묻기를, “무슨 까닭에 아직 안 깨어나고는 여전히\n‘재앙이다’라고 하느냐?”라고 하였다. 가전연은 불로 그를 비추고 묻기를, “여기는\n어디냐? 너 스스로 볼 수 있을 것이다.”라고 하니, 왕의 마음이 바야흐로 깨어났다.\n가전연이 말하길, “네가 만약 그를 정벌한다면 꿈에서 본 것처럼 반드시 격파되어\n패할 것이다.”라고 하였다. [사라나]왕이 말하길, “스승께서 악독한 마음을 제거해주\n시길 바랍니다.”라고 하니, 가전연이 [그를] 위해 말하길, “일체의 뭇 법들은 비유하\n자면 국토와 같이 가명일 뿐 실재는 없다. 집, 가옥 등을 떠나 별도의 국토는 없고,\n그루터기, 나무 등을 떠나 별도의 집, 가옥은 없으니 … 극미에 이르기까지 또한 실\n재적인 사태가 아니다. 저것도 없고 이것도 없다. 원망할 것도 없고 친하게 여길 것\n도 없다.” [사라나]왕이 이 법문을 듣고는 예류과(*srota-āpanna)를 얻었고 후에\n#391"
+            },
+            {
+              "id": "kor-lee-page-401",
+              "label": "Printed page 392",
+              "locator": "PDF page 401 · printed page 392 · direct PDF text extraction",
+              "text": "점진적으로 아라한과(*arhattva)를 얻었다. 따라서 자신의 의도에 의거하여 남의\n꿈에서 사태가 또한 성립됨을 알 수 있다.\n\n\n549\n\n【14】 〖c〗!\n이 일화를 자은 기는 다음과 같이 전한다.!\n\n#392\n#\n T1834_1003b28-1004a10: 述曰。卽佛在世。摩訶迦旃延。摩訶言大。迦多衍。此云\n549\n剪剃。如常所釋。此卽其姓。那者男聲。卽剪剃種。男聲中呼。表是男也。如言尼者。女聲中\n呼。表其女也。婆(—>娑)剌拏者。舊言娑羅那。此云流轉。卽由剪剃神通意願。令王得夢。說\n此緣者。如舊中阿含經說。 *娑羅那王。是眉稀(—>絺)羅國主。容貌端政(—>正)。自謂無\n雙。求覓好人。欲自方比。顯己殊勝。時有人曰。王舍城內。有大迦旃延。形容甚好。世中無\n比。王遣迎之。迦旃延至。王出宮迎。王不及彼。人覩迦延。無看王者。王問所以。衆曰。迦\n延容貌勝王。王問大德今果宿因。迦延答曰。我昔出家。王作乞兒。我掃寺地。王來乞食。我\n掃地竟。令王除糞。除糞旣訖。方與王食。以此業因。生人天中得報端政(—>正)。 王聞此已\n尋請出家。爲迦延弟子。後共迦延往阿盤地國中山中修道。別處坐禪。阿盤地王。名鉢樹多。\n時將諸宮人入山遊戲。宮人見王形貌端政(—>正)。圍遶看之。鉢樹多王。見*娑羅那王。疑有\n欲意。問*娑羅那曰。汝是阿羅漢耶。王答言非。次第一一問餘三果。王皆答言非。又問汝離欲\n不。又答言非。鉢樹多瞋曰。若爾。汝何故。入我婇女中。看我婇女。遂鞭。身破悶絶而死。\n至夜方醒。從本處起至迦延所。迦延見已心生悲愍。共諸同學。同爲療治。娑羅那王語迦延曰。\n我從師乞(—>訖)暫還本國。集軍破彼阿盤地國。殺鉢樹多王。事竟當還從師修道。迦延從請\n語王。欲去且停一宿。迦延安置好家令眠。願令感夢。夢見集軍征阿盤地。自軍破敗。身爲他\n獲。堅縛手足。赤花插頭。嚴鼓欲殺。王於夢中恐怖。大叫呼失聲云。我今無歸。願師濟拔。\n作歸依處。得壽命長。迦延以神力。手指出火。喚之令寤。問言。何故其猶未醒。尚言災事。\n迦延以火照而問之。此是何處。汝可自看。王心方寤。迦延語言。汝若征彼。必當破敗。如夢\n所見。王言願師爲除毒意。迦延爲說。一切諸法。譬如國土。假名無實。離舍屋等。無別國土。\n離柱木等。無別舍屋。乃至廣說。至於極微。亦非實事。無彼無此。無怨無親。王聞此法。得\n預流果。後漸獲得阿羅漢果。故知依自意。他夢事亦成。"
+            },
+            {
+              "id": "kor-lee-page-402",
+              "label": "Printed page 393",
+              "locator": "PDF page 402 · printed page 393 · direct PDF text extraction",
+              "text": "『중아함경』에서 말하길, ‘闍提弗多羅(*Jñātiputra)’라는 이름을 가진 尼犍子\n(*nirgrantha: 자이나교도)가 있었는데, 그에게 ‘長熱(*Dīrghatapasvin)’이란 이\n름을 가진 제자가 있었다. 붓다가 계신 곳에 가니, 붓다께서 장숙에게 묻기를, “[네]\n스승이 너에게 법문을 가르침에 세 가지 업 중에서 어떤 죄업이 무겁다고 하느냐?”\n라고 하니, 답하길, “신체적인 것이 중하고, 다음이 언어적인 것이고, 마지막이 의도\n적인 것입니다.”라고 하였다. 장숙이 반대로 묻기를, “가우따마여, 이제 어떤 업이\n가장 중하다고 하시는가?”라고 하니, 붓다께서 말씀하시길, “의도와 관련된 것이 중\n하고, 신체적인 것과 언어적인 것은 다만 가벼울 뿐이다.”라고 하였다. 장숙이 되돌\n아가니, 즈냐띠[뿌뜨라]가 묻기를, “네가 저 [붓다]가 있는 곳에 갔었는데, 가우따마\n가 무엇을 말하던가?”라고 하니, 장숙이 갖추어(=자세히) 말하니, 즈냐띠가 찬탄하\n길, “너는 내 입에서 태어난, 진정한 내 자식으로, 내 가르침을 잘 받아 이야기한 내\n용에 차이나는 것이 없다. 너는 다시 가서 가우따마의 주장을 논파하고는 끌고 데리\n고 와서 내 제자로 삼게할 만하다.”라고 했으나, 장숙이 따르지 않았다. [당시] ‘鄔波\n離(*Upāli)’라는 이름의, 크게 부유한 어떤 장자가 있었는데, 자이나의 즈냐띠를 섬\n기고 있었기에, [즈냐띠가 그를] 보내 붓다가 세운 주장을 논파시키려고 하니, 장숙\n이 답하길, “이 일은 불가합니다. 저 가우따마는 용모 및 변재가 보통 사람을 초월해\n무량하고 또 아울러 환술을 지니고 있어 사람의 마음을 잘 조종해 무량한 중생들이\n그의 제자가 되었으니 어찌 굴복하겠습니까?”라고 하였으나, 즈냐띠는 믿지 않고\n장자를 가게 하니, 장자가 가서 붓다의 주장을 논파하려고 마침내 주장을 세워 말하\n길, “나는 3가지 죄 중에서 신체적인 것이 가장 무겁고, 다음은 언어적인 것, 마지막\n이 심리적인 것이라고 [내 주장을] 세운다. 가우따마는 어째서 심리적인 죄가 무겁다\n고 하는가?”라고 하였다. 세존께서는 당시 眉絺羅(*Mathurā?)국에 계셨는데, 도성\n은 5일은 [걸려야] 비로소 한쪽 가장자리에 갈 수 있[을 정도로 컸다]. 붓다께서 장자\n#393"
+            },
+            {
+              "id": "kor-lee-page-403",
+              "label": "Printed page 394",
+              "locator": "PDF page 403 · printed page 394 · direct PDF text extraction",
+              "text": "에게 묻길, “만약 어떤 사람이 살생을 행하는데, 며칠이 걸려야 이 도성의 사람들을\n죽이는 것이 전부 끝나겠는가?”라고 하니, 장자가 답하길, “크게는 7일 혹은 10일\n혹은 1달이면 가능하다.”라고 하니, 다시 묻기를, “선인이 분노의 마음을 일으켜 죽\n인다면 며칠이 걸려야 전부 끝나겠는가?”라고 하니, 답하길, “한 번에 도성 사람들\n이 모두 끝난다.”라고 하니, 또 묻기를, “100일간, 200일간, 300일간 보시를 행하\n는 것과 어떤 사람이 한 번에 8선정에 들어가는 것 중에서 어떤 것이 우월한가? 어\n떤 사람이 여러 번 지계를 하는 것과 어떤 사람이 한 번에 무루의 관법에 들어가는\n것 중에서 어떤 것이 우월한가?”라고 하니, 장자가 답하길, “선 및 무루에 들어가는\n것의 공덕이 대단히 우월하다.”라고 하였다. 붓다께서 장자에게 말씀하시길, “어째\n서 신체적이고 언어적인 죄는 중한데 심리적인 죄는 가장 가볍다고 하였는가?”라고\n하니, 장자가 이치에 굴복되어 빌어서 제자가 되고는 이어 결과를 획득하는 데에 이\n르렀다. 스스로 맹세를 세우며 말하길, “내가 살고 있는 곳에서는 늘 삼보를 공양하\n#394"
+            },
+            {
+              "id": "kor-lee-page-404",
+              "label": "Printed page 395",
+              "locator": "PDF page 404 · printed page 395 · direct PDF text extraction",
+              "text": "고자 하며, 일체의 자이나들은 모두 내 집에 들일 수 없다.” 장자는 도를 얻고 후에\n본가로 돌아갔다.\n\n\n550\n\n밑줄 친 부분에서 붓다는 신체적인 업과 의지적인 업을, 그 위력의 측면에서,\n대조하고 있는 점이 【14】의 논의와 직결된다고 할 수 있다.!\n\n【14】 〖d〗!\n여기 【14】에서는 둘 이상의 개체 사이의 지배력 관계(ādhipatya\n혹은 adhipatitva)를 가지고서, 물질적 대상의 존재를 전제하지 않더라도, 살\n생죄의 성립을 설명한다. 그리고 저자 자신의 저 기묘한 죽음 정의와 함께, 현\n#395\n#\n T1834_1004c08-1005a04: 中阿含經說。有尼犍子。名闍提弗多羅。其有弟子。名爲\n550\n長熱。往至佛所。佛問長熱。師敎汝法。三業之中。何罸業重。答云。身重。次口。後意。長\n熱反問。瞿曇今說何業最重。佛言。意重。身語乃輕。長熱還去。闍提問云。汝至彼所。瞿曇\n何言。長熱具說。闍提讚歎。汝眞我子。從我口生。善受我敎。所說無異。汝可更往。破瞿曇\n義。提取將來。作我弟子。長熱不從。有大富長者。名鄔波離。伏事尼乾闍提。使往破佛立\n義。長熱報云。此事不可。彼瞿曇者。容貌辯才。過人無量。兼有幻術。能轉人心。無量衆生。\n爲其弟子。寧可降伏。闍提不信。令長者往。長者往已。欲破佛義。遂立義云。我立三罸。身\n爲最量(—>重)。次口後心。瞿曇云何說心罸重。世尊于時在眉絺羅國。國城五日方行一邊。\n佛問長者。若人行殺。幾日殺此國人得盡。長者答曰。大能七日。或十日。或一月。復問。仙\n人超(—>起)瞋心殺。幾日得盡。答曰。一時國人皆盡。又問。一百日。二百日。三百日。行於\n布施。有人一時。入八禪定。何者爲勝。有人多時持戒。有人一時入無漏觀。何者爲勝。長者\n答言。入禪無漏功德大勝。佛言長者。云何乃說身口罰重。心罰最輕。長者理屈。乞爲弟子。\n乃至得果。自立誓言。我所住處。常擬供養三寶。一切尼乾。悉不得入我家。長者得道。後還\n本家。!\n해당 내용은 T0026_628a18-632c18 참조."
+            },
+            {
+              "id": "kor-lee-page-405",
+              "label": "Printed page 396",
+              "locator": "PDF page 405 · printed page 396 · direct PDF text extraction",
+              "text": "대인의 관점에서는 굉장히 당혹스러운, 마술적 이변들을 죽음의 유례들로 제시\n하는 보다 더 기묘한 모습을 보여준다. 이것은 입증 책임의 전환을 위한 장치로\n볼 수 있다. 즉, 붓다께서 의업의 상대적 중요성을 거론하며 선인들의 신통력\n사례를 들었는데, 대론자는 이 말씀을 제대로 해석할 수 없다는 것이다.\n\n\n551\n\n그러나 대론자 입장에서 도대체 무엇이 난항인지가 불분명하다. 이러한\n결과의 차이는 마음을 먹는 것만으로 이변을 일으키는, 선인의 특별한 능력에\n기인한 것이기 때문이다. 여기서 저 마술적 능력의 존재 자체가 유식성 명제를\n함축하는 것은 아니라는 점에 주의할 필요가 있다. 앞서 【4】의 말미에 ‘물질요\n소의 변화’ 메커니즘과 ‘식의 변화’ 메커니즘이라는 두 가지 이론적 대안들이 있\n었던 것처럼, 여기서도 선인들의 분노가 이를테면 원하는 장소에 운석을 떨어\n뜨리는 방식으로 우리의 물질적인 세계에 조작을 가할 가능성을 제기할 수 있\n기 때문이다. 이런 점에서 바수반두가 대론자로 하여금 선인의 부하들을 끌어\n들이는 방식으로 후속 대응을 하게 한 것은 다소 악의적인 구성으로 보인다.\n#396\n#\n 주지하다시피 바수반두는 『성업론』에서 세 가지 업 중에서 의지적인 업만이 실재적인 것\n551\n이고 나머지는 가설적인 것이라고 주장한다. Lamotte(1988) 참조."
+            },
+            {
+              "id": "kor-lee-page-406",
+              "label": "Printed page 397",
+              "locator": "PDF page 406 · printed page 397 · direct PDF text extraction",
+              "text": "Silk(2018) 139쪽-141쪽: yadi vijñaptimātram evedaṁ paracittavidaḥ\nkiṁ paracittaṁ jānanty <|> atha na <|> kiñ cātaḥ |  yadi na jānanti\nkathaṁ paracittavido bhavanti | atha jānanti |!\nparacittavidāṁ jñānam ayathārthaṁ kathaṁ yathā!\nsvacittajñānaṁ!\ntad api katham ayathārthaṁ |!\najñānād yathā buddhasya gocaraḥ || [21 || ]!\nyathā tan nirabhilāpyenātmanā b(u)ddhānāṁ gocaraḥ | tathā\ntadajñānāt <|> tad ubhayaṁ na yathārthaṁ vitathapratibhāsatayā\ngrāhyagrāhakavikalpasyāprahīṇatvāt |\n#397"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-15",
+          "label": "Argument section 15 · verse 21",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-407",
+              "label": "Printed page 398",
+              "locator": "PDF page 407 · printed page 398 · direct PDF text extraction",
+              "text": "【15】 [대론자:] 만약 이 [삼계에 속한 것]이 단지 표상일 뿐이라면 타심지\n(paracittavid)를 가진 자들은 타자의 마음을 아는 것인가, 모르는 것인가? 그\n[각각의] 경우 어떻게 되냐면, 만약 모른다면, 어떻게 타심지를 가진 자라고 할\n수 있는가? 만약 안다면!\n타심지를 가진 자들의 앎이 어떻게 대상 그대로의 것〖a〗이 아닌 것인가?!\n[바수반두:] 마치 자심지와 마찬가지이다.!\n또 저 [자심지]는 왜 ‘대상 그대로의 것이 아닌 것’인가?!\n[붓다의 자심지·타심지가] 붓다의 영역[과 관련해 작동하는] 양상으로 [우리의\n자심지·타심지를] 알지 못하기 때문이다. 〖제21송〗!\n저 [붓다의 자심지·타심지]가 언어화 불가능한 본질을 가진 것으로서 붓다들의\n영역[과 관련해 작동하는] 양상으로 [우리는] 그와 같이 저 [우리의 자심지·타심\n지]를 알지 못하기 때문이다. 저 [우리의 자심지·타심지] 양자는, 있는 그대로와\n일치하지 않게 나타나는 것(vitathapratibhāsa)이라서, 대상 그대로의 것이\n아니다. 소취(grāgya)·능취(grāhaka)에의 분별(vikalpa)이 아직 끊어지지 않\n았기 때문이다.〖b〗\n#398"
+            },
+            {
+              "id": "kor-lee-page-408",
+              "label": "Printed page 399",
+              "locator": "PDF page 408 · printed page 399 · direct PDF text extraction",
+              "text": "【15】 〖a〗!\n야마베 노부요시는 ‘대상 그대로의 것(yathārtham)’이라는 표현\n을 문자 그대로 읽고자 한다.!\n\n텍스트에서 앎이 대상과 일치하지 않는다고 말하기 때문에, “대상”의 존재는 선명히\n전제된다. 왜 우리가 그토록 다른 마음들의 존재에 대해 확신할 수 있는지는 답변되\n지 않지만, 그 포인트는 애초에 의문시되지 않았던 것 같다. 한 가지가 확실하다. 즉\n깨닫지 못했다면 다른 마음들을, 심지어는 자기 자신의 마음도 직접적으로 지각하\n지 못한다는 것이다. 보통의 깨닫지 못한 존재들로서는 다른 마음들 혹은 그 자신의\n심적 표상들만을 지각할 수 있다.\n\n\n552\n\n심지어 그는 이 ‘대상 그대로’를 ‘직접적으로’의 의미로 이해한다. 이는 붓다와\n같은 깨달은 자는 타자의 마음을 대상으로서 직접적으로 지각할 수 있다는 말\n이 된다. 이는 【6】에서 ‘표상 C 또한 또다른 표상 D의 대상이 되어버려, 이 경\n우 표상들이 대상을 가진 것이기 때문에, 오직 표상일 뿐인 상태가 성립하지 않\n을 것’이라고 한 진술과 단적으로 모순된다. 따라서 켈너·테이버가 지적했듯 문\n#399\n#\n 山部 能宜(1998) 30쪽: Since the text says that the cognition does not match\n552\nthe object, the existence of an “object” is clearly presupposed. Why we can be\nso sure about the existence of other minds is not answered, but that point does\nnot seem to be questioned in the ﬁrst place. One thing is certain: unless one is\nenlightened, one can never directly perceive other minds, or even one’s own\nmind. As far as ordinary, unenlightened beings are concerned, the only thing\nthey can perceive is the mental representations of other minds or their own."
+            },
+            {
+              "id": "kor-lee-page-409",
+              "label": "Printed page 400",
+              "locator": "PDF page 409 · printed page 400 · direct PDF text extraction",
+              "text": "제의 yathārtham은 ‘있는 그대로’ 정도를 뜻하는 관용적인 표현으로 이해되어\n야 할 것이다.\n\n\n553\n\n【15】 〖b〗!\n여기서 바수반두는 인식의 혼탁함(opacity)에 호소해 딜레마를\n파해한다. 즉, 우리들의 것인 한에 있어서 타심지 역시 자심지와 다를 것 없이\n혼탁하여 ‘대상 그대로’를 반영하지 못하지만, 혼탁하게나마 타자의 마음을 ‘직\n접’ 본다는 점에서 다른 유형의 인식과 구별되는 것으로서 여전히 성립한다는\n것이다.!\n\n그렇다면 붓다의 앎은 우리들의 것과 과연 무엇이 다른 것인가? 바수반\n두는 이에 대해 말을 아끼지만 적어도 붓다의 앎에서는 소취(grāhya)·능취(\ngrāhaka)의 구도가 나타나지 않는다는 점은 안전하게 말할 수 있을 것이다. 우\n리의 앎이 ‘있는 그대로와 일치하지 않게 나타나는 것(vitathapratibhāsa)’이\n라고 하면, 붓다의 앎은 아예 나타나지 않는 것인가, 아니면 있는 그대로와 일\n치하게 나타나는 것인가? 전자의 경우는 유식성에 대한 앎이 자기모순에 빠지\n는 것 같고, 후자의 경우는 여전히 ‘나타남’이 있다는 점에서 차이를 두기 어려\n워지는 것 같다. 이 아포리아는 【11】에도 소개된 출세간무분별지 및 후득지가\n각각 요청되었던 일반적인 맥락으로 보이며, 나아가 바로 저 후자의 해석을 놓\n고서 다르마빨라·스티라마띠의 의견 불일치는 물론 보다 후대의 유상(sākāra)\n#400\n#\n Kellner&Taber(2014) 747쪽 116번 각주 참조.\n553"
+            },
+            {
+              "id": "kor-lee-page-410",
+              "label": "Printed page 401",
+              "locator": "PDF page 410 · printed page 401 · direct PDF text extraction",
+              "text": "과 무상(nirākāra)의 논쟁까지 촉발된다.\n\n 그러나 이 문제를 소상히 밝히는\n554\n것이 바수반두가 애초에 목표했던 바는 아닌 것으로 보인다. 만약 그랬다면, 【1】\n에서 ‘대승에서는 삼계에 속한 것이 오직 표상일 뿐이라고 확립’한다고 했던 것\n에 대해 논의의 범위를 비윤회적 존재에까지 확장할 수 있는 주석을 제공했어\n야 할 것이기 때문이다.\n#401\n#\n 각각 May(1971) 및 Hattori(1998) 참조.\n554"
+            },
+            {
+              "id": "kor-lee-page-411",
+              "label": "Printed page 402",
+              "locator": "PDF page 411 · printed page 402 · direct PDF text extraction",
+              "text": "Silk(2018) 143쪽-145쪽:\nanantaviniścayaprabhedāgādhagāmbhīryāyāṁ vijñaptimātratāyāṁ !\nvijñaptimātratāsiddhiḥ svaśaktisadṛśī mayā | kṛteyaṁ sarvathā\nsā tu na cintyā!\nsarvaprakārā tu sā mādṛśaiś cintayituṁ na śakyā tarkkāviṣayatvāt |\nkasya punaḥ sā sarvathā gocara ity āha |!\nbuddhagocaraḥ |[| 22 || ]!\nbuddhānāṁ hi sā bhagavatāṁ sarvaprakāraṁ gocaraḥ\nsarvākārasarvajñeyajñānāvighātād iti ||\n#402"
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-section-16",
+          "label": "Argument section 16 · verse 22 and closing annotations",
+          "kind": "translation-and-annotation",
+          "blocks": [
+            {
+              "id": "kor-lee-page-412",
+              "label": "Printed page 403",
+              "locator": "PDF page 412 · printed page 403 · direct PDF text extraction",
+              "text": "【16】 유식성〖a〗이 무한한 해명과 세부사항으로 깊고 심오하니,!\n나에 의해, 스스로의 능력에 맞게, 이 유식성의 성립〖b〗이 이루어졌다. 그러나\n저 [유식성 / 유식성의 성립](sā)\n\n이 온전히는 사유될 수 없다.!\n555\n그러나 저 [유식성 / 유식성의 성립]은, 모든 양상을 띠는 것인 한에서, 나 같은\n자들에게는 사유될 수 없는 것이다. 변증〖c〗의 영역이 아니기 때문이다. 그러면\n저 [유식성 / 유식성의 성립]은, 온전한 한에서, 누구의 영역인가?!\n붓다의 영역이다. 〖제22송〗!\n모든 양상을 띠는 것인 한에서 불세존의 영역이니, [그들은] 모든 측면에서 모\n든 인식대상들을 아는 것이 방해받지 않기 때문이다.\n#403\n#\n 대명사 sā의 두 가지 해석 가능성에 대해서는 【16】 【D】 참조.\n555"
+            },
+            {
+              "id": "kor-lee-page-413",
+              "label": "Printed page 404",
+              "locator": "PDF page 413 · printed page 404 · direct PDF text extraction",
+              "text": "【16】 〖a〗!\n이제껏 편의상 ‘유식성’이라는 한자어가 사용되었더라도, 그 의미\n는 늘 ‘오직 표상일 뿐임’ 내지 ‘오직 표상일 뿐인 것’임이 환기되어야 할 것이\n다. 따라서 스구로 신죠나 김재권이 상정하는 것과 같은 유식(vijñaptimātra)\n와 유식성(vijñaptimātratā) 사이의 용어상의 구별을 본고는 받아들이지 않는\n다. 스구로 신죠는 법(dharma)과 법성(dharmatā)의 차이에 주목한 후 여기\n서 어미 ‘-성(-tā)’에 주목해 유식과 유식성의 관계 역시 법과 법성의 관계에 유\n비될 수 있다고 본다.\n\n 한편 김재권은 『삼십송』에서 견도 이전에 대한 서술인\n556\n제27송에서는 ‘유식’이 사용되지만 견도 이후인 제28송에서는 ‘유식성’이 사용\n된다는 점에 착안해 양자가 구별된다고 본다.\n\n\n557\n\n그러나 적어도 『이십론』에 한할 경우, 유식과 유식성 사이에 용어상의 구\n분은 관철되지 않는 것 같다. 이곳 【16】에서 “유식성이 무한한 해명과 세부사항\n으로 깊고 심오하”다고 한 것은, 맥락상 붓다에게 귀속되는, 완성으로서의 유식\n성이 지칭된 것인 반면에 바로 이어서 “나에 의해, 스스로의 능력에 맞게, 이 유\n식성의 성립이 이루어졌다”고 한 것은 저자 자신에게 귀속되는, 현상으로서의\n유식성이 의도된 것이다. 더군다나 후자는 ‘논증의 대상’으로 간주되고 있다. 따\n라서 『이십론』의 경우 양자의 용어상의 차이는 없다고 봐야할 것이다.!\n\n그렇다면 여기서 유식과 유식성의 차이는 전자가 주어를 1격으로 요구\n하는 명사성 술어(Nominal Predication)인 반면에 후자는 주어를 6격으로 요\n구하는 명사구(Noun Phrase)라는 문법적인 측면에 한정될 것 같다. 『삼십송』\n#404\n#\n 勝呂 信靜(2009) 289쪽 참조.\n556\n#\n 김재권(2013) 106쪽 참조.\n557"
+            },
+            {
+              "id": "kor-lee-page-414",
+              "label": "Printed page 405",
+              "locator": "PDF page 414 · printed page 405 · direct PDF text extraction",
+              "text": "의 사례 역시 이러한 문법적인 설명만으로 해명이 가능할 것이다. 나아가 슈미\n트하우젠이 “an awareness of [things] being manifestation-\nonly(vijñaptimātratā)”(Schmithausen(2017) 278쪽)라고 하며 ‘-tā’의 의\n미를 문법적인 관점에서만 풀이한 것 역시 유식과 유식성 사이의 차이를 단지\n문법적인 차원으로 간주했다는 하나의 방증이 될 것이다.!\n\n물론 본고 역시 ‘현상으로서의 유식성’을 ‘완성된 것으로서의 유식성’과\n구분해야 한다고 생각한다. 이 양자의 구분은 스구로 신죠나 김재권이 주목했\n던 것처럼 법과 법성의 차이에 유비될 수도 있을 것이다. 나아가 유위와 무위의\n관계 및 의타기와 원성실의 관계에 대응될 수 있을 것이다. 따라서 본고의 반대\n는 ‘현상으로서의 유식성’과 ‘완성된 것으로서의 유식성’의 차이가 ‘유식’과 ‘유\n식성’이라는 용어로 표현하는 것에 한정된다고 할 수 있다.!\n\n【16】 〖b〗!\n이 ‘유식성의 성립’이라는 표현을 통해 바수반두가 자신의 저작의\n명칭을 나타내려 했을 수도 있지만\n\n 주어진 것만 가지고서 확언하기는 어렵\n558\n다. 그러나 저자 자신이 『이십론』 전체의 성격을 ‘성립’이라는 단어로 요약하고\n있는 것은 틀림이 없으며, 이점은 주목할 가치가 있다. 왜냐하면 요점의 전달을\n가장 중시하는 게송의 장르적 제약이 있음에도 굳이 자신의 작업의 성격을 ‘성\n립’이라고 특정하고 있기 때문이다. 실제로 저자 본인의 산문 주석을 포함한 『이\n#405\n#\n 대표적으로 프라우발너가 이런 식으로 이해한다. Gelong Lodrö Sangpo&Jigme\n558\nSheldrön(2010) 411쪽 참조."
+            },
+            {
+              "id": "kor-lee-page-415",
+              "label": "Printed page 406",
+              "locator": "PDF page 415 · printed page 406 · direct PDF text extraction",
+              "text": "십론』 전체에서 siddhi 및 siddha, sidhyati, sidhyeta 등 동일 어근의 어휘\n들\n\n이 비슷한 의미를 가진 √yuj 계열의 단어들이나 vy ava √sthā 계열의 표\n559\n현들보다 훨씬 빈출한다. 이러한 빈도수의 차이는 상대적 중요성을 의미하는\n것으로 보인다.!\n\n그러나 성립(siddhi)은 논란의 여지가 있는 것에 대한 ‘논리적 증명 행위\n및 그 결과’, 나아가 이러한 증명의 성공이 전제하는 ‘사태적 차원의 이루어짐’,\n심지어 아예 실천적인 차원에 ‘특정 경지의 성취’까지 폭넓게 지칭할 수 있는 어\n휘이다. 이 경우 ‘유식성의 성립’ 역시 다의적인 것이 되어버릴 것이다. 이러한\n우려는 【16】에서 실제로 구체화된다. 여기서 세 차례 등장하는 여성대명사 sā\n는 동일한 여성명사인 siddhi를 지칭하는 표현으로 보는 것이 일견 가장 자연\n스럽다. 이 경우 이 대목의 취지는 다음과 같다. 즉, 이십론주가 자신의 역량의\n한계 내에서 저 유식성을 증명할 나름의 방법들을 생각해냈고 그 결과 『이십론』\n의 본문을 지었지만 자신의 증명에는 여전히 반박의 여지가 남아 있는 것 같고\n무엇보다도 자신의 것보다 강력한, 아니 완전무결한 논증이 가능할 지도 모른\n다. 그런데 이러한 독해는 유식성의 완전무결한 ‘성립’이 저 붓다의 소관이라는\n매우 직설적인 귀결을 낳는다. 그러나 붓다는 언표불가능하고 불가사의한 진리\n를 체득한 존재로서, 그에게 있어 유식성이라는 진리는 어디까지나 실존적 성\n취의 경지일 뿐이지 논리적 사유의 대상은 아니지 않을까? 그렇다면 저 귀결은\n선뜻 받아들이기 어려울 것이다.!\n#406\n#\n 여기에 반의어인 pratiṣedha 및 pratiṣidhyati의 용례도 추가할 수 있을 것이다.\n559"
+            },
+            {
+              "id": "kor-lee-page-416",
+              "label": "Printed page 407",
+              "locator": "PDF page 416 · printed page 407 · direct PDF text extraction",
+              "text": "이를 피하기 위해 siddhi를 ‘달성’이나 ‘성취’의 의미로 읽는 가능성을 떠\n올려 볼 수 있을 것이다.\n\n 이 경우 『이십론』에서 siddhi는 대부분 ‘논리적 증\n560\n명’이라는 의미로 사용되었으나 적어도 이 문장에서만큼은 ‘실존적 성취’라는\n뜻으로 이해되며, 따라서 바수반두의 용어 사용은 그다지 엄밀하지 않은 것이\n된다.\n\n 물론 이런 해석이 아주 매력적이지는 않다. 우선 ‘스스로의 능력에 맞\n561\n게’와 ‘유식성의 달성이 이루어졌다’는 두 표현이 조화스럽게 들리지 않는다. 이\n제껏 이십론주가 보여줬던 것은 유식성에 대한 일련의 논증들일 뿐이고 이 과\n정에서 저자 자신이 그 진리에 어떻게 다가섰는지 자체는 조명을 받지 않고 있\n기 때문이다. 이를 차치하더라도, 만약 문제의 sā가 여전히 siddhi를 가리킨다\n고 보면, ‘이것이(sā) 온전히는 사유될 수 없다’가 결국 ‘유식성의 달성이 온전\n하게 사유되지 않는다’가 되는데, 문제는 이것이 초점과 의미가 불분명한 진술\n이라는 점이다. 그럼에도 siddhi의 중의성은 완전히 배제되지 않기 때문에, 본\n격적인 논의에 앞서 이 siddhi의 다의성 문제가 선결적으로 논의되어야 할 것\n이다.!\n#407\n#\n 관견으로는, 이지수 단독으로 이 해석의 가능성을 채택하고 있다.!\n560\n이지수(2014) 241쪽: 결정지어야 할 문제의 종류가 무한히 많으며 오묘한 유식성(vijñapti-\nmātratā)에 대해 나(=논주 세친)는 나 자신의 능력의 한계 내에서 증명(siddhi)했으며, 그\n모든 측면에서 논의할 수는 없었다. 유식성의 성취(siddhi)는 논리의 대상이 아니며(tarkāvi\nṣaya), 그 전체에 있어서는 오직 각자의 영역(Buddha-gocara)이다.\n#\n 빠라마르타의 번역은 모호한 번역어를 할당함으로써 문제 자체를 해소해버린다.!\n561\nT1589_073c10-11: 成就唯識理 我造隨自能 如理及如量 難思佛等境"
+            },
+            {
+              "id": "kor-lee-page-417",
+              "label": "Printed page 408",
+              "locator": "PDF page 417 · printed page 408 · direct PDF text extraction",
+              "text": "이 문제를 해결하는 한 가지 간단한 방법은 sā를 siddhi가 아닌\nvijñaptimātratā를 가리키는 표현으로 읽는 것이다.\n\n 그러면 앞서의 문제의\n562\n식에 충실할 수 있을 뿐더러, 또 siddhi 자체는 그냥 ‘증명 차원의 성립’이라고\n일의적으로 이해하면 되기에 중의성 문제도 간단히 해소된다. 그래서인지, 실\n제로 많은 번역에서 이 방식을 채택하고 있다.\n\n 이러한 독해는 같은 저자의\n563\n『삼십송』 마지막 게송을 참조할 경우 더욱 강화된다. 여기서 바수반두는 ‘사유\n될 수 없는 것’(Buescher(2007) 138쪽)이라는, 『이십론』과 동일한 표현으로\n최종 단계의 유식성을 묘사하고 있기 때문이다. 더군다나 이 용어에 대해 스티\n#408\n#\n 해당 구절에 또 다른 여성대명사 iyam이 있다는 점 역시 이 방향의 해석을 지지해줄 것\n562\n같다. iyam이 siddhi로 대표되는 복합어를 한정하고, sā는 거기서 vijñaptimātratā를 선별\n적으로 지칭한다는 볼 수 있기 때문이다. 일반적으로 계통이 다른 대명사가 한 문장에서 동\n시에 사용되면 서로 다른 것을 지칭하는 것이 일반적이다. 그러나 이것이 강제 사항은 아니\n며 특히 이 구절의 iyam은 지시사보다는 정관사에 가깝게 이해가 되기 때문에 기능상 구별\n이 되므로, 결정적인 논거로 기능할 수는 없을 것이다.\n#\n 대표적인 예를 들자면, 프라우발너, 씰크, 켈너·테이버 등을 들 수 있다.!\n563\nGelong Lodrö Sangpo&Jigme Sheldrön(2010) 411쪽: [Mere cognizance] cannot,\nhowever, be completely grasped by thoughts.!\nSilk(2008) 143쪽: but that [fact that the World is nothing but Manifestation-Only]\nis not conceivable in its entirety.!\nKellner&Taber(2014) 747쪽: But this [mere-cognition] is not conceivable in all its\naspects;!\n한편, 효도 가즈오는 게송 자체는 원문대로 모호하게 처리했지만 산문주석 부분을 다음과 같\n이 번역한다는 점에서 같은 대열로 묶일 수 있다. 효도 가즈오(2011) 249쪽: 모든 종류를\n가진 <유식성을> 나와 같은 자는 사의할 수 없다.!\n다른 한편, 현장의 번역의 경우 산문주석 부분 역시 모호하나 ‘유식의 이치’를 화제어(topic)\n로 삼는다는 점에서 범박하게 따져 이 계열에 포함시킬 수 있을 것이다.!\nT1590_077b04-7: 論曰。唯識理趣品類無邊。我隨自能已略成立。餘一切種非所思議。超\n諸尋思所行境故。如是理趣唯佛所行。諸佛世尊於一切境及一切種智無礙故。"
+            },
+            {
+              "id": "kor-lee-page-418",
+              "label": "Printed page 409",
+              "locator": "PDF page 418 · printed page 409 · direct PDF text extraction",
+              "text": "라마띠는 『섭대승론』 「피과지분」의 구절에 입각해\n\n “‘변증(tarka)’의 영역이\n564\n아니기 때문에, [스스로] 내적으로 깨달아야 하기 때문에, 그리고 유례(dṛṣṭ\nānta)가 없기 때문에 사유될 수 없는 것이다(acintyas tarkāgocaratvāt\npratyātmavedyatvād dṛṣṭāntābhāvāc ca, Buescher(2007) 142쪽)”라고\n주석을 남기고 있는데, 여기서 ‘변증’이라는 단어가 『이십론』에서도 유사한 구\n도로 등장했다는 점에 주목할 필요가 있다. 바로 이 변증이 앞서 이십론주가 자\n신의 능력의 한계로서 고백한 것의 정체로 보이기 때문이다. 이렇게 해석하면\n『이십론』과 『삼십송』의 일치가 더욱 선명해지며, 최종적으로는 siddhi를 일의\n적으로 읽을 수 있는 길이 안전하게 열리는 것 같다.!\n\n그러나 이러한 접근방식에도 일정한 문제는 남는다. 먼저 진리의 사유불\n가능성을 강조하는 애초의 문제의식이 다소 과장된 것으로 보인다. 이 해석을\n문자 그대로 견지할 경우, 붓다가 정작 어떻게 유식성에 도달했는지가 미궁에\n빠져버리기 때문이다. 신비주의적 전략을 배제한다면, 남는 유일한 가능성은\n사유를 붓다의 지적 역량이 아닌 범부의 지적 역량에 한정하는 독법일 것이다.\n주석가 비닛따데바가 바로 이 길을 가고 있다.!\n#409\n#\n 長尾 雅人(1987b) 부록 107쪽: bsam gyis mi khyab pa’i mtshan nyid ni de bzhin\n564\nnyid rnam par dag pa de so so rang gis rig par bya ba dang | ’jig rten na dpe\nmed pa dang | rtog ge pa’i spyod yul ma yin pa’i phyir ro || ([붓다들의 법신\n(*dharmakāya)은] 사유될 수 없음을 특징으로 하니(*acintyalakṣaṇa), 진여는 저 청정\n[한 지혜로] [스스로] 내적으로 깨달아야하기 때문이고(*pratyātmavedyatvāt), 세간적인\n유례가 없기 때문이며(*lokadṛṣṭāntābhāvatvāt?), 변증가의 영역이 아니기 때문이다\n(*tārkikāgocaratvāt).)!\nT1594_149b23-24: 五不可思議爲相。謂眞如淸淨自內證故。無有世間喩能喩故。非諸尋思\n所行處故。"
+            },
+            {
+              "id": "kor-lee-page-419",
+              "label": "Printed page 410",
+              "locator": "PDF page 419 · printed page 410 · direct PDF text extraction",
+              "text": "이와 같이 승의(*paramārtha)는 분별(*vikalpa, 혹은 조사 *vitarka)의 영역이 아니\n다. 사유(*cintā)가 변증(*tarka)이다. 따라서 ‘사유될 수 없다’[는 것이다]. 유식성은\n승의인데, 어떻게 변증의 영역이 될 것인가? … 불세존들은 모든 양상으로 깨달으니\n(*abhi saṁ √budh?) 따라서 그들의 영역이다.\n\n\n565\n\n그러나 이것이 본문에 대한 좋은 주석은 아닌 것 같다. 【16】에서 문제의 유식성\n은 단적으로 사유될 수 없는 것이라기보다는 ‘나 같은 자들에게는’ 접근 가능하\n지 않은 것이라고 말한 것인데, 비닛따데바의 주석에 따를 경우 이 ‘나 같은 자\n들에게는’이란 한정어가 이해될 수 없는 것이 되어버린다.\n\n 그래서일까, 거의\n566\n모든 어구를 새기면서 주석을 하던 그가 이 표현에 대한 주석은 유독 빠뜨리고\n있다.!\n#410\n#\n D4065_195a7-b2: ’di ltar don dam pa ni rtog pa’i yul ma yin no || bsam pa ni\n565\nrtog ge’o || de bas na de sam par mi nus so || rnam par rig pa tsam ni don dam\npa yin na ji lar rog ge’i yul du ’gyur | … sangs rgyas bcom ldan ’das rnams kyis\nde rnam pa thams cad du thugs su chud de | de bas na de dag gi spyod yul lo ||\n#\n 또 다른 주석가인 자은 기는 이러한 난점에서 벗어나 있다. 【16】 〖c〗 참조.!\n566\n한편 『이십론』의 또 다른 번역자인 보리류지의 번역의 첫 구절을 보면 論이라는 표현을 사용\n한 것으로 보아 siddhi를 ‘성립’으로 이해하는 것 같지만, sā에 해당하는 표현 및 관련 주석\n을 제공하지 않기에 당면 문제에 대한 그의 견해를 참조할 길이 없다.!\nT1588_070a15-16: 作此唯識論 非我思量義 諸佛妙境界 福德施群生!\n한편, 『이십론』의 또 다른 주석가인 다르마빨라는, 적어도 우리에게 남아있는 한역본 『성유\n식보생론』에서는, 이 마지막 게송에 대해 따로 주석을 남기지 않았기 때문에, 이 문제에 대한\n그의 견해 역시 참조할 길이 없다."
+            },
+            {
+              "id": "kor-lee-page-420",
+              "label": "Printed page 411",
+              "locator": "PDF page 420 · printed page 411 · direct PDF text extraction",
+              "text": "그가 이런 해석의 경로를 채택한 것은 『삼십송』의 ‘사유될 수 없는 것’에\n대한 스티라마띠의 주석 ‘변증의 영역이 아니기 때문에’를 『이십론』에 과도하게\n적용한 결과로 보인다. 그러나 스티라마띠의 주석 자체는 변증이 사고와 동일\n시되지 않고 단지 그 일부이기만 해도 성립하며 앞서 살펴봤듯 이 해석이 『이십\n론』의 자구에 부합한다. 만약 『삼십송』의 ‘사유될 수 없는 것’이란 표현을 단적\n인 사유불가능성의 선언으로 읽고 이를 『이십론』에 적용한 것이라고 한다고 해\n도\n\n 앞서 제기한 의문, 즉 붓다가 어떻게 진리에 도달하였는지의 문제가 여전\n567\n히 남기 때문에 상황이 호전되지 않는다. 나아가 붓다의 ‘깨달음’이 범부의 ‘사\n유’와 질적으로 다르다는 말은 얼마든지 할 수 있겠으나, 이러한 대비가 이해 가\n능한 것이 되려면 깨달음과 사유가 모든 점에서 상반되어서는 안 된다. 그렇다\n면 양자가 함께 묶일 수 있는 제삼의 지적·정신적 활동이 요청된다. 만약 이런\n요청이 정당하다면, 비닛따데바처럼 에둘러 가는 것과 달리 보다 직접적으로 ‘사\n유될 수 없는 것’이란 표현에 함의된 ‘사유’로 저 중립적이면서 일반적인 함의의\n지적·정신적 활동을 가리킨다고 보는 해석도 성립한다. 이 해석에서는 붓다의\n‘사유’와 범부의 ‘사유’ 중에서 후자만을 변증적이라고 간주할 것이다.!\n\n나아가, 사유불가능성을 무제약적으로 읽으면, 단지 거기에 도달하는 것\n만이 문제가 아니라 모든 것을 아는 자로서의 붓다의 일반적 이미지마저 위태\n로워진다고 할 수 있다. 『이십론』은 붓다는 “모든 측면에서 모든 인식대상들을\n아는 것이 방해받지 않”는다고 증언한다. 그리고 이 앎은 자신만을 위한 것이\n#411\n#\n 그러나 그의 『이십론』 주석에서, 그리고 문제의 『삼십송』에 대한 스트라마띠의 주석에 대\n567\n한 이차 주석에서 비닛따데바는 이와 관련한 어떠한 암시도 주지 않는다."
+            },
+            {
+              "id": "kor-lee-page-421",
+              "label": "Printed page 412",
+              "locator": "PDF page 421 · printed page 412 · direct PDF text extraction",
+              "text": "아니라 중생의 계도 또한 목표로 한다는 것이 적어도 대승 이후의 상식이다.\n【16】의 초두에서 “유식성이 무한한 해명(viniścaya)과 세부사항으로 깊고 심\n오하”다고 하였는데, 여기서 언급하는 ‘해명’이 바로 이점을 잘 드러낸다. ‘해명’\n은 기본적으로 교리적인 난점에 대한 풀이로 이해되기 때문이다.\n\n 그렇다면\n568\n이십론주가 상정하는 유식성의 심오함은 실존적 달성의 차원보다는 교육적 차\n원에 초점이 맞춰진 것이다. 무한한 해명이란 곧 속인들 및 제자들, 심지어 외\n부의 비판자들로부터 교리적이고 또 철학적인 측면에서 발생된 온갖 질문에 대\n해 지적 역량의 한계가 없는 붓다가 제기된 각 질문자의 특성에 맞춰 적절히 해\n명하는 것이다. 이 자질을 부정한다면, 붓다를 위대한 교육자로 그리는 노력은\n#412\n#\n BHSD 490쪽 ‘viniścaya’ 항목 및 Kragh(2013) 226쪽 참조.\n568\n#\n 이는 사실 불교철학의 근원이자 난제이다. 특히 궁극적인 것의 불가언설성을 강조하는\n569\n대승전통에서는 더욱 첨예한 문제일 수 밖에 없다. 이 문제의식의 유가행파적 번안 및 나름\n의 답변 재구성에 대해서는 안성두(2007) 참조."
+            },
+            {
+              "id": "kor-lee-page-422",
+              "label": "Printed page 413",
+              "locator": "PDF page 422 · printed page 413 · direct PDF text extraction",
+              "text": "허튼짓 아니면 거짓이 되어버릴 것이다.\n\n 따라서 사유불가능성은 문자 그대\n569\n로 읽으면 곤란하고 일정한 제한을 둬야할 것이다.\n\n\n570\n\n앞서 스티라마띠가 ‘유례(dṛṣṭānta)’를 운운한 점에서 추측할 수 있듯이,\n기존의 경험의 굴레에서 제자리걸음을 할 뿐인 ‘일반적인’ 사유로서는 유식성이\n라는 저 미지의 경지에 도달할 수 없다는 것은 너무도 당연하게 들린다. 비근하\n게, 사과를 맛본 적 없는 이에게 단지 ‘설명’을 통해 사과의 맛을 이해시킨다는\n것이 불가능하다는 언명은 지나치게 상식적이라고 할 수 있다. 하지만 이 경우\n에도 모종의 설명의 시도 자체는 가능한 것처럼 보인다. 하물며 사과의 맛보다\n는 훨씬 더 추상적이며 또 일견 명제적인 성격을 띠는 것처럼 보이는 사성제라\n든가, 무아성, 유식성, 심지어 불성과 같은 불교전통 고유의 진리들은 한층 더\n#413\n#\n 따라서 켈너·테이버의 저 재치있는 결론은 사실 상당히 위태로운 토대 위에 서 있는 것이\n570\n라고 평가할 수 있다.!\nKellner&Taber(2014) 749쪽: Careful not to offend against the Mahāyāna\ndoctrine that the true nature of reality can only be known in nirvikalpasamādhi,\nVasubandhu refrains from stating his conclusion himself. He leaves it for the\nreader to draw the conclusion, in accordance with the principle he has\nenunciated in the course of his discussion, “Whether something exists or not is\nascertained on account of the pramāṇas”, namely: objects outside of\nconsciousness do not exist. (실재의 참된 본성은 오직 무분별삼매 안에서만 알려질 수\n있다는 대승의 교의에 어긋나짓 않고자 유의하며, 바수반두는 자신의 결론을 스스로 진술하\n기를 삼간다. 논의 과정에서 명확히 밝혔던 원칙, 즉 “어떤 것의 존재 여부는 바른 인식수단\n들에 따라 확인된다”[는 원칙]에 따라 인식의 바깥에 대상들이 존재하지 않는다는 저 결론을\n독자가 이끌어 내도록 내버려둔다.)"
+            },
+            {
+              "id": "kor-lee-page-423",
+              "label": "Printed page 414",
+              "locator": "PDF page 423 · printed page 414 · direct PDF text extraction",
+              "text": "문제가 없어 보인다. 그렇다면 진정한 간극은 붓다 자신의 설명과 이에 대한 제\n자들 및 기타 범부들의 체득 여부 사이에 있는 것이지, 진리 자체, 특히 여기서\n는 유식성의 사유불가능성에 있는 것이 아니라고 할 수 있다.!\n\n이러한 이해에 입각한다면, 재미있게도 문제의 sā를 vijñaptimātratā가\n아닌 다시 siddhi로 읽으면서도 siddhi의 다의성을 피하는 독법도 가능해진다.\n붓다의 무궁한 해명들 속에 유식성에 대한 완결적인 논리적 증명 역시 포함되\n어 있다고 해석하지 말아야 할 이유가 없어졌기 때문이다. 그렇다고 sā를\nvijñaptimātratā로 읽는 것이 봉쇄되지 않기 때문에 siddhi로 읽어야만 하는\n것은 아니다. 그러나 본고는 문제의 sā를 siddhi로 읽을 것을 제안한다. 그래야\n『이십론』의 문구 자체가 가장 깔끔하고 일관되게 이해되기 때문이다. 단, 이 해\n석을 취할 경우 『이십론』의 ‘사유될 수 없는 것’이 『삼십송』의 그것과 다른 취지\n로 읽힌다. 전자는 유식성의 증명이 사유될 수 없는 것이지만 후자는 유식성 자\n체가 그렇기 때문이다. 그러나 이는 심각한 문제가 아니다. 유식성 자체가 저자\n에게 사유될 수 없기 때문에 그것에 대한 무한한 성립도 사유될 수 없다고 보는\n매우 자연스러운 해석을 통해 양자를 연결할 수 있기 때문이다.!\n\n그러나 유한한 증명이라면 가능하다. 저자가 『이십론』을 통해 보여주는\n것이 바로 그것이다. 바로 이것의 한 가지 함축을 지적할 수 있다. 『이십론』에서\n제공된 일련의 논변은 저자 자신의 한계 때문에 최종적인 것이 아니다. 이 한계\n의 정체를 저자 자신은 ‘변증’이라고 밝혔다. 따라서 이것의 정확한 성격에 대해\n#414"
+            },
+            {
+              "id": "kor-lee-page-424",
+              "label": "Printed page 415",
+              "locator": "PDF page 424 · printed page 415 · direct PDF text extraction",
+              "text": "아는 것이 저자의 자기 이해를 추적하려는 본고의 목표를 위해서도 필요하다고\n할 수 있다. 이에 대해서는 다음 〖c〗 항목에서 상술할 것이다.!\n\n【16】 〖c〗!\n여기서 바수반두는 붓다에 대비되는 자신의 능력의 성격을 ‘변증\n(tarka)’이라고 특정했다. 확실히 붓다 스스로가 모종의 변증가(takkin, S.\ntarkin)들 및 그들의 tarka를 부정적으로 평가했다는 사실은 꽤 상식에 속한다.\n 57\n그러나 구체적으로 무엇이 tarka의 문제점인지는 적시가 되어 있지 않아 고래\n로 많은 추측이 있어 왔다.\n\n 물론 tarka 자체가 무엇인지는 더더욱 불분명하\n572\n다고 할 수 있다. 그렇다면 이십론주가 자신의 능력적 한계를 ‘tarka’라고 규정\n하면서 전달하려 했던 바는 어떻게 이해하면 좋을까?!\n\n바수반두 자신이 tarka를 따로 정의하지 않았기에 그의 용례들을 통해\n그 의미를 구성해야 할 것이다. 그런데 그 당시 경쟁관계에 있던 지적 조류 중\n에서 소위 냐야 전통에서는 일찌기 이 tarka의 중요성을 강조하였다. 따라서 냐\n야의 tarka 이해를 먼저 경유하는 것이 도움이 될 수도 있을 것이다. 이 냐야 전\n통의 근간인 Nyāyasūtra에 tarka는 다음과 같이 정의되어 있다.!\n\n#415\n#\n tarka 및 유관개념에 대한 개관은 Halbfass(1988) 제15장 263쪽-286쪽 참조.\n571\n#\n 빨리 문헌군을 토대로 한 연구는 Jayatilleke(1963) 제5장 205쪽~276쪽 참조.\n572"
+            },
+            {
+              "id": "kor-lee-page-425",
+              "label": "Printed page 416",
+              "locator": "PDF page 425 · printed page 416 · direct PDF text extraction",
+              "text": "tarka는 그 진상(tattva)이 알려지지 않은 대상에 대해 진상을 알기 위해 이유(kāraṇa)\n를 갖추는 것에 기반해 성찰하는 것(ūha)이다.\n\n\n573\n\n여기서 tarka의 유개념으로 성찰(ūha)이 등장했다는 점을 기억하자. 이에 대\n해 밧챠야나는 다음과 같이 주석한다.!\n\n그 진상이 알려지고 있지 않은 대상에 대해 ‘이 대상을 알아야겠다’라는 식으로 알려고\n함이 먼저 작동한다. 그러면 알려고 하는 사물에 대해 상반된 두 속성의 분할\n(vibhāga)을 통해 ‘A인가? 아니면 A가 아닌 것인가?’라는 식으로 헤아린다. 헤아리\n고 있는 두 속성 중 하나가 이유를 갖췄기에 ‘여기에 이유, 즉 바른 인식수단 내지 근거\n가 있다’, ‘이유를 갖췄기에 이것은 [둘 중] 저렇지 않고 이렇다’라는 식으로 인정한다.\n… 다시 왜 이것은 곧바로 진상에 대한 앎인 것이 아니라 진상을 알기 위한 것인가?\n미결이기 때문에. 이것이 둘 중 어느 한 속성이라고 이유를 갖춰서 인정하는 것이지 ‘이\n것이 단적으로 이렇다’라고 확정하거나 단정하거나 확증하는 것이 아니다.\n\n\n574\n\n#416\n#\n NS 1.1.40: avijñātatattve ’rthe kāraṇopapattitas tattvajñānārtham ūhas tarkaḥ\n573\n| Kang(2009) 3쪽에서 재인용, 번역은 약간 수정함.\n#\n NBh 1.1.40: avijñāyamānatattve ’rthe jijñāsā tāvat pravarttate jānīyedam\n574\nartham iti | atha jijñāsitasya vastuno vyāhatau dharmau vibhāgena vimṛśati kiṁ\nsvid idam āho svin nettham iti | vimṛśyamānayor dharmayor ekataraṁ\nkāraṇopapattyānujānāti | sambhavati asmin kāraṇaṁ pramāṇaṁ hetur iti |\nkāraṇopapattyā syād evam etan netarad iti | … kathaṁ punar ayaṁ\ntattvajñānārtho na tattvajñānam eveti | anavadhāraṇāt | anujānāty ayaṁ\nekataraṁ dharmaṁ kāraṇopapattyā na tv avadhārayati na vyavasyati na\nviścinoty evam evedan iti | Kang(2009) 6쪽-7쪽에서 재인용, 번역은 약간 수정함."
+            },
+            {
+              "id": "kor-lee-page-426",
+              "label": "Printed page 417",
+              "locator": "PDF page 426 · printed page 417 · direct PDF text extraction",
+              "text": "강성용이 갈파하듯 tarka의 핵심에는 분할 작업과 이유 제시가 있다.\n\n 즉 주\n575\n어진 정보의 부족이나 혹은 다른 이유 등으로 인해 그 정체가 불명한 대상에 대\n해 예비적인 분석을 하여 선택지를 마련하고서 나름의 근거에 기반해 잠정적인\n결론을 내리는 것이 밧챠야나가 생각하는 tarka다. 바로 이 특성 때문에 tarka\n는 바른 인식수단과 유관하고 심지어 기여하는 것이지만 그렇다고 해서 양자가\n동일시될 수는 없다는 것이다.\n\n tarka에 대해 일반적으로 부정적인 시선이 던\n576\n져진다는 점에서, 우호적인 듯한 이 태도는 다소 독특하며 특기할 만하다.!\n#417\n#\n Kang(2009) 7쪽-9쪽 참조.\n575\n#\n NBh 1.1.1: tarko na pramāṇasaṅgṛhīto na pramāṇāntaram | pramāṇānām\n576\nanugrāhakas tattvajñānāya kalpate | tasyodāharaṇam | kim idaṁ janma\nkṛtakena hetunā nirvartyate | āho svid akṛtakena | athākasmikam ity evam\navijñātatattve ’rthe kāraṇopapattyā ūhaḥ pravartate | … etasmiṁś ca\ntarkaviṣaye karmanimittaṁ janma iti pramāṇāni pravartamānāni\ntarkenānugṛhyate | tattvajñānaviṣayasya ca vibhāgāt tattvajñānāya kalpate\ntarka iti | so ’yam itthambhūṭas tarkaḥ pramāṇasahito vāde\nsādhanāyopālambhāya cārthasya bhavatīti pṛthag ucyate prameye ’ntarbhūto\n’pīti | (tarka는 바른 인식수단에 포함된 것이 아니고 또 다른 바른 인식수단인 것도 아니다.\n바른 인식수단에 도움을 주는 것으로서 진상을 아는 데에 기여한다. 이것의 예는, “이 삶이\n조성된 원인에 의해 발생된 것인가? 아니면 조성되지 않은 [원인]에 의한 것인가? 그것도 아\n니면 원인이 없는 것인가?”라는 식으로 이처럼 그 진상이 알려지지 않은 대상에 대해 이유를\n갖췄기에 성찰이 작동된다. … 그리고 이 tarka의 대상에 대해 “삶은 행위를 작인(作因)으로\n하는 것이다.”라는 식으로 작동하고 있는 바른 인식수단들이 tarka에게 도움을 받는다. 그리\n고 진상[을 향한] 앎의 대상을 분할하기에 진상을 아는 데에 tarka이 기여한다. 이와 같은 저\ntarka는 바른 인식수단과 함께 논쟁에서 대상을 증명하기 위해 그리고 차단하기 위해 있는\n것이다. 그래서, 비록 바른 인식대상에 포함되어 있는 것이긴 하지만, 별도로 이야기된 것이\n다.)!\nKang(2009) 3쪽-4쪽에서 재인용, 번역은 약간 수정함."
+            },
+            {
+              "id": "kor-lee-page-427",
+              "label": "Printed page 418",
+              "locator": "PDF page 427 · printed page 418 · direct PDF text extraction",
+              "text": "흔히 나가르주나에 귀속되는\n\n Vaidalyaprakaraṇa는 Nyāyasūtra에\n577\n적시된 16가지 주제항목(padārtha)들을 철저히 논박하는데, 이 16가지 중에\n서 ‘결정(nirṇaya)’ 항목(Nyāyasūtra 1.1.41에 해당)에 대한 취급에 앞서 가\n상의 반론자가 언급하고 있는 는의 개념은 바로 앞에서 살펴본 Nyāyasūtra\n1.1.40과 거의 일치한다는 점이 흥미롭다.!\n\n[상대가] ‘헤아리고서(*vimṛśya) 대상을 확정하는 것(*arthāvadhāraṇa)이 확정(*nir\nṇaya)이다. 인정의 이유는 [이유를] 갖춘 것(*upapatti)\n\n이다. 진상를 알기 위해\n578\n(*tattvajñānārtham) 성찰하는 것(*ūha)이 변증(*tarka)이다.’라고 한다면 [다음과\n같이] 말해야 할 것이다.\n\n\n579\n\n더욱이 이 논서는 초두에서 tarka를 마치 Nyāyasūtra 추종자들을 본질적으로\n규정하는 표현인양 취급하고 있다.!\n\n#418\n#\n 그러나 핀드는 이 문헌을 4세기 무렵 ‘古바수반두’ 혹은 익명의 저자에 의해 쓰여진 작품\n577\n으로 간주한다. 관련 논의는 Pind(2001) 참조.\n#\n 핀드는 이 upapatti를 ‘[논리의] 타당성(ﬁtness [of the reason])’으로 옮기나 강성용의\n578\n제안에 따라 본고에서는 ‘[이유를] 갖춤’으로 옮겼다. 각각 Pind(2001) 163쪽 및\nKang(2009) 15번 각주 참조.\n#\n D3830_106a2: rnam par dpyad pas don khong du chud pa ni gtan la phab\n579\npa yin la | ngo shes pa’i rgyu mtshan ni ’thad pa’o | de kho na nyid shes pa’i don\ndu dpyod par byed pa ni rtog ge yin no zhes na brjod par bya ste |!\n교정, 번역 및 범어 추정은 Tola&Dragonetti(1995) 41쪽, 81쪽 및 Pind(2001) 2번 각주\n참조."
+            },
+            {
+              "id": "kor-lee-page-428",
+              "label": "Printed page 419",
+              "locator": "PDF page 428 · printed page 419 · direct PDF text extraction",
+              "text": "*tarka에 정통하다는 오만으로 논쟁(*vāda)에 열광하는 저들의 오만을 불식하\n기 위하여 Vaidalya(: ‘곱게 분쇄함’)[이라는 이름의 이 논서가] 말해져야 한다.\n\n\n580\n\n부정적 평가의 초점이 tarka 자체를 노린 것인지 아니면 이를 애호하는 이들에\n게 향한 것인지는 여전히 해석이 열려 있지만, 이 부정적 태도 자체는 앞서 언\n급했듯 상당히 유서 깊은 것이다.!\n\n여러 측면에서 바수반두 자신도 냐야 전통과 대결하고 있었음이 확인되\n기 때문에\n\n 그 역시, Vaidalyaprakaraṇa의 입장에 대한 동의 여부는 일단\n581\n괄호치더라도, 냐야 추종자들의 tarka 이해를 알고 있었을 가능성이 높아 보인\n다. 그런데 바수반두의 주저 『구사론』의 tarka 용례를 살펴보아도 냐야적 이해\n#419\n#\n D3830_99b1-2: brtog ge shes pa’i nga rgyal gyis | gang zhig rtsod par\n580\nmngon ’dod pa | de yi nga rgyal spang ba’i phyir | zhib mo rnam ’thag bshad par\nbya |!\n번역은 Tola, Dragonetti(1995) 57쪽 및 Pind(2001) 2번 각주 참조.\n#\n 자아동일성 주제에 대한 양자의 대론은 Matilal(1989), Kapstein(2001) 347쪽-391쪽\n581\n참조. 논쟁술적 주제에 대한 양자의 입장 차이는 강성용(2003) 및 강성용(2004b) 참조. 『구\n사론』 및 『이십론』에 대한 밧챠야나 및 웃됴따까라의 언급 및 비판에 대한 연구는 森山 清徹\n(2015a), 森山 清徹(2015b), 森山 清徹(2016) 참조."
+            },
+            {
+              "id": "kor-lee-page-429",
+              "label": "Printed page 420",
+              "locator": "PDF page 429 · printed page 420 · direct PDF text extraction",
+              "text": "의 그림자가 잘 보이지는 않는다.\n\n 이 저작 전체에서 tarka가 5회 그리고 그\n582\n파생어인 (ku)tārkika가 2회 나타나는데, 사용의 양상은 다음과 같다.!\n\n우선 설일체유부의 표준적인 교리 이해방식과 상충되는 관점이 제시될\n때, 설일체유부 입장에서 새로운 견해를 tarka로 간주하는 것처럼 보이는 경우\n가 두 차례 보인다.!\n\n설일체유부 논사들은 “그러나 [심]불상응행[법]을 본성으로 하는 명신 등은 실체적으\n로 존재한다.”라고 [하니], 왜냐하면 일체법은 tarka로 이해되지 않는 것이기 때문이\n다.\n\n\n583\n\n#420\n#\n 냐야 등을 격렬히 비판한 디그나가 역시 냐야 전통과 tarka을 직접 결부시키지 않는다.\n582\nKrasser(2004) 138쪽 참조. 크라써에 따르면, 이른 시기 문헌인 Dīvyāvadāna라든가 『대\n승장엄경론』, 『섭대승론』 등에서 진리로서의 법 dharma는 tarka의 영역이 아니라는 진술이\n반복된다고 한다. 이러한 언어습관은 『대비바사론』이나 『보성론』에서도 발견된다.!\nT1545_003a07-23: 此中何者甚深阿毘達磨。謂無漏慧根。又如佛告西儞迦言。我有甚深阿\n毘達磨。難見難覺不可尋思非尋思境。唯有微妙聰叡智者。乃能知之。非汝淺智之所能及。…\n又如佛告阿難陀言。…謂諸緣起。難見難覺不可尋思非尋思境。…又契經說。謂緣性緣起此處\n甚深難見難覺。不可尋思非尋思境。!\n안성두(2011) 82쪽: yo nāsan na ca san na cāpi sadasad nānyah sato nāsato\n’śakyas tarkayituṁ niruktyapagataḥ pratyātmavedyaḥ śivaḥ | tasmai\ndharmadivākarāya vimalajñānāvabhāsatviṣe\nsarvārambaṇarāgadoṣatimiravyāghātakartre namaḥ ||\n#\n Pradhan(1967) 81쪽: santy eva tu viprayuktasaṁskārabhāvanā\n583\nnāmakāyādayo dravyata iti vaibhāṣikāḥ | na hi sarve dharmās tarkagamyā\nbhavantīti |"
+            },
+            {
+              "id": "kor-lee-page-430",
+              "label": "Printed page 421",
+              "locator": "PDF page 430 · printed page 421 · direct PDF text extraction",
+              "text": "[근주율의의 기한에 대한 반문에 대해] 그런데 무슨 까닭에 이 문제가 이처럼 변증되\n는가?\n\n\n584\n\n한편 신통력의 하나로 타심지를 논의하면서, 점술가들이 타심지를 수행하는 수\n단 중 하나로 언급되는 경우도 2회 있다.!\n\n[타심지는 생득적인 것에] 더해 변증 및 주문으로 조성된 것이 있다.!\n점술가들의 변증적인 타심지 그리고 [Īkṣaṇikaśāstra에서와 같은] 주문에 의한 [타\n심지] 역시 [선·악·무기의] 세 종류라고 알아야 한다.\n\n\n585\n\n또 게송에서 운율상의 이유로 초선의 구성용소인 조사(vitarka) 대신 tarka가\n사용된 경우가 두 차례 있다.!\n\n[초선에는] tarka(=조사(vitarka)), 사찰(vicāra), 기쁨(prīti), 즐거움(sukha), 마\n음의 일점 집중(cittaikāgratā)이 있다.\n\n\n586\n\n[초선과 제2선] 사이의 선 dhyāna에는 tarka(=조사(vitarka))가 없다.\n\n\n587\n\n#421\n#\n Pradhan(1967) 212쪽: kutas tv etad evaṁ tarkyate |\n584\n#\n Pradhan(1967) 430쪽: tarkavidyākṛtaṁ ca yat |!\n585\nyac cāpi tārkikaṁ paracittajñānaṁ naimittikānāṁ yac ca vidyākṛtaṁ tad api\ntrividhaṁ veditavyam |\n#\n Pradhan(1967) 437쪽: tarkacārau ca prītisaukhyasamādhayaḥ |\n586\n#\n Pradhan(1967) 448쪽: atarkaṁ dhyānam antaram ||\n587"
+            },
+            {
+              "id": "kor-lee-page-431",
+              "label": "Printed page 422",
+              "locator": "PDF page 431 · printed page 422 · direct PDF text extraction",
+              "text": "마지막 사례로 「정품」 말미에 「파아품」을 제외한 이전까지의 논의를 마무리하는\n게송 중 하나에서 나쁜 변증가(kutārkika)라는 표현이 1회 등장한다.!\n\n세간의 눈이었던 스승 [불세존]이 눈을 감고 증언하는 사람들[도] 다수 사라지니,!\n진실(tattva)을 보지 못한, 고삐 풀린, 나쁜 변증가(kutārkika)들이 이 성교\n(śāsana)를 혼란시켰네.\n\n\n588\n\n‘진실(tattva)’라는 표현과 함께 쓰였다는 점에서 이 마지막 용례만이 냐야적\ntarka 이해에 근접한다. 물론 여기서는 tarka의 양태가 진상을 보지 못한 것으\n로 묘사되지만 Nyāyasūtra에서는 단지 ‘진상(tattva)을 알기 위한 것’이라고\n만 하여 완전히 일치한다고 하기는 어렵다. 아울러 붓다를 거론한다는 점에서\n『이십론』의 용례와도 가깝다. 그렇다고 해서 여기서 언급되는 ‘나쁜 변증가들’\n이 어떠한 형태에서든지 냐야 추종자들을 지목한다고 보기는 어려울 것이다.\n따라서 바수반두의 tarka 이해를 냐야 전통에 접속시켜 이해하려는 시도 역시\n어느 정도 무리가 있다고 할 수 있다.!\n\n앞서 냐야전통과 『구사론』을 살펴봤지만 여전히 tarka가 무슨 의미인지\n불분명한 상태이다. 그렇다면 이십론주가 자신의 한계를 tarka라고 규정하는\n대목을 어떻게 이해하면 좋을까? 이 질문에 가장 손쉽게 내놓을 수 있는 답변\n은 이렇다. 『이십론』의 마지막 게송 및 해당 자주는 붓다의 위대함을 찬양하고\n#422\n#\n Pradhan(1967) 460쪽: nimīlite śāstari lokacakṣuṣi kṣayaṁ gate\n588\nsākṣijane ca bhūyasā | adṛṣṭatattvair niravagrahaiḥ kṛtaṁ kutārkikaiḥ\nśāsanam etadākulam ||"
+            },
+            {
+              "id": "kor-lee-page-432",
+              "label": "Printed page 423",
+              "locator": "PDF page 432 · printed page 423 · direct PDF text extraction",
+              "text": "자신의 능력을 겸손하게 표현한다는 점에서 논증적인 성격을 강하게 띠었던 선\n행 부분들과 선명히 대비되며, 그렇다면 바수반두로서는 겸사를 위하여 굳이\n엄밀한 용어를 사용할 필요가 없었을 테니, 다소 막연하지만 전통적으로 당연\n시되어 온 저 tarka의 부정적인 뉘앙스를 이용했을 뿐이라고 치부할 수도 있을\n것이다. 의례성 내지 관습에 기댄 이런 답변은 다소 나른하여 불만족스러울 수\n있지만, 나름의 기준을 통해 해석의 무분별한 증식을 막는다는 점에서 도외시\n할 수만은 없을 것이다.!\n\n그러나 이러한 성격의 답변이 힘을 발휘할 수 있으려면, 문제의 의례가\n확고하게 관철되어 왔다는 사실이 먼저 확인되어야 할 것이다. 그러나 효도 가\n즈오에 따르면, 저작의 말미에 붓다나 보살, 삼보 등에 대해 귀의한다거나 혹은\n해당 저작을 작성함으로써 발생한 공덕을 남에게 회향한다는 식으로 언급하는\n것은 일찍부터 발견되지만, 자신의 한계를 표명하는 행위는 다름 아닌 이 『이십\n론』과 함께 『구사론』 「파아품」에서 처음 발견되기 때문에 상당히 이례적인 경우\n라고 할 수 있다.\n\n\n589\n#423\n#\n 효도 가즈오(2011) 250쪽-255쪽 참조.\n589"
+            },
+            {
+              "id": "kor-lee-page-433",
+              "label": "Printed page 424",
+              "locator": "PDF page 433 · printed page 424 · direct PDF text extraction",
+              "text": "본인의 관견으로는, 효도 가즈오가 언급한 저 두 사례를 제외하면 『구사\n론』 「정품」의 말미 정도를 추가할 수 있을 뿐이다.\n\n\n590\n\n이 논서에서 이야기된 이 아비달마는 바로 저 (『발지론』과 같은) 논서들[에서 다루어지\n는] 아비달마가 설명된 것인가?!\n까슈미라 소재 설일체유부 논사들의 지도방식\n\n으로 성립된 것 대부분이 내가 이 아\n591\n비달마로 말한 것이다.!\n여기서 잘못 취해진 바는 나의 허물이나, 정법에의 지도방식에 있어서 권위는 성자들\n이다.!\n대부분 까슈미라 소재 설일체유부 논사들의 지도방식으로 성립된 이것을 우리가 아비\n달마라고 부르기 때문이다. 여기에서 우리들에 의해 잘못 취해진 바는 우리들의 과실\n#424\n#\n 「정품」과 「파아품」 말미에 각각 마무리 발언이 존재하는 현상은 「정품」까지 작성된 텍스\n590\n트에 「파아품」이 추가되었다는 가설로 해명될 수 있을 것이다. 이와 관련한 제반 문제는\nLee(2005) xiv쪽-xviii쪽 참조.!\n한편 古 바수반두가 지은 『섭대승론석』의 도입부 게송 중에서 다음 구절은 자신의 한계에 대\n한 통렬한 고백으로 읽을 수도 있지만, 그보다는 배우는 단계에 있는 다른 이들의 한계 때문\n에 자신이 이처럼 주석을 달게 되었다는 사연을 전달하는 것으로 읽는 편이 더 자연스럽다.!\nD4050_122a2-3: mi zad blo (spobs?) las dam chos thig don bdud rtzi’i char ’bab\nba las phyogs gcig nyid || thos te byi’u lta bur rang gi nus pa cung zhig gang\nyang ci bzung dang || (다함 없는 지혜(*dhī) (혹은 변재(*pratibhāna))로부터 정법과\n[그] 의미라는 감로(*amṛta)의 비가 내린 것에서 단지 한 부분을 듣고 새처럼 스스로의 약간\n의 능력[만큼] 얼마간 받아들인다.)!\nT1597_321b17-18: 無盡辯者等所雨 甘露文義微妙法 多從彼聞自力微 少受猶如乞雨鳥\n#\n 지도방식(nīti)의 의미 및 중요성에 대한 포괄적 설명은 Eckel(2008) 27쪽 이하 참조.\n591"
+            },
+            {
+              "id": "kor-lee-page-434",
+              "label": "Printed page 425",
+              "locator": "PDF page 434 · printed page 425 · direct PDF text extraction",
+              "text": "이다. 그러나 정법으로의 지도방식에 대해서는 또 붓다들 및 그들의 아이들(=제자들)\n이 권위이다.\n\n\n592\n\n설일체유부의 지도방식(nīti)이라는 제삼의 요소로 인해 과거 붓다와 그의 제자\n들 및 지금 우리들이라는 양자구도는 더 이상 유효하지 않지만, 그럼에도 여전\n히 분명한 언어로 자신의 한계점을 밝히고 있기 때문에, 『이십론』 및 「파아품」의\n사례와 함께 묶일 수 있을 것이다. 만약 효도 가즈오의 저 추측이 사실로 판명\n난다면, 의례성에 기반한 문제제기는 해소된다고 할 수 있다. 그렇다면 바수반\n두가 굳이 노출할 필요가 없었던 자신의 한계를 의식적으로 드러낸 이유를 재\n구성할 필요가 있다.!\n\n이점과 관련해 효도 가즈오는 『이십론술기』의 설명에 기대어 바수반두가\n아직 초지를 획득하지 않았기 때문에 이처럼 겸손하게 말했다고 설명한다.\n\n\n593\n이 설명은 아마도 다음 대목을 염두에 둔 것 같다.!\n\n나머지 모든 양상의 것은 사유될 수 있는 것이 아니다.!\n#425\n#\n Pradhan(1967) 459쪽-460쪽: yo ’yam iha śāstre ’bhidharma uktaḥ kim eṣa\n592\neva śāstrābhidharmo deśitaḥ |!\nkāśmīravaibhāṣikanītisiddhaḥ!\nprāyo mayā ’yaṁ kathito ’bhidharmaḥ |!\nyad durgṛhītaṁ tad ihāsmadāgaḥ!\nsaddharmanītau manayaḥ pramāṇam || 8.40 ||!\nprāyeṇa hi kāśmīravaibhāṣikāṇāṁ nītyādisiddha eṣo ’smābhir abidharma\nākhyātaḥ |  yad atrāsmābhir durgṛhītaṁ so ’smākam aparādhaḥ |\nsaddharmanītau tu punar buddhā eva pramāṇaṁ buddhaputrāś ca |\n#\n 효도 가즈오(2011) 252쪽 참조.\n593"
+            },
+            {
+              "id": "kor-lee-page-435",
+              "label": "Printed page 426",
+              "locator": "PDF page 435 · printed page 426 · direct PDF text extraction",
+              "text": "저 유식의 이치, [곧] 내가 밝힌 바 외의 나머지 모든 양상의 것은 매우 깊은 내용이어\n서 내 정신의 사유대상이 아니고 또 내 말의 발화대상이 아니다. ‘모든 양상의 것’은\n다양한 이치[를 말하는 것]이다. 왜냐하면,!\n뭇 변증의 영역을 초월했기 때문이다.!\n여기서는 내가 사유할 수 있는 바가 아님을 풀이한 것이다. ‘tarka’는 분별을 수반한\n유루의 마음 등이고, 혹은 네 가지 탐구(*paryeṣaṇā)이다. 저 유식의 이치는 무루의\n진실한 앎으로 깨달을 때야만 바야흐로 약간 증득할 수 있고, 붓다의 단계에 있으면\n증득이 곧 원만하게 밝다. 그러나 나 바수반두는 수준이 초지 이전인 변증가의 단계\n(*tārkikabhūmi)에 머무르기에 있는 그대로 유식의 이치를 증득할 수가 없으니, 따\n라서 내게 사유되는 바가 아니라는 것이다. 저 유식의 이치는 tarka를 초월한 영역이\n다.\n\n\n594\n\n그러나 효도 가즈오의 해명 자체는 다소 오도적이다. 유식성이라는 진리를 비\n로소 처음 직관한다는 초지 단계가 유가행파에게 중요한 임계점인 것은 물론\n당연하다고 할 수 있다. 그러나 애초에 문제가 되었던 것은 붓다의 무궁한 지적\n역량에 대비되는 바수반두 자신의 제한된 지력으로, 이 제약이 초지의 경험을\n통해 질적으로 한 단계 개선된다고는 해도 곧바로 붓다와 같은 수준이 보장되\n#426\n#\n T1834_1009b02-12: 論。餘一切種非所思議。!\n594\n釋下半頌。其唯識理。我所明外。餘一切種。甚深之義。非是我意之所思惟。亦非我語所言議\n也。一切種者。差別理也。所以者何。!\n論。超諸尋思所行境故。!\n述曰。此釋非已所能思議。尋思者。有分別有漏心等。或四尋伺(—>原本에 따라 思)。其唯識理。要\n得無漏眞智覺時。方能少證。若在佛位。證乃圓明。然我世親。處在地前。住尋思位。不能如\n實證唯識理。故非是我之所思議。其唯識理。超尋思境。(볼드체는 현장역 『이십론』)"
+            },
+            {
+              "id": "kor-lee-page-436",
+              "label": "Printed page 427",
+              "locator": "PDF page 436 · printed page 427 · direct PDF text extraction",
+              "text": "는 것은 아니다. 밑줄 친 부분을 잘 보면, 문제의 초지는 일종의 기준점으로서\n소위 ‘tarka의 단계’가 이 초지의 이전 단계에 위치함을 나타내고 있을 뿐, 효도\n가즈오의 언명을 문자 그대로 읽을 경우 기대되는 것처럼 저 변증가의 단계를\n넘어 초지에 도달한다고 해서 곧바로 모든 지적 장애가 사라진다는 식으로 이\n야기하고 있지는 않다.!\n\n실제로 『이십론술기』의 이어지는 진술을 살펴 보면, 유가행파의 수행도\n모델로 잘 알려져 있는 『성유식론』의 다섯 단계 패러다임을 재서술하고 있다.\n\n\n595\n\n『성유식론』에서 말하길, 뭇 보살들은 식의 본성과 특성에 대해 자량위에서는 깊이 신\n해(*adhimokṣa)할 수 있고, 가행위에서는 소취와 능취를 점진적으로 조복시키고 영\n단시켜서 진실에 대한 봄을 인발할 수 있고, 통달위에서는 있는 그대로 통찰할 수 있\n고, 수습위에서는 보여진 대로의 이치를 반복적으로 수습하여 나머지 장애를 조복시\n키고 영단시킬 수 있으며, 구경위에서는 장애에서 벗어나 원만히 밝아서 미래세가 다\n#427\n#\n 유가행파의 수행도 모델에 대한 간략한 개괄은 델레아누가 간명하게 잘 설명하였다. 가\n595\n츠라 쇼류 외(2014) 제5장 참조.!\n한편 『성유식론』의 견도설에 대한 연구는 안성두(2004) 참조."
+            },
+            {
+              "id": "kor-lee-page-437",
+              "label": "Printed page 428",
+              "locator": "PDF page 437 · printed page 428 · direct PDF text extraction",
+              "text": "하도록 중생의 부류를 교화하여 유식의 특성과 본성에 깨달아 들어가게끔 할 수 있다.\n… [바수반두가] 가행위의 처음인 난위 가운데에 들어갈 수 있었으니 …\n\n\n596\n\n이 구도를 통해 주석자가 전달하려는 메시지는 그냥 문자 그대로 이해하면 될\n것 같다. 즉, 견도의 체험이 위치한 통달위가 곧 초지이고, 바수반두는 그 이전\n단계인 가행위에 속하며, 붓다와 같은 무제약적인 능력을 갖추려면 두 단계를\n건너 최종 단계인 구경위에 도달해야만 한다는 것이다.!\n\ntarka의 본성 규명과 관련해, 『이십론술기』에서 오히려 주목할 바는 정\n교한 포지셔닝 및 의외로 풍부한 정보라고 할 수 있다. 이점은 비닛따데바의 이\n해 방식과 대조해보면 잘 드러난다.\n\n 『이십론』의 ‘사유될 수 없는 것’이란 표\n597\n현에서 사유를 붓다에게도 적용되는 일종의 상위범주로 이해한 본고의 입장과\n#428\n#\n T1834_1009b26-c07: 成唯識說。謂諸菩薩。於識性相。資糧位中。能深信解。在加行\n596\n位。能漸伏斷所取能取。引發眞見。在通達位。如實通達。修習位中。如所見理。數數修習。\n伏斷餘障。至究竟位。出障圓明。能盡未來。化有情類。復令悟入唯識相性。…得入加行初煗\n位中。…!\n자은 기는 『성유식론』의 다음 대목을 의도하는 것 같다.!\nT1585_048b15-20: 云何漸次悟入唯識。謂諸菩薩於識相性資糧位中能深信解。在加行位能\n漸伏除所取能取引發眞見。在通達位如實通達。修習位中如所見理數數修習伏斷餘障。至究竟\n位出障圓明。能盡未來化有情類復令悟入唯識相性。\n#\n D4065_195a7-b2: ’di ltar don dam pa ni rtog pa’i yul ma yin no || bsam pa ni rtog ge’o || de bas na de\n597\nsam par mi nus!\nso || rnam par rig pa tsam ni don dam pa yin na ji lar rog ge’i yul du ’gyur | … sangs rgyas bcom ldan ’das\nrnams kyis de!\nrnam pa thams cad du thugs su chud de | de bas na de dag gi spyod yul lo || (이와 같이 승의(*paramārtha)는\n분별(*vikalpa, 혹은 조사 *vitarka)의 영역이 아니다. 사유(*cintā)가 변증(*tarka)이다. 따라서 ‘사유될 수 없다’[는 것이\n다]. 유식성은 승의인데, 어떻게 변증의 영역이 될 것인가? … 불세존들은 모든 양상으로 깨달으니(*abhi saṁ √budh?)\n따라서 그들의 영역이다.)!\n『이십론』의 또 다른 주석가인 다르마빨라는, 적어도 우리에게 남아있는 한역본 『성유식보생론』에서는, 이 마지막 게송에 대\n해 따로 주석을 남기지 않았기 때문에, 이 문제에 대한 그의 견해는 참조할 길이 없다."
+            },
+            {
+              "id": "kor-lee-page-438",
+              "label": "Printed page 429",
+              "locator": "PDF page 438 · printed page 429 · direct PDF text extraction",
+              "text": "달리, 비닛따데바는 사유를 tarka에 한정하고 이를 다시 깨달음과 대립시키고\n있는데, 본고는 앞서 이러한 설명 방식이 다소 부주의하다고 평가했다. 그러나\n『이십론술기』의 경우 ‘내가 밝힌 바 외의 나머지’라든가 ‘내 정신의 사유대상이\n아니고 또 내 말의 발화대상이 아니다’라는 등의 표현이 발견되기에, 자은 기는\n비닛따데바가 범하고 있는 종류의 오류로부터 의식적으로 벗어나고 있음을 알\n수 있다.!\n\n물론 비닛따데바의 설명에서 tarka의 대상이 승의가 아닌 것, 곧 세속(sa\nṁvṛti)에 속한 것이며, 그런 한에서 분별과 동치되고 있는 점은 눈여겨볼 만한\n가치가 있다. 그러나 이는 매우 범박한 해설로서 추가적인 단서 없이 그의 주석\n만으로는 tarka의 성격을 규정하기가 어렵다. 『이십론술기』 역시 ‘분별을 수반\n한 유루의 마음 등\n\n’이라고 특정한 점에서는 비닛따데바와 큰 차이가 없다고\n598\n할 수 있으나, 곧이어 네 가지 탐구(paryeṣaṇā)를 tarka의 정체로 지목한 점\n이 눈에 띤다. 이 뜻밖의 진술은 상당히 풍요로운 교학의 영역으로 우리를 인도\n한다.!\n\n‘네 가지 탐구’는 「보살지」에서 처음 등장하고 『섭대승론』 제3장 「입소지\n상분」에서 유식의 구도로 재편된 것으로 특히 초기 유가행파 수행론의 핵심을\n구성하는 중요한 개념이라고 할 수 있다.\n\n 「보살지」 「진실의품」의 설명에 따르\n599\n면 네 가지 탐구란 구체적으로 다음과 같다.!\n#429\n#\n ‘등’이라는 표현으로 자은 기가 의도하는 바는 아마도 이 유루의 마음과 상응 관계에 있\n598\n는 여러 심소들이지 않을까 싶다.\n#\n 이에 대해서는 阿 理生(1982), 高橋 晃一(2005a) 김태우(2016), 안성두(2016) 참조.\n599"
+            },
+            {
+              "id": "kor-lee-page-439",
+              "label": "Printed page 430",
+              "locator": "PDF page 439 · printed page 430 · direct PDF text extraction",
+              "text": "네 가지 탐구란 무엇인가? 명칭의 탐구, 사물의 탐구, 자성의 가설의 탐구, 차별의 가\n설의 탐구이다. 여기서 명칭의 탐구란 보살이 명칭에 대해 단지 명칭일 뿐이라고 보는\n것이다. 이처럼 사물에 대해 단지 사물일 뿐이라고 봄이 사물의 탐구이고, 자성의 가\n설에 대해 단지 자성의 가설일 뿐이라고 봄이 자성의 가설의 탐구이며, 차별의 가설에\n대해 단지 차별의 가설일 뿐이라고 봄이 차별의 가설의 탐구이다. 그는 명칭과 사물의\n분리된 특징을 보고 또 결합된 [특징을 보며] 명칭과 사물의 결합에 토대를 둔, 자성의\n가설 및 차별의 가설을 통찰한다.\n\n\n600\n\n여기서 말하는 자성과 차별은 「진실의품」에서 다음과 같이 사용된다.!\n\n여기서 자성분별이란 무엇인가? 색(rūpa) 등의 명칭을 가진 사물에 대해 ‘색이다’라\n는 등등으로 조사[하여 추정](vitarka)\n\n하는 것이 ‘자성분별’이라고 이야기된다. 차\n601\n#430\n#\n 高橋 晃一(2005b) 111쪽: catasraḥ paryeṣaṇāḥ katamāḥ | nāmaparyeṣaṇā |\n600\nvastuparyeṣaṇā | svabhāvaprajñaptiparyeṣaṇā | viśeṣaprajñaptiparyeṣaṇā ca ||\ntatra nāmaparyeṣaṇā yad bodhisattvo nāmni nāmamātraṁ paśyati || evaṁ\nvastuni vastumātradarśanaṁ vastuparyeṣaṇā || svabhāvaprajñaptau\nsvabhāvaprajñaptimātradarśamaṁ svabhāvaprajñaptiparyeṣaṇā ||\nviśeṣaprajñāptau viśeṣaprajñaptimātradarśanaṁ viśeṣaprajñaptiprayeṣaṇā || sa\nnāmavastuno bhinnaṁ ca lakṣaṇaṁ paśyaty anuśliṣṭaṁ ca |\nnāmavastvanuśleṣasanniśritāṁ svabhāvaprajñaptiṁ viśeṣaprajñāptiṁ ca\npratividhyati ||\n#\n 아비달마 전통에서 심소법 중의 하나로 간주되는 조사(vitarka)는 곧 살펴보겠지만, 눈\n601\n앞의 대상을 감별하고 ‘이것이 뭐지?’라는 식으로 그 정체를 탐사하는 마음의 양태를 지칭하\n는 표현이다. 그러나 여기서는 그러한 조사에 수반되는 조사결과, 즉 대상의 판별과 명명까\n지 포괄하는 넓은 개념으로 쓰이고 있는 것 같다. 이 경우 ‘조사(調査)’보다는 ‘사정(査定)’이\n적절한 번역어일 것이다."
+            },
+            {
+              "id": "kor-lee-page-440",
+              "label": "Printed page 431",
+              "locator": "PDF page 440 · printed page 431 · direct PDF text extraction",
+              "text": "별분별이란 무엇인가? 색 등의 명칭을 가진 바로 저 사물에 대해 ‘이것은 물질적이다’,\n‘이것은 비물질적이다’, ‘이것은 가시적이다’, ‘이것은 비가시적이다’, ‘이것은 길항적이\n다’, ‘이것은 비길항적이다’, ‘유루다’, ‘무루다’ … ‘과거다’, ‘미래다’, ‘현재다’라는 식의\n무량한 구별의 방식으로, 자성분별에 토대를 두되 저것과 구별되는 (혹은 저것의 고유\n한) 내용을 분별하는 것이 ‘차별분별’이라고 이야기된다.\n\n\n602\n\n적어도 「진실의품」에서 ‘자성’이란 세계를 구성하는 기본범주이고, ‘차별’이란\n이에 부수하는 하위 혹은 별도의 범주들이라고 할 수 있다.!\n\n따라서 특정 사물에 거기에 부합하는 기본범주가 적용된 상황 속에서 바\n로 이 명칭과 사물의 결합 현상을 놓치지 않고 그대로 호명함으로써 일종의 소\n격효과를 발생시켜 주어진 것 이상의 의미 부여를 중단하는 것이 곧 앞서 언급\n된 ‘자성의 가설의 탐구’이다.\n\n 이런 한에서 자성분별은 자성의 가설의 탐구에\n603\n#431\n#\n 高橋 晃一(2005b) 116쪽: tatra svabhāvavikalpaḥ katamaḥ | rūpādisaṁjñake\n602\nvastuni rūpam ity evamādir yo vitarko ’yam ucyate svabhāvavikalpaḥ ||\nveśeṣavikalpaḥ katamaḥ | tasminn eva rūpādisaṁjñake vastuny ayaṁ rūpī |\nayam arūpy ayaṁ sanidarśano ’yam anidarśana evaṁ sapratigho ’pratighaḥ\nsāsravo ’nāsravaḥ … atīto ’nāgataḥ pratyutpanna ity\nevaṁbhāgīyenāpramāṇena prabhedanayena yā svabhāvavikalpādhiṣṭhānā\ntadviśiṣṭārthavikalpanā ’yam ucyate viśeṣavikalpaḥ ||!\ncf. 밑줄 친 veśeṣavikalpaḥ는 명백히 viśeṣavikalpaḥ의 오기로 보인다.\n#\n 이를 후설 특유의 에포케와 비교하는 논의는 안성두(2016) 18쪽-19쪽 참조.\n603"
+            },
+            {
+              "id": "kor-lee-page-441",
+              "label": "Printed page 432",
+              "locator": "PDF page 441 · printed page 432 · direct PDF text extraction",
+              "text": "대치(對峙)되며 그것에 의해 대치(代置)되어야할 것이다.\n\n 나아가 명칭의 탐\n604\n구 및 사물의 탐구는 이러한 자성의 가설의 탐구가 성공하기 위한 선행조건을\n마련해주는 것으로 이해될 수 있다. 이처럼 탐구는 의식이 자신에 주어진 것을,\n습관에 역행하여 하지만 실재에 가깝게, 조사하고 점검하는 행위이다.\n\n\n605\n\n문제는, 『이십론술기』의 주석에 따를 경우, 「보살지」 「진실의품」에서 상\n당히 긍정적으로 묘사된 이 네 가지 탐구가 『이십론』에서 다소 부정적으로 묘사\n된 tarka와 동일시된다는 사실이다. 자은 기는 무슨 근거에서 이런 주석을 남긴\n것일까? 혹자는 그의 스승인 현장이 번역한 문헌군에서 주로 尋思로 옮겨지는\ntarka와 마찬가지로 이 paryeṣaṇā 역시 같은 번역어를 할당받는다는 우연에\n기인한 착오로 치부할 수도 있을 것이다. 실제로 티벳역의 경우 「진실의품」의\nparyeṣaṇā는 yongs su tshol ba로, 『이십론』의 tarka는 rtog ge로 옮긴다.\n 60\n또 「보살지」에 대한 일종의 주석으로 볼 수 있는 「섭결택분 보살지」의 해당 부분\n에서도 명시적인 언명을 통해 이 양자가 등치되는 경우는 고사하고 암묵적인\n사용에 의해 양자의 동일성을 추측하게 해주는 대목마저 찾기 어렵다.\n\n\n607\n#432\n#\n 조사(vitarka)가 분별(vikalpa)의 유개념으로 등장하는 점에 주목할 필요가 있다. 실제\n604\n로 티벳의 번역 전통에서는 양자를 구별하지 않고 그냥 ‘rtog pa’로 옮기는 경우가 꽤 흔하\n다.!\n또한 탐구(paryeṣaṇā)와 분별(vikalpa)이 소치(vipakṣa)와 대치(pratipakṣa)로 그려지는\n점 역시 주목할 필요가 있다.\n#\n  「진실의품」은 이 네 가지 탐구를 수행한 결과로 네 가지의 있는 그대로의 통찰\n605\n(yathābhūtaparijñāna)을 제시한다.\n#\n 각각 D4037_29b5 이하 및 Silk(2018) 144쪽 참조.\n606\n#\n 高橋 晃一(2005b) 121쪽-149쪽 참조.\n607"
+            },
+            {
+              "id": "kor-lee-page-442",
+              "label": "Printed page 433",
+              "locator": "PDF page 442 · printed page 433 · direct PDF text extraction",
+              "text": "그러나 자은 기에게 귀속되는 『대승법원의림장』을 보면 양자의 일치는\n적어도 단순한 착오는 아니며 오히려 그 반대의 추정, 즉 현장-자은 계열에서\n의도적으로 동치한 것이거나 혹은 이 양자를 동일시하는 전승을 따르고 있다는\n가설을 떠올리게 된다. 이를테면 유가행파의 핵심주제어들에 대한 설명 권위\n있는 문헌들에서 뽑아 정리한 이 『대승법원의림장』에서 ‘尋思’가 6개 챕터에 걸\n쳐 총 22회 등장한다. 그런데 동일 문헌에서 ‘三寶’의 경우 총 37회 등장하는\n데, 이중 29회는 「삼보의림」이라는 단일 챕터에 집중적으로 등장한다. 따라서\n이 尋思의 비중과 위상은 의외로 상당하다고 할 수 있다.!\n\n이중에서 명시적으로 네 가지 탐구에 해당하거나 혹은 맥락상 이를 가리\n키는 경우가 총 15회로 「유식의림」, 「삼혜의림」의 용례들이 전부 이 경우에 속\n한다.\n\n 또 「단장장」의 두 차례 용례는, 논의의 배경이 되는 『유가사지론』 「성문\n608\n지」를 확인한 결과, 원어가 vitarka로 확인된다.\n\n 그리고 『유가사지론』 「유심\n609\n유사지」를 전제하는 「육십이견」 챕터의 2회의 용례는 그 원어가 문제의 tarka\n로 확인된다.\n\n 나아가 『아비달마집론』을 인용하고 있는 「불토장」의 2차례의\n610\n#433\n#\n T1861 참조. 이하 동일.\n608\n#\n T1579_329b28-29: 掉擧者。謂因親屬尋思。國土尋思。不死尋思。!\n609\nDelhey(2009) 1권 133쪽: auddhatyaṁ katamat? jñātivitarkaṁ janapadavitaraṁ vāmaravitarkaṁ vāgamya!\nT1579_447a26-27: 或欲尋思或恚尋思或害尋思。!\n声研(2007) 256쪽: chandavitarkaṁ vyāpādavihiṁsāvitarkam (chanda는 reconstruction)\n#\n T1579_310c03-4: 無因見論者。謂依止靜慮。及依止尋思。應知二種。如經廣說。!\n610\nBhatacharya(1957) 150쪽: ahetukavādaḥ katamaḥ | so ’pi dhyānasaṁniśrayeṇa tarkasaṁniśrayeṇa ca\ndvividho yathāsūtraṁ vediyavyaḥ |"
+            },
+            {
+              "id": "kor-lee-page-443",
+              "label": "Printed page 434",
+              "locator": "PDF page 443 · printed page 434 · direct PDF text extraction",
+              "text": "용례들은 그 원어가 tarka인 것이 거의 확실시된다.\n\n 한편 「법처색의림」에서\n611\n‘自尋思\n\n’의 형태로 등장하는 한 차례의 용례는 후대의 교학적 발전을 반영하\n612\n는 『성유식론』에 그 토대를 두기에\n\n 정확한 원어를 상정하기가 여러모로 어렵\n613\n다.\n\n\n614\n\n「불토장」에서 변증이 사용되는 방식은 『이십론』의 그것과 완전히 일치하\n며 바로 이것이 『이십론술기』의 내용에 바탕이 되는 것 같다.!\n\n#434\n#\n T1605_674b10-13: 復有淸淨世界。非苦諦攝。非業煩惱力所生故。非業煩惱增上所起\n611\n故。然由大願淸淨善根增上所引。此所生處不可思議。唯佛所覺。尙非得靜慮者靜慮境界。況\n尋思者!\nD4049_74b01-3: yongs su dag pa’i ’jig rten gyi khams de dag ni sdug bsngal gyi\nbden pa ma yin pa blta ste | de dag las dang nyon mongs pas bskyed pa ma yin\n| las dang nyon mongs pa’i bdang gis byung ba ma yin gyi | smon lam dang dge\nba’i rtza ba’i dbang gis byung ba dag go | de lta bas na sangs rgyas rnams kyi\nsangs rgyas kyi spyod yul yin pa’i phyir skye ba’i gnas de dag ni bsam gyis mi\nkhyab ste | de dag ni bsam gtan pa rnams gyi bsam gtan gyi yul ma yin na | rtog\nge pa rnams kyi yul ma yin la lta smos kyang ci dgos | (범어는 이 부분이 결락됨)!\n티벳의 번역 전통에서 모호성이 있는 rtog pa와 달리 rtog ge는 tarka의 고정번역어이다.\n#\n T1861_43a01-7: 故成唯識說。疎所緣緣能緣或有。離外所託亦得生故。第八第六此諸\n612\n心品所杖本質。或有或無。疎所緣緣有無不定。若依此義。極略･極逈･遍計起色。折緣諸色因\n名教者本質如前。依自尋思計諸我法･空花免角･過去･未來･劫盡常微。不因他教皆無本質。\n#\n T1585_041a02 전후의 논의가 가장 근접해 보인다.\n613\n#\n 그러나 분명한 점은 이 표현이 바르뜨리하리의 저 언명을 상기시킨다는 것이다.!\n614\nVP 2.489: prajñā vivekaṁ labhate bhinnair āgamadarśanaiḥ | kiyad vā śakyam\nunnetuṁ svatarkam anudhāvatā || (지혜는 [각기] 구분되는 전승의 견해에 따라 안목을\n얻는다. 자신의 변증을 좇는 자에게 상향이 가당키나 하겠는가?)"
+            },
+            {
+              "id": "kor-lee-page-444",
+              "label": "Printed page 435",
+              "locator": "PDF page 444 · printed page 435 · direct PDF text extraction",
+              "text": "[『아비달마집론』에서] ‘또 청정의 세계(*lokadhātu)는 고제(*duḥkhasatya)의 범주\n가 아니다. … 이들이 나는 곳은 사유될 수 없어 오직 붓다들의 깨달음의 영역일 뿐이\n니, 명상수행자(*dhyāyin)들의 명상의 영역이 될 수도 없는데 하물며 변증가(*tarkin)\n들이랴?’라고 했는데, 이 [붓다의] 자수용토\n\n는 오직 붓다들의 인식 영역일 뿐이니\n615\n10지[의 보살]이나 [성문·연각] 이승의 영역도 아닌데 하물며 [낮은 수준의] 성자의 단\n계도 아닌 변증가들이 인식할 수 있는 바랴?\n\n\n616\n\n이십론주가 자신의 역량을 tarka라 운운한 것은, 적어도 자은 기의 관점에서는,\n『아비달마집론』이라는 매우 권위 있는 문헌에 근거한 것이다.!\n\n한편 『이십론술기』에서 tarka를 ‘네 가지 탐구’라고 규정하기에 앞서 ‘분\n별을 수반한 유루의 마음 등’이라고 설명했었다.\n\n 얼핏 무관해보였던, 그래서\n617\n일종의 대안적 설명의 관계처럼 보였던 이 양자가, 「유식의림」의 다음 두 구절\n은 참조할 경우, 별개의 것으로 의도되지 않았음을 알 수 있다.!\n\n또 네 가지 탐구와 네 가지 있는 그대로의 통찰(*parijñāna)들 모두는 단지 수습\n(*bhāvanā)[로 구성된] 지혜일 뿐이니 완성(*pariniṣpatti)의 단계이기 때문이다. 탐\n구는 단지 유루일 뿐이고, 실재의 앎(=있는 그대로의 통찰)은 무루에[도] 통한다.\n\n\n618\n#435\n#\n 『불지경론』에서 法界(*dharmadhātu)의 동의어로 등장한다. T1530_294b11-16 참조.\n615\n#\n T1861_370a23-29: 復有淸淨世界。非苦諦攝。…此所生處不可思議。唯佛所覺。尙非\n616\n得靜慮者靜慮境界。況尋思者。此自受用土唯佛所知。尙非十地･二乘境界。況非聖位有尋思\n者之所能知。\n#\n 본고 594번 각주 및 해당 본문 참조.\n617\n#\n T1861_353a19-20: 又四尋思·四如實智。皆唯修慧。成滿位故。尋思唯有漏。實智通無\n618\n漏。"
+            },
+            {
+              "id": "kor-lee-page-445",
+              "label": "Printed page 436",
+              "locator": "PDF page 445 · printed page 436 · direct PDF text extraction",
+              "text": "『유가사지론』과 『아비달마집론』에서 탐구 및 있는 그대로의 앎(=있는 그대로의 통찰)\n은 모두 지혜(*prajñā)를 자체로 한 것이다. 탐구는 단지 유루일 뿐이고 있는 그대로\n의 앎은 무루에[도] 통한다. 『섭대승론』에서 ‘알아야 할 특징에 진입함’은 ‘많이 들은 것\n의 훈습에 의지하는 것이지, 알라야식에 포함되는 것이 아니다’라고 했는데\n\n 이 문장\n619\n에서는 단지 무루의 종자가 저 단계에서 증가한 점만을 들어서 ‘들은 것의 훈습’이라고\n명명하고 알라야식이 아닌 것이라고 평가하였는데, [그렇다고] 보는 주체들 모두가 단\n지 무루이기만 한 것은 아니니, 그렇지 않다면 네 가지 탐구는 가행위의 앎이 아니게\n되어버릴 것이다.\n\n\n620\n\n이처럼 적어도 자은 기에게는 tarka는 곧 탐구이자 분별을 수반한 유루이며, 나\n아가 그 본성은, 아비달마적인 ‘엄밀한’ 언어로 표현하자면, 심소의 하나인 지\n혜, 그 중에서도 이 맥락에서는 ‘수습으로 구성된 지혜’, 줄여서 수소성혜\n(bhāvanāmayī prajñā)이다.!\n\n그러나 이러한 정치한 설명은 아마도 바수반두 이후의 교학적 발전을 반\n영하는 것으로 보인다. 바수반두가 저작한 아비달마 문헌군에서 tarka나 심지\n#436\n#\n T1594_142b06-7: 入所知相云何應見。多聞熏習所依。非阿頼耶識所攝。!\n619\nD4048_23a7: shes bya’i mtshan nyid la ’jug pa ji ltar blta zhe na | mang du thos\npas bsgos pa’i gnas | kun gzhi rnam par shes pas bsdus pa ma yin la |\n#\n T1861_259b10-16: 瑜伽･對法等。尋思如實智。皆慧爲體。尋思唯有漏。如實智通無\n620\n漏。攝大乘云。入所知相者。謂多聞熏習所依非阿賴耶識所攝者。此文唯擧無漏種子在彼位增。\n名爲聞熏稱非藏識。非諸能觀皆唯無漏。不爾四尋思應非加行智。"
+            },
+            {
+              "id": "kor-lee-page-446",
+              "label": "Printed page 437",
+              "locator": "PDF page 446 · printed page 437 · direct PDF text extraction",
+              "text": "어 탐구 자체가 주제어로 등장하지 않고 다만 『오온론』에서 지혜, 조사 그리고\n사찰에 대해 다음과 같이 소략하게 설명한 것이 발견될 뿐이기 때문이다.!\n\n지혜(prajñā)란 무엇인가? 저것들에 대한 검토(pravicaya)로, 사리(yoga) 혹은 사\n리가 아닌 것에 부합하는 것 및 다른 [제삼의] 것이다.\n\n\n621\n\n비록 세부사항에서는 많은 차이점이 발견되지만, 스티라마띠의 상세한 주석에\n서 자은 기의 정치한 설명과 일치하는 대목들이도 많이 발견된다.!\n\n[『삼십송』 제10송의] ‘판단력(dhī)’은 지혜이다. 이는 또 관찰할(upaparīkṣya) 사물\n바로 그것에 대한, 사리에 부합하거나 사리가 아닌 것에 부합하는, 혹은 그것도 아닌,\n검토(pravicaya)이다. 검토하기 때문에 ‘검토’이다. 자상 및 공상이 뒤섞인 법들에 대\n해, 바르게 혹은 틀리게, 구별하여 아는 것(vivekāvabodha)이다. 이치가 ‘사리’이다.\n이는 또 성취자의 교설, 추리, 지각이다. 이 세 가지 종류의 사리에서 발생된 것이 ‘사\n리에 부합하는 [것]’이다. 이는 또 문소성[혜], 사소성[혜], 수소성[혜]이다. 여기서 성취\n자의 말씀을 기준으로 삼는 덕분에 아는 것이 문소성[혜]이다. 이치를 숙고함에서 생\n긴 것이 사소성[혜]이다. 삼매에서 생긴 것이 수소성[혜]이다. ‘사리가 아닌 것’은 성취\n자의 교설이 아닌 것, 유사추리, 삿되고 또 바라는 것이 있는 삼매이다. 이러한 사리가\n아닌 것에 의해 생긴 것이 ‘사리가 아닌 것에 부합하는 [것]’이다. 생득적인 것 및 세간\n언설을 깨닫는 것은 사리에 부합하는 것도 아니고 사리가 아닌 것에 부합하는 것도 아\n#437\n#\n Kramer(2013) 1권 38쪽: prajñā tatraiva pravicayo yogāyogavihito ’nyathā ca |\n621"
+            },
+            {
+              "id": "kor-lee-page-447",
+              "label": "Printed page 438",
+              "locator": "PDF page 447 · printed page 438 · direct PDF text extraction",
+              "text": "니다. 나아가 이것은 의심을 제거하는 작용을 가진다. 의심의 제거는 지혜를 가지고\n법들을 검토하는 자에게 [해당 사안에 대한] 확증이 성립하기 때문이다.\n\n\n622\n\n이와 관련해 바수반두가 『오온론』에서 조사(vitarka)를 정의할 때 사용\n한 종차인 ‘탐구하는(paryeṣaka)’이란 표현이 특히 눈에 띈다.!\n\n조사란 무엇인가? 탐구하는 마음의 소리(manojalpa)\n\n로, 의향(cetanā) 및 지혜\n623\n양자의 특수한 [형태]인 마음의 거침이다.\n\n\n624\n#438\n#\n 동일한 내용을 『오온론』에 대한 스타라마띠 자신의 주석에서 발견할 수 있다.\n622\nKramer(2013) 1권 38쪽-39쪽 참조. 단 Pañcaskandhakavibhāṣā는 자구마다 떼어서\n설명하기에 Triṁśikāvijñaptibhāṣya 쪽이 가독성이 높다고 판단하여 편의상 후자를 인용\n한 것이다.!\nBuescher(2007) 74쪽: dhīḥ prajñā | sāpy upaparīkṣya eva vastuni pravicayo\nyogāyogavihito ’nyathā veti | pravicinotīti pravicayaḥ | yaḥ samyaṅ mithyā vā\nsaṅkīrṇasvasāmānyalakṣaṇeṣv iva dharmeṣu vivekāvabodhaḥ | yuktir yogaḥ |\nsa punar āptopadeśo ’numānaṁ pratyakṣañ ca | tena triprakāreṇa yogena yo\njanitaḥ sa yogavihitaḥ | sa punaḥ śrutamayaś cintāmayo bhāvanāmayaś ca |\ntatrāpatavacanaprāmāṇyād yo ’vabodhaḥ sa śrutamayaḥ | yuktinidhyānajaś\ncintāmayaḥ | samādhijo bhāvanāmayaḥ | ayogo ’nāptopadeśo ’numānābhāso\nmithyā praṇihitaś ca samādhiḥ | tenāyogena janito ’yogavihitaḥ |\nupapattiprātilambhiko laukikavyavahārāvabodhaś ca na yogavihito\nnāyogavihitaḥ | eṣā ca saṁśayavyāvartanakarmikā | saṁśayavyāvartanaṁ\nprajñayā dharmān pravicinvato niścayalābhād iti |\n#\n 마음의 소리 역시 초중기 유가행파 수행론을 구성하는 핵심 개념어라고 할 수 있다. 특히\n623\n「보살지」와 『대승장엄경론』의 구조적 유사성에 주목해 일련의 연구성과를 내놓고 있는 모토\n무라 타이키의 연구가 좋은 출발점이 될 것으로 보인다. 渡辺 親文(2002), 都 真雄(2006),\n本村 耐樹(2011) 참조.\n#\n Kramer(2013) 1권 73쪽: vitarkaḥ paryeṣako manojalpaś cetanāprajñāviśeṣaḥ\n624\n| yā cittasyaudārikatā |"
+            },
+            {
+              "id": "kor-lee-page-448",
+              "label": "Printed page 439",
+              "locator": "PDF page 448 · printed page 439 · direct PDF text extraction",
+              "text": "스티라마띠는 주석에서 직접적으로 ‘탐구’ 개념을 원용하는 한편 유관 개념들을\n여럿 등장시킨다.!\n\n[『삼십송』 제14송의] ‘조사’는 탐구하는 마음의 소리로 지혜 내지 의향의 특수한 [형태]\n이다. ‘탐구하는 [것]’이란 ‘이것은 무엇인가’라는 식으로 살펴보는(nirūpaṇa) 양상으\n로 작동하는 것이다. 마음이 소리내는 것이 ‘마음의 소리’이다. 마치 소리내는 것과 같\n아서 ‘소리’인 것이다. ‘소리’란 대상에 대해 말하는 것이다. ‘지혜 내지 의향의 특수한\n[형태]’라고 한 것은 ‘의향’은 마음의 약동을 그 자체로 하기 때문이고 ‘지혜’는 공덕과\n과실의 구별을 그 양상으로 가지기 때문이다. 이 [조사]의 힘으로 마음이 발생하는 경\n우, 어떤 때는 마음과 의향 양자[의 결합의 특수한 형태]에 대해 조사가 가설[적 표현]\n이고, 어떤 때는 지혜와 의향 양자[의 결합의 특수한 형태]에 대해 [조사가 가설적 표\n현이니] 순서대로 비반성적인 [상태] 및 반성적인(abhyūha) 상태이다. 혹은 단지 의\n향와 지혜 양자 [각각]에 대해서만 조사가 가설[적 표현]이니, 이 [조사]의 힘으로 마음\n이 그처럼 발생하기 때문이다. 바로 이 [조사]가 ‘마음의 투박함’이다. ‘투박함’이란 거\n침이니 단지 사물일 뿐인 것에 대한 탐구(paryeṣaṇā)를 그 양상으로 하기 때문이다.\n\n\n625\n\n#439\n#\n Buescher(2007) 98쪽: vitarkaḥ paryeṣako manojalpaḥ prajñācetanāviśeṣaḥ |\n625\nparyeṣakaḥ kim etad iti nirūpaṇākārapravṛttaḥ | manaso jalpo manojalpaḥ | jalpa\niva jalpaḥ | jalpo ’rthakathanam | cetanāprajñāviśeṣa iti cetanāyāś\ncittaparispandātmakatvāt prajñāyāś ca guṇadoṣavivekākāratvāt | tadvaśena\ncittapravṛtteḥ kadācic cittacetanayor vitarkaḥ prajñaptiḥ kadācit prajñācetasor\nyathākramam anabhyūhābhyūhāvasthāyoḥ | atha vā cetanāprajñayor eva\nvitarkaḥ prajñaptis tadvaśena cittasya tathāpravṛttatvāt | sa eva\ncittasyaudārikatā | audārikateti sthūlatā vastumātraparyeṣaṇākāratvāt |\n(Kramer(2013) 1권 73쪽 참조.)"
+            },
+            {
+              "id": "kor-lee-page-449",
+              "label": "Printed page 440",
+              "locator": "PDF page 449 · printed page 440 · direct PDF text extraction",
+              "text": "밑줄 친 부분에서 특히 두드러지는 것은 지혜(prajñā)와 반성(abhyūha)의 관\n계이다. tarka의 정체를 이해하기 위해 이점이 특히 중요하다는 점에 대해서는\n추후 상론하겠지다. 그러나 정작 스티라마띠는 tarka 자체를 주목하지는 않는\n다.\n\n\n626\n\n조사의 경우처럼 사찰(vicāra)에 대한 양자의 설명에서도 마찬가지라고\n할 수 있다.!\n\n사찰이란 무엇인가? 고찰하는(pratyavekṣaka) 마음의 소리로, [조사의 경우와] 마찬\n가지로 [의향 및 지혜 양자의 특수한 형태인] 마음의 정밀함이다.\n\n\n627\n\n그리고 [조사에 대한] 이런 접근방식이 ‘사찰’에도 [적용된다고] 알아야 한다. 왜냐하면\n‘사찰’ 역시 의향 및 지혜의 특수한 [형태]를 그 자체로 하여, 고찰하는 마음의 소리일\n뿐이기 때문이다. ‘이것은 그것이다’라는 식으로 전에 접했던 것을 살펴보기 때문이다.\n그리고 바로 이점 때문에 ‘마음의 정밀함’이라고 이야기된다.\n\n\n628\n#440\n#\n Triṁśikāvijñaptibhāṣya 내에서 tarka를 언급한 것은 단 한 차례이며 그나마도 권위\n626\n있는 기존의 문헌에서 차용한 것에 불과하고, 나아가 저 Pañcaskandhakavibhāṣā에서는\n언급조차 하지 않는다.!\nBuescher(2007) 138쪽: sa evānāsravo dhātur acintyaḥ kuśalo dhruvaḥ | sukho\nvinimutikāyo ’sau dharmākhyo ’yam mahāmuneḥ ||\n#\n Kramer(2013) 1권 73쪽: vicāraḥ pratyavekṣako manojalpas tathaiva | yā\n627\ncittasya sūkṣmatā ||\n#\n Buescher(2007) 100쪽: eṣa ca nayo vicāre ’pi draṣṭavyaḥ | vicāro ’pi hi\n628\ncetanāprajñāviśeṣātmakaḥ | pratyavekṣako manojalpa eva | idaṁ tad iti\npūrvādhigatanirūpaṇāt | ata eva ca cittasūkṣmatety ucyate | (Kramer(2013) 1권\n73쪽-74쪽 참조.)"
+            },
+            {
+              "id": "kor-lee-page-450",
+              "label": "Printed page 441",
+              "locator": "PDF page 450 · printed page 441 · direct PDF text extraction",
+              "text": "물론 바수반두의 이 설명은 『구사론』에서 부분적으로 예고된 것이고 전시대 유\n가행파 문헌인 『유가사지론』 「의지」, 「유심유사지」 및 『아비달마집론』의 설명을\n계승·발전시킨 것으로 보인다.\n\n tarka의 정체에 대한 자은 기의 설명은 매우\n629\n흥미롭고 계발적이지만, 정작 바수반두 자신 및 또 다른 주요한 주석가인 스티\n라마띠가 말을 아낀다는 점에서, 무비판적으로 수용하기는 어렵다.!\n\n앞서 법상 전통에서는 탐구와 tarka가 융합된 채 이해되었지만 정작 바\n수반두 자신의 아비달마 문헌 및 바수반두 이전 유가행파 문헌들에서는 저 법\n상적 이해를 뒷받침할 만한 뚜렷한 근거는 커녕 저 개념들에 대한 언급조차 잘\n보이지 않는다고 하였다. 그런데 경전 해석법을 주제로 바수반두가 작성한\nVyākhyāyukti의 한 대목에서 특이하게도 변증가(tārkika) 및 유관 표현들을\n해설하고 있기에, 여기서 중요한 단서가 발견되는 것 같다.!\n\n경전36: “변증가(*tārkika)이고”는 경전의 일부(*khaṇḍa)이다.!\n이와 관련해 두 가지 양상(*ākāra)으로서 (a) 변증가인 것이니, 바로 반성(*abhyūha)\n으로서, [그리고] 그 영역에서 벗어나지 못한 상태로서이다. 그래서 “(b) 탐구자\n(*mīmāṁsaka)이며, (c) 변증에 떨어진 단계에 속한 자(*tarkaparyāpannāyāṁ\nbhūmau sthita)이고”라고 한다. ‘변증에 떨어진 단계’란 무엇이냐면, “(d) 스스로의\n변재를 갖춘 [단계](*svayaṁprātibhānikyāṁ [bhūmau])들 및 (e) 범부적 [단\n계](*pārthagjanikyāṁ [bhūmau])들”[에 속한 자들]에 의해 반성이 갖춰진 것이자\n#441\n#\n 이종철(2015) 196쪽, 217쪽-219쪽, 특히 75번 각주 참조.\n629"
+            },
+            {
+              "id": "kor-lee-page-451",
+              "label": "Printed page 442",
+              "locator": "PDF page 451 · printed page 442 · direct PDF text extraction",
+              "text": "진실의 전승(*tattvāgama)이 갖춰지지 않은\n\n 것이다. ‘단계’는 ‘영역(*viṣaya)’이란\n630\n뜻이다. 이처럼 하나의 표현(*ekapada)이 요점제시(*uddeśa)이고 두 가지가 해설\n(*nirdeśa)이며, 세 번째\n\n 표현이 요점제시이고 세 가지는 해설이라고 알아야 할 것\n631\n이다. 혹은 변증가는 바로 동의어(*paryāya) 및 특징(*lakṣaṇa)으로 설명되는 것이\n다. ‘탐구자’는 [변증가의] 동의어이니, 한정(*viśeṣaṇa)하기 위해서이니, 희구함\n(*prārthanā) 역시 ‘변증함(*tarka)’이라는 것이라서, 그렇게 되어버린다면 타당하지\n않아서다. ‘변증에 떨어진 단계에 속한 자’는 특징이니, 그는 또 이전의 생에 변증을 반\n복하여 훈습된(*vāsita) 상속(*saṁtati)[을 지닌 자]이자, 진실(*tattva)을 보는 것에\n#442\n#\n 호리우치 토시오는 문맥 및 구나마띠의 Vyākhyāyuktiṭīkā에 따라 부정어 ma를 삽입해\n630\n읽을 것을 제안하는데, 적확한 판단으로 보인다. 堀内 俊郎(2016) 68쪽 439번 각주 참조.\n#\n 맥락상 (c)를 지칭하기에 기수가 아닌 서수로 고쳐읽었다.\n631"
+            },
+            {
+              "id": "kor-lee-page-452",
+              "label": "Printed page 443",
+              "locator": "PDF page 452 · printed page 443 · direct PDF text extraction",
+              "text": "서 분리된 자이자, 변증에의 익숙함(*saṁstava)에 시작 없는 때 이래로\n(*anādikālika) 속한 자이다.\n\n\n632\n\n여기서 밑줄 친 부분이 중요한 단서로 보인다. Vyākhyāyukti를 교감한 이종철\n은 밑줄 친 이 부분을 ‘현관(*abhisamaya)’에 해당하는 mngon par rtogs pa\n로 읽는 한편 주석에서 페킹판에는 mngon par rtog pa로 되어 있다고 보고한\n다.\n\n 이 대목이 포함된 Vyākhyāyukti 제2장을 번역·주석한 호리우치 토시오\n633\n는 별다른 언급 없이 現観이란 번역어만 제공하고 있기에 이종철의 교정에 동\n#443\n#\n 李鍾徹 (1994) 64쪽-65쪽: sūtra(36): rtog ge pa dang zhes bya ni mdo sde’i\n632\ndum bu’o ||!\nde la rnam pa gnyis kyis rtog ge pa yin te | mngon par rtog{s} pa nyid dang | de’i\nspyod yul las mi ’da’ ba nyid kyis so || des na spyod pa pa dang | rtog ge la\nzhugs pa’i sa gnas pa zhes bya ba smos so || rtog ge la zhugs pa’i sa gang zhe\nna | rang gi spobs pa dang ldan pa rnams dang | so so’i skye bo rnam kyis\nmngon par rtog{s} pa dang ldan pa gang yin pa ste | de kho na’i lung dang ldan\npa <ma> yin no || sa ni yul zhes bya ba’i tha tshig go || de ltar tshig gcig ni bstan\npa yin la gnyis ni bshad pa yin zhing | tshig gsum ni bstan pa yin la | gsum <pa>\nni bshad pa yin par rig par bya’o || gzhan yang rtog ge pa ni rnam grangs nyid\ndang | mtshan nyid nyid kyis kun tu bstan pa yin no || spyod pa pa zhes bya ba\nni rnam grangs yin te | khyad par du bya ba’i phyir te don du gnyer ba de gang\nyin pa yang rtog par byed ces bya ba yin pas der thal bar gyur na mi rung bas\nso || rtog ge la zhugs pa’i sa la gnas pa zhes bya ba ni mtshan nyid yin te | de\nyang tshe rabs snga ma la rtog ge la goms pas bsgoms<bsgos> pa’i rgyud\ndang | de kho na mthong ba dang bral ba dang | rtog ge la ’dris par byas pa\nthog ma med pa nas zhugs pa’o ||!\n또 다른 교정 및 번역·주해는 堀内 俊郎(2016) 67쪽-69쪽 참조.\n#\n 李鍾徹(1994) 65쪽 492번 각주 참조.\n633"
+            },
+            {
+              "id": "kor-lee-page-453",
+              "label": "Printed page 444",
+              "locator": "PDF page 453 · printed page 444 · direct PDF text extraction",
+              "text": "의하는 것으로 간주할 수 있다.\n\n 그러나 동일한 인용문에서조차 ‘진실\n634\n(tattva)’과 거리를 둔 것으로 묘사되는 변증가의 변증이 일반적으로 견도 단계\n의 진리의 통찰을 뜻하는 현관으로 서술되는 것은 매우 어색하다고 할 수 있다.\n이에 본고는 페킹판처럼 mngon par rtog pa로 읽을 것을 제안한다.!\n\n나아가 이렇게 읽는 편이 바수반두 자신의 tarka 이해를 한층 선명하게\n하는 데에 도움이 된다고 할 수 있다. 이 반성(*abhyūha)는 앞서 스티라마띠\n가 조사(vitarka)의 두 양상을 중 하나를 규정할 때 썼던 표현인 동시에,\nNyāyasūtra 1.1.40에서 tarka의 유개념인 성찰(ūha)과도 거의 일치하는 개\n념이기 때문이다. 이와 관련해 『유가사지론』 「유심유사지」에서 조사와 사찰\nvicāra를 설명하는 다음 대목도 주목할 만하다.!\n\n조사·사찰들의 본체(śarīra)는 어떤 것인가? 인식대상에 대해 반성하지 않을 경우\n(anabhyūhatas) 조사·사찰들은 의향(cetana(cetanā?))을 본체로 하는 것들이고,\n또 인식대상에 대해 반성할 경우(abhyūhatas) 조사·사찰들은 앎(jñāna)을 본체로\n하는 것들이라고 알아야 한다. 여기서 조사·사찰들의 인식대상은 어떤 것인가? 명칭\n더미·문장 더미·음절 더미에 토대를 둔 의미(artha)가 인식대상이다. 조사·사찰들의\n양상(ākāra)은 어떤 것인가? 바로 저 인식대상에 대해 초점을 맞추거나(arpaṇā) 맞\n추지 않음의 양상인 것이 조사이다. 나아가 바로 이에 대해 고찰(pratyavekṣaṇā)의\n양상인 것이 사찰이다. 조사·사찰들은 무엇을 유발하는 것들인가? 말(vāk)을 유발하\n는 것들이다. 조사·사찰들의 하위범주(prabheda)는 어떤 것인가? 하위범주는 앞에\n#444\n#\n 堀内 俊郎(2016) 68쪽 참조.\n634"
+            },
+            {
+              "id": "kor-lee-page-454",
+              "label": "Printed page 445",
+              "locator": "PDF page 454 · printed page 445 · direct PDF text extraction",
+              "text": "서처럼 이미지를 동반한 것(naimittika)부터 염오되지 않은 것(akliṣṭa)까지 칠종이\n다.\n\n\n635\n\n아비달마 구도에서 일반적으로 앎(jñāna)은 지혜 내지 판단력(prajñā)과 동일\n시되는데, 그렇다면 앞서 스티라마띠가 조사가  마음·의향·지혜의 특정 양태에\n대한 가설이라고 주석하면서 특히 지혜를 반성(abhyūha)와 관련시켰던 점은\n바로 이 「유심유사지」에 근거하고 있음을 알 수 있다. 물론 앞에서는 ‘탐구함\n(paryeṣaka)’이라고 한 것을 대신해 여기서는 ‘초점을 맞춤(arpaṇā)’이라고\n하여 완전히 동일하지는 않지만, 사찰의 경우는 ‘고찰(pratyavekṣaṇā)’이 그\n대로 사용되고 있다.!\n\n이 대목의 가장 큰 특징은 조사·사찰을 언어활동의 원인으로 이해한다는\n점이다. 이점은 소위 칠종의 하위범주들에 대한 「의지」의 설명에서도 확인할 수\n있다. 단, 여기서는 분별이 저 칠종의 하위범주들을 총괄하는 대표개념으로 등\n장하고, 조사와 사찰은 각각 네 번째 분별과 다섯 번째 분별로 이해되는 것 같\n다.!\n\n#445\n#\n Bhattacharya(1957) 112쪽: vitarkavicārāṇāṁ śarīraṁ katamat | ālambane\n635\n’nabhyūhataś cetanaśrīrā vitarkavicārāḥ | ālambane punar abhyūhato\njñānaśarīrā vitarkavicārā vediyavyāḥ || tatra vitarkavicārāṇām ālambanaṁ\nkatamat | nāmakāyapadakāyavyañjanakāyāśrito ’rtha ālambanaṁ ||\nvitarkavicārāṇām ākāraḥ katamaḥ | tasminn evālambane ’rpaṇānarpaṇākāro\nvitarkaḥ || tatraiva punaḥ pratyavekṣaṇākāro vicāraḥ || vitarkavicārāḥ\nkiṁsamutthānāḥ | vāksamutthānāḥ || vitarkavicārāṇāṁ prabhedaḥ katamaḥ |\nsaptavidhaḥ prabhedaḥ | naimittikaḥ pūrvavad yāvad akliṣṭaś ca ||"
+            },
+            {
+              "id": "kor-lee-page-455",
+              "label": "Printed page 446",
+              "locator": "PDF page 455 · printed page 446 · direct PDF text extraction",
+              "text": "어떻게 인식대상을 분별하는가? 칠종 분별로 [분별한다]. 그것은 또 어떤 것인가? 이\n미지를 동반한(naimittika) [분별]·이미지를 동반하지 않은(anaimittika) [분별]·자연\n발생적(svarasavāhin) [분별]·탐구하는(paryeṣaka) [분별]·고찰하는(pratyavekṣ\naka) [분별]·염오된(kliṣṭa) [분별]·염오되지 않은(akliṣṭa) 분별이다. (1) 이미지적인\n분별은 어떤 것인가? 감관들이 다 자라고 언설에 능숙한\n\n 자들이 이전에 경험한 대\n636\n상들에 대해 가지는 것이다. (2) 비이미지적인 분별은 어떤 것인가? 어리고 언설에 능\n숙하지 못한 자들에게 과거 [업]에 부수하여 [발생한] 미래의 분별이다. (3) 자연발생\n적 분별은 어떤 것인가? 직면한 대상영역에 대해 자연적으로, 바로 대상영역의 힘 때\n문에, 발생한 것이다. (4) 탐구하는 분별은 어떤 것인가? 법들을 탐색하고(√mārg) 사\n찰하는(vi √car) 자의 것이다. (5) 고찰하는 분별은 어떤 것인가? 탐색·사찰·설정된\n[법]에 대해 고찰하는 자의 것이다.\n\n\n637\n\n여기서도 분류가 아리스토텔레스적 기준에서 말쑥하지는 않다. 각 하위항목들\n의 영역이 상호 배타적으로 획정된 것처럼 보이지 않기 때문이다. 이를테면,\n(1) 이미지적인 분별은 (6) 염오된 분별과 외연이 겹치는 부분이 존재할 것처럼\n보인다. 그러나 여기서도 보다 중요한 점은 분별들이 언어활동 내지 능력을 기\n#446\n#\n 인용문의 밑줄 친 ‘언설에 능숙한’은 티벳역 및 한역에 의거해 추가한 부분이다.!\n636\nD4035_6b3: rnam par rtog pa mtshan ma can gang zhe na | sngon nyams su\nmyong ba’i don rnams la | dbang bo yongs su smin cing tha snyad la mkhas\npa’o || !\nT1579_280c04-5: 有相分別者。謂於先所受義。諸根成熟。善名言者所起分別。\n#\n Bhattacharya(1957) 12쪽: katham ālambanaṁ vikapayati | saptavidhena vikalpena | sa punaḥ katamaḥ\n637\n| naimittiko ’naimittikaḥ svarasavāhī paryeṣakaḥ pratyavekṣakaḥ kliṣṭo ’kliṣṭo vikalpaḥ | naimittiko vikalpaḥ\nkatamaḥ | pūrvānubhūteṣv artheṣu yaḥ paripakvendriyasya <vyavahārakuśalasya> || anaimittikaḥ katamaḥ\n| pūrvānusāreṇānāgatavikalpo yaś ca dahrasyāvyavahārakuśalasya || svarasavāhī katamaḥ |\npratyupasthite viṣaye svarasena yo viṣayabalād eva vartate || paryeṣakaḥ katamaḥ | yo dharmān\nmārgayato vicārayataḥ || pratyavekṣakaḥ katamaḥ | parimārgate vicārite vyavasthāpite yaḥ\npratyavekṣamāṇasya ||"
+            },
+            {
+              "id": "kor-lee-page-456",
+              "label": "Printed page 447",
+              "locator": "PDF page 456 · printed page 447 · direct PDF text extraction",
+              "text": "준으로 정렬된다는 점이다. (1)과 (2)는 언어능력 유무를 토대로 구획되었고,\n(3), (4), (5)는 언어활동의 국면들을 바탕으로 나뉜 것처럼 보인다. 만약 (4)와\n(5)가 각각 조사 심소와 사찰 심소에 대응한다면, 이 양자는 정의상 설일체유부\n의 표준적 이해\n\n와는 달리 동시적일 수 없다.!\n638\n\n이처럼 도드라지게 나타난 언어적 측면의 강조는, Vyākhyāyukti의 경\n전36에서 인용하고 해설한 문구들이 다름 아니라 『보살지』 「진실의품」에서만\n재확인이 된다는 점과 결합될 때, 결코 가볍게 지나칠 수 없는 정보가 된다. 왜\n냐하면 유가행파 문헌군에서도 「진실의품」만큼 언어 문제에 천착한 것은 찾기\n어렵기 때문이다. 먼저 해당 문구들이 동일하게 등장하는 대목을 살펴보도록\n하겠다.!\n\n또 바로 이 진실로서의 대상(tattvārtha)\n\n은 종류에 따란 구분의 측면에서 네 가지\n639\n종류로, (ㄱ) 세간에서 성립된 것(lokaprasiddha), (ㄴ) 도리로 성립된 것\n(yuktiprasiddha), (ㄷ) 번뇌장을 청정하게 하는 앎의 영역(kleśāvaraṇ\naviśuddhijñānagocara), (ㄹ) 소지장을 청정하게 하는 앎의 영역(jñeyāvaraṇ\naviśuddhijñānagocara)이다. … (ㄴ) 도리로 성립된 진실은 어떤 것인가? 현명하고\n타당한 내용에 정통하며 똑똑한 (a) 변증가들(tārkika)·(b) 탐구자(mīmāṁsaka)들·\n(c) 변증에 떨어진 단계에 속한 자(tarkaparyāpannāyāṁ bhūmau sthita)들·(d)\n스스로의 변재를 갖춘 [단계에 속한 자](svayaṁprātibhānikyāṁ [bhūmau sthita])\n들 ·(e) 범부적 [단계에 속한 자](pārthagjanikyāṁ [bhūmau sthita])들·탐구에 부\n#447\n#\n 이종철(2015) 217쪽-219쪽 참조.\n638\n#\n tattvārtha란 개념 자체의 이해 가능성을 타진한 연구는 이길산(2020) 참조.\n639"
+            },
+            {
+              "id": "kor-lee-page-457",
+              "label": "Printed page 448",
+              "locator": "PDF page 457 · printed page 448 · direct PDF text extraction",
+              "text": "수한 [단계에 속한 자](mīmāṁsānucaritāyāṁ [bhūmau sthita])들의, 지각\n(pratyakṣa)·추리(anumāna)·성취자의 전승(āptāgama)이라는 바른 인식수단\n(pramāṇa)에 근거하여 잘 검토되고 확증된 앎의 영역이자, 합리적인 입증이라는 도\n리(upapattisādhanayuki)에 의해 성립되고 설정된 앎의 대상인 이 사물(vastu)이\n도리로 성립된 진실이라고 이야기된다.\n\n\n640\n\n더군다나 「의지」의 칠종 분별이 「보살지」 「진실의품」에 대한 일종의 주석이라고\n할 수 있는 「섭결택분 보살지」에도 언급되어 있어 눈길을 끈다.!\n\n분별의 양상(*ākāra)은 어떤 것이냐면, 그것은 또 이미지(*nimitta)와 명칭(*nāma)\n과 관련해 다양하고 무수한 양상이니, 또 그것은 간략히 칠종이라고 알아야 할 것이\n다. (1) 이미지적인 것, (2) 비이미지적인 것, (3) 대상영역에 대한 자연발생적인 것,\n(4) 탐구하는 것, (5) 고찰하는 것, (6) 염오된 것, (7) 염오되지 않은 것이다.\n\n\n641\n#448\n#\n 高橋 晃一(2005b) 85쪽: sa punar eṣa tattvārthaḥ prakāraprabhedataś\n640\ncaturvidhaḥ | lokaprasiddho yuktiprasiddhaḥ kleśāvaraṇaviśuddhijñānagocaro\njñeyāvaraṇaviśuddhijñānagocaraś ca || … yuktiprasiddhaṁ tattvaṁ katamat |\nsatāṁ yuktārthapaṇḍitānāṁ vicakṣaṇānāṁ tārkikāṇāṁ mīmāṁsakānāṁ\ntarkaparyāpannāyāṁ bhūmau sthitānāṁ svayaṁprātibhānikyāṁ\npārthagjanikyāṁ mīmāṁsānucaritāyāṁ pratyakṣaṁ anumānam āptāgamaṁ\npramāṇaṁ niśritya suvicitaniścitajñānagocaro jñeyaṁ\nvastūpapattisādhanayuktyā prasādhitaṁ vyavasthāpitam idam ucyate\nyuktiprasiddhaṁ tattvam ||\n#\n 高橋 晃一(2005b) 131쪽: rnam par rtog pa’i rnam pa gang zhe na | de yang\n641\nrgyu mtshan dang ming gi dbang gyis rnam pa sna tshogs dpag tu med do || de\nyang mdor bsdu na rnam pa bdun du rig par bya ste | mtshan ma las byung ba\ndang | mtshan ma med pa las byung ba dang | yul la rang gi ngang gis ’jug pa\ndang | tshol ba pa dang | so sor rtogs pa dang | nyon mongs pa can dang | nyon\nmongs pa can ma yin pa’o ||"
+            },
+            {
+              "id": "kor-lee-page-458",
+              "label": "Printed page 449",
+              "locator": "PDF page 458 · printed page 449 · direct PDF text extraction",
+              "text": "이상을 통해 Vyākhyāyukti와 「진실의품」의 밀접한 상관성을 추측할 수 있다.\n그런데 Vyākhyāyukti과 대조되는 「진실의품」의 가장 큰 특징은 바로 진실\n(tattva)과의 상대적인 관계이다. 앞서 Vyākhyāyukti에서 (e)는 ‘반성이 갖춰\n진 것이자 진실의 전승이 갖춰지지 않은 것’이라고 해서 진실과 거리를 둔 것으\n로 묘사되었지만, 여기 「진실의품」에서는 ‘(ㄴ) 도리로 성립된 진실’이라는 이름\n자체가 시사하듯 진실과 밀접한 관계를 맺는 것으로 이해되기 때문이다.!\n\n그러나 「진실의품」 말미에서 네 종류의 진실이 동등한 것이 아니라 위계\n적인 것으로 천명된다는 점에서 저 차이는 상당히 좁혀질 수 있다.!\n\n여기서 진실로서의 대상 네 가지들 중 처음 둘은 열등하고 세 번째는 중간이며 네 번\n째가 최고라고 알아야 한다.\n\n\n642\n\n여기서는 명백하게도 (ㄱ) 세간에서 성립된 것 및 (ㄴ) 도리로 성립된 것이 열등\n한 것이고 (ㄷ) 번뇌장을 청정하게 하는 앎의 영역이 중간이며 (ㄹ) 소지장을 청\n정하게 하는 앎의 영역이 최고라고 선언되고 있다. 이 경우 Vyākhyāyukti에서\n#449\n#\n 高橋 晃一(2005b) 117쪽: tatra caturṇān tattvārthānāṁ prathamau dvau hīnau\n642\ntṛtīyo madhyamaś caturtha uttamo veditavyaḥ ||"
+            },
+            {
+              "id": "kor-lee-page-459",
+              "label": "Printed page 450",
+              "locator": "PDF page 459 · printed page 450 · direct PDF text extraction",
+              "text": "거론하는 진실이 (ㄴ)이 아니라 (ㄷ) 단계 이상이기만 하면 「진실의품」과의 충\n돌을 피할 수 있다.\n\n\n643\n\n그러나 이 네 종류의 진실들이 단지 위계적이기만 한 것이 아니라 보다\n더 긴밀하게 연결되어 있는 것 같다. 이는 적어도 (ㄱ)과 (ㄴ) 그리고 (ㄹ)에 한\n해서는 매우 타당하다고 할 수 있다.\n\n 먼저 (ㄱ)과 (ㄴ)의 관련성을 살펴보자.!\n644\n\n이 중에서 A라는 사물(vastu)에 대해 기호적 약정(saṁketa)·세간[적 관습](saṁvṛti)·\n익숙한 것(saṁstava)에 부응해 들어가는 인식(buddhi)에 의해 모든 세간 사람들에\n게 동일한 소견(darśana)이 생기는데, 예를 들어 땅에 대해 ‘이것은 땅일 뿐 불이 아\n니다’라고 하고 … 요컨대 ‘이것은 x이지 y가 아니다. 이것은 F이지 G가 아니다’\n\n라\n645\n는 식으로 확정된 지향(adhimukti)\n\n의 영역이자, 바로 모든 세간 사람들 사이에 전\n646\n#450\n#\n 문제의 진실이 Vyākhyāyukti에서 ‘전승’이라는 표현과 함께 쓰인다는 점 및\n643\nVyākhyāyukti 자체에 인용된 경전들 다수가 전통적인 것들이라는 점에서 (3)일 가능성이\n높아 보이지만, (4)일 가능성 역시 원천적으로 배제되지는 않는다.\n#\n (ㄷ)의 애매한 위상의 가능한 함축을 탐구한 연구로는 안성두(2007) 특히 236쪽-237쪽\n644\n참조.\n#\n x·y는 명사술어문의 명사술어, F·G는 형용사술어문의 형용사술어를 나타내는 변항\n645\n(variant)을 의도한 것이다.\n#\n 번역어 할당에 대해서는 高橋 晃一(2005b) 152쪽 각주 4번 참조. 이 개념에 대한 보다\n646\n포괄적인 연구로는 하영수(2010) 참조."
+            },
+            {
+              "id": "kor-lee-page-460",
+              "label": "Printed page 451",
+              "locator": "PDF page 460 · printed page 451 · direct PDF text extraction",
+              "text": "해져오는 명칭(saṁjñā)을 이용해 스스로의 분별로 성립된, 생각하고 헤아리고 관찰\n하고서 파악되지는 않은 저 A라는 사물이 바로 ‘세간에서 성립된 진실’이다.\n\n\n647\n\n밑줄 친 부분이 (ㄱ)과 (ㄴ)의 차이를 극명하게 나타내는 대목이라고 할 수 있\n다. 즉, 모종의 것이 눈 앞에 주어졌을 때 자신이 속한 언어공동체의 관례에 따\n라 ‘무의식적으로’ 그것의 정체를 특정할 경우가 (ㄱ)에서 문제삼는 것이라면,\n(ㄴ)은 상당한 근거와 논리를 갖추어 해당 대상을 추적·관찰·검토하는 경우에\n해당한다고 할 수 있다. 따라서 (ㄱ)과 (ㄴ)은 결과적으로는 동일한 것이라고 판\n명날지라도 그 과정, 보다 정확히는, 그 과정을 관장하는 인지적 능력에 따라\n구분되는 것이다.!\n\n이 양자가 일치할 가능성은 아래의 인용문이 보여주는 것 같다.!\n\n또 그 진실의 특징이 [개념적] 설정 측면에서 둘이 아님(advaya)이 두드러진다\n(prabhāvita)고 알아야 할 것이다. 존재(bhāva)와 비존재(abhāva)가 ‘둘’이라고 이\n야기된다. 여기서 존재란 가설 발화상의 본성(prajñāptivādasvabhāva)로 설정된\n것이니, 바로 이와 같이 오랜 시간 동안 세간에 의해 집착된 것이자, 세간의 모든 분별\n의 확산(prapañca)의 뿌리이니, 예를 들어 ‘[이것은] 색이다’라든가 ‘[이것은] 수·상·\n행·식이다’라든가 … 또 ‘보고 듣고 생각하고 인식한 것, 획득한 것, 탐구된 것, 생각\n#451\n#\n 高橋 晃一(2005b) 85쪽-86쪽: tatra laukikānāṁ sarveṣāṁ yasmiṁ vastuni\n647\nsaṁketasaṁvṛtisaṁstavānugamapraviṣṭayā buddhyā darśanatulyatā bhavati |\ntad yathā pṛthivyāṁ pṛthivy eveyaṁ nāgnir iti || … samāsata idam idaṁ nedam\nevam idaṁ nānyatheti niścitādhimuktigocaro yad vastu sarveṣām eva\nlaukikānāṁ paraṁparāgatayā saṁjñayā svavikalpaprasiddhaṁ na cintayitvā\ntulayitvopaparīkṣyodgṛhītam idam ucyate lokaprasiddhaṁ tattvaṁ ||"
+            },
+            {
+              "id": "kor-lee-page-461",
+              "label": "Printed page 452",
+              "locator": "PDF page 461 · printed page 452 · direct PDF text extraction",
+              "text": "(manas)을 통해 따라 조사된 것, 따라 사찰된 것이다’라든가, 마지막으로 ‘[이것은]\n열반이다’라는 등등 이와 같은 부류의, 가설의 발화로 통용된(nirūḍha) 모든 법들의\n본성이 ‘세간의 존재’라고 이야기된다.\n\n\n648\n\n이 대목은 일견 (ㄱ)에만 해당하는 것처럼 보인다. ‘가설’이라든가 ‘통용된’ 같은\n표현도 그렇지만 ‘이것은 x이다’ 유형의 문장의 길게 반복되는 점에서 형태상\n상기 인용문과 거의 그대로 일치하는 것처럼 보이기 때문이다. 그러나 이 대목\n이 (ㄱ)만이 아니라 (ㄴ) 역시 함축하고 있다고 보아야 할 것이다. ‘이것은 x이\n다’ 유형의 표현들에서 x에 들어가는 내용에 ‘열반’과 같이 (ㄱ)에는 없었던 비\n세속적인 대상이 들어가기 때문이다. 따라서 이때의 ‘통용’은 적어도 앞서 묘사\n된 것과 같이 (ㄴ) 도리로 성립된 진실을 취급할 수 있도록 정신적 훈련을 받은\n자들 사이의 문제일 것이다.!\n\n여기서 ‘가설 발화상의 본성’이란 자못 특이한 표현에 주목하면 (ㄹ)과의\n관련성 또한 쉽게 관찰된다.!\n\n#452\n#\n 高橋 晃一(2005b) 88쪽-89쪽: tat punas tattvalakṣaṇaṁ vyavasthānato\n648\n’dvayaprabhāvitaṁ veditavyaṁ || dvayam ucyate bhāvaś cābhāś ca || tatra\nbhāvo yaḥ prajñāptivādasvabhāvo vyavasthāpitas tathaiva ca dīrghakālam\nabhiniviṣṭo lokena sarvavikalpaprapañcamūlaṁ lokasya tad yathā rūpam iti vā\nvedanā saṁjñā saṁskārā vijñānam iti vā … yad api tad dṛṣṭaśrutamatavijñātaṁ\nprāptaṁ paryeṣitaṁ manasā ’nuvitarkitam anuvicāritam iti vā | antato yāvan\nnirvāṇam iti vā | ity evaṁbhāgīyaḥ prajñaptivādanirūḍhaḥ svabhāvo\ndharmāṇāṁ lokasya bhāva ity ucyate ||"
+            },
+            {
+              "id": "kor-lee-page-462",
+              "label": "Printed page 453",
+              "locator": "PDF page 462 · printed page 453 · direct PDF text extraction",
+              "text": "소지장을 청정하게 하는 앎의 영역인 진실은 어떤 것인가? … 그것은 또 어떤 것인\n가? 보살들이 법무아에 들어가기 위한 또 불세존들은 이미 들어가서 매우 청정한 상\n태인, 모든 법들이 언어화될 수 없는 본성을 지닌 것이라는 점과 관련해 가설 발화상\n의 본성에 대한 무분별한 [상태]에 상당하는(sama) 앎에 의해 [이해되는] 영역이자 대\n상이다. 바로 이것이 궁극적인, 최상의, 알아야 할 것의 정점에 해당하는 진여로, 바로\n이 [진여]로부터 올바르게 모든 법을 검토하는 것(pravicaya)들이 나오는 것(ni √vṛt)\n이지 [이 진여를] 넘어서 나오는 것(ati √vṛt)이 아니다.\n\n\n649\n\n‘가설 발화상의 본성’이란 ‘가설의 발화로 통용된 본성’, 즉 반성적인 것이든 무\n반성적인 것이든 특정 언어공동체에 공통되게 이해되는 것이고, (ㄹ) 소지장을\n청정하게 하는 앎의 영역인 진상은 바로 저 언어적 이해에서 벗어난 것이자 보\n다 구체적으로는 ‘모든 법이 언어화될 수 없는 본질을 지닌 것’이라는 보편적 사\n실이라고 할 수 있다.!\n\n이 대목에서 (ㄹ)이 두 종류의 주체에게 해당된다는 점이 흥미롭다고 할\n수 있다. ‘들어가기 위한’이란 표현에서 알 수 있듯, 보살들에게는 이 법무아의\n진리는 도달되어야 할 목표로서 제시된다. 따라서 그들의 앎은 무분별지 자체\n가 아니라 무분별지와 유사한(sama) 것이다. 반면에 불세존들에게는 이것이\n이미 도달된 준거점이며 따라서 그들의 앎은 무분별지와 등가인(sama) 것, 곧\n#453\n#\n 高橋 晃一(2005b) 87쪽-88쪽: jñeyāvaraṇaviśuddhijñānagocaras tattvaṁ\n649\nkatamat | … tat punaḥ katamat | bodhisattvānāṁ buddhānāṁ ca bhagavatāṁ\ndharmanairātmyapraveśāya praviṣṭena suviśuddhena ca sarvadharmāṇāṁ\nnirabhilāpyasvabhāvatām ārabhya prajñāptivādasvabhāvanirvikalpasamena\njñānena yo gocaraviśayaḥ | sāsau paramā tathatā niruttarā jñeyaparyantagatā\nyasyāḥ saṁyaksarvadharmapravicayā nivartante nātivartante ||"
+            },
+            {
+              "id": "kor-lee-page-463",
+              "label": "Printed page 454",
+              "locator": "PDF page 463 · printed page 454 · direct PDF text extraction",
+              "text": "후득지(pṛṣṭhalabdhajñāna)이다. 이처럼 지적 수준의 차이에 따라 다르게 기\n술하는 것은 「진실의품」 뿐만 아니라 이를테면 「혜품」에서도 발견된다.!\n\n그리고 저 진실에 대해 불세존들의 앎은 매우 청정하다고 알아야 할 것이다. 반면 보\n살들의 경우는 저 [진실]에 대한 앎이 배움의 길(śikṣāmārga)[의 측면]이 두드러진다\n고 알아야 할 것이다.\n\n\n650\n\n이와 관련해 보살에게 있어 지혜의 본성은 어떤 것인가? 모든 알아야 할 것들에 들어\n가기 위해 그리고 모든 알아야 할 것들에 따라 들어간\n\n, 법들의 검토 … 이것이 보살\n651\n들에게 지혜의 본성이라고 알아햐 한다. … 보살들에게 있어서의 언어화될 수 없는 법\n무아에 관해 진리(satya)를 깨닫기 위해 혹은 진리를 깨달을 때에 혹은 진리를 깨달은\n다음에 [발생한], 궁극적인 적정에 직면한·무분별한·모든 희론을 여읜·모든 법들에 대\n해 평등성에 부응한·위대한 공통성에 들어간·알아야 할 것의 정점에 해당하는·증익 및\n#454\n#\n 高橋 晃一(2005b) 89쪽: tasmiṁś ca tattve buddhānāṁ bhagavatāṁ\n650\nsuviśuddhaṁ jñānaṁ veditavyam || bodhisattvānāṁ punaḥ\nśikṣāmārgaprabhāvitaṁ tatra jñānaṁ veditavyam ||!\n대안적인 해석 및 그 이유는 高橋 晃一(2005b) 155쪽 7번 각주 참조.\n#\n 여기서 ‘따라(anu)’의 역할이 중요해 보인다. 만약 이 표현을 잉여적인 것으로 간주한다\n651\n면, 첫 번째 인용문의 불세존과 두 번째 인용문의 보살이 사실상 같은 수준이 되어버릴 것이\n기 때문이다. 본고는 ‘학습자’가 ‘가르침’에 따라 아직 체득은 아니지만 ‘지적으로’ 도달했다\n는 의미로 이 ‘따라’를 이해하지만, 이러한 이해가 어떻게 증명 혹은 반증될 수 있을지 모르\n겠다."
+            },
+            {
+              "id": "kor-lee-page-464",
+              "label": "Printed page 455",
+              "locator": "PDF page 464 · printed page 455 · direct PDF text extraction",
+              "text": "손감이라는 두 극단을 떠난·중도를 좇는 저 지혜를 보살들에게 있어 진실을 깨닫고 통\n찰하기 위한 지혜라고 알아야 할 것이다.\n\n\n652\n\n첫 번째 인용문은 보살이 과정 중인 반면에 불세존은 목적지에 도달했다고 하\n기에 앞과 동일하다. 반면 두 번째 인용문은, 밑줄 친 부분들을 보면, 보살 내에\n서의 수준 차이를 격이나 시제 등의 문법적 장치를 통해 보여주고 있다. 아주\n세부적인 것들을 일단 무시한다면, (ㄹ)이 유관 주체의 수준에 따라 ‘다를 수 있\n는’ 가능성은 안전하게 주장될 수 있을 것이다.!\n\n이를 유념하고 (ㄴ)으로 다시 돌아가보자. 「진실의품」에서 문제의 tarka\n는 이 영역을 관장하는 지적 양상들 중 대표적인 것으로 그려진다. 이 대상영역\n역시 「진실의품」에서는 진상의 하나로 간주되나 이는 어디까지나 열등한 단계\n에 불과하고 가장 뛰어난 단계는 법무아의 진리이다. 그런데 여기서 묘사된 한\n에서 변증은, 비록 그것이 전문적인 훈련의 결과이자 과정상 적법한 논리를 통\n#455\n#\n Wogihara(1971) 212쪽: tatra katamo bodhisattvasya prajñāsvabhāvaḥ |\n652\nsarvajñeyapraveśāya ca sarvajñeyānupraviṣṭaś ca yo dharmāṇāṁ pravicayaḥ\n… ayaṁ bodhisattvānāṁ prajñāsvabhāvo veditavyaḥ | … yā bodhisattvānām\nanabhilāpyaṁ dharmanairātmyam ārabhya satyāvabodhāya vā\nsatyāvabodhakāle vā satyābhisaṁbodhād vā ūrdhvaṁ prajñā\nparamapraśamavyupasthānā nirvikalpā sarvaprapañcāpagatā sarvadharmeṣu\nsamatānugatā mahāsāmānyalakṣaṇapraviṣṭā jñeyaparyantagatā\nsamāropāpavādāntadvayavivarjitā madhyamapratipadanusāriṇī | iyaṁ\nbodhisattvānāṁ tattvānubodhaprativedhāya prajñā veditavyā |!\nDutt(1978) 146쪽에는 밑줄+이탤릭체로 부분이 pratyupasthānā로 되어 있는데, 대응하\n는 티벳역과 한역이 각각 nye bar gnas pa, 明了現前이므로 적어도 후대의 번역은\npratyupasthānā를 지지하는 것 같다."
+            },
+            {
+              "id": "kor-lee-page-465",
+              "label": "Printed page 456",
+              "locator": "PDF page 465 · printed page 456 · direct PDF text extraction",
+              "text": "과한 것이라 할지라도, 결국 법무아의 진리를 은폐하는 방향으로 작동하는 것\n으로 ‘주로’ 그려진다. 그러나 이는 현실적인 묘사에 불과할 수도 있다. tarka가\n본성상 고차원적인 진리를 차단하기만 할 뿐인지는 여전히 의문이기 때문이다.!\n\n이와 관련해 앞서 언급된 「진실의품」의 ‘합리적인 입증이라는 도리\n(upapattisādhanayukti)’가 「보살지」보다 약간 일찍 혹은 거의 동시에 성립된\n「성문지」에서 어떻게 사용되고 있는지 검토해볼 필요가 있다.!\n\n합리적인 입증이라는 도리란 어떤 것인가? ‘[오]온들이 무상하다’라고 [또] ‘[오온들이]\n조건 발생적이고 고통이고 비었고 무아이다’라고 세 가지 바른 인식수단들, 즉 성취자\n의 전승·지각·추리를 통해 관찰하는 [경우] 합리성에 부합하고 현명한 자들의 마음을\n사로잡은 이 세 가지 바른 인식수단들을 통해 이를테면 ‘온들이 무상하다’거나 ‘[온들\n이] 조건 발생적이다’라거나 ‘[온들이] 고통이다’라거나 ‘[온들이] 비었다’라거나 ‘[온들\n이] 무아이다’라는 것에 있어 확립 및 입증이 이뤄진다. 이것이 ‘합리적인 입증이라는\n도리’라고 이야기된다.\n\n\n653\n\n이 대목은 ‘바른 인식수단’이나 그 내역들, 그리고 ‘현명한’ 등의 표현이 「진실의\n품」과 일치한다는 점에서 특히 주목된다. 그런데 흥미롭게도 여기서 합리적인\n#456\n#\n 声研(1998) 238쪽-240쪽: upapattisādhanayuktiḥ katamā | anityāḥ skandhā iti\n653\n| pratītyasamutpannā duḥkhāḥ śūnyā anātmāna iti tribhiḥ pramāṇair\nupaparīkṣate | yad utāptāgamena pratyakṣeṇānumānena ca | ebhis tribhiḥ\npramāṇair upapattiyuktaiḥ satāṁ hṛdayagrākakair vyavasthāpanā sādhanā\nkriyate | yad uta skandhānityatāyā vā pratītyasamutpaanatāyā vā duḥkhatāyā\nvā śūnyatāyā vānātmatāyā vā | iyam ucyata upapattisādhanayuktiḥ ||!\n이 주제에 대한 포괄적인 연구는 서정주(2019) 참조."
+            },
+            {
+              "id": "kor-lee-page-466",
+              "label": "Printed page 457",
+              "locator": "PDF page 466 · printed page 457 · direct PDF text extraction",
+              "text": "입증의 대상으로 상정된 오온의 무상성 등은 「진실의품」의 구도에 놓자면 바로\n(ㄷ)의 단계에 해당되는 것이다. 만약 「성문지」에서 바른 인식수단이 (ㄷ)의 앎\n에 기여하는 것처럼 「보살지」 「진실의품」에서는 (ㄹ)의 앎에 기여할 수 있다면,\n고차원적인 진리에의 기여 가능성을 tarka에도 역시 기대해볼 수 있을 것이다.!\n\n「진실의품」 자체에서는 tarka에 대해서는 더 이상 언급하지 않고 대신에\ntarka와 함께 거론되었던 이 ‘합리적인 입증이라는 도리’를 통해 법무아에 대한\n증명이 가능하다고 말한다.!\n\n이와 관련해 어떤 도리로 모든 법들이 언어화될 수 없다는 것이 이해되어야 하는가?\n… 우선 이것이 모든 법들이 언어화될 수 없다는 것을 이해되어야 하는 데에 소용되고\n조응하는(ānulomikī) 합리적인 입증이라는 도리이다.\n\n\n654\n\n여기서 제시된 증명의 과정 및 결론을 이해하는 자의 인지적 능력은 바른 인식\n수단, 특히 여기서는 추리(anumāna)가 동원된다는 점에서 저 (ㄴ)에 상대하\n는 것일까, 아니면 법무아의 이해를 목표로 하는 보살에게 속하는 능력이라는\n점에서 저 (ㄹ)에 해당하는 것일까? 답이 어느 쪽이든, 추리가 그 자체로 최종\n적 진리에 방해될 뿐이라는 결론은 내릴 수 없을 것이다. 그리고 이 결론을\ntarka에까지 적용하려는 시도 역시 특별히 반대할 만한 것이 못된다.!\n#457\n#\n 高橋 晃一(2005b) 96쪽-102쪽: tatra kayā yuktyā nirabhilāpyasvabhāvatā\n654\nsarvadharmāṇāṁ pratyavagantavyā || … iyaṁ tāvad upapattisādhanayuktir\nānulomikī yayā nirabhilāpyasvabhāvatā sarvadharmāṇāṁ pratyavagantavyā ||"
+            },
+            {
+              "id": "kor-lee-page-467",
+              "label": "Printed page 458",
+              "locator": "PDF page 467 · printed page 458 · direct PDF text extraction",
+              "text": "본고가 지금까지 복잡하게 그려온 그림이 맞다면, 이제 tarka를 적극적\n으로 자리매김할 수 있게 된다. 그리고 그 자리는 원칙적으로 「진실의품」 후반\n부의 수행론의 구도에서도 확보되어야 할 것이다. 다카하시 코이치가 명확히\n했듯\n\n 「진실의품」에서 분별과 사물(vastu)은 윤회적 구도 내에서 상호인과적\n655\n으로 얽혀 있다. 즉, 전생의 분별 때문에 현생의 사물이 발생하고, 현생의 사물\n때문에 현생의 분별이 발생하며, 현생의 분별 때문에 내생의 사물이 발생한다\n는 것이다. 바로 이것이 윤회라 불리는 악순환의 정체이다. 그리고 명칭 등이\n작동하는 언어적 기제를 응시하는 네 가지 탐구 및 그 결과 네 가지 있는 그대\n로의 통찰(yathābhūtaparijñāna)을 통해 저 분별을 간파해냈을 때, 이때 발\n생한 깨달음의 힘으로 저 악순환이 비로소 깨진다.!\n\n그런데 흥미롭게도 앞서 Vyākhyāyukti에서 ‘변증에 떨어진 단계에 속\n한 자’를 윤회적 구도로 이해하였다. 물론 여기서 등장하는 ‘변증’은 문제적인\n것으로 묘사된다. 그러나 Vyākhyāyukti만 보면 이것이 본성상의 한계인지 알\n수 없다. 나아가 Vyākhyāyukti의 원천이라고 할 수 있는 「진실의품」에 대한 본\n고의 독해가 옳다면 ‘변증’의 문제점은 현실적인 것일 뿐 본성적인 것은 아니다.!\n\n이러한 소견은 분별에 대해서도 적용할 수 있을 것이다. 즉, 「진실의품」\n에서 거론된 팔종 분별은 과연 분별의 본성을 적확히 드러낸 것일까, 아니면 생\n사윤회라는 문제적 상황을 야기하는 측면만을 드러낸 것일까? 앞서 인용한 『유\n가사지론』 「의지」 및 「섭결택분 보살지」는 칠종 분별의 구도를 제공하고 있으며\n#458\n#\n 高橋 晃一(2005b) 29쪽-33쪽 참조.\n655"
+            },
+            {
+              "id": "kor-lee-page-468",
+              "label": "Printed page 459",
+              "locator": "PDF page 468 · printed page 459 · direct PDF text extraction",
+              "text": "여기서 묘사된 분별들이 보다 포괄적인 것으로 보인다. 그렇다면 칠종 분별의\n쪽이 분별의 정체를 보다 잘 전달하고 있다고 할 수 있다.!\n\n이상의 이해가 옳다면, 탐구를 통해 분별을 대치한다는 「진실의품」의 구\n도는 『해심밀경』 「분별유가품」의 비유를 빌려\n\n 분별을 통해 분별을 제거하다\n656\n고 이해될 수 있을 것이다. 이는 「섭결택분 보살지」가 걸어갔던 길일 수도 있다.!\n\n네 가지 진실(*tattva)과 다섯 가지 것(*vastu)에서, 다섯 가지 것으로 [네 가지] 진실\n이 어디에 얼마나 포괄되냐면, 답하길 (ㄱ) 세간에서 성립된 진실과 (ㄴ) 도리로 성립\n된 진실은 세 가지 것으로 포괄된다. (ㄷ) 번뇌장을 청정하게 하는 앎의 영역인 진실과\n(ㄹ) 소지장을 청정하게 하는 앎의 영역인 진실은 두 가지 것으로 포괄된다. 네 가지\n탐구(*paryeṣaṇā)와 다섯 가지 것(*vastu)에서, 다섯 가지 것으로 [네 가지] 탐구가\n#459\n#\n Lamotte(1935) 115쪽: ’di lta ste dper na | la la zhig khye’u ches phra mos\n656\nkhye’u ches sbom po ’byin par byed pa de bzhin du de ’ang khye’us khye’u\ndbyung ba’i tshul du nang gi mtshan ma rnam par sel ba nyid kyis …\nT0676_702b10-12: 譬如有人以其細楔出於麁楔。如是菩薩依此以楔出楔方便遣内相故。\n… (즉, 예를 들어, 어떤 이들이 작은 쐐기로 큰 쐐기를 뽑아내는 것과 같이 또한 쐐기로 쐐\n기를 없애는 양상으로 내적인 이미지를 제거함으로써 …)"
+            },
+            {
+              "id": "kor-lee-page-469",
+              "label": "Printed page 460",
+              "locator": "PDF page 469 · printed page 460 · direct PDF text extraction",
+              "text": "어디에 얼마나 포괄되냐면, 답하길 이치에 따른 작의(*yoniśomanasikāra)를 수반한\n분별로 네 가지 탐구가 모두 포괄된다.\n\n\n657\n\n비록 별다른 해명 없이 단순한 배치를 통해서이기는 하지만, 여기서는 본고가\n상정해왔던 것처럼 분별을 문제적인 것과 그 문제를 해결하는 것 양자 모두로\n이해하고 있다.!\n\n여기서 탐구에 해당하는 분별을 특정하기 위해 이치에 따른 작의\n(yoniśomanasikāra)라는 개념을 등장시킨 것 역시 음미될 필요가 있다. 특히\n「섭결택분 보살지」의 다음 대목은 『대승장엄경론』 이후의 수행론을 예고하고\n있는 대목으로 읽힐 수 있다.!\n\n즉, 사물(*vastu)에 의존하여 언어(*abhilāpa)가 발생하는 것도 지각되고 또 언어에\n의존해서 사물이 발생하는 것도 지각되기 때문에, … 이와 같을 경우 사물에 의존하여\n명칭과 언어가 발생하는 것이 지각되는 것이다. 이를테면 예컨대 선정자(*dhyāyin)가\n내적으로(*adhyātman?) 선정을 할 경우, 이렇게 저렇게(*yathā yathā) 마음의 소\n리(*manojalpa)라는 작의를 하는 양상 그대로(*tathā tathā) 심상속(*cittasaṁtati)\n#460\n#\n Kramer(2005) 96쪽: de kho na bzhi dang dngos po lnga po dag las dag las\n657\ndngos po lngas de kho na du dag bsdus she na | smras pa | ’jig rten gyi grags\npa’i de kho na dang | rigs pas grags pa’i de kho na ni dngos po gsum gyis\nbsdus so || nyon mongs pa’i sgrib pa rnam par dag pa’i ye shes kyi spyod yul\ngyi de kho na dang shes bya’i sgrib pa rnam par dag pa’i ye shes kyi spyod yul\ngyi de kho na ni dngos po gnyis kyis bsdus so || yongs su tshol ba bzhi dang\ndngos po lnga po dag las | dngos po lngas yongs su tshol ba du dag bsdus\nshes na | smras pa | rnam par rtog pa tshul bzhin yid la byed pa dang ldan pas\nyongs su tshol ba bzhi po thams cad bsdus so ||"
+            },
+            {
+              "id": "kor-lee-page-470",
+              "label": "Printed page 461",
+              "locator": "PDF page 470 · printed page 461 · direct PDF text extraction",
+              "text": "에 떨어지는, 알아야 할 사물과 유사한 것(*sabhāga)인 이미지(*pratibimba)들이\n현현하는 방식으로 발생하기에, 언어에 의존해 사물이 발생하는 것도 지각되는 것이\n다.\n\n\n658\n\n『대승장엄경론』 그리고 『섭대승론』에서는 밑줄 친 ‘마음의 소리’가 유식관 수행\n의 키워드로 부상하게 되는데, 그것이 여기서 작의와  동일시되는 형태로 등장\n하는 것이 매우 흥미롭다고 할 수 있다. 앞서 칠종분별 중에서 (4) 탐구하는 분\n별과 (5) 고찰하는 분별은 각각 전통 아비달마 체계에서 조사(vitarka)와 사찰\n(vicāra)에 대응한다고 했다. 또 「유심유사지」에서 조사·사찰들은 말(vāk)을 유\n발한다고 했다. 그리고 tarka와 이 둘 사이의 밀접한 연관성은 본 항목 전체를\n걸쳐 충분히 보여졌다고 생각한다. 따라서 분별을 통한 분별의 제거는 다시\ntarka를 통한 tarka의 제거로 옮겨 이해해도 큰 문제가 없어 보인다. 이처럼 문\n제의 tarka는 수행론적 구도에서는 탐구 자체이거나 혹은 그 일부로 이해되는\n편이 가장 합리적이라고 할 수 있다.\n\n\n659\n#461\n#\n 高橋 晃一(2005b) 143쪽: ’di ltar dngos po la brten nas brjod pa skye ba yang\n658\ndmigs la | brod pa la brten nas kyang dngos po skye ba dmigs pa’i phyir te | …\nde ltar na dngos po la brten nas ming dang brjod pa skye bar dmigs pa yin no ||\n’di lta ste dper na bsam gtan pa so so’i bdag nyid la bsam gtan byed pa na | ji\nlta ji ltar yid la brjod pa’i yid la byed pa de lta de ltar sems kyi rgyud du gtogs\npa’i shes bya’i dngos po dang cha mthun pa’i gzugs brnyan dag snang bar ’gyur\nba’i tshul gyis ’byung bar ’gyur bas | de ltar na brjod pa la brten nas dngos po\nskye ba yang dmigs pa yin no ||\n#\n Vyākhyāyukti에 보이는 ‘변계’ 혹은 ‘분별’의 긍정적인 역할 역시 이러한 발상 하에서만\n659\n합리적으로 이해된다. 본고 486번 각주 및 해당 본문 참조."
+            },
+            {
+              "id": "kor-lee-page-471",
+              "label": "Printed page 462",
+              "locator": "PDF page 471 · printed page 462 · direct PDF text extraction",
+              "text": "이상의 복잡한 재구성이 개연적이라고 할 경우, 『이십론』 말미에서 바수\n반두가 굳이 밝힐 필요가 없었던 자신의 역량적 한계를 ‘tarka’라는 표현으로\n적시했던 대목이 소박한 해프닝은 아니었을 수도 있다. 물론 법상적 이해의 연\n원이 정확히 바수반두 자신인지는 여전히 불분명하다. 본고의 분석이 옳다면\n「진실의품」 자체에서 발원한 것일 수도 있다. 혹은 조사와 사찰이라는 문제적\n위상의 요소들이 수행과 이론의 핵심부를 이뤘던 붓다 당대부터 시작된 근본적\n인 문제상황이었을 수도 있다. 이를 판정하기 위해서는 매우 지난한 연구가 필\n요할 것이다. 그러나 적어도 이십론주의 저 ‘사용’은, 냐야 전통에서 tarka을 긍\n정적으로 묘사하기 시작한 것과 더불어, 인도철학사에서 하나의 이정표로 평가\n되어야 할 것이다.\n\n\n660\n#462\n#\n 덧붙여 본고의 분석이 올바른 것이었다면, 바수반두는 바비베까의 많은 점을 선취하고\n660\n있다. Eckel(2008) 27쪽 이하 참조."
+            }
+          ]
+        },
+        {
+          "id": "kor-lee-editorial-outline",
+          "label": "Part II editorial outline and sixteen-section guide",
+          "kind": "editorial-outline",
+          "blocks": [
+            {
+              "id": "kor-lee-page-193",
+              "label": "Printed page 184",
+              "locator": "PDF page 193 · printed page 184 · direct PDF text extraction",
+              "text": "제2부 산스크리트 원문·우리말 번역·주해!\n\n- 산스크리트 원문은 씰크의 판본을 이용하였다. 한국어 독자의 편의를 위해\n원문의 기재를 허락한 편역자에게 이 자리를 빌어 다시 한 번 감사를 표한다.!\n- 『이십론』의 내용에 따라 【1】부터 【16】까지 단락을 나누었다. 대응 게송 및 요\n점은 다음과 같다.!\n  【1】! !\n\n오직 표상일 뿐이고 대상이 비실재임을 주장!    (제1송)!\n  【2】! !\n\n대상의 존재가 불가피하다는 네 가지 이유!\n    (제2송)!\n  【3】, 【4】!\n\n네 가지 논거가 성립하지 않는 이유!\n    (제3송-제7송)!\n  【5】, 【6】!\n\n십이처 교설 및 유식 교설의 취지!!\n  (제8송-제10송)!\n  【7】, 【8】, 【9】!\n극미설 검토! !\n\n(제11송-제15송)!\n  【10】!!\n\n지각적 인식 및 기억의 문제!\n  (제16송-제17송 전반)!\n  【11】!!\n\n꿈과 각성의 유비!\n\n    (제17송 후반)!\n  【12】!!\n\n심심인과의 가능성! 1!\n\n    (제18송 전반)!\n  【13】!!\n\n꿈과의 차이와 업의 가능성1!\n\n    (제18송 후반)!\n  【14】!!\n\n심심인과와 업의 가능성2! !\n\n(제19송-제20송)!\n  【15】!!\n\n타심지의 성격!\n\n  (제21송)!\n  【16】!!\n\n자신의 한계 천명 및 붓다 찬양!\n\n  (제22송)!\n\n- 각 단락 별로 원문·번역·주해를 배치했다. 주해의 항목은 ‘〖알파벳〗’의 형태\n로 정렬되어 있다.\n#184"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "zho_lu_cheng_2009",
@@ -3715,18 +5509,18 @@ window.RESEARCHED_TRANSLATIONS = {
     {
       "id": "hin_tiwary_1995_alternate",
       "sourceId": "hin_tiwari_1995",
-      "language": "Hindi",
+      "language": "Hindi and Sanskrit",
       "languageCode": "hin",
-      "title": "Vijñaptimātratāsiddhi · Mahesh Tiwary Hindi translation",
+      "title": "Vijñaptimātratāsiddhi · Mahesh Tiwary Hindi translation · alternate scan",
       "creators": "Mahesh Tiwary",
       "date": "1995",
-      "citation": "Mahesh Tiwary, Vijñaptimātratāsiddhiḥ, Chowkhamba Vidya Bhawan, Varanasi, 1995; alternate Internet Archive scan.",
+      "citation": "Mahesh Tiwary, Vijñaptimātratāsiddhiḥ, Chowkhamba Vidya Bhawan, Varanasi, 1995; alternate Internet Archive scan, Viṃśikā PDF pages 34–47.",
       "recordKind": "alternate-copy",
       "translationStatus": "complete",
-      "textStatus": "existing-witness",
-      "textualBasis": "Sanskrit with Tiwary’s Hindi translation.",
-      "coverage": "Alternate scan of a translation already present as hin_tiwari_1995 in the parallel corpus; no duplicate witness created.",
-      "fidelity": "Bibliographic and source-link record only in this supplement; the existing parallel witness remains the reading text.",
+      "textStatus": "text-imported",
+      "textualBasis": "Sanskrit with Tiwary’s Hindi translation; a second copy of the existing hin_tiwari_1995 parallel witness.",
+      "coverage": "The complete Viṃśikā span in this scan: Sanskrit/autocommentary with Hindi translation on PDF pages 34–45 and the Sanskrit verse collection on pages 46–47 through its completion marker.",
+      "fidelity": "Unproofed OCR transcription preserved in document order. The following Triṃśikā material is excluded. This alternate copy is readable as a document but is not counted or mapped as a second translation witness.",
       "sourceSnapshot": {
         "path": "research/vimsika-translations-2026-10-26/sources/tiwary-hindi-archive-text.txt",
         "sha256": "0913a07ab0f718a41610e4f3af15ee26893df84d6a547c2bbd1f0d4da79ebf4b"
@@ -3737,7 +5531,106 @@ window.RESEARCHED_TRANSLATIONS = {
           "url": "https://archive.org/details/jaxy-vijnapti-matra-siddhi-of-vasubandhu-dr.-mahesh-tiw"
         }
       ],
-      "components": []
+      "components": [
+        {
+          "id": "hin-tiwary-alt-translation",
+          "label": "Sanskrit, autocommentary, and Hindi translation · PDF pages 34–45",
+          "kind": "alternate-copy-ocr",
+          "blocks": [
+            {
+              "id": "hin-tiwary-alt-translation-34",
+              "label": "PDF page 34",
+              "locator": "PDF page 34 · extracted lines 1801–1825",
+              "text": "॥ श्री: ॥\nबिज़ाधिसात्रतासिद्धि: त मन शी\nअथ विशतिकाप्रकरणवृत्तिः\n| (Af\n` महायाने त्रेधातुक बिज्ञप्तिमात्रं व्यवस्थाप्यते | ‘चित्तमात्रं भो\nजनपुत्रा, यदुत त्रैधातुकमिति’ सूत्रात्‌ | चित्तं मनो विज्ञानं विज्ञप्तिश्वेति\nयोया: | चित्तमत्र ससम्प्रयोगमभिप्रेतम्‌ । मात्रमित्यथभ्रतिषेधार्थम्‌ ।\nविज्ञसिमात्र मेवेद मसदर्थावभासनात्‌ । ¢\n| यत्‌ तेमिरिकस्यासत्‌ केशोण्ड कादिदशनम्‌ ॥ १ ॥\n। र कश्चिदर्थो नास्ति ।\n1 LN)\nमहायानद्शन के अनुसार त्रेधातुक शर्थात्‌ कामधातु, रूपधातु तथा\nरूपधातु विज्ञप्तिमात्र हैं, इसकी स्थापना की जाती हे। 'हे जिनपृत्रों, यह जो\nक है, वह चित्तमात्रं है, इस सूत्र से ( प्रकट होता है)। चित्त, मन,\nज्ञान तथा विश्वसति पर्यायवाची शब्द हैं । यहां चित्त विषय के साथ युक्त\nभिप्रेत है । मात्र ( शब्द ) विषय के निषेध के लिए है ।\nजिस प्रकार तिमिर रोग से ग्रस्त मनुष्य को असत्‌ केशनगुच्छादि के दशन\nहैं, उसी प्रकार सभी भासमान अर्था ( विषयों ) के असत्‌ होने के कारण\nसब कुछ विज्ञप्तिमात्र ही है ॥ १ ॥\nps, (चित्त के अतिरिक्त ) कोई भौ पदार्थ नहीं है ।\n१,4. B.वैतद्‌।\n२. A. ठे. यथा ।\n२३. A.B.शचन्द्रा। A is\n। ९, A,B. omit this sentence."
+            },
+            {
+              "id": "hin-tiwary-alt-translation-35",
+              "label": "PDF page 35",
+              "locator": "PDF page 35 · extracted lines 1827–1897",
+              "text": "विज्ञप्तिमात्रतासिद्धिः\n(२)\nअत्र चोद्यते\nन देशकालनियमः सन्तानानियमो न च।\nन च कृत्यक्रिया युक्ता विज्ञपियेदि नार्थतः ॥ २ ॥\nकिमुक्तं भबति ? यदि विनापि रूपाद्र्थेन रूपादिविज्ञप्तिरुत्पद्यते\nन रूपाद्यर्थात्‌ , कस्मात कचिदू देश उत्पद्यते, न सवंत्र ? तत्रैब च\nदेशे कदाचिदुत्पद्यते न सबंदा ? तद्देशकालप्रतिष्ठितानां सर्वेषां सन्तान`\nउत्पद्यते, न केवलमेकस्य ? यथा तेमिरिकाणां सन्ताने केशाद्याभासो,\nनान्येषां ? कस्मात्‌ तैमिरिकः केशश्रमरादि दृश्यते तेन केशादिक्रिया\nन क्रियते, न च तदन्यैने क्रियते ? यद्न्नपानबस्विषायुधादि स्वप्ने\nहश्यते तेन अन्नादिक्रिया न क्रियते, न च तदन्यैने क्रियते ? गन्धर्व-\nनगरेणासत्त्वान्‌ नगरक्रिया न क्रियते न च तदन्येने क्रिये ? तस्मा-\nदर्थाभावे? देशकालनियमः सन्तानानियमः कृत्यक्रिया च न युज्यते ।\nCR!)\nयहां पर प्रश्‍न किया जाता है :--\nयदि विज्ञप्ति विषय रहित है, तो देशकाल का नियम, सन्तान का अनियम\nतथा कृत्यक्रिया का होना युक्त नहीं हो सकता ॥ ३ ॥\nक्या कहा गया १ यदि रूपादि विषय के विना ही रूपादि बिज्ञप्ति उत्पन्न |\nहोती हे, रूपादि विषयों ( अर्थों के कारण नहीं, तो क्यों किसी (एक) ही स्थान |\n( देश ) में उत्पन्न होती है, सवत्र नहीं ? उस स्थान में भी कभी-कभी ही उत्पन्न\nहैः ०३ ७\nहोती है, सबंदा नहीं ( यह क्यों ) £ उस देश और काल में स्थित सभी मनुष्या\nके चित्तसन्तान में उत्पन्न होती है, केवल एक ही के नहीं ( यह क्यों ) १ जिस\nप्रकार तैमिरिको के चित्तसन्तान में केशादि का आभास होता है, दूसरों के नहीं _ ही\nहि\nह... $ (क्यों ) १ ( उसी प्रकार यदि बाह्यार्थे नहीं हैं तो चित्तभेद से विषयों में भी\nभिन्नता की प्रतीति होती, पर ऐसा नहीं होता.है। सभी लोग एक घट को घट\nके रूप में ही देखते हैं । ऐसा कयां १) क्यों तैमिरिकों द्वारा जो केश-श्रमरादि\n१. A... यदि विज्ञप्ति रनर्था नियमो देशकालयोः ।\nसन्तानस्यानियमश्च युक्ता कृत्यक्रिया न च ॥ ३ ॥\nB. अनर्था यदि विज्ञप्तिनियमी देशकालयोः ।\n२८ २८ २८\n२. 0. सन्तानानियम । ३. (0. असदूभावावभासने ।\n|\n9 ॥। 1\n11\nबिंशतिकाप्रकरणवृत्तिः\nबे जाते हैं, उनसे केशादि क्रिया न कौ जाती है, जो दूसरों द्वारा ( दृष्ट विषयों\n) की जाती है? क्‍यों जो अन्न, पान, वर, विष, आयुध आदि स्वप्न में\nखे जाते हैं, उनसे अन्नादि क्रिया न की जाती है, जो दूसरों से की जाती है!\nअर्थात्‌ स्वप्न अवस्था से भिन्न जाग्रत अवस्था में देखे गये अन्नादि विषयों से\nअन्नादि क्रिया कौ जाती है )। ( क्यों ) गन्धवनगर के असत्‌ होने के कारण उससे नगरक्रिया ( नगर में रहने आदि के काम ) नहीं की जाती है, किन्तु\nघरों (नगरों) से भी नहीं की जाती है, ऐसा नहीं कहा जा सकता ह!\n(अ थीत उससे भिन्न प्रतीयमान नगरों से नगर का कार्य तो होता हौ है) । अतः\nविषय के अभाव में देशकाल का नियम, सन्तान का अनियम तथा कृत्यक्रिया\nका होना युक्त नहीं है ।\n७ (३)\n` न खलु न युज्यते । यस्मात्‌\n| _ देशादिनियमः सिद्धः स्वप्नवत्‌ पै ४\nस्वप्न इव स्वप्नवत्‌ । कथं ताबत्‌ ? स्वप्ने विनाध्यर्थेन क्चिदेव देशे\nकिश्चिदू ्मरारामल्नीपुरुषादिकं दृश्यते न सबत्र | तत्रेब च देशे\nकदाचिद्‌ दृश्यते, न सवंकालम्‌ , इति सिद्धो बिनाप्यर्थेन देशकालः\nनियमः |\nहः -प्रेतवत्‌ पुनः ।\n|  सन्तानानियमः-\nसिद्ध इति बतते । प्रेतानामिव प्रेतवत्‌ ।\n*कथं सिद्धः ?\nसमं ~ ~ 0\nसतरः पूयनद्यादिदशेनं ॥ ३ ॥\n2 पूयपूणी नदी . पूयनदी | घृतघटवत | तुल्यकमेविपाकावस्था हि\nप्रेताः सर्वेऽपि पूयपूर्णा नदीं पश्यन्ति नैक एब । यथापूयपूर्णामेबं\n मून्नषुरीषादिपूर्णा दण्डासिधरेशच पुरुषेरविष्ठितामित्यादिप्रहणेन । एबं\n0:\nज्यु\n` सन्तानानियमो विज्ञप्तीनामसत्यप्यर्थ सिद्धः ।\n(३)\n( अर्थाभाव में उपयुक्त बातें ) संगत नहीं हो सकती हैं, ऐसी बात नहीं है।\nक्योंकि :--\nव्देशादि का नियम स्वप्न के समान सिद्ध है ।"
+            },
+            {
+              "id": "hin-tiwary-alt-translation-36",
+              "label": "PDF page 36",
+              "locator": "PDF page 36 · extracted lines 1899–1962",
+              "text": "४ 'विज्ञप्रिमात्रतासिद्धिः\n“स्वप्नवत्‌? का अर्थ हे स्वप्न के समान । वह केसे १ स्वप्न में विषय के विना\nभी किसी देश में ही कोई भ्रमर, उद्यान, खरी, पुरुषादि देखे जाते हे, संत्र नहीं ।\nउस स्थान में भी कभी-कभी ही देखे जाते हैं, सभी समय नहीं । इस प्रकार\nविषय के विना भी देश एवं काल का नियम सिद्ध हो जाता है ।\n-- पुनः प्रेत के समान”,\nसन्तान का अनियम?\nसिद्ध है । प्रेतवत्‌? का अथ हैं प्रेतां के समान ।\nकसे सिद्ध हे?\n--सभी के द्वारा पूयनदी आदि के समानरूप से दशन में? ॥ ३ ॥\nपूयनदी का अर्थ है-पीप से भरी नदी | घी के घडे के समान । समान\nकम के विपाक की अवस्था वाले सभी प्रेत पूयपूर्णा नदी को देखते हें, एक नहीं ।\n“आदि? शब्द के ग्रहण से ( यह अथं है कि ) यथा पूय से भरी नदी ( का दर्शन\nहोता हैं ), उसी प्रकार मूत्र विष्टा आदि से पूर्ण नदी का तथा लाठी और खड्ग\nधारण किये हुए पुरुषों से अधिष्टित दृश्यों का। इस प्रकार विज्ञप्तियों के सन्तान\nका अनियम विषय के विना भी सिद्ध है ।\n(४)\nस्वप्नोपघातवत्कृत्यक्रिया--\nसिद्धेति वेदितव्यम्‌ | यथा स्वप्ने द्रयसमापत्तिमन्तरेण शुक्रबिसग\nलक्षणः स्वप्नापघातः। एव ताबदन्यान्येदष्टान्तेद शकालनियमादि\nचतुष्टयं सिद्धम्‌ ।\n¬ नरकवत्‌ पुनः । उ त्‌ पु\nसिद्धमिति वेदितव्यम्‌ | नरकेष्विव नरकबत्‌। कथं सिद्धम्‌ ?\n--नरकपालादिदशेने ते इच बाधने ॥ ४ ॥\nयथा हि नरकेषु नारकाणां नरकपालादिदर्शनं देशकालनियमेन\nसिद्धम्‌ । श्ववायसायसपवताद्यागमनागमनदरशनं चेत्यादिग्रहशेन |\nसर्वेषां च नेकस्येब | तेश्च तद्वाधनं सिद्धमसत्स्त्रपि नरकपालादिषु\nसमानस्त्रकमबिपाकाधिपत्यात्‌ । तथान्यत्रापि सवमेतदूदेशकालनिय-\nमादिचतुष्टयं सिद्धमिति वेदितव्यम्‌ ।\nकि पुनः कारणं नरकपालास्ते च श्वानो वायसाश्च सत्वा नेष्यन्ते ?\nअयोगात्‌ । न हि ते नारका युब्यन्ते, तथैव तदूदुःखाप्रतिसंवेदनात्‌ |\nबिंशतिकाप्रकरणवृत्तिः ५\nयातयतामिमे नारका, इमे नरकपाला इति व्यवस्था न\n| तुल्याकृतिप्रमाणबलानां च परस्परं यातयतां न तथा भयं\n| दाहदुःखं च प्रदीप्तायामयोमय्यां भूमाबसहमानाः कथं तत्र\nयेयुः ? अनारकार्णा वा नरके कुतः संभवः ९\nls (४)\n“स्वप्न के उपघात के समान कृत्य किया? भी --\nसिद्ध हे, ऐसा जानना चाहिए। यथा स्वप्न में (स्री पुरुष) दोनों के\nआगम के विना वीयश्राव रूप स्वप्नोपघात होता हे । इस प्रकार अन्य दृष्टान्तो\nदशकालनियमादि चतुष्टय ( चार बातें ) सिद्ध हँ ।\n77 नरकबतः | “सभी बार्ते'--\n; हैं, ऐसा जानना चाहिए । 'नरकवत? का अर्थ है-जैसा नरकों में\nता है।\nकेसे सिद्ध है !\n| -“नरकपालादि के दशन में तथा उनके द्वारा कष्ट दिये जाने में ॥ ४ ॥\nछः यथा नरको में नारकीयों को नरकपालादि के दर्शन देशकाल नियम से\nद्ध है । “आदि” ( शब्द ) के ग्रहण से कुत्ता, कौवा, लोहे के पचत के आने\nने के दशन भी ( समझना चाहिए । ( इन सब के दर्शन) सभी को होते\nएक को नहीं । उन नरकपालादि के द्वारा उन नारकीयों को कष्ट दिया जाना\n| नरकपालादि के न रहने पर भी ( उनके ) अपने समान कर्मफल के प्रभाव\nहे । उसी प्रकार अन्यत्र भी ये सभी देशकाल के नियम सम्बन्धी चार\nसिद्ध हे, ऐसा जानना चाहिए ।\nपुनः क्या कारण है कि नरकपाल, कुत्ते, कौवे आदि प्राणी नरक के वास्त-\nविक सत्त्वा के रूप में नहीं ग्रहण किये जाते दें १ ( इसका उत्तर है ) असंभव\nहोने के कारण । वे नरकवासी नहीं सिद्ध होते हैं, क्योंकि नारकीयों के समान\nदुःखादि का अनुभव नहीं होता है । ( अर्थात्‌ जिस प्रकार नारकीय सत्त्व\n` विविध प्रकार की यातनाओं का अनुभव करते हैं, वेसा नरकपालादि नहीं करते\n)। (साथ हौ) परस्पर यातना देते हुए, उनमें ये नारकीय हें, तथा ये\nहैं, ऐसी व्यवस्था ,संगत नहीं हो सकती है + ( यदि ) यातना देने वाले\nतथा नारकीयों को समान आकृति, आकार एवं बल वाले समझा जाय तो '\nपरस्पर यातना देते हुए वे (एक दूसरे को) मंय का उत्पादन नहीं कंर सकते है । यह\nht"
+            },
+            {
+              "id": "hin-tiwary-alt-translation-37",
+              "label": "PDF page 37",
+              "locator": "PDF page 37 · extracted lines 1964–2032",
+              "text": "६ विज्ञप्तिमात्रतासिद्धिः\n1. विंशतिकाप्रकरणवृत्तिः\nस्तथा परिणामः कस्मान्नेच्यते, किं पुनभूतानि\n` दज्ञानस्यैब तस्कमेभि\nद्यन्ते ? ज्जन्य दाहदुःख को न सहते हुए वे दूसरों ( नारः\nप्रदीप्त लौहमयी भुमि में त\n(वे तो वस्तुतः नारकीय नहीं हें ) तो चेसे\nकीयों ) को कैसे कष्ट दे सकते हें ।\nअनारकीयों का नरक में होना केसे युक्त हो सकता है!\n(+)\nकथं ताबत्तिरश्चां स्वर्गसंभवः ? एवं न\nनरकपालादीनां संभवः स्यात्‌ !\nतिरश्चां संभवः स्वर्गे यथा न नरके तथा ।\nन प्रेतानां यतस्तज्ज दुःखं नानुंभवन्ति ते॥ ५ ॥\nये हि तिर्यञ्धः स्वगं संभवन्ति ते त द्राजनलो कसुखसंबतंनीयेन\nकर्सणा तत्र संभूतास्तञजं सुखं प्रत्यनुभवन्ति । न चेवं नरकपालादयो\nनारकं दुःखं प्रत्यतुभबन्ति | तस्मान्न तिरश्चां संभवो युक्तो. नापि\nप्रेतानाम्‌ ।\n(९)\nतब स्वर्ग में पक्षियों का होना केसे संभव है! उसी प्रकार नरका में तियंक ती\nयोनिगत प्रेतविशेषों एवं नरकपालादि का संभव हो सकता है ।\nर ~ tC\nयथा तियेक्‌ योनिगत प्राणियों की उत्पत्ति स्वग में है, उस प्रकार उनका\n। 0%.)\n। (तब बात क्या है ! ) नरक में उन नारकीयों के कर्म से विशिष्ट आकृति\nप्रमाण तथा बलवाले विशेष प्रकार के प्राणी उत्पन्न होते हैं, जो नरकपालादि की\nसंज्ञा पाते हैं । वे भय उत्पादनार्थं विविध प्रकार की हस्तविच्षेपादि क्रिया के\nfn के आकार के आते-जाते हुए पवत\nनीचे मुख किये हुए कांटे देखे जाते हें ॥\n. त्रेसवेथा नहीं हैं, ऐसी नहीं कहा जा सकता हे ।\n१ इ है, तो विज्ञान को\nऱ्य के कारणविज्ञान काही वेसा प\nकल्पना की जाती है?\n(७)\nरकेषु तियेकप्रेतबिशेषाणां\nहोना संभव है, तथा परिणाम\nहे?॥६॥\nhs\nउन कर्मो\nहै १ क्यों पुनः जीवा की\nतथा प्रेतां का नरक में होना संभव नहीं हे, क्योंकि वे नरंकजन्य दुःख का अनुभव र ५\nनहीं करते ॥ ५ ॥\n. येनहि कर्मणा नारकांणां त\nजो पशु-पक्षी स्वग में उत्पन्न होते दै, वे उस लोक के अनुकूल सुख के |. _परिणामश्च, तस्य’ कमेणो वासना तेषां बिज्ञानसन्तानसन्निबिध्टा\nउत्पादक कमे से बहां उत्पन्न होते हैं तया तज्जन्म सुख का अभ करते हैं। नान्यत्र । यत्रैब च वासना तत्रैब तस्याः फलं तादृशो विज्ञानपरिणामः\nभ करते हे । इसलिए | नेष्यते ? यत्र बासना नास्ति तत्र तस्याः फलं कल्प्यत इति किमत्र\nइस प्रकार नरकपालादि नरक के दु*ख का अनुभव नह\n( नरक में ) पशु-पक्षियों एवं रेतो का होना युक्त नहीं है ।\n(६)\nतेषां तर्हि नारकाणां क्मेभिस्तत्र भूतविशेषाः ` संभवन्ति बणोकृति-\nप्रमाणबलविशिष्टा ये नरकपालादिसंजञां प्रतिलभन्ते । तथा च परिण-\nमन्ति यद्विविधां हस्तविद्षेपादिक्रियां न्तो दृश्यन्ते भयोत्पादनाथेम्‌ ।\nयथा मेषाकृतयः पर्वेता आगच्छन्तो गच्छन्तो अयःशाल्मंलीबने च\nकण्टका अधोमुखी भवन्त उद्ध्वेमुखीभवन्तश्चेति। न ते न संभवन्त्येव ।\nयदि तत्कर्मभिस्तत्र भूतानां संभवस्तथा ।\nइष्यते परिणामञ्च किं विज्ञानस्य नेष्यते ॥ ६ ॥\nकारणम्‌? Vn\nFN यदि बिज्ञानमेब रूपादिप्रतिभासं स्यान्न\nहि आगमः कारणम्‌ । |\n_ कूपादिकोञ्थस्तदा रूपाद्यायतनास्तित्वं भगबता नोक्तं स्यात्‌ ।\n|; (५७)\nऔर भी\nकर्मी की वासना को अन्यत्र तथा\nजाती है। जंहां वासना है, वहीं फल की\nकारण हे?॥ ७॥\n1 फल को अन्यत्र होने की कल्पना की\nकल्पना नहीँ की जाती है । इसका क्या\nerr"
+            },
+            {
+              "id": "hin-tiwary-alt-translation-38",
+              "label": "PDF page 38",
+              "locator": "PDF page 38 · extracted lines 2034–2093",
+              "text": "विज्ञप्तिमात्रतासिद्धिः\nनरकवासियो के जिस कर्म से वहां वैसे जीवों के होने की तथा उनके परिणाम\nको कल्पना करते हैं, उन नरकवासियों के कम की वासना उनके विज्ञान ! सन्तान\nके अन्तगेत स्थित है, अन्यत्र नहीं। जहाँ पर वासना है, वहीं पर उसका\n( वासना का ) फल तथा चैसी विज्ञान की परिणति क्यों न अभौष्ट है १ जहां\nवासना नहीं है, वहाँ उसके फल की जो कल्पना की जाती है, इसका क्या\nकारण है!\nआगम कारण हे । यदि बिज्ञान ही रूपादि विषयों के रूप में प्रतिभासित\nहोता, रूपादि पदार्थ वास्तविक न होते, तो रूपादि आयतनो का अस्तित्व\nभगवान्‌ द्वारा नहीं कहा हुआ होता ।\n(८)\nअकारणमेतत्‌ | यस्मातू--\nरूपाद्यायतनास्तित्वं तद्विनेयजनं प्रति ।\nअभिप्रायवशादुक्तमुपपादुकसत्त्वत्‌ ॥ ८ ॥\nयथास्ति सत्व उपपादुक इत्युक्त भगवता अभिप्रायवशाच्चित्तसंत-\nत्यनुच्छेदमायत्यामभिप्रेत्य ।\n“नास्तीह सत्व आत्मा बा धमोस्त्वेते सहेतुका? इति बचनात्‌।\nएवं रूपाद्यायतनास्तित्वमप्युक्त भगवता .तदूदेशनावबिनेयजनमधिकृत्ये-\nत्याभिप्रायिक तद्वचनम्‌ ।\n(<)\n( ऐसा मानना ) अयुक्त है । क्योंकि\nरूपादि आयतनो का अस्तित्व भगवान्‌ -द्वारा विनेयजनों . के अभिप्राय से\nउपपादुकसत्त्वों के अस्तित्व के समान क्रहा गया है ॥ ८ ॥\n'उपपादुकसत्त्व हैं“--भगवान द्वारा ऐसा जो कहा गया है, वह अभिप्राय-\nचश हे और वह अभिप्राय यह हे कि चित्तसन्तति का भविष्य में उच्छेद नहीं\nहोता है ।\n“कोई सत्त्व या आत्मा नहीं है, सभी भ्रम सहेतुक हें” इस वचन से\n( सिद्ध होता है ) । इस प्रकार रूपादि आयतनों का अस्तित्व भगवान्‌ द्वारा उस\nदेशना से अनुशासनीय जनों को लक्षय करके कहा गया हे, इसलिए यह वचन\nआभिफ्राबिक है ।\nMh\nविंशतिकाप्रकरणवृत्तिः\n|. (८)\n_ कोऽत्राभिप्रायः ? & i\nगतः स्वबीजाहिज्ञपियंदाभासा प्रवतत ।\n` द्विविधायतनत्वेन ते तस्या गुनिरत्रवीत्‌ ॥ ९ ॥\nकिमुक्तं भवति ९ | | |\n` हृपप्रतिभासा विज्ञप्तियेतः स्वबीजात्परिणामबिशेषप्राप्तादुत्पद्यते,\nचच बीजं यत्म्तिभासा च सा ते तस्या विज्ञमेश्‍चक्षरूपायतनत्वेन\nग्रथाक्रमं भगवानत्रबीत्‌ । एबं याबत्‌ स्प्रष्टव्यप्रतिभासा बिज्ञप्तियतः\nजात्परिणामबिशोषप्रप्तदुत्पद्यते, तच्च बीज ag च ७\n। तस्या कायस्प्रष्टव्यायतनत्वेन यथाक्रम भगबानन्रवीदित्ययमभिप्रायः\n1 (४९७\nइससे क्या अभिप्राय है?\n| जिस स्वबीज से जिस प्रकार के आभासवाली विज्ञप्ति प्रवृत्त होती है,\n6 ने उन दोनों को उस बिज्ञप्ति के दो प्रकार के आयतन के रूप में\nबत छाया है ॥ ९ ॥\nयहाँ क्या कहा गया हे?\n| शप के समान आभासित होने वाली विज्ञप्ति अपने जिस परिणाम विशेष\nआप्त बीज से उत्पन्न होती है, उस बीज तथा उस प्रतिभास, दोनों को, उस विज्ञप्ति\nके चक्षु एवं रूप आयतन के रूप में भगवान्‌ ने कहा है । उसी प्रकार स्प्रश्‍व्य\nके समान प्रतिभासित होने वाली विज्ञप्ति, जो परिणाम विशेष प्राप्त अपने बीज\nहा दोनों को उस ( विज्ञप्ति )\n( १० )\nएवं पुनरभिप्रायबशेन देशयित्वा को गुणः ? ॥ के\nतथा पुद्ठलनेरात्म्यप्रवेशो हि\nतथा हि देश्यमाने पुद्रलनेरात्म्यं प्रविशन्ति । दृयाद्विज्ञानषटूक\n| प्रवतेते। न तु करिचदेको द्रष्टास्ति, न याबन्मन्तेत्येबं बिदिस्वा र\n युद्रलनैरात्म्यदेशनाविनेयास्ते पुद्नलनैरात्म्यं प्रविशन्ति |"
+            },
+            {
+              "id": "hin-tiwary-alt-translation-39",
+              "label": "PDF page 39",
+              "locator": "PDF page 39 · extracted lines 2095–2133",
+              "text": "विज्ञप्तिमात्रतासिद्धि:\n--अन्यथा पुनः ।\nदेशना धमनेरात्म्य्रवेशः--\nअन्यथेति विज्ञपिमात्रदेशना | कथं घर्मनैरात्म्यप्रवेशः ? विज्ञप्ति- मात्रमिदं रूपोदिधमेप्रतिभासमुत्पद्यते न तु रूपादिलक्षणो धर्मः कोऽप्य- स्तीति विदित्वा ।\nयदि तहिं सबेथा धर्मो नास्ति तदपि बिज्ञप्निमात्रं नास्तीति, कथं तहिं व्यवस्थाप्यते ? न खलु सवैथा घमो नास्तीत्येवं घर्मनेरात्म्यप्रबेशो भवति । अपि तु—\ndl ~-कल्पितात्मना ॥ १० ॥ । यो बालेधमोणां स्वभाबो आह्यप्राहकादिः परिकल्पितस्तेन कल्पिते- नात्मना तेषां नेरात्म्यं, न त्वनभिलाष्येनात्मना यो बुद्धानां बिषय इति । एवं. विज्ञप्तिमात्रस्यापि विज्ञप्त्यन्तरपरिकल्पितेनात्मना नेरात्म्यप्रवेशात्‌ विज्ञप्तिसात्रव्यवस्थापनया सर्वध्माणां नैरात्म्यप्रवेशो भवति, न तु तदस्तित्वापवादात्‌ | इतरथा हि बिज्ञपतेरपि बिज्ञप्त्यन्तर मर्थ स्यादिति बिज्ञप्तिमात्रत्वे न सिध्येताथंबतीत्बादिज्ञप्तीनां | कथं पुनरिदं प्रत्येतव्यमनेनाभिश्रायेण भगवता स्ति ति रूपाद्यायतनांस्त- त्वमुक्तम्‌ ! न पुनः सन्त्येव तानि यानि रूपादिविज्ञप्तीनां प्रत्येक oo दि 1 प्रत्येक विषयी-\n(१०)\n( यहाँ पर प्रश्न होता है ) इस प्रकार वशं (शिष्यों AA Deis ) इस प्रकार अभिप्रायवशं (शिष्यों को ) उपदेश\n'उस प्रकार ( उपदेश देने से ) पदले रात्म्य में प्रवेश होता है? । उस श्रकार उपदेश देने से शिष्य पुद्दल नैरात्म्य में प्रवेश करते हैं। दो से विज्ञानघट्‌क की प्रबृत्ति होती है । न कोई दृष्टा है, न मन्ता पर्यन्त ही कोई है, ऐसा जानकर जो पृदूल नेरात्म्य की देशना है, उसमें विनीत होने योग्य जो प्राणी हैं, वे पळ नेरात्म्य में प्रवेश करते हे । ुनः दूसरी ( अन्यथा ) प्रकार की देशना से धर्म नैरात्म्य में प्रवेश होता है? ।\n“अन्यथा? का अर्थ है विज्ञप्तिमात्र की देशना। धर्म नैरात्म्य में प्रवेश केसे होता है? रूपादि घर्मो-का जो प्रतिभास है, वह विज्ञप्तिमात्र है । रूपादि लक्षणों से युक्त कोई भी वम नहीं: हैं, यह जानकर ।\nविशतिकाप्रकरणवृत्तिः\nयदि सभी धर्म सर्वथा नहीं हैं, तो विज्ञप्तिमात्र भी नहीं है, तो इसको व्यवस्था\nकै होती हे ? ( अर्थात्‌ उसमें क्या हेतु है कि विज्ञपिमात्र है तथा अन्य\nधर्म नहीं हें ) । धर्म सर्वथा नहीं हैं, इस रूप में धम नेरात्म्य में प्रवेश नहीं\n-- कल्पित रूप से? ॥ १० ॥\nअज्ञानियों द्वारा धर्मों के स्वभाव की जो कल्पना ग्राह्य-ग्राहक रूप में कौ\nहै, उस कल्पित रूप में उनका नेरात्म्य ( अवास्तविकता ) है, न कि\n` ञनिवंचनोय रूप में, जो बुद्धों का विषय हे । इस प्रकार विज्ञप्तिमात्र को भौ अन्य\nर बिज्ञप्ति के द्वारा परिकल्पित रूप में आसत्‌ समझने से, विज्ञप्तिमात्र की व्यवस्था\nहोने से, ( अर्थात्‌ ग्राह्म-प्राहक भाव रहित विज्ञप्तिमात्रता में प्रवेश करने से),\n। सभी धर्मा के नेरात्म्य ज्ञान में प्रवेश होता है, न कि उनके अस्तित्व को ही\nन मानने से । अन्यथा विज्ञान का अन्य विज्ञान विषय हो जाय तो पुनः विज्ञप्ति\nमात्रैतो .की सिद्धि केसे होगी क्योंकि उससे तो विज्ञप्तियां अथवती अर्थात विषय\n_ वाली सिद्ध हो जांयगी ।\nपुनः यह केसे जाना जाय कि भगवान्‌ ने इसी अभिप्राय से रूपादि आयतनो\n। का अस्तित्व कहा है । यह क्यों न समझा जाय कि रूपादि वस्तुतः हैं, जो रूपादि | बिज्ञपिरयो के एथक्‌-श्यकू विषय होते हैं ।\n(९९)\nयस्मात्‌\nन तदेक न चानेक विषयः परमाणुः ।\nन च ते संहता यस्मात्परमाणुने सिध्यति ॥ ११ ॥\nइति ।\nकिमुक्तं भवति ? यत्तद्रूपादिकिमायतनं रूपादिविज्ञपीनां प्रत्येक\nबिषयः स्यात्तदेकं बा स्याद्यथावयविरूप कल्प्यते बशेषिकः अनेक बा\nपरमाणुशः संहता बा त्त एव परमाणबः ।\nन तावदेक विषयो भवत्यवयवेभ्यो 5न्यस्यावयबिरूपस्य क्कचि दपय-\nग्रहणात्‌ । नाप्येक, परमाणूनां प्रत्येकमग्रहणात्‌ । नापि ते संहता\n'विषयीभवन्ति । यस्मात्परमाणुरेक द्रव्यं न सिध्यति | कथं न\nसिध्यति ?"
+            },
+            {
+              "id": "hin-tiwary-alt-translation-40",
+              "label": "PDF page 40",
+              "locator": "PDF page 40 · extracted lines 2135–2192",
+              "text": "बिज्ञप्तिमात्रतासिद्धिः\n(“४१ )\nक्योंकि :--\nवह विषय न अवयवी के रूप में एक है, न परमाणुओं के रूप में अनेक\nहै। वह परमाणुओं का समूह भी नहीं हो सकता है, क्योंकि परमाणुओं की तो सिद्धि ही नहीं होती है ॥ ११ ॥\n( यहाँ ) क्या कहा गया है ? रूपादि आयतन जो रूपादि बिज्ञप्तियो में से\nप्रत्येक का विषय होता है, वह या तो एक हो सकता है, जैसा कि वैशेषिक मतवाले अवयवी के रूप में मानते हैं, या परमाणुश्रों के रूप में अनेक हो\nसकता हैं, या उन परमाणुओं का समूह रूप हो सकता है ।\nएक अवयची विषय नहीं हो सकता है, क्योंकि अवयवां से भिन्न अवयवी\nका कहीं ग्रहण नहीं होता हे । परमाणुओं के रूप में अनेक भी नहीं हो सकता\nहै, परमाणुओं का प्रथक्‌-प्रथक्‌ एक-एक परमाणु के रूप में उपलब्धि नहीं होती है। न वे समुदाय रूप में ही विषय बनते हैं, क्योंकि परमाणु की ही एक द्रव्य के रूप में सिद्धि नहीं होती है । केसे सिद्धि नहीं होती है १\n( १२)\nयस्मात्‌\nपट्केन युगपद्योगात्परमाणोः षडशता ।\nषड्भ्यो दिग्भ्यः षड्भिः परमाणुभियुंगपद्योगे सति परमाणोः षडंशता\n्राप्नोति, एकस्य यो देशस्तत्रान्यस्यासंभवात्‌ |\nपण्णां समानदेशत्वात्‌ पिण्डः स्यादणुमात्रकः॥ १२ ॥\nअथ य एवैकस्य परमाणोद्‌ंशः स एब षण्णां, तेन सर्वेषां समान-\nदेशत्बात्‌ सर्व: पिण्डः परमाणुमात्रः स्यात्परस्पराव्यतिरेकादिति न कञ्चित्पिण्डो दृश्यः स्यात्‌ | नेब हि परमाणबः संयुञ्यन्ते निरवयवत्वात्‌ ।\n(१५)\nक्योंकि :—\n'एक साथ छ परमाणुओं का योग होने से परमाणु के छ अंश सिद्ध होते हें? । ७\nछः दिशाओं से छ परमाणुओं का एकसांथ योग होने पर परमाणु के छ\nभाग सिद्ध होते हैं, क्योंकि एक परमाणु का जो स्थान हे, वहाँ ( उसी स्थान\nमें ) दूसरे का होना असंभव है ।\nबिंशतिकाप्रकरणबृत्तिः १३\n“छः परमाणुं का यदि एक ही स्थान माना जाय तो वह पिण्ड अणुमात्र\nसिद्ध होगा? ॥ १२॥\nयहां जो एक परमाणु का स्थान हे, वही ही छः परमाणुं का स्थान\nजाय, तो ( सभी परमाणुओं का एक स्थान होने के कारण ) समस्त पिण्ड\nपरमाणु मात्र बन जायगा, क्योंकि ( वहां) एक दूसरे से पाथक्य नहीं\nरहेगा, फलतः कोई भी पिण्ड दृश्य नहीं होगा। निरवयव होने के कारण\n| एरमाणुओं का योग ही नहीं हो सकता ।\n8. ( १३ )\nह  मञाभूदेष दोषप्रसङ्गः | संहतास्तु परस्परं संयुब्यन्त इति काश्मीर-\nजैभाषिकाः। त इदं प्रष्टव्याः। यः परमाणूनां संघातो न स तेभ्यो-\n' ऽथीन्तरमिति ।\n| परमाणोरसंयोगे तत्संघातेऽस्ति कस्य सः ।\nसंयोग इति बतते ।\nन चानवयवत्वेन तत्संयोगो न सिध्यति ॥ १३॥\n॥ अथ सङ्घाता अप्यन्योन्यं न संयुज्यन्ते न तहि परमाणूनां निरवय-\n वत्वास्खंयोगो न सिध्यतीति वक्तव्यम्‌ ।\nशै सावयवस्यापि हि सङ्घातस्य संयोगानभ्युपगमात्‌ । तस्मात्परमाणु-\n| रेक द्रव्यं न सिध्यति ।\n| यदि च परमाणोः संयोग इष्यते यदि वा नेष्यते |\n/ ( १३ )\n| यहां ऐसा दोष नहीं हो सकता है । काश्मीर वेभाषिक मतवाले ऐसा\nमानते हैं कि वे ( परमाणु ) समुदाय भूत होकर परस्पर युक्त होते हें । उनसे\nऐसा प्रश्‍न करना चाहिए। जो परमाशुओं का समुदाय है, वह तो उन\n1 परमाणुओं से भिन्न वस्तु नहीं है ।\n| “जब परमाणुओं का संयोग नहीं है तो उनके ( परमाणुओं के ) संघात\n| 4 में वह ( संयोग ) किसका होता है । यहां पर संयोग शब्द की अनुतृत्ति है ।\n| ___ निरवयव होने से परमाणुओं का संयोग सिद्ध नहीं होता है? ॥ १३॥\nयदि ऐसा कहा जाय कि परमाणुओं के समुदाय भी परस्पर संयुक्त नहीं\nहो सकते तो निरवयव होने से परमाणुओं का संयोग सिद्ध नहीं होता है, यह\n|\n५"
+            },
+            {
+              "id": "hin-tiwary-alt-translation-41",
+              "label": "PDF page 41",
+              "locator": "PDF page 41 · extracted lines 2194–2224",
+              "text": "१४ बिज्ञप्तिमात्रतासिद्धि:\n“नहीं कहना चाहिए । क्योंकि सावयव परमाणुसमुदाय में भी संयोग को आप्ति नहीं होती है । अतः परमाणु एक द्रव्य है, ( ऐसा ) सिद्ध नहीं होता । यदि परमाणु का संयोग इष्ट हो या इष्ट नहीं हो, (तौ भी ) :--\n( १४)\nदिग्मागभेदो यस्यास्ति तस्यैकत्वं न युज्यते । __ अन्यो हि परमाणो: पूर्वदिग्भागो याबदधो--दिग्भाग इति दिग्भाग- भेदे सति कथं तदात्मकस्य परमाणोरेकत्बं योच्यते |\nछायावृती कथं वा--\nयद्येकेकस्य परमाणोदिंग्भागभेदो न स्यादादित्योद्ये कथमन्यत्र छाया भवत्यन्यत्रातपः ? न हि तस्यान्यः प्रदेशो ऽस्ति यत्रातपो न स्यात्‌ । आवरणं च कथं भवति परमाणो परमाण्बन्तरेण यदि दिग्भागभेदो नेष्यते ? न हि कश्चिदपि परमाणोः परभागो ऽस्ति यत्रागमनादन्येना- न्यस्य प्रतिघातः स्यात्‌ । असति च प्रतिघाते सर्वेषां समानदेशत्वात्सब: सङ्घातः परमाणुमात्रः स्यादित्युक्तम्‌ ।\nकिमेबं नेष्यते पिण्डस्य ते छायावृती न परमाणोरिति | कि खलु परमाणुभ्योऽन्यः पिण्ड इष्यते यस्य ते स्याताम्‌ ॥\nनेत्याह—\n--अन्यो न पिण्डञ्चेन्न तस्य ते ॥ १४ ॥ यदि नान्यः परमाुुभ्यः पिण्ड इष्यते न ते तस्येति सिद्धं भबति । सन्निवेशपरिकल्प एषः, परमाणुः सङ्घात इति बा, किमनया चिन्तया, लक्षणं तु रूपादि यदि न प्रतिषिध्यते 0 किं पुनस्तेषां लक्षणं ? चक्षुरादिबिषयत्वं नीलादित्वं च । यदेवेदं सम्प्रधायते । यत्तच्चक्षुरादीनां बिषयो नीलपीतादिकमिष्यते किं तदेकं द्रव्यमथबा तदनेकमिति ? किं चातः ?\n( १४)\nजिसमें दिशाओं के भेद से भिन्नता है, उसका एकत्व भाव सिद्ध नहीं होता है? ।\nजब परमाणु को पूर्वदिस्भाग अधोदिग्भागपर्यन्त दिग्भेद हैं, तो दिशाओं के भाग से भेद होने पर उन भागों से युक्त परमाणु का एकत्व केसे सिद्ध हो सकता है १\n| बिंशतिकाप्रकरणबृत्तिः १५\nध्या छायावृत्ति केसे हो सकती है““\"\"“\" १\n| यदि एक एक परमाणु को दिशाभागजन्य भेद नहो तो सूर्य के उदय कि समय छाया अन्यत्र एवं आतप अन्यत्र उपलब्ध क्यों होते है ? ( क्योंकि ) उस छा. ( परमाणु का ) कोई अन्य प्रदेश नहीं है, जहां आतप न हो। जब\nदिग्भागजन्य भेद इष्ट नहीं है, तब एक परमाणु से दूसरे फरमाणु का आवरण कैसे होता हे ? परमाणु का कोई परवर्ती ( पृष्ठभाग ) नहीं हे, जहाँ नहीं जाने से दूसरे परमाणु से दूसरे परमाणु का प्रतिघात हो और प्रतिघात न होने से सभी परमाणुओं के समानदेशस्थ होने के कारण सभी संघात परमाणुमात्र\nहो जायेंगे; यह कहा जा चुका है ।\n(इस पर यह प्रश्न उत्पन्न होता है ) ऐसा क्यों न समझा जाय कि वह छाया तथा आवरण पिण्ड के हैं, परमाणु के नहीं हैं ।\n|| ( इसका उत्तर है कि) क्या परमाणुओं से यह पिण्ड भिन्न है, जिसके चे छाया तथा आवरण हें? ? नहीं हैं ।\nप्र ॥ (इस अभिप्राय से) कहा गया हे:\n| यदि परमाणुओं से पिण्ड भिन्न नहीं है, तो उस ( पिण्ड ) के भी वे ना F ९ छाया तथा आवरण ) नहीं हो सकते, यह सिद्ध होता है ॥ १४ ॥\n| | यदि परमाणृओं से पिण्ड भिन्न नहीं है, तो वे छाया एवं आवरण उस । पिण्ड के भी नहीं हो सकते हैं ।\nयह सन्निवेश परिकल्पना है, अर्थात्‌ उस बाह्य वस्तु के स्वरूप सम्बन्धी\nविचार है। इस प्रकार की चिन्ता से कया लाभ कि यह परमाणु है या उनका संघात हे, जब वस्तुओं के लक्षण रूपादि धर्मों का निषेध नहीं होता है । ही.) | पुनः पदार्थो का क्या लक्षण हे ९ चक्षु आदि का विषय होना तथा नीलादि के\n` छप में प्राप्त होना ।\nउसी के विषय में यहाँ विचार किया जाता है। वह जो चक्षु आदिका विषय\nनील पीतादि के रूप में इष्ट है, बह क्या एक द्रव्य है, अथवा अनेक है ? इससे क्या ? ( अर्थात्‌ इस प्रश्न के द्वारा आपकी क्या विवक्षा है?)\n। (१५) अनेकत्वे दोष उक्तः-- १\n“| एकत्वे न क्रमेणेतियुंगपन्न ग्रहाग्रहो ।\nविच्छिन्नानेकश्रत्तिरच सक्ष्मानीक्षा च नो भवेत्‌ ॥ १५ ॥ यदि याबदविच्छिन्नं नानेकं चक्षुषो बिषयस्तदेकं द्रव्यं कल्पयते प्रथिव्यां क्रमेणेतिनं स्याद्वमनमित्यथं: | सकृत्पादच्तेपणे सर्व॑स्य गत- \"ट"
+            },
+            {
+              "id": "hin-tiwary-alt-translation-42",
+              "label": "PDF page 42",
+              "locator": "PDF page 42 · extracted lines 2226–2291",
+              "text": "१६ विज्ञप्तिमात्रतासिद्धिः\nत्वात्‌ । अवोग्भागस्य च अहण परभागस्य चाग्रहंण यगपन्न स्यात्‌ ।\nहि तस्येव तदानीं ग्रहणं चाम्रहणं च युक्तम्‌ । विच्छिन्नस्य चानेकस्य |\nहस्त्यश्वादिकस्यकत्र वृत्तिन स्यायत्रेव ह्येकं तत्रेवापरमिति कथं तयो\nबिच्छेद इष्यते । कथं वा तदेकं यत्प्राप्रं च ताभ्यां न च प्राप्तमन्तराले\nतच्छ्ूऱ्यप्रहणात्‌ । सूक्ष्माणां चोदकजन्तूनां स्थूलः समानरूपाणामनी\nक्षणं न स्यात्‌ । यदि लक्षणभेदादेब द्रव्यान्तरत्बं कल्प्यते नान्यथा,\nतस्मादवश्यं परमाणुशो भेदः कल्पयितव्यः। स चेको न सिध्यति ।\nतस्यासिद्धौ रूपादीनां चक्लुरादिबिषयत्वमसिद्धमिति सिद्धं बिज्ञ्तिमा त्र\nभवतीति ।\n(१५)\nअनेकत्त्व में दोष तो पहले कह दिया गया है ।\nएक मानने से क्रम से गमन नहीं हो सकता । एक ही साथ ( पदार्थों\nके किसी अंश का ) ग्रहण तथा ( किसी अंश ) का अग्रहण नहीं हो. सकता ।\nन तो विच्छेद से युक्त अनेक पदार्थों का अस्तित्व ही हो सकता है, न सूक्ष्म\nपदार्थो' के अदशन की ही प्राप्ति हो सकती है ॥ १५ ॥\nयदि विच्छेद और अनेकता से रहित चक्षु के विषय को एक द्रव्य माना\nजाता है, तो पृथ्वी में कम से गमन नहीं हो सकता है। एक ही बार पृथ्वी पर\nपर रखने से समस्त पृथ्वी पर गमन हो जाय । साथ ही अग्रभाग का प्रहण\nतथा परभाग का अग्रहण नहीं हो सकेगा क्योंकि एक ही पदार्थ का एक ही\nसमय में प्रण तथा अग्रहण युक्त नहीं । विच्छेदयुक्त अनेक हाथी-घोड़े आदि\nका एक स्थान पर ( आप के अभिप्रायानुसार जो एक हे ) अस्तित्व प्राप्त नहीं हो सकता है, क्योंकि जहाँ पर एक है, वहीं पर दूसरों को भी स्थित मानने पर\nदोनों में पाथक्य ( व्यवच्छेद ) केसे माना जा सकता हे? वह वस्तु एक कसे\nहो सकती है, जो दोनों से प्राप्त तथा अप्राप्त है क्‍योंकि उन दोनों के बीच में\nउन दोनो से शून्य पृथ्वी का भ्रहण होता है । स्थूल ( पदार्थो' ) के समानरूप\nवाले सूक्ष्म जलजन्तुओं का अदर्शन नहीं होगा। यदि लक्षण के भेद से\nद्रव्यन्तरता होती है, अन्यथा नहीं, ऐसा मानें, तो परमाणुशः भेद अवश्य\nमानना पडेगा । ( पर ) वह परमाणु एक नहीं सिद्ध होता हे । उसकी सिद्धि\nन होने पर रूपादि का चक्षु आदि का विषयत्व भी असिद्ध है । अतः विज्ञप्तिमात्र\nका ही अस्तित्व मिद्ध होता है ।\n१. A.. B. अनेकत्र ।\nEt\n“A\nहीं रहता हे, तब उसका प्रत्यक्ष केसे सिद्ध है? ? ॥ १३ ॥\nबिंशतिका प्रकरण वृत्तिः १७\n(१६)\nणबशादस्तित्बं नास्तित्बं बा निधोयते | सर्वषां च प्रमाणानां\nप्रमाणं गरिष्ठमित्यसत्यर्थ कथमियं बुद्धिभबति प्रत्यक्षमिति ?\nअत्यक्षबुद्धिः स्त्रप्नादो यथा\nप्यर्थेनेति पू$मेब ज्ञापितम्‌ |\n| “सा च यदा तदा ।\nन सोऽर्थो इश्यते तस्य प्रत्यक्षत्वं कथं मतम्‌ ॥ १६ ॥\nदा च सा प्रत्यक्षबुद्धिभंबतीदं मे प्रत्यक्षमिति तदा न सोऽर्थो\n|\n'मनोबिज्ञानेनेब परिच्छेदाच्चक्षुविज्ञानस्य च तदा निरुद्धत्बादिति\nततस्य प्रत्यक्षत्वमिष्टम्‌ ? विशेषेण तु क्षणिकस्य बिषयस्य तदानीं\nमेब तद्रूपं रसादिक बां |\n(1०)\n(इस पर प्रश्न होता है ) । प्रमाण के द्वारा ही किसी पदार्थ के होने\nन होने का निश्चय होता है । सभी श्रमाणों में प्रत्यक्ष प्रमाण श्रेष्ट है ।\nपदार्थ के न होने पर-'यह प्रत्यक्ष है?--ऐसा ज्ञान कैसे होता है ?\n( इसका उत्तर हैं कि)\n- स्वप्नादि ( अवस्थाओं ) में जसे प्रत्यक्ष बुद्धि होती हे? ।\nयह पहले दर्शाया जा चुका है क्रि ( स्वप्नादि में) विषय के विना ही\nअर्थात्‌ प्रत्यक्षबुद्धि होती है ।\nवह ( प्रत्यक्षबुद्धि ) जब होती है, उस समय तो वह विषय दृश्यमान\nजब प्रत्यक्ष बुद्धि होती है कि 'मुझे इस पदाथ का प्रत्यक्ष हो रहा हे? उस\nवह पदार्थ दृश्यमान नहीं रहता है, क्योंकि उस समय चक्षुविज्ञान निरुद्ध\n1 है और मनोविज्ञान से ही उसके प्रत्यक्षत्व का निश्चय किया जाता\n| द अतः उस विषय का प्रत्यक्ष केसे इष्ट है? विशेषकर क्षणिक विषय के\nक्ष बुद्धि के समय तो वे रूप रसादि निरुद्ध रहते ही हें ।\n010 (१७)\nनाननुभूत मनोबिज्ञानेन स्मयेत इत्यवश्यमथोनुभवेन भवितव्यं\nद्शेनमित्येबं तद्विषयस्य रूपादेः प्रत्यक्षत्बं मतम्‌ |\n| २ बि० मा०"
+            },
+            {
+              "id": "hin-tiwary-alt-translation-43",
+              "label": "PDF page 43",
+              "locator": "PDF page 43 · extracted lines 2293–2359",
+              "text": "१८ विज्ञप्तिम'त्रतासिद्धिः\nअलिद्धमिदमनुभूतस्यार्थस्य स्मरणं भवतीत |\nयस्मात्‌\nउक्त यथा तदाभासा विज्ञप्तिः\nविनाप्यर्थेन यथार्थाभासा चक्षुविज्ञानादिका\nतथोक्तम्‌\nबिज्ञप्िरूत्पद्यते\n--स्मरणं ततः ।\nततो हि विज्ञप्तेः स्मृतिसम्प्रयुक्ता तत्प्रतिभासैव रूपादिबिकल्पिका\nमनोबिज्ञप्निरुत्पद्यत इति न स्मृत्युत्पादादर्थीनुभवः सिध्यति |\nयदि यथा स्वप्ने तिज्ञप्रिरभूताथविषया तथा जाम्रतोऽपि स्यात्ते\nतद्‌भाबं लोकः स्वयमवगच्छेत्‌ । न चेवं भवति | तस्मान्न स्वप्न\nइवार्थोपलड्धिः सत्री निरर्थिका । इद्मज्ञापकम्‌ | यस्मात्‌\nस्वप्न दृग्विषयाभाव नाप्रवुद्धोऽवगच्छति ॥ १७॥\nएवं बितथबिकल्पाभ्यासबासनानिद्रया प्रसुप्रो लोकः स्वप्न इवाभूत\nमर्थे पश्यन्न प्रबुद्धस्तदभावं यथावन्नावगच्छति । यदा तु तत्प्रतिपक्षलो\nकोत्तरनित्रिकल्पज्ञानलाभात्‌ प्रबुद्धो भबति तदा तत्पष्ठलब्धशुद्धलौकिक\nज्ञानसंमुखी भाबाद्विषया भावं यथाबदबगच्क्ञतीति समानमेतत्‌ |\n( १७)\nविना अनुभव के मनोविज्ञान से स्मरण नहीं हो सकता, इसलिए विषय\nके अनुभव से ही ( वेसा ज्ञान ) होना समझना चाहिए और वह भी दर्शन के\nरूप में ही। इस प्रकार चक्षुविज्ञान के विषय रूपादि का प्रत्यक्षत्व माना\nजाता है ।\nकिन्तु यही बात सिद्ध नहीं है कि पूर्वानुभूत बिषय का स्मरण होता है ।\nक्योकि !-ण\n“जैसे उस ( वस्तु ) के आभास वाली विज्ञप्ति होतो है, यह पहले ही\nकहा जा चुक्रा है? ।\nविषय के विना भी उस विषय के आभास वाली चक्षुबिज्ञानदि-जन्य विज्ञप्ति\nउत्पन्न होती हे, यह कहा जा चुका हें ।\nउसी से स्मरण होता हे?\nउसी विज्ञप्ति से स्मतियुक्त उस विषय के प्रतिभासवाली रूपादि विविध रूपों\nमें मनोब्रिज्ञप्ति उत्पन्न होती है । इसलिए स्मृति को उत्पत्ति से वास्तविक वस्तु का\nअनुभव सिद्ध नहीं होता ।\nविंशतिकाप्रकरणवृत्तिः १६\n( इस पर प्रश्‍न होता हे ) जिस प्रकार स्वप्न में जो विज्ञप्ति होती है, वह\nवस्तु विषयक है, उसी प्रकार जाग्रत अवस्था में भी होवे, तो स्वप्न के\nही जाग्रत अवस्था के पदाथ का भी अभाव हे, ऐसा लोग स्वयं समझ\n। किन्तु ऐसा नहीं होता हे । अतः स्वप्न के समान सभी वस्तुओं की\nयों को विषयरहित नहीं कहा जा सकता है ।\n( इसका उत्तर यह है कि ) यह युक्ति ठीक नहीं है । क्योंकि:\n` “स्वप्न में देखे हुए वस्तुओं के अभाव को विना जगे हुए मनुष्य नहीं जान\nता? ॥ १७ ॥\n| इसी प्रकार मिथ्या विकल्पों के अभ्यास की वासनारूपौ निद्रा में सोया\nह्या मनुष्य स्वप्न के समान वास्तविक वस्तुओं को देखता हुआ, बिना तत्त्व\nजन्य जागृति को प्राप्त किए उनके अभाव को यथाथंतः नहीं जान पाता।\nतु जब उस मिथ्या विकल्प के प्रतिपक्ष निर्विकल्प लोकोत्तर ज्ञान की प्राप्ति से\nबुध्य जाग्रत हो जाता है तब उसके अनन्तर प्राप्त शुद्ध लौकिक ज्ञान के वास्त\"\nबरक रूप को समझने से विषय के अभाव को यथार्थतः समझ लेता है । ( इसलिए\n! बात स्वप्न में देखे गये विषयों के सम्बन्ध में है कि वे जाग्रत अवस्था की\nप्ति से चेसा नहीं देखे जाते हैं, वही बात जाग्रत अवस्था में अनुभूत पदार्थों के\nुम्बन्ध में भी है ) ।\nj ( १८)\nयदि स्वसंतानपरिणामजिशेषादेब सत्वानामर्थप्रतिभासा बिज्ञप्तय\nउत्पद्यन्ते नाथविशेषात्‌ , तदा य एष पापकल्याणमित्रसम्पकोत्सदः\nसद्धर्मश्रबणाश्च विज्ञप्रनियमः सत्त्वानां स कथं सिध्यति असति सद्‌-\nसत्सम्पक तदूदेशनायां च |\n' अन्योन्याधिपतित्वेन विज्ञप्तिनियमो मिथः ।\nसर्वेषां हि सत्त्रानामन्योन्यविज्ञप्त्याधिपत्येन मिथो शिष्प्तेनियमो\nअत्रति यथायोगम्‌ । मिथ इति. परस्परतः। अतः सम्तानान्तरबिज्ञपि-\nशेषात्‌ सन्तानान्तरे विज्ञप्तिविशेष उत्पद्यते नाथविशेषात्‌ ।\nयदि यथा स्वप्ने निरर्थिका बिज्ञ्तिरेवं जञाग्रतोऽपि स्यात्‌ कस्मात्कु-\nशलाङुशलसमुदाचारे सुपासुप्रयोस्तुल्यं फलमिष्टानिष्टमायत्यां न भत्रति\n|\nयस्मात्‌\nमिद्वेनोपहतं चित्त स्वप्ने तेनासमं फलम्‌ ॥ १८ ॥\nइदमत्र कारण न त्वथसद्भाबः ।"
+            },
+            {
+              "id": "hin-tiwary-alt-translation-44",
+              "label": "PDF page 44",
+              "locator": "PDF page 44 · extracted lines 2361–2426",
+              "text": "२० बिज्ञप्षिमात्रतासिद्धिः\n(८८)\n( इस पर प्रश्न होता है ) यदि अपने चित्त सन्तान के परिणामविशे\nप्राणियों को अर्थाभास विज्ञप्तियाँ उत्पन्न होती हैं, अथविशेष से नही, तो प ॥4 मित्रों ए ~\nएवं धर्मात्मा मित्रों के सम्पक से तथा सत्य और मिथ्या धर्मों को पर\nप्राणियों को विविध प्रकार की विज्ञप्तियों के होने का नियम है, वह बिना पाप तू;\nकल्याण-मित्रों के सम्पर्क तथा सदूधम अधम के उपदेश के ही केसे सिद्ध होगा\nइसका उत्तर है कि\n“अन्योन्य आधिपत्य से परस्पर विज्ञप्ति का नियम हे? ।\nसभी प्राणियों के परस्पर विज्ञानों के प्रभाव से परस्पर विज्ञानों में यथ गी ६ 3 cs है\nयोग्य विशेषता होती है । 'मिथः शब्द का अथ है परस्पर । अतः अन्य चित्त.\nसन्तान की विज्ञप्ति की विशेषता से ही अन्य चित्तसन्तान में विज्ञपिविशे\n* उत्पन्न होती है, बाह्य वस्तु की विशेषता से नहीं। |\nयदि जिस प्रकार स्वप्न में विज्ञप्ति विषयरहित हे, उसी प्रकार जाग्रत\nभौ विज्ञप्ति होवे तो कुशल एवं अकुशल कर्मों के साथ सम्बन्ध होने पर सुप्त तथ\nअसुप्त दोनों को भविष्यत्‌ काल में एक ही समान इष्ट या अनिट फल क्यों नहीं\nहोता है ?\n( इसका उत्तर है कि )--क्योंकि :--\n'स्वप्न में चित्त मिद्व से उपहत रहता है, इसलिए फल समान\nहोता है ॥ १८ ॥\nइसमें यही कारण है, न कि पदार्थ की वास्तविक सत्ता ।\n(\"१६ )\nयदि विज्ञप्तिमात्रमेवेद न कस्यचित्कायोऽस्ति न वाक, कथः\nक्रम्यमाणानामौरध्रिकादिभिरुरश्रदीनां मरणं भ्रति? अतत्कृते बा तन\nरणे कथमौरञ्चिकादीनां प्राणातिपाताबद्येन योगो भबति ?\nमरणं परविज्ञस्िविशेषाद्विक्रिया यथा ।\nस्मृतिलोपादिकान्येषां पिशञाचादिमनोवशात्‌ ॥ १९ ॥ हट\nयथा हि पिशाचाद्मनोवशादन्येषां स्मृतिलोपस्त्रप्नदशनभूतप्रह\nबेशविकारा भवन्ति ऋद्धिबन्मनोवशाञ्च | यथा सारणस्यायमहाका\nयनाधिष्ठानारस्वप्नदशेनम्‌ । आरण्यकर्षिमनःप्रदोषाच्च\nपराजय: | तथा परबिज्ञप्तिबिशेषाधिपत्यास्परेषां जीवितेन्द्रियविर\nकाचिद्विक्रियोत्पद्यते यया सभागसम्ततिविच्छेदाख्यं मरणं भे\nबेदितव्यम्‌ | ति\nवेमि\n| बिशतिकाप्रकरणवृत्तिः\n( ब)\nविज्ञप्तिमात्र ही है, न किसी का काय हे, न किसी का वाकू,\nके वधकों द्वारा मारे जाने पर भेड़ आदि जन्तुओं का\nतार ? यदि उन वधकों का यह वधकृत्य वस्तुतः नहीं है, तो उन\nके पाप से सम्बन्ध क्यों होता है ?\n[भरी बिइप्ति के प्रभाव से उत्पन्न एक विकृतिमात्र हैं। जैसे कि\nके प्रभाव से दूमरों का स्मृतिलोप आदि होता है, ॥ १९ ॥\nपदि के द्वारा उत्पन्न मनोदशा से दूसरों को स्मृतिलोप, स्वप्न-\nआदि विकार उत्पन्न होते हें तथा ऋद्धिमान पुरुषों के मनोबल\nथा आर्य महाकात्यायन की प्रेरणा से सारण को स्वप्नदर्शन\n[क ऋषियों के मनोदोष से वेमचित्र का पराजय हुआ था ।\nकी विज्ञप्ति विशेष के प्रभाव से दूसरों के अन्तर्गत जीवितेन्द्रिय\nउत्पन्न होती है, जिससे सभाग सम्ततिविच्छेदरूप मरण\nमा जानना चाहिए ।\n(२०)\nF कथं वा दण्डकारण्यशन्यत्वसृषिकोपतः ।\nप्रिविशेषाधिपत्यात्सत्वानां मरणं नेष्यते, मनोदण्डस्य\nसाधयता भगवतोपालिगृंहपतिः प्रष्ठः-कच्चित्ते गृहपते,\nदण्डकारण्यानि मातङ्गारण्यानि कलिङ्गारण्यानि\nभूतानि । तेनोक्तम्‌ । श्रृतं मे भो गौतम, ऋषीणां मनः\n' बहावद्यः कथं वा तेन सिध्यति ॥ २० ॥\nते। तदभिप्रसन्नैरमानुपैस्तद्वासिनः सत्त्वा डत्सादिता तु\nदोषान्मृता इत्येवं सति कथं तेन कर्मणा मनोदण्डः काय-\nहावद्यतम: सिद्धो भवति? तन्मनः प्रदोषमात्रेण तावतां\nसिध्यति ?\nBD\nय की शन्यता ऋषिकोप से क्यों हुई? १\nबिज्ञप्ति विशेष के प्रभाव से प्राणियों का मरण इष्ट नहीं है,\nमहान पाप सिद्ध करते हुए भगवान्‌ ने गृहपति उपालि से जो\nFe"
+            },
+            {
+              "id": "hin-tiwary-alt-translation-45",
+              "label": "PDF page 45",
+              "locator": "PDF page 45 · extracted lines 2428–2490",
+              "text": "२२ विज्ञप्तिमात्रतासिद्धिः\nपूछा था कि हे गृहपति ! क्‍या तुमने सुना हे कि वे दण्डकारण्य, मातङ्गारण्य,\nकलिङ्गारण्य किस प्रकार शून्य हो गये तो उन्होंने कहा था कि हे गोतम ! मैंने\nसुना है कि ऋषियों के मन के दोष से ऐसा हुआ था ( तो यह उनका कथन केसे\nसंगत हो सकता है) ।\n( अथवा यदि दूसरों को विज्ञप्ति के प्रभाव से प्राणियों का मरण न माना\nजाय तो ) मनोदण्ड का महान्‌ पाप होना ( जो उनका कहा हुआ है ) केसे सिद्ध\nहोता है ॥ २० ॥\nयदि इस प्रकार कल्पना की जाय । उस स्थान की ओर आक्रृष्ट मानवेतर\nप्राणियों द्वारा वहां के निवासी मारे गये, न कि ऋषियों के मन के दोष से, तो\nऐसा होने से उस कम से मनोदण्ड, काय तथा वचीदण्ड से अधिक पाप का\nकारण केसे सिद्ध होता है १ ( इसका उत्तर है कि ) उन ऋषियों के मनोदोषमात्र\nसे उतने प्राणियों के मरण से वह सिद्ध होता है ।\n(२१)\nयदि बिज्ञप्रिमात्रमेवेदं परचित्तविदः, कि परचित्तं जानन्ति अथ\nन ? किव्वात: | यदि न जानन्ति कथं परचित्तविदो भवन्ति? अथ\nजानन्ति ।\n` परचित्तविदां ज्ञानमयथार्थं कथं यथा ।\nस्वचित्तज्ञान--\nतदपि कथमयथाथंम्‌ ?\n-“अज्ञानाद्यथा बुद्धस्य गोचरः ॥ २१ ॥\nयथा तन्निरमिलाप्येनात्मना बुद्धानां गोचरः, तथा तदज्ञानात्तदुभयं\nन यथाथ ब्रितथप्रतिभासतया ग्राह्ग्राहकविकल्पस्याप्रहीणत्वात्‌। अनन्त-\nबिनिश्चयप्रभेदागाधगाम्भीयोयां बिज्ञप्षिमात्रतायाम्‌ |\n(०1)\nयदि सब कुछ विज्ञप्तिमात्र ही है, तो पर चित्तविज्ञ दूसरों के चित्त को जानते\nहैं या नहीं १ इस प्रश्न से क्या विवक्षित हे ? यह क्रि यदि वे नहीं जानते हैं, तो\nपरचित्तविद्‌ केसे हें ? यदि जानते हें तो--\n“परचित्तविदा का ज्ञान अयथार्थ कैसे है? १ ( यथा ) अपने चित्त का ज्ञान\n( अयाथथ है, वैसे ही दूसरों का ) ।\n( इस पर प्रश्न किया जाय कि ) केसे अयथार्थ हे १\nविंशतिका प्रकरणवृत्ति: २३\n( इसका उत्तर है ) अज्ञान से । जैसे बुद्ध को उसका ज्ञान है ( वैसा पर-\nतविदा का नहीं ) ॥ २१॥\nजिस प्रकार अनिवचनीय रूप में वह बुद्धा के ज्ञान का विषय हे, उस प्रकार\nज्ञान न होने के कारण अपने तथा दूसरा के चित्त का ज्ञान दोनों अय-\n| हैं क्योंकि मिथ्या प्रतिभास होने से ग्राह्य एवं ग्राहक का विकल्प परचित्त\nका भी नष्ट नहीं हे । अनन्त विनिश्चयों के भेद वाली तथा अगाध गांभीय\n| यह विज्ञप्तिमात्रता है ।\n6000)\nविज्ञप्तिमात्रतासिद्धि! स्वशक्तिसच्शी मया ।\nकृतेयं सवथा/सा तु न चिन्त्या--\nसबप्रकारा तु सा माद्ृशेश्चिन्तयितुं न शक्यते, तकविषयत्वातू |\nकस्य पुनः सा सबंथा गोचर इत्याह--\n--बुद्भगोचरः ॥ २२॥\n' बुद्धानां हि सा भगवतां सत्रप्रकारं गाचरः सवोकारसवज्ञेयज्ञाना-\nधातादिति |\n. बिशतिका विज्ञप्तिमात्रतासिद्धिः, कृतिरियमाचार्यब्रसुबन्धोः | |, ॥\n। |\n(२२)\n। _ “विज्ञप्तिमात्रता की यथाशक्ति मेरे द्वारा सिद्धि की गई । ( किन्तु ) वह चिन्ता\n| द्वारा पूर्णतः नहीं जानी जा सकती है? ।\n. सभी प्रकार से मेरे जसे मनुध्या द्वारा उसका चिन्तन नहीं किया जा सकता\nf\nक्योंकि वह तक का विषय नहों हे।\nF\nतब सवत्रकार से वह किसके ज्ञान का विषय हे ! इस पर कहा जाता हैः--\n५ बह ) बुद्धगोचर है? ॥ २२ ॥\nचह बुद्ध को ही सभी प्रकार से ज्ञात है क्योंकि उनमें सब प्रकार के ज्ञेय\nतुं का ज्ञान अप्रतिहतरूप से विद्यमान हे ।\n` यह बिशतिका विज्प्तिमात्रता सिद्धि समाप्त हुई ( जो ) आचार्य वसुबन्धु की\nकृति हे ।"
+            }
+          ]
+        },
+        {
+          "id": "hin-tiwary-alt-verses",
+          "label": "Sanskrit verse collection · PDF pages 46–47",
+          "kind": "alternate-copy-sanskrit",
+          "blocks": [
+            {
+              "id": "hin-tiwary-alt-verses-46",
+              "label": "PDF page 46",
+              "locator": "PDF page 46 · extracted lines 2492–2538",
+              "text": "बिंशतिकाकारिका\nविज्ञप्तिमात्रमेबेतदसद थीबभासनात्‌ ।\nयथा तेमिरिकस्यासत्केशचन्द्रादिदशेनम्‌ ॥ १ ॥\nअनथी यदि विज्ञप्तिनियमो देशकालयोः ।\nसन्तानस्यानियमश्च युक्ता कृत्यक्रिया न च'॥ २॥\nदेशादिनियमः सिद्धः स्त्रप्नवत्‌ प्रेतवत्‌ पुनः ।\nसम्तानानियमः सर्व: पूयनद्यादिदशेने ॥ ३॥\nस्बप्नोपघातबल्‌ कृत्यक्रिया नरकबत्‌ पुनः ।\n९ ° >\nसब नरकपालादिदशने तेश्च बाधने ॥ ४॥\nतिरश्चां सम्भवः स्वर्ग यथान नरके तथा।\nन प्रेतानां यतस्तञ्ज दुःखं ` नानुभबन्ति ते ॥ ५॥\nयदि तत्कमभिस्तत्र भूतानां सम्भवस्तथा |\nइष्यते परिणामश्च किं विज्ञानस्य नेष्यते || ६॥\nकर्मणो बासनान्यत्र फलमन्यत्र कल्प्यते |\nतत्रेब नेष्यते यत्र बासना किं नु कारणम्‌ ॥ ७॥\nरूपाद्यायतनास्तित्वं, तद्विनेयज्ञनं प्रति;\nअभिप्रायबशा दुक्तमुपपादुकसत्त्त्रवत्‌ ॥८॥\n१, न देशकालनियमः सन्तानानियमो न च ।\nन च कृत्यक्रिया युक्ता विज्ञप्तियदिं नाथेतः ॥\nFUP |\nबिंशतिकाकारिका\nयतः स्वबीजाद्विज्ञप्षियदाभासा भवत्तेते ।\nद्विविधायतनस्वेन ते तस्या सुनिरब्रबीत्‌ ॥ ६ ॥\nतथा पुद्रलनैरात्म्यप्रवेशो ह्यन्यथा पुनः।\nदेशना घर्मनेरात्म्यप्रवेशः कल्पितात्मना ॥ १०॥\nन तदेकं न चानेकं विषयः परमाणुशः।\nन च ते संहता यस्मात्‌ परमाणुने सिध्यति॥ ११॥\nषट्केन युगपद्योगात्‌ परमाणोः षडंशता ।\nषण्णां समानदेशत्बात्‌ पिण्डः स्यादणुमात्रकः । १२॥\nपरमाणोरसंयोगे तस्संघातेऽस्ति कस्य सः।\nन चानबयबत्वेन तत्संयोगो न सिध्यति ॥ १३॥\nदिम्भागभेदो यस्यास्ति तस्यैकत्वं न युञ्यते।\nछायाबृती कथं बान्यो न पिण्डश्चेन्न तस्यं ते ॥ १४ ॥\nएकत्वे न क्रमेणेति युगपन्न प्रह्मग्रही ।\nविच्छिन्नाने कवृत्तिश्च सूद्मानीक्षा चनो भवेत्‌ ॥ १५॥\nप्रत्यक्षबुद्धि: स्वप्नादौ यथा सा च यदा तदा ।\nन सोऽर्थो दृश्यते तस्य प्रत्यक्षत्वं कथं मतम्‌ ॥ १६॥\nउक्त यथा तदाभासा बिज्ञप्ति: स्मरणं ततः |\nस्वप्ने हगबिबयाभावं नाप्रबुद्धोऽबगच्छति ॥ १७॥\nअन्योन्याधिपतित्वेन विज्ञप्तिनियमो मिथः ।\nमिद्धेनोपहतं चित्तं स्वप्ने तेनासमं फलम्‌ ॥ १८॥\nमरणं परबिज्ञप्तिबिशेषादू विक्रिया यथा।-\nस्मृतिलोपादिकान्येषां पिशाचादिमनोबशात्‌ ॥ १६ ॥\nकर्थं बा दण्डकारण्यशून्यत्वमृषिकोपतः ।\nमनोदण्डो महाबद्यः कथं बा तेन मिध्यति ॥ २० ॥"
+            },
+            {
+              "id": "hin-tiwary-alt-verses-47",
+              "label": "PDF page 47",
+              "locator": "PDF page 47 · extracted lines 2540–2545",
+              "text": "बिज्ञप्रिमात्रतासिद्धिः\nपरचित्तबिदां ज्ञानमयथाथं कथं घथा |\nस्वचित्तज्ञानमज्ञानादू यथा बुद्धस्य गोचरः ॥ २१॥\nबिज्ञप्तिमात्रतासिद्धिः स्बशक्तिसहृशी मया।\nकृतयं सबथा सा तु न चिन्त्या बुद्धगोचरः॥ २२॥\nबिंशतिकाकारिका समापा"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "mul_tripathi_sempa_1984",
