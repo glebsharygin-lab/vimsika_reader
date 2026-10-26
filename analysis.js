@@ -36,6 +36,7 @@ function normalizeAnalysisForm(value) {
 
 const LEXICON_LANGUAGE_LABELS = {
   en: "English",
+  sa: "Sanskrit",
   bo: "Tibetan",
   zh: "Chinese",
   fr: "French",
@@ -100,34 +101,168 @@ function foldAnalysisText(value) {
 }
 
 function normalizeLexicalForm(value) {
-  return foldAnalysisText(transliterateDevanagari(value)).replace(/[^a-z0-9]/g, "");
+  return foldAnalysisText(transliterateDevanagari(value)).replace(/[^a-z0-9\p{Script=Han}]/gu, "");
 }
 
 function glossaryEntries() {
-  return window.VIMSIKA_LEXICON?.entries || [];
+  return [
+    ...(window.VIMSIKA_LEXICON?.entries || []),
+    ...(window.VIMSIKA_CORPUS_LEXICON?.entries || []),
+  ];
 }
 
-function glossaryEntryForSurface(surface) {
+function isCuratedGlossaryEntry(entry) {
+  return Boolean(entry && window.VIMSIKA_LEXICON?.entries?.includes(entry));
+}
+
+function glossaryPriority(entry) {
+  return entry.priority ?? (isCuratedGlossaryEntry(entry) ? 1000 : 0);
+}
+
+function lexicalPartsFor(form, language) {
+  if (language === "zho") {
+    return [...String(form || "").replace(/\s+/g, "")]
+      .map(normalizeLexicalForm)
+      .filter(Boolean);
+  }
+  return String(form || "")
+    .trim()
+    .split(/\s+/)
+    .map(normalizeLexicalForm)
+    .filter(Boolean);
+}
+
+function glossaryFormsForEntry(entry) {
+  const forms = [...(entry.forms || [])];
+  // Slashes in a lemma often separate alternatives, not an attested phrase.
+  if (entry.lemma && !entry.lemma.includes("/")) forms.unshift(entry.lemma);
+  return [...new Set(forms.filter(Boolean))];
+}
+
+function glossaryIndexForLanguage(language) {
+  const cache = renderCache();
+  cache.glossaryIndexesByLanguage ||= new Map();
+  if (cache.glossaryIndexesByLanguage.has(language)) {
+    return cache.glossaryIndexesByLanguage.get(language);
+  }
+  const index = new Map();
+  glossaryEntries().forEach((entry, order) => {
+    if ((entry.language || "san") !== language) return;
+    glossaryFormsForEntry(entry).forEach((form) => {
+      const parts = lexicalPartsFor(form, language);
+      if (!parts.length) return;
+      parts.forEach((part, position) => {
+        if (!index.has(part)) index.set(part, []);
+        index.get(part).push({ entry, parts, position, order, priority: glossaryPriority(entry) });
+      });
+    });
+  });
+  index.forEach((candidates) => {
+    candidates.sort(
+      (left, right) =>
+        right.parts.length - left.parts.length ||
+        right.priority - left.priority ||
+        left.order - right.order,
+    );
+  });
+  cache.glossaryIndexesByLanguage.set(language, index);
+  return index;
+}
+
+function glossaryRecordsForSource(sourceId) {
+  const cache = renderCache();
+  cache.glossaryRecordsBySource ||= new Map();
+  if (cache.glossaryRecordsBySource.has(sourceId)) {
+    return cache.glossaryRecordsBySource.get(sourceId);
+  }
+  const records = analysisTokenRecords(sourceId);
+  const byTokenId = new Map();
+  records.forEach((record, index) => {
+    record.lexicalNormalized = normalizeLexicalForm(record.token.text);
+    if (!byTokenId.has(record.token.id)) byTokenId.set(record.token.id, index);
+  });
+  const result = { records, byTokenId };
+  cache.glossaryRecordsBySource.set(sourceId, result);
+  return result;
+}
+
+function glossaryMatchFor(sourceId, tokenId, surface, languageOverride = "") {
+  const source = sourceId ? sourceById(sourceId) : null;
+  const language = source?.languageCode || languageOverride || "san";
+  if (!["san", "bod", "zho"].includes(language)) return null;
   const normalized = normalizeLexicalForm(surface);
   if (!normalized) return null;
-  return (
-    glossaryEntries().find((entry) =>
-      [entry.lemma, ...(entry.forms || [])].some(
-        (form) => normalizeLexicalForm(form) === normalized,
-      ),
-    ) || null
-  );
+  const cache = renderCache();
+  cache.glossaryMatches ||= new Map();
+  const cacheKey = `${sourceId || language}:${tokenId || ""}:${normalized}`;
+  if (cache.glossaryMatches.has(cacheKey)) return cache.glossaryMatches.get(cacheKey);
+  const index = glossaryIndexForLanguage(language);
+  let match = null;
+
+  if (sourceId && tokenId) {
+    const { records, byTokenId } = glossaryRecordsForSource(sourceId);
+    const recordIndex = byTokenId.get(tokenId);
+    if (Number.isInteger(recordIndex)) {
+      const record = records[recordIndex];
+      const candidates = index.get(record.lexicalNormalized) || [];
+      for (const candidate of candidates) {
+        const start = recordIndex - candidate.position;
+        if (start < 0 || start + candidate.parts.length > records.length) continue;
+        const span = records.slice(start, start + candidate.parts.length);
+        if (!span.every(
+          (item, offset) =>
+            item.passageId === record.passageId &&
+            item.lexicalNormalized === candidate.parts[offset],
+        )) continue;
+        match = {
+          entry: candidate.entry,
+          start,
+          end: start + candidate.parts.length,
+          matchedText: span.map((item) => item.token.text).join(language === "zho" ? "" : " "),
+          matchedTokenIds: span.map((item) => item.token.id),
+        };
+        break;
+      }
+    }
+  }
+
+  if (!match) {
+    const surfaceParts = lexicalPartsFor(surface, language);
+    const candidates = index.get(surfaceParts[0]) || [];
+    const candidate = candidates.find(
+      (item) =>
+        item.position === 0 &&
+        item.parts.length === surfaceParts.length &&
+        item.parts.every((part, offset) => part === surfaceParts[offset]),
+    );
+    if (candidate) {
+      match = { entry: candidate.entry, matchedText: surface, matchedTokenIds: tokenId ? [tokenId] : [] };
+    }
+  }
+  cache.glossaryMatches.set(cacheKey, match);
+  return match;
+}
+
+function glossaryEntryForSurface(surface, language = "san") {
+  return glossaryMatchFor("", "", surface, language)?.entry || null;
 }
 
 function glossaryEntryFor(sourceId, tokenId, surface) {
-  const source = sourceId ? sourceById(sourceId) : null;
-  if (source && source.languageCode !== "san") return null;
-  return glossaryEntryForSurface(surface);
+  return glossaryMatchFor(sourceId, tokenId, surface)?.entry || null;
+}
+
+function lexicalEntryOrigin(entry) {
+  if (!entry) return "Unannotated";
+  if (entry.status === "dictionary-extract") return "Dictionary extract";
+  if (entry.status === "text-critical") return "Text-critical working note";
+  if (isCuratedGlossaryEntry(entry)) return "Curated working glossary · draft";
+  return "Corpus working entry · draft";
 }
 
 function resolvedLexicalRecord(sourceId, tokenId, surface) {
   const editorial = lexiconEntryFor(sourceId, tokenId, surface);
-  const glossary = glossaryEntryFor(sourceId, tokenId, surface);
+  const lexicalMatch = glossaryMatchFor(sourceId, tokenId, surface);
+  const glossary = lexicalMatch?.entry || null;
   const normalized = normalizeLexicalForm(surface);
   const morphologyKey = Object.keys(glossary?.morphology || {}).find(
     (form) => normalizeLexicalForm(form) === normalized,
@@ -135,6 +270,9 @@ function resolvedLexicalRecord(sourceId, tokenId, surface) {
   return {
     editorial,
     glossary,
+    lexicalMatch,
+    matchedText: lexicalMatch?.matchedText || surface,
+    matchedTokenIds: lexicalMatch?.matchedTokenIds || [],
     lemma: editorial?.lemma || glossary?.lemma || "",
     partOfSpeech: editorial?.partOfSpeech || glossary?.partOfSpeech || "",
     morphology:
@@ -142,26 +280,30 @@ function resolvedLexicalRecord(sourceId, tokenId, surface) {
       (morphologyKey ? glossary.morphology[morphologyKey] : "") ||
       glossary?.analysis ||
       "",
-    reading: editorial?.reading || "",
+    reading: editorial?.reading || glossary?.reading || "",
     gloss: editorial?.gloss || glossary?.gloss || "",
     notes: editorial?.notes || glossary?.note || "",
+    sources: glossary?.sources || [],
+    status: glossary?.status || (isCuratedGlossaryEntry(glossary) ? "draft" : ""),
   };
 }
 
 function analysisRecordMatchesQuery(record, query = state.analysisQuery) {
   const foldedQuery = foldAnalysisText(query);
   if (!foldedQuery) return true;
-  const editorial = lexiconEntryFor(record.sourceId, record.token.id, record.token.text);
-  const glossary = glossaryEntryFor(record.sourceId, record.token.id, record.token.text);
+  const resolved = resolvedLexicalRecord(record.sourceId, record.token.id, record.token.text);
+  const { editorial, glossary } = resolved;
   const equivalents = Object.values(glossary?.equivalents || {}).flat();
   const haystack = foldAnalysisText(
     [
       record.token.text,
       transliterateDevanagari(record.token.text),
+      resolved.matchedText,
       editorial?.lemma,
       editorial?.gloss,
       editorial?.notes,
       glossary?.lemma,
+      glossary?.reading,
       glossary?.gloss,
       glossary?.analysis,
       glossary?.note,
@@ -354,11 +496,12 @@ function lexicalEvidenceFor(record) {
   const unit = record.sentence;
   if (!unit) return [];
   const languagePriority = [
-    "eng", "tib", "zho", "fra", "de", "rus", "pol", "hun", "hin", "jpn", "ita", "spa", "slv",
+    "eng", "tib", "zho", "san", "fra", "de", "rus", "pol", "hun", "hin", "jpn", "ita", "spa", "slv",
   ];
+  const recordLanguage = sourceById(record.sourceId)?.languageCode;
   const byLanguage = new Map();
   state.corpus.sources.forEach((source) => {
-    if (source.languageCode === "san" || byLanguage.has(source.languageCode)) return;
+    if (source.languageCode === recordLanguage || byLanguage.has(source.languageCode)) return;
     const text = alignmentTargetText(unit, record.passage, source.id).replace(/\s+/g, " ").trim();
     if (!text) return;
     byLanguage.set(source.languageCode, { source, text, unit });
@@ -374,7 +517,7 @@ function lexicalEvidenceHtml(record, limit = 0) {
   const evidence = lexicalEvidenceFor(record);
   const visible = limit ? evidence.slice(0, limit) : evidence;
   if (!visible.length) {
-    return '<p class="lexical-evidence-empty">No aligned non-Sanskrit sentence is available for this token.</p>';
+    return '<p class="lexical-evidence-empty">No aligned sentence in another language is available for this token.</p>';
   }
   return `
     <div class="lexical-evidence-list">
@@ -404,14 +547,19 @@ function analysisLexicalWorkbench(record) {
   const glossary = resolved.glossary;
   const evidence = lexicalEvidenceFor(record);
   if (!glossary && !evidence.length) return "";
+  const language = sourceById(record.sourceId)?.language || "Multilingual";
+  const description = isCuratedGlossaryEntry(glossary)
+    ? window.VIMSIKA_LEXICON?.description
+    : window.VIMSIKA_CORPUS_LEXICON?.description;
+  const sources = resolved.sources.join(" · ");
   return `
     <section class="analysis-card analysis-multilingual-card">
       <div class="analysis-card-heading">
         <div>
-          <p class="eyebrow">Sanskrit lexical inspector</p>
+          <p class="eyebrow">${escapeHtml(language)} lexical inspector</p>
           <h3>${escapeHtml(resolved.lemma || record.token.text)} · multilingual correspondences</h3>
         </div>
-        <span class="analysis-origin">${glossary ? "Working glossary · draft" : "Witness evidence"}</span>
+        <span class="analysis-origin">${glossary ? escapeHtml(lexicalEntryOrigin(glossary)) : "Witness evidence"}</span>
       </div>
       ${
         glossary
@@ -424,10 +572,13 @@ function analysisLexicalWorkbench(record) {
                 <span>Grammar</span>
                 <strong>${escapeHtml([resolved.partOfSpeech, glossary.gender].filter(Boolean).join(" · ") || "Not specified")}</strong>
               </div>
-              ${glossary.analysis ? `<div><span>Compound analysis</span><strong>${escapeHtml(glossary.analysis)}</strong></div>` : ""}
+              ${resolved.reading ? `<div><span>Reading</span><strong>${escapeHtml(resolved.reading)}</strong></div>` : ""}
+              ${resolved.matchedTokenIds.length > 1 ? `<div><span>Matched term</span><strong>${escapeHtml(resolved.matchedText)}</strong></div>` : ""}
+              ${glossary.analysis ? `<div><span>Form / compound analysis</span><strong>${escapeHtml(glossary.analysis)}</strong></div>` : ""}
             </div>
             ${lexicalEquivalentsHtml(glossary)}
-            <p class="analysis-guidance">${escapeHtml(window.VIMSIKA_LEXICON.description)}${resolved.notes ? ` ${escapeHtml(resolved.notes)}` : ""}</p>`
+            ${sources ? `<p class="analysis-guidance"><strong>Lexical sources:</strong> ${escapeHtml(sources)}</p>` : ""}
+            <p class="analysis-guidance">${escapeHtml(description || "Lexical equivalents are reading aids, not reviewed token-level alignments.")}${resolved.notes ? ` ${escapeHtml(resolved.notes)}` : ""}</p>`
           : ""
       }
       <div class="lexical-evidence-heading">
@@ -523,7 +674,7 @@ function lexiconPanel() {
             <p class="eyebrow">Lexical record</p>
             <h3>${escapeHtml(record.token.text)}</h3>
           </div>
-          <span class="analysis-origin">${escapeHtml(entry ? analysisEntryOrigin(entry) : resolved.glossary ? "Working glossary · draft" : "Unannotated")}</span>
+          <span class="analysis-origin">${escapeHtml(entry ? analysisEntryOrigin(entry) : lexicalEntryOrigin(resolved.glossary))}</span>
         </div>
         <div class="analysis-token-meta">
           <code>${escapeHtml(record.token.id)}</code>
@@ -857,6 +1008,55 @@ function syntaxPanel() {
   `;
 }
 
+function analysisLexicalEligible(record) {
+  const source = sourceById(record.sourceId);
+  const text = record.token.text;
+  if (!/\p{L}/u.test(text) || /^\d+$/.test(text)) return false;
+  if (source?.languageCode === "san" && text === "Vvs") return false;
+  if (source?.languageCode === "bod" && (
+    /^[A-Z]$/.test(text) ||
+    /^[IVXLCDM]+$/.test(text) ||
+    /^\d+[a-z]+$/i.test(text) ||
+    /^(?:Colophon|EF)$/i.test(text)
+  )) return false;
+  if (source?.languageCode === "zho") return /\p{Script=Han}/u.test(text);
+  return true;
+}
+
+function analysisGlossaryCoverage(sourceId = analysisSource().id) {
+  const cache = renderCache();
+  cache.glossaryCoverageBySource ||= new Map();
+  if (cache.glossaryCoverageBySource.has(sourceId)) {
+    return cache.glossaryCoverageBySource.get(sourceId);
+  }
+  const records = analysisTokenRecords(sourceId);
+  const types = new Map();
+  let tokens = 0;
+  let coveredTokens = 0;
+  records.forEach((record) => {
+    if (!analysisLexicalEligible(record)) return;
+    const normalized = normalizeLexicalForm(record.token.text);
+    if (!normalized) return;
+    const found = Boolean(glossaryMatchFor(record.sourceId, record.token.id, record.token.text));
+    tokens += 1;
+    if (found) coveredTokens += 1;
+    const type = types.get(normalized) || { covered: false };
+    if (found) type.covered = true;
+    types.set(normalized, type);
+  });
+  const coveredTypes = [...types.values()].filter((type) => type.covered).length;
+  const result = {
+    tokens,
+    coveredTokens,
+    types: types.size,
+    coveredTypes,
+    tokenCoverage: tokens ? 100 * coveredTokens / tokens : 0,
+    typeCoverage: types.size ? 100 * coveredTypes / types.size : 0,
+  };
+  cache.glossaryCoverageBySource.set(sourceId, result);
+  return result;
+}
+
 function statisticsPanel() {
   const sourceRows = state.corpus.sources.map((source) => {
     const records = analysisTokenRecords(source.id);
@@ -879,6 +1079,7 @@ function statisticsPanel() {
     };
   });
   const selected = sourceRows.find((row) => row.source.id === analysisSource().id);
+  const coverage = analysisGlossaryCoverage(analysisSource().id);
   const top = analysisFrequencyRows().slice(0, 20);
   const maximum = top[0]?.count || 1;
   return `
@@ -892,6 +1093,15 @@ function statisticsPanel() {
           <div><strong>${(selected.diversity * 100).toFixed(1)}%</strong><span>type-token ratio</span></div>
           <div><strong>${selected.average.toFixed(1)}</strong><span>tokens per sentence</span></div>
         </div>
+      </section>
+      <section class="analysis-card analysis-metric-card">
+        <p class="eyebrow">Lexical atlas</p>
+        <h3>${coverage.tokenCoverage.toFixed(1)}% token coverage</h3>
+        <div class="analysis-metrics">
+          <div><strong>${coverage.coveredTokens.toLocaleString()} / ${coverage.tokens.toLocaleString()}</strong><span>tokens with a glossary entry</span></div>
+          <div><strong>${coverage.coveredTypes.toLocaleString()} / ${coverage.types.toLocaleString()}</strong><span>distinct lexical forms (${coverage.typeCoverage.toFixed(1)}%)</span></div>
+        </div>
+        <p class="analysis-guidance">Coverage includes dictionary extracts and provisional working notes; it is not a measure of reviewed word alignment. Editorial markers are excluded.</p>
       </section>
       <section class="analysis-card analysis-frequency-chart">
         <div class="analysis-card-heading">

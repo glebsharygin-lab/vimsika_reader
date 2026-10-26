@@ -2842,6 +2842,24 @@ mark {
 }
 
 @media (max-width: 650px) {
+  .analysis-two-column,
+  .analysis-syntax-layout,
+  .analysis-stat-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .analysis-card-heading {
+    flex-wrap: wrap;
+  }
+
+  .analysis-card-heading > div {
+    min-width: 0;
+  }
+
+  .analysis-origin {
+    white-space: normal;
+  }
+
   .topbar {
     align-items: stretch;
     flex-direction: column;

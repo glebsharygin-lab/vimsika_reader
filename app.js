@@ -1926,8 +1926,19 @@ function lexicalPopover(passage) {
   const origin = resolved.editorial
     ? "Editorial lexical record"
     : glossary
-      ? "Working glossary · draft"
+      ? lexicalEntryOrigin(glossary)
       : "Token inspector";
+  const lexicalSources = resolved.sources.join(" · ");
+  const lexicalNote = [
+    resolved.editorial
+      ? "This editorial record supplements the lexical atlas."
+      : glossary?.status === "dictionary-extract"
+        ? "This dictionary extract is a reading aid, not a reviewed token-level translation."
+        : glossary
+          ? "Working equivalents are lexical aids, not reviewed word-for-word translation claims."
+          : "No glossary entry covers this form yet; editorial analysis can be added in Analysis.",
+    resolved.notes,
+  ].filter(Boolean).join(" ");
 
   return `
     <aside class="lexical-popover" aria-live="polite" aria-label="Lexical inspector for ${escapeAttribute(token.text)}">
@@ -1943,19 +1954,21 @@ function lexicalPopover(passage) {
           <dt>Surface</dt>
           <dd>${escapeHtml(token.text)}</dd>
         </div>
+        ${resolved.matchedTokenIds.length > 1 ? `<div><dt>Matched term</dt><dd>${escapeHtml(resolved.matchedText)}</dd></div>` : ""}
         <div>
-          <dt>Grammar</dt>
-          <dd>${escapeHtml([resolved.partOfSpeech, resolved.morphology || resolved.reading].filter(Boolean).join(" · ") || "Not yet annotated")}</dd>
+          <dt>Grammar / reading</dt>
+          <dd>${escapeHtml([resolved.partOfSpeech, resolved.morphology, resolved.reading].filter(Boolean).join(" · ") || "Not yet annotated")}</dd>
         </div>
         <div>
           <dt>Gloss</dt>
           <dd>${escapeHtml(resolved.gloss || "No dictionary gloss has been entered yet.")}</dd>
         </div>
-        ${glossary?.analysis ? `<div><dt>Compound</dt><dd>${escapeHtml(glossary.analysis)}</dd></div>` : ""}
+        ${glossary?.analysis ? `<div><dt>Analysis</dt><dd>${escapeHtml(glossary.analysis)}</dd></div>` : ""}
       </dl>
       ${lexicalEquivalentsHtml(glossary, true)}
+      ${lexicalSources ? `<p class="lexical-note"><strong>Lexical sources:</strong> ${escapeHtml(lexicalSources)}</p>` : ""}
       <div class="lexical-correspondences">
-        <span>${machine ? "Machine-matched Sanskrit readings" : "Recorded Sanskrit correspondences"}</span>
+        <span>${machine ? "Machine-matched cross-witness readings" : "Recorded cross-witness correspondences"}</span>
         ${
           linkedTerms.length
             ? `<ul>${linkedTerms
@@ -1968,7 +1981,7 @@ function lexicalPopover(passage) {
         }
       </div>
       <p class="lexical-note">
-        ${glossary ? "Draft equivalents are lexical aids, not reviewed word-for-word translation claims." : "No curated entry covers this form yet; editorial analysis can be added in Analysis."}
+        ${escapeHtml(lexicalNote)}
       </p>
       <button
         class="lexical-open-analysis"

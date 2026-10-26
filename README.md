@@ -2,6 +2,20 @@
 
 This workspace contains a local trial reader for the Vimsika research corpus.
 
+Build 0.27.0 expands the inspector into a corpus-aware Sanskrit–Tibetan–Chinese
+lexical atlas with 2,885 entries: 562 Sanskrit, 1,363 Tibetan, and 960 Chinese.
+It adds longest-match term lookup from any component, language-aware popovers,
+source and status labels, Chinese readings and pinyin search, and selected-witness
+coverage statistics.
+
+Every eligible token and distinct form in the three anchor witnesses now has a
+lookup aid: Sanskrit Lévi 1,639/1,639 tokens and 824/824 forms; Tibetan Derge
+4,975/4,975 tokens and 480/480 forms; Chinese Xuanzang 4,422/4,422 tokens and
+477/477 forms. Numerical and editorial markers are excluded. These figures include
+provisional corpus-working entries, text-critical notes, and dictionary extracts;
+they are not a claim of 100% reviewed lexical analysis or word-by-word translation
+alignment. The corpus and its token identities are unchanged.
+
 Build 0.26.0 adds a Sanskrit lexical workbench with 60 draft glossary entries,
 IAST and Devanagari lookup, diacritic-insensitive search, grammatical notes,
 Sanskrit–English–Tibetan–Chinese equivalents, and multilingual sentence-level
@@ -54,12 +68,17 @@ This release adds no translations to the reader.
   otherwise the shell highlights exact normalized textual candidates in
   other Sanskrit editions, explicitly pending review.
 - Clickable token surfaces in Reading, Comparison, and Alignment, with a
-  floating lexical inspector showing the selected form, grammar, draft glossary
-  equivalents, and linked Sanskrit readings, plus direct access to Analysis.
-- The Analysis Lexicon tab searches forms, lemmas, English glosses, and Tibetan
-  or Chinese equivalents; it displays aligned sentence witnesses separately from
-  glossary-level correspondences. Starter entries also populate morphology and
-  CoNLL-U scaffolds without changing the underlying corpus.
+  language-aware lexical inspector showing the selected form, available grammar,
+  draft equivalents, provenance, and direct access to Analysis.
+- Longest-match lookup indexes every component of a term: clicking `par` in
+  `rnam par rig pa`, or either character of `唯識`, resolves the whole expression.
+  The inspector distinguishes the clicked surface from the matched term.
+- The Analysis Lexicon tab searches forms, lemmas, English glosses, Tibetan and
+  Chinese equivalents, and pinyin. It displays dictionary, corpus-working, and
+  text-critical provenance separately from aligned sentence-level evidence.
+  Statistics reports token and distinct-form glossary coverage for the selected
+  witness. Starter entries also populate morphology and CoNLL-U scaffolds without
+  changing the underlying corpus.
 - A five-part Analysis workspace: editable lexical records, searchable KWIC
   concordance and frequency lists, sentence-level morphology tables, draft
   UD/CoNLL-U syntax annotation, and cross-witness corpus statistics.
@@ -122,6 +141,54 @@ The project owner has confirmed the previously supplied witnesses for this
 research corpus. Some modern witnesses remain marked `Rights status requires
 verification` until their publication rights are confirmed.
 
+## Build and audit the lexical atlas
+
+`lexicon.js` contains the 60 curated starter entries. Corpus-specific working
+entries live in `data/lexicon-manual.json` and
+`data/lexicon-sanskrit-corpus.json`. The deterministic
+`scripts/build_lexicon.cjs` matches dictionary candidates to corpus-attested forms
+and writes the deployable root `lexicon-corpus.js`; do not edit that generated file.
+Dictionary glosses are filtered and often shortened. Technical bridges are working
+cross-language aids, not reviewed token-level translation alignments.
+
+The full development workspace, including `reference-source/lexicon/`, is required
+to rebuild the atlas. The published static reader needs only the generated
+JavaScript file, not the raw dictionaries or build scripts.
+
+```powershell
+npm run build:lexicon
+npm run audit:lexicon
+npm run validate:lexicon
+npm run check
+npm run test:lexicon
+```
+
+The audit writes `qa/lexicon-coverage.json`. Validation checks unique IDs, required
+fields, equivalent arrays, dictionary attribution, same-priority form collisions,
+and selected Sanskrit, Tibetan, and Chinese resolution safeguards; it writes
+`qa/lexicon-validation.json`. `npm run check` performs syntax checks, rebuilds the
+atlas, and runs both the audit and validator.
+
+Lexical source notices retained in the generated atlas:
+
+- Jeffrey Hopkins (ed.), *The Uma Institute for Tibetan Studies
+  Tibetan-Sanskrit-English Dictionary*, version June 2015.
+- Chung-An Lin and Hou-Wha Wang, *Common Chinese-Tibetan-Sanskrit-English
+  Buddhist Terminology*, 2008.
+- Erik Pema Kunsang, *Rangjung Yeshe Tibetan-English Dharma Dictionary 3.0*, 2003.
+- *Mahāvyutpatti* digital edition, Glossaries Team at Dharma Drum Buddhist College.
+- Richard Mahoney (ed.), *Tibetan-Sanskrit Buddhist Terminology based on the
+  Mahāvyutpatti and Yogācārabhūmi*, 2004.
+- CC-CEDICT, community-maintained Chinese-English dictionary,
+  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/); CEDICT copyright
+  1997–1998 Paul Andrew Denisowski. Corpus filtering, gloss shortening, entry
+  matching, and component-reading assembly are local modifications.
+
+Tibetan source files were obtained from Christian Steinert's public
+`tibetan-dictionary` repository; dictionary-data copyright remains with the
+respective authors. Retain these notices and confirm that public redistribution
+complies with each source's terms.
+
 ## Build the corpus
 
 The public repository is a static deployment bundle with selected audit scripts.
@@ -155,8 +222,9 @@ The model cache and original source collection are kept out of the public packag
 ## Publish with GitHub Pages
 
 Upload `index.html`, `styles.css`, `app.js`, `analysis.js`, `lexicon.js`,
-`auth-config.js`, `editorial-overrides.json` and `corpus.js` to the repository root.
-Development folders are not required by the published reader.
+`lexicon-corpus.js`, `auth-config.js`, `editorial-overrides.json`, `corpus.js`, and
+`.nojekyll` to the repository root. Keep `README.md` with the repository documentation
+and lexical source notices. Development folders are not required by the published reader.
 
 Do not upload `data/corpus.json` to GitHub Pages. It is the readable,
 indent-formatted build artifact and exceeds GitHub's browser-upload limit.
@@ -271,9 +339,9 @@ npm run dev -- --host 127.0.0.1 --port 7100
 ```
 
 Open `http://localhost:7100`. The development server uses Node's standard library;
-no runtime packages are required by the static reader. For browser validation,
-install the development dependencies with `npm install`, then run
-`node scripts/smoke_lexicon.cjs`.
+no runtime packages are required by the static reader. For lexical and browser
+validation, install the development dependencies with `npm install`, then run
+`npm run check` and `npm run test:lexicon`.
 
 The original Python command also remains available:
 
