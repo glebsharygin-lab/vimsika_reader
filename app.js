@@ -642,6 +642,14 @@ function isWordCharacter(character) {
 }
 
 function tokenizeEditedText(text, passageId, sourceId) {
+  if (sourceId === "tha_soraj_2012" && typeof Intl.Segmenter === "function") {
+    return [...new Intl.Segmenter("th", { granularity: "word" }).segment(text)]
+      .filter((part) => part.isWordLike)
+      .map((part, index) => ({
+        id: `${passageId}-${sourceId}-t${String(index + 1).padStart(5, "0")}`,
+        text: part.segment, start: part.index, end: part.index + part.segment.length, type: "word",
+      }));
+  }
   const tokens = [];
   let index = 0;
   while (index < text.length) {
@@ -1725,6 +1733,7 @@ function readingSentenceList(passage, source, witness) {
       <div class="passage-mapped-witness">
         <p class="passage-mapping-note">
           <strong>Whole-passage translation.</strong>
+          ${witness.coverageNote ? `<strong>${escapeHtml(witness.coverageNote)}</strong>` : ""}
           ${escapeHtml(witness.mappingNote || "No sentence or phrase alignment is implied.")}
         </p>
         <div class="passage-mapped-text">${tokenizedText(witness, source.id, passage)}</div>
@@ -4207,6 +4216,7 @@ async function init() {
     state.corpus = await response.json();
   }
   state.researchLibrary = window.RESEARCHED_TRANSLATIONS || null;
+  state.researchLibrary = mergeDocumentWitnessPlan(state.researchLibrary, window.DOCUMENT_WITNESS_INTEGRATION);
   integrateResearchedTranslations(state.corpus, state.researchLibrary, tokenizeEditedText);
   state.librarySelectedDocumentId = state.researchLibrary?.documents?.[0]?.id || "";
   state.corpus.passages.forEach((passage) => {
