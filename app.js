@@ -1729,6 +1729,7 @@ function sharedSpanFor(unit, units, sourceId) {
 
 function readingSentenceList(passage, source, witness) {
   if (witness.mappingLevel === "passage") {
+    const focused = Boolean(state.focusedSentenceByPassage[passage.id]);
     return `
       <div class="passage-mapped-witness">
         <p class="passage-mapping-note">
@@ -1736,7 +1737,9 @@ function readingSentenceList(passage, source, witness) {
           ${witness.coverageNote ? `<strong>${escapeHtml(witness.coverageNote)}</strong>` : ""}
           ${escapeHtml(witness.mappingNote || "No sentence or phrase alignment is implied.")}
         </p>
+        ${focused ? '<p class="alignment-gap">No phrase correspondence has been assigned for this section.</p><details><summary>Read the whole passage for context</summary>' : ""}
         <div class="passage-mapped-text">${tokenizedText(witness, source.id, passage)}</div>
+        ${focused ? '</details>' : ""}
       </div>
     `;
   }
@@ -2724,6 +2727,8 @@ function fullPassageRow(passage, sources, template, collapsedByDefault) {
           const unavailable = witnessUnavailable(witness);
           return `
             <div class="phrase-cell full-text-cell" data-source="${source.id}">
+              ${witness.coverageNote ? `<p class="passage-mapping-note">${escapeHtml(witness.coverageNote)}</p>` : ""}
+              ${witness.mappingLevel === "passage" ? '<p class="passage-mapping-note">Whole-passage translation · phrase alignment pending</p>' : ""}
               ${
                 unavailable
                   ? `<span class="alignment-gap">${escapeHtml(witness.note)}</span>`
@@ -2782,7 +2787,7 @@ function collationView(passage, sources) {
           sources,
           template,
           state.view === "comparison" && !editingEnabled()
-            ? Boolean(alignments.length)
+            ? Boolean(alignments.length) && !sources.some((source) => effectiveWitness(passage, source.id).mappingLevel === "passage")
             : false,
         )}
       </div>

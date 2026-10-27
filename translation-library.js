@@ -23,6 +23,28 @@ function translationLibrarySearchText(documentRecord) {
   return translationLibrarySearchCache.get(documentRecord.id);
 }
 
+function mergeDocumentWitnessPlan(supplement, plan) {
+  if (!supplement || !plan) return supplement;
+  const sources = new Map((supplement.sources || []).map((source) => [source.id, source]));
+  for (const source of plan.sources || []) sources.set(source.id, source);
+  const mappings = new Map((supplement.passageMappings || []).map((mapping) =>
+    [`${mapping.sourceId}:${mapping.passageId}`, mapping]));
+  for (const mapping of plan.passageMappings || []) {
+    mappings.set(`${mapping.sourceId}:${mapping.passageId}`, mapping);
+  }
+  return {
+    ...supplement,
+    schemaVersion: `${supplement.schemaVersion}+${plan.schemaVersion}`,
+    sources: [...sources.values()],
+    passageMappings: [...mappings.values()],
+    phraseMappings: plan.phraseMappings || [],
+    documents: supplement.documents.map((documentRecord) => {
+      const source = [...sources.values()].find((item) => item.libraryDocumentId === documentRecord.id);
+      return source ? { ...documentRecord, sourceId: source.id } : documentRecord;
+    }),
+  };
+}
+
 function integrateResearchedTranslations(corpus, supplement, tokenizer) {
   if (!supplement) {
     return { sources: 0, passages: 0, documents: 0, importedDocuments: 0 };
@@ -66,6 +88,16 @@ function integrateResearchedTranslations(corpus, supplement, tokenizer) {
     if (!documentsById.has(source.libraryDocumentId)) {
       throw new Error(`Missing library document for ${source.id}.`);
     }
+    for (const passage of corpus.passages) {
+      if (passage.texts[source.id]) continue;
+      passage.texts[source.id] = {
+        status: "not-present-in-supplied-source", text: "", tokens: [],
+        note: source.translationStatus === "abridged"
+          ? "This passage is omitted from the abridged translation."
+          : "No checked text has been assigned to this passage yet. Consult the source document.",
+        libraryDocumentId: source.libraryDocumentId,
+      };
+    }
   }
 
   let mappingCount = 0;
@@ -80,18 +112,33 @@ function integrateResearchedTranslations(corpus, supplement, tokenizer) {
     }
     const documentRecord = documentsById.get(source.libraryDocumentId);
     const blocks = blocksByDocument.get(documentRecord.id);
-    const mappedBlocks = mapping.blockIds.map((blockId) => {
-      const sourceBlock = blocks.get(blockId);
-      if (!sourceBlock || sourceBlock.componentId !== mapping.componentId) {
-        throw new Error(`Unresolved researched block: ${blockId}`);
+    const selections = mapping.fragments || mapping.blockIds.map((blockId) =>
+      ({ blockId, componentId: mapping.componentId }));
+    const mappedBlocks = selections.map((selection) => {
+      const sourceBlock = blocks.get(selection.blockId);
+      if (!sourceBlock || sourceBlock.componentId !== selection.componentId) {
+        throw new Error(`Unresolved researched block: ${selection.blockId}`);
       }
-      return sourceBlock;
+      if (selection.start === undefined) return sourceBlock;
+      // The extraction manifest uses Unicode code points, not JavaScript UTF-16 offsets.
+      const characters = Array.from(sourceBlock.text);
+      if (!Number.isInteger(selection.start) || !Number.isInteger(selection.end)
+          || selection.start < 0 || selection.end > characters.length || selection.end <= selection.start) {
+        throw new Error(`Invalid researched selection: ${selection.blockId}`);
+      }
+      return { ...sourceBlock, text: characters.slice(selection.start, selection.end).join(""),
+        sourceStart: selection.start, sourceEnd: selection.end };
     });
     const text = mappedBlocks.map((sourceBlock) => sourceBlock.text).join("\n\n");
     if (!text.trim()) {
       throw new Error(`Empty researched passage: ${mapping.sourceId} / ${mapping.passageId}`);
     }
-    const tokens = tokenizer(text, passage.id, source.id);
+    const tokens = mapping.tokenSpans
+      ? mapping.tokenSpans.map(([start, end], index) => ({
+        id: `${passage.id}-${source.id}-t${String(index + 1).padStart(5, "0")}`,
+        text: text.slice(start, end), start, end, type: "word",
+      }))
+      : tokenizer(text, passage.id, source.id);
     for (const token of tokens) {
       if (token.text !== text.slice(token.start, token.end)) {
         throw new Error(`Invalid token offsets in ${mapping.sourceId} / ${mapping.passageId}`);
@@ -103,15 +150,45 @@ function integrateResearchedTranslations(corpus, supplement, tokenizer) {
       tokens,
       mappingLevel: "passage",
       mappingNote: mapping.note,
+      coverageStatus: mapping.coverageStatus,
+      coverageNote: mapping.coverageNote,
       libraryDocumentId: documentRecord.id,
       componentId: mapping.componentId,
-      blockIds: [...mapping.blockIds],
+      blockIds: selections.map((selection) => selection.blockId),
       sourceLocators: mappedBlocks.map((sourceBlock) => ({
         blockId: sourceBlock.id,
         locator: sourceBlock.locator,
+        ...(sourceBlock.sourceStart === undefined ? {} : {
+          start: sourceBlock.sourceStart, end: sourceBlock.sourceEnd, offsetUnit: "unicode-code-point",
+        }),
       })),
     };
     mappingCount += 1;
+  }
+
+  for (const mapping of supplement.phraseMappings || []) {
+    const passage = passagesById.get(mapping.passageId);
+    const witness = passage?.texts[mapping.sourceId];
+    if (!witness?.tokens?.length) throw new Error(`Missing phrase witness: ${mapping.sourceId}`);
+    const characters = Array.from(witness.text);
+    const start = characters.slice(0, mapping.start).join("").length;
+    const end = characters.slice(0, mapping.end).join("").length;
+    const tokens = witness.tokens.filter((token) => token.start >= start && token.end <= end);
+    if (!tokens.length) throw new Error(`Empty phrase selection: ${mapping.sourceId}`);
+    for (const rows of [corpus.alignments, passage.sentenceUnits]) {
+      const row = rows.find((item) => item.id === mapping.unitId);
+      if (!row) throw new Error(`Missing phrase unit: ${mapping.unitId}`);
+      row.targetTokenIds = { ...row.targetTokenIds, [mapping.sourceId]: tokens.map((token) => token.id) };
+      row.targets = { ...row.targets, [mapping.sourceId]: witness.text.slice(tokens[0].start, tokens.at(-1).end) };
+      row.mappingMethods = { ...row.mappingMethods, [mapping.sourceId]: "source-checked-draft" };
+      row.targetProvenance = { ...row.targetProvenance, [mapping.sourceId]: {
+        file: "source-witnesses/document-witness-plan.json",
+        reviewStatus: "draft-source-reading", note: mapping.note,
+        libraryDocumentId: witness.libraryDocumentId,
+      } };
+      if (mapping.group) row.targetGroups = { ...row.targetGroups, [mapping.sourceId]: mapping.group };
+    }
+    witness.mappingLevel = "phrase-draft";
   }
 
   corpus.researchedTranslationIntegration = {
@@ -374,13 +451,16 @@ function renderDocumentShelf() {
   const documents = state.researchLibrary?.documents || [];
   const readable = documents.filter((documentRecord) => documentRecord.textStatus === "text-imported");
   const records = documents.filter((documentRecord) => documentRecord.textStatus !== "text-imported");
+  const integrated = readable.filter((documentRecord) =>
+    state.corpus.sources.some((source) => source.libraryDocumentId === documentRecord.id));
   return `
-    <section id="documentShelf" class="document-shelf" aria-labelledby="documentShelfTitle">
+    <details id="documentShelf" class="document-shelf">
+      <summary id="documentShelfTitle">Source documents and research records · ${readable.length} documents</summary>
       <header class="document-shelf-heading">
         <div>
           <p class="eyebrow">Researched translations</p>
-          <h2 id="documentShelfTitle">Continuous reading shelf</h2>
-          <p>Open complete documents in source order. Only Romanian, Vietnamese, and Lü Cheng’s Chinese have whole-passage mappings; the other texts are not assigned to individual verses. OCR and abridged material are labelled explicitly.</p>
+          <h2>Source documents</h2>
+          <p>${integrated.length} of these ${readable.length} documents are available as witnesses in Reading and Comparison. Open a source document here to check its full context, notes and page references. OCR uncertainties, omissions and abridgments remain labelled.</p>
         </div>
         <button class="secondary-button" data-open-translation-library type="button">Translation library · all ${documents.length} records</button>
       </header>
@@ -395,6 +475,7 @@ function renderDocumentShelf() {
             <p>${escapeHtml(researchedDocumentPresentation[documentRecord.id]?.description || documentRecord.coverage)}</p>
             <footer>
               <span>${researchedDocumentBlockCount(documentRecord)} source-located blocks</span>
+              ${integrated.includes(documentRecord) ? `<button class="document-card-open" data-shelf-witness="${escapeAttribute(documentRecord.sourceId)}" type="button">Read in parallel →</button>` : ""}
               <button class="document-card-open" data-open-document="${escapeAttribute(documentRecord.id)}" type="button" aria-label="Read ${escapeAttribute(researchedDocumentLabel(documentRecord))}">Read document →</button>
             </footer>
           </article>
@@ -417,11 +498,14 @@ function renderDocumentShelf() {
           `).join("")}
         </div>
       </section>
-    </section>
+    </details>
   `;
 }
 
 function bindDocumentShelf(reader) {
+  reader.querySelectorAll("[data-shelf-witness]").forEach((button) => {
+    button.addEventListener("click", () => openLibrarySource(button.dataset.shelfWitness));
+  });
   reader.querySelectorAll("[data-open-document]").forEach((button) => {
     button.addEventListener("click", () => openResearchedDocument(button.dataset.openDocument));
   });

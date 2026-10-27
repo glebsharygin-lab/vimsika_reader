@@ -3412,6 +3412,16 @@ mark {
   margin-bottom: 18px;
 }
 
+.document-shelf > summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.document-shelf[open] > summary {
+  margin-bottom: 22px;
+}
+
 .document-shelf-heading h2 {
   margin: 5px 0 8px;
   font: 500 1.9rem/1.2 Georgia, "Times New Roman", serif;
@@ -3471,6 +3481,7 @@ mark {
 
 .document-shelf-card > footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
   align-items: center;
