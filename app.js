@@ -1874,7 +1874,7 @@ function sourcePanel(source, passage) {
         </span>
         <span aria-hidden="true">${open ? "−" : "+"}</span>
       </button>
-      <div class="source-text ${unavailable ? "unavailable-text" : ""}">${
+      <div class="source-text ${unavailable ? "unavailable-text" : ""}">${source.id === 'tib_silk_dunhuang_2017' ? `<button class="text-button" data-view-manuscript="${passage.id}" type="button">View manuscript pilot →</button>` : ''}${
         unavailable
           ? escapeHtml(witness.note)
           : editingEnabled()
@@ -3761,10 +3761,17 @@ function bindFrameControls(reader) {
 
 function renderReader() {
   const reader = document.querySelector("#reader");
-  reader.classList.toggle("collation-active", !["reading", "library", "document"].includes(state.view));
+  if (state.view !== 'manuscripts') window.Manuscripts?.dispose();
+  document.querySelector('#summary').hidden = state.view === 'manuscripts';
+  reader.classList.toggle('manuscripts-active', state.view === 'manuscripts');
+  reader.classList.toggle("collation-active", !["reading", "library", "document", "manuscripts"].includes(state.view));
   reader.classList.toggle("analysis-active", state.view === "analysis");
   reader.classList.toggle("library-active", state.view === "library");
   reader.classList.toggle("document-active", state.view === "document");
+  if (state.view === 'manuscripts') {
+    window.Manuscripts.render(reader);
+    return;
+  }
   if (state.view === "library") {
     renderTranslationLibrary(reader);
     return;
@@ -3781,6 +3788,10 @@ function renderReader() {
   reader.innerHTML = `${state.corpus.passages
     .map((passage) => `${passageVideoEmbed(passage)}${passageCard(passage)}`)
     .join("")}`;
+
+  reader.querySelectorAll('[data-view-manuscript]').forEach(button => {
+    button.addEventListener('click', () => window.Manuscripts.open({passageId:button.dataset.viewManuscript}));
+  });
 
   reader.querySelectorAll("[data-load-video]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -4080,6 +4091,7 @@ function updateViewPresentation() {
     comparison: "Multi-witness comparison",
     alignment: "Phrase alignment laboratory",
     analysis: "Linguistic and statistical analysis",
+    manuscripts: "Manuscript workspace",
     library: "Translation library & research records",
     document: "Continuous translation document",
     editor: "Embedded structure and alignment editor",
@@ -4145,6 +4157,9 @@ function bindControls() {
         return;
       }
       state.view = button.dataset.view;
+      if (state.view !== 'manuscripts' && location.hash.startsWith('#manuscript=')) {
+        history.replaceState(null, '', location.pathname + location.search);
+      }
       state.activeDocumentId = "";
       state.activeAlignment = null;
       state.activeTextEditor = null;
@@ -4275,6 +4290,7 @@ async function init() {
   renderSourceLedger();
   renderReader();
   bindControls();
+  window.Manuscripts?.restoreHash();
 }
 
 init().catch((error) => {

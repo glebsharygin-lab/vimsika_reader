@@ -25284,6 +25284,630 @@
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
     },
     {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-001",
+      "start": 0,
+      "end": 107,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-002",
+      "start": 107,
+      "end": 198,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-003",
+      "start": 198,
+      "end": 249,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-004",
+      "start": 249,
+      "end": 312,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-005",
+      "start": 312,
+      "end": 373,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-006",
+      "start": 373,
+      "end": 467,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-007",
+      "start": 467,
+      "end": 539,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-001",
+      "start": 0,
+      "end": 117,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-001",
+      "start": 0,
+      "end": 158,
+      "group": {
+        "id": "eng_chatterjee_1980-v5-clause-0",
+        "numbers": [
+          "5.1",
+          "5.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-002",
+      "start": 0,
+      "end": 158,
+      "group": {
+        "id": "eng_chatterjee_1980-v5-clause-0",
+        "numbers": [
+          "5.1",
+          "5.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-001",
+      "start": 10,
+      "end": 221,
+      "group": {
+        "id": "eng_chatterjee_1980-v7-clause-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-002",
+      "start": 10,
+      "end": 221,
+      "group": {
+        "id": "eng_chatterjee_1980-v7-clause-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-001",
+      "start": 32,
+      "end": 185,
+      "group": {
+        "id": "eng_chatterjee_1980-v9-clause-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-002",
+      "start": 32,
+      "end": 185,
+      "group": {
+        "id": "eng_chatterjee_1980-v9-clause-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-001",
+      "start": 300,
+      "end": 467,
+      "group": {
+        "id": "eng_chatterjee_1980-v11-clause-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-002",
+      "start": 300,
+      "end": 467,
+      "group": {
+        "id": "eng_chatterjee_1980-v11-clause-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-001",
+      "start": 0,
+      "end": 172,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-004",
+      "start": 498,
+      "end": 634,
+      "group": {
+        "id": "eng_chatterjee_1980-v12-clause-1",
+        "numbers": [
+          "12.4",
+          "12.5"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-005",
+      "start": 498,
+      "end": 634,
+      "group": {
+        "id": "eng_chatterjee_1980-v12-clause-1",
+        "numbers": [
+          "12.4",
+          "12.5"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-001",
+      "start": 0,
+      "end": 71,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-003",
+      "start": 262,
+      "end": 384,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-001",
+      "start": 0,
+      "end": 321,
+      "group": {
+        "id": "eng_chatterjee_1980-v15-clause-0",
+        "numbers": [
+          "15.1",
+          "15.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-002",
+      "start": 0,
+      "end": 321,
+      "group": {
+        "id": "eng_chatterjee_1980-v15-clause-0",
+        "numbers": [
+          "15.1",
+          "15.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-001",
+      "start": 246,
+      "end": 295,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-003",
+      "start": 400,
+      "end": 532,
+      "group": {
+        "id": "eng_chatterjee_1980-v16-clause-1",
+        "numbers": [
+          "16.3",
+          "16.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-004",
+      "start": 400,
+      "end": 532,
+      "group": {
+        "id": "eng_chatterjee_1980-v16-clause-1",
+        "numbers": [
+          "16.3",
+          "16.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-001",
+      "start": 282,
+      "end": 440,
+      "group": {
+        "id": "eng_chatterjee_1980-v19-clause-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-002",
+      "start": 282,
+      "end": 440,
+      "group": {
+        "id": "eng_chatterjee_1980-v19-clause-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-001",
+      "start": 0,
+      "end": 74,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-007",
+      "start": 563,
+      "end": 712,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-001",
+      "start": 134,
+      "end": 257,
+      "group": {
+        "id": "eng_chatterjee_1980-v22-clause-0",
+        "numbers": [
+          "22.1",
+          "22.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-002",
+      "start": 134,
+      "end": 257,
+      "group": {
+        "id": "eng_chatterjee_1980-v22-clause-0",
+        "numbers": [
+          "22.1",
+          "22.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_chatterjee_1980",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-006",
+      "start": 419,
+      "end": 469,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-001",
+      "start": 0,
+      "end": 87,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v7-clause-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-002",
+      "start": 0,
+      "end": 87,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v7-clause-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-001",
+      "start": 0,
+      "end": 102,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v9-clause-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-002",
+      "start": 0,
+      "end": 102,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v9-clause-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-001",
+      "start": 18,
+      "end": 161,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v11-clause-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-002",
+      "start": 18,
+      "end": 161,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v11-clause-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-001",
+      "start": 202,
+      "end": 310,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v19-clause-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-002",
+      "start": 202,
+      "end": 310,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v19-clause-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-001",
+      "start": 0,
+      "end": 48,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-007",
+      "start": 315,
+      "end": 366,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-001",
+      "start": 155,
+      "end": 332,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v21-clause-0",
+        "numbers": [
+          "21.1",
+          "21.2",
+          "21.3",
+          "21.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-002",
+      "start": 155,
+      "end": 332,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v21-clause-0",
+        "numbers": [
+          "21.1",
+          "21.2",
+          "21.3",
+          "21.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-003",
+      "start": 155,
+      "end": 332,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v21-clause-0",
+        "numbers": [
+          "21.1",
+          "21.2",
+          "21.3",
+          "21.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-004",
+      "start": 155,
+      "end": 332,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v21-clause-0",
+        "numbers": [
+          "21.1",
+          "21.2",
+          "21.3",
+          "21.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
       "sourceId": "vie_nguyen_hong",
       "passageId": "v3",
       "unitId": "dharmanexus-v3-001",

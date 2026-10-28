@@ -1,0 +1,89 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');
+const {chromium}=require('playwright');const root=path.resolve(__dirname,'..');
+(async()=>{
+ const browser=await chromium.launch({headless:true,executablePath:'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'});
+ try {
+  const page=await browser.newPage({viewport:{width:1550,height:1050}}),errors=[],images=[],requests=[];
+  page.on('pageerror',error=>errors.push(error.message));
+  await page.route('**/*',async route=>{
+   const url=new URL(route.request().url());requests.push(url.pathname);
+   if(url.hostname==='upload.wikimedia.org') {
+    const number=decodeURIComponent(url.pathname).includes('(1_of_7)')?1:2;images.push(number);
+    if(process.argv.includes('--live-image'))return route.continue();
+    return route.fulfill({contentType:'image/jpeg',body:fs.readFileSync(path.join(root,`../inspection/pt797-view-${number}.jpg`))});
+   }
+   if(url.hostname!=='vimsika-test.invalid')return route.abort();
+   const name=decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname),file=path.resolve(root,'.'+name);
+   if(!file.startsWith(root+path.sep)||!fs.existsSync(file))return route.fulfill({status:404,body:'Not found'});
+   if(name==='/auth-config.js')return route.fulfill({contentType:'application/javascript',body:'window.VIMSIKA_AUTH_CONFIG={};'});
+   return route.fulfill({contentType:{'.html':'text/html','.js':'application/javascript','.css':'text/css','.json':'application/json'}[path.extname(file)]||'application/octet-stream',body:fs.readFileSync(file)});
+  });
+  await page.goto('https://vimsika-test.invalid/');await page.waitForSelector('.passage-card');
+  assert.equal(images.length,0);assert.ok(!requests.some(x=>x.includes('/manuscripts/')));
+  const corpusBefore=await page.evaluate(()=>JSON.stringify(state.corpus));
+  await page.evaluate(()=>localStorage.setItem('vimsika-editor-annotations-v1',JSON.stringify({sentinel:'existing reader draft'})));
+  await page.locator('[data-view="manuscripts"]').click();
+  await page.waitForFunction(()=>document.querySelector('#ms-image-status')?.textContent.includes('Selected source image loaded'));
+  assert.deepEqual([...new Set(images)],[1]);assert.equal(await page.locator('.ms-region').count(),6);
+  assert.ok(!await page.locator('#summary').isVisible());assert.ok(!await page.locator('#annotationToggle').isVisible());
+  assert.ok((await page.locator('.ms-attribution').innerText()).includes('Bibliothèque nationale de France'));
+  if(process.argv.includes('--live-image')) {
+    await page.screenshot({path:path.join(root,'../inspection/qa-manuscripts-live-image.png'),fullPage:false});
+    assert.deepEqual(errors,[]);console.log('PASS: live Commons image loaded in the isolated browser; attribution and six regions visible.');return;
+  }
+  await page.locator('[data-ms-line="pt797-s01-l02"]').click();
+  assert.equal(await page.locator('[data-ms-line="pt797-s01-l02"]').getAttribute('aria-pressed'),'true');
+  await page.locator('#ms-home').click();
+  await page.locator('[data-ms-region="pt797-s01-l03"]').click();
+  assert.equal(await page.locator('[data-ms-line="pt797-s01-l03"]').getAttribute('aria-pressed'),'true');
+  await page.locator('[data-ms-line="pt797-s01-l01"]').click();
+  await page.locator('[data-ms-layer="normalized"]').click();
+  await page.locator('[data-ms-word="theg"]').click();
+  assert.equal(await page.evaluate(()=>state.analysisQuery),'theg');
+  await page.locator('[data-view="manuscripts"]').click();await page.waitForSelector('#ms-image');
+  assert.equal(await page.locator('[data-ms-line="pt797-s01-l01"]').getAttribute('aria-pressed'),'true');
+  await page.locator('[data-ms-layer="transliteration"]').click();
+  await page.locator('#ms-edit').click();await page.waitForSelector('#ms-draft-form');
+  await page.locator('#ms-draft-form [name="text"]').fill('Draft སེམས་ ï — preserves text <literal>');
+  await page.locator('[data-ms-line="pt797-s01-l02"]').click();
+  await page.locator('[data-ms-line="pt797-s01-l01"]').click();
+  assert.equal(await page.locator('#ms-draft-form [name="text"]').inputValue(),'Draft སེམས་ ï — preserves text <literal>');
+  await page.locator('#ms-draft-form summary').click();
+  await page.locator('#ms-draft-form [name="editGeometry"]').check();
+  await page.locator('#ms-draft-form [name="x"]').fill('240');
+  await page.locator('#ms-draft-form [name="annotation"]').fill('Private question needing review.');
+  await page.locator('#ms-draft-form button[type="submit"]').click();
+  await page.waitForFunction(()=>document.querySelector('#ms-status')?.textContent.includes('Private draft saved'));
+  const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('vimsika-manuscript-draft-v1:bnf-pt797')));
+  assert.equal(saved.records.length,3);assert.equal(saved.records.find(r=>r.kind==='region').value.xywh[0],240);
+  assert.equal(await page.evaluate(()=>localStorage.getItem('vimsika-editor-annotations-v1')),JSON.stringify({sentinel:'existing reader draft'}));
+  assert.equal(await page.evaluate(()=>JSON.stringify(state.corpus)),corpusBefore);
+  const conflicting=JSON.parse(JSON.stringify(saved));conflicting.records[0].value.layers.transliteration.text='Conflicting imported text';
+  await page.locator('#ms-import').setInputFiles({name:'conflict.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(conflicting))});
+  await page.waitForFunction(()=>document.querySelector('#ms-status')?.textContent.includes('Conflicting edits'));
+  assert.deepEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('vimsika-manuscript-draft-v1:bnf-pt797'))),saved);
+  const downloadPromise=page.waitForEvent('download');await page.locator('#ms-export').click();const dl=await downloadPromise;
+  const exported=await dl.path();assert.deepEqual(JSON.parse(fs.readFileSync(exported,'utf8')),saved);
+  const teiDownload=page.waitForEvent('download');await page.locator('#ms-tei').click();const tei=await teiDownload;assert.ok(fs.readFileSync(await tei.path(),'utf8').includes('&lt;literal&gt;'));
+  await page.locator('[data-ms-next]').click();await page.waitForSelector('#ms-image');
+  await page.waitForFunction(()=>document.querySelector('#ms-image-status')?.textContent.includes('Selected source image loaded'));
+  assert.ok(images.includes(2));assert.ok((await page.locator('#ms-lines').innerText()).includes('No transcription recorded'));
+  const deepLink=page.url();await page.reload();await page.waitForSelector('#ms-surface');
+  assert.equal(page.url(),deepLink);assert.equal(await page.locator('#ms-surface').inputValue(),'pt797-s02');
+  await page.locator('[data-ms-prev]').click();await page.waitForSelector('#ms-image');
+  await page.waitForFunction(()=>document.querySelector('#ms-image-status')?.textContent.includes('Selected source image loaded'));
+  await page.locator('#ms-home').click();
+  await page.screenshot({path:path.join(root,'../inspection/qa-manuscripts-desktop.png'),fullPage:true});
+  await page.setViewportSize({width:390,height:844});
+  await page.locator('[data-ms-pane="text"]').click();
+  assert.ok(await page.locator('.ms-text').isVisible());assert.ok(!await page.locator('.ms-scan').isVisible());
+  await page.screenshot({path:path.join(root,'../inspection/qa-manuscripts-mobile.png'),fullPage:true});
+  await page.locator('[data-ms-pane="research"]').click();assert.ok(await page.locator('.ms-research').isVisible());
+  await page.setViewportSize({width:1550,height:1050});
+  await page.locator('[data-ms-passage="v1"]').click();await page.waitForSelector('#v1');
+  assert.ok(await page.locator('#v1 [data-view-manuscript]').count());
+  await page.locator('#v1 [data-view-manuscript]').click();await page.waitForSelector('#ms-surface');
+  assert.deepEqual(errors,[]);
+  console.log('PASS: lazy image/data loading, image-line synchronization, layered text, lookup return, safe drafts/import conflict, JSON/TEI export, deep links, mobile panels and bidirectional Reader navigation.');
+ } finally {await browser.close();}
+})().catch(error=>{console.error(error);process.exitCode=1;});

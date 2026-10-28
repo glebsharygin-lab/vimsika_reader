@@ -10,7 +10,10 @@ def add(sid,verse,clauses):
         {'units':units,'start':start,'end':end,
          'note':'Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence.'}
         for units,start,end in clauses]}
-    assert not any(r['sourceId']==sid and r['passage']==verse for r in data['passages']),(sid,verse)
+    existing=next((r for r in data['passages'] if r['sourceId']==sid and r['passage']==verse),None)
+    if existing:
+        assert existing==record,(sid,verse,'would overwrite a different editorial selection')
+        return
     data['passages'].append(record)
 
 sid='hin_chogdub_tripathi_1972'
@@ -56,6 +59,35 @@ records={
 19:[([1,2],'“Death is transformation caused','Just as the loss')],
 20:[([1],'“How was it that the Dandaka','If the death of other')],
 22:[([1,2],'this .« of theory of consciousness','This theory of consciousness only cannot')],
+}
+for verse,clauses in records.items(): add(sid,verse,clauses)
+
+sid='eng_chatterjee_1980'
+records={
+1:[([1],'In the Mahayäna','There is a sütra'),([2],'There is a sütra','Citta, manah;'),([3],'Citta, manah;','The ( word ), Gitta'),([4],'The ( word ), Gitta',"The word, 'matra'"),([5],"The word, 'matra'","'It is all mere ideation"),([6],"'It is all mere ideation",'as persons having bad'),([7],'as persons having bad',None)],
+4:[([1],"'The usefulness",'As in dream, even')],
+5:[([1,2],'As the animals are born in heaven','The animals that are born')],
+7:[([1,2],"'The väsanä of karma",'The väsanä of the very')],
+9:[([1,2],"'The seed of its own",'What does it mean ?')],
+11:[([1,2],'"That (the object)','What is meant thereby ?')],
+12:[([1],"'When six atoms",'(If a conglomeration'),([4,5],"'And if they are said",'If it is so said that')],
+14:[([1],'*That which has spatial division','and when it is so obvions'),([3],"'How could also atom",'If spatial divisions of each')],
+15:[([1,2],'cIf it is one','If however3')],
+16:[([1],"'Perception happens",'It has already been stated'),([3,4],'CfAnd when that','And when such perception')],
+19:[([1,2],"*'Death is",'As due to the mentations')],
+20:[([1],'"How again was the dandäkäranya','If you do not presume'),([7],"(if you do not admit",'If it be so imagined')],
+22:[([1,2],'^Vijflaptimätratä is explained','persons like me'),([6],'This (can be) comprehended','It is comprehened')],
+}
+for verse,clauses in records.items(): add(sid,verse,clauses)
+
+sid='kor_lee_gilsan_2021'
+records={
+7:[([1,2],'업의 훈습〖e〗이 A','지옥중생들의 업 때문에')],
+9:[([1,2],'A라는 자신의 종자로부터 표상이 B인양 보이게끔','무엇이 이야기된 것인가?')],
+11:[([1,2],'저 [색처 등]은 단일한 것','무엇이 이야기된 것인가?')],
+19:[([1,2],'죽음이란 타자의 특정 표상에','왜냐하면, 예컨대 괴물')],
+20:[([1],'아니라면 어떻게 단다까숲의','만약 타자의 특정 표상의'),([7],'아니라면 저 [역정을] 가지고서','만약 ‘저 [선인들]에게')],
+21:[([1,2,3,4],'타심지를 가진 자들의 앎이','저 [붓다의 자심지·타심지]가')],
 }
 for verse,clauses in records.items(): add(sid,verse,clauses)
 target.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
