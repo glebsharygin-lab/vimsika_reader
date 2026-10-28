@@ -77,6 +77,7 @@
   function validateDraft(draft,data) {
     check(draft?.schemaVersion==='1.0.0-manuscript-draft'&&draft.manuscriptId===data.id,'Draft belongs to a different manuscript or schema.');
     check(typeof draft.baseVersion==='string'&&Array.isArray(draft.records)&&draft.records.length<=1000,'Invalid draft structure.');
+    check(draft.resolutions===undefined||Array.isArray(draft.resolutions)&&draft.resolutions.every(r=>r&&['base','draft'].includes(r.choice)&&typeof r.author==='string'&&typeof r.date==='string'&&r.previous&&idOK(r.previous.targetId)&&r.previous.value),'Invalid resolution history.');
     const ids=new Set(), targets=new Set();
     for(const r of draft.records) {
       check(idOK(r.id)&&!ids.has(r.id),'Duplicate or invalid draft ID.');ids.add(r.id);
@@ -93,17 +94,45 @@
     for(const r of draft.records) {
       const list=copy[kinds[r.kind]],index=list.findIndex(x=>x.id===r.targetId);
       if(draft.baseVersion!==data.version||(index<0?r.baseRevision!==0:r.baseRevision!==list[index].revision)) {
-        conflicts.push({id:r.id,reason:'Published version or record revision differs; retained for explicit review.'}); continue;
+        conflicts.push({id:r.id,targetId:r.targetId,kind:r.kind,base:index<0?null:clone(list[index]),proposed:clone(r.value),reason:'The package version or record revision changed. Compare both versions before saving.'}); continue;
       }
       if(index<0)list.push(clone(r.value));else list[index]=clone(r.value);
     }
     validatePackage(copy,corpus);
     return {data:copy,conflicts};
   }
+  // Rebase only through an explicit decision for EVERY conflict. The old record
+  // and current base are kept in the exported audit trail even when set aside.
+  function resolveDraft(data,draft,decisions,author,corpus,now=new Date().toISOString()) {
+    check(typeof author==='string'&&author.trim(),'An editor name is required.');
+    const {conflicts}=applyDraft(data,draft,corpus);
+    check(conflicts.length&&Array.isArray(decisions)&&decisions.length===conflicts.length,'Choose a resolution for every conflict.');
+    const choices=new Map(decisions.map(d=>[d.id,d.choice]));
+    check(choices.size===conflicts.length&&conflicts.every(c=>['base','draft'].includes(choices.get(c.id))),'Choose a resolution for every conflict.');
+    const copy=clone(draft);copy.resolutions=copy.resolutions||[];
+    for(const conflict of conflicts) {
+      const index=copy.records.findIndex(r=>r.id===conflict.id),old=clone(copy.records[index]),choice=choices.get(conflict.id);
+      check(choice==='base'||conflict.base||old.baseRevision===0,'A removed base record cannot be restored implicitly. Keep the current package and retain the proposal in history.');
+      copy.resolutions.push({id:conflict.id,choice,author:author.trim(),date:now,fromVersion:draft.baseVersion,toVersion:data.version,previous:old,base:conflict.base});
+      if(choice==='base')copy.records.splice(index,1);
+      else {
+        const revision=conflict.base?.revision||0;
+        copy.records[index]={...old,baseRevision:revision,value:{...old.value,revision:revision+1,status:'draft'},
+          provenance:{...old.provenance,author:author.trim(),updatedAt:now,status:'draft'},
+          history:[...(old.history||[]),{value:old.value,provenance:old.provenance}]};
+        if(old.kind==='line')for(const value of Object.values(copy.records[index].value.layers))if(value)value.status='draft';
+      }
+    }
+    copy.baseVersion=data.version;
+    check(!applyDraft(data,copy,corpus).conflicts.length,'Some conflicts remain unresolved.');
+    return copy;
+  }
   function mergeDrafts(current,incoming,data,corpus) {
     validateDraft(current,data);validateDraft(incoming,data);
     check(current.baseVersion===incoming.baseVersion&&incoming.baseVersion===data.version,'Draft base version differs; nothing was imported. Export both versions for review.');
     const copy=clone(current),conflicts=[];
+    const history=[...(current.resolutions||[]),...(incoming.resolutions||[])];
+    if(history.length)copy.resolutions=[...new Map(history.map(r=>[JSON.stringify(r),clone(r)])).values()];
     for(const r of incoming.records) {
       const old=copy.records.find(x=>x.id===r.id||x.targetId===r.targetId);
       if(!old)copy.records.push(clone(r));
@@ -148,5 +177,5 @@
       return {canvasId:c.id||c['@id'],label:typeof c.label==='string'?c.label:Object.values(c.label||{}).flat().join(' '),width:c.width,height:c.height,image:{type:'iiif',url:url.replace(/\/$/,'')+'/info.json'}};
     });
   }
-  root.ManuscriptCore={layers,clone,validatePackage,validateDraft,emptyDraft,applyDraft,mergeDrafts,tei,iiifCanvases};
+  root.ManuscriptCore={layers,clone,validatePackage,validateDraft,emptyDraft,applyDraft,resolveDraft,mergeDrafts,tei,iiifCanvases};
 })(typeof window==='undefined'?globalThis:window);

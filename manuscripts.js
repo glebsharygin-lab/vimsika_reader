@@ -4,6 +4,7 @@ window.Manuscripts = (() => {
   const assetPromises=new Map(),packages=new Map(),drafts=new Map(),rawDrafts=new Map();
   let registry,core,viewer,generation=0,current,record,statusMessage='',storageProblem='';
   let regionTrackers=[];
+  let draftConflicts=[];
   let mobileSidebarBefore=null;
   let formBuffers={};
   try { formBuffers=JSON.parse(localStorage.getItem('vimsika-manuscript-forms-v1')||'{}'); } catch {}
@@ -17,12 +18,12 @@ window.Manuscripts = (() => {
     return assetPromises.get(url);
   }
   async function load(id) {
-    await Promise.all([loadScript('manuscripts-core.js?v=0.31.0-draft'),loadScript('manuscripts/registry.js?v=0.31.0-draft')]);
+    await Promise.all([loadScript('manuscripts-core.js?v=0.31.1-draft'),loadScript('manuscripts/registry.js?v=0.31.1-draft')]);
     core=window.ManuscriptCore;registry=window.MANUSCRIPT_REGISTRY;
     record=registry.manuscripts.find(r=>r.id===id)||registry.manuscripts[0];m.id=record.id;
     if(!packages.has(m.id)) {
       if(!/^manuscripts\/[a-z0-9-]+\.js$/.test(record.package))throw new Error('Invalid manuscript package location.');
-      await loadScript(record.package+'?v=0.31.0-draft');
+      await loadScript(record.package+'?v=0.31.1-draft');
       const data=window.MANUSCRIPT_PACKAGES[m.id];core.validatePackage(data,state.corpus);packages.set(m.id,data);
     }
     const data=packages.get(m.id);
@@ -33,8 +34,8 @@ window.Manuscripts = (() => {
         if(raw) {rawDrafts.set(m.id,raw);const parsed=JSON.parse(raw);core.applyDraft(data,parsed,state.corpus);drafts.set(m.id,parsed);}
       } catch(error) {storageProblem='The saved manuscript draft could not be loaded. It has been kept untouched. Export the saved file before resolving it. '+error.message;}
     }
-    const applied=core.applyDraft(data,drafts.get(m.id),state.corpus);current=applied.data;
-    if(applied.conflicts.length)statusMessage=applied.conflicts.map(x=>x.reason).join(' ');
+    const applied=core.applyDraft(data,drafts.get(m.id),state.corpus);current=applied.data;draftConflicts=applied.conflicts;
+    if(draftConflicts.length)statusMessage=`${draftConflicts.length} saved draft change(s) need review against package ${data.version}. Your saved file is unchanged. Open Review saved changes below.`;
     if(!current.surfaces.some(s=>s.id===m.surfaceId))m.surfaceId=current.surfaces[0]?.id||'';
     if(!current.lines.some(l=>l.id===m.lineId&&l.surfaceId===m.surfaceId))m.lineId=current.lines.find(l=>l.surfaceId===m.surfaceId)?.id||'';
     if(!core.layers.includes(m.layer))m.layer='transliteration';
@@ -77,6 +78,7 @@ window.Manuscripts = (() => {
   }
   function upsert(draft,kind,value,author) {
     const data=packages.get(m.id),collection={line:'lines',region:'regions',annotation:'annotations'}[kind];
+    if(!draft.records.length)draft.baseVersion=data.version;
     const base=data[collection].find(x=>x.id===value.id),old=draft.records.find(r=>r.targetId===value.id);
     const now=new Date().toISOString();
     const change={id:old?.id||'draft-'+value.id,kind,targetId:value.id,baseRevision:base?.revision||0,
@@ -84,6 +86,18 @@ window.Manuscripts = (() => {
       provenance:{author,createdAt:old?.provenance.createdAt||now,updatedAt:now,status:'draft'},
       history:[...(old?.history||[]),...(old?[{value:old.value,provenance:old.provenance}]:[])]};
     draft.records=draft.records.filter(r=>r.targetId!==value.id);draft.records.push(change);
+  }
+  function conflictReading(value) {
+    if(!value)return '<p>No record with this ID in the current package.</p>';
+    if(value.layers)return core.layers.map(layer=>`<p><strong>${e(layer)}</strong> · ${e(value.layers[layer]?.scope||'not transcribed')}</p><p class="ms-conflict-text">${e(value.layers[layer]?.text||'No transcription recorded.')}</p>`).join('')+`<details><summary>Full record and provenance</summary><pre>${e(JSON.stringify(value,null,2))}</pre></details>`;
+    return `<pre>${e(JSON.stringify(value,null,2))}</pre>`;
+  }
+  function conflictHTML() {
+    if(!draftConflicts.length)return '';
+    return `<details class="ms-conflicts" open><summary>Review saved changes · ${draftConflicts.length}</summary><p>The current package is shown in the reader until you resolve these changes. Every choice is saved with both versions in your private draft history.</p><form id="ms-conflict-form"><label>Editor name <input name="author" required value="${a(state.auth.user?.login||'Gleb Sharygin')}"></label>${draftConflicts.map(c=>{
+      const target=current.lines.find(l=>l.id===c.targetId||l.regionIds.includes(c.targetId));
+      return `<fieldset><legend>${e(c.kind)} · ${e(c.targetId)}</legend>${target?`<button type="button" data-ms-review-line="${target.id}">View this line and scan</button>`:''}<div class="ms-conflict-pair"><section><h5>Current package</h5>${conflictReading(c.base)}</section><section><h5>Your saved proposal</h5>${conflictReading(c.proposed)}</section></div><label>Decision <select required name="${a(c.id)}"><option value="">Choose after comparing</option><option value="base">Use current package; archive my proposal</option><option value="draft">Keep my proposal as a private draft</option></select></label></fieldset>`;
+    }).join('')}<button type="submit">Save all review decisions</button><p>This resolves local version conflicts. It does not mark a reading as scholarly reviewed or publish it.</p></form></details>`;
   }
   function renderText() {
     const rows=current.lines.filter(l=>l.surfaceId===m.surfaceId).sort((x,y)=>x.order-y.order);
@@ -105,11 +119,13 @@ window.Manuscripts = (() => {
         ${m.passageId?`<p>Logical selection: ${e(m.passageId)}. Selecting a word does not change the surface.</p>`:''}</details>
       <details><summary>Notes & variants</summary>${notes.map(n=>`<p><strong>${e(n.type)} · ${e(n.status)}</strong><br>${e(n.text)}<br><small>${e(n.author||'')}</small></p>`).join('')||'<p>No scholarly annotation recorded for this line.</p>'}<p>No reviewed variant apparatus is available for this pilot.</p></details>
       <details><summary>Evidence & lexical work</summary><p>Normalized forms are editorial search readings. Each belongs to a named transcription layer and physical line, with a route back to the scan. Use the Normalized tab to look up a form.</p><p>${e(line?.layers.normalized?.note||'No normalized reading recorded.')}</p><p>Published comparison witness: ${e(record.relatedWitnessId)}. Line-level links do not assert word alignment.</p></details>
-      <details><summary>History & local drafts</summary><p>Base package ${e(current.version)} · ${e(current.status)} · project editor ${e(current.editor)}. This pilot has not received independent scholarly review.</p>${changes.map(c=>`<p>${e(c.kind)} · ${e(c.provenance.status)} · ${e(c.provenance.author)}<br>${e(c.provenance.updatedAt)} · ${c.history.length} earlier local revision(s)</p>`).join('')}<p>Draft export preserves identifiers, coordinates, readings and provenance. Submission and publication are not enabled in this pilot.</p></details>
+      <details><summary>History & local drafts</summary><p>Base package ${e(current.version)} · ${e(current.status)} · project editor ${e(current.editor)}. This pilot has not received independent scholarly review.</p>${changes.map(c=>`<p>${e(c.kind)} · ${e(c.provenance.status)} · ${e(c.provenance.author)}<br>${e(c.provenance.updatedAt)} · ${c.history?.length||0} earlier local revision(s)</p>`).join('')}${(drafts.get(m.id).resolutions||[]).map(r=>`<details><summary>${e(r.previous.kind)} · ${e(r.previous.targetId)} · ${r.choice==='base'?'proposal archived':'proposal retained'}</summary><p>${e(r.author)} · ${e(r.date)}<br>${e(r.fromVersion)} → ${e(r.toVersion)}</p>${conflictReading(r.previous.value)}</details>`).join('')}<p>Draft export preserves identifiers, coordinates, readings and provenance. Submission and publication are not enabled in this pilot.</p></details>
+      ${conflictHTML()}
       <details><summary>Sources & pilot scope</summary><p>${e(current.scopeNote)}</p><p>${e(current.deliveryNote)}</p>${record.bibliography.map(b=>`<p><a href="${a(b.url)}" target="_blank" rel="noopener">${e(b.label)}</a></p>`).join('')}<a href="${a(record.catalogueUrl)}" target="_blank" rel="noopener">BnF catalogue</a></details>`;
   }
   function editorHTML() {
     if(!m.editing)return '';
+    if(draftConflicts.length)return '<p>Review saved changes before editing. Your earlier proposals and unsaved form text are retained.</p>';
     const line=selectedLine(),value=line?.layers[m.layer],region=current.regions.find(r=>r.id===line?.regionIds[0]);
     if(!line)return '';
     return `<form id="ms-draft-form" class="ms-draft-form"><h4>Private draft · ${e(line.label)}</h4>
@@ -204,6 +220,29 @@ window.Manuscripts = (() => {
     container.querySelectorAll('[data-ms-passage]').forEach(b=>b.onclick=()=>openReading(b.dataset.msPassage));
     container.querySelectorAll('[data-ms-compare]').forEach(b=>b.onclick=()=>openReading(b.dataset.msCompare,true));
     container.querySelectorAll('[data-ms-word]').forEach(b=>b.onclick=()=>lookup(b.dataset.msWord,b.dataset.msWordLine));
+    container.querySelectorAll('[data-ms-review-line]').forEach(b=>b.onclick=()=>{
+      const line=current.lines.find(l=>l.id===b.dataset.msReviewLine);if(!line)return;
+      if(line.surfaceId!==m.surfaceId){m.surfaceId=line.surfaceId;m.lineId=line.id;renderReader();}
+      else selectLine(line.id);
+    });
+    const conflictForm=container.querySelector('#ms-conflict-form');
+    if(conflictForm) {
+      const key=`review:${m.id}:${current.version}`,pending=formBuffers[key]||{};
+      for(const field of conflictForm.elements)if(field.name&&Object.hasOwn(pending,field.name))field.value=pending[field.name];
+      conflictForm.oninput=()=>{
+        formBuffers[key]=Object.fromEntries(new FormData(conflictForm));
+        try{localStorage.setItem('vimsika-manuscript-forms-v1',JSON.stringify(formBuffers));}catch{}
+      };
+      conflictForm.onsubmit=event=>{
+      event.preventDefault();try {
+        const fields=new FormData(conflictForm),decisions=draftConflicts.map(c=>({id:c.id,choice:fields.get(c.id)}));
+        const next=core.resolveDraft(packages.get(m.id),drafts.get(m.id),decisions,fields.get('author'),state.corpus);
+        persist(next);delete formBuffers[key];
+        try{localStorage.setItem('vimsika-manuscript-forms-v1',JSON.stringify(formBuffers));}catch{}
+        statusMessage='Review decisions saved privately. Earlier proposals remain in History and the draft export.';renderReader();
+      }catch(error){message(error.message);}
+      };
+    }
     const draftForm=container.querySelector('#ms-draft-form');
     if(draftForm) {
       const formKey=[m.id,m.lineId,m.layer].join(':');
@@ -230,7 +269,7 @@ window.Manuscripts = (() => {
           const region=core.clone(current.regions.find(r=>r.id===line.regionIds[0]));region.xywh=['x','y','width','height'].map(k=>Number(fields.get(k)));region.status='draft';upsert(draft,'region',region,author);
         }
         if(fields.get('annotation').trim())upsert(draft,'annotation',{id:'note-'+crypto.randomUUID(),revision:1,type:'scholarly-note',targets:[{lineId:line.id}],text:fields.get('annotation').trim(),status:'draft',author,createdAt:new Date().toISOString(),provenance:['local-draft']},author);
-        core.applyDraft(packages.get(m.id),draft,state.corpus);persist(draft);
+        if(core.applyDraft(packages.get(m.id),draft,state.corpus).conflicts.length)throw new Error('Review saved changes before saving another edit.');persist(draft);
         delete formBuffers[formKey];
         try {localStorage.setItem('vimsika-manuscript-forms-v1',JSON.stringify(formBuffers));}catch {}
         statusMessage='Private draft saved in this browser. Export a copy for backup.';renderReader();

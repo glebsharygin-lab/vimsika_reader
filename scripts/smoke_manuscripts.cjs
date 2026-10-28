@@ -83,6 +83,33 @@ const {chromium}=require('playwright');const root=path.resolve(__dirname,'..');
   await page.locator('[data-ms-passage="v1"]').click();await page.waitForSelector('#v1');
   assert.ok(await page.locator('#v1 [data-view-manuscript]').count());
   await page.locator('#v1 [data-view-manuscript]').click();await page.waitForSelector('#ms-surface');
+  // Simulate a private draft saved against the already-published 0.31 pilot.
+  const stale=JSON.parse(JSON.stringify(saved));stale.baseVersion='0.1.0-draft';
+  stale.records.find(r=>r.kind==='line').baseRevision=1;
+  await page.evaluate(value=>localStorage.setItem('vimsika-manuscript-draft-v1:bnf-pt797',JSON.stringify(value)),stale);
+  await page.reload();await page.waitForSelector('#ms-conflict-form');
+  assert.equal(await page.locator('#ms-conflict-form fieldset').count(),3);
+  assert.ok(!(await page.locator('#ms-lines').innerText()).includes('Draft སེམས་'));
+  await page.locator('#ms-edit').click();assert.equal(await page.locator('#ms-draft-form').count(),0);
+  for(const r of stale.records)await page.locator(`#ms-conflict-form select[name="${r.id}"]`).selectOption(r.kind==='annotation'?'base':'draft');
+  // Comparing the scan must preserve choices already made in the review form.
+  await page.locator('[data-ms-review-line]').first().click();
+  assert.equal(await page.locator(`#ms-conflict-form select[name="${stale.records[0].id}"]`).inputValue(),'draft');
+  await page.screenshot({path:path.join(root,'../inspection/qa-manuscripts-conflict-review.png'),fullPage:true});
+  await page.evaluate(()=>{window.originalStorageSet=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k.startsWith('vimsika-manuscript-draft-'))throw new Error('Simulated storage quota');return window.originalStorageSet.call(this,k,v);};});
+  await page.locator('#ms-conflict-form button[type="submit"]').click();
+  await page.waitForFunction(()=>document.querySelector('#ms-status')?.textContent.includes('Simulated storage quota'));
+  assert.deepEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('vimsika-manuscript-draft-v1:bnf-pt797'))),stale);
+  await page.evaluate(()=>Storage.prototype.setItem=window.originalStorageSet);
+  await page.locator('#ms-conflict-form button[type="submit"]').click();
+  await page.waitForFunction(()=>document.querySelector('#ms-status')?.textContent.includes('Review decisions saved'));
+  const rebased=await page.evaluate(()=>JSON.parse(localStorage.getItem('vimsika-manuscript-draft-v1:bnf-pt797')));
+  assert.equal(rebased.baseVersion,'0.2.0-draft');assert.equal(rebased.records.length,2);assert.equal(rebased.resolutions.length,3);
+  assert.ok((await page.locator('#ms-lines').innerText()).includes('Draft སེམས་'));
+  assert.equal(rebased.resolutions.find(r=>r.choice==='base').previous.value.text,'Private question needing review.');
+  await page.reload();await page.waitForSelector('#ms-surface');assert.equal(await page.locator('#ms-conflict-form').count(),0);
+  assert.equal(await page.evaluate(()=>JSON.stringify(state.corpus)),corpusBefore);
+  assert.equal(await page.evaluate(()=>localStorage.getItem('vimsika-editor-annotations-v1')),JSON.stringify({sentinel:'existing reader draft'}));
   assert.deepEqual(errors,[]);
   console.log('PASS: lazy image/data loading, image-line synchronization, layered text, lookup return, safe drafts/import conflict, JSON/TEI export, deep links, mobile panels and bidirectional Reader navigation.');
  } finally {await browser.close();}
