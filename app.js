@@ -1194,7 +1194,6 @@ function buildSidebar() {
     renderSummary();
     renderReader();
   });
-  buildDocumentShortcuts();
 }
 
 function renderSummary() {
@@ -3779,10 +3778,9 @@ function renderReader() {
     bindAnalysisControls(reader);
     return;
   }
-  reader.innerHTML = `${state.view === "reading" ? renderDocumentShelf() : ""}${state.corpus.passages
+  reader.innerHTML = `${state.corpus.passages
     .map((passage) => `${passageVideoEmbed(passage)}${passageCard(passage)}`)
     .join("")}`;
-  if (state.view === "reading") bindDocumentShelf(reader);
 
   reader.querySelectorAll("[data-load-video]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -4108,7 +4106,6 @@ function updateViewPresentation() {
     : documentActive
       ? "Search every component of this document"
       : "e.g. dream, sems, 佛";
-  updateDocumentShortcutState();
   updateInlineEditorToggle();
 }
 
