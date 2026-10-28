@@ -49,13 +49,13 @@ const root = path.resolve(__dirname,'..');
       if(dom.querySelector('.full-passage-row').classList.contains('collapsed'))throw Error('Whole-passage witness is hidden in comparison');
       if(!dom.body.textContent.includes('Incomplete:'))throw Error('Scan omission missing from Comparison');
       state.view='reading';
-      state.selectedSources=new Set(['san_levi_1925','kor_lee_gilsan_2021','tha_soraj_2012']);
+      state.selectedSources=new Set(['san_levi_1925',...sources.map(s=>s.id)]);
       state.openPassages.add('v1');
-      state.openSourcePanels.add('v1:kor_lee_gilsan_2021');state.openSourcePanels.add('v1:tha_soraj_2012');
+      for(const source of sources)state.openSourcePanels.add(`v1:${source.id}`);
       renderReader();
-      return {sources:sources.length,checked,focused};
+      return {sources:sources.length,checked,focused,sourceIds:sources.map(s=>s.id)};
     });
-    for(const sid of ['kor_lee_gilsan_2021','tha_soraj_2012']){
+    for(const sid of ['san_levi_1925',...stats.sourceIds]){
       const button=page.locator(`#v1 [data-token-source="${sid}"]`).first();
       const word=await button.innerText(); await button.click();
       await page.locator('.lexical-popover').waitFor();
@@ -65,6 +65,7 @@ const root = path.resolve(__dirname,'..');
     await page.evaluate(()=>openResearchedDocument('kor_lee_gilsan_2021'));
     await page.locator('[data-open-library-source="kor_lee_gilsan_2021"]').click();
     assert.ok(await page.locator('#v1 .source-panel[data-source="kor_lee_gilsan_2021"]').count());
+    await page.locator('#v1 .source-panel[data-source="kor_lee_gilsan_2021"]').scrollIntoViewIfNeeded();
     await page.screenshot({path:path.resolve(root,'../inspection/qa-document-witnesses.png'),fullPage:false});
     assert.deepEqual(errors,[]);
     console.log('PASS:',JSON.stringify(stats),'Reading coverage, exact Focus spans, Comparison coverage notes, word lookup and source-document navigation.');

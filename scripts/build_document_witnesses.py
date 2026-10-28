@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 raw = (ROOT / 'researched-translations.js').read_text('utf8')
 library = json.loads(raw[raw.index('{'):].rstrip('\n;'))
 documents = {d['id']: d for d in library['documents']}
-plan = {'schemaVersion': '1.0.0-draft', 'sources': [], 'passageMappings': [], 'phraseMappings': [],
+plan = {'schemaVersion': '1.1.0-draft', 'sources': [], 'passageMappings': [], 'phraseMappings': [], 'documentAdditions': [],
         'description': 'Source-located document integration; uncertain and absent spans are not inferred.'}
 
 
@@ -26,6 +26,32 @@ def source(document_id, label, language, script, color, coverage, fidelity, **ex
         'libraryDocumentId': document_id, 'coverageLabel': coverage,
         'fidelityLabel': fidelity, **extra,
     })
+
+
+def add_document_components(document_id, components):
+    original = documents[document_id]
+    ids = {c['id'] for c in original['components']}
+    assert all(c['id'] not in ids for c in components), document_id
+    documents[document_id] = {**original, 'components': original['components'] + components}
+    addition=next((d for d in plan['documentAdditions'] if d['documentId']==document_id),None)
+    if addition:
+        addition['components'].extend(components)
+    else:
+        plan['documentAdditions'].append({'documentId':document_id, 'components':components})
+
+
+def checked_opening(sid,verse=1):
+    file=json.loads((ROOT/'source-witnesses/scan-checked-openings.json').read_text('utf8'))
+    reading=next(r for r in file['readings'] if r['documentId']==sid and r.get('passageNumber',1)==verse)
+    block={**reading,'reviewStatus':file['reviewStatus'],'method':file['method']}
+    component={'id':sid+'-scan-checked'+(f'-v{verse}' if verse!=1 else ''),'kind':'translation-draft',
+               'label':f'Passage {verse} checked against scan · draft','blocks':[block]}
+    add_document_components(sid,[component])
+    plan['passageMappings']=[m for m in plan['passageMappings'] if (m['sourceId'],m['passageId'])!=(sid,f'v{verse}')]
+    plan['passageMappings'].append({'sourceId':sid,'passageId':f'v{verse}','level':'passage',
+        'componentId':component['id'],'blockIds':[block['id']],
+        'coverageStatus':'scan-checked-draft','coverageNote':'Transcribed against the supplied page image; scholarly review pending.',
+        'note':file['method']})
 
 
 def flattened(parts):
@@ -200,6 +226,44 @@ def validate():
             assert 0 <= fragment['start'] < fragment['end'] <= len(block['text'])
 
 
+def sharma():
+    sid = 'eng_sharma_1993'
+    source(sid, 'English · T. R. Sharma 1993', 'English', 'Latin', '#74604c',
+           '22 passage locations, with the author’s explanatory commentary',
+           'Unproofed English OCR; translation and author commentary; draft boundaries',
+           includesSecondaryCommentary=True)
+    selections = json.loads((ROOT/'source-witnesses/sharma-text-selections.json').read_text('utf8'))
+    assert selections['sourceSnapshot'] == documents[sid]['sourceSnapshot']
+    blocks = {b['id']:b for c in documents[sid]['components'] for b in c['blocks']}
+    parts = [{**f, 'text':blocks[f['blockId']]['text'][f['start']:f['end']]}
+             for f in selections['fragments']]
+    starts = [(1,None),(2,'“If the consciousness is without'),
+        (3,'“No, the objection does not hold good'),
+        (4,'“(All the previously mentioned four factors)'),
+        (5,'“Animals are ‘born in the heaven'), (6,'“Then due to the deeds'),
+        (7,'“The impression of a deed'), (8,'“The scripture is the reason'),
+        (9,'“What is the hidden meaning?'), (10,'“What again is the purpose'),
+        (11,'“How again one is to think'), (12,'“Why (a single atom) is not proved'),
+        (13,'“The atoms do not join'), (14,'“If the joining of the atoms is desired'),
+        (15,'“What is the purpose of this question'),
+        (16,'“Existence and non-existence are to be determined'),
+        (17,'“(Something) inexperienced is not remembered'),
+        (18,'“If the representations of corsciousness appearing'),
+        (19,'“Death is transformation caused'),
+        (20,'“How was it that the Dandaka forest'),
+        (21,'“If everything is consciousness, do the knowers'),
+        (22,'“The theory of consciousness being of innumerabie')]
+    split_passages(sid, parts, starts,
+        'English translation together with Sharma’s explanatory commentary. Sanskrit OCR sections '
+        'and separate bibliographical footnotes are left in the full source document. The text is '
+        'unproofed OCR, including damaged readings; source-line locators are retained. '
+        'Passage boundaries are drafts, not reviewed phrase correspondences.')
+    for mapping in plan['passageMappings']:
+        if mapping['sourceId']==sid and mapping['passageId']=='v4':
+            mapping['coverageStatus']='source-omission'
+            mapping['coverageNote']='The supplied printed source passes from verse 3 to the hell example (4b); the wet-dream clause (4a) is absent at this point. Checked against PDF pages 79–80 (printed 67–68). No missing clause has been supplied.'
+
+
 def mapped_text(sid, verse):
     mapping = next(m for m in library['passageMappings'] + plan['passageMappings']
                    if m['sourceId'] == sid and m['passageId'] == f'v{verse}')
@@ -209,6 +273,41 @@ def mapped_text(sid, verse):
         return '\n\n'.join(blocks[f['blockId']]['text'][f['start']:f['end']]
                            for f in mapping['fragments'])
     return '\n\n'.join(blocks[b]['text'] for b in mapping['blockIds'])
+
+
+def chogdub():
+    sid = 'hin_chogdub_tripathi_1972'
+    source(sid, 'Hindi · Chogdub–Tripāṭhī 1972', 'Hindi', 'Devanagari', '#8c603e',
+           'Hindi translation and translated autocommentary in all 22 passages',
+           'Unproofed Unicode reader text; Sanskrit and later explanation separated')
+    selections = json.loads((ROOT/'source-witnesses/chogdub-text-selections.json').read_text('utf8'))
+    assert selections['sourceSnapshot'] == documents[sid]['sourceSnapshot']
+    plan['passageMappings'].extend(selections['passageMappings'])
+
+
+def tiwary_alternate():
+    sid='hin_tiwary_1995_alternate'
+    data=json.loads((ROOT/'source-witnesses/tiwary-reocr-selections.json').read_text('utf8'))
+    add_document_components(sid,[data['component']])
+    source(sid,'Hindi · Mahesh Tiwary 1995 · alternate scan','Hindi','Devanagari','#8a6954',
+           '22 passage locations · duplicate edition · unproofed scan',
+           'New local OCR; Hindi separated from Sanskrit; spelling and word beginnings remain uncertain',
+           duplicateOf='hin_tiwari_1995',translationStatus='alternate-copy',reviewStatus='unproofed-ocr')
+    plan['passageMappings'].extend(data['passageMappings'])
+    checked_opening(sid)
+    checked_opening(sid,2)
+
+
+def inazu():
+    sid='jpn_inazu_1929'
+    data=json.loads((ROOT/'source-witnesses/inazu-reocr-selections.json').read_text('utf8'))
+    add_document_components(sid,[data['component']])
+    source(sid,'Japanese · Kizō Inazu 1929','Japanese','Japanese','#77628c',
+           'Opening checked against scan; 21 further passage locations with severely uncertain OCR',
+           'Vertical OCR draft; damaged readings and small-gloss order require scan checking',
+           translationStatus='ocr-draft',reviewStatus='severely-uncertain-ocr')
+    plan['passageMappings'].extend(data['passageMappings'])
+    checked_opening(sid)
 
 
 def opening_phrases():
@@ -263,12 +362,39 @@ def romanian_roots():
                 'note':'Numbered Romanian root verse; a shared span, not an inferred subdivision.'})
 
 
+def checked_opening_phrases():
+    for sid,markers in {
+        'jpn_inazu_1929':[(1,'第一節'),(2,'『諸の佛子よ'),(3,'心と意と識と表識'),
+                         (4,'茲に心と云ふ'),(5,'唯だと云ふ'),(6,'（一）'),(7,'譬ふれば')],
+        'hin_tiwary_1995_alternate':[(1,'महायानदर्शन'),(2,'‘हे जिनपुत्रों'),(3,'चित्त, मन,'),
+                                    (4,'यहां चित्त'),(5,'मात्र ( शब्द )'),(6,'जिस प्रकार')],
+    }.items():
+        text=mapped_text(sid,1)
+        assert all(text.count(marker)==1 for _,marker in markers),sid
+        boundaries=[(unit,text.index(marker)) for unit,marker in markers]
+        final=text.index('( चित्त के अतिरिक्त )') if sid.startswith('hin_') else len(text)
+        for i,(unit,start) in enumerate(boundaries):
+            end=boundaries[i+1][1] if i+1<len(boundaries) else final
+            mapping={'sourceId':sid,'passageId':'v1','unitId':f'dharmanexus-v1-{unit:03d}',
+                     'start':start,'end':end,'note':'Clause selected from the image-checked opening; scholarly review pending.'}
+            if sid.startswith('hin_') and unit==6:
+                mapping['group']={'id':'tiwary-alternate-v1-root','numbers':['1.6','1.7'],
+                    'note':'Hindi gives the simile before the thesis in one comparative sentence; the whole sentence is shared.'}
+                plan['phraseMappings'].append({**mapping,'unitId':'dharmanexus-v1-007'})
+            plan['phraseMappings'].append(mapping)
+
+
 if __name__ == '__main__':
     korean()
     thai()
     chatterjee()
+    sharma()
+    chogdub()
+    tiwary_alternate()
+    inazu()
     opening_phrases()
     romanian_roots()
+    checked_opening_phrases()
     validate()
     target = ROOT / 'source-witnesses/document-witness-plan.json'
     target.write_text(json.dumps(plan,ensure_ascii=False,indent=2)+'\n',encoding='utf8')

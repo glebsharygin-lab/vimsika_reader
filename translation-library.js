@@ -32,6 +32,14 @@ function mergeDocumentWitnessPlan(supplement, plan) {
   for (const mapping of plan.passageMappings || []) {
     mappings.set(`${mapping.sourceId}:${mapping.passageId}`, mapping);
   }
+  const additions = new Map();
+  for (const addition of plan.documentAdditions || []) {
+    if (!supplement.documents.some(documentRecord => documentRecord.id === addition.documentId)) {
+      throw new Error(`Unknown source document for additional OCR: ${addition.documentId}`);
+    }
+    if (additions.has(addition.documentId)) throw new Error(`Repeated document addition: ${addition.documentId}`);
+    additions.set(addition.documentId, addition.components || []);
+  }
   return {
     ...supplement,
     schemaVersion: `${supplement.schemaVersion}+${plan.schemaVersion}`,
@@ -40,7 +48,16 @@ function mergeDocumentWitnessPlan(supplement, plan) {
     phraseMappings: plan.phraseMappings || [],
     documents: supplement.documents.map((documentRecord) => {
       const source = [...sources.values()].find((item) => item.libraryDocumentId === documentRecord.id);
-      return source ? { ...documentRecord, sourceId: source.id } : documentRecord;
+      const extra = additions.get(documentRecord.id) || [];
+      if (!source && !extra.length) return documentRecord;
+      const components = new Map((documentRecord.components || []).map(component => [component.id, component]));
+      for (const component of extra) {
+        if (components.has(component.id) && JSON.stringify(components.get(component.id)) !== JSON.stringify(component)) {
+          throw new Error(`Additional OCR would replace a source component: ${component.id}`);
+        }
+        components.set(component.id, component);
+      }
+      return { ...documentRecord, ...(source ? {sourceId: source.id} : {}), components: [...components.values()] };
     }),
   };
 }

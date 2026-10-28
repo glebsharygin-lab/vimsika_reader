@@ -1,0 +1,34 @@
+{
+  "reviewStatus": "scan-checked-draft-not-human-reviewed",
+  "method": "Transcribed against the supplied page image. Line wrapping, spacing and quotation glyphs are normalized; ruby reading aids are not reproduced. Lexical wording is retained. Raw OCR remains separately available.",
+  "readings": [
+    {
+      "documentId": "hin_tiwary_1995_alternate",
+      "id": "tiwary-checked-opening-v1",
+      "label": "Opening and verse 1 · checked against scan · draft",
+      "locator": "Alternate Tiwary scan, PDF page 34, right physical page, printed page 1, Hindi section",
+      "pdfPage": 34,
+      "rawBlockIds": ["tiwary-reocr-034-right"],
+      "text": "महायानदर्शन के अनुसार त्रैधातुक अर्थात् कामधातु, रूपधातु तथा अरूपधातु विज्ञप्तिमात्र हैं, इसकी स्थापना की जाती है । ‘हे जिनपुत्रों, यह जो त्रैधातुक है, वह चित्तमात्र है’, इस सूत्र से ( प्रकट होता है ) । चित्त, मन, विज्ञान तथा विज्ञप्ति पर्यायवाची शब्द हैं । यहां चित्त विषय के साथ युक्त अभिप्रेत है । मात्र ( शब्द ) विषय के निषेध के लिए है ।\n\nजिस प्रकार तिमिर रोग से ग्रस्त मनुष्य को असत् केश-गुच्छादि के दर्शन होते हैं, उसी प्रकार सभी भासमान अर्थों ( विषयों ) के असत् होने के कारण सब कुछ विज्ञप्तिमात्र ही है ॥ १ ॥\n\n( चित्त के अतिरिक्त ) कोई भी पदार्थ नहीं है ।"
+    },
+    {
+      "documentId": "hin_tiwary_1995_alternate",
+      "passageNumber": 2,
+      "id": "tiwary-checked-passage-v2",
+      "label": "Passage 2 · checked against scan · draft",
+      "locator": "Alternate Tiwary scan, PDF page 35, both physical pages, printed pages 2–3, Hindi section",
+      "pdfPage": 35,
+      "rawBlockIds": ["tiwary-reocr-035-left", "tiwary-reocr-035-right"],
+      "text": "यहां पर प्रश्न किया जाता है :—\n\nयदि विज्ञप्ति विषय रहित है, तो देशकाल का नियम, सन्तान का अनियम तथा कृत्यक्रिया का होना युक्त नहीं हो सकता ॥ २ ॥\n\nक्या कहा गया ? यदि रूपादि विषय के बिना ही रूपादि विज्ञप्ति उत्पन्न होती है, रूपादि विषयों ( अर्थों ) के कारण नहीं, तो क्यों किसी (एक) ही स्थान ( देश ) में उत्पन्न होती है, सर्वत्र नहीं ? उस स्थान में भी कभी-कभी ही उत्पन्न होती है, सर्वदा नहीं ( यह क्यों ) ? उस देश और काल में स्थित सभी मनुष्यों के चित्तसन्तान में उत्पन्न होती है, केवल एक ही के नहीं ( यह क्यों ) ? जिस प्रकार तैमिरिकों के चित्तसन्तान में केशादि का आभास होता है, दूसरों के नहीं (क्यों) ? ( उसी प्रकार यदि बाह्यार्थ नहीं हैं तो चित्तभेद से विषयों में भी भिन्नता की प्रतीति होती, पर ऐसा नहीं होता है । सभी लोग एक घट को घट के रूप में ही देखते हैं । ऐसा क्यों ? ) क्यों तैमिरिकों द्वारा जो केश-भ्रमरादि देखे जाते हैं, उनसे केशादि क्रिया न की जाती है, जो दूसरों द्वारा ( दृष्ट विषयों से ) की जाती है ? क्यों जो अन्न, पान, वस्त्र, विष, आयुध आदि स्वप्न में देखे जाते हैं, उनसे अन्नादि क्रिया न की जाती है, जो दूसरों से की जाती है ? ( अर्थात् स्वप्न अवस्था से भिन्न जाग्रत अवस्था में देखे गये अन्नादि विषयों से अन्नादि क्रिया की जाती है ) । ( क्यों ) गन्धर्वनगर के असत् होने के कारण उससे नगरक्रिया ( नगर में रहने आदि के काम ) नहीं की जाती है, किन्तु दूसरों (नगरों) से भी नहीं की जाती है, ऐसा नहीं कहा जा सकता है ? (अर्थात् उससे भिन्न प्रतीयमान नगरों से नगर का कार्य तो होता ही है) । अतः विषय के अभाव में देशकाल का नियम, सन्तान का अनियम तथा कृत्यक्रिया का होना युक्त नहीं है ।"
+    },
+    {
+      "documentId": "jpn_inazu_1929",
+      "id": "inazu-checked-opening-v1",
+      "label": "Opening and verse 1 · checked against scan · draft",
+      "locator": "Inazu 1929, PDF page 11, printed journal page 353, first section and verse 1",
+      "pdfPage": 11,
+      "rawBlockIds": ["inazu-reocr-p011-l01", "inazu-reocr-p011-l02", "inazu-reocr-p011-l03", "inazu-reocr-p011-l04", "inazu-reocr-p011-l05", "inazu-reocr-p011-l06", "inazu-reocr-p011-l07", "inazu-reocr-p011-l08", "inazu-reocr-p011-l09", "inazu-reocr-p011-l10", "inazu-reocr-p011-l11"],
+      "text": "第一節　大乘に於ては三界は唯だ表識なるのみと定立せらる。『諸の佛子よ、かの三界たる、唯だこれ心なるのみ』と經にあるが故に。心と意と識と表識とはこれ相通ふ語なり。茲に心と云ふは相應をもてるものを意味したり。\n\n唯だと云ふは境〔對象〕を否定せんがためなり。\n\n（一）此れは實に唯だ表識なるのみ〔宗〕\n實有ならぬ境〔對象〕に似現するが故に〔因〕\n譬ふれば眇目者に實有ならぬ\n毛月等の見ゆるが如くなり。〔喩〕"
+    }
+  ]
+}

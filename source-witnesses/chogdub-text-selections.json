@@ -1,0 +1,516 @@
+{
+  "documentId": "hin_chogdub_tripathi_1972",
+  "sourceSnapshot": {
+    "path": "research/vimsika-translations-2026-10-26/sources/chogdub-tripathi-hindi-1972.txt",
+    "sha256": "97821a3a19fdafada18398fd8c58b97ccbef7bcc3af9e64334034bc6e5f0b2c1"
+  },
+  "status": "draft-source-selection",
+  "passageMappings": [
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v1",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-140",
+          "start": 204,
+          "end": 358
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-141",
+          "start": 113,
+          "end": 242
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-149",
+          "start": 132,
+          "end": 351
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-150",
+          "start": 503,
+          "end": 1236
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-151",
+          "start": 256,
+          "end": 718
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-153",
+          "start": 288,
+          "end": 645
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-154",
+          "start": 383,
+          "end": 1018
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-155",
+          "start": 211,
+          "end": 494
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-156",
+          "start": 401,
+          "end": 1123
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-158",
+          "start": 381,
+          "end": 953
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-160",
+          "start": 116,
+          "end": 298
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v5",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-161",
+          "start": 329,
+          "end": 794
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v6",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-162",
+          "start": 237,
+          "end": 571
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-163",
+          "start": 143,
+          "end": 276
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-164",
+          "start": 184,
+          "end": 458
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v7",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-165",
+          "start": 387,
+          "end": 854
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v8",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-166",
+          "start": 139,
+          "end": 283
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-167",
+          "start": 386,
+          "end": 969
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v9",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-170",
+          "start": 283,
+          "end": 649
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-171",
+          "start": 245,
+          "end": 668
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-172",
+          "start": 292,
+          "end": 736
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-173",
+          "start": 235,
+          "end": 620
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-174",
+          "start": 325,
+          "end": 839
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-176",
+          "start": 293,
+          "end": 704
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-177",
+          "start": 188,
+          "end": 364
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-178",
+          "start": 107,
+          "end": 298
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-179",
+          "start": 391,
+          "end": 1031
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v12",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-181",
+          "start": 215,
+          "end": 541
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-182",
+          "start": 220,
+          "end": 530
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v13",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-183",
+          "start": 286,
+          "end": 663
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-184",
+          "start": 240,
+          "end": 565
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-185",
+          "start": 389,
+          "end": 922
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-186",
+          "start": 373,
+          "end": 881
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-187",
+          "start": 232,
+          "end": 567
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-188",
+          "start": 451,
+          "end": 731
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-188",
+          "start": 732,
+          "end": 1149
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-189",
+          "start": 444,
+          "end": 1058
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-190",
+          "start": 157,
+          "end": 393
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-192",
+          "start": 169,
+          "end": 395
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-193",
+          "start": 416,
+          "end": 1085
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-194",
+          "start": 141,
+          "end": 332
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-195",
+          "start": 335,
+          "end": 794
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-196",
+          "start": 392,
+          "end": 991
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-197",
+          "start": 141,
+          "end": 415
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v18",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-198",
+          "start": 475,
+          "end": 1161
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-199",
+          "start": 174,
+          "end": 402
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-200",
+          "start": 106,
+          "end": 243
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v19",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-201",
+          "start": 214,
+          "end": 487
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-202",
+          "start": 432,
+          "end": 1365
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-203",
+          "start": 348,
+          "end": 1033
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-204",
+          "start": 294,
+          "end": 1208
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v21",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-205",
+          "start": 200,
+          "end": 548
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-206",
+          "start": 93,
+          "end": 242
+        },
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-207",
+          "start": 163,
+          "end": 412
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v22",
+      "level": "passage",
+      "fragments": [
+        {
+          "componentId": "hin-commentary",
+          "blockId": "hin-reader-209",
+          "start": 429,
+          "end": 1072
+        }
+      ],
+      "note": "Hindi translation and translated autocommentary, separated from Sanskrit and the later Gūḍhārthadīpanī explanation. Exact Unicode reader selections retain unproofed readings and source locators. Passage boundaries are drafts."
+    }
+  ]
+}

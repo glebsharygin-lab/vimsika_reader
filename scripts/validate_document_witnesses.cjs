@@ -11,6 +11,7 @@ for (const name of ['corpus.js', 'researched-translations.js', 'witness-integrat
 const app = read('app.js');
 vm.runInContext(app.slice(app.indexOf('function isCjk('), app.indexOf('function effectiveWitness(')), context);
 const before = JSON.parse(JSON.stringify(context.window.CORPUS_DATA));
+const originalLibrary = JSON.parse(JSON.stringify(context.window.RESEARCHED_TRANSLATIONS));
 const oldTokens = vm.runInContext(`(() => {
   const corpus = JSON.parse(JSON.stringify(window.CORPUS_DATA));
   integrateResearchedTranslations(corpus, window.RESEARCHED_TRANSLATIONS, tokenizeEditedText);
@@ -21,6 +22,19 @@ vm.runInContext(`var library = mergeDocumentWitnessPlan(window.RESEARCHED_TRANSL
 var corpus = window.CORPUS_DATA;
 integrateResearchedTranslations(corpus, library, tokenizeEditedText);`, context);
 const after = JSON.parse(JSON.stringify(context.window.CORPUS_DATA));
+assert.deepEqual(JSON.parse(JSON.stringify(context.window.RESEARCHED_TRANSLATIONS)), originalLibrary,'Source library mutated');
+const merged = JSON.parse(vm.runInContext('JSON.stringify(library)',context));
+for (const doc of originalLibrary.documents) {
+  const current=merged.documents.find(d=>d.id===doc.id);
+  assert.deepEqual(current.components.slice(0,doc.components.length),doc.components,'Original document components replaced');
+}
+assert.equal(after.sources.find(s=>s.id==='hin_tiwary_1995_alternate').duplicateOf,'hin_tiwari_1995');
+assert.equal(after.passages[0].texts.jpn_inazu_1929.coverageStatus,'scan-checked-draft');
+assert.equal(after.passages[1].texts.jpn_inazu_1929.coverageStatus,'severely-uncertain-ocr');
+assert.throws(()=>vm.runInContext(`mergeDocumentWitnessPlan(window.RESEARCHED_TRANSLATIONS, {
+  schemaVersion:'test', documentAdditions:[{documentId:window.RESEARCHED_TRANSLATIONS.documents[0].id,
+  components:[{...window.RESEARCHED_TRANSLATIONS.documents[0].components[0], label:'Replacement'}]}]
+})`,context),/would replace a source component/);
 assert.deepEqual(after.sources.slice(0, before.sources.length), before.sources);
 for (const original of before.passages) {
   const current = after.passages.find(p=>p.id===original.id);
