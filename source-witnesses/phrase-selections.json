@@ -1,0 +1,1171 @@
+{
+  "reviewStatus": "draft-source-reading",
+  "passages": [
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 1,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "\"चित्तमात्रं भो",
+          "end": "चित, मनस्",
+          "note": "The sutra citation and Mahayana statement are combined in reversed order."
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "चित, मनस्",
+          "end": "यहाँ 'चित्त'"
+        },
+        {
+          "units": [
+            4
+          ],
+          "start": "यहाँ 'चित्त'",
+          "end": "'मात्र' शब्द"
+        },
+        {
+          "units": [
+            5
+          ],
+          "start": "'मात्र' शब्द",
+          "end": "असत् ( अभूत )"
+        },
+        {
+          "units": [
+            6,
+            7
+          ],
+          "start": "असत् ( अभूत )",
+          "end": "(फलतः)",
+          "note": "Thesis and simile form one translated comparative sentence."
+        }
+      ]
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passage": 2,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "Tụng nói :",
+          "end": "Luận nói :"
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "Luận nói :",
+          "end": "Nếu lìa thức"
+        },
+        {
+          "units": [
+            4
+          ],
+          "start": "Nếu lìa thức",
+          "end": "Vì sao do thức này"
+        },
+        {
+          "units": [
+            5
+          ],
+          "start": "Vì sao do thức này",
+          "end": "Vì sao nơi đây"
+        },
+        {
+          "units": [
+            6
+          ],
+          "start": "Vì sao nơi đây",
+          "end": "Cùng một nơi"
+        },
+        {
+          "units": [
+            7
+          ],
+          "start": "Cùng một nơi",
+          "end": "Như người hoa mắt"
+        },
+        {
+          "units": [
+            8
+          ],
+          "start": "Như người hoa mắt",
+          "end": "Lại còn các nhân nào"
+        },
+        {
+          "units": [
+            9
+          ],
+          "start": "Lại còn các nhân nào",
+          "end": "Cái dụng cái không dụng của việc"
+        },
+        {
+          "units": [
+            10,
+            11
+          ],
+          "start": "Cái dụng cái không dụng của việc",
+          "end": "Nếu thật ngoại cảnh",
+          "note": "The two efficacy examples share the concluding contrast about other objects."
+        },
+        {
+          "units": [
+            12
+          ],
+          "start": "Nếu thật ngoại cảnh",
+          "end": "Không phải tất cả"
+        },
+        {
+          "units": [
+            13
+          ],
+          "start": "Không phải tất cả"
+        }
+      ]
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passage": 2,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "假使唯有识而无实在的境界",
+          "end": "论曰："
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "论曰：",
+          "end": "假使色等识"
+        },
+        {
+          "units": [
+            4
+          ],
+          "start": "假使色等识",
+          "end": "为什么这种识"
+        },
+        {
+          "units": [
+            5
+          ],
+          "start": "为什么这种识",
+          "end": "又为什么要一定的时候"
+        },
+        {
+          "units": [
+            6
+          ],
+          "start": "又为什么要一定的时候",
+          "end": "又为什么同在一处"
+        },
+        {
+          "units": [
+            7
+          ],
+          "start": "又为什么同在一处",
+          "end": "也像限于眼花有翳的人"
+        },
+        {
+          "units": [
+            8
+          ],
+          "start": "也像限于眼花有翳的人",
+          "end": "又有什么道理眼花有翳的所见"
+        },
+        {
+          "units": [
+            9,
+            10,
+            11
+          ],
+          "start": "又有什么道理眼花有翳的所见",
+          "end": "所以，",
+          "note": "Three examples share the final collective contrast and parenthetical explanation."
+        },
+        {
+          "units": [
+            12
+          ],
+          "start": "所以，"
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 2,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "यहाँ प्रश्न होता है",
+          "end": "(कारिका द्वारा )"
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "(कारिका द्वारा )",
+          "end": "यदि रूप आदि अर्थों"
+        },
+        {
+          "units": [
+            4
+          ],
+          "start": "यदि रूप आदि अर्थों",
+          "end": "तो क्यों ( वे )"
+        },
+        {
+          "units": [
+            5
+          ],
+          "start": "तो क्यों ( वे )",
+          "end": "उस देशविशेष में भी"
+        },
+        {
+          "units": [
+            6
+          ],
+          "start": "उस देशविशेष में भी",
+          "end": "उस देश और काल"
+        },
+        {
+          "units": [
+            7
+          ],
+          "start": "उस देश और काल",
+          "end": "जैसे-तैमिरिकों"
+        },
+        {
+          "units": [
+            8
+          ],
+          "start": "जैसे-तैमिरिकों",
+          "end": "क्यों तमिरिकों"
+        },
+        {
+          "units": [
+            9
+          ],
+          "start": "क्यों तमिरिकों",
+          "end": "जो अन्न, पान"
+        },
+        {
+          "units": [
+            10
+          ],
+          "start": "जो अन्न, पान",
+          "end": "गन्धर्वनगर द्वारा"
+        },
+        {
+          "units": [
+            11
+          ],
+          "start": "गन्धर्वनगर द्वारा",
+          "end": "इसलिये ( बाह्य )"
+        },
+        {
+          "units": [
+            12
+          ],
+          "start": "इसलिये ( बाह्य )"
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passage": 2,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "यदि विज्ञप्ति विषय रहित है",
+          "end": "क्या कहा गया"
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "क्या कहा गया",
+          "end": "यदि रूपादि विषय के बिना"
+        },
+        {
+          "units": [
+            4
+          ],
+          "start": "यदि रूपादि विषय के बिना",
+          "end": "तो क्यों किसी"
+        },
+        {
+          "units": [
+            5
+          ],
+          "start": "तो क्यों किसी",
+          "end": "उस स्थान में भी"
+        },
+        {
+          "units": [
+            6
+          ],
+          "start": "उस स्थान में भी",
+          "end": "उस देश और काल"
+        },
+        {
+          "units": [
+            7
+          ],
+          "start": "उस देश और काल",
+          "end": "जिस प्रकार तैमिरिकों"
+        },
+        {
+          "units": [
+            8
+          ],
+          "start": "जिस प्रकार तैमिरिकों",
+          "end": "क्यों तैमिरिकों द्वारा"
+        },
+        {
+          "units": [
+            9
+          ],
+          "start": "क्यों तैमिरिकों द्वारा",
+          "end": "क्यों जो अन्न, पान"
+        },
+        {
+          "units": [
+            10
+          ],
+          "start": "क्यों जो अन्न, पान",
+          "end": "( क्यों ) गन्धर्वनगर"
+        },
+        {
+          "units": [
+            11
+          ],
+          "start": "( क्यों ) गन्धर्वनगर",
+          "end": "अतः विषय के अभाव"
+        },
+        {
+          "units": [
+            12
+          ],
+          "start": "अतः विषय के अभाव"
+        }
+      ]
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passage": 2,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "[대론자:]",
+          "end": "어떻게 이야기된"
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "어떻게 이야기된",
+          "end": "만약 색 등의 대상이"
+        },
+        {
+          "units": [
+            4
+          ],
+          "start": "만약 색 등의 대상이",
+          "end": "왜 특정 장소에서만"
+        },
+        {
+          "units": [
+            5
+          ],
+          "start": "왜 특정 장소에서만",
+          "end": "바로 그 장소에서도"
+        },
+        {
+          "units": [
+            6
+          ],
+          "start": "바로 그 장소에서도",
+          "end": "그 장소 및 때에"
+        },
+        {
+          "units": [
+            7
+          ],
+          "start": "그 장소 및 때에",
+          "end": "예를 들어 바로 저"
+        },
+        {
+          "units": [
+            8
+          ],
+          "start": "예를 들어 바로 저",
+          "end": "왜 비문증 환자들이"
+        },
+        {
+          "units": [
+            9
+          ],
+          "start": "왜 비문증 환자들이",
+          "end": "꿈 속에 나타나는"
+        },
+        {
+          "units": [
+            10
+          ],
+          "start": "꿈 속에 나타나는",
+          "end": "존재하지 않는 간달바의"
+        },
+        {
+          "units": [
+            11
+          ],
+          "start": "존재하지 않는 간달바의",
+          "end": "이들 [색 등에 대한"
+        },
+        {
+          "units": [
+            12
+          ],
+          "start": "이들 [색 등에 대한"
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 2,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "“If the consciousness",
+          "end": "As it has already",
+          "note": "Only the quoted root verse is assigned; Sharma's subsequent explanatory commentary remains separate context."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 3,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "देश आदि का नियम स्वप्न की तरह",
+          "end": "स्वप्न की तरह को",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            6,
+            7
+          ],
+          "start": "तथा तों के समान",
+          "end": "'प्रेतों की तरह'",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            11
+          ],
+          "start": "सभी प्रेतों द्वारा पूयनदी",
+          "end": "पूय (पीव )",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 4,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "साप्नोघात के समान",
+          "end": "जैसे-स्वप्न में",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            5,
+            6,
+            7
+          ],
+          "start": "नरक के समान सारी",
+          "end": "नरक में (हान)",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            10
+          ],
+          "start": "नरकपाल आदि के दर्शन में",
+          "end": "जैसे-नरकपाल प्रादि",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 5,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "जिस प्रकार स्वर्ग में",
+          "end": "जो तिर्यक् स्वर्ग में",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 6,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "यदि उन ( नारकीयों ) के कर्मों",
+          "end": "__ विज्ञान का ही",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 7,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "कर्म की वासना दूसरी जगह",
+          "end": "नारकीयों के जिस कर्म",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 8,
+      "clauses": [
+        {
+          "units": [
+            2,
+            3,
+            4
+          ],
+          "start": "यह पागम कारण नहीं है",
+          "end": "जैसे 'उपपादुक सत्त्व",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 9,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "जिस स्वबीज से",
+          "end": "इस कारिका द्वारा क्या",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 10,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "पुद्गलनैरात्म्य में प्रवेश ही",
+          "end": "उस प्रकार की देशना",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            5,
+            6
+          ],
+          "start": "तथा धर्मनैरात्म्य में प्रवेश",
+          "end": "'अन्यथा' से",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            12
+          ],
+          "start": "कल्पितस्वभाव धर्मों के न होने",
+          "end": "जो पृथग-जनों",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 11,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "वह (रूप आदि विज्ञप्तियों का विषय )",
+          "end": "उपर्युक्त कारिका द्वारा",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 12,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "छह परमाणुओं के साथ एक साथ",
+          "end": "छह दिशाओं से",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            4,
+            5
+          ],
+          "start": "छहों परमाणुओं का समान",
+          "end": "जो एक परमाणु का देश",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 13,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "तो फिर परमाणुओं का संयोग",
+          "end": "'वह' (सः )",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "(परमाणुओं के ) निरवयव",
+          "end": "__ यदि संघात",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 14,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "जिसका दिग्भागभेद होता है",
+          "end": "परमाणु का पूर्व दिग्भाग",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "अथवा छाया और पावरण",
+          "end": "यदि एक परमाण का",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            12
+          ],
+          "start": "यदि पिण्ड ( परमाणुओं से)",
+          "end": "यदि (आप) पिण्ड को",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 15,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "एकत्व पक्ष में क्रमिक गति",
+          "end": "यदि (पाप) चक्षरिन्द्रिय",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 16,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "जैसे स्वप्न आदि में प्रत्यक्ष",
+          "end": "वह (प्रत्यक्ष बुद्धि )",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            3,
+            4
+          ],
+          "start": "वह (प्रत्यक्ष बुद्धि )",
+          "end": "'यह मेरा प्रत्यक्ष है।",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 17,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "जैसे अर्थाभासा विज्ञप्ति",
+          "end": "जैसे विना अर्थ के",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "इसके बाद स्मरण होता है",
+          "end": "अर्थाभासवाली विज्ञप्ति के",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            9
+          ],
+          "start": "स्वप्न में दृष्ट विषय का प्रभाव",
+          "end": "उसी प्रकार मिथ्या विकल्प",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 18,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "अन्योऽन्य अधिपतित्व से",
+          "end": "सभी सत्वों की अन्योऽन्य",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            7
+          ],
+          "start": "स्वप्न में चित्त मिद्ध से",
+          "end": "यही ( समान फल",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 19,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "जिस प्रकार पिशाच आदि के मन",
+          "end": "जैसे पिशाच आदि के मनोवश",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 20,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "(यदि परविज्ञप्तिविशेष से मरण",
+          "end": "यदि दूसरों के विज्ञप्तिविशेष",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            7
+          ],
+          "start": "कैसे उससे मनोदण्ड",
+          "end": "यदि आप ऐसी कल्पना",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 21,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "परचित्तविद् ( अभिज्ञाप्राप्त योगियों का )",
+          "end": "जैसे स्वचित्तज्ञान",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            2
+          ],
+          "start": "जैसे स्वचित्तज्ञान",
+          "end": "वह ( स्वचित्तज्ञान )",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "वह ( स्वचित्तज्ञान )",
+          "end": "जैसे ( स्वचित्त और परचित्त ) बुद्ध",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            4
+          ],
+          "start": "जैसे ( स्वचित्त और परचित्त ) बुद्ध",
+          "end": "जैसे वह ( स्वचित्त और परचित्त )",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passage": 22,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "मैंने अपनी शक्ति के अनुरूप",
+          "end": "तर्क ( सविकल्प शान )",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            6
+          ],
+          "start": "(वह केवल ) बुद्ध की ही गोचर",
+          "end": "वह (विज्ञप्तिमात्रता ) केवल",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 3,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "the regulation of place and time etc., is established",
+          "end": "(The term svapna eva)",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 4,
+      "clauses": [
+        {
+          "units": [
+            5,
+            6
+          ],
+          "start": "“(All the previously mentioned four factors)",
+          "end": "The term ‘siddham’",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 5,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "“Animals are ‘born",
+          "end": "The animals, who are born",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 6,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "“If the (special) beings",
+          "end": "Why not they are recognised",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 7,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "“The impression of a deed",
+          "end": "That type of birth",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 9,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "wherefrom its own seed",
+          "end": "What is being said?",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 11,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "“(The object is experienced)",
+          "end": "Here onwards starts",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 12,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "Because if six atoms joining",
+          "end": "If there is a combination",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            4,
+            5
+          ],
+          "start": "If the six atoms belonging",
+          "end": "Whatever is the place of one atom",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 13,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "In case of not joining these atoms",
+          "end": "The term Samyoga",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 14,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "(then) an atom having a differentiation",
+          "end": "The atom (coming)",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 15,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "(In case whole of the earth",
+          "end": "If the earth were to be imagined",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 17,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "it has been said (already)",
+          "end": "So it has been said:",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "From it does follow the memory.",
+          "end": "From that representation",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 18,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "The law of representation of consciousness is proved by",
+          "end": "The law of representation of consciousness of all",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 19,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "“Death is transformation caused",
+          "end": "Just as the loss",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 20,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "start": "“How was it that the Dandaka",
+          "end": "If the death of other",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passage": 22,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "this .« of theory of consciousness",
+          "end": "This theory of consciousness only cannot",
+          "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        }
+      ]
+    }
+  ]
+}

@@ -384,6 +384,72 @@ def checked_opening_phrases():
             plan['phraseMappings'].append(mapping)
 
 
+def curated_phrases():
+    data=json.loads((ROOT/'source-witnesses/phrase-selections.json').read_text('utf8'))
+    for record in data['passages']:
+        sid,verse=record['sourceId'],record['passage']
+        text=mapped_text(sid,verse)
+        def locate(marker):
+            # PDF line breaks can split a word. Match only whitespace flexibly,
+            # preserving exact original code-point offsets and source spelling.
+            pattern=r'\s*'.join(re.escape(c) for c in marker if not c.isspace())
+            matches=list(re.finditer(pattern,text))
+            assert len(matches)==1,(sid,verse,marker,len(matches))
+            return matches[0].start()
+        for index,clause in enumerate(record['clauses']):
+            start=locate(clause['start']); end=locate(clause['end']) if clause.get('end') else len(text)
+            assert start<end,(sid,verse,clause)
+            units=clause['units']
+            group={'id':f'{sid}-v{verse}-clause-{index}',
+                   'numbers':[f'{verse}.{n}' for n in units],
+                   'note':clause.get('note','The translated sentence covers these Sanskrit units together.')}
+            for unit in units:
+                plan['phraseMappings'].append({'sourceId':sid,'passageId':f'v{verse}',
+                    'unitId':f'dharmanexus-v{verse}-{unit:03d}','start':start,'end':end,
+                    **({'group':group} if len(units)>1 else {}),
+                    'note':clause.get('note','Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending.')})
+
+
+def relay_root_phrases():
+    # These sources explicitly distinguish verse from commentary. Their verse
+    # numbering follows Xuanzang: 4a belongs to the previous verse. Do not align
+    # that extra line to Sanskrit verse 3 or pretend that verse 4 contains it.
+    raw=(ROOT/'corpus.js').read_text('utf8')
+    corpus=json.loads(raw[raw.index('{'):].rstrip('\n;'))
+    normalize=lambda s: re.sub(r'\s+',' ',re.sub(r'[|।॥0-9]',' ',s)).strip()
+    for sid,pattern in [
+        ('vie_nguyen_hong',r'[Tt]ụng(?: lại)? nói\s*:\s*(.*?)Luận nói\s*:'),
+        ('zho_lu_cheng_2009',r'颂曰[：:]\s*(.*?)论曰[：:]'),
+    ]:
+        for passage in corpus['passages'][2:]:
+            verse=passage['number']; text=mapped_text(sid,verse)
+            matches=list(re.finditer(pattern,text,re.S))
+            assert len(matches)==(2 if verse in [17,18] else 1),(sid,verse)
+            root=normalize(passage['root'])
+            units=[int(u['number'].split('.')[1]) for u in passage['sentenceUnits']
+                   if normalize(u['targets'].get('san_levi_1925',''))
+                   and normalize(u['targets']['san_levi_1925']) in root]
+            if verse==14: units.insert(1,3) # katha / katham spelling in backbone
+            if verse==4: units=[5,6,10]
+            if verse==10: units=[1,5,6] # kalpitatmana is not a separate root line here
+            groups=[[1,3],[9]] if verse==17 else [[1],[7]] if verse==18 else [units]
+            for index,(match,numbers) in enumerate(zip(matches,groups)):
+                start,end=match.span(1)
+                if verse==3:
+                    marker='Như mộng không có dụng.' if sid.startswith('vie_') else '也会有用，如梦中遗精。'
+                    assert text[start:end].count(marker)==1
+                    end=text.index(marker,start)
+                while end>start and text[end-1].isspace(): end-=1
+                group={'id':f'{sid}-v{verse}-root-{index}',
+                       'numbers':[f'{verse}.{u}' for u in numbers],
+                       'note':'The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted.'}
+                for unit in numbers:
+                    plan['phraseMappings'].append({'sourceId':sid,'passageId':f'v{verse}',
+                        'unitId':f'dharmanexus-v{verse}-{unit:03d}','start':start,'end':end,
+                        **({'group':group} if len(numbers)>1 else {}),
+                        'note':'Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence.'})
+
+
 if __name__ == '__main__':
     korean()
     thai()
@@ -395,6 +461,8 @@ if __name__ == '__main__':
     opening_phrases()
     romanian_roots()
     checked_opening_phrases()
+    curated_phrases()
+    relay_root_phrases()
     validate()
     target = ROOT / 'source-witnesses/document-witness-plan.json'
     target.write_text(json.dumps(plan,ensure_ascii=False,indent=2)+'\n',encoding='utf8')

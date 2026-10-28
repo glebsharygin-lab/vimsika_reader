@@ -23433,6 +23433,3465 @@
         ],
         "note": "Hindi gives the simile before the thesis in one comparative sentence; the whole sentence is shared."
       }
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-001",
+      "start": 0,
+      "end": 120,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v1-clause-0",
+        "numbers": [
+          "1.1",
+          "1.2"
+        ],
+        "note": "The sutra citation and Mahayana statement are combined in reversed order."
+      },
+      "note": "The sutra citation and Mahayana statement are combined in reversed order."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-002",
+      "start": 0,
+      "end": 120,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v1-clause-0",
+        "numbers": [
+          "1.1",
+          "1.2"
+        ],
+        "note": "The sutra citation and Mahayana statement are combined in reversed order."
+      },
+      "note": "The sutra citation and Mahayana statement are combined in reversed order."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-003",
+      "start": 120,
+      "end": 180,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-004",
+      "start": 180,
+      "end": 240,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-005",
+      "start": 240,
+      "end": 287,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-006",
+      "start": 287,
+      "end": 470,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v1-clause-4",
+        "numbers": [
+          "1.6",
+          "1.7"
+        ],
+        "note": "Thesis and simile form one translated comparative sentence."
+      },
+      "note": "Thesis and simile form one translated comparative sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v1",
+      "unitId": "dharmanexus-v1-007",
+      "start": 287,
+      "end": 470,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v1-clause-4",
+        "numbers": [
+          "1.6",
+          "1.7"
+        ],
+        "note": "Thesis and simile form one translated comparative sentence."
+      },
+      "note": "Thesis and simile form one translated comparative sentence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 0,
+      "end": 116,
+      "group": {
+        "id": "vie_nguyen_hong-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "The translated sentence covers these Sanskrit units together."
+      },
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 0,
+      "end": 116,
+      "group": {
+        "id": "vie_nguyen_hong-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "The translated sentence covers these Sanskrit units together."
+      },
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-003",
+      "start": 116,
+      "end": 145,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-004",
+      "start": 145,
+      "end": 237,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-005",
+      "start": 237,
+      "end": 312,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-006",
+      "start": 312,
+      "end": 379,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-007",
+      "start": 379,
+      "end": 475,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-008",
+      "start": 475,
+      "end": 571,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-009",
+      "start": 571,
+      "end": 653,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-010",
+      "start": 653,
+      "end": 857,
+      "group": {
+        "id": "vie_nguyen_hong-v2-clause-8",
+        "numbers": [
+          "2.10",
+          "2.11"
+        ],
+        "note": "The two efficacy examples share the concluding contrast about other objects."
+      },
+      "note": "The two efficacy examples share the concluding contrast about other objects."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-011",
+      "start": 653,
+      "end": 857,
+      "group": {
+        "id": "vie_nguyen_hong-v2-clause-8",
+        "numbers": [
+          "2.10",
+          "2.11"
+        ],
+        "note": "The two efficacy examples share the concluding contrast about other objects."
+      },
+      "note": "The two efficacy examples share the concluding contrast about other objects."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-012",
+      "start": 857,
+      "end": 1033,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-013",
+      "start": 1033,
+      "end": 1067,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 22,
+      "end": 139,
+      "group": {
+        "id": "zho_lu_cheng_2009-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "The translated sentence covers these Sanskrit units together."
+      },
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 22,
+      "end": 139,
+      "group": {
+        "id": "zho_lu_cheng_2009-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "The translated sentence covers these Sanskrit units together."
+      },
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-003",
+      "start": 139,
+      "end": 151,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-004",
+      "start": 151,
+      "end": 191,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-005",
+      "start": 191,
+      "end": 215,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-006",
+      "start": 215,
+      "end": 232,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-007",
+      "start": 232,
+      "end": 258,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-008",
+      "start": 258,
+      "end": 282,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-009",
+      "start": 282,
+      "end": 381,
+      "group": {
+        "id": "zho_lu_cheng_2009-v2-clause-7",
+        "numbers": [
+          "2.9",
+          "2.10",
+          "2.11"
+        ],
+        "note": "Three examples share the final collective contrast and parenthetical explanation."
+      },
+      "note": "Three examples share the final collective contrast and parenthetical explanation."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-010",
+      "start": 282,
+      "end": 381,
+      "group": {
+        "id": "zho_lu_cheng_2009-v2-clause-7",
+        "numbers": [
+          "2.9",
+          "2.10",
+          "2.11"
+        ],
+        "note": "Three examples share the final collective contrast and parenthetical explanation."
+      },
+      "note": "Three examples share the final collective contrast and parenthetical explanation."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-011",
+      "start": 282,
+      "end": 381,
+      "group": {
+        "id": "zho_lu_cheng_2009-v2-clause-7",
+        "numbers": [
+          "2.9",
+          "2.10",
+          "2.11"
+        ],
+        "note": "Three examples share the final collective contrast and parenthetical explanation."
+      },
+      "note": "Three examples share the final collective contrast and parenthetical explanation."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-012",
+      "start": 381,
+      "end": 450,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 0,
+      "end": 160,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "The translated sentence covers these Sanskrit units together."
+      },
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 0,
+      "end": 160,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "The translated sentence covers these Sanskrit units together."
+      },
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-003",
+      "start": 160,
+      "end": 192,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-004",
+      "start": 192,
+      "end": 290,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-005",
+      "start": 290,
+      "end": 359,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-006",
+      "start": 359,
+      "end": 426,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-007",
+      "start": 426,
+      "end": 530,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-008",
+      "start": 530,
+      "end": 622,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-009",
+      "start": 622,
+      "end": 797,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-010",
+      "start": 797,
+      "end": 983,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-011",
+      "start": 983,
+      "end": 1104,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-012",
+      "start": 1104,
+      "end": 1197,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 32,
+      "end": 145,
+      "group": {
+        "id": "hin_tiwary_1995_alternate-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "The translated sentence covers these Sanskrit units together."
+      },
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 32,
+      "end": 145,
+      "group": {
+        "id": "hin_tiwary_1995_alternate-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "The translated sentence covers these Sanskrit units together."
+      },
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-003",
+      "start": 145,
+      "end": 160,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-004",
+      "start": 160,
+      "end": 260,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-005",
+      "start": 260,
+      "end": 332,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-006",
+      "start": 332,
+      "end": 403,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-007",
+      "start": 403,
+      "end": 510,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-008",
+      "start": 510,
+      "end": 771,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-009",
+      "start": 771,
+      "end": 908,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-010",
+      "start": 908,
+      "end": 1144,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-011",
+      "start": 1144,
+      "end": 1386,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "hin_tiwary_1995_alternate",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-012",
+      "start": 1386,
+      "end": 1478,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 23,
+      "end": 144,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "The translated sentence covers these Sanskrit units together."
+      },
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 23,
+      "end": 144,
+      "group": {
+        "id": "kor_lee_gilsan_2021-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "The translated sentence covers these Sanskrit units together."
+      },
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-003",
+      "start": 144,
+      "end": 159,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-004",
+      "start": 159,
+      "end": 239,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-005",
+      "start": 239,
+      "end": 276,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-006",
+      "start": 276,
+      "end": 321,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-007",
+      "start": 321,
+      "end": 392,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-008",
+      "start": 392,
+      "end": 461,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-009",
+      "start": 461,
+      "end": 551,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-010",
+      "start": 551,
+      "end": 644,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-011",
+      "start": 644,
+      "end": 719,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "kor_lee_gilsan_2021",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-012",
+      "start": 719,
+      "end": 841,
+      "note": "Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 0,
+      "end": 277,
+      "group": {
+        "id": "eng_sharma_1993-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Only the quoted root verse is assigned; Sharma's subsequent explanatory commentary remains separate context."
+      },
+      "note": "Only the quoted root verse is assigned; Sharma's subsequent explanatory commentary remains separate context."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 0,
+      "end": 277,
+      "group": {
+        "id": "eng_sharma_1993-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Only the quoted root verse is assigned; Sharma's subsequent explanatory commentary remains separate context."
+      },
+      "note": "Only the quoted root verse is assigned; Sharma's subsequent explanatory commentary remains separate context."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-001",
+      "start": 50,
+      "end": 90,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-006",
+      "start": 359,
+      "end": 401,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v3-clause-1",
+        "numbers": [
+          "3.6",
+          "3.7"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-007",
+      "start": 359,
+      "end": 401,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v3-clause-1",
+        "numbers": [
+          "3.6",
+          "3.7"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-011",
+      "start": 476,
+      "end": 531,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-001",
+      "start": 0,
+      "end": 80,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v4-clause-0",
+        "numbers": [
+          "4.1",
+          "4.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-002",
+      "start": 0,
+      "end": 80,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v4-clause-0",
+        "numbers": [
+          "4.1",
+          "4.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-005",
+      "start": 285,
+      "end": 344,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v4-clause-1",
+        "numbers": [
+          "4.5",
+          "4.6",
+          "4.7"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-006",
+      "start": 285,
+      "end": 344,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v4-clause-1",
+        "numbers": [
+          "4.5",
+          "4.6",
+          "4.7"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-007",
+      "start": 285,
+      "end": 344,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v4-clause-1",
+        "numbers": [
+          "4.5",
+          "4.6",
+          "4.7"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-010",
+      "start": 450,
+      "end": 548,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-001",
+      "start": 0,
+      "end": 201,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v5-clause-0",
+        "numbers": [
+          "5.1",
+          "5.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-002",
+      "start": 0,
+      "end": 201,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v5-clause-0",
+        "numbers": [
+          "5.1",
+          "5.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v6",
+      "unitId": "dharmanexus-v6-001",
+      "start": 471,
+      "end": 633,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v6-clause-0",
+        "numbers": [
+          "6.1",
+          "6.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v6",
+      "unitId": "dharmanexus-v6-002",
+      "start": 471,
+      "end": 633,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v6-clause-0",
+        "numbers": [
+          "6.1",
+          "6.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-001",
+      "start": 6,
+      "end": 134,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v7-clause-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-002",
+      "start": 6,
+      "end": 134,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v7-clause-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-002",
+      "start": 146,
+      "end": 286,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v8-clause-0",
+        "numbers": [
+          "8.2",
+          "8.3",
+          "8.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-003",
+      "start": 146,
+      "end": 286,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v8-clause-0",
+        "numbers": [
+          "8.2",
+          "8.3",
+          "8.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-004",
+      "start": 146,
+      "end": 286,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v8-clause-0",
+        "numbers": [
+          "8.2",
+          "8.3",
+          "8.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-001",
+      "start": 38,
+      "end": 213,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v9-clause-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-002",
+      "start": 38,
+      "end": 213,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v9-clause-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-001",
+      "start": 80,
+      "end": 152,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-005",
+      "start": 446,
+      "end": 539,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v10-clause-1",
+        "numbers": [
+          "10.5",
+          "10.6"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-006",
+      "start": 446,
+      "end": 539,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v10-clause-1",
+        "numbers": [
+          "10.5",
+          "10.6"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-012",
+      "start": 1080,
+      "end": 1150,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-001",
+      "start": 186,
+      "end": 371,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v11-clause-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-002",
+      "start": 186,
+      "end": 371,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v11-clause-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-001",
+      "start": 41,
+      "end": 133,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-004",
+      "start": 328,
+      "end": 402,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v12-clause-1",
+        "numbers": [
+          "12.4",
+          "12.5"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-005",
+      "start": 328,
+      "end": 402,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v12-clause-1",
+        "numbers": [
+          "12.4",
+          "12.5"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-001",
+      "start": 261,
+      "end": 327,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-003",
+      "start": 379,
+      "end": 470,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-001",
+      "start": 42,
+      "end": 94,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-003",
+      "start": 278,
+      "end": 317,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-012",
+      "start": 1045,
+      "end": 1136,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-001",
+      "start": 38,
+      "end": 214,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v15-clause-0",
+        "numbers": [
+          "15.1",
+          "15.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-002",
+      "start": 38,
+      "end": 214,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v15-clause-0",
+        "numbers": [
+          "15.1",
+          "15.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-001",
+      "start": 228,
+      "end": 333,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v16-clause-0",
+        "numbers": [
+          "16.1",
+          "16.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-002",
+      "start": 228,
+      "end": 333,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v16-clause-0",
+        "numbers": [
+          "16.1",
+          "16.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-003",
+      "start": 333,
+      "end": 493,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v16-clause-1",
+        "numbers": [
+          "16.3",
+          "16.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-004",
+      "start": 333,
+      "end": 493,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v16-clause-1",
+        "numbers": [
+          "16.3",
+          "16.4"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-001",
+      "start": 73,
+      "end": 135,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-003",
+      "start": 240,
+      "end": 264,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-009",
+      "start": 747,
+      "end": 830,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-001",
+      "start": 350,
+      "end": 430,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-007",
+      "start": 926,
+      "end": 993,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-001",
+      "start": 275,
+      "end": 422,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v19-clause-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-002",
+      "start": 275,
+      "end": 422,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v19-clause-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-001",
+      "start": 0,
+      "end": 105,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-007",
+      "start": 687,
+      "end": 726,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-001",
+      "start": 275,
+      "end": 350,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-002",
+      "start": 350,
+      "end": 385,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-003",
+      "start": 385,
+      "end": 427,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-004",
+      "start": 427,
+      "end": 501,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-001",
+      "start": 76,
+      "end": 172,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v22-clause-0",
+        "numbers": [
+          "22.1",
+          "22.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-002",
+      "start": 76,
+      "end": 172,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v22-clause-0",
+        "numbers": [
+          "22.1",
+          "22.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-006",
+      "start": 394,
+      "end": 426,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-001",
+      "start": 47,
+      "end": 116,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-005",
+      "start": 0,
+      "end": 80,
+      "group": {
+        "id": "eng_sharma_1993-v4-clause-0",
+        "numbers": [
+          "4.5",
+          "4.6"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-006",
+      "start": 0,
+      "end": 80,
+      "group": {
+        "id": "eng_sharma_1993-v4-clause-0",
+        "numbers": [
+          "4.5",
+          "4.6"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-001",
+      "start": 0,
+      "end": 181,
+      "group": {
+        "id": "eng_sharma_1993-v5-clause-0",
+        "numbers": [
+          "5.1",
+          "5.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-002",
+      "start": 0,
+      "end": 181,
+      "group": {
+        "id": "eng_sharma_1993-v5-clause-0",
+        "numbers": [
+          "5.1",
+          "5.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v6",
+      "unitId": "dharmanexus-v6-001",
+      "start": 832,
+      "end": 1034,
+      "group": {
+        "id": "eng_sharma_1993-v6-clause-0",
+        "numbers": [
+          "6.1",
+          "6.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v6",
+      "unitId": "dharmanexus-v6-002",
+      "start": 832,
+      "end": 1034,
+      "group": {
+        "id": "eng_sharma_1993-v6-clause-0",
+        "numbers": [
+          "6.1",
+          "6.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-001",
+      "start": 0,
+      "end": 151,
+      "group": {
+        "id": "eng_sharma_1993-v7-clause-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-002",
+      "start": 0,
+      "end": 151,
+      "group": {
+        "id": "eng_sharma_1993-v7-clause-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-001",
+      "start": 30,
+      "end": 212,
+      "group": {
+        "id": "eng_sharma_1993-v9-clause-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-002",
+      "start": 30,
+      "end": 212,
+      "group": {
+        "id": "eng_sharma_1993-v9-clause-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-001",
+      "start": 1477,
+      "end": 1626,
+      "group": {
+        "id": "eng_sharma_1993-v11-clause-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-002",
+      "start": 1477,
+      "end": 1626,
+      "group": {
+        "id": "eng_sharma_1993-v11-clause-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-001",
+      "start": 37,
+      "end": 121,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-004",
+      "start": 281,
+      "end": 409,
+      "group": {
+        "id": "eng_sharma_1993-v12-clause-1",
+        "numbers": [
+          "12.4",
+          "12.5"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-005",
+      "start": 281,
+      "end": 409,
+      "group": {
+        "id": "eng_sharma_1993-v12-clause-1",
+        "numbers": [
+          "12.4",
+          "12.5"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-001",
+      "start": 311,
+      "end": 398,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-001",
+      "start": 61,
+      "end": 164,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-001",
+      "start": 161,
+      "end": 492,
+      "group": {
+        "id": "eng_sharma_1993-v15-clause-0",
+        "numbers": [
+          "15.1",
+          "15.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-002",
+      "start": 161,
+      "end": 492,
+      "group": {
+        "id": "eng_sharma_1993-v15-clause-0",
+        "numbers": [
+          "15.1",
+          "15.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-001",
+      "start": 287,
+      "end": 409,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-003",
+      "start": 582,
+      "end": 614,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-001",
+      "start": 452,
+      "end": 559,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-001",
+      "start": 0,
+      "end": 157,
+      "group": {
+        "id": "eng_sharma_1993-v19-clause-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-002",
+      "start": 0,
+      "end": 157,
+      "group": {
+        "id": "eng_sharma_1993-v19-clause-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-001",
+      "start": 0,
+      "end": 91,
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-001",
+      "start": 105,
+      "end": 245,
+      "group": {
+        "id": "eng_sharma_1993-v22-clause-0",
+        "numbers": [
+          "22.1",
+          "22.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "eng_sharma_1993",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-002",
+      "start": 105,
+      "end": 245,
+      "group": {
+        "id": "eng_sharma_1993-v22-clause-0",
+        "numbers": [
+          "22.1",
+          "22.2"
+        ],
+        "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+      },
+      "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-001",
+      "start": 11,
+      "end": 80,
+      "group": {
+        "id": "vie_nguyen_hong-v3-root-0",
+        "numbers": [
+          "3.1",
+          "3.6",
+          "3.7",
+          "3.11"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-006",
+      "start": 11,
+      "end": 80,
+      "group": {
+        "id": "vie_nguyen_hong-v3-root-0",
+        "numbers": [
+          "3.1",
+          "3.6",
+          "3.7",
+          "3.11"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-007",
+      "start": 11,
+      "end": 80,
+      "group": {
+        "id": "vie_nguyen_hong-v3-root-0",
+        "numbers": [
+          "3.1",
+          "3.6",
+          "3.7",
+          "3.11"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-011",
+      "start": 11,
+      "end": 80,
+      "group": {
+        "id": "vie_nguyen_hong-v3-root-0",
+        "numbers": [
+          "3.1",
+          "3.6",
+          "3.7",
+          "3.11"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-005",
+      "start": 21,
+      "end": 114,
+      "group": {
+        "id": "vie_nguyen_hong-v4-root-0",
+        "numbers": [
+          "4.5",
+          "4.6",
+          "4.10"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-006",
+      "start": 21,
+      "end": 114,
+      "group": {
+        "id": "vie_nguyen_hong-v4-root-0",
+        "numbers": [
+          "4.5",
+          "4.6",
+          "4.10"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-010",
+      "start": 21,
+      "end": 114,
+      "group": {
+        "id": "vie_nguyen_hong-v4-root-0",
+        "numbers": [
+          "4.5",
+          "4.6",
+          "4.10"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-001",
+      "start": 11,
+      "end": 108,
+      "group": {
+        "id": "vie_nguyen_hong-v5-root-0",
+        "numbers": [
+          "5.1",
+          "5.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-002",
+      "start": 11,
+      "end": 108,
+      "group": {
+        "id": "vie_nguyen_hong-v5-root-0",
+        "numbers": [
+          "5.1",
+          "5.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v6",
+      "unitId": "dharmanexus-v6-001",
+      "start": 11,
+      "end": 109,
+      "group": {
+        "id": "vie_nguyen_hong-v6-root-0",
+        "numbers": [
+          "6.1",
+          "6.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v6",
+      "unitId": "dharmanexus-v6-002",
+      "start": 11,
+      "end": 109,
+      "group": {
+        "id": "vie_nguyen_hong-v6-root-0",
+        "numbers": [
+          "6.1",
+          "6.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-001",
+      "start": 15,
+      "end": 104,
+      "group": {
+        "id": "vie_nguyen_hong-v7-root-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-002",
+      "start": 15,
+      "end": 104,
+      "group": {
+        "id": "vie_nguyen_hong-v7-root-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-003",
+      "start": 11,
+      "end": 90,
+      "group": {
+        "id": "vie_nguyen_hong-v8-root-0",
+        "numbers": [
+          "8.3",
+          "8.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-004",
+      "start": 11,
+      "end": 90,
+      "group": {
+        "id": "vie_nguyen_hong-v8-root-0",
+        "numbers": [
+          "8.3",
+          "8.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-001",
+      "start": 80,
+      "end": 244,
+      "group": {
+        "id": "vie_nguyen_hong-v9-root-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-002",
+      "start": 80,
+      "end": 244,
+      "group": {
+        "id": "vie_nguyen_hong-v9-root-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-001",
+      "start": 61,
+      "end": 175,
+      "group": {
+        "id": "vie_nguyen_hong-v10-root-0",
+        "numbers": [
+          "10.1",
+          "10.5",
+          "10.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-005",
+      "start": 61,
+      "end": 175,
+      "group": {
+        "id": "vie_nguyen_hong-v10-root-0",
+        "numbers": [
+          "10.1",
+          "10.5",
+          "10.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-006",
+      "start": 61,
+      "end": 175,
+      "group": {
+        "id": "vie_nguyen_hong-v10-root-0",
+        "numbers": [
+          "10.1",
+          "10.5",
+          "10.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-001",
+      "start": 21,
+      "end": 147,
+      "group": {
+        "id": "vie_nguyen_hong-v11-root-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-002",
+      "start": 21,
+      "end": 147,
+      "group": {
+        "id": "vie_nguyen_hong-v11-root-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-001",
+      "start": 21,
+      "end": 138,
+      "group": {
+        "id": "vie_nguyen_hong-v12-root-0",
+        "numbers": [
+          "12.1",
+          "12.4",
+          "12.5"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-004",
+      "start": 21,
+      "end": 138,
+      "group": {
+        "id": "vie_nguyen_hong-v12-root-0",
+        "numbers": [
+          "12.1",
+          "12.4",
+          "12.5"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-005",
+      "start": 21,
+      "end": 138,
+      "group": {
+        "id": "vie_nguyen_hong-v12-root-0",
+        "numbers": [
+          "12.1",
+          "12.4",
+          "12.5"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-001",
+      "start": 21,
+      "end": 144,
+      "group": {
+        "id": "vie_nguyen_hong-v13-root-0",
+        "numbers": [
+          "13.1",
+          "13.3"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-003",
+      "start": 21,
+      "end": 144,
+      "group": {
+        "id": "vie_nguyen_hong-v13-root-0",
+        "numbers": [
+          "13.1",
+          "13.3"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-001",
+      "start": 11,
+      "end": 109,
+      "group": {
+        "id": "vie_nguyen_hong-v14-root-0",
+        "numbers": [
+          "14.1",
+          "14.3",
+          "14.12"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-003",
+      "start": 11,
+      "end": 109,
+      "group": {
+        "id": "vie_nguyen_hong-v14-root-0",
+        "numbers": [
+          "14.1",
+          "14.3",
+          "14.12"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-012",
+      "start": 11,
+      "end": 109,
+      "group": {
+        "id": "vie_nguyen_hong-v14-root-0",
+        "numbers": [
+          "14.1",
+          "14.3",
+          "14.12"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-001",
+      "start": 11,
+      "end": 102,
+      "group": {
+        "id": "vie_nguyen_hong-v15-root-0",
+        "numbers": [
+          "15.1",
+          "15.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-002",
+      "start": 11,
+      "end": 102,
+      "group": {
+        "id": "vie_nguyen_hong-v15-root-0",
+        "numbers": [
+          "15.1",
+          "15.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-001",
+      "start": 11,
+      "end": 108,
+      "group": {
+        "id": "vie_nguyen_hong-v16-root-0",
+        "numbers": [
+          "16.1",
+          "16.3",
+          "16.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-003",
+      "start": 11,
+      "end": 108,
+      "group": {
+        "id": "vie_nguyen_hong-v16-root-0",
+        "numbers": [
+          "16.1",
+          "16.3",
+          "16.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-004",
+      "start": 11,
+      "end": 108,
+      "group": {
+        "id": "vie_nguyen_hong-v16-root-0",
+        "numbers": [
+          "16.1",
+          "16.3",
+          "16.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-001",
+      "start": 11,
+      "end": 53,
+      "group": {
+        "id": "vie_nguyen_hong-v17-root-0",
+        "numbers": [
+          "17.1",
+          "17.3"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-003",
+      "start": 11,
+      "end": 53,
+      "group": {
+        "id": "vie_nguyen_hong-v17-root-0",
+        "numbers": [
+          "17.1",
+          "17.3"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-009",
+      "start": 702,
+      "end": 752,
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-001",
+      "start": 11,
+      "end": 62,
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-007",
+      "start": 552,
+      "end": 598,
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-001",
+      "start": 11,
+      "end": 102,
+      "group": {
+        "id": "vie_nguyen_hong-v19-root-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-002",
+      "start": 11,
+      "end": 102,
+      "group": {
+        "id": "vie_nguyen_hong-v19-root-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-001",
+      "start": 19,
+      "end": 107,
+      "group": {
+        "id": "vie_nguyen_hong-v20-root-0",
+        "numbers": [
+          "20.1",
+          "20.7"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-007",
+      "start": 19,
+      "end": 107,
+      "group": {
+        "id": "vie_nguyen_hong-v20-root-0",
+        "numbers": [
+          "20.1",
+          "20.7"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-001",
+      "start": 11,
+      "end": 103,
+      "group": {
+        "id": "vie_nguyen_hong-v21-root-0",
+        "numbers": [
+          "21.1",
+          "21.2",
+          "21.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-002",
+      "start": 11,
+      "end": 103,
+      "group": {
+        "id": "vie_nguyen_hong-v21-root-0",
+        "numbers": [
+          "21.1",
+          "21.2",
+          "21.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-004",
+      "start": 11,
+      "end": 103,
+      "group": {
+        "id": "vie_nguyen_hong-v21-root-0",
+        "numbers": [
+          "21.1",
+          "21.2",
+          "21.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-001",
+      "start": 11,
+      "end": 107,
+      "group": {
+        "id": "vie_nguyen_hong-v22-root-0",
+        "numbers": [
+          "22.1",
+          "22.2",
+          "22.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-002",
+      "start": 11,
+      "end": 107,
+      "group": {
+        "id": "vie_nguyen_hong-v22-root-0",
+        "numbers": [
+          "22.1",
+          "22.2",
+          "22.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "vie_nguyen_hong",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-006",
+      "start": 11,
+      "end": 107,
+      "group": {
+        "id": "vie_nguyen_hong-v22-root-0",
+        "numbers": [
+          "22.1",
+          "22.2",
+          "22.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-001",
+      "start": 24,
+      "end": 67,
+      "group": {
+        "id": "zho_lu_cheng_2009-v3-root-0",
+        "numbers": [
+          "3.1",
+          "3.6",
+          "3.7",
+          "3.11"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-006",
+      "start": 24,
+      "end": 67,
+      "group": {
+        "id": "zho_lu_cheng_2009-v3-root-0",
+        "numbers": [
+          "3.1",
+          "3.6",
+          "3.7",
+          "3.11"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-007",
+      "start": 24,
+      "end": 67,
+      "group": {
+        "id": "zho_lu_cheng_2009-v3-root-0",
+        "numbers": [
+          "3.1",
+          "3.6",
+          "3.7",
+          "3.11"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-011",
+      "start": 24,
+      "end": 67,
+      "group": {
+        "id": "zho_lu_cheng_2009-v3-root-0",
+        "numbers": [
+          "3.1",
+          "3.6",
+          "3.7",
+          "3.11"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-005",
+      "start": 6,
+      "end": 67,
+      "group": {
+        "id": "zho_lu_cheng_2009-v4-root-0",
+        "numbers": [
+          "4.5",
+          "4.6",
+          "4.10"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-006",
+      "start": 6,
+      "end": 67,
+      "group": {
+        "id": "zho_lu_cheng_2009-v4-root-0",
+        "numbers": [
+          "4.5",
+          "4.6",
+          "4.10"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-010",
+      "start": 6,
+      "end": 67,
+      "group": {
+        "id": "zho_lu_cheng_2009-v4-root-0",
+        "numbers": [
+          "4.5",
+          "4.6",
+          "4.10"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-001",
+      "start": 69,
+      "end": 122,
+      "group": {
+        "id": "zho_lu_cheng_2009-v5-root-0",
+        "numbers": [
+          "5.1",
+          "5.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-002",
+      "start": 69,
+      "end": 122,
+      "group": {
+        "id": "zho_lu_cheng_2009-v5-root-0",
+        "numbers": [
+          "5.1",
+          "5.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v6",
+      "unitId": "dharmanexus-v6-001",
+      "start": 152,
+      "end": 202,
+      "group": {
+        "id": "zho_lu_cheng_2009-v6-root-0",
+        "numbers": [
+          "6.1",
+          "6.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v6",
+      "unitId": "dharmanexus-v6-002",
+      "start": 152,
+      "end": 202,
+      "group": {
+        "id": "zho_lu_cheng_2009-v6-root-0",
+        "numbers": [
+          "6.1",
+          "6.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-001",
+      "start": 8,
+      "end": 60,
+      "group": {
+        "id": "zho_lu_cheng_2009-v7-root-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-002",
+      "start": 8,
+      "end": 60,
+      "group": {
+        "id": "zho_lu_cheng_2009-v7-root-0",
+        "numbers": [
+          "7.1",
+          "7.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-003",
+      "start": 95,
+      "end": 152,
+      "group": {
+        "id": "zho_lu_cheng_2009-v8-root-0",
+        "numbers": [
+          "8.3",
+          "8.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-004",
+      "start": 95,
+      "end": 152,
+      "group": {
+        "id": "zho_lu_cheng_2009-v8-root-0",
+        "numbers": [
+          "8.3",
+          "8.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-001",
+      "start": 38,
+      "end": 98,
+      "group": {
+        "id": "zho_lu_cheng_2009-v9-root-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-002",
+      "start": 38,
+      "end": 98,
+      "group": {
+        "id": "zho_lu_cheng_2009-v9-root-0",
+        "numbers": [
+          "9.1",
+          "9.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-001",
+      "start": 22,
+      "end": 71,
+      "group": {
+        "id": "zho_lu_cheng_2009-v10-root-0",
+        "numbers": [
+          "10.1",
+          "10.5",
+          "10.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-005",
+      "start": 22,
+      "end": 71,
+      "group": {
+        "id": "zho_lu_cheng_2009-v10-root-0",
+        "numbers": [
+          "10.1",
+          "10.5",
+          "10.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-006",
+      "start": 22,
+      "end": 71,
+      "group": {
+        "id": "zho_lu_cheng_2009-v10-root-0",
+        "numbers": [
+          "10.1",
+          "10.5",
+          "10.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-001",
+      "start": 50,
+      "end": 118,
+      "group": {
+        "id": "zho_lu_cheng_2009-v11-root-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-002",
+      "start": 50,
+      "end": 118,
+      "group": {
+        "id": "zho_lu_cheng_2009-v11-root-0",
+        "numbers": [
+          "11.1",
+          "11.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-001",
+      "start": 20,
+      "end": 108,
+      "group": {
+        "id": "zho_lu_cheng_2009-v12-root-0",
+        "numbers": [
+          "12.1",
+          "12.4",
+          "12.5"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-004",
+      "start": 20,
+      "end": 108,
+      "group": {
+        "id": "zho_lu_cheng_2009-v12-root-0",
+        "numbers": [
+          "12.1",
+          "12.4",
+          "12.5"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-005",
+      "start": 20,
+      "end": 108,
+      "group": {
+        "id": "zho_lu_cheng_2009-v12-root-0",
+        "numbers": [
+          "12.1",
+          "12.4",
+          "12.5"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-001",
+      "start": 83,
+      "end": 135,
+      "group": {
+        "id": "zho_lu_cheng_2009-v13-root-0",
+        "numbers": [
+          "13.1",
+          "13.3"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-003",
+      "start": 83,
+      "end": 135,
+      "group": {
+        "id": "zho_lu_cheng_2009-v13-root-0",
+        "numbers": [
+          "13.1",
+          "13.3"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-001",
+      "start": 52,
+      "end": 105,
+      "group": {
+        "id": "zho_lu_cheng_2009-v14-root-0",
+        "numbers": [
+          "14.1",
+          "14.3",
+          "14.12"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-003",
+      "start": 52,
+      "end": 105,
+      "group": {
+        "id": "zho_lu_cheng_2009-v14-root-0",
+        "numbers": [
+          "14.1",
+          "14.3",
+          "14.12"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-012",
+      "start": 52,
+      "end": 105,
+      "group": {
+        "id": "zho_lu_cheng_2009-v14-root-0",
+        "numbers": [
+          "14.1",
+          "14.3",
+          "14.12"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-001",
+      "start": 183,
+      "end": 267,
+      "group": {
+        "id": "zho_lu_cheng_2009-v15-root-0",
+        "numbers": [
+          "15.1",
+          "15.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-002",
+      "start": 183,
+      "end": 267,
+      "group": {
+        "id": "zho_lu_cheng_2009-v15-root-0",
+        "numbers": [
+          "15.1",
+          "15.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-001",
+      "start": 83,
+      "end": 143,
+      "group": {
+        "id": "zho_lu_cheng_2009-v16-root-0",
+        "numbers": [
+          "16.1",
+          "16.3",
+          "16.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-003",
+      "start": 83,
+      "end": 143,
+      "group": {
+        "id": "zho_lu_cheng_2009-v16-root-0",
+        "numbers": [
+          "16.1",
+          "16.3",
+          "16.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-004",
+      "start": 83,
+      "end": 143,
+      "group": {
+        "id": "zho_lu_cheng_2009-v16-root-0",
+        "numbers": [
+          "16.1",
+          "16.3",
+          "16.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-001",
+      "start": 138,
+      "end": 172,
+      "group": {
+        "id": "zho_lu_cheng_2009-v17-root-0",
+        "numbers": [
+          "17.1",
+          "17.3"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-003",
+      "start": 138,
+      "end": 172,
+      "group": {
+        "id": "zho_lu_cheng_2009-v17-root-0",
+        "numbers": [
+          "17.1",
+          "17.3"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-009",
+      "start": 435,
+      "end": 462,
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-001",
+      "start": 141,
+      "end": 161,
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-007",
+      "start": 342,
+      "end": 367,
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-001",
+      "start": 62,
+      "end": 104,
+      "group": {
+        "id": "zho_lu_cheng_2009-v19-root-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-002",
+      "start": 62,
+      "end": 104,
+      "group": {
+        "id": "zho_lu_cheng_2009-v19-root-0",
+        "numbers": [
+          "19.1",
+          "19.2"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-001",
+      "start": 8,
+      "end": 52,
+      "group": {
+        "id": "zho_lu_cheng_2009-v20-root-0",
+        "numbers": [
+          "20.1",
+          "20.7"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-007",
+      "start": 8,
+      "end": 52,
+      "group": {
+        "id": "zho_lu_cheng_2009-v20-root-0",
+        "numbers": [
+          "20.1",
+          "20.7"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-001",
+      "start": 108,
+      "end": 157,
+      "group": {
+        "id": "zho_lu_cheng_2009-v21-root-0",
+        "numbers": [
+          "21.1",
+          "21.2",
+          "21.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-002",
+      "start": 108,
+      "end": 157,
+      "group": {
+        "id": "zho_lu_cheng_2009-v21-root-0",
+        "numbers": [
+          "21.1",
+          "21.2",
+          "21.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-004",
+      "start": 108,
+      "end": 157,
+      "group": {
+        "id": "zho_lu_cheng_2009-v21-root-0",
+        "numbers": [
+          "21.1",
+          "21.2",
+          "21.4"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-001",
+      "start": 50,
+      "end": 102,
+      "group": {
+        "id": "zho_lu_cheng_2009-v22-root-0",
+        "numbers": [
+          "22.1",
+          "22.2",
+          "22.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-002",
+      "start": 50,
+      "end": 102,
+      "group": {
+        "id": "zho_lu_cheng_2009-v22-root-0",
+        "numbers": [
+          "22.1",
+          "22.2",
+          "22.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
+    },
+    {
+      "sourceId": "zho_lu_cheng_2009",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-006",
+      "start": 50,
+      "end": 102,
+      "group": {
+        "id": "zho_lu_cheng_2009-v22-root-0",
+        "numbers": [
+          "22.1",
+          "22.2",
+          "22.6"
+        ],
+        "note": "The printed verse is shared across these Sanskrit root units; no word-level subdivision is asserted."
+      },
+      "note": "Explicit verse/commentary boundary, compared with Sanskrit root and Xuanzang verse order; draft correspondence."
     }
   ],
   "documentAdditions": [
