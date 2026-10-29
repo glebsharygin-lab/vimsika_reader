@@ -1,0 +1,33 @@
+{
+  "manuscriptId": "bnf-pt797",
+  "createdAt": "2026-10-29",
+  "format": "Deep Zoom Image",
+  "tileSize": 512,
+  "overlap": 1,
+  "jpegQuality": 95,
+  "source": "BnF, Pelliot tibétain 797, monochrome substitute R33337; images 1 and 2 via Wikimedia Commons",
+  "credit": "Source gallica.bnf.fr / Bibliothèque nationale de France",
+  "sourceRecord": "https://commons.wikimedia.org/wiki/Category:Pelliot_tib%C3%A9tain_797_-_btv1b10097230v",
+  "rights": "Public domain according to the Commons image records; institutional source attribution retained.",
+  "processing": "Lower levels resized with Lanczos; all levels JPEG-encoded. No enhancement, restoration or transcription changes. Original scan coordinate system retained.",
+  "views": [
+    {
+      "view": 1,
+      "width": 6664,
+      "height": 2592,
+      "maxLevel": 13,
+      "tiles": 125,
+      "tileBytes": 3503649,
+      "sourceSHA256": "3e065cca264e38902969650f6e91e0d21e93a84701a4f0538b52a1b2bf4159e5"
+    },
+    {
+      "view": 2,
+      "width": 6664,
+      "height": 2592,
+      "maxLevel": 13,
+      "tiles": 125,
+      "tileBytes": 5514755,
+      "sourceSHA256": "a233d54a34ebd6638cc267982353acacf83d8a7893bc3eceefa478ac2eee2f0d"
+    }
+  ]
+}
