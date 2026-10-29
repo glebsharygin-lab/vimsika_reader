@@ -42,9 +42,9 @@ const {chromium}=require('playwright');const root=path.resolve(__dirname,'..');
   assert.equal(await page.locator('#ms-brightness').inputValue(),'100');
   if(process.argv.includes('--preview')) {
     await page.locator('.ms-image-adjust summary').click();
-    await page.screenshot({path:path.join(root,'../inspection/qa-manuscripts-0.32-desktop.png'),fullPage:true});
+    await page.screenshot({path:path.join(root,'../inspection/qa-manuscripts-0.34-desktop.png'),fullPage:true});
     await page.setViewportSize({width:390,height:844});
-    await page.screenshot({path:path.join(root,'../inspection/qa-manuscripts-0.32-mobile.png'),fullPage:true});
+    await page.screenshot({path:path.join(root,'../inspection/qa-manuscripts-0.34-mobile.png'),fullPage:true});
     assert.deepEqual(errors,[]);console.log('PASS: base package preview with static tiles, thumbnails and display controls.');return;
   }
   if(process.argv.includes('--live-image')||process.argv.includes('--fallback')) {
@@ -135,7 +135,7 @@ const {chromium}=require('playwright');const root=path.resolve(__dirname,'..');
   await page.locator('#ms-conflict-form button[type="submit"]').click();
   await page.waitForFunction(()=>document.querySelector('#ms-status')?.textContent.includes('Review decisions saved'));
   const rebased=await page.evaluate(()=>JSON.parse(localStorage.getItem('vimsika-manuscript-draft-v1:bnf-pt797')));
-  assert.equal(rebased.baseVersion,'0.3.0-draft');assert.equal(rebased.records.length,2);assert.equal(rebased.resolutions.length,3);
+  assert.equal(rebased.baseVersion,'0.4.0-draft');assert.equal(rebased.records.length,2);assert.equal(rebased.resolutions.length,3);
   assert.ok((await page.locator('#ms-lines .ms-mark-unclear').innerText()).includes('Draft'));
   assert.equal(rebased.resolutions.find(r=>r.choice==='base').previous.value.text,'Private question needing review.');
   await page.reload();await page.waitForSelector('#ms-surface');assert.equal(await page.locator('#ms-conflict-form').count(),0);

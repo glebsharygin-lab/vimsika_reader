@@ -1,0 +1,68 @@
+{
+  "source": "silk2017",
+  "sourcePages": "344–345, sections 0–II K",
+  "checked": "2026-10-29",
+  "status": "draft; source wording follows Silk, physical extents checked against scan crops",
+  "lines": [
+    {
+      "id": "pt797-s01-l01",
+      "revision": 2,
+      "scope": "complete",
+      "text": "rgya gar skad du | bïng shï ka ’brïd tï || || bod skad du nyï shu pa ’grel ba || ’jam dpal gzhonur gyur pa la phyag ’tsal lo || theg pa chen po la khams gsum pa rnam par rïg pa tsam du rnam par gzhag ste || mdo las kye rgyal ba’ï sras dag | ’dï lta ste | khams gsum pa ’dï ni sems tsam mo zhes ’byung ba’ï phyir ro ||"
+    },
+    {
+      "id": "pt797-s01-l02",
+      "revision": 3,
+      "scope": "complete",
+      "text": "sems dang yïd dang rnam par shes pa dang | rnam par rïg pa zhes bya ba nï rnam grangs su gtogs pa’o || sems de yang ’dïr mtshungs par ldan ba dang | bcas par dgongs pa’o || tsam zhes bya ba smos pa nï don dgag pa’ï phyir ro || rnam par shes pa ’dï nyïd don du snang bar ’byung ste | dper na rab rïb can rnams kyïs || skra lastsogs pa"
+    },
+    {
+      "id": "pt797-s01-l03",
+      "revision": 2,
+      "scope": "complete",
+      "text": "mthong ba bzhïn te | don gang yang myed do || ’dïr ’dï skad ces brgal te || gal te rnam rïg don myin na || yul dang dus la nges myed cïng || sems kyang nges myed ma yïn la || bya ba byed pa ’ang myï rïgs ’gyur || jï skad du bstan par ’gyur zhe na || gal te gzugs lastsogs pa’ï don myed par gzugs"
+    },
+    {
+      "id": "pt797-s01-l04",
+      "revision": 2,
+      "scope": "complete",
+      "text": "lastsogs pa’ï rnam par rïg pa ’byung ste || gzugs lastsogs pa’ï don las ma yïn na || cï’i phyir yul la lar ’byung la thams cad na ma yïn || yul de nyid na ’ang res ’ga’ ’byung la | thams cad du ma yïn | yul dang dus de na ’khod pa thams cad kyï sems la nges pa myed"
+    },
+    {
+      "id": "pt797-s01-l05",
+      "revision": 2,
+      "scope": "complete",
+      "text": "bar ’byung la | ’ga’ tsam la ma yïn || jï ltar rab rïb can nyïd kyï sems la | skra lastsogs pa snang gï gzhan dag la ma yïn || cï’i phyir gang rab rïb can gyïs mthong ba’ï skra dang sbrang bu lastsogs pas skra lastsogs pa’ï bya ba myï byed la | de ma yïn ba gzhan dag gïs nï byed || rmyï lam na mthong ba’ï bza’ ba"
+    },
+    {
+      "id": "pt797-s01-l06",
+      "revision": 2,
+      "scope": "complete",
+      "text": "dang btung ba dang | bgo ba dang dug dang mtshon lastsogs pas | zas dang skom lastsogs pa’ï bya ba myï byed la || de ma yïn ba gzhan dag gïs nï byed | drï za’ï grong khyer yod pa ma yïn bas grong khyer gyï bya ba myï byed la | de ma yïn ba gzhan dag gïs nï byed || ’dï dag don myed par myed du ’dra na | yul dang dus nges"
+    },
+    {
+      "id": "pt797-s02-l01",
+      "revision": 2,
+      "scope": "excerpt",
+      "text": "pa dang | sems nges pa myed pa dang | bya ba byed pa ’dï dag kyang myï rung ngo zhe na ||"
+    }
+  ],
+  "reportedAdditions": [
+    {
+      "lineId": "pt797-s01-l04",
+      "context": "thams cad na",
+      "startInContext": 8,
+      "text": "d",
+      "source": "Silk 2017 p.358, note II D",
+      "note": "Silk reports the Tibetan da of cad as added below the line, after the string-hole interruption. The transliteration marks the final d; this is a reported scribal addition, not a supplied restoration."
+    },
+    {
+      "lineId": "pt797-s01-l05",
+      "context": "skra dang sbrang bu",
+      "startInContext": 5,
+      "text": "dang",
+      "source": "Silk 2017 p.358, note II H",
+      "note": "Silk reports dang in skra dang as added below the line. The transliteration retains the addition in reading order; its scribal hand has not been independently identified."
+    }
+  ]
+}

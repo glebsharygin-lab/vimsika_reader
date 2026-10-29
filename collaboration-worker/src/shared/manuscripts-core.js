@@ -8,7 +8,11 @@
   const check = (yes,message) => { if (!yes) throw new Error(message); };
   const idOK = value => typeof value === 'string' && /^[a-zA-Z][a-zA-Z0-9_-]{0,159}$/.test(value);
   const https = value => { try { return new URL(value).protocol === 'https:'; } catch { return false; } };
-  const esc = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
+  const esc = value => {
+    const text=String(value??'');
+    for(const char of text) {const c=char.codePointAt(0);check(c===9||c===10||c===13||c>=32&&c<=0xd7ff||c>=0xe000&&c<=0xfffd||c>=0x10000&&c<=0x10ffff,'TEI export contains an XML-invalid character. The saved draft has not been changed.');}
+    return text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
+  };
   function rectangle(box,surface) {
     return Array.isArray(box) && box.length === 4 && box.every(Number.isFinite) &&
       box[0]>=0 && box[1]>=0 && box[2]>0 && box[3]>0 &&
@@ -158,23 +162,26 @@
     check(!applied.conflicts.length,'Imported revisions conflict with the base; nothing was imported.');
     return copy;
   }
-  function markedText(value) {
+  function markedText(value,prefix) {
     const chars=Array.from(value.text);let cursor=0,xml='';
-    for(const mark of value.marks||[]) {
-      xml+=esc(chars.slice(cursor,mark.start).join(''))+`<${mark.type}${mark.reason?` reason="${esc(mark.reason)}"`:''}>`+esc(chars.slice(mark.start,mark.end).join(''))+`</${mark.type}>`;cursor=mark.end;
+    for(const [index,mark] of (value.marks||[]).entries()) {
+      xml+=esc(chars.slice(cursor,mark.start).join(''))+`<${mark.type}${mark.reason?` xml:id="${esc(prefix)}-mark-${index+1}"`:''}>`+esc(chars.slice(mark.start,mark.end).join(''))+`</${mark.type}>`;cursor=mark.end;
     }
     return xml+esc(chars.slice(cursor).join(''));
+  }
+  function markNotes(value,prefix) {
+    return (value.marks||[]).map((mark,index)=>mark.reason?`<note type="reading-mark" target="#${esc(prefix)}-mark-${index+1}">${esc(mark.reason)}</note>`:'').join('');
   }
   function tei(data,record,reviewHistory=[]) {
     validatePackage(data);
     const surfaceOrder=new Map(data.surfaces.map(s=>[s.id,s.order]));
     const orderedLines=[...data.lines].sort((a,b)=>surfaceOrder.get(a.surfaceId)-surfaceOrder.get(b.surfaceId)||a.order-b.order);
     const surfaces=data.surfaces.map(s=>`<surface xml:id="${esc(s.id)}" n="${esc(s.label)}" ulx="0" uly="0" lrx="${s.width}" lry="${s.height}"><graphic url="${esc(s.image.url)}"/>${data.regions.filter(r=>r.surfaceId===s.id).map(r=>`<zone xml:id="${esc(r.id)}" ulx="${r.xywh[0]}" uly="${r.xywh[1]}" lrx="${r.xywh[0]+r.xywh[2]}" lry="${r.xywh[1]+r.xywh[3]}"/>`).join('')}</surface>`).join('\n');
-    const sections=layers.map(layer=>`<div type="transcription" subtype="${layer}">${orderedLines.filter(l=>l.layers[layer]).map(l=>`<ab xml:id="${esc(l.id)}-${layer}"><lb n="${l.order}" facs="${l.regionIds.map(id=>'#'+esc(id)).join(' ')}"/><seg type="${esc(l.layers[layer].scope)}">${markedText(l.layers[layer])}</seg><note>${esc(l.layers[layer].note)}</note></ab>`).join('\n')}</div>`).join('\n');
+    const sections=layers.map(layer=>`<div type="transcription" subtype="${layer}">${orderedLines.filter(l=>l.layers[layer]).map(l=>`<ab xml:id="${esc(l.id)}-${layer}"><lb n="${l.order}" facs="${l.regionIds.map(id=>'#'+esc(id)).join(' ')}"/><seg type="${esc(l.layers[layer].scope)}">${markedText(l.layers[layer],l.id+'-'+layer)}</seg><note>${esc(l.layers[layer].note)}</note>${markNotes(l.layers[layer],l.id+'-'+layer)}</ab>`).join('\n')}</div>`).join('\n');
     const physical=orderedLines.map(l=>`<ab xml:id="${esc(l.id)}" facs="${l.regionIds.map(id=>'#'+esc(id)).join(' ')}"><note>${esc(l.label)}; ${esc(l.status)}</note></ab>`).join('');
     const links=data.anchors.map(a=>`<link xml:id="${a.id}" type="${esc(a.relation)}" ana="${esc(a.level)}" target="${[...a.lineIds.map(id=>'#'+id),...a.passageIds.map(id=>'../index.html#'+id)].map(esc).join(' ')}"/>`).join('');
     const revisions=reviewHistory.length?`<revisionDesc>${reviewHistory.map(event=>`<change when="${esc(event.decidedAt)}" who="https://github.com/${esc(event.reviewer.login)}" type="${esc(event.decision)}">Proposal ${esc(event.proposal.id)} by ${esc(event.proposal.author.login)}, submitted ${esc(event.proposal.submittedAt)}; ${event.reviewer.id===event.proposal.author.id?'review by the author; ':''}${esc(event.note)}</change>`).join('')}</revisionDesc>`:'';
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader><fileDesc><titleStmt><title>${esc(record.shelfmark)} — ${esc(data.version)}</title><editor>${esc(data.editor)}</editor></titleStmt><publicationStmt><publisher>Viṃśikā Reader</publisher><availability status="restricted"><p>Local draft export; no publication or review is implied. ${esc(record.attribution)}. ${esc(record.rights.label)} ${esc(record.rights.url)}</p></availability></publicationStmt><sourceDesc><p>${esc(record.institution)}; ${esc(record.shelfmark)}. ${esc(record.sourceUrl)}</p></sourceDesc></fileDesc>${revisions}</teiHeader><facsimile>${surfaces}</facsimile><text><body><div type="physical-lines">${physical}</div>${sections}</body><back><div type="annotations">${data.annotations.map(a=>`<note xml:id="${a.id}" type="${esc(a.type)}" target="${a.targets.map(t=>'#'+esc(t.regionId||t.lineId)).join(' ')}">${esc(a.text)}</note>`).join('')}</div><div type="correspondence"><linkGrp type="manuscript-corpus">${links}</linkGrp></div></back></text></TEI>`;
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader><fileDesc><titleStmt><title>${esc(record.shelfmark)} — ${esc(data.version)}</title><editor>${esc(data.editor)}</editor></titleStmt><publicationStmt><publisher>Viṃśikā Reader</publisher><availability status="restricted"><p>Local draft export; no publication or review is implied. ${esc(record.attribution)}. ${esc(record.rights.label)} ${esc(record.rights.url)}</p></availability></publicationStmt><sourceDesc><p>${esc(record.institution)}; ${esc(record.shelfmark)}. ${esc(record.sourceUrl)}</p></sourceDesc></fileDesc>${revisions}</teiHeader><facsimile>${surfaces}</facsimile><text><body><div type="physical-lines">${physical}</div>${sections}</body><back><div type="annotations">${data.annotations.map(a=>`<note xml:id="${a.id}" type="${esc(a.type)}" target="${a.targets.map(t=>'#'+esc(t.regionId||t.lineId)).join(' ')}">${esc(a.text)}</note>`).join('')}</div><div type="correspondence">${links?`<linkGrp type="manuscript-corpus">${links}</linkGrp>`:'<p>No passage associations recorded.</p>'}</div></back></text></TEI>`;
   }
   // Adapter accepts simple, single-image IIIF Presentation 2/3 canvases only.
   // Complex canvases are explicitly rejected rather than silently mispositioned.

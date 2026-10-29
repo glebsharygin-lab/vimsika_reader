@@ -22,13 +22,13 @@ window.Manuscripts = (() => {
     return assetPromises.get(url);
   }
   async function load(id) {
-    await Promise.all([loadScript('manuscripts-core.js?v=0.33.0-draft'),loadScript('manuscripts/registry.js?v=0.33.0-draft')]);
+    await Promise.all([loadScript('manuscripts-core.js?v=0.34.0-draft'),loadScript('manuscripts/registry.js?v=0.34.0-draft')]);
     core=window.ManuscriptCore;registry=window.MANUSCRIPT_REGISTRY;
-    await loadScript('manuscripts-review-core.js?v=0.33.0-draft');
+    await loadScript('manuscripts-review-core.js?v=0.34.0-draft');
     record=registry.manuscripts.find(r=>r.id===id)||registry.manuscripts[0];m.id=record.id;
     if(!basePackages.has(m.id)) {
       if(!/^manuscripts\/[a-z0-9-]+\.js$/.test(record.package))throw new Error('Invalid manuscript package location.');
-      await loadScript(record.package+'?v=0.33.0-draft');
+      await loadScript(record.package+'?v=0.34.0-draft');
       const data=window.MANUSCRIPT_PACKAGES[m.id];core.validatePackage(data,state.corpus);basePackages.set(m.id,data);
     }
     publishedProblem='';
@@ -320,7 +320,7 @@ window.Manuscripts = (() => {
         }});
       if(window.ManuscriptReviewUI)mount();
       else shared.querySelector('#ms-shared-open').onclick=async()=>{
-        try{await loadScript('manuscripts-review.js?v=0.33.0-draft');if(shared.isConnected)mount();}catch(error){message(error.message);}
+        try{await loadScript('manuscripts-review.js?v=0.34.0-draft');if(shared.isConnected)mount();}catch(error){message(error.message);}
       };
     }
     container.querySelectorAll('[data-ms-line]').forEach(b=>b.onclick=()=>selectLine(b.dataset.msLine));
