@@ -5,11 +5,13 @@ window.Manuscripts = (() => {
   let registry,core,viewer,generation=0,current,record,statusMessage='',storageProblem='';
   let regionTrackers=[];
   let draftConflicts=[];
+  let drawing=null;
   let mobileSidebarBefore=null;
   let formBuffers={};
   try { formBuffers=JSON.parse(localStorage.getItem('vimsika-manuscript-forms-v1')||'{}'); } catch {}
-  const m={id:'bnf-pt797',surfaceId:'',lineId:'',layer:'transliteration',passageId:'',pane:'scan',sync:true,overlays:true,editing:false,query:''};
+  const m={id:'bnf-pt797',surfaceId:'',lineId:'',layer:'transliteration',passageId:'',pane:'scan',sync:true,overlays:true,editing:false,query:'',brightness:100,contrast:100};
   const e=value=>escapeHtml(value), a=value=>escapeAttribute(value);
+  const annotationTypes={'scholarly-note':'Scholarly note','variant-reading':'Variant reading','damage-lacuna':'Damage or lacuna','uncertain-reading':'Uncertain reading','editorial-conjecture':'Editorial conjecture','abbreviation':'Abbreviation or expansion','correction':'Correction, deletion or insertion','change-of-hand':'Change of hand','marginal-note':'Marginal or interlinear note','lexical-observation':'Lexical or grammatical observation','bibliographic-reference':'Bibliographical reference','question':'Question for review'};
   function loadScript(url) {
     if(!assetPromises.has(url))assetPromises.set(url,new Promise((resolve,reject)=>{
       const script=document.createElement('script');script.src=url;
@@ -18,12 +20,12 @@ window.Manuscripts = (() => {
     return assetPromises.get(url);
   }
   async function load(id) {
-    await Promise.all([loadScript('manuscripts-core.js?v=0.31.1-draft'),loadScript('manuscripts/registry.js?v=0.31.1-draft')]);
+    await Promise.all([loadScript('manuscripts-core.js?v=0.32.0-draft'),loadScript('manuscripts/registry.js?v=0.32.0-draft')]);
     core=window.ManuscriptCore;registry=window.MANUSCRIPT_REGISTRY;
     record=registry.manuscripts.find(r=>r.id===id)||registry.manuscripts[0];m.id=record.id;
     if(!packages.has(m.id)) {
       if(!/^manuscripts\/[a-z0-9-]+\.js$/.test(record.package))throw new Error('Invalid manuscript package location.');
-      await loadScript(record.package+'?v=0.31.1-draft');
+      await loadScript(record.package+'?v=0.32.0-draft');
       const data=window.MANUSCRIPT_PACKAGES[m.id];core.validatePackage(data,state.corpus);packages.set(m.id,data);
     }
     const data=packages.get(m.id);
@@ -47,6 +49,7 @@ window.Manuscripts = (() => {
     }
   }
   function dispose() {
+    cancelDrawing();
     generation++;regionTrackers.forEach(t=>t.destroy());regionTrackers=[];if(viewer){viewer.destroy();viewer=null;}
     if(state.view!=='manuscripts'&&mobileSidebarBefore!==null) {
       state.sidebarCollapsed=mobileSidebarBefore;mobileSidebarBefore=null;applySidebarState();
@@ -77,7 +80,7 @@ window.Manuscripts = (() => {
     localStorage.setItem('vimsika-manuscript-draft-v1:'+m.id,JSON.stringify(draft));drafts.set(m.id,draft);
   }
   function upsert(draft,kind,value,author) {
-    const data=packages.get(m.id),collection={line:'lines',region:'regions',annotation:'annotations'}[kind];
+    const data=packages.get(m.id),collection={line:'lines',region:'regions',anchor:'anchors',annotation:'annotations'}[kind];
     if(!draft.records.length)draft.baseVersion=data.version;
     const base=data[collection].find(x=>x.id===value.id),old=draft.records.find(r=>r.targetId===value.id);
     const now=new Date().toISOString();
@@ -105,12 +108,20 @@ window.Manuscripts = (() => {
       const value=line.layers[m.layer],text=value?.text||'';
       const match=!m.query||text.toLocaleLowerCase().includes(m.query.toLocaleLowerCase())||current.annotations.some(n=>n.targets.some(t=>t.lineId===line.id||line.regionIds.includes(t.regionId))&&n.text.toLocaleLowerCase().includes(m.query.toLocaleLowerCase()));
       if(!match)return '';
-      const content=m.layer==='normalized'?text.split(/(\s+)/).map(word=>/^\s*$/.test(word)?e(word):`<button class="ms-word" data-ms-word="${a(word)}" data-ms-word-line="${line.id}" title="Look up this normalized form">${e(word)}</button>`).join(''):e(text);
+      const content=m.layer==='normalized'?text.split(/(\s+)/).map(word=>/^\s*$/.test(word)?e(word):`<button class="ms-word" data-ms-word="${a(word)}" data-ms-word-line="${line.id}" title="Look up this normalized form">${e(word)}</button>`).join(''):markedReading(value);
       return `<article class="ms-line ${line.id===m.lineId?'selected':''}" id="ms-line-${line.id}">
         <button class="ms-line-label" data-ms-line="${line.id}" type="button" aria-pressed="${line.id===m.lineId}">${e(line.label)} <span>${e(value?value.scope+' · '+value.status:'not transcribed')}</span></button>
         <p class="ms-line-text ${m.layer==='diplomatic'?'ms-tibetan':''}">${content||'No transcription recorded in this layer.'}</p>
         ${value?.note?`<p class="ms-note">${e(value.note)}</p>`:''}</article>`;
     }).join('')||'<p>No lines match this search in the selected surface and layer.</p>';
+  }
+  function markedReading(value) {
+    if(!value)return '';
+    const chars=Array.from(value.text);let end=0,html='';
+    for(const mark of value.marks||[]) {
+      html+=e(chars.slice(end,mark.start).join(''))+`<span class="ms-reading-mark ms-mark-${a(mark.type)}" title="${a(mark.type+(mark.reason?': '+mark.reason:''))}">${e(chars.slice(mark.start,mark.end).join(''))}<sup>[${e(mark.type)}]</sup></span>`;end=mark.end;
+    }
+    return html+e(chars.slice(end).join(''));
   }
   function researchHTML() {
     const line=selectedLine(),anchors=linked(),notes=current.annotations.filter(n=>n.targets.some(t=>t.lineId===m.lineId||line?.regionIds.includes(t.regionId)));
@@ -131,10 +142,46 @@ window.Manuscripts = (() => {
     return `<form id="ms-draft-form" class="ms-draft-form"><h4>Private draft · ${e(line.label)}</h4>
       <label>Editor name <input name="author" required value="${a(state.auth.user?.login||'Gleb Sharygin')}"></label>
       <label>${e(m.layer)} <textarea name="text" rows="5">${e(value?.text||'')}</textarea></label>
+      <details class="ms-reading-marks"><summary>Mark an uncertain or editorial reading</summary><input type="hidden" name="marks" value="${a(JSON.stringify(value?.marks||[]))}"><input type="hidden" name="marksBasis" value="${a(value?.text||'')}"><p>Select text in the transcription box, choose a mark and add it. These marks are private scholarly assertions.</p><label>Mark <select name="markType"><option value="unclear">Unclear reading</option><option value="damage">Damage</option><option value="supplied">Editorially supplied text</option><option value="add">Addition</option><option value="del">Deletion</option></select></label><label>Reason <input name="markReason" maxlength="500"></label><button type="button" id="ms-mark-selection">Mark selected text</button><button type="button" id="ms-clear-marks">Clear marks in this draft</button><p id="ms-mark-status">${value?.marks?.length||0} mark(s). Source readings remain recoverable.</p></details>
       <label>Extent <select name="scope"><option value="excerpt" ${value?.scope!=='complete'?'selected':''}>Excerpt of the physical line</option><option value="complete" ${value?.scope==='complete'?'selected':''}>Complete physical line</option></select></label>
       <label>Reading note / evidence <textarea name="note" rows="2">${e(value?.note||'')}</textarea></label>
-      <details><summary>Geometry in original image pixels</summary><label><input type="checkbox" name="editGeometry"> Save a region correction</label><div class="ms-coordinates">${['x','y','width','height'].map((key,i)=>`<label>${key}<input name="${key}" type="number" step="1" value="${region?.xywh[i]||0}"></label>`).join('')}</div><p>These values are independent of zoom and browser size.</p></details>
-      <label>Add a private scholarly note <textarea name="annotation" rows="2"></textarea></label><button type="submit">Save private draft</button><p>Changes stay in this browser. Export a copy for review and backup.</p></form>`;
+      <details><summary>Geometry in original image pixels</summary><label>Region to revise <select name="regionId">${line.regionIds.map((id,i)=>`<option value="${id}">Region ${i+1} · ${e(id)}</option>`).join('')}</select></label><label><input type="checkbox" name="editGeometry"> Save a region correction</label><label><input type="checkbox" name="addRegion"> Add this rectangle as another region of this line</label><div class="ms-coordinates">${['x','y','width','height'].map((key,i)=>`<label>${key}<input name="${key}" type="number" step="1" value="${region?.xywh[i]||0}"></label>`).join('')}</div><button type="button" data-ms-draw="ms-draft-form">Draw rectangle on scan</button><p>Coordinates use the original image. Drawing stages a rectangle; Save private draft applies it.</p></details>
+      <label>Note type <select name="annotationType">${Object.entries(annotationTypes).map(([key,label])=>`<option value="${key}">${label}</option>`).join('')}</select></label><label>Note target <select name="annotationTarget"><option value="line">Selected physical line</option>${line.regionIds.map((id,i)=>`<option value="${id}">Image region ${i+1}</option>`).join('')}</select></label><label>Add a private scholarly note <textarea name="annotation" rows="2"></textarea></label><button type="submit">Save private draft</button><p>Changes stay in this browser. Export a copy for review and backup.</p></form>${structureEditorHTML()}`;
+  }
+  function coordinateFields(box) {return `<div class="ms-coordinates">${['x','y','width','height'].map((key,i)=>`<label>${key}<input name="${key}" type="number" step="1" required value="${box[i]}"></label>`).join('')}</div>`;}
+  function structureEditorHTML() {
+    const line=selectedLine(),ordered=current.lines.filter(l=>l.surfaceId===m.surfaceId).sort((a,b)=>a.order-b.order),author=a(state.auth.user?.login||'Gleb Sharygin'),box=current.regions.find(r=>r.id===line.regionIds[0])?.xywh||[0,0,100,100];
+    return `<div id="ms-structure-editor">
+      <details><summary>Reading order</summary><form id="ms-order-form" class="ms-draft-form"><label>Editor name <input name="author" required value="${author}"></label><label>Move ${e(line.label)} to position <select name="position">${ordered.map((l,i)=>`<option value="${i}" ${l.id===line.id?'selected':''}>${i+1} · ${e(l.label)}</option>`).join('')}</select></label><button type="submit">Save order privately</button><p>Line IDs, labels and image coordinates stay fixed.</p></form></details>
+      <details><summary>Add a physical line</summary><form id="ms-add-line-form" class="ms-draft-form"><label>Editor name <input name="author" required value="${author}"></label><label>Line label <input name="label" required maxlength="120" placeholder="For example: interlinear note"></label>${coordinateFields(box)}<button type="button" data-ms-draw="ms-add-line-form">Draw new line region</button><button type="submit">Add untranscribed line privately</button><p>The line is appended to this surface. All transcription layers start empty; adjust reading order separately.</p></form></details>
+      <details><summary>Add a passage link</summary><form id="ms-anchor-form" class="ms-draft-form"><label>Editor name <input name="author" required value="${author}"></label><label>Passages <select name="passages" multiple required size="5">${state.corpus.passages.map(p=>`<option value="${p.id}">${e(p.id)}</option>`).join('')}</select></label><label>Relationship <select name="relation">${['partial-overlap','overlap','uncertain','variant','addition','omission'].map(v=>`<option>${v}</option>`).join('')}</select></label><label>Evidence / uncertainty <textarea name="note" required rows="2"></textarea></label><button type="submit">Save passage link privately</button><p>This associates the selected physical line with passages. It does not align words or mark the link as reviewed.</p></form></details></div>`;
+  }
+  function cancelDrawing() {if(drawing){drawing.remove();drawing=null;}}
+  function drawRectangle(form) {
+    cancelDrawing();if(!viewer?.world.getItemAt(0))return message('Wait for the source image to load.');
+    // A moving camera would change the image coordinates between drag endpoints.
+    viewer.viewport.setRotation(viewer.viewport.getRotation(),true);
+    viewer.viewport.panTo(viewer.viewport.getCenter(),true);
+    viewer.viewport.zoomTo(viewer.viewport.getZoom(),null,true);viewer.forceRedraw();
+    const surface=selectedSurface(),overlay=document.createElement('div');overlay.className='ms-draw-overlay';overlay.tabIndex=0;
+    overlay.setAttribute('aria-label','Drag a rectangle on the image. Escape cancels.');document.querySelector('#ms-image').append(overlay);drawing=overlay;
+    const preview=document.createElement('div');preview.className='ms-draw-preview';overlay.append(preview);
+    let start=null,pointer=null;
+    const point=event=>{const rect=overlay.getBoundingClientRect();return {x:event.clientX-rect.left,y:event.clientY-rect.top};};
+    overlay.onpointerdown=event=>{if(event.button!==0||pointer!==null)return;event.preventDefault();event.stopPropagation();pointer=event.pointerId;start=point(event);overlay.setPointerCapture(pointer);};
+    overlay.onpointermove=event=>{if(event.pointerId!==pointer)return;event.preventDefault();event.stopPropagation();const end=point(event);Object.assign(preview.style,{left:Math.min(start.x,end.x)+'px',top:Math.min(start.y,end.y)+'px',width:Math.abs(end.x-start.x)+'px',height:Math.abs(end.y-start.y)+'px'});};
+    overlay.onpointerup=event=>{
+      if(event.pointerId!==pointer)return;event.preventDefault();event.stopPropagation();
+      const end=point(event),p=viewer.viewport.viewerElementToImageCoordinates(new OpenSeadragon.Point(start.x,start.y)),q=viewer.viewport.viewerElementToImageCoordinates(new OpenSeadragon.Point(end.x,end.y));
+      const x=Math.round(Math.min(p.x,q.x)),y=Math.round(Math.min(p.y,q.y)),w=Math.round(Math.abs(p.x-q.x)),h=Math.round(Math.abs(p.y-q.y));
+      cancelDrawing();
+      if(w<3||h<3||x<0||y<0||x+w>surface.width||y+h>surface.height)return message('Draw a rectangle inside the source image. No coordinates were changed.');
+      ['x','y','width','height'].forEach((k,i)=>form.elements[k].value=[x,y,w,h][i]);
+      if(form.elements.editGeometry)form.elements.editGeometry.checked=true;
+      form.dispatchEvent(new Event('input',{bubbles:true}));message(`Rectangle staged: ${x}, ${y}, ${w}, ${h}. Save the private draft to apply it.`);
+    };
+    overlay.onpointercancel=cancelDrawing;overlay.onkeydown=event=>{if(event.key==='Escape'){cancelDrawing();message('Drawing cancelled. The saved geometry is unchanged.');}};
+    message('Drag a rectangle on the scan. Press Escape to cancel.');overlay.focus();
   }
   async function render(container) {
     dispose();const turn=generation;
@@ -149,21 +196,33 @@ window.Manuscripts = (() => {
         <div id="ms-status" class="ms-status" role="status">${e(storageProblem||statusMessage)}</div>
         <nav class="ms-toolbar" aria-label="Manuscript navigation"><button data-ms-prev ${index===0?'disabled':''}>← Previous</button><select id="ms-surface" aria-label="Manuscript surface">${current.surfaces.map(s=>`<option value="${s.id}" ${s.id===m.surfaceId?'selected':''}>${e(s.label)}</option>`).join('')}</select><button data-ms-next ${index===current.surfaces.length-1?'disabled':''}>Next →</button><label><input id="ms-sync" type="checkbox" ${m.sync?'checked':''}> Sync panes</label><label><input id="ms-overlays" type="checkbox" ${m.overlays?'checked':''}> Line regions</label><button id="ms-copy">Copy citation</button><button id="ms-edit" aria-pressed="${m.editing}">${m.editing?'Return to reading':'Edit private draft'}</button></nav>
         <nav class="ms-mobile-tabs" aria-label="Manuscript panels">${['scan','text','research'].map(p=>`<button data-ms-pane="${p}" aria-pressed="${m.pane===p}">${p[0].toUpperCase()+p.slice(1)}</button>`).join('')}</nav>
-        <div class="ms-columns"><section class="ms-scan" aria-label="Manuscript scan"><div class="ms-image-tools"><button data-ms-zoom="1.5" aria-label="Zoom in">+</button><button data-ms-zoom="0.6666667" aria-label="Zoom out">−</button><button id="ms-home">Fit surface</button><button id="ms-rotate">Rotate 90°</button><button id="ms-fullscreen">Fullscreen</button></div><div id="ms-image" class="ms-image" tabindex="0" aria-label="Zoomable manuscript image"></div><p id="ms-image-status" role="status">Loading selected image…</p><div class="ms-attribution"><strong>${e(record.shelfmark)} · ${e(surface.label)}</strong><p>${e(record.attribution)}</p><p><a href="${a(record.rights.url)}" target="_blank" rel="noopener">${e(record.rights.label)}</a> · <a href="${a(surface.image.sourcePage||record.sourceUrl)}" target="_blank" rel="noopener">Open source image record</a></p></div></section>
+        <div class="ms-thumbnails" aria-label="Surface thumbnails">${current.surfaces.map((s,i)=>`<button data-ms-thumbnail="${i}" aria-pressed="${s.id===m.surfaceId}">${s.thumbnail?`<img src="${a(s.thumbnail)}" alt="" loading="lazy">`:''}<span>${e(s.label)}</span></button>`).join('')}</div><div class="ms-columns"><section class="ms-scan" aria-label="Manuscript scan"><div class="ms-image-tools"><button data-ms-zoom="1.5" aria-label="Zoom in">+</button><button data-ms-zoom="0.6666667" aria-label="Zoom out">−</button><button id="ms-home">Fit surface</button><button id="ms-rotate">Rotate 90°</button><button id="ms-fullscreen">Fullscreen</button></div><details class="ms-image-adjust"><summary>Image display aids</summary><label>Brightness <input id="ms-brightness" type="range" min="50" max="180" value="${m.brightness}"></label><label>Contrast <input id="ms-contrast" type="range" min="50" max="200" value="${m.contrast}"></label><button type="button" id="ms-reset-display">Reset display</button><p>Display only; the source image and readings stay unchanged.</p></details><div id="ms-image" class="ms-image" style="--ms-brightness:${m.brightness/100};--ms-contrast:${m.contrast/100}" tabindex="0" aria-label="Zoomable manuscript image"></div><p id="ms-image-status" role="status">Loading selected image…</p><div class="ms-attribution"><strong>${e(record.shelfmark)} · ${e(surface.label)}</strong><p>${e(record.attribution)}</p><p><a href="${a(record.rights.url)}" target="_blank" rel="noopener">${e(record.rights.label)}</a> · <a href="${a(surface.image.sourcePage||record.sourceUrl)}" target="_blank" rel="noopener">Open source image record</a></p></div></section>
         <section class="ms-text" aria-label="Manuscript text"><div class="ms-layer-tabs" role="group" aria-label="Textual layer">${core.layers.map(layer=>`<button data-ms-layer="${layer}" aria-pressed="${layer===m.layer}">${layer[0].toUpperCase()+layer.slice(1)}</button>`).join('')}</div><label class="ms-search">Search this layer and notes<input id="ms-search" type="search" value="${a(m.query)}" placeholder="Search this surface"></label><div id="ms-lines">${renderText()}</div>${editorHTML()}</section>
         <aside class="ms-research" aria-label="Manuscript research"><h4>Research</h4>${researchHTML()}<div class="ms-export"><button id="ms-export">Export private draft</button><label class="ms-import">Import draft<input id="ms-import" type="file" accept=".json,application/json"></label><button id="ms-tei">Export TEI</button>${storageProblem&&rawDrafts.has(m.id)?'<button id="ms-export-raw">Export saved draft unchanged</button>':''}</div></aside></div></section>`;
       bind(container);
       await loadScript('vendor/openseadragon-6.1.1.min.js');if(turn!==generation||state.view!=='manuscripts')return;
+      let imageFallback=false;
+      const tileSource=surface.image.type==='dzi'?{Image:{xmlns:'http://schemas.microsoft.com/deepzoom/2008',Url:surface.image.tilesUrl,Format:surface.image.format,Overlap:surface.image.overlap,TileSize:surface.image.tileSize,Size:{Width:surface.width,Height:surface.height}}}:surface.image.type==='iiif'?surface.image.url:{type:'image',url:surface.image.url,buildPyramid:false};
       viewer=OpenSeadragon({id:'ms-image',showNavigationControl:false,showNavigator:false,drawer:'canvas',
-        tileSources:surface.image.type==='iiif'?surface.image.url:{type:'image',url:surface.image.url,buildPyramid:false},
+        tileSources:tileSource,
         gestureSettingsMouse:{clickToZoom:false},visibilityRatio:0.25,constrainDuringPan:true});
       viewer.addHandler('open',()=>{
         if(turn!==generation)return;
-        document.querySelector('#ms-image-status').textContent=surface.image.type==='iiif'?'Image tiles loaded on demand.':'Selected source image loaded. Tiled delivery is pending.';
+        document.querySelector('#ms-image-status').textContent=imageFallback?'Selected source image loaded as fallback; static tiles were unavailable.':surface.image.type==='image'?'Selected source image loaded. Tiled delivery is pending.':'Loading image tiles on demand…';
         const item=viewer.world.getItemAt(0),size=item.getContentSize();
         if(size.x!==surface.width||size.y!==surface.height){message('Image dimensions differ from the recorded canvas. Regions are disabled pending review.');return;}
         if(surface.viewport)item.setClip(new OpenSeadragon.Rect(...surface.viewport));
         fitSurface();drawRegions();
+      });
+      viewer.addHandler('tile-loaded',()=>{
+        if(turn!==generation||imageFallback||surface.image.type==='image')return;
+        document.querySelector('#ms-image-status').textContent='Image tiles loaded on demand.';
+      });
+      viewer.addHandler('tile-load-failed',()=>{
+        if(turn!==generation||imageFallback||surface.image.type!=='dzi')return;
+        imageFallback=true;
+        document.querySelector('#ms-image-status').textContent='Static tiles unavailable; loading the original source image…';
+        viewer.open({type:'image',url:surface.image.url,buildPyramid:false});
       });
       viewer.addHandler('open-failed',()=>{
         if(turn!==generation)return;
@@ -193,10 +252,12 @@ window.Manuscripts = (() => {
     }
   }
   function selectLine(id,origin='text') {
+    cancelDrawing();
     const line=current.lines.find(l=>l.id===id);if(!line)return;m.lineId=id;
     const first=linked(id).flatMap(x=>x.passageIds)[0];if(m.sync&&first)m.passageId=first;
     hash();document.querySelector('#ms-lines').innerHTML=renderText();
     document.querySelector('.ms-research').innerHTML=`<h4>Research</h4>${researchHTML()}${document.querySelector('.ms-export')?.outerHTML||''}`;
+    document.querySelector('#ms-structure-editor')?.remove();
     const oldForm=document.querySelector('#ms-draft-form');if(oldForm)oldForm.outerHTML=editorHTML();
     bindDynamic(document.querySelector('#reader'));drawRegions();
     if(m.sync) {
@@ -220,6 +281,8 @@ window.Manuscripts = (() => {
     container.querySelectorAll('[data-ms-passage]').forEach(b=>b.onclick=()=>openReading(b.dataset.msPassage));
     container.querySelectorAll('[data-ms-compare]').forEach(b=>b.onclick=()=>openReading(b.dataset.msCompare,true));
     container.querySelectorAll('[data-ms-word]').forEach(b=>b.onclick=()=>lookup(b.dataset.msWord,b.dataset.msWordLine));
+    container.querySelectorAll('[data-ms-draw]').forEach(b=>b.onclick=()=>drawRectangle(document.getElementById(b.dataset.msDraw)));
+    bindStructureForms(container);
     container.querySelectorAll('[data-ms-review-line]').forEach(b=>b.onclick=()=>{
       const line=current.lines.find(l=>l.id===b.dataset.msReviewLine);if(!line)return;
       if(line.surfaceId!==m.surfaceId){m.surfaceId=line.surfaceId;m.lineId=line.id;renderReader();}
@@ -256,19 +319,49 @@ window.Manuscripts = (() => {
         try {localStorage.setItem('vimsika-manuscript-forms-v1',JSON.stringify(formBuffers));}
         catch {message('The form is retained in this session, but browser storage is unavailable. Save or copy the text before closing.');}
       };
+      draftForm.elements.regionId.onchange=()=>{
+        const region=current.regions.find(r=>r.id===draftForm.elements.regionId.value);
+        if(region)['x','y','width','height'].forEach((key,i)=>draftForm.elements[key].value=region.xywh[i]);
+        draftForm.dispatchEvent(new Event('input',{bubbles:true}));
+      };
+      const markStatus=()=>{const marks=JSON.parse(draftForm.elements.marks.value);draftForm.querySelector('#ms-mark-status').textContent=`${marks.length} mark(s): `+marks.map(mark=>`${mark.type} ${mark.start}–${mark.end}`).join('; ');};
+      markStatus();
+      draftForm.querySelector('#ms-mark-selection').onclick=()=>{
+        try {
+          const field=draftForm.elements.text,text=field.value,marks=JSON.parse(draftForm.elements.marks.value);
+          if(marks.length&&draftForm.elements.marksBasis.value!==text)throw new Error('The text changed. Clear and reapply its marks before saving.');
+          const start=Array.from(text.slice(0,field.selectionStart)).length,end=Array.from(text.slice(0,field.selectionEnd)).length;
+          if(start===end)throw new Error('Select the characters to mark in the transcription box.');
+          if(marks.some(mark=>start<mark.end&&end>mark.start))throw new Error('This selection overlaps an existing mark. Clear and reapply marks to change it.');
+          marks.push({type:draftForm.elements.markType.value,start,end,reason:draftForm.elements.markReason.value.trim()});marks.sort((a,b)=>a.start-b.start);
+          draftForm.elements.marks.value=JSON.stringify(marks);draftForm.elements.marksBasis.value=text;markStatus();draftForm.dispatchEvent(new Event('input',{bubbles:true}));
+        }catch(error){message(error.message);}
+      };
+      draftForm.querySelector('#ms-clear-marks').onclick=()=>{
+        draftForm.elements.marks.value='[]';draftForm.elements.marksBasis.value=draftForm.elements.text.value;markStatus();draftForm.dispatchEvent(new Event('input',{bubbles:true}));
+      };
       draftForm.onsubmit=event=>{
       event.preventDefault();try {
         const fields=new FormData(draftForm),author=fields.get('author').trim();if(!author)throw new Error('An editor name is required.');
         const draft=core.clone(drafts.get(m.id)),line=core.clone(selectedLine()),existing=line.layers[m.layer];
-        const newText=fields.get('text');
-        if(newText!== (existing?.text||'')||fields.get('scope')!==existing?.scope||fields.get('note')!==(existing?.note||'')) {
+        const newText=fields.get('text'),marks=JSON.parse(fields.get('marks'));
+        if(marks.length&&fields.get('marksBasis')!==newText)throw new Error('The text changed. Clear and reapply its marks before saving.');
+        if(newText!== (existing?.text||'')||fields.get('scope')!==existing?.scope||fields.get('note')!==(existing?.note||'')||JSON.stringify(marks)!==JSON.stringify(existing?.marks||[])) {
           line.layers[m.layer]={text:newText,scope:fields.get('scope'),note:fields.get('note'),status:'draft',provenance:['local-draft'],
-            derivedFrom:existing?.derivedFrom||null};line.status='draft';upsert(draft,'line',line,author);
+            derivedFrom:existing?.derivedFrom||null,marks};line.status='draft';upsert(draft,'line',line,author);
         }
-        if(fields.get('editGeometry')) {
-          const region=core.clone(current.regions.find(r=>r.id===line.regionIds[0]));region.xywh=['x','y','width','height'].map(k=>Number(fields.get(k)));region.status='draft';upsert(draft,'region',region,author);
+        if(fields.get('editGeometry')||fields.get('addRegion')) {
+          const original=current.regions.find(r=>r.id===fields.get('regionId')&&line.regionIds.includes(r.id));
+          const region=fields.get('addRegion')?{id:'ms-region-'+crypto.randomUUID(),revision:1,surfaceId:line.surfaceId,shape:'rect',provenance:['local-draft']}:original&&core.clone(original);
+          if(!region)throw new Error('This line has no region to revise. Choose Add this rectangle.');
+          region.xywh=['x','y','width','height'].map(k=>Number(fields.get(k)));region.status='draft';upsert(draft,'region',region,author);
+          if(fields.get('addRegion')){line.regionIds.push(region.id);upsert(draft,'line',line,author);}
         }
-        if(fields.get('annotation').trim())upsert(draft,'annotation',{id:'note-'+crypto.randomUUID(),revision:1,type:'scholarly-note',targets:[{lineId:line.id}],text:fields.get('annotation').trim(),status:'draft',author,createdAt:new Date().toISOString(),provenance:['local-draft']},author);
+        if(fields.get('annotation').trim()) {
+          const target=fields.get('annotationTarget'),type=fields.get('annotationType');
+          if(!Object.hasOwn(annotationTypes,type)||target!=='line'&&!line.regionIds.includes(target))throw new Error('Choose a valid note type and target.');
+          upsert(draft,'annotation',{id:'note-'+crypto.randomUUID(),revision:1,type,targets:[target==='line'?{lineId:line.id}:{regionId:target}],text:fields.get('annotation').trim(),status:'draft',author,createdAt:new Date().toISOString(),provenance:['local-draft']},author);
+        }
         if(core.applyDraft(packages.get(m.id),draft,state.corpus).conflicts.length)throw new Error('Review saved changes before saving another edit.');persist(draft);
         delete formBuffers[formKey];
         try {localStorage.setItem('vimsika-manuscript-forms-v1',JSON.stringify(formBuffers));}catch {}
@@ -286,8 +379,55 @@ window.Manuscripts = (() => {
       }catch(error){message(error.message);importInput.value='';}
     };
   }
+  function bindStructureForms(container) {
+    for(const form of container.querySelectorAll('#ms-structure-editor form')) {
+      const key=[m.id,m.lineId,form.id].join(':'),pending=formBuffers[key];
+      if(pending)for(const field of form.elements) {
+        if(!field.name||!Object.hasOwn(pending,field.name))continue;
+        if(field.multiple)for(const option of field.options)option.selected=(pending[field.name]||[]).includes(option.value);
+        else field.value=pending[field.name];
+      }
+      form.oninput=()=>{
+        const values=Object.fromEntries(new FormData(form));
+        for(const field of form.elements)if(field.multiple)values[field.name]=Array.from(field.selectedOptions,o=>o.value);
+        formBuffers[key]=values;
+        try{localStorage.setItem('vimsika-manuscript-forms-v1',JSON.stringify(formBuffers));}catch{message('Form retained in this session; browser storage is unavailable.');}
+      };
+      form.onsubmit=event=>{
+        event.preventDefault();try {
+          if(draftConflicts.length)throw new Error('Resolve the saved draft conflicts first.');
+          const fields=new FormData(form),author=fields.get('author').trim(),draft=core.clone(drafts.get(m.id));
+          if(!author)throw new Error('An editor name is required.');
+          let createdId='';
+          if(form.id==='ms-order-form') {
+            const ids=current.lines.filter(l=>l.surfaceId===m.surfaceId).sort((a,b)=>a.order-b.order).map(l=>l.id),position=Number(fields.get('position'));
+            if(!Number.isInteger(position)||position<0||position>=ids.length)throw new Error('Choose a valid reading position.');
+            ids.splice(ids.indexOf(m.lineId),1);ids.splice(position,0,m.lineId);
+            for(const line of core.reorderLines(current,m.surfaceId,ids))if(line.order!==current.lines.find(l=>l.id===line.id).order)upsert(draft,'line',line,author);
+          }else if(form.id==='ms-add-line-form') {
+            const label=fields.get('label').trim();if(!label)throw new Error('A line label is required.');
+            const id='ms-line-'+crypto.randomUUID(),rid=id+'-region',order=Math.max(0,...current.lines.filter(l=>l.surfaceId===m.surfaceId).map(l=>l.order))+1;
+            upsert(draft,'region',{id:rid,revision:1,surfaceId:m.surfaceId,shape:'rect',xywh:['x','y','width','height'].map(k=>Number(fields.get(k))),status:'draft',provenance:['local-draft']},author);
+            upsert(draft,'line',{id,revision:1,surfaceId:m.surfaceId,label,order,regionIds:[rid],script:selectedLine()?.script||null,hand:null,status:'untranscribed',layers:Object.fromEntries(core.layers.map(l=>[l,null])),provenance:['local-draft']},author);createdId=id;
+          }else if(form.id==='ms-anchor-form') {
+            const passages=[...new Set(fields.getAll('passages'))],note=fields.get('note').trim(),relation=fields.get('relation');
+            if(!passages.length||!note)throw new Error('Select at least one passage and supply an evidence note.');
+            if(linked().some(a=>a.relation===relation&&JSON.stringify([...a.passageIds].sort())===JSON.stringify([...passages].sort())))throw new Error('This passage relationship already exists for the line.');
+            upsert(draft,'anchor',{id:'ms-anchor-'+crypto.randomUUID(),revision:1,lineIds:[m.lineId],passageIds:passages,tokenIds:[],relation,level:'line',status:'draft',note,provenance:['local-draft']},author);
+          }
+          if(core.applyDraft(packages.get(m.id),draft,state.corpus).conflicts.length)throw new Error('Resolve the saved draft conflicts first.');
+          persist(draft);delete formBuffers[key];try{localStorage.setItem('vimsika-manuscript-forms-v1',JSON.stringify(formBuffers));}catch{}
+          if(createdId)m.lineId=createdId;
+          statusMessage='Manuscript structure saved as a private draft. Existing corpus tokens are unchanged.';renderReader();
+        }catch(error){message(error.message);}
+      };
+    }
+  }
   function bind(container) {
     bindDynamic(container);
+    container.querySelectorAll('[data-ms-thumbnail]').forEach(b=>b.onclick=()=>goSurface(Number(b.dataset.msThumbnail)));
+    for(const field of ['brightness','contrast'])container.querySelector('#ms-'+field).oninput=event=>{m[field]=Number(event.target.value);container.querySelector('#ms-image').style.setProperty('--ms-'+field,m[field]/100);};
+    container.querySelector('#ms-reset-display').onclick=()=>{for(const field of ['brightness','contrast']){m[field]=100;container.querySelector('#ms-'+field).value=100;container.querySelector('#ms-image').style.setProperty('--ms-'+field,1);}};
     container.querySelector('#ms-surface').onchange=event=>goSurface(current.surfaces.findIndex(s=>s.id===event.target.value));
     container.querySelector('[data-ms-prev]').onclick=()=>goSurface(current.surfaces.findIndex(s=>s.id===m.surfaceId)-1);
     container.querySelector('[data-ms-next]').onclick=()=>goSurface(current.surfaces.findIndex(s=>s.id===m.surfaceId)+1);
@@ -299,7 +439,7 @@ window.Manuscripts = (() => {
     container.querySelectorAll('[data-ms-pane]').forEach(b=>b.onclick=()=>{m.pane=b.dataset.msPane;container.querySelector('.ms-workspace').dataset.mobilePane=m.pane;container.querySelectorAll('[data-ms-pane]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));viewer?.forceRedraw();});
     container.querySelectorAll('[data-ms-zoom]').forEach(b=>b.onclick=()=>{viewer?.viewport.zoomBy(Number(b.dataset.msZoom));viewer?.viewport.applyConstraints();});
     container.querySelector('#ms-home').onclick=fitSurface;
-    container.querySelector('#ms-rotate').onclick=()=>viewer?.viewport.setRotation((viewer.viewport.getRotation()+90)%360);
+    container.querySelector('#ms-rotate').onclick=()=>viewer?.viewport.setRotation((viewer.viewport.getRotation()+90)%360,true);
     container.querySelector('#ms-fullscreen').onclick=async()=>{
       try {if(document.fullscreenElement)await document.exitFullscreen();else await container.querySelector('.ms-scan').requestFullscreen();}
       catch {message('Fullscreen is unavailable in this browser.');}

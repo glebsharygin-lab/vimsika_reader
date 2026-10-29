@@ -30,14 +30,17 @@
     for(const s of data.surfaces) {
       check(Number.isFinite(s.width)&&s.width>0&&Number.isFinite(s.height)&&s.height>0,`Invalid dimensions: ${s.id}`);
       check((s.canvasId==null||https(s.canvasId))&&https(s.image?.url),`Unsafe image reference: ${s.id}`);
-      check(['image','iiif'].includes(s.image.type),`Unsupported image delivery: ${s.id}`);
+      check(['image','iiif','dzi'].includes(s.image.type),`Unsupported image delivery: ${s.id}`);
+      if(s.image.type==='dzi')check(/^manuscript-images\/[a-z0-9-]+\/view-[1-9][0-9]*_files\/$/.test(s.image.tilesUrl)&&s.image.tileSize===512&&s.image.overlap===1&&s.image.format==='jpg',`Invalid tile configuration: ${s.id}`);
       check(!s.viewport||rectangle(s.viewport,s),`Invalid surface viewport: ${s.id}`);
+      check(!s.thumbnail||/^manuscript-images\/[a-z0-9-]+\/[a-z0-9-]+-thumb\.jpg$/.test(s.thumbnail),`Invalid thumbnail: ${s.id}`);
     }
     for(const r of data.regions) {
       check(surfaces.has(r.surfaceId)&&r.shape==='rect'&&rectangle(r.xywh,surfaces.get(r.surfaceId)),`Invalid region: ${r.id}`);
     }
     for(const l of data.lines) {
       check(surfaces.has(l.surfaceId)&&Array.isArray(l.regionIds),`Invalid line surface: ${l.id}`);
+      check(Number.isInteger(l.order)&&l.order>0,`Invalid reading order: ${l.id}`);
       check(l.regionIds.every(id=>regions.get(id)?.surfaceId===l.surfaceId),`Region belongs to a different surface: ${l.id}`);
       check(l.layers&&statuses.includes(l.status),`Invalid line layers/status: ${l.id}`);
       for(const key of layers) {
@@ -54,6 +57,10 @@
           end=mark.end;
         }
       }
+    }
+    for(const s of data.surfaces) {
+      const order=data.lines.filter(l=>l.surfaceId===s.id).map(l=>l.order);
+      check(new Set(order).size===order.length,`Duplicate reading order on ${s.id}`);
     }
     const passageIds=corpus&&new Set(corpus.passages.map(p=>p.id));
     const tokenIds=corpus&&new Set(corpus.passages.flatMap(p=>Object.values(p.texts).flatMap(w=>(w.tokens||[]).map(t=>t.id))));
@@ -73,6 +80,11 @@
   }
   function emptyDraft(data) {
     return {schemaVersion:'1.0.0-manuscript-draft',manuscriptId:data.id,baseVersion:data.version,records:[]};
+  }
+  function reorderLines(data,surfaceId,ids) {
+    const lines=data.lines.filter(l=>l.surfaceId===surfaceId);
+    check(Array.isArray(ids)&&ids.length===lines.length&&new Set(ids).size===lines.length&&lines.every(l=>ids.includes(l.id)),'Reading order must contain every line of the surface exactly once.');
+    return lines.map(line=>({...clone(line),order:ids.indexOf(line.id)+1}));
   }
   function validateDraft(draft,data) {
     check(draft?.schemaVersion==='1.0.0-manuscript-draft'&&draft.manuscriptId===data.id,'Draft belongs to a different manuscript or schema.');
@@ -98,6 +110,9 @@
       }
       if(index<0)list.push(clone(r.value));else list[index]=clone(r.value);
     }
+    // A line and its region/order changes can depend on one another. Do not
+    // expose a partially applied draft when one member needs conflict review.
+    if(conflicts.length)return {data:clone(data),conflicts};
     validatePackage(copy,corpus);
     return {data:copy,conflicts};
   }
@@ -152,9 +167,11 @@
   }
   function tei(data,record) {
     validatePackage(data);
+    const surfaceOrder=new Map(data.surfaces.map(s=>[s.id,s.order]));
+    const orderedLines=[...data.lines].sort((a,b)=>surfaceOrder.get(a.surfaceId)-surfaceOrder.get(b.surfaceId)||a.order-b.order);
     const surfaces=data.surfaces.map(s=>`<surface xml:id="${esc(s.id)}" n="${esc(s.label)}" ulx="0" uly="0" lrx="${s.width}" lry="${s.height}"><graphic url="${esc(s.image.url)}"/>${data.regions.filter(r=>r.surfaceId===s.id).map(r=>`<zone xml:id="${esc(r.id)}" ulx="${r.xywh[0]}" uly="${r.xywh[1]}" lrx="${r.xywh[0]+r.xywh[2]}" lry="${r.xywh[1]+r.xywh[3]}"/>`).join('')}</surface>`).join('\n');
-    const sections=layers.map(layer=>`<div type="transcription" subtype="${layer}">${data.lines.filter(l=>l.layers[layer]).map(l=>`<ab xml:id="${esc(l.id)}-${layer}"><lb n="${l.order}" facs="${l.regionIds.map(id=>'#'+esc(id)).join(' ')}"/><seg type="${esc(l.layers[layer].scope)}">${markedText(l.layers[layer])}</seg><note>${esc(l.layers[layer].note)}</note></ab>`).join('\n')}</div>`).join('\n');
-    const physical=data.lines.map(l=>`<ab xml:id="${esc(l.id)}" facs="${l.regionIds.map(id=>'#'+esc(id)).join(' ')}"><note>${esc(l.label)}; ${esc(l.status)}</note></ab>`).join('');
+    const sections=layers.map(layer=>`<div type="transcription" subtype="${layer}">${orderedLines.filter(l=>l.layers[layer]).map(l=>`<ab xml:id="${esc(l.id)}-${layer}"><lb n="${l.order}" facs="${l.regionIds.map(id=>'#'+esc(id)).join(' ')}"/><seg type="${esc(l.layers[layer].scope)}">${markedText(l.layers[layer])}</seg><note>${esc(l.layers[layer].note)}</note></ab>`).join('\n')}</div>`).join('\n');
+    const physical=orderedLines.map(l=>`<ab xml:id="${esc(l.id)}" facs="${l.regionIds.map(id=>'#'+esc(id)).join(' ')}"><note>${esc(l.label)}; ${esc(l.status)}</note></ab>`).join('');
     const links=data.anchors.map(a=>`<link xml:id="${a.id}" type="${esc(a.relation)}" ana="${esc(a.level)}" target="${[...a.lineIds.map(id=>'#'+id),...a.passageIds.map(id=>'../index.html#'+id)].map(esc).join(' ')}"/>`).join('');
     return `<?xml version="1.0" encoding="UTF-8"?>\n<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader><fileDesc><titleStmt><title>${esc(record.shelfmark)} — ${esc(data.version)}</title><editor>${esc(data.editor)}</editor></titleStmt><publicationStmt><publisher>Viṃśikā Reader</publisher><availability status="restricted"><p>Local draft export; no publication or review is implied. ${esc(record.attribution)}. ${esc(record.rights.label)} ${esc(record.rights.url)}</p></availability></publicationStmt><sourceDesc><p>${esc(record.institution)}; ${esc(record.shelfmark)}. ${esc(record.sourceUrl)}</p></sourceDesc></fileDesc></teiHeader><facsimile>${surfaces}</facsimile><text><body><div type="physical-lines">${physical}</div>${sections}</body><back><div type="annotations">${data.annotations.map(a=>`<note xml:id="${a.id}" type="${esc(a.type)}" target="${a.targets.map(t=>'#'+esc(t.regionId||t.lineId)).join(' ')}">${esc(a.text)}</note>`).join('')}</div><div type="correspondence"><linkGrp type="manuscript-corpus">${links}</linkGrp></div></back></text></TEI>`;
   }
@@ -177,5 +194,5 @@
       return {canvasId:c.id||c['@id'],label:typeof c.label==='string'?c.label:Object.values(c.label||{}).flat().join(' '),width:c.width,height:c.height,image:{type:'iiif',url:url.replace(/\/$/,'')+'/info.json'}};
     });
   }
-  root.ManuscriptCore={layers,clone,validatePackage,validateDraft,emptyDraft,applyDraft,resolveDraft,mergeDrafts,tei,iiifCanvases};
+  root.ManuscriptCore={layers,clone,validatePackage,validateDraft,emptyDraft,reorderLines,applyDraft,resolveDraft,mergeDrafts,tei,iiifCanvases};
 })(typeof window==='undefined'?globalThis:window);

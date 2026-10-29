@@ -8,7 +8,7 @@ create new corpus witnesses or change any existing token identifier.
 `manuscripts.js` is the UI controller. The registry, core validator, selected
 package and OpenSeadragon load only when Manuscripts opens. The canonical
 JSON files have generated JavaScript wrappers so local `file:` previews work
-without a server. Only the selected external image is requested.
+without a server. The selected scan tiles and small surface thumbnails are requested; full source images are fallback resources only.
 
 Registry entries identify the holding institution, shelfmark, source and
 catalogue URLs, image rights/attribution, manifest availability, bibliography
@@ -76,7 +76,7 @@ Package images must use HTTPS. The IIIF adapter accepts simple single-image
 Presentation 2/3 canvases whose dimensions match the painting resource. It
 rejects partial paintings, multiple bodies and unhandled coordinate transforms.
 Verified IIIF image services can be opened by OpenSeadragon directly. The PT797
-pilot currently uses a documented single-image fallback, not tiled delivery.
+pilot now uses static DZI tiles in a separate manuscript-images directory, with the verified Commons original as fallback. DZI metadata is inline for file previews; tile paths are strictly bounded.
 Source imagery is never embedded in `corpus.js`, manuscript JSON or local drafts.
 
 Draft text is rendered as text, not HTML. Region coordinates and references are
@@ -85,12 +85,60 @@ unchanged. Fullscreen includes the source attribution and rights block.
 
 ## Remaining work before the full plan is complete
 
-- Verify the BnF manifest/image service and migrate to tiled delivery without
-  changing physical IDs or using coordinates from resized images.
+- Verify institutional IIIF metadata and foliation where available. Static tiled delivery is operational without changing physical IDs or coordinates.
 - Verify foliation, transcribe/proof more consecutive surfaces and establish the
   difficult pilot cases (cross-surface sentence, uncertain reading, variant).
-- Add geometry creation/reading-order editing and target-specific review UI.
+- Extend private geometry, order and passage-anchor tools to shared review through the existing service.
 - Extend the existing editorial payload/backend for versioned manuscript
   changes, explicit review and conflict resolution; test without publishing.
 - Add reviewed word anchors, variants/concordance and refined TEI interchange
   only where the manuscript evidence supports them.
+
+## 0.31.1 draft migration
+
+Package 0.2.0 retains every physical ID and image coordinate from 0.1.0.
+The first two line records and the explanatory anchor notes have new revisions.
+Both opening transliterations now cover complete physical lines, based on Silk
+2017 p.344 and checked image boundaries. The diplomatic layer remains an excerpt.
+
+An older saved draft is never silently rebased. Review saved changes displays
+the current package and the proposal, including full record metadata. Every
+conflict needs an explicit keep-package or keep-proposal decision. Both versions,
+the decision, author, timestamp and package versions are stored in resolutions.
+A kept proposal remains a private draft, not a scholarly reviewed assertion.
+Setting a proposal aside archives it; JSON export/import retains that archive.
+Ordinary editing is blocked until conflicts are resolved. Saving to storage must
+succeed before the in-memory draft is replaced. Review choices and unsaved text
+remain buffered during line navigation. Shared submission remains pending.
+
+## 0.32.0 private editorial tools and image delivery
+
+- Rectangles can be drawn after zoom/rotation; the camera stops before drawing.
+  Endpoints are transformed into original image pixels. Drawing only stages
+  form coordinates; saving applies them. Escape cancels. Numeric controls also
+  permit precise editing. Additional regions retain independent stable IDs.
+- New physical lines start with four null layers. Labels do not become IDs.
+  Reading-order edits update all affected records atomically, preserving IDs,
+  labels and coordinates. Duplicate/invalid orders are rejected; TEI follows
+  the edited reading order.
+- Passage anchors are private line-level records with relation and evidence;
+  they never assign corpus tokens. Notes can target a line or image region and
+  distinguish uncertainty, variants, conjectures, corrections and other types.
+- Selected transcription characters can carry unclear/damage/supplied/add/del
+  marks. Offsets count Unicode code points. Overlaps are rejected. Text changes
+  require explicit re-marking; old offsets are never silently shifted. Source
+  readings and previous draft revisions remain recoverable. TEI retains marks.
+- Any version/revision conflict defers the WHOLE draft until explicit review,
+  preventing a region/order dependency from being applied only halfway.
+- Static image derivatives: 250 DZI tiles, three tiny surface thumbnails, two
+  DZI descriptors and a provenance record. No full scan is bundled. Dimensions
+  remain 6664 by 2592; reduced levels use Lanczos and JPEG95; no enhancement.
+  Source attribution is always visible. Brightness/contrast only filter the
+  display canvas and are reversible. The original image is a failure fallback.
+- Private edits are not submitted automatically. The existing Worker source
+  was located at C:/basic project/collaboration-worker. Shared manuscript
+  publication is still pending and must extend that service, not replace it.
+
+Image-coordinate and DZI behavior use the official OpenSeadragon documentation:
+https://openseadragon.github.io/docs/OpenSeadragon.Viewport.html
+https://openseadragon.github.io/examples/tilesource-dzi/

@@ -20,11 +20,11 @@ registry={'schemaVersion':'1.0.0','manuscripts':[{
  'bibliography':[{'id':'silk2017','label':'Jonathan A. Silk, Materials Toward the Study of Vasubandhu’s Viṁśikā (II), RET 39 (2017), 342–360',
   'url':'https://openphilology.eu/publications-jonathan-silk/articles_2017a_materials.pdf'}]
 }]}
-pkg={'schemaVersion':'1.0.0','id':'bnf-pt797','version':'0.2.0-draft','editor':'Gleb Sharygin',
+pkg={'schemaVersion':'1.0.0','id':'bnf-pt797','version':'0.3.0-draft','editor':'Gleb Sharygin',
  'status':'draft','createdAt':'2026-10-28','surfaces':[],'regions':[],'lines':[],
  'anchors':[],'annotations':[],
  'scopeNote':'Three surfaces from the first two digital images; sequence follows image order. The first two physical lines have draft transliterations based on Silk 2017, with line boundaries checked against the scan; the diplomatic layer remains a short excerpt. Other lines are untranscribed. Foliation, further transcription, difficult readings and reviewed correspondences remain to be established.',
- 'deliveryNote':'BnF image-1 metadata and pagination were retrieved, but subsequent manifest and tile checks still returned HTTP 403. This pilot retains the selected Commons image on demand (about 1–1.6 MB), not IIIF tiles. No scans are bundled in the Reader.',
+ 'deliveryNote':'The viewer loads static Deep Zoom tiles from a separate manuscript-images folder, derived from the verified Commons scans. BnF manifest and tile checks returned HTTP 403. The Commons original remains a fallback if local tiles are unavailable. Full scans are not bundled in the corpus or site.',
  'provenance':[{'id':'commons-metadata','type':'catalogue-metadata','accessed':'2026-10-28',
                 'note':'Image identifiers, dimensions and public-domain statement from Commons imageinfo API. Digital images are from the BnF substitute R 33337.'},
                {'id':'pilot-inspection','type':'image-inspection','date':'2026-10-28',
@@ -33,19 +33,23 @@ pkg={'schemaVersion':'1.0.0','id':'bnf-pt797','version':'0.2.0-draft','editor':'
                 'note':'Silk 2017 p.344 sections 0, I A–H and the opening of II, checked against three consecutive crops covering the first two physical lines of image 1. Line 2 ends after ces; brgal te begins line 3. Readings follow Silk, not an independently reviewed edition. Decorative opening strokes are not transliterated.'},
                {'id':'bnf-pagination','type':'catalogue-metadata','accessed':'2026-10-28',
                 'url':'https://gallica.bnf.fr/services/Pagination?ark=btv1b10097230v',
-                'note':'Seven digital views; all pagination labels are NP. This confirms no foliation labels and does not establish the physical order.'}]}
+                'note':'Seven digital views; all pagination labels are NP. The service supplies no foliation labels and does not establish the physical order.'},
+               {'id':'static-tile-derivatives','type':'image-processing','date':'2026-10-29',
+                'note':'Separate Deep Zoom JPEG tiles made from the verified Commons originals, retaining 6664×2592 coordinates. 512-pixel tiles, one-pixel overlap, JPEG quality95; reduced levels use Lanczos. No contrast enhancement or restoration. See manuscript-images/bnf-pt797/PROVENANCE.json.'}]}
 layouts=[(0,'s01','Image 1 · single surface',[50,510,6440,1010], [535,690,850,1000,1150,1310]),
          (1,'s02','Image 2 · upper surface',[35,170,6450,1010],[195,350,510,665,825,985]),
          (1,'s03','Image 2 · lower surface',[35,1350,6450,1040],[1370,1525,1680,1835,1995,2155])]
 for order,(i,suffix,label,crop,ys) in enumerate(layouts,1):
  p=images[i];im=p['imageinfo'][0];sid='pt797-'+suffix
- pkg['surfaces'].append({'id':sid,'revision':1,'label':label,'order':order,
+ pkg['surfaces'].append({'id':sid,'revision':2,'label':label,'order':order,
   'folioLabel':None,'folioStatus':'not-yet-verified','canvasId':None,
   'coordinateSpace':'original-image-pixels',
+  'thumbnail':f'manuscript-images/bnf-pt797/{sid}-thumb.jpg',
   'width':im['width'],'height':im['height'],'viewport':crop,
-  'image':{'type':'image','url':im['url'].split('?')[0],'width':im['width'],'height':im['height'],
-           'sourcePage':im['descriptionurl'],'sourceId':p['pageid'],'delivery':'single-image-fallback'},
-  'provenance':['commons-metadata','pilot-inspection']})
+  'image':{'type':'dzi','url':im['url'].split('?')[0],'width':im['width'],'height':im['height'],
+           'tilesUrl':f'manuscript-images/bnf-pt797/view-{i+1}_files/','tileSize':512,'overlap':1,'format':'jpg',
+           'sourcePage':im['descriptionurl'],'sourceId':p['pageid'],'delivery':'static-tiles-with-original-fallback'},
+  'provenance':['commons-metadata','pilot-inspection','static-tile-derivatives']})
  for n,y in enumerate(ys,1):
   lid=f'{sid}-l{n:02}';rid=f'{lid}-region'
   pkg['regions'].append({'id':rid,'revision':1,'surfaceId':sid,'shape':'rect',

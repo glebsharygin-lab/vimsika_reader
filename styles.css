@@ -3811,3 +3811,35 @@ mark {
 .ms-mobile-tabs { display:none; }
 @media(min-width:1800px) { .ms-columns { grid-template-columns:minmax(0,1.3fr) minmax(280px,1fr) 300px; } .ms-research { grid-column:auto; display:block; } .ms-research details { margin-top:14px; } .ms-export { margin-top:20px; } }
 @media(max-width:900px) { .ms-heading { flex-direction:column; } .ms-columns { grid-template-columns:1fr; } .ms-scan { position:static; } .ms-mobile-tabs { display:flex; margin:12px 0; } .ms-research { display:block; } .ms-research details { margin:14px 0; } .ms-workspace[data-mobile-pane="scan"] .ms-text,.ms-workspace[data-mobile-pane="scan"] .ms-research,.ms-workspace[data-mobile-pane="text"] .ms-scan,.ms-workspace[data-mobile-pane="text"] .ms-research,.ms-workspace[data-mobile-pane="research"] .ms-scan,.ms-workspace[data-mobile-pane="research"] .ms-text { display:none; } .ms-image { height:330px; } .ms-toolbar select { max-width:190px; } }
+.ms-conflicts { grid-column:1/-1; }
+.ms-conflicts fieldset { margin:14px 0; border:1px solid #d5cec0; min-width:0; }
+.ms-conflict-pair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.ms-conflict-text,.ms-conflicts pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:13px; }
+.ms-conflicts h5 { font-size:14px; margin:14px 0; }
+.ms-conflicts label { display:block; margin:12px 0; }
+.ms-conflicts select { max-width:100%; }
+@media(max-width:700px) { .ms-conflict-pair { grid-template-columns:1fr; } }
+
+/* Keep the scan inside its row; long transcriptions scroll independently. */
+.ms-scan { position:static; }
+@media(min-width:901px) { .ms-text { max-height:calc(100vh - 170px); overflow:auto; } }
+.ms-image { position:relative; }
+.ms-draw-overlay { position:absolute; inset:0; z-index:100; cursor:crosshair; touch-action:none; outline:2px solid #996b32; }
+.ms-draw-preview { position:absolute; pointer-events:none; border:2px solid #935b13; background:#c9994d35; }
+#ms-structure-editor { margin-top:18px; }
+#ms-structure-editor > details { border-top:1px solid #d5cec0; padding:12px 0; }
+#ms-structure-editor summary { cursor:pointer; }
+#ms-anchor-form select[multiple] { display:block; width:100%; }
+.ms-reading-mark { border-bottom:2px dotted #866234; }
+.ms-reading-mark sup { font-family:system-ui,sans-serif; color:#785522; font-size:10px; }
+.ms-mark-supplied { background:#f7ecd7; }
+.ms-mark-del { text-decoration:line-through; }
+.ms-reading-marks { border:1px solid #ded4c2; padding:9px; margin:12px 0; }
+.ms-thumbnails { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.ms-thumbnails button { width:150px; display:grid; gap:4px; text-align:left; }
+.ms-thumbnails img { display:block; width:100%; height:32px; object-fit:contain; }
+.ms-thumbnails span { font-size:11px; }
+.ms-image-adjust { margin-top:10px; font-size:12px; }
+.ms-image-adjust label { display:inline-flex; align-items:center; gap:5px; margin:8px 8px 0 0; }
+.ms-image-adjust input { width:100px; }
+.ms-image canvas { filter:brightness(var(--ms-brightness,1)) contrast(var(--ms-contrast,1)); }
