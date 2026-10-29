@@ -1,7 +1,9 @@
 /* Lazy manuscript workspace. Corpus/editorial storage are never rewritten here. */
 window.Manuscripts = (() => {
   'use strict';
-  const assetPromises=new Map(),packages=new Map(),drafts=new Map(),rawDrafts=new Map();
+  const assetPromises=new Map(),packages=new Map(),basePackages=new Map(),drafts=new Map(),rawDrafts=new Map();
+  let publishedProblem='';
+  let reviewPreview=null;
   let registry,core,viewer,generation=0,current,record,statusMessage='',storageProblem='';
   let regionTrackers=[];
   let draftConflicts=[];
@@ -20,14 +22,18 @@ window.Manuscripts = (() => {
     return assetPromises.get(url);
   }
   async function load(id) {
-    await Promise.all([loadScript('manuscripts-core.js?v=0.32.0-draft'),loadScript('manuscripts/registry.js?v=0.32.0-draft')]);
+    await Promise.all([loadScript('manuscripts-core.js?v=0.33.0-draft'),loadScript('manuscripts/registry.js?v=0.33.0-draft')]);
     core=window.ManuscriptCore;registry=window.MANUSCRIPT_REGISTRY;
+    await loadScript('manuscripts-review-core.js?v=0.33.0-draft');
     record=registry.manuscripts.find(r=>r.id===id)||registry.manuscripts[0];m.id=record.id;
-    if(!packages.has(m.id)) {
+    if(!basePackages.has(m.id)) {
       if(!/^manuscripts\/[a-z0-9-]+\.js$/.test(record.package))throw new Error('Invalid manuscript package location.');
-      await loadScript(record.package+'?v=0.32.0-draft');
-      const data=window.MANUSCRIPT_PACKAGES[m.id];core.validatePackage(data,state.corpus);packages.set(m.id,data);
+      await loadScript(record.package+'?v=0.33.0-draft');
+      const data=window.MANUSCRIPT_PACKAGES[m.id];core.validatePackage(data,state.corpus);basePackages.set(m.id,data);
     }
+    publishedProblem='';
+    try {packages.set(m.id,window.ManuscriptReviewCore.applyPublished(basePackages.get(m.id),state.publishedEditorData.manuscriptReviews?.[m.id],state.corpus).data);}
+    catch(error) {packages.set(m.id,basePackages.get(m.id));publishedProblem=error.message;}
     const data=packages.get(m.id);
     if(!drafts.has(m.id)) {
       const draft=core.emptyDraft(data);drafts.set(m.id,draft);
@@ -36,7 +42,8 @@ window.Manuscripts = (() => {
         if(raw) {rawDrafts.set(m.id,raw);const parsed=JSON.parse(raw);core.applyDraft(data,parsed,state.corpus);drafts.set(m.id,parsed);}
       } catch(error) {storageProblem='The saved manuscript draft could not be loaded. It has been kept untouched. Export the saved file before resolving it. '+error.message;}
     }
-    const applied=core.applyDraft(data,drafts.get(m.id),state.corpus);current=applied.data;draftConflicts=applied.conflicts;
+    const applied=core.applyDraft(data,drafts.get(m.id),state.corpus);current=publishedProblem?data:applied.data;draftConflicts=applied.conflicts;
+    if(publishedProblem)statusMessage='Shared manuscript history needs attention. The base package is shown; private drafts are unchanged. '+publishedProblem;
     if(draftConflicts.length)statusMessage=`${draftConflicts.length} saved draft change(s) need review against package ${data.version}. Your saved file is unchanged. Open Review saved changes below.`;
     if(!current.surfaces.some(s=>s.id===m.surfaceId))m.surfaceId=current.surfaces[0]?.id||'';
     if(!current.lines.some(l=>l.id===m.lineId&&l.surfaceId===m.surfaceId))m.lineId=current.lines.find(l=>l.surfaceId===m.surfaceId)?.id||'';
@@ -75,6 +82,7 @@ window.Manuscripts = (() => {
     const url=URL.createObjectURL(new Blob([value],{type}));const link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   function persist(draft) {
+    if(publishedProblem)throw new Error('Shared manuscript history needs attention before saving further drafts.');
     if(storageProblem)throw new Error('The earlier saved draft needs review; it will not be overwritten.');
     // Save first; if storage is full, keep the in-memory current draft unchanged.
     localStorage.setItem('vimsika-manuscript-draft-v1:'+m.id,JSON.stringify(draft));drafts.set(m.id,draft);
@@ -123,6 +131,10 @@ window.Manuscripts = (() => {
     }
     return html+e(chars.slice(end).join(''));
   }
+  function sharedHistoryHTML() {
+    const events=state.publishedEditorData.manuscriptReviews?.[m.id]?.events||[];
+    return events.map(event=>`<p>Shared proposal ${e(event.proposal?.id)} · ${e(event.decision)}<br>Author: ${e(event.proposal?.author?.login)} · submitted ${e(event.proposal?.submittedAt)}<br>Reviewer: ${e(event.reviewer?.login)} · ${e(event.decidedAt)}${event.reviewer?.id===event.proposal?.author?.id?' · review by the author':''}<br>${e(event.note)}</p>`).join('');
+  }
   function researchHTML() {
     const line=selectedLine(),anchors=linked(),notes=current.annotations.filter(n=>n.targets.some(t=>t.lineId===m.lineId||line?.regionIds.includes(t.regionId)));
     const changes=drafts.get(m.id).records.filter(r=>r.targetId===m.lineId||line?.regionIds.includes(r.targetId));
@@ -130,8 +142,9 @@ window.Manuscripts = (() => {
         ${m.passageId?`<p>Logical selection: ${e(m.passageId)}. Selecting a word does not change the surface.</p>`:''}</details>
       <details><summary>Notes & variants</summary>${notes.map(n=>`<p><strong>${e(n.type)} · ${e(n.status)}</strong><br>${e(n.text)}<br><small>${e(n.author||'')}</small></p>`).join('')||'<p>No scholarly annotation recorded for this line.</p>'}<p>No reviewed variant apparatus is available for this pilot.</p></details>
       <details><summary>Evidence & lexical work</summary><p>Normalized forms are editorial search readings. Each belongs to a named transcription layer and physical line, with a route back to the scan. Use the Normalized tab to look up a form.</p><p>${e(line?.layers.normalized?.note||'No normalized reading recorded.')}</p><p>Published comparison witness: ${e(record.relatedWitnessId)}. Line-level links do not assert word alignment.</p></details>
-      <details><summary>History & local drafts</summary><p>Base package ${e(current.version)} · ${e(current.status)} · project editor ${e(current.editor)}. This pilot has not received independent scholarly review.</p>${changes.map(c=>`<p>${e(c.kind)} · ${e(c.provenance.status)} · ${e(c.provenance.author)}<br>${e(c.provenance.updatedAt)} · ${c.history?.length||0} earlier local revision(s)</p>`).join('')}${(drafts.get(m.id).resolutions||[]).map(r=>`<details><summary>${e(r.previous.kind)} · ${e(r.previous.targetId)} · ${r.choice==='base'?'proposal archived':'proposal retained'}</summary><p>${e(r.author)} · ${e(r.date)}<br>${e(r.fromVersion)} → ${e(r.toVersion)}</p>${conflictReading(r.previous.value)}</details>`).join('')}<p>Draft export preserves identifiers, coordinates, readings and provenance. Submission and publication are not enabled in this pilot.</p></details>
+      <details><summary>History & local drafts</summary><p>Working manuscript version ${e(current.version)} · ${e(current.status)} · project editor ${e(current.editor)}. This pilot has not received independent scholarly review.</p>${changes.map(c=>`<p>${e(c.kind)} · ${e(c.provenance.status)} · ${e(c.provenance.author)}<br>${e(c.provenance.updatedAt)} · ${c.history?.length||0} earlier local revision(s)</p>`).join('')}${(drafts.get(m.id).resolutions||[]).map(r=>`<details><summary>${e(r.previous.kind)} · ${e(r.previous.targetId)} · ${r.choice==='base'?'proposal archived':'proposal retained'}</summary><p>${e(r.author)} · ${e(r.date)}<br>${e(r.fromVersion)} → ${e(r.toVersion)}</p>${conflictReading(r.previous.value)}</details>`).join('')}<p>Draft export preserves identifiers, coordinates, readings and provenance. Shared review is available only after the service is enabled.</p>${sharedHistoryHTML()}</details>
       ${conflictHTML()}
+      <details id="ms-shared-details"><summary>Shared review</summary><div id="ms-shared-content"><button id="ms-shared-open" type="button">Check shared review</button><p>Private drafts are sent only when you choose Submit for review.</p></div></details>
       <details><summary>Sources & pilot scope</summary><p>${e(current.scopeNote)}</p><p>${e(current.deliveryNote)}</p>${record.bibliography.map(b=>`<p><a href="${a(b.url)}" target="_blank" rel="noopener">${e(b.label)}</a></p>`).join('')}<a href="${a(record.catalogueUrl)}" target="_blank" rel="noopener">BnF catalogue</a></details>`;
   }
   function editorHTML() {
@@ -213,6 +226,10 @@ window.Manuscripts = (() => {
         if(size.x!==surface.width||size.y!==surface.height){message('Image dimensions differ from the recorded canvas. Regions are disabled pending review.');return;}
         if(surface.viewport)item.setClip(new OpenSeadragon.Rect(...surface.viewport));
         fitSurface();drawRegions();
+        if(reviewPreview?.surfaceId===m.surfaceId) {
+          document.querySelector('.ms-scan')?.scrollIntoView({block:'start'});
+          message('Shared review preview: proposed regions are dashed blue; current regions are dashed brown. Previewing does not save a change.');
+        }
       });
       viewer.addHandler('tile-loaded',()=>{
         if(turn!==generation||imageFallback||surface.image.type==='image')return;
@@ -250,8 +267,15 @@ window.Manuscripts = (() => {
         if(event.quick){event.preventDefaultAction=true;selectLine(line.id,'scan');}
       }}));
     }
+    if(reviewPreview?.surfaceId===m.surfaceId)for(const box of reviewPreview.boxes) {
+      const s=selectedSurface(),r=box.xywh;
+      if(!Array.isArray(r)||r.length!==4||r.some(x=>!Number.isFinite(x))||r[0]<0||r[1]<0||r[2]<=0||r[3]<=0||r[0]+r[2]>s.width||r[1]+r[3]>s.height)continue;
+      const element=document.createElement('div');element.className='ms-review-region '+box.kind;element.title=box.kind==='proposed'?'Submitted region preview':'Current shared region';
+      viewer.addOverlay({element,location:viewer.world.getItemAt(0).imageToViewportRectangle(...r),checkResize:false});
+    }
   }
   function selectLine(id,origin='text') {
+    reviewPreview=null;
     cancelDrawing();
     const line=current.lines.find(l=>l.id===id);if(!line)return;m.lineId=id;
     const first=linked(id).flatMap(x=>x.passageIds)[0];if(m.sync&&first)m.passageId=first;
@@ -265,7 +289,7 @@ window.Manuscripts = (() => {
       else {const region=current.regions.find(r=>r.id===line.regionIds[0]);const item=viewer?.world.getItemAt(0);if(region&&item)viewer.viewport.fitBounds(item.imageToViewportRectangle(...region.xywh));}
     }
   }
-  function goSurface(index) {const s=current.surfaces[index];if(!s)return;m.surfaceId=s.id;m.lineId='';statusMessage='';renderReader();}
+  function goSurface(index) {const s=current.surfaces[index];if(!s)return;reviewPreview=null;m.surfaceId=s.id;m.lineId='';statusMessage='';renderReader();}
   function openReading(pid,comparison=false) {
     if(!passageById(pid))return;m.passageId=pid;
     state.view=comparison?'comparison':'reading';state.selectedSources.add(record.relatedWitnessId);state.openPassages.add(pid);state.openSourcePanels.add(pid+':'+record.relatedWitnessId);
@@ -277,6 +301,28 @@ window.Manuscripts = (() => {
     history.replaceState(null,'',location.pathname+location.search);updateViewPresentation();renderReader();
   }
   function bindDynamic(container) {
+    const shared=container.querySelector('#ms-shared-content');
+    if(shared) {
+      const mount=()=>window.ManuscriptReviewUI.mount(shared,{id:m.id,draft:()=>core.clone(drafts.get(m.id)),download,
+        blocked:()=>publishedProblem||storageProblem||(draftConflicts.length?'Resolve saved draft conflicts before submitting.':''),
+        refreshPublished:async()=>{await loadPublishedEditorData();renderReader();},
+        scan:(change,base,draft)=>{
+          const value=change.after||change.before;
+          const line=value.layers?value:base.lines.find(l=>l.regionIds.includes(value.id)||value.lineIds?.includes(l.id)||value.targets?.some(t=>t.lineId===l.id||l.regionIds.includes(t.regionId)));
+          const surfaceId=value.surfaceId||line?.surfaceId;if(!surfaceId)return message('No physical surface was found for this proposal.');
+          const boxes=[];
+          if(change.kind==='region') {for(const [kind,r] of [['current',change.before],['proposed',change.after]])if(r)boxes.push({kind,xywh:r.xywh});}
+          else if(line)for(const id of line.regionIds) {
+            const before=base.regions.find(r=>r.id===id),after=draft.records.find(r=>r.kind==='region'&&r.targetId===id)?.value||before;
+            if(before)boxes.push({kind:'current',xywh:before.xywh});if(after)boxes.push({kind:'proposed',xywh:after.xywh});
+          }
+          reviewPreview={surfaceId,boxes};m.overlays=true;m.surfaceId=surfaceId;m.lineId=current.lines.some(l=>l.id===line?.id)?line.id:'';m.pane='scan';renderReader();
+        }});
+      if(window.ManuscriptReviewUI)mount();
+      else shared.querySelector('#ms-shared-open').onclick=async()=>{
+        try{await loadScript('manuscripts-review.js?v=0.33.0-draft');if(shared.isConnected)mount();}catch(error){message(error.message);}
+      };
+    }
     container.querySelectorAll('[data-ms-line]').forEach(b=>b.onclick=()=>selectLine(b.dataset.msLine));
     container.querySelectorAll('[data-ms-passage]').forEach(b=>b.onclick=()=>openReading(b.dataset.msPassage));
     container.querySelectorAll('[data-ms-compare]').forEach(b=>b.onclick=()=>openReading(b.dataset.msCompare,true));
@@ -371,7 +417,7 @@ window.Manuscripts = (() => {
     }
     const exportButton=container.querySelector('#ms-export');if(exportButton)exportButton.onclick=()=>download(JSON.stringify(drafts.get(m.id),null,2),m.id+'-draft.json');
     const rawButton=container.querySelector('#ms-export-raw');if(rawButton)rawButton.onclick=()=>download(rawDrafts.get(m.id),m.id+'-saved-original.json');
-    const teiButton=container.querySelector('#ms-tei');if(teiButton)teiButton.onclick=()=>{try{download(core.tei(current,record),m.id+'.tei.xml','application/xml');}catch(error){message(error.message);}};
+    const teiButton=container.querySelector('#ms-tei');if(teiButton)teiButton.onclick=()=>{try{download(core.tei(current,record,state.publishedEditorData.manuscriptReviews?.[m.id]?.events||[]),m.id+'.tei.xml','application/xml');}catch(error){message(error.message);}};
     const importInput=container.querySelector('#ms-import');if(importInput)importInput.onchange=async()=>{
       const file=importInput.files[0];if(!file)return;
       try {if(file.size>5000000)throw new Error('Draft exceeds the 5 MB import limit.');const imported=JSON.parse(await file.text());

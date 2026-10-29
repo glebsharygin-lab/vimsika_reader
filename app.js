@@ -431,6 +431,7 @@ async function loadPublishedEditorData() {
       textEdits,
       lexiconEntries: published.lexiconEntries || [],
       syntaxAnnotations: published.syntaxAnnotations || [],
+      manuscriptReviews: published.manuscriptReviews || {},
     };
   } catch {}
 }

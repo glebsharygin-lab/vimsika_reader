@@ -3818,6 +3818,17 @@ mark {
 .ms-conflicts h5 { font-size:14px; margin:14px 0; }
 .ms-conflicts label { display:block; margin:12px 0; }
 .ms-conflicts select { max-width:100%; }
+#ms-shared-details { grid-column:1/-1; }
+#ms-shared-content label { display:block; margin:12px 0; font-size:14px; }
+#ms-shared-content textarea,#ms-shared-content select { display:block; width:100%; max-width:100%; box-sizing:border-box; margin-top:6px; }
+#ms-shared-content textarea { padding:8px; font:inherit; }
+#ms-shared-content fieldset { min-width:0; margin:16px 0; border:1px solid #d5cec0; }
+#ms-shared-content pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:12px; }
+#ms-shared-content h5 { font-size:14px; }
+.ms-review-warning { color:#793d13; font-weight:600; }
+.ms-review-region { pointer-events:none; box-sizing:border-box; border:3px dashed #336d9a; background:rgba(51,109,154,.08); }
+.ms-review-region.current { border-color:#945b25; background:transparent; }
+@media(min-width:1800px) { .ms-research .ms-conflict-pair { grid-template-columns:1fr; } }
 @media(max-width:700px) { .ms-conflict-pair { grid-template-columns:1fr; } }
 
 /* Keep the scan inside its row; long transcriptions scroll independently. */
