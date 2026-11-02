@@ -3778,6 +3778,14 @@ mark {
 .ms-scan { position:sticky; top:12px; }
 .ms-research { grid-column:1/-1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 24px; }
 .ms-research h4,.ms-export { grid-column:1/-1; margin:0; }
+.ms-research-tools { grid-column:1/-1; min-width:0; }
+.ms-research-tools label { display:inline-flex; flex-direction:column; gap:4px; margin:6px 10px 6px 0; font-size:13px; }
+.ms-research-tools input,.ms-research-tools select { max-width:100%; min-width:0; }
+.ms-research-tools article { border:1px solid #ded8cb; border-radius:6px; padding:12px; margin:10px 0; overflow-wrap:anywhere; }
+.ms-research-tools article p { white-space:pre-wrap; }
+.ms-selected-note { border-left:3px solid #927336; background:#f9f0d9; padding:10px; }
+#ms-concordance-results { max-height:420px; overflow:auto; }
+#ms-tray-items { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:10px; }
 .ms-research details { border-top:1px solid #e4ded2; padding-top:10px; }
 .ms-research summary { cursor:pointer; font-weight:600; }
 .ms-research p,.ms-draft-form p { line-height:1.6; font-size:13px; overflow-wrap:anywhere; }

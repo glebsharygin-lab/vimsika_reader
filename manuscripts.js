@@ -10,8 +10,9 @@ window.Manuscripts = (() => {
   let drawing=null;
   let mobileSidebarBefore=null;
   let formBuffers={};
+  const researchOptions={field:'transliteration'};
   try { formBuffers=JSON.parse(localStorage.getItem('vimsika-manuscript-forms-v1')||'{}'); } catch {}
-  const m={id:'bnf-pt797',surfaceId:'',lineId:'',layer:'transliteration',passageId:'',pane:'scan',sync:true,overlays:true,editing:false,query:'',brightness:100,contrast:100};
+  const m={id:'bnf-pt797',surfaceId:'',lineId:'',layer:'transliteration',passageId:'',annotationId:'',pane:'scan',sync:true,overlays:true,editing:false,query:'',brightness:100,contrast:100};
   const e=value=>escapeHtml(value), a=value=>escapeAttribute(value);
   const annotationTypes={'scholarly-note':'Scholarly note','variant-reading':'Variant reading','damage-lacuna':'Damage or lacuna','uncertain-reading':'Uncertain reading','editorial-conjecture':'Editorial conjecture','abbreviation':'Abbreviation or expansion','correction':'Correction, deletion or insertion','change-of-hand':'Change of hand','marginal-note':'Marginal or interlinear note','lexical-observation':'Lexical or grammatical observation','bibliographic-reference':'Bibliographical reference','question':'Question for review'};
   function loadScript(url) {
@@ -22,13 +23,14 @@ window.Manuscripts = (() => {
     return assetPromises.get(url);
   }
   async function load(id) {
-    await Promise.all([loadScript('manuscripts-core.js?v=0.34.0-draft'),loadScript('manuscripts/registry.js?v=0.34.0-draft')]);
+    await Promise.all([loadScript('manuscripts-core.js?v=0.36.0-draft'),loadScript('manuscripts/registry.js?v=0.36.0-draft')]);
     core=window.ManuscriptCore;registry=window.MANUSCRIPT_REGISTRY;
-    await loadScript('manuscripts-review-core.js?v=0.34.0-draft');
+    await loadScript('manuscripts-research.js?v=0.36.0-draft');
+    await loadScript('manuscripts-review-core.js?v=0.36.0-draft');
     record=registry.manuscripts.find(r=>r.id===id)||registry.manuscripts[0];m.id=record.id;
     if(!basePackages.has(m.id)) {
       if(!/^manuscripts\/[a-z0-9-]+\.js$/.test(record.package))throw new Error('Invalid manuscript package location.');
-      await loadScript(record.package+'?v=0.34.0-draft');
+      await loadScript(record.package+'?v=0.36.0-draft');
       const data=window.MANUSCRIPT_PACKAGES[m.id];core.validatePackage(data,state.corpus);basePackages.set(m.id,data);
     }
     publishedProblem='';
@@ -48,6 +50,7 @@ window.Manuscripts = (() => {
     if(!current.surfaces.some(s=>s.id===m.surfaceId))m.surfaceId=current.surfaces[0]?.id||'';
     if(!current.lines.some(l=>l.id===m.lineId&&l.surfaceId===m.surfaceId))m.lineId=current.lines.find(l=>l.surfaceId===m.surfaceId)?.id||'';
     if(!core.layers.includes(m.layer))m.layer='transliteration';
+    if(m.annotationId&&!current.annotations.some(n=>n.id===m.annotationId))m.annotationId='';
     return current;
   }
   function compactMobileNavigation() {
@@ -64,19 +67,19 @@ window.Manuscripts = (() => {
   }
   function hash() {
     const params=new URLSearchParams({manuscript:m.id,surface:m.surfaceId,line:m.lineId,layer:m.layer});
-    if(m.passageId)params.set('passage',m.passageId);
+    if(m.passageId)params.set('passage',m.passageId);if(m.annotationId)params.set('annotation',m.annotationId);
     history.replaceState(null,'','#'+params.toString());
   }
   function restoreHash() {
     const p=new URLSearchParams(location.hash.slice(1));
     if(!p.has('manuscript'))return false;
-    for(const [field,key] of [['id','manuscript'],['surfaceId','surface'],['lineId','line'],['layer','layer'],['passageId','passage']])m[field]=p.get(key)||'';
+    for(const [field,key] of [['id','manuscript'],['surfaceId','surface'],['lineId','line'],['layer','layer'],['passageId','passage'],['annotationId','annotation']])m[field]=p.get(key)||'';
     m.editing=false;state.view='manuscripts';updateViewPresentation();renderReader();return true;
   }
   function selectedLine() {return current.lines.find(l=>l.id===m.lineId);}
   function selectedSurface() {return current.surfaces.find(s=>s.id===m.surfaceId);}
   function linked(lineId=m.lineId) {return current.anchors.filter(x=>x.lineIds.includes(lineId));}
-  function citation() {const line=selectedLine();return `${record.institution}, ${record.shelfmark}, ${selectedSurface().label}, ${line?.label||'surface'}; ${m.layer}, ${current.version}, ${current.editor}. ${location.href}`;}
+  function citation(annotationId=m.annotationId) {const line=selectedLine(),url=new URL(location.href),params=new URLSearchParams(url.hash.slice(1));if(annotationId)params.set('annotation',annotationId);else params.delete('annotation');url.hash=params.toString();return `${record.institution}, ${record.shelfmark}, ${selectedSurface().label}, ${line?.label||'surface'}; ${m.layer}, ${current.version}, ${current.editor}${annotationId?'; annotation '+annotationId:''}. ${url.href}`;}
   function message(text) {statusMessage=text;const el=document.querySelector('#ms-status');if(el)el.textContent=text;}
   function download(value,name,type='application/json') {
     const url=URL.createObjectURL(new Blob([value],{type}));const link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
@@ -110,6 +113,28 @@ window.Manuscripts = (() => {
       return `<fieldset><legend>${e(c.kind)} · ${e(c.targetId)}</legend>${target?`<button type="button" data-ms-review-line="${target.id}">View this line and scan</button>`:''}<div class="ms-conflict-pair"><section><h5>Current package</h5>${conflictReading(c.base)}</section><section><h5>Your saved proposal</h5>${conflictReading(c.proposed)}</section></div><label>Decision <select required name="${a(c.id)}"><option value="">Choose after comparing</option><option value="base">Use current package; archive my proposal</option><option value="draft">Keep my proposal as a private draft</option></select></label></fieldset>`;
     }).join('')}<button type="submit">Save all review decisions</button><p>This resolves local version conflicts. It does not mark a reading as scholarly reviewed or publish it.</p></form></details>`;
   }
+  const importKey=()=> 'vimsika-manuscript-import-v1:'+m.id;
+  function readPendingImport() {
+    const raw=localStorage.getItem(importKey());if(!raw)return null;
+    const pending=JSON.parse(raw);
+    if(pending.manuscriptId!==m.id||typeof pending.raw!=='string'||typeof pending.snapshot!=='string'||!pending.choices)throw new Error('The pending import cannot be read. The stored file is unchanged.');
+    return pending;
+  }
+  function importHistoryHTML() {
+    return (drafts.get(m.id).importResolutions||[]).map(r=>`<details><summary>Imported draft · ${e(r.targetId)} · ${r.choice==='local'?'local reading kept':'incoming reading kept'}</summary><p>${e(r.author)} · ${e(r.date)}<br>${e(r.sourceName)} · ${e(r.baseVersion)}. This is a private import decision.</p><div class="ms-conflict-pair"><section><h5>Earlier local record</h5>${conflictReading(r.local.value)}</section><section><h5>Incoming record</h5>${conflictReading(r.incoming.value)}</section></div><details><summary>Both records and provenance</summary><pre>${e(JSON.stringify(r,null,2))}</pre></details></details>`).join('');
+  }
+  function importHTML() {
+    let pending,plan,problem='';
+    try {
+      pending=readPendingImport();if(!pending)return '';
+      if(pending.snapshot!==JSON.stringify(drafts.get(m.id))||pending.savedRaw!==localStorage.getItem('vimsika-manuscript-draft-v1:'+m.id))throw new Error('Your saved draft changed after this comparison opened. Keep the incoming file, close this comparison and import it again.');
+      plan=core.planImport(drafts.get(m.id),JSON.parse(pending.raw),packages.get(m.id),state.corpus);
+    } catch(error) {problem=error.message;}
+    return `<details class="ms-conflicts" id="ms-import-review" open><summary>Compare imported draft${plan?' · '+plan.conflicts.length:''}</summary><p>${e(pending?.name||'Pending file')}. Your saved draft stays unchanged until all choices are saved. Both records and their provenance are retained in the draft export.</p>${problem?`<p role="alert">${e(problem)}</p>`:`<form id="ms-import-form"><label>Editor name <input name="author" required value="${a(pending.author||state.auth.user?.login||'Gleb Sharygin')}"></label>${plan.conflicts.map(c=>{
+      const line=current.lines.find(l=>l.id===c.targetId||l.regionIds.includes(c.targetId));
+      return `<fieldset><legend>${e(c.kind)} · ${e(c.targetId)}</legend>${line?`<button type="button" data-ms-review-line="${line.id}">View this line and scan</button>`:''}<div class="ms-conflict-pair"><section><h5>Your saved draft</h5><p>${e(c.local.provenance.author)} · ${e(c.local.provenance.updatedAt)}</p>${conflictReading(c.local.value)}</section><section><h5>Incoming draft</h5><p>${e(c.incoming.provenance.author)} · ${e(c.incoming.provenance.updatedAt)}</p>${conflictReading(c.incoming.value)}</section></div><label>Keep <select required name="${a(c.targetId)}"><option value="">Choose after comparing</option><option value="local" ${pending.choices[c.targetId]==='local'?'selected':''}>My saved reading</option><option value="incoming" ${pending.choices[c.targetId]==='incoming'?'selected':''}>The incoming reading</option></select></label></fieldset>`;
+    }).join('')}<button type="submit">Save import decisions privately</button><p>Other incoming changes are included in the same save. These choices do not mark readings as scholarly reviewed.</p></form>`}<div class="ms-actions"><button id="ms-import-export">Export pending file</button><button id="ms-import-cancel">Close comparison; keep saved draft</button></div></details>`;
+  }
   function renderText() {
     const rows=current.lines.filter(l=>l.surfaceId===m.surfaceId).sort((x,y)=>x.order-y.order);
     return rows.map(line=>{
@@ -135,15 +160,31 @@ window.Manuscripts = (() => {
     const events=state.publishedEditorData.manuscriptReviews?.[m.id]?.events||[];
     return events.map(event=>`<p>Shared proposal ${e(event.proposal?.id)} · ${e(event.decision)}<br>Author: ${e(event.proposal?.author?.login)} · submitted ${e(event.proposal?.submittedAt)}<br>Reviewer: ${e(event.reviewer?.login)} · ${e(event.decidedAt)}${event.reviewer?.id===event.proposal?.author?.id?' · review by the author':''}<br>${e(event.note)}</p>`).join('');
   }
+  const bookmarkKey=()=> 'vimsika-manuscript-bookmarks-v1:'+m.id;
+  function readBookmarks() {
+    const items=JSON.parse(localStorage.getItem(bookmarkKey())||'[]');
+    if(!Array.isArray(items)||items.length>500||items.some(b=>!b||['id','label','surfaceId','lineId','layer','passageId','version','createdAt','citation'].some(k=>typeof b[k]!=='string')||!core.layers.includes(b.layer))||new Set(items.map(b=>b.id)).size!==items.length)throw new Error('The saved bookmarks cannot be read. Export them unchanged before repairing the file.');
+    return items;
+  }
+  function bookmarkAvailable(b) {
+    return current.surfaces.some(s=>s.id===b.surfaceId)&&current.lines.some(l=>l.id===b.lineId&&l.surfaceId===b.surfaceId)&&(!b.passageId||passageById(b.passageId))&&(!b.annotationId||current.annotations.some(n=>n.id===b.annotationId&&n.targets.some(t=>t.lineId===b.lineId||current.lines.find(l=>l.id===b.lineId)?.regionIds.includes(t.regionId))));
+  }
+  function bookmarksHTML() {
+    let items,problem='';try{items=readBookmarks();}catch(error){problem=error.message;}
+    return `<details id="ms-bookmarks"><summary>Private bookmarks${items?.length?' · '+items.length:''}</summary><p>Saved in this browser. Each bookmark remembers the surface, line, layer and passage; it does not freeze a transcription.</p>${problem?`<p role="alert">${e(problem)}</p>`:`<form id="ms-bookmark-form"><label>Bookmark name <input name="label" maxlength="240" placeholder="Current surface and line"></label><label>Include note <select name="annotation"><option value="">Location only</option>${current.annotations.filter(n=>n.targets.some(t=>t.lineId===m.lineId||selectedLine()?.regionIds.includes(t.regionId))).map(n=>`<option value="${a(n.id)}">${e(n.type)} · ${e(n.text.slice(0,70))}</option>`).join('')}</select></label><button type="submit">Bookmark this location</button></form>${items.map(b=>`<div class="ms-bookmark"><p><strong>${e(b.label)}</strong><br>${e(b.layer)} · ${e(b.passageId||'no passage')} · saved with ${e(b.version)}${bookmarkAvailable(b)?'':' · location unavailable in this version'}</p><div class="ms-actions"><button type="button" data-ms-bookmark-open="${a(b.id)}" ${bookmarkAvailable(b)?'':'disabled'}>Open bookmark</button><button type="button" data-ms-bookmark-remove="${a(b.id)}">Remove bookmark</button></div><details><summary>Saved citation</summary><p>${e(b.citation)}</p></details></div>`).join('')}`}<button type="button" id="ms-bookmark-export">Export bookmarks unchanged</button></details>`;
+  }
   function researchHTML() {
     const line=selectedLine(),anchors=linked(),notes=current.annotations.filter(n=>n.targets.some(t=>t.lineId===m.lineId||line?.regionIds.includes(t.regionId)));
     const changes=drafts.get(m.id).records.filter(r=>r.targetId===m.lineId||line?.regionIds.includes(r.targetId));
     return `<details open><summary>Passage links</summary>${anchors.length?anchors.map(anchor=>`<p class="ms-note">${e(anchor.level)} · ${e(anchor.relation)} · ${e(anchor.status)}</p><p>${e(anchor.note||'')}</p><div class="ms-actions">${anchor.passageIds.map(pid=>`<button data-ms-passage="${pid}">Read ${e(pid)}</button><button data-ms-compare="${pid}">Compare ${e(pid)}</button>`).join('')}</div>`).join(''):'<p>No passage anchor is recorded for this physical line.</p>'}
         ${m.passageId?`<p>Logical selection: ${e(m.passageId)}. Selecting a word does not change the surface.</p>`:''}</details>
-      <details><summary>Notes & variants</summary>${notes.map(n=>`<p><strong>${e(n.type)} · ${e(n.status)}</strong><br>${e(n.text)}<br><small>${e(n.author||'')}</small></p>`).join('')||'<p>No scholarly annotation recorded for this line.</p>'}<p>No reviewed variant apparatus is available for this pilot.</p></details>
+      <details ${m.annotationId?'open':''}><summary>Notes & variants</summary>${notes.map(n=>`<p id="ms-note-${a(n.id)}" ${n.id===m.annotationId?'class="ms-selected-note"':''}><strong>${e(n.type)} · ${e(n.status)}</strong><br>${e(n.text)}<br><small>${e(n.author||'')}</small></p>`).join('')||'<p>No scholarly annotation recorded for this line.</p>'}<p>No reviewed variant apparatus is available for this pilot.</p></details>
       <details><summary>Evidence & lexical work</summary><p>Normalized forms are editorial search readings. Each belongs to a named transcription layer and physical line, with a route back to the scan. Use the Normalized tab to look up a form.</p><p>${e(line?.layers.normalized?.note||'No normalized reading recorded.')}</p><p>Published comparison witness: ${e(record.relatedWitnessId)}. Line-level links do not assert word alignment.</p></details>
-      <details><summary>History & local drafts</summary><p>Working manuscript version ${e(current.version)} · ${e(current.status)} · project editor ${e(current.editor)}. This pilot has not received independent scholarly review.</p>${changes.map(c=>`<p>${e(c.kind)} · ${e(c.provenance.status)} · ${e(c.provenance.author)}<br>${e(c.provenance.updatedAt)} · ${c.history?.length||0} earlier local revision(s)</p>`).join('')}${(drafts.get(m.id).resolutions||[]).map(r=>`<details><summary>${e(r.previous.kind)} · ${e(r.previous.targetId)} · ${r.choice==='base'?'proposal archived':'proposal retained'}</summary><p>${e(r.author)} · ${e(r.date)}<br>${e(r.fromVersion)} → ${e(r.toVersion)}</p>${conflictReading(r.previous.value)}</details>`).join('')}<p>Draft export preserves identifiers, coordinates, readings and provenance. Shared review is available only after the service is enabled.</p>${sharedHistoryHTML()}</details>
+      <details><summary>History & local drafts</summary><p>Working manuscript version ${e(current.version)} · ${e(current.status)} · project editor ${e(current.editor)}. This pilot has not received independent scholarly review.</p>${changes.map(c=>`<p>${e(c.kind)} · ${e(c.provenance.status)} · ${e(c.provenance.author)}<br>${e(c.provenance.updatedAt)} · ${c.history?.length||0} earlier local revision(s)</p>`).join('')}${(drafts.get(m.id).resolutions||[]).map(r=>`<details><summary>${e(r.previous.kind)} · ${e(r.previous.targetId)} · ${r.choice==='base'?'proposal archived':'proposal retained'}</summary><p>${e(r.author)} · ${e(r.date)}<br>${e(r.fromVersion)} → ${e(r.toVersion)}</p>${conflictReading(r.previous.value)}</details>`).join('')}<p>Draft export preserves identifiers, coordinates, readings and provenance. Shared review is available only after the service is enabled.</p>${sharedHistoryHTML()}${importHistoryHTML()}</details>
       ${conflictHTML()}
+      ${importHTML()}
+      ${bookmarksHTML()}
+      <div id="ms-research-tools" class="ms-research-tools"></div>
       <details id="ms-shared-details"><summary>Shared review</summary><div id="ms-shared-content"><button id="ms-shared-open" type="button">Check shared review</button><p>Private drafts are sent only when you choose Submit for review.</p></div></details>
       <details><summary>Sources & pilot scope</summary><p>${e(current.scopeNote)}</p><p>${e(current.deliveryNote)}</p>${record.bibliography.map(b=>`<p><a href="${a(b.url)}" target="_blank" rel="noopener">${e(b.label)}</a></p>`).join('')}<a href="${a(record.catalogueUrl)}" target="_blank" rel="noopener">BnF catalogue</a></details>`;
   }
@@ -162,12 +203,15 @@ window.Manuscripts = (() => {
       <label>Note type <select name="annotationType">${Object.entries(annotationTypes).map(([key,label])=>`<option value="${key}">${label}</option>`).join('')}</select></label><label>Note target <select name="annotationTarget"><option value="line">Selected physical line</option>${line.regionIds.map((id,i)=>`<option value="${id}">Image region ${i+1}</option>`).join('')}</select></label><label>Add a private scholarly note <textarea name="annotation" rows="2"></textarea></label><button type="submit">Save private draft</button><p>Changes stay in this browser. Export a copy for review and backup.</p></form>${structureEditorHTML()}`;
   }
   function coordinateFields(box) {return `<div class="ms-coordinates">${['x','y','width','height'].map((key,i)=>`<label>${key}<input name="${key}" type="number" step="1" required value="${box[i]}"></label>`).join('')}</div>`;}
+  function variantEditorHTML() {
+    return `<details><summary>Record a variant assertion</summary><form id="ms-variant-form" class="ms-draft-form"><label>Editor name <input name="author" required value="${a(state.auth.user?.login||'Gleb Sharygin')}"></label><label>Category <select name="category">${core.variantKinds.map(k=>`<option>${k}</option>`).join('')}</select></label><label>Manuscript layer <select name="layer">${core.layers.map(k=>`<option ${k===m.layer?'selected':''}>${k}</option>`).join('')}</select></label><label>Exact manuscript reading <input name="reading"></label><p>Copy one unique span from the selected layer. Leave empty only for an omission. An omission is an assertion based on the comparison source, not a gap inferred from an untranscribed line.</p><label>Comparison reading <textarea name="comparison" rows="2"></textarea></label><label>Comparison source and location <input name="source" required maxlength="1000" placeholder="Edition, page or passage"></label><label>Evidence and limitations <textarea name="evidence" required rows="2"></textarea></label><label>Evidence status <select name="certainty"><option value="reported">Reported by the cited source</option><option value="tentative">Tentative proposal</option><option value="checked">Personally checked against the source</option></select></label><button type="submit">Save variant privately</button><p>All new assertions remain drafts. Their original text basis is retained if the line later changes.</p></form></details>`;
+  }
   function structureEditorHTML() {
     const line=selectedLine(),ordered=current.lines.filter(l=>l.surfaceId===m.surfaceId).sort((a,b)=>a.order-b.order),author=a(state.auth.user?.login||'Gleb Sharygin'),box=current.regions.find(r=>r.id===line.regionIds[0])?.xywh||[0,0,100,100];
     return `<div id="ms-structure-editor">
       <details><summary>Reading order</summary><form id="ms-order-form" class="ms-draft-form"><label>Editor name <input name="author" required value="${author}"></label><label>Move ${e(line.label)} to position <select name="position">${ordered.map((l,i)=>`<option value="${i}" ${l.id===line.id?'selected':''}>${i+1} · ${e(l.label)}</option>`).join('')}</select></label><button type="submit">Save order privately</button><p>Line IDs, labels and image coordinates stay fixed.</p></form></details>
       <details><summary>Add a physical line</summary><form id="ms-add-line-form" class="ms-draft-form"><label>Editor name <input name="author" required value="${author}"></label><label>Line label <input name="label" required maxlength="120" placeholder="For example: interlinear note"></label>${coordinateFields(box)}<button type="button" data-ms-draw="ms-add-line-form">Draw new line region</button><button type="submit">Add untranscribed line privately</button><p>The line is appended to this surface. All transcription layers start empty; adjust reading order separately.</p></form></details>
-      <details><summary>Add a passage link</summary><form id="ms-anchor-form" class="ms-draft-form"><label>Editor name <input name="author" required value="${author}"></label><label>Passages <select name="passages" multiple required size="5">${state.corpus.passages.map(p=>`<option value="${p.id}">${e(p.id)}</option>`).join('')}</select></label><label>Relationship <select name="relation">${['partial-overlap','overlap','uncertain','variant','addition','omission'].map(v=>`<option>${v}</option>`).join('')}</select></label><label>Evidence / uncertainty <textarea name="note" required rows="2"></textarea></label><button type="submit">Save passage link privately</button><p>This associates the selected physical line with passages. It does not align words or mark the link as reviewed.</p></form></details></div>`;
+      <details><summary>Add a passage link</summary><form id="ms-anchor-form" class="ms-draft-form"><label>Editor name <input name="author" required value="${author}"></label><label>Passages <select name="passages" multiple required size="5">${state.corpus.passages.map(p=>`<option value="${p.id}">${e(p.id)}</option>`).join('')}</select></label><label>Relationship <select name="relation">${['partial-overlap','overlap','uncertain','variant','addition','omission'].map(v=>`<option>${v}</option>`).join('')}</select></label><label>Evidence / uncertainty <textarea name="note" required rows="2"></textarea></label><button type="submit">Save passage link privately</button><p>This associates the selected physical line with passages. It does not align words or mark the link as reviewed.</p></form></details>${variantEditorHTML()}</div>`;
   }
   function cancelDrawing() {if(drawing){drawing.remove();drawing=null;}}
   function drawRectangle(form) {
@@ -277,7 +321,7 @@ window.Manuscripts = (() => {
   function selectLine(id,origin='text') {
     reviewPreview=null;
     cancelDrawing();
-    const line=current.lines.find(l=>l.id===id);if(!line)return;m.lineId=id;
+    const line=current.lines.find(l=>l.id===id);if(!line)return;if(m.lineId!==id)m.annotationId='';m.lineId=id;
     const first=linked(id).flatMap(x=>x.passageIds)[0];if(m.sync&&first)m.passageId=first;
     hash();document.querySelector('#ms-lines').innerHTML=renderText();
     document.querySelector('.ms-research').innerHTML=`<h4>Research</h4>${researchHTML()}${document.querySelector('.ms-export')?.outerHTML||''}`;
@@ -289,7 +333,7 @@ window.Manuscripts = (() => {
       else {const region=current.regions.find(r=>r.id===line.regionIds[0]);const item=viewer?.world.getItemAt(0);if(region&&item)viewer.viewport.fitBounds(item.imageToViewportRectangle(...region.xywh));}
     }
   }
-  function goSurface(index) {const s=current.surfaces[index];if(!s)return;reviewPreview=null;m.surfaceId=s.id;m.lineId='';statusMessage='';renderReader();}
+  function goSurface(index) {const s=current.surfaces[index];if(!s)return;reviewPreview=null;m.surfaceId=s.id;m.lineId='';m.annotationId='';statusMessage='';renderReader();}
   function openReading(pid,comparison=false) {
     if(!passageById(pid))return;m.passageId=pid;
     state.view=comparison?'comparison':'reading';state.selectedSources.add(record.relatedWitnessId);state.openPassages.add(pid);state.openSourcePanels.add(pid+':'+record.relatedWitnessId);
@@ -301,6 +345,29 @@ window.Manuscripts = (() => {
     history.replaceState(null,'',location.pathname+location.search);updateViewPresentation();renderReader();
   }
   function bindDynamic(container) {
+    const researchHost=container.querySelector('#ms-research-tools');if(researchHost)window.ManuscriptResearch.mount(researchHost,{data:current,record,selection:m,options:researchOptions,citation,download,lookup,compare:pid=>openReading(pid,true),go:(id,layer)=>{
+      const line=current.lines.find(l=>l.id===id);if(!line)return;reviewPreview=null;m.surfaceId=line.surfaceId;m.lineId=id;m.query='';if(layer)m.layer=layer;m.pane='text';m.editing=false;renderReader();
+    }});
+    const bookmarkForm=container.querySelector('#ms-bookmark-form');
+    if(bookmarkForm)bookmarkForm.onsubmit=event=>{event.preventDefault();try {
+      const annotationId=new FormData(bookmarkForm).get('annotation')||'',items=readBookmarks(),old=items.find(b=>b.surfaceId===m.surfaceId&&b.lineId===m.lineId&&b.layer===m.layer&&b.passageId===m.passageId&&(b.annotationId||'')===annotationId);
+      if(!selectedLine())throw new Error('Select a manuscript line first.');
+      if(!old&&items.length>=500)throw new Error('Export or remove a bookmark before adding more than 500.');
+      const value={id:old?.id||crypto.randomUUID(),annotationId,label:new FormData(bookmarkForm).get('label').trim()||`${selectedSurface().label} · ${selectedLine().label}${annotationId?' · note':''}`,surfaceId:m.surfaceId,lineId:m.lineId,layer:m.layer,passageId:m.passageId,version:current.version,createdAt:old?.createdAt||new Date().toISOString(),citation:citation(annotationId)};
+      const next=items.filter(b=>b.id!==value.id);next.push(value);
+      localStorage.setItem(bookmarkKey(),JSON.stringify(next));statusMessage='Bookmark saved privately.';renderReader();
+    }catch(error){message(error.message);}};
+    container.querySelectorAll('[data-ms-bookmark-open]').forEach(button=>button.onclick=()=>{try {
+      const b=readBookmarks().find(b=>b.id===button.dataset.msBookmarkOpen);
+      if(!b||!bookmarkAvailable(b))throw new Error('This saved location is unavailable. The bookmark is retained.');
+      Object.assign(m,{surfaceId:b.surfaceId,lineId:b.lineId,layer:b.layer,passageId:b.passageId,annotationId:b.annotationId||'',query:'',editing:false,pane:b.annotationId?'research':'text'});
+      reviewPreview=null;statusMessage=b.version===current.version?'Bookmark opened.':'Bookmark opened in the current version; its original citation is retained.';renderReader();
+    }catch(error){message(error.message);}});
+    container.querySelectorAll('[data-ms-bookmark-remove]').forEach(button=>button.onclick=()=>{try {
+      const next=readBookmarks().filter(b=>b.id!==button.dataset.msBookmarkRemove);
+      localStorage.setItem(bookmarkKey(),JSON.stringify(next));statusMessage='Bookmark removed. Manuscript drafts are unchanged.';renderReader();
+    }catch(error){message(error.message);}});
+    const bookmarkExport=container.querySelector('#ms-bookmark-export');if(bookmarkExport)bookmarkExport.onclick=()=>{try{download(localStorage.getItem(bookmarkKey())||'[]',m.id+'-bookmarks.json');}catch(error){message(error.message);}};
     const shared=container.querySelector('#ms-shared-content');
     if(shared) {
       const mount=()=>window.ManuscriptReviewUI.mount(shared,{id:m.id,draft:()=>core.clone(drafts.get(m.id)),download,
@@ -320,7 +387,7 @@ window.Manuscripts = (() => {
         }});
       if(window.ManuscriptReviewUI)mount();
       else shared.querySelector('#ms-shared-open').onclick=async()=>{
-        try{await loadScript('manuscripts-review.js?v=0.34.0-draft');if(shared.isConnected)mount();}catch(error){message(error.message);}
+        try{await loadScript('manuscripts-review.js?v=0.36.0-draft');if(shared.isConnected)mount();}catch(error){message(error.message);}
       };
     }
     container.querySelectorAll('[data-ms-line]').forEach(b=>b.onclick=()=>selectLine(b.dataset.msLine));
@@ -329,6 +396,30 @@ window.Manuscripts = (() => {
     container.querySelectorAll('[data-ms-word]').forEach(b=>b.onclick=()=>lookup(b.dataset.msWord,b.dataset.msWordLine));
     container.querySelectorAll('[data-ms-draw]').forEach(b=>b.onclick=()=>drawRectangle(document.getElementById(b.dataset.msDraw)));
     bindStructureForms(container);
+    const importForm=container.querySelector('#ms-import-form');
+    if(importForm) {
+      importForm.oninput=()=>{try {
+        const pending=readPendingImport(),fields=new FormData(importForm);
+        pending.author=fields.get('author');pending.choices=Object.fromEntries([...fields].filter(([key])=>key!=='author'));
+        localStorage.setItem(importKey(),JSON.stringify(pending));
+      }catch(error){message('The import choices could not be saved: '+error.message);}};
+      importForm.onsubmit=event=>{event.preventDefault();try {
+        const pending=readPendingImport(),draft=drafts.get(m.id);
+        if(pending.snapshot!==JSON.stringify(draft)||pending.savedRaw!==localStorage.getItem('vimsika-manuscript-draft-v1:'+m.id))throw new Error('The saved draft changed. Close this comparison and import the file again.');
+        const fields=new FormData(importForm),decisions=[...fields].filter(([key])=>key!=='author').map(([targetId,choice])=>({targetId,choice}));
+        const next=core.resolveImport(draft,JSON.parse(pending.raw),packages.get(m.id),decisions,fields.get('author'),state.corpus,pending.name);
+        persist(next);statusMessage='Import decisions saved privately. Both versions remain in History and the draft export.';
+        try{localStorage.removeItem(importKey());}catch{statusMessage+=' The pending comparison could not be cleared; its file is retained.';}
+        renderReader();
+      }catch(error){message(error.message);}};
+    }
+    const pendingExport=container.querySelector('#ms-import-export');if(pendingExport)pendingExport.onclick=()=>{
+      try{const pending=readPendingImport();download(pending.raw,m.id+'-incoming-original.json');}
+      catch{download(localStorage.getItem(importKey()),m.id+'-pending-import.json');}
+    };
+    const pendingCancel=container.querySelector('#ms-import-cancel');if(pendingCancel)pendingCancel.onclick=()=>{
+      try{localStorage.removeItem(importKey());statusMessage='Import comparison closed. Your saved draft is unchanged.';renderReader();}catch(error){message(error.message);}
+    };
     container.querySelectorAll('[data-ms-review-line]').forEach(b=>b.onclick=()=>{
       const line=current.lines.find(l=>l.id===b.dataset.msReviewLine);if(!line)return;
       if(line.surfaceId!==m.surfaceId){m.surfaceId=line.surfaceId;m.lineId=line.id;renderReader();}
@@ -420,7 +511,18 @@ window.Manuscripts = (() => {
     const teiButton=container.querySelector('#ms-tei');if(teiButton)teiButton.onclick=()=>{try{download(core.tei(current,record,state.publishedEditorData.manuscriptReviews?.[m.id]?.events||[]),m.id+'.tei.xml','application/xml');}catch(error){message(error.message);}};
     const importInput=container.querySelector('#ms-import');if(importInput)importInput.onchange=async()=>{
       const file=importInput.files[0];if(!file)return;
-      try {if(file.size>5000000)throw new Error('Draft exceeds the 5 MB import limit.');const imported=JSON.parse(await file.text());
+      const manuscriptId=m.id;
+      try {if(file.size>5000000)throw new Error('Draft exceeds the 5 MB import limit.');const raw=await file.text(),imported=JSON.parse(raw);
+        if(m.id!==manuscriptId)throw new Error('The selected manuscript changed; import the file again.');
+        if(localStorage.getItem(importKey()))throw new Error('Finish or close the pending import comparison before opening another file.');
+        const draft=drafts.get(m.id),savedRaw=localStorage.getItem('vimsika-manuscript-draft-v1:'+m.id);
+        const stored=savedRaw?JSON.parse(savedRaw):core.emptyDraft(packages.get(m.id));
+        if(JSON.stringify(stored)!==JSON.stringify(draft))throw new Error('The saved draft changed in another tab. Reload before importing.');
+        const plan=core.planImport(draft,imported,packages.get(m.id),state.corpus);
+        if(plan.conflicts.length) {
+          localStorage.setItem(importKey(),JSON.stringify({manuscriptId:m.id,name:file.name,raw,snapshot:JSON.stringify(draft),savedRaw:localStorage.getItem('vimsika-manuscript-draft-v1:'+m.id),choices:{}}));
+          statusMessage='Conflicting edits found. Compare both drafts below; your saved draft is unchanged.';m.pane='research';renderReader();return;
+        }
         const merged=core.mergeDrafts(drafts.get(m.id),imported,packages.get(m.id),state.corpus);persist(merged);statusMessage='Draft imported without replacing existing conflicting edits.';renderReader();
       }catch(error){message(error.message);importInput.value='';}
     };
@@ -455,6 +557,17 @@ window.Manuscripts = (() => {
             const id='ms-line-'+crypto.randomUUID(),rid=id+'-region',order=Math.max(0,...current.lines.filter(l=>l.surfaceId===m.surfaceId).map(l=>l.order))+1;
             upsert(draft,'region',{id:rid,revision:1,surfaceId:m.surfaceId,shape:'rect',xywh:['x','y','width','height'].map(k=>Number(fields.get(k))),status:'draft',provenance:['local-draft']},author);
             upsert(draft,'line',{id,revision:1,surfaceId:m.surfaceId,label,order,regionIds:[rid],script:selectedLine()?.script||null,hand:null,status:'untranscribed',layers:Object.fromEntries(core.layers.map(l=>[l,null])),provenance:['local-draft']},author);createdId=id;
+          }else if(form.id==='ms-variant-form') {
+            const category=fields.get('category'),layer=fields.get('layer'),reading=fields.get('reading'),value=selectedLine().layers[layer],basis=value?.text;
+            if(!value)throw new Error('Choose a transcribed layer. An empty layer does not establish an omission.');
+            const at=reading?basis.indexOf(reading):0;
+            if(at<0||reading&&basis.indexOf(reading,at+1)>=0)throw new Error('Copy a unique exact span, including enough context to identify it.');
+            if(!reading&&category!=='omission')throw new Error('A manuscript reading is required except for an asserted omission.');
+            const start=Array.from(basis.slice(0,at)).length,comparison=fields.get('comparison'),source=fields.get('source').trim(),evidence=fields.get('evidence').trim(),certainty=fields.get('certainty');
+            if(!source||!evidence||category==='omission'&&!comparison.trim())throw new Error('Supply the source, evidence and the comparison reading for an omission.');
+            const variant={category,layer,reading,comparison,source,evidence,certainty,basis,start,end:start+Array.from(reading).length};
+            const text=`${category}: manuscript ${reading||'[asserted omission]'}; comparison ${comparison||'[no reading supplied]'}. Source: ${source}. Evidence: ${evidence}. Evidence status: ${certainty}.`;
+            upsert(draft,'annotation',{id:'ms-variant-'+crypto.randomUUID(),revision:1,type:'variant-reading',targets:[{lineId:m.lineId}],text,variant,status:'draft',author,createdAt:new Date().toISOString(),provenance:['local-draft']},author);
           }else if(form.id==='ms-anchor-form') {
             const passages=[...new Set(fields.getAll('passages'))],note=fields.get('note').trim(),relation=fields.get('relation');
             if(!passages.length||!note)throw new Error('Select at least one passage and supply an evidence note.');

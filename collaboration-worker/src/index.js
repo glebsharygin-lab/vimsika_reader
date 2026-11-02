@@ -16,7 +16,7 @@ export default {
       let response;
 
       if (url.pathname === '/api/capabilities' && request.method === 'GET') {
-        response = json({manuscriptReview: env.MANUSCRIPT_REVIEW_ENABLED === 'true' ? '1.0.0' : null});
+        response = json({manuscriptReview: env.MANUSCRIPT_REVIEW_ENABLED === 'true' ? '1.0.0' : null, manuscriptVariants: env.MANUSCRIPT_REVIEW_ENABLED === 'true' ? '1.0.0' : null});
       } else if (url.pathname === '/api/manuscripts/proposals' || url.pathname.startsWith('/api/manuscripts/proposals/')) {
         const session = await requireRole(request, env, ['contributor','editor','admin']);
         if (env.MANUSCRIPT_REVIEW_ENABLED !== 'true') throw httpError(503, 'Shared manuscript review has not been enabled by the site administrator.');

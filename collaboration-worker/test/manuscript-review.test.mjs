@@ -112,7 +112,7 @@ test('repository snapshot pins registry/package/editorial/index to one commit',a
  const snapshot=await manuscriptRepository(env,github,'MOCK').snapshot('bnf-pt797');assert.equal(snapshot.head,'fixed-head');assert.ok(paths.filter(p=>p.includes('/contents/')).every(p=>p.endsWith('?ref=fixed-head')));assert.equal(snapshot.corpus.passages.length,22);
 });
 test('router exposes capability only when enabled and enforces session/role before network',async()=>{
- const f=fixture();let response=await worker.fetch(new Request('https://worker.invalid/api/capabilities'),f.env);assert.equal((await response.json()).manuscriptReview,'1.0.0');
+ const f=fixture();let response=await worker.fetch(new Request('https://worker.invalid/api/capabilities'),f.env);const capability=await response.json();assert.equal(capability.manuscriptReview,'1.0.0');assert.equal(capability.manuscriptVariants,'1.0.0');
  f.env.MANUSCRIPT_REVIEW_ENABLED='false';response=await worker.fetch(new Request('https://worker.invalid/api/capabilities'),f.env);assert.equal((await response.json()).manuscriptReview,null);
  response=await worker.fetch(new Request('https://worker.invalid/api/manuscripts/proposals'),f.env);assert.equal(response.status,401);
  f.store.set('session:test',JSON.stringify({user:contributor.user}));f.store.set('role:contributor','reader');

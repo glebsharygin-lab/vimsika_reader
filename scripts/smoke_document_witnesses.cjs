@@ -62,6 +62,34 @@ const root = path.resolve(__dirname,'..');
       assert.ok((await page.locator('.lexical-popover').innerText()).includes(word));
       await page.locator('[data-close-lexical-popover]').click();
     }
+    // Exercise lookup on the newly linked passages, beyond the opening verse.
+    for(const [sid,numbers,unitNumbers] of [
+      ['eng_chatterjee_1980',[6,8,10,13,17,18,21]],
+      ['eng_sharma_1993',[8,10,16,21]],
+      ['eng_sharma_1993',[13,14,17,18,20,22],{13:'13.3',14:'14.12',17:'17.9',18:'18.7',20:'20.7',22:'22.6'}],
+      ['eng_chatterjee_1980',[9,11,12,15,19,22],{9:'9.4',11:'11.8',12:'12.2',15:'15.7',19:'19.5',22:'22.7'}],
+      ['eng_sharma_1993',[9,11,12,15,19],{9:'9.6',11:'11.7',12:'12.6',15:'15.9',19:'19.4'}],
+      ['eng_chatterjee_1980',[14,16,20],{14:'14.12',16:'16.6',20:'20.9'}],
+      ['eng_sharma_1993',[3,4,5,6,7],{3:'3.11',4:'4.10',5:'5.3',6:'6.3',7:'7.5'}],
+    ])for(const number of numbers){
+      const pid=`v${number}`;
+      const expected=await page.evaluate(({pid,sid,targetNumber})=>{
+        const passage=passageById(pid),unit=phraseAlignments(passage)
+          .find(u=>u.targetTokenIds?.[sid]?.length&&(!targetNumber||u.number===targetNumber));
+        if(!unit)throw Error(`No phrase links: ${pid} ${sid}`);
+        state.view='reading';state.selectedSources=new Set([sid]);
+        state.openPassages.add(pid);state.openSourcePanels.add(`${pid}:${sid}`);
+        state.focusedSentenceByPassage[pid]=unit.id;
+        renderReader();return unit.targetTokenIds[sid];
+      },{pid,sid,targetNumber:unitNumbers?.[number]});
+      const tokens=page.locator(`#${pid} [data-token-source="${sid}"]`);
+      assert.deepEqual(await tokens.evaluateAll(nodes=>nodes.map(n=>n.dataset.tokenId)),expected);
+      const word=await tokens.first().innerText();await tokens.first().click();
+      await page.locator('.lexical-popover').waitFor();
+      assert.ok((await page.locator('.lexical-popover').innerText()).includes(word));
+      await page.locator('[data-close-lexical-popover]').click();
+      await page.evaluate(pid=>delete state.focusedSentenceByPassage[pid],pid);
+    }
     await page.evaluate(()=>openResearchedDocument('kor_lee_gilsan_2021'));
     await page.locator('[data-open-library-source="kor_lee_gilsan_2021"]').click();
     assert.ok(await page.locator('#v1 .source-panel[data-source="kor_lee_gilsan_2021"]').count());

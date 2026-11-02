@@ -78,6 +78,12 @@ def validate(tree,expected):
         assert note.get(XID)==annotation['id'] and text(note)==annotation['text']
         assert note.get('target').split()==['#'+(t.get('regionId') or t['lineId']) for t in annotation['targets']]
     changes=get(tree,'//t:revisionDesc/t:change');assert len(changes)==len(events)
+    variants=[a for a in data['annotations'] if a.get('variant')]
+    exported_variants=get(tree,'//t:div[@type="variant-records"]/t:note')
+    assert len(variants)==len(exported_variants),'Structured variant lost.'
+    for node,annotation in zip(exported_variants,variants):
+        assert node.get('target')=='#'+annotation['id']
+        assert json.loads(text(node))==annotation['variant'],'Variant evidence or original text basis changed.'
     for change,event in zip(changes,events):
         assert change.get('who')=='https://github.com/'+event['reviewer']['login']
         assert change.get('when')==event['decidedAt'] and change.get('type')==event['decision']

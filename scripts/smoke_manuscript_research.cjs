@@ -1,0 +1,57 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{chromium}=require('playwright');
+const root=path.resolve(__dirname,'..');
+(async()=>{
+ const browser=await chromium.launch({headless:true,executablePath:'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'});
+ try {
+  const page=await browser.newPage({viewport:{width:1500,height:1050}}),errors=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  await page.route('**/*',route=>{
+   const url=new URL(route.request().url());if(url.hostname!=='vimsika-research.invalid')return route.abort();
+   const name=decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname),file=path.resolve(root,'.'+name);
+   if(!file.startsWith(root+path.sep)||!fs.existsSync(file))return route.fulfill({status:404,body:'Not found'});
+   if(name==='/auth-config.js')return route.fulfill({contentType:'application/javascript',body:'window.VIMSIKA_AUTH_CONFIG={};'});
+   return route.fulfill({contentType:{'.html':'text/html','.js':'application/javascript','.css':'text/css','.json':'application/json','.jpg':'image/jpeg'}[path.extname(file)]||'application/octet-stream',body:fs.readFileSync(file)});
+  });
+  await page.goto('https://vimsika-research.invalid/');await page.waitForSelector('.passage-card');
+  const corpus=await page.evaluate(()=>JSON.stringify(state.corpus));
+  await page.locator('[data-view="manuscripts"]').click();await page.waitForSelector('#ms-research-tools');
+  const panel=page.locator('#ms-research-search-panel'),form=page.locator('#ms-research-search');await panel.locator('summary').first().click();
+  await form.locator('[name="field"]').selectOption('notes');await form.locator('[name="query"]').fill('rubricated');await form.locator('button').click();
+  assert.equal(await page.locator('#ms-research-results article').count(),1);
+  await form.locator('[name="type"]').selectOption('correction');await form.locator('button').click();assert.equal(await page.locator('#ms-research-results article').count(),0);
+  await form.locator('[name="type"]').selectOption('');await form.locator('[name="field"]').selectOption('transliteration');await form.locator('[name="query"]').fill('theg');await form.locator('button').click();assert.equal(await page.locator('#ms-research-results article').count(),1);
+  await form.locator('[name="field"]').selectOption('diplomatic');await form.locator('button').click();assert.equal(await page.locator('#ms-research-results article').count(),0);
+  await page.locator('#ms-concordance > summary').click();await page.locator('#ms-concordance-query').fill('theg');await page.locator('#ms-concordance-results details > summary').first().click();
+  await page.locator('[data-research-lookup="theg"]').click();assert.equal(await page.evaluate(()=>state.analysisQuery),'theg');
+  await page.locator('[data-view="manuscripts"]').click();await page.waitForSelector('#ms-research-tools');
+  await page.locator('#ms-comparison-tray > summary').click();await page.locator('#ms-tray-add').click();await page.locator('#ms-tray-add').click();assert.equal(await page.locator('#ms-tray-items > article').count(),1);
+  const snapshot=await page.evaluate(()=>localStorage.getItem('vimsika-manuscript-tray-v1:bnf-pt797'));
+  assert.equal(JSON.parse(snapshot)[0].bundle.lines[0].id,'pt797-s01-l01');
+  await page.locator('#ms-passage-export > summary').click();await page.locator('#ms-export-passage').selectOption('v2');
+  const download=page.waitForEvent('download');await page.locator('#ms-passage-download').click();const bundle=JSON.parse(fs.readFileSync(await (await download).path(),'utf8'));
+  assert.equal(bundle.lines.length,5);assert.equal(bundle.surfaces.length,2);assert.ok(bundle.rights.url);assert.ok(bundle.annotations.some(a=>a.type==='correction'));
+  await page.locator('#ms-apparatus > summary').click();assert.equal(await page.locator('#ms-apparatus-entries article').count(),2);assert.ok((await page.locator('#ms-apparatus-entries').innerText()).includes('Silk'));
+  await page.locator('#ms-edit').click();await page.waitForSelector('#ms-variant-form',{state:'attached'});
+  await page.locator('#ms-variant-form').locator('..').locator('summary').click();
+  const v=page.locator('#ms-variant-form');await v.locator('[name="reading"]').fill('theg');await v.locator('[name="comparison"]').fill('TEST ONLY');await v.locator('[name="source"]').fill('Synthetic QA fixture');await v.locator('[name="evidence"]').fill('Testing the private editor, not manuscript evidence.');await v.locator('[name="certainty"]').selectOption('tentative');await v.locator('button').click();
+  await page.waitForFunction(()=>document.querySelector('#ms-status')?.textContent.includes('structure saved'));
+  const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('vimsika-manuscript-draft-v1:bnf-pt797')));
+  assert.equal(saved.records[0].value.variant.category,'orthographic');assert.equal(saved.records[0].value.status,'draft');
+  assert.equal(await page.evaluate(()=>localStorage.getItem('vimsika-manuscript-tray-v1:bnf-pt797')),snapshot);
+  await page.locator('#ms-bookmarks > summary').click();await page.locator('#ms-bookmark-form [name="annotation"]').selectOption(saved.records[0].targetId);await page.locator('#ms-bookmark-form button').click();
+  await page.waitForFunction(()=>document.querySelector('#ms-status')?.textContent.includes('Bookmark saved'));
+  await page.locator('[data-ms-line="pt797-s01-l02"]').click();await page.locator('#ms-bookmarks > summary').click();await page.locator('[data-ms-bookmark-open]').click();
+  await page.waitForSelector('.ms-selected-note');assert.ok(page.url().includes('annotation='));assert.ok((await page.locator('.ms-selected-note').innerText()).includes('Synthetic QA fixture'));
+  await page.locator('#ms-apparatus > summary').click();await page.locator('#ms-apparatus-category').selectOption('orthographic');assert.equal(await page.locator('#ms-apparatus-entries article').count(),1);
+  await page.locator('#ms-edit').click();await page.locator('[data-ms-line="pt797-s01-l02"]').click();await page.locator('#ms-comparison-tray > summary').click();await page.locator('#ms-tray-add').click();assert.equal(await page.locator('#ms-tray-items > article').count(),2);
+  await page.reload();await page.waitForSelector('#ms-comparison-tray');await page.locator('#ms-comparison-tray > summary').click();assert.equal(await page.locator('#ms-tray-items > article').count(),2);
+  await page.setViewportSize({width:390,height:844});await page.locator('[data-ms-pane="research"]').click();
+  await page.screenshot({path:path.join(root,'../inspection/qa-manuscript-research-mobile.png'),fullPage:true});
+  assert.ok(await page.locator('#ms-tray-add').isVisible());assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);
+  await page.evaluate(()=>{window.savedSet=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k.includes('manuscript-tray'))throw new Error('Tray quota test');return window.savedSet.call(this,k,v);};});
+  await page.locator('[data-tray-remove]').first().click();await page.waitForFunction(()=>document.querySelector('#ms-research-message')?.textContent.includes('Tray quota test'));assert.equal(await page.locator('#ms-tray-items > article').count(),2);
+  await page.evaluate(()=>Storage.prototype.setItem=window.savedSet);
+  assert.equal(await page.evaluate(()=>JSON.stringify(state.corpus)),corpus);assert.deepEqual(errors,[]);
+  console.log('PASS: research filters, concordance lookup, immutable tray, passage export, source addition apparatus, private variant editor, reload, mobile, failed save and corpus preservation.');
+ }finally{await browser.close();}
+})().catch(error=>{console.error(error);process.exitCode=1;});

@@ -9,6 +9,9 @@ const corpus={passages:JSON.parse(fs.readFileSync(path.join(root,'manuscripts/co
 fs.mkdirSync(out,{recursive:true});const expected={};
 function save(name,data,events=[]){fs.writeFileSync(path.join(out,name+'.xml'),core.tei(data,record,events));expected[name]={data,record,events};}
 save('base',base);
+const variantCase=core.clone(base),variantBasis=variantCase.lines[0].layers.transliteration.text;
+variantCase.annotations.push({id:'qa-variant',revision:1,type:'variant-reading',targets:[{lineId:variantCase.lines[0].id}],text:'Synthetic variant QA fixture.',status:'draft',variant:{category:'uncertain',layer:'transliteration',basis:variantBasis,start:0,end:4,reading:Array.from(variantBasis).slice(0,4).join(''),comparison:'QA comparison',source:'QA <source> & reference',evidence:'Synthetic evidence only.',certainty:'tentative'}});
+save('structured-variant',variantCase);
 const all=core.clone(base),layer=all.lines[0].layers.transliteration;
 layer.text='a𐀀bcd';layer.marks=['unclear','damage','supplied','add','del'].map((type,i)=>({type,start:i,end:i+1,reason:`QA ${type}: uncertain <angle> & punctuation "quoted".`}));
 save('all-reading-marks',all);
@@ -24,4 +27,4 @@ for(const bad of ['\u0000','\ud800','\udfff']) {
  const copy=core.clone(base);copy.lines[0].layers.transliteration.text=bad;
  require('node:assert/strict').throws(()=>core.tei(copy,record),/XML-invalid/);
 }
-console.log('Exported four isolated TEI fixtures: base, all marks, untranscribed and review history.');
+console.log('Exported five isolated TEI fixtures: base, structured variant, all marks, untranscribed and review history.');

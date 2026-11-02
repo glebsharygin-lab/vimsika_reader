@@ -2,6 +2,8 @@
 window.ManuscriptReviewUI=(()=>{
   'use strict';
   const sessions=new Map();let el,bridge,view;
+  const variantSupportNeeded=draft=>draft?.records?.some(r=>r.value?.variant);
+  const variantProblem=draft=>variantSupportNeeded(draft)&&view.variants!=='1.0.0'?'This service needs the variant-validation update before sharing structured variants. Your private draft remains available.':'';
   const e=value=>escapeHtml(value),a=value=>escapeAttribute(value);
   let forms={};try{forms=JSON.parse(localStorage.getItem('vimsika-manuscript-review-forms-v1')||'{}');}catch{}
   function saveForm(key,value){forms[key]=value;try{localStorage.setItem('vimsika-manuscript-review-forms-v1',JSON.stringify(forms));}catch{view.message='Review text is retained in this session; browser storage is unavailable.';}}
@@ -24,7 +26,7 @@ window.ManuscriptReviewUI=(()=>{
   function render() {
     if(!el?.isConnected)return;
     const role=state.auth.role,signed=state.auth.configured&&state.auth.user&&['contributor','editor','admin'].includes(role),canReview=['editor','admin'].includes(role);
-    const enabled=view.capability==='1.0.0',detail=view.detail,blocked=bridge.blocked(),draft=bridge.draft();
+    const enabled=view.capability==='1.0.0',detail=view.detail,draft=bridge.draft(),blocked=bridge.blocked()||variantProblem(draft);
     el.innerHTML=`<p role="status">${e(view.message)}</p><p>Proposals keep a separate, signed-in author record. Reviewers can read submissions immediately. Recording any decision publishes the proposal and review note in repository history; only accepted readings enter the public text.</p>
       <button type="button" id="ms-review-check" ${view.busy?'disabled':''}>${enabled?'Refresh proposals':'Check review service'}</button>
       ${!signed?'<p>Sign in with contributor or editor access to share manuscript changes. Private editing and export remain available.</p>':''}
@@ -39,12 +41,13 @@ window.ManuscriptReviewUI=(()=>{
     el.querySelector('#ms-review-check').onclick=()=>action(async()=>{
       if(!state.auth.configured)throw new Error('A collaboration service has not been configured.');
       const result=await apiRequest('/api/capabilities');view.capability=result.manuscriptReview==='1.0.0'?'1.0.0':false;
+      view.variants=result.manuscriptVariants;
       if(view.capability&&signed)await list(false);
     });
     const submit=el.querySelector('#ms-submit-review');if(submit){
       submit.oninput=()=>saveForm('submit:'+bridge.id,submit.elements.note.value);
       submit.onsubmit=event=>{event.preventDefault();const note=submit.elements.note.value,draft=bridge.draft();action(async()=>{
-        const problem=bridge.blocked();if(problem)throw new Error(problem);
+        const problem=bridge.blocked()||variantProblem(draft);if(problem)throw new Error(problem);
         const result=await apiRequest('/api/manuscripts/proposals',{method:'POST',body:JSON.stringify({draft,note})});
         await list(false);await detailFor(result.proposal.id);view.message=result.message;
       });};
@@ -57,6 +60,7 @@ window.ManuscriptReviewUI=(()=>{
       const saved=forms['decision:'+detail.proposal.id];if(saved&&![...decision.elements.decision.options].find(o=>o.value===saved.decision)?.disabled)decision.elements.decision.value=saved.decision;
       decision.oninput=()=>saveForm('decision:'+detail.proposal.id,Object.fromEntries(new FormData(decision)));
       decision.onsubmit=event=>{event.preventDefault();const fields=Object.fromEntries(new FormData(decision));action(async()=>{
+        const problem=variantProblem(detail.proposal.draft);if(problem)throw new Error(problem);
         const result=await apiRequest('/api/manuscripts/proposals/'+detail.proposal.id+'/decision',{method:'POST',body:JSON.stringify({...fields,repositoryHead:detail.repositoryHead})});
         await detailFor(detail.proposal.id);await list(false);view.message=result.message;
         // Do not replace or clear a user's private draft after publication.

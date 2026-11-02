@@ -99,6 +99,11 @@ Authenticated endpoints:
   `{repositoryHead, decision, note}`; editor/administrator only
 
 The old Reader publication and authentication routes continue to work.
+From0.36, enabled services also advertise `manuscriptVariants: "1.0.0"`. The browser
+keeps structured variant assertions private when that capability is absent. Deploy
+the updated `src/index.js` and matching `src/shared/manuscripts-core.js` through the
+user's normal Worker deployment before sharing those assertions. Other private
+research tools need no deployment. Source configuration and secrets are unchanged.
 Rejection/return decisions also write an audit entry to GitHub. Review commits
 use the signed-in reviewer's GitHub identity and noreply email; the proposal
 author is retained separately in the record. No assistant identity is added.

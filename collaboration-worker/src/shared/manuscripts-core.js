@@ -4,6 +4,7 @@
   const layers = ['diplomatic','transliteration','normalized','translation'];
   const kinds = {line:'lines',region:'regions',anchor:'anchors',annotation:'annotations'};
   const statuses = ['draft','submitted','reviewed','published','untranscribed'];
+  const variantKinds=['orthographic','lexical','addition','omission','transposition','uncertain','restoration','unresolved'];
   const clone = value => JSON.parse(JSON.stringify(value));
   const check = (yes,message) => { if (!yes) throw new Error(message); };
   const idOK = value => typeof value === 'string' && /^[a-zA-Z][a-zA-Z0-9_-]{0,159}$/.test(value);
@@ -79,6 +80,15 @@
     for(const a of data.annotations) {
       check(typeof a.text==='string'&&Array.isArray(a.targets)&&a.targets.length&&statuses.includes(a.status),`Invalid annotation: ${a.id}`);
       for(const target of a.targets) check((target.regionId&&regions.has(target.regionId))||(target.lineId&&lines.has(target.lineId)),`Unknown annotation target: ${a.id}`);
+      if(a.variant) {
+        const v=a.variant;
+        check(a.type==='variant-reading'&&a.targets.length===1&&lines.has(a.targets[0].lineId),`A structured variant needs one physical-line target: ${a.id}`);
+        check(variantKinds.includes(v.category)&&layers.includes(v.layer)&&['reported','tentative','checked'].includes(v.certainty),`Invalid variant category or layer: ${a.id}`);
+        check(['basis','reading','comparison','source','evidence'].every(k=>typeof v[k]==='string')&&v.source.trim()&&v.evidence.trim(),`Missing variant evidence: ${a.id}`);
+        check(Number.isInteger(v.start)&&Number.isInteger(v.end)&&v.start>=0&&v.end>=v.start&&v.end<=Array.from(v.basis).length&&Array.from(v.basis).slice(v.start,v.end).join('')===v.reading,`Invalid variant text span: ${a.id}`);
+        check(v.reading.length>0||v.category==='omission',`Only an omission may have an empty manuscript reading: ${a.id}`);
+        check(v.category!=='omission'||v.comparison.trim(),`An omission needs a comparison reading: ${a.id}`);
+      }
     }
     return data;
   }
@@ -94,6 +104,7 @@
     check(draft?.schemaVersion==='1.0.0-manuscript-draft'&&draft.manuscriptId===data.id,'Draft belongs to a different manuscript or schema.');
     check(typeof draft.baseVersion==='string'&&Array.isArray(draft.records)&&draft.records.length<=1000,'Invalid draft structure.');
     check(draft.resolutions===undefined||Array.isArray(draft.resolutions)&&draft.resolutions.every(r=>r&&['base','draft'].includes(r.choice)&&typeof r.author==='string'&&typeof r.date==='string'&&r.previous&&idOK(r.previous.targetId)&&r.previous.value),'Invalid resolution history.');
+    check(draft.importResolutions===undefined||Array.isArray(draft.importResolutions)&&draft.importResolutions.every(r=>r&&['local','incoming'].includes(r.choice)&&typeof r.author==='string'&&r.author.trim()&&typeof r.date==='string'&&idOK(r.targetId)&&r.local?.targetId===r.targetId&&r.incoming?.targetId===r.targetId&&r.local.value&&r.incoming.value),'Invalid import decision history.');
     const ids=new Set(), targets=new Set();
     for(const r of draft.records) {
       check(idOK(r.id)&&!ids.has(r.id),'Duplicate or invalid draft ID.');ids.add(r.id);
@@ -146,18 +157,42 @@
     check(!applyDraft(data,copy,corpus).conflicts.length,'Some conflicts remain unresolved.');
     return copy;
   }
-  function mergeDrafts(current,incoming,data,corpus) {
+  function planImport(current,incoming,data,corpus) {
     validateDraft(current,data);validateDraft(incoming,data);
     check(current.baseVersion===incoming.baseVersion&&incoming.baseVersion===data.version,'Draft base version differs; nothing was imported. Export both versions for review.');
+    check(!applyDraft(data,current,corpus).conflicts.length&&!applyDraft(data,incoming,corpus).conflicts.length,'Imported revisions conflict with the base; nothing was imported.');
     const copy=clone(current),conflicts=[];
-    const history=[...(current.resolutions||[]),...(incoming.resolutions||[])];
-    if(history.length)copy.resolutions=[...new Map(history.map(r=>[JSON.stringify(r),clone(r)])).values()];
-    for(const r of incoming.records) {
-      const old=copy.records.find(x=>x.id===r.id||x.targetId===r.targetId);
-      if(!old)copy.records.push(clone(r));
-      else if(JSON.stringify(old)!==JSON.stringify(r))conflicts.push(r.targetId);
+    for(const key of ['resolutions','importResolutions']) {
+      const history=[...(current[key]||[]),...(incoming[key]||[])];
+      if(history.length)copy[key]=[...new Map(history.map(r=>[JSON.stringify(r),clone(r)])).values()];
     }
-    check(!conflicts.length,`Conflicting edits to ${conflicts.join(', ')}. Nothing was imported; both files remain available for review.`);
+    for(const r of incoming.records) {
+      const idMatch=copy.records.find(x=>x.id===r.id);
+      check(!idMatch||idMatch.targetId===r.targetId,'A draft ID refers to different targets. Nothing was imported.');
+      const old=copy.records.find(x=>x.targetId===r.targetId);
+      if(!old)copy.records.push(clone(r));
+      else if(JSON.stringify(old)!==JSON.stringify(r))conflicts.push({targetId:r.targetId,kind:r.kind,local:clone(old),incoming:clone(r)});
+    }
+    return {draft:copy,conflicts};
+  }
+  function resolveImport(current,incoming,data,decisions,author,corpus,sourceName='',now=new Date().toISOString()) {
+    check(typeof author==='string'&&author.trim(),'An editor name is required.');
+    const {draft:copy,conflicts}=planImport(current,incoming,data,corpus);
+    check(conflicts.length&&Array.isArray(decisions)&&decisions.length===conflicts.length,'Choose a resolution for every imported conflict.');
+    const choices=new Map(decisions.map(d=>[d.targetId,d.choice]));
+    check(choices.size===conflicts.length&&conflicts.every(c=>['local','incoming'].includes(choices.get(c.targetId))),'Choose a resolution for every imported conflict.');
+    copy.importResolutions=copy.importResolutions||[];
+    for(const c of conflicts) {
+      const choice=choices.get(c.targetId),index=copy.records.findIndex(r=>r.targetId===c.targetId);
+      copy.records[index]=clone(c[choice]);
+      copy.importResolutions.push({...clone(c),choice,author:author.trim(),date:now,sourceName:String(sourceName),baseVersion:data.version});
+    }
+    check(!applyDraft(data,copy,corpus).conflicts.length,'Imported revisions conflict with the base; nothing was imported.');
+    return copy;
+  }
+  function mergeDrafts(current,incoming,data,corpus) {
+    const {draft:copy,conflicts}=planImport(current,incoming,data,corpus);
+    check(!conflicts.length,`Conflicting edits to ${conflicts.map(c=>c.targetId).join(', ')}. Nothing was imported; compare both drafts before choosing.`);
     const applied=applyDraft(data,copy,corpus);
     check(!applied.conflicts.length,'Imported revisions conflict with the base; nothing was imported.');
     return copy;
@@ -181,7 +216,7 @@
     const physical=orderedLines.map(l=>`<ab xml:id="${esc(l.id)}" facs="${l.regionIds.map(id=>'#'+esc(id)).join(' ')}"><note>${esc(l.label)}; ${esc(l.status)}</note></ab>`).join('');
     const links=data.anchors.map(a=>`<link xml:id="${a.id}" type="${esc(a.relation)}" ana="${esc(a.level)}" target="${[...a.lineIds.map(id=>'#'+id),...a.passageIds.map(id=>'../index.html#'+id)].map(esc).join(' ')}"/>`).join('');
     const revisions=reviewHistory.length?`<revisionDesc>${reviewHistory.map(event=>`<change when="${esc(event.decidedAt)}" who="https://github.com/${esc(event.reviewer.login)}" type="${esc(event.decision)}">Proposal ${esc(event.proposal.id)} by ${esc(event.proposal.author.login)}, submitted ${esc(event.proposal.submittedAt)}; ${event.reviewer.id===event.proposal.author.id?'review by the author; ':''}${esc(event.note)}</change>`).join('')}</revisionDesc>`:'';
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader><fileDesc><titleStmt><title>${esc(record.shelfmark)} — ${esc(data.version)}</title><editor>${esc(data.editor)}</editor></titleStmt><publicationStmt><publisher>Viṃśikā Reader</publisher><availability status="restricted"><p>Local draft export; no publication or review is implied. ${esc(record.attribution)}. ${esc(record.rights.label)} ${esc(record.rights.url)}</p></availability></publicationStmt><sourceDesc><p>${esc(record.institution)}; ${esc(record.shelfmark)}. ${esc(record.sourceUrl)}</p></sourceDesc></fileDesc>${revisions}</teiHeader><facsimile>${surfaces}</facsimile><text><body><div type="physical-lines">${physical}</div>${sections}</body><back><div type="annotations">${data.annotations.map(a=>`<note xml:id="${a.id}" type="${esc(a.type)}" target="${a.targets.map(t=>'#'+esc(t.regionId||t.lineId)).join(' ')}">${esc(a.text)}</note>`).join('')}</div><div type="correspondence">${links?`<linkGrp type="manuscript-corpus">${links}</linkGrp>`:'<p>No passage associations recorded.</p>'}</div></back></text></TEI>`;
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader><fileDesc><titleStmt><title>${esc(record.shelfmark)} — ${esc(data.version)}</title><editor>${esc(data.editor)}</editor></titleStmt><publicationStmt><publisher>Viṃśikā Reader</publisher><availability status="restricted"><p>Local draft export; no publication or review is implied. ${esc(record.attribution)}. ${esc(record.rights.label)} ${esc(record.rights.url)}</p></availability></publicationStmt><sourceDesc><p>${esc(record.institution)}; ${esc(record.shelfmark)}. ${esc(record.sourceUrl)}</p></sourceDesc></fileDesc>${revisions}</teiHeader><facsimile>${surfaces}</facsimile><text><body><div type="physical-lines">${physical}</div>${sections}</body><back><div type="annotations">${data.annotations.map(a=>`<note xml:id="${a.id}" type="${esc(a.type)}" target="${a.targets.map(t=>'#'+esc(t.regionId||t.lineId)).join(' ')}">${esc(a.text)}</note>`).join('')}</div>${data.annotations.some(a=>a.variant)?`<div type="variant-records">${data.annotations.filter(a=>a.variant).map(a=>`<note type="variant-record" target="#${esc(a.id)}">${esc(JSON.stringify(a.variant))}</note>`).join('')}</div>`:''}<div type="correspondence">${links?`<linkGrp type="manuscript-corpus">${links}</linkGrp>`:'<p>No passage associations recorded.</p>'}</div></back></text></TEI>`;
   }
   // Adapter accepts simple, single-image IIIF Presentation 2/3 canvases only.
   // Complex canvases are explicitly rejected rather than silently mispositioned.
@@ -202,5 +237,5 @@
       return {canvasId:c.id||c['@id'],label:typeof c.label==='string'?c.label:Object.values(c.label||{}).flat().join(' '),width:c.width,height:c.height,image:{type:'iiif',url:url.replace(/\/$/,'')+'/info.json'}};
     });
   }
-  root.ManuscriptCore={layers,clone,validatePackage,validateDraft,emptyDraft,reorderLines,applyDraft,resolveDraft,mergeDrafts,tei,iiifCanvases};
+  root.ManuscriptCore={layers,variantKinds,clone,validatePackage,validateDraft,emptyDraft,reorderLines,applyDraft,resolveDraft,planImport,resolveImport,mergeDrafts,tei,iiifCanvases};
 })(typeof window==='undefined'?globalThis:window);

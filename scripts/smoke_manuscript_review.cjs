@@ -4,7 +4,7 @@ const root=path.resolve(__dirname,'..'),worker=process.env.VIMSIKA_WORKER_ROOT||
 (async()=>{
  const {manuscriptRequest}=await import(pathToFileURL(path.join(worker,'src/manuscript-review.js')));
  const base=JSON.parse(fs.readFileSync(path.join(root,'manuscripts/bnf-pt797.json'))),index=JSON.parse(fs.readFileSync(path.join(root,'manuscripts/corpus-anchors.json')));
- let editorial=JSON.parse(fs.readFileSync(path.join(root,'editorial-overrides.json'))),head='head-1',enabled=false,role='contributor',commits=0;
+ let editorial=JSON.parse(fs.readFileSync(path.join(root,'editorial-overrides.json'))),head='head-1',enabled=false,variants=false,role='contributor',commits=0;
  const store=new Map(),requests=[],errors=[];
  const env={MANUSCRIPT_REVIEW_ENABLED:'true',AUTH:{get:async(k,type)=>{const value=store.get(k);return type==='json'&&value?JSON.parse(value):value||null;},put:async(k,value)=>{store.set(k,value);},list:async()=>({keys:[...store.keys()].map(name=>({name})),list_complete:true})}};
  const sessions={contributor:{user:{id:11,login:'contributor',name:'Contributor'},role:'contributor'},editor:{user:{id:22,login:'editor',name:'Editor'},role:'editor'}};
@@ -15,7 +15,7 @@ const root=path.resolve(__dirname,'..'),worker=process.env.VIMSIKA_WORKER_ROOT||
   await page.route('**/*',async route=>{
    const request=route.request(),url=new URL(request.url());requests.push(request.method()+' '+url.pathname);
    if(url.hostname==='review-test.invalid'){
-    if(url.pathname==='/api/capabilities')return route.fulfill({json:enabled?{manuscriptReview:'1.0.0'}:{service:'old service'}});
+    if(url.pathname==='/api/capabilities')return route.fulfill({json:enabled?{manuscriptReview:'1.0.0',...(variants?{manuscriptVariants:'1.0.0'}:{})}:{service:'old service'}});
     try{
      const result=await manuscriptRequest(new Request(request.url(),{method:request.method(),headers:request.headers(),...(request.postData()?{body:request.postData()}: {})}),sessions[role],env,deps);
      return route.fulfill({status:result.status,contentType:'application/json',body:await result.text()});
@@ -39,6 +39,11 @@ const root=path.resolve(__dirname,'..'),worker=process.env.VIMSIKA_WORKER_ROOT||
   await page.locator('#ms-shared-details > summary').click();await page.locator('#ms-shared-open').click();await page.locator('#ms-review-check').click();
   await page.waitForFunction(()=>document.querySelector('#ms-shared-content')?.textContent.includes('not enabled'));assert.equal(await page.locator('#ms-submit-review').count(),0);assert.equal(store.size,0);
   enabled=true;await page.locator('#ms-review-check').click();await page.waitForSelector('#ms-submit-review');
+  // A structured variant must not reach an older service lacking its validator.
+  await page.evaluate(()=>window.ManuscriptReviewUI.mount(document.querySelector('#ms-shared-content'),{id:'bnf-pt797',draft:()=>({records:[{value:{variant:{category:'synthetic-test'}}}]}),blocked:()=>'',download:()=>{}}));
+  assert.equal(await page.locator('#ms-submit-review button').isDisabled(),true);assert.equal(store.size,0);
+  variants=true;await page.locator('#ms-review-check').click();await page.waitForFunction(()=>!document.querySelector('#ms-submit-review button')?.disabled);
+  await page.evaluate(()=>renderReader());await page.waitForSelector('#ms-shared-details');await page.locator('#ms-shared-details > summary').click();
   await page.locator('#ms-submit-review [name="note"]').fill('QA proposal <literal> with separate authenticated author.');
   await page.locator('#ms-submit-review button').click();await page.waitForSelector('#ms-proposal-detail');
   assert.equal(store.size,1);assert.equal(commits,0);assert.equal(await page.evaluate(()=>localStorage.getItem('vimsika-manuscript-draft-v1:bnf-pt797')),saved);assert.equal(await page.locator('#ms-review-decision').count(),0);
