@@ -24295,6 +24295,110 @@
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-002",
+      "start": 90,
+      "end": 130,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 153 · extracted lines 1101–1110. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-003",
+      "start": 130,
+      "end": 137,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 153 · extracted lines 1101–1110. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-004",
+      "start": 137,
+      "end": 252,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 153 · extracted lines 1101–1110. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-005",
+      "start": 252,
+      "end": 359,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 153 · extracted lines 1101–1110. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-009",
+      "start": 401,
+      "end": 442,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 154 · extracted lines 1112–1119. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-010",
+      "start": 442,
+      "end": 476,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 154 · extracted lines 1112–1119. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-012",
+      "start": 531,
+      "end": 619,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v3-clause-9",
+        "numbers": [
+          "3.12",
+          "3.13"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 154 · extracted lines 1112–1119. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The definition and ghee-pot comparison are one shared Hindi sentence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 154 · extracted lines 1112–1119. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The definition and ghee-pot comparison are one shared Hindi sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-013",
+      "start": 531,
+      "end": 619,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v3-clause-9",
+        "numbers": [
+          "3.12",
+          "3.13"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 154 · extracted lines 1112–1119. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The definition and ghee-pot comparison are one shared Hindi sentence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 154 · extracted lines 1112–1119. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The definition and ghee-pot comparison are one shared Hindi sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-014",
+      "start": 619,
+      "end": 707,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 154 · extracted lines 1112–1119. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-015",
+      "start": 707,
+      "end": 901,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 154 · extracted lines 1112–1119. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Reader forms पूषपूर्ण and पादि are retained without silently changing them to expected readings."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-016",
+      "start": 901,
+      "end": 994,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 154 · extracted lines 1112–1119. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
       "passageId": "v4",
       "unitId": "dharmanexus-v4-001",
       "start": 0,
@@ -24386,6 +24490,193 @@
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-003",
+      "start": 80,
+      "end": 193,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 155 · extracted lines 1121–1132. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-004",
+      "start": 193,
+      "end": 285,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 155 · extracted lines 1121–1132. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-008",
+      "start": 344,
+      "end": 387,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 156 · extracted lines 1134–1143. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The uncertain parenthetical हान remains as in the Unicode reader."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-009",
+      "start": 387,
+      "end": 450,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 156 · extracted lines 1134–1143. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-011",
+      "start": 548,
+      "end": 903,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v4-clause-7",
+        "numbers": [
+          "4.11",
+          "4.12",
+          "4.13"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 156 · extracted lines 1134–1143. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the absence-of-guards/common-karma condition, then gives the place/time statement, adi gloss, and common perception/torment. Three Sanskrit units share the full span to preserve the reordered causal clause."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 156 · extracted lines 1134–1143. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the absence-of-guards/common-karma condition, then gives the place/time statement, adi gloss, and common perception/torment. Three Sanskrit units share the full span to preserve the reordered causal clause."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-012",
+      "start": 548,
+      "end": 903,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v4-clause-7",
+        "numbers": [
+          "4.11",
+          "4.12",
+          "4.13"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 156 · extracted lines 1134–1143. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the absence-of-guards/common-karma condition, then gives the place/time statement, adi gloss, and common perception/torment. Three Sanskrit units share the full span to preserve the reordered causal clause."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 156 · extracted lines 1134–1143. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the absence-of-guards/common-karma condition, then gives the place/time statement, adi gloss, and common perception/torment. Three Sanskrit units share the full span to preserve the reordered causal clause."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-013",
+      "start": 548,
+      "end": 903,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v4-clause-7",
+        "numbers": [
+          "4.11",
+          "4.12",
+          "4.13"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 156 · extracted lines 1134–1143. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the absence-of-guards/common-karma condition, then gives the place/time statement, adi gloss, and common perception/torment. Three Sanskrit units share the full span to preserve the reordered causal clause."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 156 · extracted lines 1134–1143. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the absence-of-guards/common-karma condition, then gives the place/time statement, adi gloss, and common perception/torment. Three Sanskrit units share the full span to preserve the reordered causal clause."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-014",
+      "start": 903,
+      "end": 1009,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 156 · extracted lines 1134–1143. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-015",
+      "start": 1009,
+      "end": 1074,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 158 · extracted lines 1155–1163. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-016",
+      "start": 1074,
+      "end": 1096,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 158 · extracted lines 1155–1163. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-017",
+      "start": 1096,
+      "end": 1229,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v4-clause-11",
+        "numbers": [
+          "4.17",
+          "4.18"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 158 · extracted lines 1155–1163. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The classification and its reason are one Hindi sentence; shared span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 158 · extracted lines 1155–1163. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The classification and its reason are one Hindi sentence; shared span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-018",
+      "start": 1096,
+      "end": 1229,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v4-clause-11",
+        "numbers": [
+          "4.17",
+          "4.18"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 158 · extracted lines 1155–1163. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The classification and its reason are one Hindi sentence; shared span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 158 · extracted lines 1155–1163. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The classification and its reason are one Hindi sentence; shared span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-019",
+      "start": 1229,
+      "end": 1314,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 158 · extracted lines 1155–1163. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-020",
+      "start": 1314,
+      "end": 1400,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 158 · extracted lines 1155–1163. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-021",
+      "start": 1400,
+      "end": 1523,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 158 · extracted lines 1155–1163. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-022",
+      "start": 1523,
+      "end": 1583,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 158 · extracted lines 1155–1163. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-023",
+      "start": 1583,
+      "end": 1662,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 160 · extracted lines 1175–1184. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v4",
+      "unitId": "dharmanexus-v4-024",
+      "start": 1662,
+      "end": 1765,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 160 · extracted lines 1175–1184. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
       "passageId": "v5",
       "unitId": "dharmanexus-v5-001",
       "start": 0,
@@ -24415,6 +24706,30 @@
         "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
       },
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-003",
+      "start": 201,
+      "end": 346,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 161 · extracted lines 1186–1193. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-004",
+      "start": 346,
+      "end": 399,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 161 · extracted lines 1186–1193. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The reader form नरकपल remains unchanged."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v5",
+      "unitId": "dharmanexus-v5-005",
+      "start": 399,
+      "end": 465,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 161 · extracted lines 1186–1193. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
@@ -24450,6 +24765,14 @@
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v6",
+      "unitId": "dharmanexus-v6-003",
+      "start": 633,
+      "end": 745,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 164 · extracted lines 1215–1222. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
       "passageId": "v7",
       "unitId": "dharmanexus-v7-001",
       "start": 6,
@@ -24479,6 +24802,30 @@
         "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
       },
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-003",
+      "start": 134,
+      "end": 302,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 165 · extracted lines 1224–1234. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-004",
+      "start": 302,
+      "end": 401,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 165 · extracted lines 1224–1234. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v7",
+      "unitId": "dharmanexus-v7-005",
+      "start": 401,
+      "end": 467,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 165 · extracted lines 1224–1234. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
@@ -24533,6 +24880,62 @@
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-001",
+      "start": 99,
+      "end": 146,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 166 · extracted lines 1236–1242. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Only the conclusion held in this passage is selected; the preceding argument belongs to the previous Sanskrit passage."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-005",
+      "start": 286,
+      "end": 407,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 167 · extracted lines 1244–1255. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-006",
+      "start": 407,
+      "end": 551,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v8-clause-3",
+        "numbers": [
+          "8.6",
+          "8.7"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 167 · extracted lines 1244–1255. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The scriptural quotation and its explanatory citation clause share one Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 167 · extracted lines 1244–1255. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The scriptural quotation and its explanatory citation clause share one Hindi span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-007",
+      "start": 407,
+      "end": 551,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v8-clause-3",
+        "numbers": [
+          "8.6",
+          "8.7"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 167 · extracted lines 1244–1255. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The scriptural quotation and its explanatory citation clause share one Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 167 · extracted lines 1244–1255. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The scriptural quotation and its explanatory citation clause share one Hindi span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v8",
+      "unitId": "dharmanexus-v8-008",
+      "start": 551,
+      "end": 716,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 167 · extracted lines 1244–1255. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
       "passageId": "v9",
       "unitId": "dharmanexus-v9-001",
       "start": 38,
@@ -24562,6 +24965,97 @@
         "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
       },
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-003",
+      "start": 213,
+      "end": 248,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 170 · extracted lines 1276–1286. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-004",
+      "start": 248,
+      "end": 482,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v9-clause-2",
+        "numbers": [
+          "9.4",
+          "9.5"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 170 · extracted lines 1276–1286; Unicode reader block 171 · extracted lines 1288–1295. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi sentence crosses two imported source fragments; its seed/appearance statement and attribution remain together. Reader form प्रतिभासयाली is retained."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 170 · extracted lines 1276–1286; Unicode reader block 171 · extracted lines 1288–1295. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi sentence crosses two imported source fragments; its seed/appearance statement and attribution remain together. Reader form प्रतिभासयाली is retained."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-005",
+      "start": 248,
+      "end": 482,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v9-clause-2",
+        "numbers": [
+          "9.4",
+          "9.5"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 170 · extracted lines 1276–1286; Unicode reader block 171 · extracted lines 1288–1295. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi sentence crosses two imported source fragments; its seed/appearance statement and attribution remain together. Reader form प्रतिभासयाली is retained."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 170 · extracted lines 1276–1286; Unicode reader block 171 · extracted lines 1288–1295. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi sentence crosses two imported source fragments; its seed/appearance statement and attribution remain together. Reader form प्रतिभासयाली is retained."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-006",
+      "start": 482,
+      "end": 791,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v9-clause-3",
+        "numbers": [
+          "9.6",
+          "9.7",
+          "9.8"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 171 · extracted lines 1288–1295. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The touch example, attribution and concluding intent form one shared Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 171 · extracted lines 1288–1295. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The touch example, attribution and concluding intent form one shared Hindi span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-007",
+      "start": 482,
+      "end": 791,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v9-clause-3",
+        "numbers": [
+          "9.6",
+          "9.7",
+          "9.8"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 171 · extracted lines 1288–1295. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The touch example, attribution and concluding intent form one shared Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 171 · extracted lines 1288–1295. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The touch example, attribution and concluding intent form one shared Hindi span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v9",
+      "unitId": "dharmanexus-v9-008",
+      "start": 482,
+      "end": 791,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v9-clause-3",
+        "numbers": [
+          "9.6",
+          "9.7",
+          "9.8"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 171 · extracted lines 1288–1295. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The touch example, attribution and concluding intent form one shared Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 171 · extracted lines 1288–1295. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The touch example, attribution and concluding intent form one shared Hindi span."
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
@@ -24613,6 +25107,102 @@
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-002",
+      "start": 152,
+      "end": 215,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 172 · extracted lines 1297–1307. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-003",
+      "start": 215,
+      "end": 267,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 172 · extracted lines 1297–1307. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-004",
+      "start": 267,
+      "end": 446,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 172 · extracted lines 1297–1307. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-007",
+      "start": 539,
+      "end": 587,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 173 · extracted lines 1309–1319. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-008",
+      "start": 587,
+      "end": 627,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 173 · extracted lines 1309–1319. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-009",
+      "start": 627,
+      "end": 833,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 173 · extracted lines 1309–1319. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-010",
+      "start": 833,
+      "end": 985,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 174 · extracted lines 1321–1331. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-011",
+      "start": 985,
+      "end": 1080,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 174 · extracted lines 1321–1331. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-013",
+      "start": 1150,
+      "end": 1349,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 174 · extracted lines 1321–1331. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-015",
+      "start": 1349,
+      "end": 1535,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 176 · extracted lines 1340–1346. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-016",
+      "start": 1535,
+      "end": 1622,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 176 · extracted lines 1340–1346. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v10",
+      "unitId": "dharmanexus-v10-017",
+      "start": 1622,
+      "end": 1760,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 176 · extracted lines 1340–1346. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
       "passageId": "v11",
       "unitId": "dharmanexus-v11-001",
       "start": 186,
@@ -24642,6 +25232,94 @@
         "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
       },
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-003",
+      "start": 371,
+      "end": 410,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-004",
+      "start": 410,
+      "end": 581,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-005",
+      "start": 581,
+      "end": 624,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-006",
+      "start": 624,
+      "end": 685,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-007",
+      "start": 685,
+      "end": 770,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-008",
+      "start": 770,
+      "end": 894,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v11-clause-6",
+        "numbers": [
+          "11.8",
+          "11.9"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The plural-object objection and its reason are one shared Hindi sentence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The plural-object objection and its reason are one shared Hindi sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-009",
+      "start": 770,
+      "end": 894,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v11-clause-6",
+        "numbers": [
+          "11.8",
+          "11.9"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The plural-object objection and its reason are one shared Hindi sentence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The plural-object objection and its reason are one shared Hindi sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-010",
+      "start": 894,
+      "end": 972,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v11",
+      "unitId": "dharmanexus-v11-011",
+      "start": 972,
+      "end": 1011,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 179 · extracted lines 1371–1379. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The prose states सिद्ध नहीं है. The previously imported root has प्रसिद्ध है; that inconsistent source-reader reading is not silently changed."
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
@@ -24685,6 +25363,38 @@
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-002",
+      "start": 133,
+      "end": 241,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 181 · extracted lines 1391–1403. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The reader form पड़शता is retained; source-reader checking does not establish a print correction."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-003",
+      "start": 241,
+      "end": 328,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 181 · extracted lines 1391–1403. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-006",
+      "start": 402,
+      "end": 466,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 182 · extracted lines 1405–1414. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v12",
+      "unitId": "dharmanexus-v12-007",
+      "start": 466,
+      "end": 638,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 182 · extracted lines 1405–1414. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
       "passageId": "v13",
       "unitId": "dharmanexus-v13-001",
       "start": 261,
@@ -24698,6 +25408,46 @@
       "start": 379,
       "end": 470,
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-002",
+      "start": 327,
+      "end": 379,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 183 · extracted lines 1416–1424. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-004",
+      "start": 470,
+      "end": 527,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 184 · extracted lines 1426–1436. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-005",
+      "start": 527,
+      "end": 612,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 184 · extracted lines 1426–1436. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-006",
+      "start": 612,
+      "end": 666,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 184 · extracted lines 1426–1436. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v13",
+      "unitId": "dharmanexus-v13-007",
+      "start": 666,
+      "end": 704,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 184 · extracted lines 1426–1436. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
@@ -24722,6 +25472,209 @@
       "start": 1045,
       "end": 1136,
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-002",
+      "start": 94,
+      "end": 278,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 185 · extracted lines 1438–1446. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-004",
+      "start": 317,
+      "end": 428,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 185 · extracted lines 1438–1446. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-005",
+      "start": 428,
+      "end": 497,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 185 · extracted lines 1438–1446. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-006",
+      "start": 535,
+      "end": 623,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 186 · extracted lines 1448–1458. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-007",
+      "start": 623,
+      "end": 736,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 186 · extracted lines 1448–1458. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-008",
+      "start": 736,
+      "end": 848,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v14-clause-8",
+        "numbers": [
+          "14.8",
+          "14.9"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 186 · extracted lines 1448–1458. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The consequence and its recalled conclusion form one shared sentence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 186 · extracted lines 1448–1458. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The consequence and its recalled conclusion form one shared sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-009",
+      "start": 736,
+      "end": 848,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v14-clause-8",
+        "numbers": [
+          "14.8",
+          "14.9"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 186 · extracted lines 1448–1458. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The consequence and its recalled conclusion form one shared sentence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 186 · extracted lines 1448–1458. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The consequence and its recalled conclusion form one shared sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-010",
+      "start": 848,
+      "end": 923,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 186 · extracted lines 1448–1458. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-011",
+      "start": 923,
+      "end": 1045,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 186 · extracted lines 1448–1458. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The objection and its negative answer are kept together."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-013",
+      "start": 1136,
+      "end": 1248,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 187 · extracted lines 1460–1471. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-014",
+      "start": 1248,
+      "end": 1382,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v14-clause-12",
+        "numbers": [
+          "14.14",
+          "14.15",
+          "14.16"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 187 · extracted lines 1460–1471. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The arrangement, atom/aggregate distinction and challenge about the characteristics form a shared Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 187 · extracted lines 1460–1471. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The arrangement, atom/aggregate distinction and challenge about the characteristics form a shared Hindi span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-015",
+      "start": 1248,
+      "end": 1382,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v14-clause-12",
+        "numbers": [
+          "14.14",
+          "14.15",
+          "14.16"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 187 · extracted lines 1460–1471. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The arrangement, atom/aggregate distinction and challenge about the characteristics form a shared Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 187 · extracted lines 1460–1471. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The arrangement, atom/aggregate distinction and challenge about the characteristics form a shared Hindi span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-016",
+      "start": 1248,
+      "end": 1382,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v14-clause-12",
+        "numbers": [
+          "14.14",
+          "14.15",
+          "14.16"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 187 · extracted lines 1460–1471. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The arrangement, atom/aggregate distinction and challenge about the characteristics form a shared Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 187 · extracted lines 1460–1471. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The arrangement, atom/aggregate distinction and challenge about the characteristics form a shared Hindi span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-017",
+      "start": 1382,
+      "end": 1428,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 188 · extracted lines 1473–1488. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-018",
+      "start": 1428,
+      "end": 1483,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 188 · extracted lines 1473–1488. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-019",
+      "start": 1483,
+      "end": 1628,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v14-clause-15",
+        "numbers": [
+          "14.19",
+          "14.20"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 188 · extracted lines 1473–1488. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The introduction and one-or-many-substances question are one shared sentence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 188 · extracted lines 1473–1488. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The introduction and one-or-many-substances question are one shared sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-020",
+      "start": 1483,
+      "end": 1628,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v14-clause-15",
+        "numbers": [
+          "14.19",
+          "14.20"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 188 · extracted lines 1473–1488. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The introduction and one-or-many-substances question are one shared sentence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 188 · extracted lines 1473–1488. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The introduction and one-or-many-substances question are one shared sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v14",
+      "unitId": "dharmanexus-v14-021",
+      "start": 1628,
+      "end": 1662,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 188 · extracted lines 1473–1488. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
@@ -24754,6 +25707,94 @@
         "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
       },
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-003",
+      "start": 214,
+      "end": 375,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 188 · extracted lines 1473–1488. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Reader forms पाप and चक्षरिन्द्रिय are retained; the Hindi source remains unproofed against print."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-004",
+      "start": 375,
+      "end": 419,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 188 · extracted lines 1473–1488. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The reader form पादपेक्ष is unchanged."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-005",
+      "start": 419,
+      "end": 481,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 189 · extracted lines 1490–1503. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-006",
+      "start": 481,
+      "end": 543,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 189 · extracted lines 1490–1503. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-007",
+      "start": 543,
+      "end": 693,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 189 · extracted lines 1490–1503. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-008",
+      "start": 693,
+      "end": 815,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 189 · extracted lines 1490–1503. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-009",
+      "start": 815,
+      "end": 950,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 189 · extracted lines 1490–1503. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-010",
+      "start": 950,
+      "end": 1035,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 189 · extracted lines 1490–1503. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-011",
+      "start": 1035,
+      "end": 1084,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 190 · extracted lines 1505–1514. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-012",
+      "start": 1084,
+      "end": 1121,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 190 · extracted lines 1505–1514. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v15",
+      "unitId": "dharmanexus-v15-013",
+      "start": 1121,
+      "end": 1271,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 190 · extracted lines 1505–1514. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
@@ -24821,6 +25862,86 @@
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-005",
+      "start": 493,
+      "end": 602,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 193 · extracted lines 1537–1546. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-006",
+      "start": 602,
+      "end": 775,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v16-clause-3",
+        "numbers": [
+          "16.6",
+          "16.7"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 193 · extracted lines 1537–1546. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The mental-cognition explanation and concluding question are one shared Hindi span; source हो is retained."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 193 · extracted lines 1537–1546. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The mental-cognition explanation and concluding question are one shared Hindi span; source हो is retained."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-007",
+      "start": 602,
+      "end": 775,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v16-clause-3",
+        "numbers": [
+          "16.6",
+          "16.7"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 193 · extracted lines 1537–1546. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The mental-cognition explanation and concluding question are one shared Hindi span; source हो is retained."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 193 · extracted lines 1537–1546. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The mental-cognition explanation and concluding question are one shared Hindi span; source हो is retained."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-008",
+      "start": 775,
+      "end": 899,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v16-clause-4",
+        "numbers": [
+          "16.8",
+          "16.9"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 193 · extracted lines 1537–1546. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The momentary-object qualification and cessation explanation form one shared sentence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 193 · extracted lines 1537–1546. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The momentary-object qualification and cessation explanation form one shared sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-009",
+      "start": 775,
+      "end": 899,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v16-clause-4",
+        "numbers": [
+          "16.8",
+          "16.9"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 193 · extracted lines 1537–1546. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The momentary-object qualification and cessation explanation form one shared sentence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 193 · extracted lines 1537–1546. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The momentary-object qualification and cessation explanation form one shared sentence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v16",
+      "unitId": "dharmanexus-v16-010",
+      "start": 899,
+      "end": 1090,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 194 · extracted lines 1548–1555. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
       "passageId": "v17",
       "unitId": "dharmanexus-v17-001",
       "start": 73,
@@ -24842,6 +25963,94 @@
       "start": 747,
       "end": 830,
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-002",
+      "start": 135,
+      "end": 240,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 195 · extracted lines 1557–1567. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-004",
+      "start": 264,
+      "end": 461,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 195 · extracted lines 1557–1567. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-005",
+      "start": 461,
+      "end": 613,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 196 · extracted lines 1569–1582. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-006",
+      "start": 613,
+      "end": 635,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 196 · extracted lines 1569–1582. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-007",
+      "start": 635,
+      "end": 711,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 196 · extracted lines 1569–1582. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-008",
+      "start": 711,
+      "end": 747,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 196 · extracted lines 1569–1582. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-010",
+      "start": 830,
+      "end": 1045,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 196 · extracted lines 1569–1582. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-011",
+      "start": 1045,
+      "end": 1336,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v17-clause-10",
+        "numbers": [
+          "17.11",
+          "17.12"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 196 · extracted lines 1569–1582; Unicode reader block 197 · extracted lines 1584–1587. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The awakening, subsequent knowledge and conclusion form one shared sentence across two source fragments. The stray Latin RE at the continuation remains in the stored reader text; it is not emended or treated as manuscript evidence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 196 · extracted lines 1569–1582; Unicode reader block 197 · extracted lines 1584–1587. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The awakening, subsequent knowledge and conclusion form one shared sentence across two source fragments. The stray Latin RE at the continuation remains in the stored reader text; it is not emended or treated as manuscript evidence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v17",
+      "unitId": "dharmanexus-v17-012",
+      "start": 1045,
+      "end": 1336,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v17-clause-10",
+        "numbers": [
+          "17.11",
+          "17.12"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 196 · extracted lines 1569–1582; Unicode reader block 197 · extracted lines 1584–1587. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The awakening, subsequent knowledge and conclusion form one shared sentence across two source fragments. The stray Latin RE at the continuation remains in the stored reader text; it is not emended or treated as manuscript evidence."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 196 · extracted lines 1569–1582; Unicode reader block 197 · extracted lines 1584–1587. Checked against the preserved source HTML and Unicode extraction on 2 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The awakening, subsequent knowledge and conclusion form one shared sentence across two source fragments. The stray Latin RE at the continuation remains in the stored reader text; it is not emended or treated as manuscript evidence."
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",

@@ -73,6 +73,9 @@ const root = path.resolve(__dirname,'..');
       ['eng_sharma_1993',[3,4,5,6,7],{3:'3.11',4:'4.10',5:'5.3',6:'6.3',7:'7.5'}],
       ['eng_chatterjee_1980',[3,4,5,7],{3:'3.14',4:'4.18',5:'5.4',7:'7.4'}],
       ['eng_sharma_1993',[1,2],{1:'1.7',2:'2.9'}],
+      ['hin_chogdub_tripathi_1972',[3,4,5,6,7],{3:'3.12',4:'4.13',5:'5.4',6:'6.3',7:'7.4'}],
+      ['hin_chogdub_tripathi_1972',[8,9,10,11,12],{8:'8.6',9:'9.4',10:'10.13',11:'11.8',12:'12.6'}],
+      ['hin_chogdub_tripathi_1972',[13,14,15,16,17],{13:'13.6',14:'14.15',15:'15.8',16:'16.8',17:'17.11'}],
     ])for(const number of numbers){
       const pid=`v${number}`;
       const expected=await page.evaluate(({pid,sid,targetNumber})=>{

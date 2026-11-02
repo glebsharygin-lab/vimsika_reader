@@ -1,4 +1,4 @@
-"""Package the seven-file 0.36.5 delta over the verified GitHub 0.36.4 upload."""
+"""Package the nine-file 0.36.8 delta over the verified GitHub 0.36.5 upload."""
 from pathlib import Path
 import hashlib
 import json
@@ -11,22 +11,27 @@ names = [
     'index.html', 'witness-integration.js',
     'source-witnesses/document-witness-plan.json',
     'source-witnesses/phrase-selections.json',
-    'source-witnesses/ALIGNMENT-20261102-AFTERNOON.md',
+    'source-witnesses/ALIGNMENT-20261102-HINDI.md',
+    'source-witnesses/ALIGNMENT-20261102-HINDI-EVENING.md',
+    'source-witnesses/ALIGNMENT-20261102-HINDI-LATE.md',
     'scripts/smoke_document_witnesses.cjs',
     'scripts/package_alignment_release.py',
 ]
 files = [(name, site / name) for name in names]
-target = work / 'UPLOAD_0.36.5_ALIGNMENT'
+target = work / 'UPLOAD_0.36.8_ALIGNMENT'
 allowed = {name for name, _ in files}
-assert len(allowed) == len(files) == 7
+assert len(allowed) == len(files) == 9
 archive = work / (target.name + '.zip')
-manifest_path = work / 'inspection/upload-0.36.5-manifest.json'
+manifest_path = work / 'inspection/upload-0.36.8-manifest.json'
 assert not target.exists() and not archive.exists() and not manifest_path.exists(), \
     'Release already exists; inspect it instead of overwriting a prepared bundle.'
-# The baseline was checked byte-for-byte against upstream commit
-# 4acfaebc826d7143db7ad7bbcf16ada7cbb1bafa. Every omitted file must stay unchanged.
-baseline = json.loads((work / 'inspection/upload-0.36.4-manifest.json').read_text('utf8'))
-for entry in baseline:
+# Upstream 6977c76c3fe2ef61c67f2839fd39eed659637819 contains the verified
+# 0.36.5 delta over 0.36.4. Check the union, with the later manifest taking precedence.
+baseline = {}
+for version in ['0.36.4', '0.36.5']:
+    for entry in json.loads((work / f'inspection/upload-{version}-manifest.json').read_text('utf8')):
+        baseline[entry['path']] = entry
+for entry in baseline.values():
     if entry['path'] in allowed:
         continue
     source = (Path(r'C:\basic project') / entry['path']) if entry['path'].startswith('collaboration-worker/') else site / entry['path']
