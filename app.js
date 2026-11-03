@@ -828,9 +828,12 @@ function selectionsForPassage(passageId) {
 function tokenTextFromIds(passage, sourceId, tokenIds) {
   const witness = effectiveWitness(passage, sourceId);
   if (!witness || !tokenIds?.length) return "";
-  const selected = witness.tokens.filter((token) => tokenIds.includes(token.id));
-  if (!selected.length) return "";
-  return witness.text.slice(selected[0].start, selected[selected.length - 1].end);
+  const selected = indexedWitnessTokens(witness, tokenIds);
+  return selected.map(({token, index}, n) => {
+    const previous = selected[n - 1];
+    const gap = previous ? selectedTokenGap(witness, previous, index, token.start) : "";
+    return gap + witness.text.slice(token.start, token.end);
+  }).join("");
 }
 
 function cloneSentenceUnit(unit) {
@@ -1383,13 +1386,19 @@ function alignmentRibbon(passage) {
   `;
 }
 
+function indexedWitnessTokens(witness, tokenIds) {
+  const allowed = tokenIds ? new Set(tokenIds) : null;
+  return (witness.tokens || []).map((token, index) => ({token, index}))
+    .filter(({token}) => !allowed || allowed.has(token.id));
+}
+
+function selectedTokenGap(witness, previous, index, start) {
+  return index === previous.index + 1 ? witness.text.slice(previous.token.end, start) : " … ";
+}
+
 function tokenizedText(witness, sourceId, passage, tokenIds = null) {
-  const allowedIds = tokenIds ? new Set(tokenIds) : null;
-  const indexedTokens = (witness.tokens || [])
-    .map((token, index) => ({ token, index }))
-    .filter(({ token }) => !allowedIds || allowedIds.has(token.id));
-  const tokens = indexedTokens.map(({ token }) => token);
-  if (!tokens.length) return highlightedText(witness.text || "", sourceId, passage.number);
+  const indexedTokens = indexedWitnessTokens(witness, tokenIds);
+  if (!indexedTokens.length) return tokenIds ? "" : highlightedText(witness.text || "", sourceId, passage.number);
 
   const activeIds = new Set(
     state.activeAlignment?.targetTokenIds?.[sourceId] || [],
@@ -1398,13 +1407,13 @@ function tokenizedText(witness, sourceId, passage, tokenIds = null) {
   const rootVerseIds = rootVerseTokenIdsForSource(passage, sourceId);
   const search = state.search.trim().toLocaleLowerCase();
   let output = "";
-  let cursor = allowedIds ? tokens[0].start : 0;
-  const rangeEnd = allowedIds
-    ? tokens[tokens.length - 1].end
-    : witness.text.length;
-
-  indexedTokens.forEach(({ token, index }) => {
-    output += escapeHtml(witness.text.slice(cursor, token.start));
+  indexedTokens.forEach(({token, index}, n) => {
+    const previous = indexedTokens[n - 1];
+    const gap = previous ? selectedTokenGap(witness, previous, index, token.start) :
+      tokenIds ? "" : witness.text.slice(0, token.start);
+    output += previous && previous.index + 1 !== index
+      ? '<span title="Intervening witness text is outside this alignment"> … </span>'
+      : escapeHtml(gap);
     const classes = ["text-token"];
     const sourceTokenId = token.literal ? token.sourceTokenId : token.id;
     if (rootVerseIds.has(sourceTokenId)) classes.push("root-verse-token");
@@ -1414,9 +1423,8 @@ function tokenizedText(witness, sourceId, passage, tokenIds = null) {
       classes.push("search-match");
     }
     output += `<button class="${classes.join(" ")}" data-token-id="${escapeHtml(token.id)}" data-token-index="${token.literal ? token.sourceTokenIndex : index}" data-token-passage="${passage.id}" data-token-source="${sourceId}" type="button" title="Look up ${escapeHtml(token.text)}">${escapeHtml(token.text)}</button>`;
-    cursor = token.end;
   });
-  output += escapeHtml(witness.text.slice(cursor, rangeEnd));
+  if (!tokenIds) output += escapeHtml(witness.text.slice(indexedTokens.at(-1).token.end));
   return output;
 }
 
@@ -1658,6 +1666,7 @@ function alignmentSuggestionLabel(alignment, sourceId) {
   const status = alignment.targetProvenance?.[sourceId]?.reviewStatus;
   if (status === "unreviewed-machine-suggestion") return "suggested · check span";
   if (status === "unreviewed-textual-match") return "text match · draft";
+  if (status === "partial-source-reading") return "partial source reading · draft";
   if (status === "draft-source-reading") return "source reading · draft";
   return "";
 }
@@ -1725,6 +1734,19 @@ function sharedSpanFor(unit, units, sourceId) {
   );
   if (members.length < 2) return null;
   return { ...group, numbers: members.map((other) => other.number), firstUnitId: members[0].id };
+}
+
+function focusedReadingNote(passage, sourceId, unit, tokenIds) {
+  if (state.focusedSentenceByPassage[passage.id] !== unit.id ||
+      !tokenIds.length || textEditFor(passage.id, sourceId) ||
+      Object.prototype.hasOwnProperty.call(unit.targetTexts || {}, sourceId)) return "";
+  const original = passage.sentenceUnits.find(row => row.id === unit.id);
+  const evidence = original?.targetProvenance?.[sourceId];
+  const originalIds = original?.targetTokenIds?.[sourceId] || [];
+  if (!evidence?.libraryDocumentId || !evidence.note || !["draft-source-reading", "partial-source-reading"].includes(evidence.reviewStatus) ||
+      originalIds.length !== tokenIds.length || !originalIds.every((id, i) => id === tokenIds[i])) return "";
+  return '<details class="reading-source-note"><summary>Alignment note</summary><p>' +
+    escapeHtml(evidence.note) + '</p></details>';
 }
 
 function readingSentenceList(passage, source, witness) {
@@ -1810,6 +1832,7 @@ function readingSentenceList(passage, source, witness) {
                       )
                   : continued ? `<span class="alignment-gap">Included in ${escapeHtml(group.numbers[0])}</span>` : '<span class="alignment-gap">— no corresponding span assigned —</span>'
               }</div>
+              ${focusedId && !collapsed ? focusedReadingNote(passage, source.id, unit, tokenIds) : ""}
             </section>
           `;
         })

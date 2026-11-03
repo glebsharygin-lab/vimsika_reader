@@ -1752,6 +1752,47 @@
           "start": "स्वप्न में चित्त मिद्ध से",
           "end": "यही ( समान फल",
           "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            2
+          ],
+          "start": "सभी सत्वों की अन्योऽन्य",
+          "end": "'मिथः' शब्द",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 198 · extracted lines 1589–1597. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "'मिथः' शब्द",
+          "end": "अत: सन्तानान्तरीय",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 198 · extracted lines 1589–1597. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            4
+          ],
+          "start": "अत: सन्तानान्तरीय",
+          "end": "यदि जैसे स्वप्न में",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 198 · extracted lines 1589–1597. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            5,
+            6
+          ],
+          "start": "यदि जैसे स्वप्न में",
+          "end": "स्वप्न में चित्त मिद्ध से",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 199 · extracted lines 1599–1608; Unicode reader block 200 · extracted lines 1610–1615. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The question and following because are shared across the Sanskrit unit boundary."
+        },
+        {
+          "units": [
+            8
+          ],
+          "start": "यही ( समान फल",
+          "end": null,
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 200 · extracted lines 1610–1615. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
         }
       ]
     },
@@ -1767,6 +1808,46 @@
           "start": "जिस प्रकार पिशाच आदि के मन",
           "end": "जैसे पिशाच आदि के मनोवश",
           "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "जैसे पिशाच आदि के मनोवश",
+          "end": "ऋद्धिमान् योगियों",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 202 · extracted lines 1628–1635. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            4
+          ],
+          "start": "ऋद्धिमान् योगियों",
+          "end": "जैसे-आर्य महाकात्यायन",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 202 · extracted lines 1628–1635. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            5
+          ],
+          "start": "जैसे-आर्य महाकात्यायन",
+          "end": "आरण्यक ऋषियों",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 202 · extracted lines 1628–1635. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Source हुघा is retained without print emendation."
+        },
+        {
+          "units": [
+            6
+          ],
+          "start": "आरण्यक ऋषियों",
+          "end": "उसी प्रकार दूसरों के विज्ञप्तिविशेष के आधिपत्य",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 202 · extracted lines 1628–1635. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            7
+          ],
+          "start": "उसी प्रकार दूसरों के विज्ञप्तिविशेष के आधिपत्य",
+          "end": "वाक् भी अस्तित्व",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 202 · extracted lines 1628–1635. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Stop at the translated autocommentary. Later explanatory material in the published passage remains unassigned and unchanged."
         }
       ]
     },
@@ -1789,6 +1870,64 @@
           "start": "कैसे उससे मनोदण्ड",
           "end": "यदि आप ऐसी कल्पना",
           "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            2
+          ],
+          "start": "यदि दूसरों के विज्ञप्तिविशेष",
+          "end": "तो-मनोदण्ड",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 203 · extracted lines 1637–1648. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "तो-मनोदण्ड",
+          "end": "क्या गृहपति, तुमने सुना है",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 203 · extracted lines 1637–1648. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            4
+          ],
+          "start": "क्या गृहपति, तुमने सुना है",
+          "end": "(तब) उस (उपालि)",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 203 · extracted lines 1637–1648. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            5
+          ],
+          "start": "(तब) उस (उपालि)",
+          "end": "सुना है मैंने गौतम",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 203 · extracted lines 1637–1648. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            6
+          ],
+          "start": "सुना है मैंने गौतम",
+          "end": "(यह कथन कसे सुष्ठु होगा)",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 203 · extracted lines 1637–1648. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Select the cited reply only; subsequent exposition in the imported passage is excluded."
+        },
+        {
+          "units": [
+            8,
+            9,
+            10
+          ],
+          "start": "यदि आप ऐसी कल्पना करते हैं",
+          "end": "वह ( मनोदण्ड का महावद्य",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 204 · extracted lines 1650–1658. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The hypothetical explanation and its consequent question form one shared Hindi span."
+        },
+        {
+          "units": [
+            11
+          ],
+          "start": "वह ( मनोदण्ड का महावद्य",
+          "end": "से अन्य जीवों का मरण",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 204 · extracted lines 1650–1658. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Stop before the later paraphrase which is also retained in the published passage."
         }
       ]
     },
@@ -1827,6 +1966,15 @@
           "start": "जैसे ( स्वचित्त और परचित्त ) बुद्ध",
           "end": "जैसे वह ( स्वचित्त और परचित्त )",
           "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            5,
+            6
+          ],
+          "start": "जैसे वह ( स्वचित्त और परचित्त )",
+          "end": null,
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 207 · extracted lines 1683–1692. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The conditional comparison and its reason are one shared Hindi sentence; the reader form प्रसिभास is retained."
         }
       ]
     },
@@ -1850,6 +1998,40 @@
           "start": "(वह केवल ) बुद्ध की ही गोचर",
           "end": "वह (विज्ञप्तिमात्रता ) केवल",
           "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+        },
+        {
+          "units": [
+            3,
+            4
+          ],
+          "start": "तर्क ( सविकल्प शान )",
+          "end": "(यदि ऐसी स्थिति है, तो )",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the reason before the inability to conceive every aspect. Shared span; source शान is retained."
+        },
+        {
+          "units": [
+            5
+          ],
+          "start": "(यदि ऐसी स्थिति है, तो )",
+          "end": "(वह केवल ) बुद्ध की ही गोचर",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            7
+          ],
+          "start": "वह (विज्ञप्तिमात्रता ) केवल",
+          "end": "इस प्रकार प्राचार्य वसुबन्धु",
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+        },
+        {
+          "units": [
+            8,
+            9
+          ],
+          "start": "इस प्रकार प्राचार्य वसुबन्धु",
+          "end": null,
+          "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The title and author attribution form a shared Hindi colophon. Source प्राचार्य and the concluding समाप्त are retained."
         }
       ]
     },
@@ -4883,6 +5065,198 @@
           "start": "just like hairs, moons",
           "end": "“What follows now:",
           "note": "Sharma 1993, printed p. 61 (PDF page number = printed page + 12), visually checked 2 November 2026. Translated root/autocommentary compared with the Sanskrit units; modern exposition excluded. Source wording and OCR retained; draft source reading. The printed root includes moons (kesa-candra), a variant of the comparison in the Levi unit. The ending is severely damaged in the existing OCR, including stray characters before modern exposition. The scan also prints a separate Hence no external object exists sentence, but it has no reliably recoverable text in this imported passage; no 1.9 anchor is inferred from OCR debris."
+        }
+      ]
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passage": 2,
+      "clauses": [
+        {
+          "units": [
+            1,
+            2
+          ],
+          "start": "若し表識にして",
+          "end": "何の所意なりや。",
+          "note": "Inazu 1929, printed p. 354 (PDF 12). The four verse columns open with the condition and end with the negative predicate. Both Sanskrit lines share the full Japanese root. Scan reading: 若し表識にして無境的〔無對象的〕なりせば、 / 場所と時との限定と / 相續の不限定と / 及び作用とは可能ならず。 The displayed OCR is severely uncertain, including 和績 for printed 相續. Draft correspondence checked against the scan."
+        },
+        {
+          "units": [
+            3
+          ],
+          "start": "何の所意なりや。",
+          "end": "〔右の頃",
+          "note": "Inazu 1929, printed p. 354 (PDF 12). Large-type question 何の所意なりや。 corresponds to kim uktaṃ bhavati. The small following editorial gloss is outside this span."
+        },
+        {
+          "units": [
+            4
+          ],
+          "note": "Inazu 1929, printed p. 354. The main sentence begins 若し色等の表識は色等の境〔對象〕なくして生じ and continues into the next column. Its ending is damaged in the OCR. The small explanation following the condition is outside the selection. Draft alignment checked against the scan.",
+          "start": "若し色等の表識は",
+          "end": "氛醍前提"
+        },
+        {
+          "units": [
+            5
+          ],
+          "note": "Inazu 1929, printed p. 354. The place question ends 一切處に（生ずるに）は非ざるか。 The following また begins the question about time. Draft alignment checked against the scan.",
+          "start": "何故に(色等の表識は)",
+          "end": "また共"
+        },
+        {
+          "units": [
+            9
+          ],
+          "note": "Inazu 1929, printed p. 354. The hair and flies example occupies two main-text columns. The small explanation following the negative question is separate. Draft alignment checked against the scan.",
+          "start": "何故に、眇目の人々",
+          "end": "「「眇目者ならぬ"
+        },
+        {
+          "units": [
+            10
+          ],
+          "note": "Inazu 1929, printed p. 354–355. The scan begins 夢中に見ゆるところの and closes 作さるゝことなきに非ざるか. The OCR attaches a stray P to the opening token and fuses the closing negative with small explanatory type. The link covers the available whole tokens up to that fused ending. Draft reading checked against the scan.",
+          "start": "P夢中に見ゆる",
+          "end": "に非ざるかの物用",
+          "coverage": "partial"
+        },
+        {
+          "units": [
+            11
+          ],
+          "note": "Inazu 1929, printed p. 355. The main clause begins 乾闥婆城によっては and ends 作さるゝことなきに非ざるか. The OCR loses 婆 and inserts a gloss before the ending. The final ざるか shares one saved token with the gloss. The link ends at the last complete run before that interruption. Draft reading checked against the scan.",
+          "start": "乾闥城によっては",
+          "end": "在性ある事物",
+          "coverage": "partial"
+        },
+        {
+          "units": [
+            12
+          ],
+          "note": "Inazu 1929, printed p. 355. The concluding sentence ends 及び作用とは可能ならず。 The small discussion beginning 此の一句は follows it. Draft alignment checked against the scan.",
+          "start": "それ故に境象〕",
+          "end": "〔、「有が境の賞有"
+        }
+      ]
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passage": 3,
+      "clauses": [
+        {
+          "units": [
+            1
+          ],
+          "note": "Inazu 1929, printed p. 355. The two verse columns read 場所等の限定は成立す / 夢の如し。 The OCR reads 砂 in place of 夢. Draft alignment checked against the scan.",
+          "start": "場所等の限定は成立す",
+          "end": "夢の如しざは"
+        },
+        {
+          "units": [
+            2
+          ],
+          "note": "Inazu 1929, printed p. 355. The gloss on the verse reads 夢の如しとは夢に於けるが如しとなり。 Draft alignment checked against the scan.",
+          "start": "夢の如しざは",
+          "end": "然らば如何にして"
+        },
+        {
+          "units": [
+            3
+          ],
+          "note": "Inazu 1929, printed p. 355. The large-type question begins 然らば如何にして、. The small explanation 如何にして成立するかの意 is separate. Draft alignment checked against the scan.",
+          "start": "然らば如何にして",
+          "end": "〔嬲既立"
+        },
+        {
+          "units": [
+            4
+          ],
+          "note": "Inazu 1929, printed p. 355. The dream example lists 蜂、園、女人、男子. In the scan 境 precedes 〔對象〕. The clause ends 一切處に（見ゆるに）非ず。 Draft alignment checked against the scan.",
+          "start": "夢に於ては、〔對象〕",
+          "end": "また共の場所に於て"
+        },
+        {
+          "units": [
+            5
+          ],
+          "note": "Inazu 1929, printed p. 355–356. The time clause ends 一切時に（見ゆるに）非ず。 The next page concludes 斯くて境〔對象〕なくしても亦場所と時との限定は成立せり。 The isolated OCR fragment between the columns is excluded. Draft alignment checked against the scan.",
+          "parts": [
+            {
+              "start": "また共の場所に於て",
+              "end": "一第レト"
+            },
+            {
+              "start": "圻くて、呪〔對象〕",
+              "end": "猶しまた餓鬼"
+            }
+          ]
+        },
+        {
+          "units": [
+            6
+          ],
+          "note": "Inazu 1929, printed p. 356. The printed comparison ends 餓鬼の如くなり. Draft alignment checked against the scan.",
+          "start": "猶しまた餓鬼",
+          "end": "オ績の不限定"
+        },
+        {
+          "units": [
+            7
+          ],
+          "note": "Inazu 1929, printed p. 356. The next verse column reads 相續の不限定なる。 The small verse reference follows it. Draft alignment checked against the scan.",
+          "start": "オ績の不限定",
+          "end": "〔第=贏の内〕"
+        },
+        {
+          "units": [
+            8
+          ],
+          "note": "Inazu 1929, printed p. 356. The carried predicate is explained by （相續の不限定は）成立せりとの謂ひなり。 Draft alignment checked against the scan.",
+          "start": "(和績の不限定は)",
+          "end": "餓鬼の如くざは"
+        },
+        {
+          "units": [
+            9
+          ],
+          "note": "Inazu 1929, printed p. 356. The explanation reads 餓鬼の如くとは、諸の餓鬼に取つての如くとなり。 The column break damages the last words in the OCR. Draft alignment checked against the scan.",
+          "start": "餓鬼の如くざは",
+          "end": "如何にして成立せるか"
+        },
+        {
+          "units": [
+            10,
+            11
+          ],
+          "note": "Inazu 1929, printed p. 356. The question is followed by 一切の者 / 膿河等を見るにぞ / 皆同じなる。 Inazu places the commonality at the end. The two Sanskrit units share this span. The small verse reference is outside it. Draft alignment checked against the scan.",
+          "parts": [
+            {
+              "start": "如何にして成立せるか",
+              "end": "〔第三頃〕"
+            },
+            {
+              "start": "皆同じなる。",
+              "end": "の満ちたる河が"
+            }
+          ]
+        },
+        {
+          "units": [
+            14
+          ],
+          "note": "Inazu 1929, printed p. 356. The main text describes beings with the same karmic maturation seeing the river. The scan reads 狀態 where the OCR gives 献態. Draft alignment checked against the scan.",
+          "start": "等しき業の異熟の献態",
+          "end": "膿の満ちたる(河を見る)"
+        },
+        {
+          "units": [
+            16
+          ],
+          "note": "Inazu 1929, printed p. 356. The conclusion ends 諸表識の相續不限定は成立せり。 The OCR gives 和績 for 相續. Draft alignment checked against the scan.",
+          "start": "是の如",
+          "end": null
         }
       ]
     }

@@ -188,19 +188,44 @@ function integrateResearchedTranslations(corpus, supplement, tokenizer) {
     const witness = passage?.texts[mapping.sourceId];
     if (!witness?.tokens?.length) throw new Error(`Missing phrase witness: ${mapping.sourceId}`);
     const characters = Array.from(witness.text);
-    const start = characters.slice(0, mapping.start).join("").length;
-    const end = characters.slice(0, mapping.end).join("").length;
-    const tokens = witness.tokens.filter((token) => token.start >= start && token.end <= end);
-    if (!tokens.length) throw new Error(`Empty phrase selection: ${mapping.sourceId}`);
+    const spans = mapping.spans ?? [mapping];
+    if (!spans.length || spans[0].start !== mapping.start || spans.at(-1).end !== mapping.end) {
+      throw new Error("Invalid phrase bounds: " + mapping.unitId);
+    }
+    let previousEnd = -1;
+    const runs = spans.map(({start, end}) => {
+      if (!Number.isInteger(start) || !Number.isInteger(end) || start <= previousEnd ||
+          start < 0 || start >= end || end > characters.length) {
+        throw new Error("Invalid phrase range: " + mapping.unitId);
+      }
+      previousEnd = end;
+      const from = characters.slice(0, start).join("").length;
+      const to = from + characters.slice(start, end).join("").length;
+      if (mapping.spans && witness.tokens.some(token =>
+        (token.start < from && from < token.end) || (token.start < to && to < token.end))) {
+        throw new Error("Separated range cuts a saved token: " + mapping.unitId);
+      }
+      const run = witness.tokens.filter(token => token.start >= from && token.end <= to);
+      if (!run.length) throw new Error("Empty phrase selection: " + mapping.sourceId);
+      return run;
+    });
+    for (let i = 1; i < runs.length; i++) {
+      if (witness.tokens.indexOf(runs[i][0]) <= witness.tokens.indexOf(runs[i-1].at(-1)) + 1) {
+        throw new Error("Separated selections must skip a source token: " + mapping.unitId);
+      }
+    }
+    const tokens = runs.flat();
+    const selectedText = runs.map(run =>
+      witness.text.slice(run[0].start, run.at(-1).end)).join(" … ");
     for (const rows of [corpus.alignments, passage.sentenceUnits]) {
       const row = rows.find((item) => item.id === mapping.unitId);
       if (!row) throw new Error(`Missing phrase unit: ${mapping.unitId}`);
       row.targetTokenIds = { ...row.targetTokenIds, [mapping.sourceId]: tokens.map((token) => token.id) };
-      row.targets = { ...row.targets, [mapping.sourceId]: witness.text.slice(tokens[0].start, tokens.at(-1).end) };
+      row.targets = { ...row.targets, [mapping.sourceId]: selectedText };
       row.mappingMethods = { ...row.mappingMethods, [mapping.sourceId]: "source-checked-draft" };
       row.targetProvenance = { ...row.targetProvenance, [mapping.sourceId]: {
         file: "source-witnesses/document-witness-plan.json",
-        reviewStatus: "draft-source-reading", note: mapping.note,
+        reviewStatus: mapping.coverage === "partial" ? "partial-source-reading" : "draft-source-reading", note: mapping.note,
         libraryDocumentId: witness.libraryDocumentId,
       } };
       if (mapping.group) row.targetGroups = { ...row.targetGroups, [mapping.sourceId]: mapping.group };

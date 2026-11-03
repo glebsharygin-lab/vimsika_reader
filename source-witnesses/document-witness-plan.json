@@ -26070,6 +26070,70 @@
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-002",
+      "start": 430,
+      "end": 521,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 198 · extracted lines 1589–1597. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-003",
+      "start": 521,
+      "end": 555,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 198 · extracted lines 1589–1597. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-004",
+      "start": 555,
+      "end": 688,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 198 · extracted lines 1589–1597. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-005",
+      "start": 688,
+      "end": 926,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v18-clause-5",
+        "numbers": [
+          "18.5",
+          "18.6"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 199 · extracted lines 1599–1608; Unicode reader block 200 · extracted lines 1610–1615. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The question and following because are shared across the Sanskrit unit boundary."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 199 · extracted lines 1599–1608; Unicode reader block 200 · extracted lines 1610–1615. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The question and following because are shared across the Sanskrit unit boundary."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-006",
+      "start": 688,
+      "end": 926,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v18-clause-5",
+        "numbers": [
+          "18.5",
+          "18.6"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 199 · extracted lines 1599–1608; Unicode reader block 200 · extracted lines 1610–1615. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The question and following because are shared across the Sanskrit unit boundary."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 199 · extracted lines 1599–1608; Unicode reader block 200 · extracted lines 1610–1615. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The question and following because are shared across the Sanskrit unit boundary."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v18",
+      "unitId": "dharmanexus-v18-008",
+      "start": 993,
+      "end": 1055,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 200 · extracted lines 1610–1615. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
       "passageId": "v19",
       "unitId": "dharmanexus-v19-001",
       "start": 275,
@@ -26102,6 +26166,46 @@
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-003",
+      "start": 422,
+      "end": 521,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 202 · extracted lines 1628–1635. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-004",
+      "start": 521,
+      "end": 555,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 202 · extracted lines 1628–1635. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-005",
+      "start": 555,
+      "end": 618,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 202 · extracted lines 1628–1635. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Source हुघा is retained without print emendation."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-006",
+      "start": 618,
+      "end": 680,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 202 · extracted lines 1628–1635. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v19",
+      "unitId": "dharmanexus-v19-007",
+      "start": 680,
+      "end": 868,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 202 · extracted lines 1628–1635. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Stop at the translated autocommentary. Later explanatory material in the published passage remains unassigned and unchanged."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
       "passageId": "v20",
       "unitId": "dharmanexus-v20-001",
       "start": 0,
@@ -26115,6 +26219,105 @@
       "start": 687,
       "end": 726,
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-002",
+      "start": 105,
+      "end": 181,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 203 · extracted lines 1637–1648. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-003",
+      "start": 181,
+      "end": 267,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 203 · extracted lines 1637–1648. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-004",
+      "start": 267,
+      "end": 369,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 203 · extracted lines 1637–1648. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-005",
+      "start": 369,
+      "end": 392,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 203 · extracted lines 1637–1648. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-006",
+      "start": 392,
+      "end": 452,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 203 · extracted lines 1637–1648. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Select the cited reply only; subsequent exposition in the imported passage is excluded."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-008",
+      "start": 726,
+      "end": 983,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v20-clause-7",
+        "numbers": [
+          "20.8",
+          "20.9",
+          "20.10"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 204 · extracted lines 1650–1658. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The hypothetical explanation and its consequent question form one shared Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 204 · extracted lines 1650–1658. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The hypothetical explanation and its consequent question form one shared Hindi span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-009",
+      "start": 726,
+      "end": 983,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v20-clause-7",
+        "numbers": [
+          "20.8",
+          "20.9",
+          "20.10"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 204 · extracted lines 1650–1658. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The hypothetical explanation and its consequent question form one shared Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 204 · extracted lines 1650–1658. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The hypothetical explanation and its consequent question form one shared Hindi span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-010",
+      "start": 726,
+      "end": 983,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v20-clause-7",
+        "numbers": [
+          "20.8",
+          "20.9",
+          "20.10"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 204 · extracted lines 1650–1658. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The hypothetical explanation and its consequent question form one shared Hindi span."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 204 · extracted lines 1650–1658. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The hypothetical explanation and its consequent question form one shared Hindi span."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v20",
+      "unitId": "dharmanexus-v20-011",
+      "start": 983,
+      "end": 1073,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 204 · extracted lines 1650–1658. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. Stop before the later paraphrase which is also retained in the published passage."
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
@@ -26147,6 +26350,38 @@
       "start": 427,
       "end": 501,
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-005",
+      "start": 501,
+      "end": 750,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v21-clause-4",
+        "numbers": [
+          "21.5",
+          "21.6"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 207 · extracted lines 1683–1692. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The conditional comparison and its reason are one shared Hindi sentence; the reader form प्रसिभास is retained."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 207 · extracted lines 1683–1692. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The conditional comparison and its reason are one shared Hindi sentence; the reader form प्रसिभास is retained."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v21",
+      "unitId": "dharmanexus-v21-006",
+      "start": 501,
+      "end": 750,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v21-clause-4",
+        "numbers": [
+          "21.5",
+          "21.6"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 207 · extracted lines 1683–1692. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The conditional comparison and its reason are one shared Hindi sentence; the reader form प्रसिभास is retained."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 207 · extracted lines 1683–1692. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The conditional comparison and its reason are one shared Hindi sentence; the reader form प्रसिभास is retained."
     },
     {
       "sourceId": "hin_chogdub_tripathi_1972",
@@ -26187,6 +26422,86 @@
       "start": 394,
       "end": 426,
       "note": "Translated root clause compared with the Sanskrit; surrounding explanation excluded. Original source spelling retained; draft correspondence."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-003",
+      "start": 172,
+      "end": 305,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v22-clause-2",
+        "numbers": [
+          "22.3",
+          "22.4"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the reason before the inability to conceive every aspect. Shared span; source शान is retained."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the reason before the inability to conceive every aspect. Shared span; source शान is retained."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-004",
+      "start": 172,
+      "end": 305,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v22-clause-2",
+        "numbers": [
+          "22.3",
+          "22.4"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the reason before the inability to conceive every aspect. Shared span; source शान is retained."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The Hindi preposes the reason before the inability to conceive every aspect. Shared span; source शान is retained."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-005",
+      "start": 305,
+      "end": 394,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-007",
+      "start": 426,
+      "end": 558,
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-008",
+      "start": 558,
+      "end": 643,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v22-clause-5",
+        "numbers": [
+          "22.8",
+          "22.9"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The title and author attribution form a shared Hindi colophon. Source प्राचार्य and the concluding समाप्त are retained."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The title and author attribution form a shared Hindi colophon. Source प्राचार्य and the concluding समाप्त are retained."
+    },
+    {
+      "sourceId": "hin_chogdub_tripathi_1972",
+      "passageId": "v22",
+      "unitId": "dharmanexus-v22-009",
+      "start": 558,
+      "end": 643,
+      "group": {
+        "id": "hin_chogdub_tripathi_1972-v22-clause-5",
+        "numbers": [
+          "22.8",
+          "22.9"
+        ],
+        "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The title and author attribution form a shared Hindi colophon. Source प्राचार्य and the concluding समाप्त are retained."
+      },
+      "note": "Tripathi Hindi translation in Chogdub-Tripathi 1972; Unicode reader block 209 · extracted lines 1703–1716. Checked against the preserved source HTML and Unicode extraction on 3 November 2026, and compared with the Sanskrit units. Translated autocommentary only; later Gudharthadipani explanation excluded. Reader spellings retained; print-scan proofing not claimed. Draft source reading. The title and author attribution form a shared Hindi colophon. Source प्राचार्य and the concluding समाप्त are retained."
     },
     {
       "sourceId": "eng_sharma_1993",
@@ -30936,6 +31251,246 @@
       "start": 536,
       "end": 648,
       "note": "Sharma 1993, printed p. 61 (PDF page number = printed page + 12), visually checked 2 November 2026. Translated root/autocommentary compared with the Sanskrit units; modern exposition excluded. Source wording and OCR retained; draft source reading. The printed root includes moons (kesa-candra), a variant of the comparison in the Levi unit. The ending is severely damaged in the existing OCR, including stray characters before modern exposition. The scan also prints a separate Hence no external object exists sentence, but it has no reliably recoverable text in this imported passage; no 1.9 anchor is inferred from OCR debris."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 45,
+      "end": 104,
+      "group": {
+        "id": "jpn_inazu_1929-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Inazu 1929, printed p. 354 (PDF 12). The four verse columns open with the condition and end with the negative predicate. Both Sanskrit lines share the full Japanese root. Scan reading: 若し表識にして無境的〔無對象的〕なりせば、 / 場所と時との限定と / 相續の不限定と / 及び作用とは可能ならず。 The displayed OCR is severely uncertain, including 和績 for printed 相續. Draft correspondence checked against the scan."
+      },
+      "note": "Inazu 1929, printed p. 354 (PDF 12). The four verse columns open with the condition and end with the negative predicate. Both Sanskrit lines share the full Japanese root. Scan reading: 若し表識にして無境的〔無對象的〕なりせば、 / 場所と時との限定と / 相續の不限定と / 及び作用とは可能ならず。 The displayed OCR is severely uncertain, including 和績 for printed 相續. Draft correspondence checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 45,
+      "end": 104,
+      "group": {
+        "id": "jpn_inazu_1929-v2-clause-0",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Inazu 1929, printed p. 354 (PDF 12). The four verse columns open with the condition and end with the negative predicate. Both Sanskrit lines share the full Japanese root. Scan reading: 若し表識にして無境的〔無對象的〕なりせば、 / 場所と時との限定と / 相續の不限定と / 及び作用とは可能ならず。 The displayed OCR is severely uncertain, including 和績 for printed 相續. Draft correspondence checked against the scan."
+      },
+      "note": "Inazu 1929, printed p. 354 (PDF 12). The four verse columns open with the condition and end with the negative predicate. Both Sanskrit lines share the full Japanese root. Scan reading: 若し表識にして無境的〔無對象的〕なりせば、 / 場所と時との限定と / 相續の不限定と / 及び作用とは可能ならず。 The displayed OCR is severely uncertain, including 和績 for printed 相續. Draft correspondence checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-003",
+      "start": 104,
+      "end": 112,
+      "note": "Inazu 1929, printed p. 354 (PDF 12). Large-type question 何の所意なりや。 corresponds to kim uktaṃ bhavati. The small following editorial gloss is outside this span."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-004",
+      "start": 134,
+      "end": 182,
+      "note": "Inazu 1929, printed p. 354. The main sentence begins 若し色等の表識は色等の境〔對象〕なくして生じ and continues into the next column. Its ending is damaged in the OCR. The small explanation following the condition is outside the selection. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-005",
+      "start": 194,
+      "end": 231,
+      "note": "Inazu 1929, printed p. 354. The place question ends 一切處に（生ずるに）は非ざるか。 The following また begins the question about time. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-009",
+      "start": 435,
+      "end": 512,
+      "note": "Inazu 1929, printed p. 354. The hair and flies example occupies two main-text columns. The small explanation following the negative question is separate. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-010",
+      "start": 554,
+      "end": 625,
+      "coverage": "partial",
+      "note": "Inazu 1929, printed p. 354–355. The scan begins 夢中に見ゆるところの and closes 作さるゝことなきに非ざるか. The OCR attaches a stray P to the opening token and fuses the closing negative with small explanatory type. The link covers the available whole tokens up to that fused ending. Draft reading checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-011",
+      "start": 644,
+      "end": 701,
+      "coverage": "partial",
+      "note": "Inazu 1929, printed p. 355. The main clause begins 乾闥婆城によっては and ends 作さるゝことなきに非ざるか. The OCR loses 婆 and inserts a gloss before the ending. The final ざるか shares one saved token with the gloss. The link ends at the last complete run before that interruption. Draft reading checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-012",
+      "start": 746,
+      "end": 797,
+      "note": "Inazu 1929, printed p. 355. The concluding sentence ends 及び作用とは可能ならず。 The small discussion beginning 此の一句は follows it. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-001",
+      "start": 33,
+      "end": 52,
+      "note": "Inazu 1929, printed p. 355. The two verse columns read 場所等の限定は成立す / 夢の如し。 The OCR reads 砂 in place of 夢. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-002",
+      "start": 52,
+      "end": 72,
+      "note": "Inazu 1929, printed p. 355. The gloss on the verse reads 夢の如しとは夢に於けるが如しとなり。 Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-003",
+      "start": 72,
+      "end": 81,
+      "note": "Inazu 1929, printed p. 355. The large-type question begins 然らば如何にして、. The small explanation 如何にして成立するかの意 is separate. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-004",
+      "start": 94,
+      "end": 155,
+      "note": "Inazu 1929, printed p. 355. The dream example lists 蜂、園、女人、男子. In the scan 境 precedes 〔對象〕. The clause ends 一切處に（見ゆるに）非ず。 Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-005",
+      "start": 155,
+      "end": 232,
+      "spans": [
+        {
+          "start": 155,
+          "end": 189
+        },
+        {
+          "start": 197,
+          "end": 232
+        }
+      ],
+      "note": "Inazu 1929, printed p. 355–356. The time clause ends 一切時に（見ゆるに）非ず。 The next page concludes 斯くて境〔對象〕なくしても亦場所と時との限定は成立せり。 The isolated OCR fragment between the columns is excluded. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-006",
+      "start": 232,
+      "end": 245,
+      "note": "Inazu 1929, printed p. 356. The printed comparison ends 餓鬼の如くなり. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-007",
+      "start": 245,
+      "end": 254,
+      "note": "Inazu 1929, printed p. 356. The next verse column reads 相續の不限定なる。 The small verse reference follows it. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-008",
+      "start": 263,
+      "end": 285,
+      "note": "Inazu 1929, printed p. 356. The carried predicate is explained by （相續の不限定は）成立せりとの謂ひなり。 Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-009",
+      "start": 285,
+      "end": 315,
+      "note": "Inazu 1929, printed p. 356. The explanation reads 餓鬼の如くとは、諸の餓鬼に取つての如くとなり。 The column break damages the last words in the OCR. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-010",
+      "start": 315,
+      "end": 359,
+      "spans": [
+        {
+          "start": 315,
+          "end": 344
+        },
+        {
+          "start": 351,
+          "end": 359
+        }
+      ],
+      "group": {
+        "id": "jpn_inazu_1929-v3-clause-9",
+        "numbers": [
+          "3.10",
+          "3.11"
+        ],
+        "note": "Inazu 1929, printed p. 356. The question is followed by 一切の者 / 膿河等を見るにぞ / 皆同じなる。 Inazu places the commonality at the end. The two Sanskrit units share this span. The small verse reference is outside it. Draft alignment checked against the scan."
+      },
+      "note": "Inazu 1929, printed p. 356. The question is followed by 一切の者 / 膿河等を見るにぞ / 皆同じなる。 Inazu places the commonality at the end. The two Sanskrit units share this span. The small verse reference is outside it. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-011",
+      "start": 315,
+      "end": 359,
+      "spans": [
+        {
+          "start": 315,
+          "end": 344
+        },
+        {
+          "start": 351,
+          "end": 359
+        }
+      ],
+      "group": {
+        "id": "jpn_inazu_1929-v3-clause-9",
+        "numbers": [
+          "3.10",
+          "3.11"
+        ],
+        "note": "Inazu 1929, printed p. 356. The question is followed by 一切の者 / 膿河等を見るにぞ / 皆同じなる。 Inazu places the commonality at the end. The two Sanskrit units share this span. The small verse reference is outside it. Draft alignment checked against the scan."
+      },
+      "note": "Inazu 1929, printed p. 356. The question is followed by 一切の者 / 膿河等を見るにぞ / 皆同じなる。 Inazu places the commonality at the end. The two Sanskrit units share this span. The small verse reference is outside it. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-014",
+      "start": 401,
+      "end": 449,
+      "note": "Inazu 1929, printed p. 356. The main text describes beings with the same karmic maturation seeing the river. The scan reads 狀態 where the OCR gives 献態. Draft alignment checked against the scan."
+    },
+    {
+      "sourceId": "jpn_inazu_1929",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-016",
+      "start": 524,
+      "end": 562,
+      "note": "Inazu 1929, printed p. 356. The conclusion ends 諸表識の相續不限定は成立せり。 The OCR gives 和績 for 相續. Draft alignment checked against the scan."
     },
     {
       "sourceId": "vie_nguyen_hong",

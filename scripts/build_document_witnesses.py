@@ -397,8 +397,13 @@ def curated_phrases():
             assert len(matches)==1,(sid,verse,marker,len(matches))
             return matches[0].start()
         for index,clause in enumerate(record['clauses']):
-            start=locate(clause['start']); end=locate(clause['end']) if clause.get('end') else len(text)
-            assert start<end,(sid,verse,clause)
+            parts = clause.get('parts', [clause])
+            spans = [{'start': locate(part['start']),
+                      'end': locate(part['end']) if part.get('end') else len(text)}
+                     for part in parts]
+            assert spans and all(s['start'] < s['end'] for s in spans), (sid, verse, clause)
+            assert all(a['end'] < b['start'] for a,b in zip(spans, spans[1:])), (sid, verse, clause)
+            start, end = spans[0]['start'], spans[-1]['end']
             units=clause['units']
             group={'id':f'{sid}-v{verse}-clause-{index}',
                    'numbers':[f'{verse}.{n}' for n in units],
@@ -406,6 +411,8 @@ def curated_phrases():
             for unit in units:
                 plan['phraseMappings'].append({'sourceId':sid,'passageId':f'v{verse}',
                     'unitId':f'dharmanexus-v{verse}-{unit:03d}','start':start,'end':end,
+                    **({'spans': spans} if len(spans)>1 else {}),
+                    **({'coverage': 'partial'} if clause.get('coverage') == 'partial' else {}),
                     **({'group':group} if len(units)>1 else {}),
                     'note':clause.get('note','Meaning and clause boundaries compared with the Sanskrit passage; scholarly review pending.')})
 

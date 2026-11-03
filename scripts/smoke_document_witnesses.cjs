@@ -76,6 +76,10 @@ const root = path.resolve(__dirname,'..');
       ['hin_chogdub_tripathi_1972',[3,4,5,6,7],{3:'3.12',4:'4.13',5:'5.4',6:'6.3',7:'7.4'}],
       ['hin_chogdub_tripathi_1972',[8,9,10,11,12],{8:'8.6',9:'9.4',10:'10.13',11:'11.8',12:'12.6'}],
       ['hin_chogdub_tripathi_1972',[13,14,15,16,17],{13:'13.6',14:'14.15',15:'15.8',16:'16.8',17:'17.11'}],
+      ['hin_chogdub_tripathi_1972',[18,19,20,21,22],{18:'18.5',19:'19.7',20:'20.11',21:'21.6',22:'22.8'}],
+      ['jpn_inazu_1929',[2],{2:'2.1'}],
+      ['jpn_inazu_1929',[2],{2:'2.3'}],
+      ['jpn_inazu_1929',[2,3],{2:'2.11',3:'3.11'}],
     ])for(const number of numbers){
       const pid=`v${number}`;
       const expected=await page.evaluate(({pid,sid,targetNumber})=>{
@@ -87,6 +91,12 @@ const root = path.resolve(__dirname,'..');
         state.focusedSentenceByPassage[pid]=unit.id;
         renderReader();return unit.targetTokenIds[sid];
       },{pid,sid,targetNumber:unitNumbers?.[number]});
+      if (sid === 'jpn_inazu_1929' && number === 3) {
+        const note = page.locator('#v3 .reading-source-note');
+        await note.locator('summary').click();
+        assert.ok(await note.locator('p').isVisible());
+        assert.match(await note.innerText(),/皆同じなる/);
+      }
       const tokens=page.locator(`#${pid} [data-token-source="${sid}"]`);
       assert.deepEqual(await tokens.evaluateAll(nodes=>nodes.map(n=>n.dataset.tokenId)),expected);
       const word=await tokens.first().innerText();await tokens.first().click();
@@ -95,6 +105,57 @@ const root = path.resolve(__dirname,'..');
       await page.locator('[data-close-lexical-popover]').click();
       await page.evaluate(pid=>delete state.focusedSentenceByPassage[pid],pid);
     }
+    await page.evaluate(() => {
+      const source = sourceById('jpn_inazu_1929');
+      const parse = html => new DOMParser().parseFromString(html, 'text/html');
+      for (const [number, excluded, retained] of [
+        ['2.10','物用あ別','夢中'],
+        ['2.11','在性ある事物','乾闥城'],
+        ['3.5','一第レト','限定は成立せり'],
+        ['3.10','第三頃','皆同じなる'],
+        ['3.11','第三頃','皆同じなる'],
+      ]) {
+        const passage = passageById('v'+number.split('.')[0]);
+        const witness = effectiveWitness(passage, source.id);
+        const unit = phraseAlignments(passage).find(row => row.number === number);
+        const ids = unit.targetTokenIds[source.id];
+        delete state.focusedSentenceByPassage[passage.id];
+        const full = parse(readingSentenceList(passage,source,witness));
+        if (!full.body.textContent.includes(excluded) || full.querySelector('.reading-source-note')) {
+          throw Error('Whole witness or note visibility failed at '+number);
+        }
+        state.focusedSentenceByPassage[passage.id] = unit.id;
+        const focus = parse(readingSentenceList(passage,source,witness));
+        const comparison = parse(phraseRow(unit,passage,[source],'1fr 3fr',0));
+        const visible = [focus.querySelector('.reading-sentence-body').textContent,
+          alignmentTargetText(unit,passage,source.id)];
+        if (number === '3.11') {
+          if (!comparison.body.textContent.includes('Included in 3.10') || comparison.querySelector('[data-token-id]')) {
+            throw Error('Comparison repeated or lost the shared 3.10–11 span');
+          }
+        } else {
+          visible.push(comparison.body.textContent);
+        }
+        for (const shown of visible) {
+          if (shown.includes(excluded) || (number.startsWith('3.') && !shown.includes(' … ')) || !shown.includes(retained)) {
+            throw Error('Interleaved source text in selection '+number+': '+shown);
+          }
+        }
+        if (number.startsWith('2.') && (!comparison.body.textContent.includes('partial source reading') ||
+            !focus.querySelector('.reading-sentence-status').textContent.includes('partial source reading') ||
+            !focus.querySelector('.reading-source-note')?.textContent.includes('非ざるか'))) {
+          throw Error('Missing partial-coverage label or printed ending at '+number);
+        }
+        if (!focus.querySelector('.reading-source-note')?.textContent.includes('Inazu 1929')) {
+          throw Error('Missing focused evidence at '+number);
+        }
+        if (focusedReadingNote(passage,source.id,{...unit,targetTexts:{[source.id]:'local draft'}},ids) ||
+            focusedReadingNote(passage,source.id,unit,ids.slice(1))) {
+          throw Error('Source note applied to an edited selection at '+number);
+        }
+        delete state.focusedSentenceByPassage[passage.id];
+      }
+    });
     await page.evaluate(()=>openResearchedDocument('kor_lee_gilsan_2021'));
     await page.locator('[data-open-library-source="kor_lee_gilsan_2021"]').click();
     assert.ok(await page.locator('#v1 .source-panel[data-source="kor_lee_gilsan_2021"]').count());
