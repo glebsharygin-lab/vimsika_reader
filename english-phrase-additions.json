@@ -1,0 +1,1738 @@
+{
+  "schemaVersion": 1,
+  "phraseMappings": [
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 1,
+      "end": 185,
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00001",
+        "last": "v2-eng_anacker_2005-t00028",
+        "count": 28,
+        "text": "If perception occurs without an object,\nany restriction as to place and time becomes illogical,\nas does non-restriction as to moment-series2\nand any activity which has been performed"
+      },
+      "note": "Anacker 2005, PDF 174. Saved page extraction compared with the Sanskrit objection and reply. The condition opens the English verse. Both Sanskrit halves share it. The reference number before the existing 2.3 selection is excluded.",
+      "group": {
+        "id": "eng_anacker_2005-v2-source-1-2",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Anacker 2005, PDF 174. Saved page extraction compared with the Sanskrit objection and reply. The condition opens the English verse. Both Sanskrit halves share it. The reference number before the existing 2.3 selection is excluded."
+      }
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 1,
+      "end": 185,
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00001",
+        "last": "v2-eng_anacker_2005-t00028",
+        "count": 28,
+        "text": "If perception occurs without an object,\nany restriction as to place and time becomes illogical,\nas does non-restriction as to moment-series2\nand any activity which has been performed"
+      },
+      "note": "Anacker 2005, PDF 174. Saved page extraction compared with the Sanskrit objection and reply. The condition opens the English verse. Both Sanskrit halves share it. The reference number before the existing 2.3 selection is excluded.",
+      "group": {
+        "id": "eng_anacker_2005-v2-source-1-2",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Anacker 2005, PDF 174. Saved page extraction compared with the Sanskrit objection and reply. The condition opens the English verse. Both Sanskrit halves share it. The reference number before the existing 2.3 selection is excluded."
+      }
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-004",
+      "start": 209,
+      "end": 289,
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00034",
+        "last": "v2-eng_anacker_2005-t00046",
+        "count": 13,
+        "text": "If the perception of visibles, etc. arises\nwithout any object of visibles, etc"
+      },
+      "note": "Anacker 2005, PDF 174. Saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-005",
+      "start": 289,
+      "end": 358,
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00047",
+        "last": "v2-eng_anacker_2005-t00059",
+        "count": 13,
+        "text": "why is it that it arises only\nin certain places, and not everywhere"
+      },
+      "note": "Anacker 2005, PDF 174. Saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-006",
+      "start": 358,
+      "end": 448,
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00060",
+        "last": "v2-eng_anacker_2005-t00077",
+        "count": 18,
+        "text": "and even in those places,\nwhy is it that it arises only sometimes, and not all the time"
+      },
+      "note": "Anacker 2005, PDF 174. Saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-007",
+      "start": 448,
+      "end": 589,
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00078",
+        "last": "v2-eng_anacker_2005-t00105",
+        "count": 28,
+        "text": "And why is it that it arises in the moment-series of all that are\nsituated in that time and place, and not just in the moment-series of one"
+      },
+      "note": "Anacker 2005, PDF 174. Saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-008",
+      "start": 589,
+      "end": 738,
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00106",
+        "last": "v2-eng_anacker_2005-t00130",
+        "count": 25,
+        "text": "just as the appearance of hair, etc. arises in the\nmoment-series of those afflicted by an optical disorder, and\nnot in the moment-series of others"
+      },
+      "note": "Anacker 2005, PDF 174. Saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-010",
+      "start": 931,
+      "end": 1109,
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00167",
+        "last": "v2-eng_anacker_2005-t00198",
+        "count": 32,
+        "text": "Food, drink* clothes,\npoison, weapons, etc. that are seen in a dream don't perform\nthe functions of food, etc. while it is not the case that other\nfood, etc. don't perform them"
+      },
+      "note": "Anacker 2005, PDF 174. Saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-011",
+      "start": 1109,
+      "end": 1315,
+      "spans": [
+        {
+          "start": 1109,
+          "end": 1135
+        },
+        {
+          "start": 1190,
+          "end": 1315
+        }
+      ],
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00199",
+        "last": "v2-eng_anacker_2005-t00233",
+        "count": 27,
+        "text": "An illusory town does not … perform the functions of a town, because of its non-existence,\nwhile it is not the case that other towns don't perform them"
+      },
+      "note": "Anacker 2005, PDF 174–175. Saved page extraction compared with the Sanskrit objection and reply. The town example crosses a page break. The intervening Avataṃsaka reference belongs to the foot of the page."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-012",
+      "start": 1315,
+      "end": 1501,
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00234",
+        "last": "v2-eng_anacker_2005-t00262",
+        "count": 29,
+        "text": "Therefore, with the non-being of an object, any restriction as\nto place and time, any non-restriction as to moment-series, and\nany activity which has been performed, would be illogical"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-013",
+      "start": 1508,
+      "end": 1543,
+      "expected": {
+        "first": "v2-eng_anacker_2005-t00264",
+        "last": "v2-eng_anacker_2005-t00269",
+        "count": 6,
+        "text": "No, they are not illogical, because"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 3,
+      "end": 156,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00002",
+        "last": "v2-eng_tola_dragonetti_2004-t00022",
+        "count": 21,
+        "text": "Neither the determination (certainty)\nin regard to place and time\nnor the indetermination (unexclusiveness)\nin regard to the series (of consciousnesses"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 176. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 156,
+      "end": 284,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00023",
+        "last": "v2-eng_tola_dragonetti_2004-t00041",
+        "count": 19,
+        "text": "nor the performance of the (specific) function\nare logically possible,\nif consciousness (does) not (arise)\nout from an object"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 176. Scan and saved page extraction compared with the Sanskrit objection and reply. The conditional is last, as in the Sanskrit."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-003",
+      "start": 284,
+      "end": 339,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00042",
+        "last": "v2-eng_tola_dragonetti_2004-t00051",
+        "count": 10,
+        "text": "What has been said (in the kàrikâ) ? (Its meaning is"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-004",
+      "start": 339,
+      "end": 531,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00052",
+        "last": "v2-eng_tola_dragonetti_2004-t00075",
+        "count": 24,
+        "text": "If consciousness\n(=cognition) of form-colour, etc. arises without (external) objects\n(constituted by) form-colour, etc., (i.e.) not from (external) objects\n(constituted by) form-colour, etc"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-005",
+      "start": 531,
+      "end": 625,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00076",
+        "last": "v2-eng_tola_dragonetti_2004-t00088",
+        "count": 13,
+        "text": "then) why does it (=consciousness)\narise in a (determinate, certain) place, not everywhere"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-007",
+      "start": 726,
+      "end": 904,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00106",
+        "last": "v2-eng_tola_dragonetti_2004-t00137",
+        "count": 32,
+        "text": "And why) does it arise in the series (of\nconsciousnesses) of all those who are present in that place at that\nmoment, not (in the series of consciousnesses) of only one (person"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-008",
+      "start": 904,
+      "end": 1067,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00138",
+        "last": "v2-eng_tola_dragonetti_2004-t00164",
+        "count": 27,
+        "text": "as (is the case with) the appearance of hairs, etc. only in the series\n(of consciousnesses) of the taimirikas, not (in the series of\nconsciousnesses) of others"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-009",
+      "start": 1067,
+      "end": 1252,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00165",
+        "last": "v2-eng_tola_dragonetti_2004-t00195",
+        "count": 31,
+        "text": "Why the hairs, bees, etc., which are seen\nby the taimirikas , do not perform the (specific) function of hairs, etc.,\nbut others (=hairs, bees, etc.) different from them do perform it"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-010",
+      "start": 1252,
+      "end": 1443,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00196",
+        "last": "v2-eng_tola_dragonetti_2004-t00227",
+        "count": 32,
+        "text": "The\nfood, drink, clothes, poison, weapons, etc., which are seen in a dream,\ndo not perform the (specific) function of food, etc., but others (= food,\netc.) different from them do perform it"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-011",
+      "start": 1443,
+      "end": 1657,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00228",
+        "last": "v2-eng_tola_dragonetti_2004-t00263",
+        "count": 36,
+        "text": "The (imaginary, illusive) City\nof the Gandharvas3 1 0 does not perform the (specific) function of a city,\nbecause of its inexistence, but others (=cities) different from it do\nperform it (=the function of a city"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-012",
+      "start": 1657,
+      "end": 1926,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00264",
+        "last": "v2-eng_tola_dragonetti_2004-t00300",
+        "count": 37,
+        "text": "Therefore, given the inexistence\nof objects, neither the determination (certainty) in regard to place and\ntime nor the indetermination (unexclusiveness) in regard to the series\n(of consciousnesses) nor the performance of the (specific) function\nare logically possible"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-013",
+      "start": 2067,
+      "end": 2108,
+      "expected": {
+        "first": "v2-eng_tola_dragonetti_2004-t00324",
+        "last": "v2-eng_tola_dragonetti_2004-t00329",
+        "count": 6,
+        "text": "They are indeed logically possible, since"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Scan and saved page extraction compared with the Sanskrit objection and reply. The preceding Section III heading is editorial."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 3,
+      "end": 335,
+      "spans": [
+        {
+          "start": 3,
+          "end": 43
+        },
+        {
+          "start": 50,
+          "end": 335
+        }
+      ],
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00002",
+        "last": "v2-eng_kochumuttom_1982-t00052",
+        "count": 49,
+        "text": "If the reptesentations of consciousness … Are without [extra-mental ] obiects,\nThen there would be no determination [of\nexperience] with regard to space and time,\nNor would thelc be indeterminacy of it with\nregard to streams [i.e. individuals]\nNor would there be determination of actions\nprompted [by a particular experience"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply. The condition precedes the space/time objection. The two runs omit the marginal [167], garbled in OCR.",
+      "group": {
+        "id": "eng_kochumuttom_1982-v2-source-1-2",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply. The condition precedes the space/time objection. The two runs omit the marginal [167], garbled in OCR."
+      }
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 3,
+      "end": 335,
+      "spans": [
+        {
+          "start": 3,
+          "end": 43
+        },
+        {
+          "start": 50,
+          "end": 335
+        }
+      ],
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00002",
+        "last": "v2-eng_kochumuttom_1982-t00052",
+        "count": 49,
+        "text": "If the reptesentations of consciousness … Are without [extra-mental ] obiects,\nThen there would be no determination [of\nexperience] with regard to space and time,\nNor would thelc be indeterminacy of it with\nregard to streams [i.e. individuals]\nNor would there be determination of actions\nprompted [by a particular experience"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply. The condition precedes the space/time objection. The two runs omit the marginal [167], garbled in OCR.",
+      "group": {
+        "id": "eng_kochumuttom_1982-v2-source-1-2",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply. The condition precedes the space/time objection. The two runs omit the marginal [167], garbled in OCR."
+      }
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-004",
+      "start": 356,
+      "end": 508,
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00057",
+        "last": "v2-eng_kochumuttom_1982-t00080",
+        "count": 24,
+        "text": "If a representation of colour etc. arises\nwithout the corresponding external objects like colour etc., then\nthe former is not determined by the latter"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-005",
+      "start": 508,
+      "end": 659,
+      "spans": [
+        {
+          "start": 508,
+          "end": 530
+        },
+        {
+          "start": 564,
+          "end": 659
+        }
+      ],
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00081",
+        "last": "v2-eng_kochumuttom_1982-t00106",
+        "count": 19,
+        "text": "Why is it, then, that … a representation of colour etc. does not ariseeverywhere, but only\nin some particular places"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply. The question crosses the two printed pages. The running title and page number before its continuation are excluded."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-006",
+      "start": 659,
+      "end": 715,
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00107",
+        "last": "v2-eng_kochumuttom_1982-t00116",
+        "count": 10,
+        "text": "Even then it does not always occur,\nbut only sometimes"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-007",
+      "start": 715,
+      "end": 840,
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00117",
+        "last": "v2-eng_kochumuttom_1982-t00140",
+        "count": 24,
+        "text": "Again, it occurs to the streamsof all present\nin those places and at those timen, not just to the stream of a\nsingle person"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-008",
+      "start": 840,
+      "end": 999,
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00141",
+        "last": "v2-eng_kochumuttom_1982-t00168",
+        "count": 28,
+        "text": "The latter, for example, is the case with regard to the\nappearance of hair etc., which occurs only to the streams of the\ncataract-ridden people, not of others"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-009",
+      "start": 999,
+      "end": 1144,
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00169",
+        "last": "v2-eng_kochumuttom_1982-t00195",
+        "count": 27,
+        "text": "Why is it, again, that the\nhairs, flies, etc. seen by the cataract-ridden people do not func-\ntion as hair etc., while those seen by others do"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-010",
+      "start": 1144,
+      "end": 1273,
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00196",
+        "last": "v2-eng_kochumuttom_1982-t00219",
+        "count": 24,
+        "text": "Food, drink,\nclothes, poison, weapons etc., seen in a dream do not function\nas food etc., while those seen in a waking state do"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-011",
+      "start": 1273,
+      "end": 1349,
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00220",
+        "last": "v2-eng_kochumuttom_1982-t00233",
+        "count": 14,
+        "text": "The city of\nGandharva does not function as a city, while other [cities] do"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-012",
+      "start": 1349,
+      "end": 1617,
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00234",
+        "last": "v2-eng_kochumuttom_1982-t00274",
+        "count": 41,
+        "text": "Therefore in the absence of [external] objects it does not make\nany sense to speak of the spatio -temporal determination [of\nexperience], the indeterminacy of streams [to which their rep -\nresentations of consciousness occur], and the fixed ways of their\nfunctioning"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-013",
+      "start": 1617,
+      "end": 1654,
+      "expected": {
+        "first": "v2-eng_kochumuttom_1982-t00275",
+        "last": "v2-eng_kochumuttom_1982-t00280",
+        "count": 6,
+        "text": "This objection does not hold, because"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 0,
+      "end": 189,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00001",
+        "last": "v2-eng_cook_1999-t00027",
+        "count": 27,
+        "text": "If consciousness is without real objects of perception,\nThe restriction (niyama) of place and time,\nThe nonrestriction of mental continuity (samtána),\nAnd function would not be established"
+      },
+      "note": "Cook 1999, PDF 7. Scan and saved page extraction compared with the Sanskrit objection and reply. Cook’s printed verse (1), translated from Xuanzang, corresponds to the Sanskrit second verse. The condition precedes the four items.",
+      "group": {
+        "id": "eng_cook_1999-v2-source-1-2",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Cook 1999, PDF 7. Scan and saved page extraction compared with the Sanskrit objection and reply. Cook’s printed verse (1), translated from Xuanzang, corresponds to the Sanskrit second verse. The condition precedes the four items."
+      }
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 0,
+      "end": 189,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00001",
+        "last": "v2-eng_cook_1999-t00027",
+        "count": 27,
+        "text": "If consciousness is without real objects of perception,\nThe restriction (niyama) of place and time,\nThe nonrestriction of mental continuity (samtána),\nAnd function would not be established"
+      },
+      "note": "Cook 1999, PDF 7. Scan and saved page extraction compared with the Sanskrit objection and reply. Cook’s printed verse (1), translated from Xuanzang, corresponds to the Sanskrit second verse. The condition precedes the four items.",
+      "group": {
+        "id": "eng_cook_1999-v2-source-1-2",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Cook 1999, PDF 7. Scan and saved page extraction compared with the Sanskrit objection and reply. Cook’s printed verse (1), translated from Xuanzang, corresponds to the Sanskrit second verse. The condition precedes the four items."
+      }
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-003",
+      "start": 193,
+      "end": 233,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00029",
+        "last": "v2-eng_cook_1999-t00035",
+        "count": 7,
+        "text": "The Treatise asks, what does this mean"
+      },
+      "note": "Cook 1999, PDF 7. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-004",
+      "start": 233,
+      "end": 406,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00036",
+        "last": "v2-eng_cook_1999-t00063",
+        "count": 28,
+        "text": "If you reject I the idea\nthat) consciousness really has externaldharmassuch as form, and\n[that I consciousness of form, etc., arises conditioned by I external I\nform, etc"
+      },
+      "note": "Cook 1999, PDF 7. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-005",
+      "start": 406,
+      "end": 478,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00064",
+        "last": "v2-eng_cook_1999-t00076",
+        "count": 13,
+        "text": "why does this consciousness arise in some places but\nnot in all places"
+      },
+      "note": "Cook 1999, PDF 7. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-006",
+      "start": 478,
+      "end": 571,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00077",
+        "last": "v2-eng_cook_1999-t00095",
+        "count": 19,
+        "text": "Why does consciousness lof form, etc.,J occur in\none place at one time but not at all times"
+      },
+      "note": "Cook 1999, PDF 7. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-007",
+      "start": 571,
+      "end": 741,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00096",
+        "last": "v2-eng_cook_1999-t00124",
+        "count": 29,
+        "text": "When there are many\nmental continuities in the same single place at one time, why is\nI consciousness of form] not born restricted according to I just] one\nconsciousness"
+      },
+      "note": "Cook 1999, PDF 7. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-008",
+      "start": 741,
+      "end": 876,
+      "spans": [
+        {
+          "start": 741,
+          "end": 795
+        },
+        {
+          "start": 803,
+          "end": 876
+        }
+      ],
+      "expected": {
+        "first": "v2-eng_cook_1999-t00125",
+        "last": "v2-eng_cook_1999-t00147",
+        "count": 21,
+        "text": "just as one with diseased eyesight secs hairs, flies … etc., but this consciousness is not born in someone without the\ndisease"
+      },
+      "note": "Cook 1999, PDF 7–8. Scan and saved page extraction compared with the Sanskrit objection and reply. The eye-disease example crosses printed pp. 391–392. The page number and stray OCR line between its parts are excluded."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-009",
+      "start": 876,
+      "end": 1283,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00148",
+        "last": "v2-eng_cook_1999-t00219",
+        "count": 72,
+        "text": "Again, I asks the realist,] why are the (imaginary] hairs,\netc., seen by those with eye disease lacking in the function of\n[real] hair, etc.? Food, drink, swords, cudgels, poison, medicines,\nclothes, etc., in a dream are devoid of the function of food, etc. The\nGandharva city etc., is devoid of the function of a [real] city, etc.,\nbut the function of other things such as [real I hair is not nonexistent"
+      },
+      "note": "Cook 1999, PDF 8. Scan and saved page extraction compared with the Sanskrit objection and reply. Cook places the contrast with real hair after the hair, dream and city examples. The three units share that full argument.",
+      "group": {
+        "id": "eng_cook_1999-v2-source-9-10-11",
+        "numbers": [
+          "2.9",
+          "2.10",
+          "2.11"
+        ],
+        "note": "Cook 1999, PDF 8. Scan and saved page extraction compared with the Sanskrit objection and reply. Cook places the contrast with real hair after the hair, dream and city examples. The three units share that full argument."
+      }
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-010",
+      "start": 876,
+      "end": 1283,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00148",
+        "last": "v2-eng_cook_1999-t00219",
+        "count": 72,
+        "text": "Again, I asks the realist,] why are the (imaginary] hairs,\netc., seen by those with eye disease lacking in the function of\n[real] hair, etc.? Food, drink, swords, cudgels, poison, medicines,\nclothes, etc., in a dream are devoid of the function of food, etc. The\nGandharva city etc., is devoid of the function of a [real] city, etc.,\nbut the function of other things such as [real I hair is not nonexistent"
+      },
+      "note": "Cook 1999, PDF 8. Scan and saved page extraction compared with the Sanskrit objection and reply. Cook places the contrast with real hair after the hair, dream and city examples. The three units share that full argument.",
+      "group": {
+        "id": "eng_cook_1999-v2-source-9-10-11",
+        "numbers": [
+          "2.9",
+          "2.10",
+          "2.11"
+        ],
+        "note": "Cook 1999, PDF 8. Scan and saved page extraction compared with the Sanskrit objection and reply. Cook places the contrast with real hair after the hair, dream and city examples. The three units share that full argument."
+      }
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-011",
+      "start": 876,
+      "end": 1283,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00148",
+        "last": "v2-eng_cook_1999-t00219",
+        "count": 72,
+        "text": "Again, I asks the realist,] why are the (imaginary] hairs,\netc., seen by those with eye disease lacking in the function of\n[real] hair, etc.? Food, drink, swords, cudgels, poison, medicines,\nclothes, etc., in a dream are devoid of the function of food, etc. The\nGandharva city etc., is devoid of the function of a [real] city, etc.,\nbut the function of other things such as [real I hair is not nonexistent"
+      },
+      "note": "Cook 1999, PDF 8. Scan and saved page extraction compared with the Sanskrit objection and reply. Cook places the contrast with real hair after the hair, dream and city examples. The three units share that full argument.",
+      "group": {
+        "id": "eng_cook_1999-v2-source-9-10-11",
+        "numbers": [
+          "2.9",
+          "2.10",
+          "2.11"
+        ],
+        "note": "Cook 1999, PDF 8. Scan and saved page extraction compared with the Sanskrit objection and reply. Cook places the contrast with real hair after the hair, dream and city examples. The three units share that full argument."
+      }
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-012",
+      "start": 1283,
+      "end": 1616,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00220",
+        "last": "v2-eng_cook_1999-t00271",
+        "count": 52,
+        "text": "If I dreams and waking I are really the same, without external\nobjects of perception such as form, and there is only internal consciousness that is born resembling an external objective realm, the\nrestriction (niyati) of place and time, nonrestriction of mental continuities, and the functioning of things would not be demonstrated"
+      },
+      "note": "Cook 1999, PDF 8. Scan and saved page extraction compared with the Sanskrit objection and reply."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-013",
+      "start": 1616,
+      "end": 1677,
+      "expected": {
+        "first": "v2-eng_cook_1999-t00272",
+        "last": "v2-eng_cook_1999-t00283",
+        "count": 12,
+        "text": "I We reply,] they are not all not demonstrated. A verse says"
+      },
+      "note": "Cook 1999, PDF 8. Scan and saved page extraction compared with the Sanskrit objection and reply. Xuanzang’s version introduces the next verse with “A verse says”."
+    },
+    {
+      "sourceId": "eng_wood_1991",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-001",
+      "start": 13,
+      "end": 256,
+      "expected": {
+        "first": "v2-eng_wood_1991-t00002",
+        "last": "v2-eng_wood_1991-t00035",
+        "count": 34,
+        "text": "If representations were without an object\n(an-artha), then there would be no determination (niyama)\nof space and time, no indetermination (aniyama) of the\nvarious mind streams, and no efficacity (krtya-kriyii)\ncorresponding to various actions"
+      },
+      "note": "Wood 1991, PDF 113. Scan and saved page extraction compared with the Sanskrit objection and reply. Wood gives a verse-only translation. The opening condition belongs to the shared pair. The speaker label is excluded and the commentary units remain open.",
+      "group": {
+        "id": "eng_wood_1991-v2-source-1-2",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Wood 1991, PDF 113. Scan and saved page extraction compared with the Sanskrit objection and reply. Wood gives a verse-only translation. The opening condition belongs to the shared pair. The speaker label is excluded and the commentary units remain open."
+      }
+    },
+    {
+      "sourceId": "eng_wood_1991",
+      "passageId": "v2",
+      "unitId": "dharmanexus-v2-002",
+      "start": 13,
+      "end": 256,
+      "expected": {
+        "first": "v2-eng_wood_1991-t00002",
+        "last": "v2-eng_wood_1991-t00035",
+        "count": 34,
+        "text": "If representations were without an object\n(an-artha), then there would be no determination (niyama)\nof space and time, no indetermination (aniyama) of the\nvarious mind streams, and no efficacity (krtya-kriyii)\ncorresponding to various actions"
+      },
+      "note": "Wood 1991, PDF 113. Scan and saved page extraction compared with the Sanskrit objection and reply. Wood gives a verse-only translation. The opening condition belongs to the shared pair. The speaker label is excluded and the commentary units remain open.",
+      "group": {
+        "id": "eng_wood_1991-v2-source-1-2",
+        "numbers": [
+          "2.1",
+          "2.2"
+        ],
+        "note": "Wood 1991, PDF 113. Scan and saved page extraction compared with the Sanskrit objection and reply. Wood gives a verse-only translation. The opening condition belongs to the shared pair. The speaker label is excluded and the commentary units remain open."
+      }
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-003",
+      "start": 64,
+      "end": 84,
+      "expected": {
+        "first": "v3-eng_anacker_2005-t00013",
+        "last": "v3-eng_anacker_2005-t00016",
+        "count": 4,
+        "text": "Tsiow how is this"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples. The opening word is damaged in the saved extraction."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-005",
+      "start": 280,
+      "end": 494,
+      "expected": {
+        "first": "v3-eng_anacker_2005-t00050",
+        "last": "v3-eng_anacker_2005-t00088",
+        "count": 39,
+        "text": "And even there in those places,\nthey are to be seen only sometimes, and not all the time. In »• this\nway, even without an (external) object of sense or understanding, there may be restriction as to place and time"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-006",
+      "start": 494,
+      "end": 557,
+      "expected": {
+        "first": "v3-eng_anacker_2005-t00089",
+        "last": "v3-eng_anacker_2005-t00098",
+        "count": 10,
+        "text": "And non-restriction as to moment-series\nis like with the pretas"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples. The English puts non-restriction before the comparison with pretas. Both Sanskrit units share the sentence.",
+      "group": {
+        "id": "eng_anacker_2005-v3-source-6-7",
+        "numbers": [
+          "3.6",
+          "3.7"
+        ],
+        "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples. The English puts non-restriction before the comparison with pretas. Both Sanskrit units share the sentence."
+      }
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-007",
+      "start": 494,
+      "end": 557,
+      "expected": {
+        "first": "v3-eng_anacker_2005-t00089",
+        "last": "v3-eng_anacker_2005-t00098",
+        "count": 10,
+        "text": "And non-restriction as to moment-series\nis like with the pretas"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples. The English puts non-restriction before the comparison with pretas. Both Sanskrit units share the sentence.",
+      "group": {
+        "id": "eng_anacker_2005-v3-source-6-7",
+        "numbers": [
+          "3.6",
+          "3.7"
+        ],
+        "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples. The English puts non-restriction before the comparison with pretas. Both Sanskrit units share the sentence."
+      }
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-008",
+      "start": 563,
+      "end": 723,
+      "expected": {
+        "first": "v3-eng_anacker_2005-t00101",
+        "last": "v3-eng_anacker_2005-t00124",
+        "count": 24,
+        "text": "The phrase \"is demonstrated\" continues to apply here (to. make\nthe verse read : \"And non-restriction as to moment-series is\ndemonstrated as with the pretas"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples. This explains the predicate carried into the second part of the verse."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-010",
+      "start": 723,
+      "end": 814,
+      "spans": [
+        {
+          "start": 723,
+          "end": 797
+        },
+        {
+          "start": 800,
+          "end": 814
+        }
+      ],
+      "expected": {
+        "first": "v3-eng_anacker_2005-t00125",
+        "last": "v3-eng_anacker_2005-t00141",
+        "count": 16,
+        "text": "How is it demonstrated ?\nIn the seeing of pus-rivers, etc. by all of them … all together"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples. The common sight is completed by “all together” after the numbered verse fragment. The 3c label is excluded.",
+      "group": {
+        "id": "eng_anacker_2005-v3-source-10-11",
+        "numbers": [
+          "3.10",
+          "3.11"
+        ],
+        "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples. The common sight is completed by “all together” after the numbered verse fragment. The 3c label is excluded."
+      }
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-011",
+      "start": 723,
+      "end": 814,
+      "spans": [
+        {
+          "start": 723,
+          "end": 797
+        },
+        {
+          "start": 800,
+          "end": 814
+        }
+      ],
+      "expected": {
+        "first": "v3-eng_anacker_2005-t00125",
+        "last": "v3-eng_anacker_2005-t00141",
+        "count": 16,
+        "text": "How is it demonstrated ?\nIn the seeing of pus-rivers, etc. by all of them … all together"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples. The common sight is completed by “all together” after the numbered verse fragment. The 3c label is excluded.",
+      "group": {
+        "id": "eng_anacker_2005-v3-source-10-11",
+        "numbers": [
+          "3.10",
+          "3.11"
+        ],
+        "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples. The common sight is completed by “all together” after the numbered verse fragment. The 3c label is excluded."
+      }
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-014",
+      "start": 887,
+      "end": 1033,
+      "expected": {
+        "first": "v3-eng_anacker_2005-t00157",
+        "last": "v3-eng_anacker_2005-t00185",
+        "count": 29,
+        "text": "For all the pretas who are in a similar situation\ndue to a similar retribution for action, and not just one of them,\nsee a river filled with pus"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_anacker_2005",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-016",
+      "start": 1179,
+      "end": 1340,
+      "expected": {
+        "first": "v3-eng_anacker_2005-t00210",
+        "last": "v3-eng_anacker_2005-t00232",
+        "count": 23,
+        "text": "Thus, non-restriction as to moment-series in regard to perceptions is de-\nmonstrated even with an (external) object of sense or understanding being non-existent"
+      },
+      "note": "Anacker 2005, PDF 175. Saved page extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-001",
+      "start": 3,
+      "end": 92,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00002",
+        "last": "v3-eng_tola_dragonetti_2004-t00016",
+        "count": 15,
+        "text": "The determination (certainty)\nin regard to place, etc.,\nhas to be admitted\nas in dreams"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-002",
+      "start": 92,
+      "end": 147,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00017",
+        "last": "v3-eng_tola_dragonetti_2004-t00028",
+        "count": 12,
+        "text": "Svapnavat: as in dream s=svapna iva: as in dreams3 1 1"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Page image and saved extraction compared with the Sanskrit dream and preta examples. The extracted form of the note number follows the comparative gloss."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-003",
+      "start": 147,
+      "end": 158,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00029",
+        "last": "v3-eng_tola_dragonetti_2004-t00031",
+        "count": 3,
+        "text": "How is it"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-004",
+      "start": 158,
+      "end": 293,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00032",
+        "last": "v3-eng_tola_dragonetti_2004-t00055",
+        "count": 24,
+        "text": "In a dream, even without an object, something, bees, a\ngarden, a woman, a man, etc. are seen in a (determinate) place, not\neverywhere"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-005",
+      "start": 293,
+      "end": 522,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00056",
+        "last": "v3-eng_tola_dragonetti_2004-t00093",
+        "count": 38,
+        "text": "and just in that place (those things) are seen at a\n(determinate) moment, not at any moment. Therefore, even without\nan object the determination (certainty, lack of arbitrariness) in regard\nto place and time has to be admitted"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 177. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-006",
+      "start": 522,
+      "end": 562,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00094",
+        "last": "v3-eng_tola_dragonetti_2004-t00102",
+        "count": 9,
+        "text": "and also, as in the case of the prêtas"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-007",
+      "start": 562,
+      "end": 602,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00103",
+        "last": "v3-eng_tola_dragonetti_2004-t00105",
+        "count": 3,
+        "text": "the indetermination (non-exclusiveness"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-008",
+      "start": 602,
+      "end": 644,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00106",
+        "last": "v3-eng_tola_dragonetti_2004-t00114",
+        "count": 9,
+        "text": "is to be admitted—so is to be understood"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-009",
+      "start": 644,
+      "end": 729,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00115",
+        "last": "v3-eng_tola_dragonetti_2004-t00131",
+        "count": 17,
+        "text": "Pretavat: as (in the case of) the pretas=pretànàm iva= as in the\ncase of the prêtas"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-010",
+      "start": 729,
+      "end": 801,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00132",
+        "last": "v3-eng_tola_dragonetti_2004-t00143",
+        "count": 12,
+        "text": "Why (that determination) is to be admitted ? (Because) at the same\ntime"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples. The phrase “at the same time” precedes the verse fragment in this edition."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-011",
+      "start": 801,
+      "end": 869,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00144",
+        "last": "v3-eng_tola_dragonetti_2004-t00157",
+        "count": 14,
+        "text": "there is the vision of the river of pus, etc. by all (the prêtas"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-012",
+      "start": 869,
+      "end": 949,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00158",
+        "last": "v3-eng_tola_dragonetti_2004-t00172",
+        "count": 15,
+        "text": "Pünyanadï: river of pus =püyapürna nadi: river full of pus, as a\npot of butter"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples. The definition and the pot of butter form a single sentence.",
+      "group": {
+        "id": "eng_tola_dragonetti_2004-v3-source-12-13",
+        "numbers": [
+          "3.12",
+          "3.13"
+        ],
+        "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples. The definition and the pot of butter form a single sentence."
+      }
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-013",
+      "start": 869,
+      "end": 949,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00158",
+        "last": "v3-eng_tola_dragonetti_2004-t00172",
+        "count": 15,
+        "text": "Pünyanadï: river of pus =püyapürna nadi: river full of pus, as a\npot of butter"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples. The definition and the pot of butter form a single sentence.",
+      "group": {
+        "id": "eng_tola_dragonetti_2004-v3-source-12-13",
+        "numbers": [
+          "3.12",
+          "3.13"
+        ],
+        "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples. The definition and the pot of butter form a single sentence."
+      }
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-014",
+      "start": 949,
+      "end": 1103,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00173",
+        "last": "v3-eng_tola_dragonetti_2004-t00202",
+        "count": 30,
+        "text": "Because the prêtas, who are in the situation of having the same\nmaturation of their karman, see all of them not only one (of them) the\nriver full of pus"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_tola_dragonetti_2004",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-016",
+      "start": 1294,
+      "end": 1483,
+      "expected": {
+        "first": "v3-eng_tola_dragonetti_2004-t00238",
+        "last": "v3-eng_tola_dragonetti_2004-t00265",
+        "count": 28,
+        "text": "Thus, even given the inexistence of an object, the indetermination\n(no-exclusiveness) in regard to the series (of consciousnesses ) has to\nbe admitted for the acts of cognition ( vijnapti"
+      },
+      "note": "Tola & Dragonetti 2004, PDF 178. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-001",
+      "start": 3,
+      "end": 84,
+      "spans": [
+        {
+          "start": 3,
+          "end": 44
+        },
+        {
+          "start": 50,
+          "end": 84
+        }
+      ],
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00002",
+        "last": "v3-eng_kochumuttom_1982-t00016",
+        "count": 14,
+        "text": "Determination of space etc., is obtained … Just as [in] the case of a dream"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples. The margin reference [167] separates the two extracted lines."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-002",
+      "start": 84,
+      "end": 187,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00017",
+        "last": "v3-eng_kochumuttom_1982-t00035",
+        "count": 19,
+        "text": "The term suapna-uat in the staniia means suapnu iua, both\nmeaning \"just as [in] the case of a dream"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples. The scan gives svapna-vat and svapna iva. The stored OCR has damaged readings of both forms."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-003",
+      "start": 187,
+      "end": 193,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00036",
+        "last": "v3-eng_kochumuttom_1982-t00036",
+        "count": 1,
+        "text": "How"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-004",
+      "start": 193,
+      "end": 409,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00037",
+        "last": "v3-eng_kochumuttom_1982-t00070",
+        "count": 34,
+        "text": "In a dream,\nwithout [corresponding external] objects, things like flies,\ngardens, ladies and men, are scen. They are not seen every -\nwhere, but only in some particular places [for example where\nthe dreamer sleeps"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-005",
+      "start": 409,
+      "end": 620,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00071",
+        "last": "v3-eng_kochumuttom_1982-t00102",
+        "count": 32,
+        "text": "even in those places they are not been\nalways, but only sometimes [for example, only when one\ndreams]. Thus the spatio-temporal determinations are obtained\neven when there are no corresponding external objects"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-006",
+      "start": 620,
+      "end": 768,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00103",
+        "last": "v3-eng_kochumuttom_1982-t00126",
+        "count": 24,
+        "text": "Again, indeterminacy [of experience ] with\nregards to streams\nL i.e. mdividuals ] is obtained\nJust as [in] the case [of the experience] of\nghosts"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples. Kochumuttom puts the statement about streams before the analogy with ghosts.",
+      "group": {
+        "id": "eng_kochumuttom_1982-v3-source-6-7",
+        "numbers": [
+          "3.6",
+          "3.7"
+        ],
+        "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples. Kochumuttom puts the statement about streams before the analogy with ghosts."
+      }
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-007",
+      "start": 620,
+      "end": 768,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00103",
+        "last": "v3-eng_kochumuttom_1982-t00126",
+        "count": 24,
+        "text": "Again, indeterminacy [of experience ] with\nregards to streams\nL i.e. mdividuals ] is obtained\nJust as [in] the case [of the experience] of\nghosts"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples. Kochumuttom puts the statement about streams before the analogy with ghosts.",
+      "group": {
+        "id": "eng_kochumuttom_1982-v3-source-6-7",
+        "numbers": [
+          "3.6",
+          "3.7"
+        ],
+        "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples. Kochumuttom puts the statement about streams before the analogy with ghosts."
+      }
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-008",
+      "start": 768,
+      "end": 854,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00127",
+        "last": "v3-eng_kochumuttom_1982-t00139",
+        "count": 13,
+        "text": "In this line, the term \"obtained\" [szddhu] is understood\n[ from the previous line"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-009",
+      "start": 854,
+      "end": 960,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00140",
+        "last": "v3-eng_kochumuttom_1982-t00156",
+        "count": 17,
+        "text": "and the term preta-vat mcans preta-iua,\n[both rneaning \"justas in the case of the experiencc of ghosts"
+      },
+      "note": "Kochumuttom 1982, PDF 25. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-010",
+      "start": 960,
+      "end": 1095,
+      "spans": [
+        {
+          "start": 960,
+          "end": 991
+        },
+        {
+          "start": 1025,
+          "end": 1095
+        }
+      ],
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00157",
+        "last": "v3-eng_kochumuttom_1982-t00180",
+        "count": 19,
+        "text": "How is the analogy obtained … All of them [ i.e. the ghosts] have the same vision\nof pus-river etc"
+      },
+      "note": "Kochumuttom 1982, PDF 25–26. Page image and saved extraction compared with the Sanskrit dream and preta examples. The closing question on printed p. 261 and the answer on p. 262 form one span across the page break. The running title is excluded.",
+      "group": {
+        "id": "eng_kochumuttom_1982-v3-source-10-11",
+        "numbers": [
+          "3.10",
+          "3.11"
+        ],
+        "note": "Kochumuttom 1982, PDF 25–26. Page image and saved extraction compared with the Sanskrit dream and preta examples. The closing question on printed p. 261 and the answer on p. 262 form one span across the page break. The running title is excluded."
+      }
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-011",
+      "start": 960,
+      "end": 1095,
+      "spans": [
+        {
+          "start": 960,
+          "end": 991
+        },
+        {
+          "start": 1025,
+          "end": 1095
+        }
+      ],
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00157",
+        "last": "v3-eng_kochumuttom_1982-t00180",
+        "count": 19,
+        "text": "How is the analogy obtained … All of them [ i.e. the ghosts] have the same vision\nof pus-river etc"
+      },
+      "note": "Kochumuttom 1982, PDF 25–26. Page image and saved extraction compared with the Sanskrit dream and preta examples. The closing question on printed p. 261 and the answer on p. 262 form one span across the page break. The running title is excluded.",
+      "group": {
+        "id": "eng_kochumuttom_1982-v3-source-10-11",
+        "numbers": [
+          "3.10",
+          "3.11"
+        ],
+        "note": "Kochumuttom 1982, PDF 25–26. Page image and saved extraction compared with the Sanskrit dream and preta examples. The closing question on printed p. 261 and the answer on p. 262 form one span across the page break. The running title is excluded."
+      }
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-012",
+      "start": 1095,
+      "end": 1188,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00181",
+        "last": "v3-eng_kochumuttom_1982-t00197",
+        "count": 17,
+        "text": "Pus-river' means 'a river full of pus', just as 'ghee-jug'\nwould mean 'a jug full of ghee"
+      },
+      "note": "Kochumuttom 1982, PDF 26. Page image and saved extraction compared with the Sanskrit dream and preta examples. The definition and ghee-jug comparison are one sentence.",
+      "group": {
+        "id": "eng_kochumuttom_1982-v3-source-12-13",
+        "numbers": [
+          "3.12",
+          "3.13"
+        ],
+        "note": "Kochumuttom 1982, PDF 26. Page image and saved extraction compared with the Sanskrit dream and preta examples. The definition and ghee-jug comparison are one sentence."
+      }
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-013",
+      "start": 1095,
+      "end": 1188,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00181",
+        "last": "v3-eng_kochumuttom_1982-t00197",
+        "count": 17,
+        "text": "Pus-river' means 'a river full of pus', just as 'ghee-jug'\nwould mean 'a jug full of ghee"
+      },
+      "note": "Kochumuttom 1982, PDF 26. Page image and saved extraction compared with the Sanskrit dream and preta examples. The definition and ghee-jug comparison are one sentence.",
+      "group": {
+        "id": "eng_kochumuttom_1982-v3-source-12-13",
+        "numbers": [
+          "3.12",
+          "3.13"
+        ],
+        "note": "Kochumuttom 1982, PDF 26. Page image and saved extraction compared with the Sanskrit dream and preta examples. The definition and ghee-jug comparison are one sentence."
+      }
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-014",
+      "start": 1188,
+      "end": 1307,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00198",
+        "last": "v3-eng_kochumuttom_1982-t00220",
+        "count": 23,
+        "text": "The ghosts having the same\nkind of matured [seeds of] deeds see, all of them, the pus-river,\nand not just one of them"
+      },
+      "note": "Kochumuttom 1982, PDF 26. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_kochumuttom_1982",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-016",
+      "start": 1509,
+      "end": 1665,
+      "expected": {
+        "first": "v3-eng_kochumuttom_1982-t00257",
+        "last": "v3-eng_kochumuttom_1982-t00278",
+        "count": 22,
+        "text": "Thus, the indeterminacy of\nstreams to which the representations of consciousness occur is\nobtained even when there are not [corresponding external]\nobjects"
+      },
+      "note": "Kochumuttom 1982, PDF 26. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-001",
+      "start": 0,
+      "end": 44,
+      "expected": {
+        "first": "v3-eng_cook_1999-t00001",
+        "last": "v3-eng_cook_1999-t00008",
+        "count": 8,
+        "text": "Time and place are restricted as in dreams"
+      },
+      "note": "Cook 1999, PDF 8. Page image and saved extraction compared with the Sanskrit dream and preta examples. Cook translates Xuanzang’s verse (2), corresponding here to Sanskrit passage 3."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-006",
+      "start": 44,
+      "end": 104,
+      "expected": {
+        "first": "v3-eng_cook_1999-t00009",
+        "last": "v3-eng_cook_1999-t00018",
+        "count": 10,
+        "text": "The body is not restricted, just as [hungry] ghosts (preta"
+      },
+      "note": "Cook 1999, PDF 8. Page image and saved extraction compared with the Sanskrit dream and preta examples. Cook uses “body” in this line. His prose conclusion speaks of mental continuities.",
+      "group": {
+        "id": "eng_cook_1999-v3-source-6-7",
+        "numbers": [
+          "3.6",
+          "3.7"
+        ],
+        "note": "Cook 1999, PDF 8. Page image and saved extraction compared with the Sanskrit dream and preta examples. Cook uses “body” in this line. His prose conclusion speaks of mental continuities."
+      }
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-007",
+      "start": 44,
+      "end": 104,
+      "expected": {
+        "first": "v3-eng_cook_1999-t00009",
+        "last": "v3-eng_cook_1999-t00018",
+        "count": 10,
+        "text": "The body is not restricted, just as [hungry] ghosts (preta"
+      },
+      "note": "Cook 1999, PDF 8. Page image and saved extraction compared with the Sanskrit dream and preta examples. Cook uses “body” in this line. His prose conclusion speaks of mental continuities.",
+      "group": {
+        "id": "eng_cook_1999-v3-source-6-7",
+        "numbers": [
+          "3.6",
+          "3.7"
+        ],
+        "note": "Cook 1999, PDF 8. Page image and saved extraction compared with the Sanskrit dream and preta examples. Cook uses “body” in this line. His prose conclusion speaks of mental continuities."
+      }
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-011",
+      "start": 104,
+      "end": 136,
+      "expected": {
+        "first": "v3-eng_cook_1999-t00019",
+        "last": "v3-eng_cook_1999-t00024",
+        "count": 6,
+        "text": "All alike see pus rivers, etc"
+      },
+      "note": "Cook 1999, PDF 8. Page image and saved extraction compared with the Sanskrit dream and preta examples. The next line about loss in dreams corresponds to the Sanskrit discussion in passage 4."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-009",
+      "start": 689,
+      "end": 751,
+      "expected": {
+        "first": "v3-eng_cook_1999-t00130",
+        "last": "v3-eng_cook_1999-t00138",
+        "count": 9,
+        "text": "The Treatise says, \"as ghosts\" means \"hungry ghosts\" (preta"
+      },
+      "note": "Cook 1999, PDF 8. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-014",
+      "start": 903,
+      "end": 1151,
+      "expected": {
+        "first": "v3-eng_cook_1999-t00170",
+        "last": "v3-eng_cook_1999-t00215",
+        "count": 46,
+        "text": "This means that just as through the maturation\nof the same actions (karma) the many bodies of hungry ghosts\ncollect together [in the nether world] and all see the pus rivers, it\nis not that in this [situation] it is restricted so only one sees it"
+      },
+      "note": "Cook 1999, PDF 8. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-015",
+      "start": 1151,
+      "end": 1340,
+      "expected": {
+        "first": "v3-eng_cook_1999-t00216",
+        "last": "v3-eng_cook_1999-t00246",
+        "count": 31,
+        "text": "The\nword \"etc.\" means that they also may see excrement, etc., and\nsentient beings grasping swords and cudgels, defending and guarding food and not allowing [the hungry ghosts] to get food"
+      },
+      "note": "Cook 1999, PDF 8. Page image and saved extraction compared with the Sanskrit dream and preta examples. This Chinese-based reading describes beings guarding food. The Sanskrit includes a comparison with a river filled with urine and feces."
+    },
+    {
+      "sourceId": "eng_cook_1999",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-016",
+      "start": 1343,
+      "end": 1505,
+      "expected": {
+        "first": "v3-eng_cook_1999-t00248",
+        "last": "v3-eng_cook_1999-t00269",
+        "count": 22,
+        "text": "Consequently, even though there are no real objects of perception\napart from consciousness, still the nonrestriction of many mental\ncontinuities is demonstrated"
+      },
+      "note": "Cook 1999, PDF 9. Page image and saved extraction compared with the Sanskrit dream and preta examples. The ensuing prose turns to the function of the dream example in Sanskrit passage 4."
+    },
+    {
+      "sourceId": "eng_wood_1991",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-001",
+      "start": 10,
+      "end": 55,
+      "expected": {
+        "first": "v3-eng_wood_1991-t00002",
+        "last": "v3-eng_wood_1991-t00009",
+        "count": 8,
+        "text": "Space etc. are determined just as in dreams"
+      },
+      "note": "Wood 1991, PDF 113. Page image and saved extraction compared with the Sanskrit dream and preta examples."
+    },
+    {
+      "sourceId": "eng_wood_1991",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-006",
+      "start": 55,
+      "end": 157,
+      "expected": {
+        "first": "v3-eng_wood_1991-t00010",
+        "last": "v3-eng_wood_1991-t00027",
+        "count": 18,
+        "text": "furthermore, the indetermination of the mind streams is just\nas it is in the case of ghosts (pretas"
+      },
+      "note": "Wood 1991, PDF 113. Page image and saved extraction compared with the Sanskrit dream and preta examples. The verse puts the statement about the streams before the comparison with ghosts.",
+      "group": {
+        "id": "eng_wood_1991-v3-source-6-7",
+        "numbers": [
+          "3.6",
+          "3.7"
+        ],
+        "note": "Wood 1991, PDF 113. Page image and saved extraction compared with the Sanskrit dream and preta examples. The verse puts the statement about the streams before the comparison with ghosts."
+      }
+    },
+    {
+      "sourceId": "eng_wood_1991",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-007",
+      "start": 55,
+      "end": 157,
+      "expected": {
+        "first": "v3-eng_wood_1991-t00010",
+        "last": "v3-eng_wood_1991-t00027",
+        "count": 18,
+        "text": "furthermore, the indetermination of the mind streams is just\nas it is in the case of ghosts (pretas"
+      },
+      "note": "Wood 1991, PDF 113. Page image and saved extraction compared with the Sanskrit dream and preta examples. The verse puts the statement about the streams before the comparison with ghosts.",
+      "group": {
+        "id": "eng_wood_1991-v3-source-6-7",
+        "numbers": [
+          "3.6",
+          "3.7"
+        ],
+        "note": "Wood 1991, PDF 113. Page image and saved extraction compared with the Sanskrit dream and preta examples. The verse puts the statement about the streams before the comparison with ghosts."
+      }
+    },
+    {
+      "sourceId": "eng_wood_1991",
+      "passageId": "v3",
+      "unitId": "dharmanexus-v3-011",
+      "start": 157,
+      "end": 200,
+      "expected": {
+        "first": "v3-eng_wood_1991-t00028",
+        "last": "v3-eng_wood_1991-t00037",
+        "count": 10,
+        "text": "who all see the rivers of\npus etc. in hell"
+      },
+      "note": "Wood 1991, PDF 113. Page image and saved extraction compared with the Sanskrit dream and preta examples. Wood ends his verse with “in hell”. Only the root lines are represented in this witness."
+    }
+  ]
+}

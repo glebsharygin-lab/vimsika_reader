@@ -104,6 +104,115 @@ function normalizeLexicalForm(value) {
   return foldAnalysisText(transliterateDevanagari(value)).replace(/[^a-z0-9\p{Script=Han}]/gu, "");
 }
 
+const VERPOORTEN_PDF_URL =
+  "https://histoire.unistra.fr/websites/histoire/Departements_instituts/" +
+  "histoire-religions/Publications_PDF/PIHR_HS1_2025_Verpoorten.pdf";
+const VERPOORTEN_TITLE = "Répertoire des termes sanskrits des Écoles philosophiques indiennes";
+const VERPOORTEN_INDEX = window.VIMSIKA_VERPOORTEN_INDEX || [];
+
+function verpoortenKey(form) {
+  return transliterateDevanagari(form)
+    .normalize("NFC")
+    .toLowerCase()
+    .replaceAll("ṁ", "ṃ")
+    .replace(/[\s\-‐‑√]/gu, "");
+}
+
+const VERPOORTEN_BY_KEY = new Map();
+for (const entry of VERPOORTEN_INDEX) {
+  const key = verpoortenKey(entry[0]);
+  if (!VERPOORTEN_BY_KEY.has(key)) VERPOORTEN_BY_KEY.set(key, []);
+  VERPOORTEN_BY_KEY.get(key).push(entry);
+}
+
+function verpoortenTokenReference(sourceId, surface, resolved) {
+  if (sourceById(sourceId)?.languageCode !== "san") return null;
+  const matchedForm = resolved.matchedText;
+  const glossaryLemma = glossaryFormsForEntry(resolved.glossary || {}).some(
+    (form) => verpoortenKey(form) === verpoortenKey(matchedForm),
+  ) ? resolved.glossary.lemma : "";
+  // The corpus glossary groups cittamātra under citta, but Verpoorten has its own entry.
+  const compoundLemma = /^cittamātra[ṃm]$/u.test(verpoortenKey(surface)) ? "cittamātra" : "";
+  const candidates = [resolved.editorial?.lemma, compoundLemma, surface, glossaryLemma, matchedForm].filter(Boolean);
+  for (const form of candidates) {
+    const entries = VERPOORTEN_BY_KEY.get(verpoortenKey(form));
+    if (entries) return { term: form, entries };
+  }
+  return { term: candidates[0] || "", entries: [] };
+}
+
+function verpoortenSearch(query) {
+  const key = verpoortenKey(query);
+  if (!key) return [];
+  const folded = foldAnalysisText(key);
+  const exact = VERPOORTEN_BY_KEY.get(key) || [];
+  return [
+    ...exact,
+    ...VERPOORTEN_INDEX.filter(([term]) => {
+      const termKey = verpoortenKey(term);
+      return termKey !== key && foldAnalysisText(termKey).startsWith(folded);
+    }),
+  ];
+}
+
+function verpoortenLinks(entries) {
+  return '<ul class="dictionary-locators">' + entries.map(([term, pages]) => {
+    const links = pages.map((page) => {
+      const printed = page - 5;
+      return '<a href="' + VERPOORTEN_PDF_URL + '#page=' + page +
+        '" target="_blank" rel="noopener" aria-label="' + analysisAttribute(term + ", printed page " + printed) +
+        '">p. ' + printed + '</a>';
+    });
+    return '<li><span lang="sa-Latn">' + escapeHtml(term) + '</span> ' + links.join(" · ") + '</li>';
+  }).join("") + '</ul>';
+}
+
+function verpoortenPdfUrl(term) {
+  const query = String(term || "").trim();
+  const fragment = query ? "#search=" + encodeURIComponent(transliterateDevanagari(query)) : "";
+  return VERPOORTEN_PDF_URL + fragment;
+}
+
+function verpoortenPdfLink(term, label) {
+  return '<a href="' + analysisAttribute(verpoortenPdfUrl(term)) +
+    '" target="_blank" rel="noopener">' + escapeHtml(label) + '</a>';
+}
+
+function verpoortenTokenCard(sourceId, surface, resolved) {
+  const reference = verpoortenTokenReference(sourceId, surface, resolved);
+  if (!reference || !/\p{L}/u.test(reference.term)) return "";
+  return '<div class="dictionary-token"><strong>Verpoorten 2025 · Primary lexical reference</strong>' +
+    (reference.entries.length
+      ? verpoortenLinks(reference.entries)
+      : verpoortenPdfLink(reference.term, "Search the publisher’s dictionary")) +
+    '</div>';
+}
+
+function verpoortenLexiconCard(record, resolved) {
+  const query = state.analysisQuery;
+  const reference = record && verpoortenTokenReference(record.sourceId, record.token.text, resolved);
+  const entries = query ? verpoortenSearch(query) : reference?.entries || [];
+  const limit = 12;
+  const firstPage = entries[0]?.[1][0];
+  const previewUrl = firstPage
+    ? VERPOORTEN_PDF_URL + "#page=" + firstPage
+    : verpoortenPdfUrl(query || reference?.term);
+  return '<section class="analysis-card dictionary-reference" aria-label="Primary lexical reference">' +
+    '<div class="analysis-card-heading"><div><p class="eyebrow">Primary lexical reference</p>' +
+    '<h3>Verpoorten 2025</h3></div></div>' +
+    '<p><cite>' + escapeHtml(VERPOORTEN_TITLE) +
+    '</cite> · Sanskrit, French and English · University of Strasbourg</p>' +
+    (entries.length ? verpoortenLinks(entries.slice(0, limit)) : "") +
+    (query && !entries.length ? '<p>No indexed Viṃśikā headwords match this search.</p>' : "") +
+    (entries.length > limit ? '<p>Showing ' + limit + ' of ' + entries.length + ' indexed headwords. Enter more letters to narrow the search.</p>' : "") +
+    '<p class="dictionary-actions">' +
+    verpoortenPdfLink("", "Open full dictionary (PDF)") +
+    (query || (reference?.term && /\p{L}/u.test(reference.term))
+      ? ' · ' + verpoortenPdfLink(query || reference.term, "Search the full dictionary") : "") +
+    '</p><details class="dictionary-reader" data-verpoorten-preview="' + analysisAttribute(previewUrl) + '">' +
+    '<summary>Read the publisher PDF here</summary></details></section>';
+}
+
 function glossaryEntries() {
   return [
     ...(window.VIMSIKA_LEXICON?.entries || []),
@@ -643,7 +752,8 @@ function analysisTopFormsList(limit = 80) {
 function lexiconPanel() {
   const record = selectedAnalysisRecord();
   if (!record) {
-    return '<div class="analysis-empty">This witness has no addressable tokens.</div>';
+    return verpoortenLexiconCard(null, null) +
+      '<div class="analysis-empty">This witness has no addressable tokens.</div>';
   }
   const resolved = resolvedLexicalRecord(
     record.sourceId,
@@ -657,6 +767,7 @@ function lexiconPanel() {
     (row) => row.normalized === record.normalized,
   );
   return `
+    ${verpoortenLexiconCard(record, resolved)}
     <div class="analysis-two-column">
       <section class="analysis-card analysis-index-card">
         <div class="analysis-card-heading">
@@ -1199,7 +1310,7 @@ function renderAnalysisWorkspace() {
             : `
               <form data-analysis-search-form>
                 <label>
-                  Search forms
+                  ${state.analysisTab === "lexicon" ? "Search forms and headwords" : "Search forms"}
                   <span class="analysis-search-row">
                     <input data-analysis-query value="${analysisAttribute(state.analysisQuery)}" placeholder="lemma, form, or character">
                     <button type="submit">Search</button>
@@ -1223,6 +1334,15 @@ function setAnalysisStatus(reader, message, error = false) {
 }
 
 function bindAnalysisControls(reader) {
+  const preview = reader.querySelector("[data-verpoorten-preview]");
+  preview?.addEventListener("toggle", () => {
+    if (!preview.open || preview.querySelector("iframe")) return;
+    const frame = document.createElement("iframe");
+    frame.title = "Verpoorten dictionary · University of Strasbourg PDF";
+    frame.referrerPolicy = "no-referrer";
+    frame.src = preview.dataset.verpoortenPreview;
+    preview.append(frame);
+  });
   reader.querySelectorAll("[data-analysis-tab]").forEach((button) => {
     button.addEventListener("click", () => {
       state.analysisTab = button.dataset.analysisTab;

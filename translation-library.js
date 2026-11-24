@@ -46,6 +46,7 @@ function mergeDocumentWitnessPlan(supplement, plan) {
     sources: [...sources.values()],
     passageMappings: [...mappings.values()],
     phraseMappings: plan.phraseMappings || [],
+    corpusPhraseMappings: plan.corpusPhraseMappings || [],
     documents: supplement.documents.map((documentRecord) => {
       const source = [...sources.values()].find((item) => item.libraryDocumentId === documentRecord.id);
       const extra = additions.get(documentRecord.id) || [];
@@ -183,7 +184,10 @@ function integrateResearchedTranslations(corpus, supplement, tokenizer) {
     mappingCount += 1;
   }
 
-  for (const mapping of supplement.phraseMappings || []) {
+  const corpusAdditions = new Set(supplement.corpusPhraseMappings || []);
+  const claimedCells = new Set();
+  const newTokenOwners = new Map();
+  const prepared = [...(supplement.phraseMappings || []), ...corpusAdditions].map(mapping => {
     const passage = passagesById.get(mapping.passageId);
     const witness = passage?.texts[mapping.sourceId];
     if (!witness?.tokens?.length) throw new Error(`Missing phrase witness: ${mapping.sourceId}`);
@@ -217,20 +221,53 @@ function integrateResearchedTranslations(corpus, supplement, tokenizer) {
     const tokens = runs.flat();
     const selectedText = runs.map(run =>
       witness.text.slice(run[0].start, run.at(-1).end)).join(" … ");
-    for (const rows of [corpus.alignments, passage.sentenceUnits]) {
-      const row = rows.find((item) => item.id === mapping.unitId);
-      if (!row) throw new Error(`Missing phrase unit: ${mapping.unitId}`);
+    const corpusAddition = corpusAdditions.has(mapping);
+    const rows = [corpus.alignments, passage.sentenceUnits].map(collection => {
+      const row = collection.find(item => item.id === mapping.unitId);
+      if (!row) throw new Error("Missing phrase unit: " + mapping.unitId);
+      return row;
+    });
+    if (corpusAddition) {
+      const expected = mapping.expected;
+      if (witness.libraryDocumentId || !expected || tokens[0].id !== expected.first ||
+          tokens.at(-1).id !== expected.last || tokens.length !== expected.count || selectedText !== expected.text) {
+        throw new Error("Corpus source selection has changed: " + mapping.unitId + " / " + mapping.sourceId);
+      }
+      const cell = mapping.unitId + ":" + mapping.sourceId;
+      if (claimedCells.has(cell) || rows.some(row =>
+          ["targetTokenIds", "targets", "targetTexts", "mappingMethods", "targetGroups", "targetProvenance"].some(
+            field => Object.prototype.hasOwnProperty.call(row[field] || {}, mapping.sourceId)))) {
+        throw new Error("Corpus source selection already exists: " + cell);
+      }
+      claimedCells.add(cell);
+      const ids = new Set(tokens.map(token => token.id));
+      if (passage.sentenceUnits.some(unit => unit.targetTokenIds?.[mapping.sourceId]?.some(id => ids.has(id)))) {
+        throw new Error("Corpus source tokens already aligned: " + cell);
+      }
+      const owner = mapping.group?.id || cell;
+      for (const id of ids) {
+        if (newTokenOwners.has(id) && newTokenOwners.get(id) !== owner) throw new Error("Overlapping corpus additions: " + cell);
+        newTokenOwners.set(id, owner);
+      }
+    } else if (!witness.libraryDocumentId) {
+      throw new Error("Expected a document witness: " + mapping.sourceId);
+    }
+    return {mapping, rows, tokens, selectedText, witness, corpusAddition};
+  });
+
+  for (const {mapping, rows, tokens, selectedText, witness, corpusAddition} of prepared) {
+    for (const row of rows) {
       row.targetTokenIds = { ...row.targetTokenIds, [mapping.sourceId]: tokens.map((token) => token.id) };
       row.targets = { ...row.targets, [mapping.sourceId]: selectedText };
       row.mappingMethods = { ...row.mappingMethods, [mapping.sourceId]: "source-checked-draft" };
       row.targetProvenance = { ...row.targetProvenance, [mapping.sourceId]: {
-        file: "source-witnesses/document-witness-plan.json",
+        file: corpusAddition ? "source-witnesses/english-phrase-additions.json" : "source-witnesses/document-witness-plan.json",
         reviewStatus: mapping.coverage === "partial" ? "partial-source-reading" : "draft-source-reading", note: mapping.note,
-        libraryDocumentId: witness.libraryDocumentId,
+        ...(corpusAddition ? {corpusWitnessId: mapping.sourceId} : {libraryDocumentId: witness.libraryDocumentId}),
       } };
       if (mapping.group) row.targetGroups = { ...row.targetGroups, [mapping.sourceId]: mapping.group };
     }
-    witness.mappingLevel = "phrase-draft";
+    if (!corpusAddition) witness.mappingLevel = "phrase-draft";
   }
 
   corpus.researchedTranslationIntegration = {

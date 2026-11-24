@@ -1743,7 +1743,7 @@ function focusedReadingNote(passage, sourceId, unit, tokenIds) {
   const original = passage.sentenceUnits.find(row => row.id === unit.id);
   const evidence = original?.targetProvenance?.[sourceId];
   const originalIds = original?.targetTokenIds?.[sourceId] || [];
-  if (!evidence?.libraryDocumentId || !evidence.note || !["draft-source-reading", "partial-source-reading"].includes(evidence.reviewStatus) ||
+  if (!(evidence?.libraryDocumentId || evidence?.corpusWitnessId === sourceId) || !evidence.note || !["draft-source-reading", "partial-source-reading"].includes(evidence.reviewStatus) ||
       originalIds.length !== tokenIds.length || !originalIds.every((id, i) => id === tokenIds[i])) return "";
   return '<details class="reading-source-note"><summary>Alignment note</summary><p>' +
     escapeHtml(evidence.note) + '</p></details>';
@@ -2016,6 +2016,7 @@ function lexicalPopover(passage) {
         </div>
         <button data-close-lexical-popover type="button" aria-label="Close lexical inspector">×</button>
       </div>
+      ${verpoortenTokenCard(popover.sourceId, token.text, resolved)}
       <dl class="lexical-details">
         <div>
           <dt>Surface</dt>

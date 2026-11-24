@@ -3862,3 +3862,57 @@ mark {
 .ms-image-adjust label { display:inline-flex; align-items:center; gap:5px; margin:8px 8px 0 0; }
 .ms-image-adjust input { width:100px; }
 .ms-image canvas { filter:brightness(var(--ms-brightness,1)) contrast(var(--ms-contrast,1)); }
+
+/* Verpoorten reference in the Lexicon and token inspector */
+.dictionary-reader {
+  margin-top: 0.65rem;
+}
+
+.dictionary-reader summary {
+  cursor: pointer;
+}
+
+.dictionary-reader iframe {
+  width: 100%;
+  height: min(70vh, 48rem);
+  margin-top: 0.5rem;
+  border: 1px solid var(--line);
+}
+.dictionary-reference p {
+  margin: 0.4rem 0;
+}
+
+.dictionary-reference .analysis-card-heading p {
+  margin: 0 0 0.25rem;
+}
+
+.dictionary-token {
+  padding: 0.65rem 0;
+  border-block: 1px solid var(--line);
+  font-size: 0.85rem;
+}
+
+.dictionary-token > strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.dictionary-locators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding: 0;
+  margin: 0.4rem 0;
+  list-style: none;
+}
+
+.dictionary-locators span {
+  font-weight: 600;
+}
+
+.dictionary-reference a,
+.dictionary-token a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.17em;
+}
